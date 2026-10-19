@@ -99,7 +99,7 @@ function buildS06(){const sid='S06';const sc=mkScene(sid,C.paper2,T0(sid),T1(sid
   const car=img(sc.cam,IMG.veh_fordt_iso,820,450);const cid=R(car,{x:120,y:400});
   const m=makeMachine(sc.cam,0.6,{x:1200,y:530});machineBob(m,T0(sid),T1(sid),1.5);
   // P04 Rapaz do Feno dá feno ao radiador; o carro buzina; ele pula e ri
-  const p4=collageChar(sc.cam,{body:IMG.col_rua1908_bone_felipe_flat,meta:META.col_rua1908_bone_felipe,scale:0.95});cameoSlide(p4,T0(sid),T0(sid)+9.6,{x:-300,y:300,rot:-5},{x:520,y:300,rot:0},{inDur:1.0,exit:{x:520,y:300}});
+  const p4=collageChar(sc.cam,{body:IMG.col_soldados_esq_gabriel_body,head:IMG['faces_felipe-treistman'],meta:META.col_soldados_esq_gabriel,scale:0.36});cameoSlide(p4,T0(sid),T0(sid)+9.6,{x:-300,y:300,rot:-5},{x:560,y:300,rot:0},{inDur:1.0,exit:{x:560,y:300}});headWobble(p4,3,1.5,4);
   const hb=pictoBubble(sc.cam,'horse',{w:150,h:120});const hbid=R(hb,{x:760,y:220});pop(hbid,T0(sid)+1.4,0.4,0.3,'back');fadeOut(hbid,T0(sid)+2.6,0.2);
   const ex=pictoBubble(sc.cam,'!',{w:120,h:110});const exid=R(ex,{x:760,y:220});pop(exid,T0(sid)+2.9,0.3,0.3,'back');fadeOut(exid,T0(sid)+4.2,0.3);
   camBump(sid,T0(sid)+2.8,0.025);surprise(p4,T0(sid)+2.8,0.6);proc(t=>{const a=T0(sid)+2.8;if(t<a||t>a+0.5)return;REG[p4.id].cur.y-=Math.sin((t-a)/0.5*Math.PI)*60});nodYes(p4,T0(sid)+3.6,T0(sid)+4.6,9);
