@@ -12,6 +12,11 @@ Nomes padronizados para o Claude referenciar arquivos sem ambiguidade. **Nomes d
 | `tesla-roadster-conceito.jpg` | `historicas/` | Tesla Roadster, conceito/demonstração | Conferir o que imagem realmente mostra — pendente |
 | `jeff-hiatt-adkar.jpg` | `pessoas/` | Jeff Hiatt, criador do ADKAR, conforme identificação do solicitante | Foto encaminhada na conversa; upload ao GitHub pendente |
 | `exemplo-rosto-em-corpo.png` | `referencias-visuais/` | Referência de montagem cômica com rosto recortado em corpo diferente | Imagem encaminhada na conversa; upload pendente |
+| `elon-musk-referencia.png` | `referencias-visuais/` | Elon Musk (referência de pose e estilo) | Enviada pelo solicitante; somente referência |
+| `ford-t-anuncio-jornal.webp` | `referencias-visuais/` | Anúncio de jornal do Ford Model T Torpedo | Enviada pelo solicitante; somente referência |
+| `ford-t-referencia.png` | `referencias-visuais/` | Ford Model T (foto atual) | Enviada pelo solicitante; somente referência |
+| `ford-t-1908-cidade.png` | `referencias-visuais/` | Cenário de 1908 com Ford T | Enviada pelo solicitante; somente referência |
+| `pessoas-carro-epoca.webp` | `referencias-visuais/` | Pessoas de época + carro (cena para rostos dos participantes) | Enviada pelo solicitante; somente referência |
 | `NOME-SOBRENOME.jpg` | `pessoas/participantes/` | Pessoa participante no treinamento | Obter foto e consentimento — pendente |
 
 ## Convenção
