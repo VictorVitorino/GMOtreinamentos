@@ -93,8 +93,8 @@ function buildS12(){const sid='S12';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(si
   const p14=slotChar(sc.cam,{body:IMG.col_rua1908_dama_elon_body,meta:META.col_rua1908_dama_elon,code:'P14',scale:1.0});cameoSlide(p14,T0(sid)+6.0,T1(sid)+10,{x:-300,y:460,rot:-5},{x:1180,y:460,rot:0},{inDur:1.0,exit:{x:1180,y:460}});
   const wheel=pictoBubble(sc.cam,'?',{w:120,h:100});const whid=R(wheel,{x:1200,y:330});pop(whid,T0(sid)+7.0,0.35,0.3,'back');fadeOut(whid,T0(sid)+8.2,0.3);
   // portas abrem (duas folhas de papel) e... silêncio
-  const doorL=H('div',{style:'position:absolute;left:0;top:0;width:120px;height:160px;background:#b58a55;border:4px solid #fff;box-sizing:border-box;transform-origin:0 50%'},sc.cam);const dl=R(doorL,{x:760,y:640});const doorR=H('div',{style:'position:absolute;left:0;top:0;width:120px;height:160px;background:#b58a55;border:4px solid #fff;box-sizing:border-box;transform-origin:100% 50%'},sc.cam);const dr=R(doorR,{x:880,y:640});
-  tw(dl,T0(sid)+8.0,0.8,{sx:0.08},'inOut');tw(dr,T0(sid)+8.0,0.8,{sx:0.08},'inOut');
+  const doorL=H('div',{style:'position:absolute;left:0;top:0;width:70px;height:120px;background:#b58a55;border:4px solid #fff;border-radius:6px;box-sizing:border-box;transform-origin:0 50%;box-shadow:0 6px 10px rgba(0,0,0,.3)'},m.inner);const dl=R(doorL,{x:300,y:330});const doorR=H('div',{style:'position:absolute;left:0;top:0;width:70px;height:120px;background:#b58a55;border:4px solid #fff;border-radius:6px;box-sizing:border-box;transform-origin:100% 50%;box-shadow:0 6px 10px rgba(0,0,0,.3)'},m.inner);const dr=R(doorR,{x:780,y:330});
+  tw(dl,T0(sid)+8.0,0.8,{rot:-70},'inOut');tw(dr,T0(sid)+8.0,0.8,{rot:70},'inOut');
   visorSeq(m.visor,[[T0(sid)+8.2,'PASSAGEIROS: 0']],20);
   cap(sc.cam,'…',T0(sid)+8.6,T1(sid),930,160,{size:60,font:FP});}
 /* ---------- S13 · Alguém ensina + carimbo APRENDER ---------- */
@@ -144,7 +144,7 @@ function buildS15(){const sid='S15';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(si
 function buildS16(){const sid='S16';const sc=mkScene(sid,C.green,T0(sid),T1(sid));
   const paper=H('div',{style:'position:absolute;inset:0'},sc.cam);bgPaperPrint(paper,'#efe7d4');const papId=R(paper,{},{noTransform:true});
   // verso do cartão: 'É por isso que existe'
-  const card=stampCard(sc.cam,'<div style="font:italic 400 54px/1.1 \'Playfair Display\';color:#1b1e21">É por isso que existe</div>',{w:900,h:300});const cardId=R(card,{x:510,y:380,rot:-2});setAt(cardId,0,{o:0});setAt(cardId,T0(sid),{o:1,sx:-1});tw(cardId,T0(sid)+0.2,0.7,{sx:1},'inOut');fadeOut(cardId,T0(sid)+2.3,0.3);
+  const card=stampCard(sc.cam,'<div style="font:italic 400 54px/1.1 \'Playfair Display\';color:#1b1e21;text-transform:none">É por isso que existe</div>',{w:900,h:300,style:'text-transform:none'});const cardId=R(card,{x:510,y:380,rot:-2});setAt(cardId,0,{o:0});setAt(cardId,T0(sid),{o:1,sx:-1});tw(cardId,T0(sid)+0.2,0.7,{sx:1},'inOut');fadeOut(cardId,T0(sid)+2.3,0.3);
   // grade verde + GESTÃO DA MUDANÇA palavra por palavra, lenta
   const grid=H('div',{style:'position:absolute;inset:0'},sc.cam);bgGridColor(grid,C.green,'rgba(255,255,255,.28)');const gid=R(grid,{o:0},{noTransform:true});setAt(gid,T0(sid)+2.5,{o:1});
   const words=[['GESTÃO',260,300,T0(sid)+2.5],['DA',1130,300,T0(sid)+3.0],['MUDANÇA',250,540,T0(sid)+3.5]];words.forEach(([w,x,y,t])=>{const y3=year3d(sc.cam,{text:w,size:220,depth:14});const id=R(y3,{x,y});slam(id,t,1.6,-2)});
