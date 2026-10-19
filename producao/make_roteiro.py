@@ -28,7 +28,8 @@ for i,sc in enumerate(S['scenes'],1):
                 buf=[]
                 for s_ in sents:
                     buf.append(s_)
-                    if sum(len(b.split()) for b in buf)>=4 or s_ == sents[-1] or s_.startswith('Isso tem nome'):
+                    nxt=sents[sents.index(s_)+1] if sents.index(s_)+1<len(sents) else None
+                    if s_ == sents[-1] or s_.startswith('Isso tem nome') or (nxt and (nxt.startswith('Todo mundo') or nxt.startswith('Isso tem nome') or nxt.startswith('Gestão da Mudança') or nxt.startswith('Hipoteticamente'))):
                         falas.append({'id':f's{i:02d}{chr(97+k)}','voz':'N','texto':' '.join(buf),'pausa':0.6}); k+=1; buf=[]
     pre=0.4
     if i==16: pre=1.2  # respiro antes da revelação

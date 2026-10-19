@@ -11,14 +11,14 @@
   {
    "id": "S01",
    "nome": "Estação do Tempo — a dupla (cena-paródia, recriada)",
-   "t0": 0,
-   "t1": 9,
+   "t0": 0.0,
+   "t1": 9.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s01a",
      "voz": "N",
-     "texto": "Toda mudança começa assim: duas pessoas que não combinaram nada, andando na mesma direção.",
+     "texto": "Estação Central. Plataforma três. Um cientista, um jovem… e um trem atrasado cento e dezoito anos.",
      "pausa": 0.6
     }
    ],
@@ -27,8 +27,8 @@
   {
    "id": "S02",
    "nome": "Título",
-   "t0": 9,
-   "t1": 12,
+   "t0": 9.0,
+   "t1": 12.0,
    "pre": 0.4,
    "falas": [],
    "visual": "Flash branco (Ex2) → grade verde (Ex4). O título em letras 3D amarelas extrudadas entra com rotação leve e assenta com sombra dura; partículas de papel picado caem devagar. Abaixo, serifa elegante pequena sobre tarja de papel. Nada mais se move."
@@ -36,60 +36,48 @@
   {
    "id": "S03",
    "nome": "A Máquina — montagem e discar 1908",
-   "t0": 12,
-   "t1": 26,
+   "t0": 12.0,
+   "t1": 24.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s03a",
-     "voz": "N",
-     "texto": "O Cientista montou a máquina com o que tinha em casa.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s03b",
      "voz": "M",
      "texto": "Olá. Sou a Máquina. Disque o ano.",
      "pausa": 0.5
     },
     {
+     "id": "s03b",
+     "voz": "N",
+     "texto": "Um. Nove. Zero. Oito. E agora… quem aperta?",
+     "pausa": 0.6
+    },
+    {
      "id": "s03c",
-     "voz": "N",
-     "texto": "Um. Nove. Zero. Oito.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s03d",
-     "voz": "N",
-     "texto": "Agora... alguém confirma?",
-     "pausa": 0.6
-    },
-    {
-     "id": "s03e",
      "voz": "M",
-     "texto": "Aguardando confirmação.",
+     "texto": "Aguardando o botão.",
      "pausa": 0.5
     }
    ],
-   "visual": "Mesa de madeira vista de cima (Ex4). 12–13,5 s: o Cientista desenrola uma planta em papel vegetal. 13,5–21 s: cinco peças caem, UMA a cada 1,5 s, cada uma com baque surdo e nuvem de poeira: (1) banco de couro recortado da foto do carro de época + a PLACA AZUL DE SETA fixada ao lado como alavanca de marcha; (2) o RELÓGIO DE ESTAÇÃO como medidor de fluxo com ponteiro vermelho; (3) o TELEFONE DE DISC"
+   "visual": "Mesa de madeira vista de cima (Ex4). 12–13,5 s: o Cientista desenrola uma planta em papel vegetal. 13,5–21 s: três peças caem, UMA a cada 1,5 s (banco; relógio + telefone; máquina de escrever + botão), cada uma com baque surdo e nuvem de poeira: (1) banco de couro recortado da foto do carro de época + a PLACA AZUL DE SETA fixada ao lado como alavanca de marcha; (2) o RELÓGIO DE ESTAÇÃO como medido"
   },
   {
    "id": "S04",
    "nome": "Chegada: 1908",
-   "t0": 26,
-   "t1": 32,
+   "t0": 24.0,
+   "t1": 30.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s04a",
      "voz": "M",
-     "texto": "Chegamos. Mil novecentos e oito.",
+     "texto": "Mil novecentos e oito.",
      "pausa": 0.5
     },
     {
      "id": "s04b",
      "voz": "N",
-     "texto": "Naquela época, sair de casa era um projeto.",
+     "texto": "Sair de casa era um projeto.",
      "pausa": 0.6
     }
    ],
@@ -98,26 +86,14 @@
   {
    "id": "S05",
    "nome": "A dor da carroça → chega o Ford T",
-   "t0": 32,
-   "t1": 41,
+   "t0": 30.0,
+   "t1": 39.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s05a",
      "voz": "N",
-     "texto": "Aí apareceu o Ford T.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s05b",
-     "voz": "N",
-     "texto": "Não o primeiro do mundo.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s05c",
-     "voz": "N",
-     "texto": "O primeiro que muita gente podia ter.",
+     "texto": "Aí veio o Ford T. Não o primeiro do mundo: o primeiro que muita gente podia ter.",
      "pausa": 0.6
     }
    ],
@@ -126,32 +102,26 @@
   {
    "id": "S06",
    "nome": "Primeira pane humana + carimbo ENTENDER",
-   "t0": 41,
-   "t1": 53,
+   "t0": 39.0,
+   "t1": 50.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s06a",
      "voz": "N",
-     "texto": "E a reação foi... humana.",
+     "texto": "E a reação foi… humana.",
      "pausa": 0.6
     },
     {
      "id": "s06b",
      "voz": "M",
-     "texto": "Erro: ninguém explicou. Recalculando.",
+     "texto": "Erro: ninguém explicou.",
      "pausa": 0.5
     },
     {
      "id": "s06c",
      "voz": "N",
-     "texto": "A máquina não quebrou.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s06d",
-     "voz": "N",
-     "texto": "Só faltava alguém explicar.",
+     "texto": "Então alguém pegou o giz.",
      "pausa": 0.6
     }
    ],
@@ -160,8 +130,8 @@
   {
    "id": "S07",
    "nome": "Disca 1965",
-   "t0": 53,
-   "t1": 56,
+   "t0": 50.0,
+   "t1": 53.0,
    "pre": 0.4,
    "falas": [],
    "visual": "Close no disco: o Jovem disca 1-9-6-5 um pouco mais rápido, sorrindo (53–55 s, um beat contínuo); o Cientista empurra a alavanca-placa para 'FUTURO →' e aperta CONFIRMA com o COTOVELO porque está com a xícara de café nas duas mãos (55–56 s). Visor mostra '1965'. Íris."
@@ -169,8 +139,8 @@
   {
    "id": "S08",
    "nome": "Chegada: 1965 — e a solução óbvia",
-   "t0": 56,
-   "t1": 63,
+   "t0": 53.0,
+   "t1": 60.0,
    "pre": 0.4,
    "falas": [
     {
@@ -182,13 +152,7 @@
     {
      "id": "s08b",
      "voz": "N",
-     "texto": "Todo mundo tinha carro.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s08c",
-     "voz": "N",
-     "texto": "Logo, todo mundo tinha trânsito.",
+     "texto": "Todo mundo tinha carro. Logo, todo mundo tinha trânsito.",
      "pausa": 0.6
     }
    ],
@@ -197,42 +161,30 @@
   {
    "id": "S09",
    "nome": "A dor mudou de lugar + carimbo CONFIAR",
-   "t0": 63,
-   "t1": 73,
+   "t0": 60.0,
+   "t1": 70.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s09a",
      "voz": "N",
-     "texto": "Tecnologia resolve a dor antiga e inventa uma nova.",
+     "texto": "Resolve uma dor, inventa outra. Até alguém trocar de carro.",
      "pausa": 0.6
     },
     {
      "id": "s09b",
-     "voz": "N",
-     "texto": "Na fila, ninguém dá passagem.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s09c",
-     "voz": "N",
-     "texto": "Até alguém trocar de carro.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s09d",
      "voz": "M",
      "texto": "Passageira a bordo.",
      "pausa": 0.5
     }
    ],
-   "visual": "Cruzamento de papel sobre a colagem de Havana. Beat 1 (63–66 s): P06 Guarda de trânsito num pedestal, luvas brancas, apito; a cada gesto, os braços dele vão sendo substituídos por um SEMÁFORO de papel que brota do pedestal; ele olha os próprios braços (lookAt), dá de ombros (headWobble + braço de papel) e pega um café. Beat 2 (66–68,5 s): P09 Passageiro no ponto de ônibus sob o RELÓGIO DE ESTAÇÃO "
+   "visual": "Cruzamento de papel sobre a colagem de Havana. Beat 1 (63–66 s): P06 Guarda de trânsito num pedestal, luvas brancas, apito; a cada gesto, um SEMÁFORO de papel brota do pedestal e COPIA os gestos dele — é ele quem ensina o semáforo; ele aprova com um café (figurante quase estático). Beat 2 (66–68,5 s): P09 Passageiro no ponto de ônibus sob o RELÓGIO DE ESTAÇÃO (foto) cujo mostrador tem ANOS no luga"
   },
   {
    "id": "S10",
    "nome": "1985: glitch — a rota, resolvida",
-   "t0": 73,
-   "t1": 79,
+   "t0": 70.0,
+   "t1": 76.0,
    "pre": 0.4,
    "falas": [
     {
@@ -244,13 +196,7 @@
     {
      "id": "s10b",
      "voz": "N",
-     "texto": "Oitenta e cinco. A rota, resolvida.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s10c",
-     "voz": "N",
-     "texto": "O trânsito, não.",
+     "texto": "Oitenta e cinco. A rota, resolvida. O trânsito, não.",
      "pausa": 0.6
     }
    ],
@@ -259,8 +205,8 @@
   {
    "id": "S11",
    "nome": "2026: atualização instalada (hipoteticamente)",
-   "t0": 79,
-   "t1": 83,
+   "t0": 76.0,
+   "t1": 80.0,
    "pre": 0.4,
    "falas": [
     {
@@ -281,80 +227,40 @@
   {
    "id": "S12",
    "nome": "Ninguém entra (o silêncio)",
-   "t0": 83,
-   "t1": 93,
+   "t0": 80.0,
+   "t1": 90.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s12a",
      "voz": "N",
-     "texto": "Um quer o manual.",
+     "texto": "Um quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante.",
      "pausa": 0.6
     },
     {
      "id": "s12b",
-     "voz": "N",
-     "texto": "Outra, o vídeo. Um olha pra baixo.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s12c",
-     "voz": "N",
-     "texto": "Outra procura o volante.",
-     "pausa": 0.6
+     "voz": "M",
+     "texto": "Passageiros: zero.",
+     "pausa": 0.5
     }
    ],
    "visual": "Wipe de papel rasgado para grama + céu estilo XP (recriação em vetor/gradiente, não a foto original). A Máquina em modo voo flutua a 20 cm do chão (paperBob), rotores devagar, gato no capô, etiqueta HIPOTÉTICO. Câmera parada; a turma entra num semicírculo, UM beat de 2 s por pessoa, cada um com sua frase: (83–85 s) P11 Engenheiro do Manual, capacete e doze volumes empilhados, lendo com o dedo na l"
   },
   {
    "id": "S13",
-   "nome": "Alguém ensina + carimbo APRENDER",
-   "t0": 93,
-   "t1": 102,
+   "nome": "O corredor das ideias geniais que ninguém usou",
+   "t0": 90.0,
+   "t1": 98.0,
    "pre": 0.4,
    "falas": [
     {
      "id": "s13a",
      "voz": "M",
-     "texto": "Passageiros: zero.",
-     "pausa": 0.5
-    },
-    {
-     "id": "s13b",
-     "voz": "N",
-     "texto": "Quem levou o susto em mil novecentos e oito entrou primeiro.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s13c",
-     "voz": "N",
-     "texto": "E quem sabia, mostrou.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s13d",
-     "voz": "M",
-     "texto": "Passageiros: catorze.",
-     "pausa": 0.5
-    }
-   ],
-   "visual": "A fala da Máquina quebra o silêncio (93–94 s) e a música volta baixinha. Beat 1 (94–96,5 s): P04 Rapaz do Feno — mesma cabeça, ainda com o fardo de feno debaixo do braço — sobe no banco de trás; a Máquina solta a mesma buzina de pera de 1908; desta vez ele ri na hora (nodYes). Beat 2 (96,5–99 s): P11 fecha o manual (vira almofada do banco), estende o braço de papel para P13 no degrau; P13 senta; P"
-  },
-  {
-   "id": "S14",
-   "nome": "O corredor das ideias geniais que ninguém usou",
-   "t0": 102,
-   "t1": 110,
-   "pre": 0.4,
-   "falas": [
-    {
-     "id": "s14a",
-     "voz": "M",
      "texto": "Recalculando.",
      "pausa": 0.5
     },
     {
-     "id": "s14b",
+     "id": "s13b",
      "voz": "N",
      "texto": "Corredor errado. Aqui moram as ideias geniais que ninguém usou.",
      "pausa": 0.6
@@ -363,10 +269,32 @@
    "visual": "A Máquina sobe um metro, a Máquina diz 'Recalculando' e entra pela porta errada: wipe vertical para a foto real do corredor de hospital abandonado (verde frio, push-in lento de 8 s). A narração termina aos 106,5 s e a voz fica em silêncio enquanto as placas são lidas. Portas de papel aparecem UMA a cada 2 s e todas ficam: 104 s 'PLANILHA 4.0', 106 s 'APP INTERNO', 108 s 'PROCESSO REVISADO v7_final"
   },
   {
+   "id": "S14",
+   "nome": "Alguém ensina + carimbo APRENDER",
+   "t0": 98.0,
+   "t1": 107.0,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s14a",
+     "voz": "N",
+     "texto": "Quem se assustou em mil novecentos e oito entrou primeiro. Quem sabia, mostrou.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s14b",
+     "voz": "M",
+     "texto": "Passageiros: catorze.",
+     "pausa": 0.5
+    }
+   ],
+   "visual": "A fala da Máquina quebra o silêncio (93–94 s) e a música volta baixinha. Beat 1 (94–96,5 s): P04 Rapaz do Feno — mesma cabeça, ainda com o fardo de feno debaixo do braço — sobe no banco de trás; a Máquina solta a mesma buzina de pera de 1908; desta vez ele ri na hora (nodYes). Beat 2 (96,5–99 s): P11 fecha o manual (vira almofada do banco), estende o braço de papel para P13 no degrau; P13 senta; P"
+  },
+  {
    "id": "S15",
    "nome": "Quem aperta o botão? → carimbo ADOTAR",
-   "t0": 110,
-   "t1": 118,
+   "t0": 107.0,
+   "t1": 115.0,
    "pre": 0.4,
    "falas": [
     {
@@ -387,30 +315,24 @@
   {
    "id": "S16",
    "nome": "Revelação — GESTÃO DA MUDANÇA",
-   "t0": 118,
-   "t1": 125,
+   "t0": 115.0,
+   "t1": 124.0,
    "pre": 1.2,
    "falas": [
     {
      "id": "s16a",
      "voz": "N",
-     "texto": "A máquina sempre funcionou.",
+     "texto": "A máquina sempre funcionou. Faltava levar as pessoas.",
      "pausa": 0.6
     },
     {
      "id": "s16b",
      "voz": "N",
-     "texto": "Faltava levar as pessoas junto.",
-     "pausa": 0.6
-    },
-    {
-     "id": "s16c",
-     "voz": "N",
      "texto": "Isso tem nome.",
      "pausa": 1.0
     },
     {
-     "id": "s16d",
+     "id": "s16c",
      "voz": "N",
      "texto": "Gestão da Mudança.",
      "pausa": 1.5
@@ -421,8 +343,8 @@
   {
    "id": "S17",
    "nome": "Cartela final — próxima parada: esta sala",
-   "t0": 125,
-   "t1": 130,
+   "t0": 124.0,
+   "t1": 130.0,
    "pre": 0.4,
    "falas": [
     {

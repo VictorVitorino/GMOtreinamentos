@@ -36,7 +36,7 @@ function buildS01(){const sid='S01';const sc=mkScene(sid,'#0b0c0e',T0(sid),T1(si
   proc(t=>{if(t<T0(sid)||t>T1(sid))return;REG[fr.heads[0]].cur.rot+=Math.sin(t*1.3)*2.5;REG[fr.heads[1]].cur.rot+=Math.sin(t*1.1+1)*2});
   tw(fr.heads[1],T0(sid)+2.0,0.4,{rot:-14},'backSoft');tw(fr.heads[1],T0(sid)+3.6,0.5,{rot:-3},'inOut');tw(fr.heads[0],T0(sid)+2.6,0.4,{rot:10},'backSoft');tw(fr.heads[0],T0(sid)+4.0,0.5,{rot:3},'inOut');
   camTo(sid,T0(sid),T1(sid)-T0(sid),1.10,960,480,'lin');
-  cap(sc.cam,'PRÓXIMO TREM → 1908 · PLATAFORMA 3',T0(sid)+0.3,null,70,70,{bg:'#111',color:'#ffcc33',font:FO,size:26,pad:'10px 18px'});
+  const bd=cap(sc.cam,'PRÓXIMO TREM → 1908 · ATRASADO: 118 ANOS',T0(sid)+0.3,null,70,70,{bg:'#111',color:'#ffcc33',font:FO,size:26,pad:'10px 18px'});proc(t=>{if(t<T0(sid)+2.5)return;const r=REG[bd].cur;r.o*=(Math.floor(t*1.6)%2)?1:0.35});
   tag(sc.cam,'O CIENTISTA',T0(sid)+1.0,T0(sid)+4.8,1160,700,3);tag(sc.cam,'O JOVEM',T0(sid)+1.2,T0(sid)+4.8,560,720,-4);
   const b1=pictoBubble(sc.cam,'?',{w:150,h:120});const b1id=R(b1,{x:300,y:60});pop(b1id,T0(sid)+2.6,0.45,0.3,'back');fadeOut(b1id,T0(sid)+4.8,0.3);
   const b2=pictoBubble(sc.cam,'rocket',{w:150,h:120});const b2id=R(b2,{x:1420,y:30});pop(b2id,T0(sid)+2.1,0.45,0.3,'back');fadeOut(b2id,T0(sid)+4.8,0.3);
@@ -45,8 +45,7 @@ function buildS01(){const sid='S01';const sc=mkScene(sid,'#0b0c0e',T0(sid),T1(si
   const c1=pictoBubble(sc.cam,'coin',{w:120,h:100});const c1id=R(c1,{x:1400,y:440});pop(c1id,T0(sid)+5.6,0.4,0.3,'back');tw(c1id,T0(sid)+6.5,0.25,{rot:-25,o:0.0},'in');
   const c2=pictoBubble(sc.cam,'phone',{w:120,h:100});const c2id=R(c2,{x:1400,y:440});pop(c2id,T0(sid)+6.9,0.4,0.3,'back');fadeOut(c2id,T0(sid)+8.4,0.3);
   const kp=pos(sc.cam,1640,850);const key=H('div',{style:'position:absolute;left:0;top:0;width:150px;height:150px;transform-origin:50% 50%'},kp,'PARTIU');arcadeButton(key,150);const kid=R(key,{});dropIn(kid,T0(sid)+7.4,300,-30);
-  cite('paródia · cena fictícia · nenhuma fala real',T0(sid),T1(sid));
-  cap(sc.cam,'Toda mudança começa com duas pessoas que não combinaram nada.',L0('s01a')||T0(sid)+0.8,T1(sid),430,960,{size:34});}
+  cap(sc.cam,'Plataforma três. Um trem atrasado cento e dezoito anos.',(L0('s01a')||T0(sid)+0.8)+1.6,T1(sid),480,960,{size:34});}
 /* ---------- S02 · Título ---------- */
 function buildS02(){const sid='S02';const sc=mkScene(sid,C.green,T0(sid),T1(sid));bgGridColor(sc.cam,C.green,'rgba(255,255,255,.28)');flashAt(T0(sid),0.6,0.3);
   const y3=year3d(sc.cam,{text:'QUEM APERTA O BOTÃO?',size:140,depth:12});y3.style.whiteSpace='normal';y3.style.width='1500px';y3.style.textAlign='center';y3.style.lineHeight='0.95';const yid=R(y3,{x:210,y:300});slam(yid,T0(sid)+0.3,1.8,-2);
@@ -59,14 +58,14 @@ function buildS03(){const sid='S03';const sc=mkScene(sid,'#5a3a22',T0(sid),T1(si
   const m=makeMachine(sc.cam,1.05,{x:490,y:240});
   const t=T0(sid)+1.6;
   [[m.ids.chassi,0],[m.ids.w0,0],[m.ids.w1,0]].forEach(([id,d])=>dropIn(id,t,900,0));
-  dropIn(m.ids.banco,t+1.5,800,-8);dropIn(m.ids.clock,t+3.0,800,6);dropIn(m.ids.phone,t+4.5,800,-5);dropIn(m.ids.tw,t+6.0,800,4);dropIn(m.ids.visor,t+6.2,800,0);dropIn(m.ids.cup,t+6.4,700,0);dropIn(m.ids.key,t+7.5,900,-20);
-  tag(sc.cam,'FLUXO',t+3.4,t+7.5,560,220,-6);tag(sc.cam,'DISQUE O ANO',t+4.9,t+9,540,520,4);tag(sc.cam,'COMBUSTÍVEL',t+6.8,t+10,840,420,-3);tag(sc.cam,'← PASSADO | FUTURO →',t+1.9,t+5.5,1180,760,2);tag(sc.cam,'PARTIU',t+7.9,t+11,1000,730,-4);
-  debris(sc.cam,{t0:t,cx:960,cy:760,n:24,dur:1.2,colors:['#8f6a3c',C.cream,'#101214']});debris(sc.cam,{t0:t+7.5,cx:980,cy:620,n:16,dur:1.0,colors:[C.green,C.cream]});
-  visorSeq(m.visor,[[L0('s03b')||t+7,'OLÁ. SOU A MÁQUINA.'],[(L0('s03b')||t+7)+1.6,'DISQUE O ANO_'],[L0('s03c')||t+9,'1'],[(L0('s03c')||t+9)+0.7,'19'],[(L0('s03c')||t+9)+1.4,'190'],[(L0('s03c')||t+9)+2.1,'1908'],[L0('s03e')||t+12,'AGUARDANDO O BOTÃO_']],24);
+  dropIn(m.ids.banco,t+1.2,800,-8);dropIn(m.ids.clock,t+2.7,800,6);dropIn(m.ids.phone,t+2.75,800,-5);dropIn(m.ids.cup,t+2.8,700,0);dropIn(m.ids.tw,t+4.2,800,4);dropIn(m.ids.visor,t+4.3,800,0);dropIn(m.ids.key,t+4.4,900,-20);
+  tag(sc.cam,'FLUXO',t+3.1,t+6.5,560,220,-6);tag(sc.cam,'DISQUE O ANO',t+3.3,t+7,540,520,4);tag(sc.cam,'PARTIU',t+4.8,t+8,1000,730,-4);
+  debris(sc.cam,{t0:t,cx:960,cy:760,n:24,dur:1.2,colors:['#8f6a3c',C.cream,'#101214']});debris(sc.cam,{t0:t+4.4,cx:980,cy:620,n:16,dur:1.0,colors:['#ffb347',C.cream]});
+  visorSeq(m.visor,[[L0('s03a')||t+5,'OLÁ. SOU A MÁQUINA.'],[(L0('s03a')||t+5)+1.6,'DISQUE O ANO_'],[L0('s03b')||t+7,'1'],[(L0('s03b')||t+7)+0.7,'19'],[(L0('s03b')||t+7)+1.4,'190'],[(L0('s03b')||t+7)+2.1,'1908'],[L0('s03c')||t+10,'AGUARDANDO O BOTÃO_']],24);
   // loop "quem aperta?": as duas cabeças espiam de baixo e apontam uma pra outra
-  const j=collageChar(sc.cam,{body:IMG.col_metro_jovem_gabriel_body,head:IMG.faces_gabriel,meta:META.col_metro_jovem_gabriel,scale:0.5});cameoPeek(j,L0('s03d')||t+10.5,T1(sid)+0.2,{edge:'bottom',x:120,y:1080,amt:520});
-  const e=collageChar(sc.cam,{body:IMG.col_metro_cientista_elon_body,head:IMG.faces_elon,meta:META.col_metro_cientista_elon,scale:0.5,flip:true});cameoPeek(e,(L0('s03d')||t+10.5)+0.3,T1(sid)+0.2,{edge:'bottom',x:1500,y:1080,amt:540});
-  const q=L0('s03d')||t+10.5;lookAt(j,q+0.8,0.4,14);lookAt(e,q+1.6,0.4,-14);lookAt(j,q+2.4,0.4,-8);lookAt(e,q+3.0,0.4,8);
+  const j=collageChar(sc.cam,{body:IMG.col_metro_jovem_gabriel_body,head:IMG.faces_gabriel,meta:META.col_metro_jovem_gabriel,scale:0.5});cameoPeek(j,(LINES.s03b?segT('s03b',1):t+8.5),T1(sid)+0.2,{edge:'bottom',x:120,y:1080,amt:520});
+  const e=collageChar(sc.cam,{body:IMG.col_metro_cientista_elon_body,head:IMG.faces_elon,meta:META.col_metro_cientista_elon,scale:0.5,flip:true});cameoPeek(e,(LINES.s03b?segT('s03b',1):t+8.5)+0.3,T1(sid)+0.2,{edge:'bottom',x:1500,y:1080,amt:540});
+  const q=(LINES.s03b?segT('s03b',1):t+8.5);lookAt(j,q+0.8,0.4,14);lookAt(e,q+1.6,0.4,-14);lookAt(j,q+2.4,0.4,-8);lookAt(e,q+3.0,0.4,8);
   pressKey(m,T1(sid)-0.6);camBump(sid,T1(sid)-0.55,0.02);flashAt(T1(sid)-0.1,0.5,0.25,'#dff5e3');}
 /* ---------- S04 · Chegada: 1908 ---------- */
 function buildS04(){const sid='S04';const sc=mkScene(sid,C.green,T0(sid),T1(sid));bgGridColor(sc.cam,C.green,'rgba(255,255,255,.28)');
@@ -103,12 +102,12 @@ function buildS06(){const sid='S06';const sc=mkScene(sid,C.paper2,T0(sid),T1(sid
   const hb=pictoBubble(sc.cam,'horse',{w:150,h:120});const hbid=R(hb,{x:760,y:220});pop(hbid,T0(sid)+1.4,0.4,0.3,'back');fadeOut(hbid,T0(sid)+2.6,0.2);
   const ex=pictoBubble(sc.cam,'!',{w:120,h:110});const exid=R(ex,{x:760,y:220});pop(exid,T0(sid)+2.9,0.3,0.3,'back');fadeOut(exid,T0(sid)+4.2,0.3);
   camBump(sid,T0(sid)+2.8,0.025);surprise(p4,T0(sid)+2.8,0.6);proc(t=>{const a=T0(sid)+2.8;if(t<a||t>a+0.5)return;REG[p4.id].cur.y-=Math.sin((t-a)/0.5*Math.PI)*60});nodYes(p4,T0(sid)+3.6,T0(sid)+4.6,9);
-  visorSeq(m.visor,[[L0('s06b')||T0(sid)+3,'ERRO: NINGUÉM EXPLICOU'],[(L0('s06b')||T0(sid)+3)+1.3,'RECALCULANDO_']],26);
+  visorSeq(m.visor,[[L0('s06b')||T0(sid)+3,'ERRO: NINGUÉM EXPLICOU_']],26);
   // quadro-negro de papel: cavalo + relógio = muitas horas; carro + relógio = poucas
   const cb=photo(sc.cam,IMG.b_chalkboard,{w:760,h:430,fit:'cover',tape:'both',sa:.45});const cbid=R(cb,{x:580,y:120,rot:-2});pop(cbid,L0('s06c')||T0(sid)+5,0.5,0.6,'backSoft');fadeOut(cbid,T0(sid)+9.2,0.3);
   const row=[['horse',640,200],['gear',800,200],['zzz',960,200],['car',640,360],['gear',800,360],['heart',960,360]];row.forEach(([k,x,y],i)=>{const b=pictoBubble(sc.cam,k,{w:120,h:100,bg:'#f6f1e4'});const bid=R(b,{x,y});pop(bid,(L0('s06c')||T0(sid)+5)+0.4+i*0.35,0.35,0.3,'back');fadeOut(bid,T0(sid)+9.2,0.3)});
   const lb=pictoBubble(sc.cam,'bulb',{w:130,h:110});const lbid=R(lb,{x:1180,y:140});pop(lbid,T0(sid)+8.4,0.4,0.3,'back');fadeOut(lbid,T0(sid)+9.6,0.3);
   flashAt(T0(sid)+9.6,0.9,0.35,'#fff6d0');
   // carimbo ENTENDER no cartão perfurado (casa 1 de 4)
-  const card=stampCard(sc.cam,'<div style="font:400 26px/1.1 \'Oswald\';letter-spacing:.14em;color:#6b6f75">BILHETE · 4 PARADAS</div><div style="display:flex;gap:18px;margin-top:14px">'+['ENTENDER','CONFIAR','APRENDER','ADOTAR'].map(w=>`<div style="width:120px;height:120px;border:3px dashed #9a9ea3;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 17px/1 \'Oswald\';color:#9a9ea3;letter-spacing:.06em">${w}</div>`).join('')+'</div>',{w:720,h:300,font:`400 20px/1.1 ${FO}`});const cardId=R(card,{x:600,y:380,rot:-3});pop(cardId,T0(sid)+9.9,0.5,0.6,'backSoft');
-  const st=stamp(sc.cam,'ENTENDER',{size:30,color:C.red,pad:'12px 14px',border:5});const stid=R(st,{x:650,y:490,rot:-14});slam(stid,T0(sid)+10.6,2.6,-14);camBump(sid,T0(sid)+10.6,0.02);}
+  const card=stampCard(sc.cam,'<div style="font:400 26px/1.1 \'Oswald\';letter-spacing:.14em;color:#6b6f75">BILHETE · 4 PARADAS</div><div style="display:flex;gap:18px;margin-top:14px">'+['1','2','3','4'].map(w=>`<div style="width:120px;height:120px;border:3px dashed #9a9ea3;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 40px/1 \'Anton\';color:#c9c9c9">${w}</div>`).join('')+'</div>',{w:720,h:300,font:`400 20px/1.1 ${FO}`});const cardId=R(card,{x:600,y:380,rot:-3});pop(cardId,T0(sid)+9.9,0.5,0.6,'backSoft');
+  const st=stamp(sc.cam,'✎ GIZ',{size:30,color:C.red,pad:'12px 14px',border:5});const stid=R(st,{x:650,y:490,rot:-14});slam(stid,T0(sid)+10.6,2.6,-14);camBump(sid,T0(sid)+10.6,0.02);}

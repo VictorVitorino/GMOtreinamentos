@@ -73,8 +73,8 @@ groove(madd,S0('S01'),S1('S02'),('C','Am','F','G'),104,'light',0.8)
 groove(madd,S0('S03'),S1('S07'),('C','Am','F','G'),104,'full',0.9)
 groove(madd,S0('S08'),S1('S10'),('F','G','C','Am'),104,'full',0.9)
 groove(madd,S0('S11'),S1('S12')-2.4,('C','Em','F','G'),104,'bass',0.8)
-groove(madd,S0('S13'),S1('S13'),('C','Am','F','G'),104,'light',0.7)
-groove(madd,S0('S14'),S1('S14'),('Am','F','Am','G'),104,'sparse',0.6)
+groove(madd,S0('S13'),S1('S13'),('Am','F','Am','G'),104,'sparse',0.6)
+groove(madd,S0('S14'),S1('S14'),('C','Am','F','G'),104,'light',0.7)
 groove(madd,S0('S15'),S1('S15'),('C','Am','F','G'),104,'full',1.0)
 groove(madd,S0('S16')+2.4,S1('S17')-2.0,('F','G','C','C'),104,'sparse',0.8)
 ending(madd,S1('S17')-2.0,'C',0.9)
@@ -119,16 +119,16 @@ add(glitch(0.4,0.9),S0('S10')); typing(S0('S10')+0.9,26,16,0.35); ticks(S0('S10'
 # S11 · 2026: rufo, rotores, pop, zumbido
 year_slam(S0('S11')+0.2,1.0); ticks(S0('S11')+2.2,S0('S11')+2.6,40,0.3,900); add(thruster(2.2,0.35),S0('S11')+2.6); chime(Lstart('s11a'))
 for i in range(4): add(click(0.9,0.015,900),S0('S11')+2.6+i*0.12)
-add(thruster(10,0.12),S0('S12')); add(thruster(9,0.12),S0('S13'))
+add(thruster(10,0.12),S0('S12')); add(thruster(9,0.12),S0('S14'))
 # S12 · folhas de manual, obturador de celular, escadinha, portas; depois SILÊNCIO
 add(paper_slide(0.5,0.5),S0('S12')+1.0); add(shutter(0.6),S0('S12')+3.0); ticks(S0('S12')+4.2,S0('S12')+5.0,4,0.25,700); add(paper_slide(0.6,0.5),S0('S12')+6.6)
-add(whoosh(0.8,200,900,0.5),S0('S12')+8.0); chime(Lstart('s13a'))
-# S13 · buzina de novo, clic, contador, carimbo
-add(car_horn(0.8),S0('S13')+2.4); add(rivet_click(1.0),S0('S13')+6.0); ticks(S0('S13')+6.8,S0('S13')+8.6,14,0.18,2400); chime(Lstart('s13d')); stamp_in(S0('S13')+7.8,1.0)
-# S14 · corredor: eco, gotas, máquina de escrever por placa
-for i in range(6): add(fftfilt(click(0.5,0.02,1500),hi=2000),S0('S14')+0.6+i*1.3)
-for i in range(3): typing(S0('S14')+2+i*2,8,16,0.3)
-chime(Lstart('s14a'))
+add(whoosh(0.8,200,900,0.5),S0('S12')+8.0); chime(Lstart('s12b'))
+# S13 · corredor: eco, gotas, máquina de escrever por placa
+for i in range(6): add(fftfilt(click(0.5,0.02,1500),hi=2000),S0('S13')+0.6+i*1.3)
+for i in range(3): typing(S0('S13')+2+i*2,8,16,0.3)
+chime(Lstart('s13a'))
+# S14 · buzina de novo, clic, contador, carimbo
+add(car_horn(0.8),S0('S14')+2.4); add(rivet_click(1.0),S0('S14')+6.0); ticks(S0('S14')+6.8,S0('S14')+8.6,14,0.18,2400); chime(Lstart('s14b')); stamp_in(S0('S14')+7.8,1.0)
 # S15 · bocejo (silêncio cômico), mãos entram, THUNK gigante, carimbo final
 add(fftfilt(noise(0.6),lo=200,hi=1200)*np.exp(-tline(0.6)*4)*0.12,S0('S15')+3.8)
 for i in range(14): add(paper_slide(0.4,0.35),S0('S15')+4.5+i*0.05)

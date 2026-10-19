@@ -51,7 +51,7 @@ function buildS09(){const sid='S09';const sc=mkScene(sid,C.paper2,T0(sid),T1(sid
   const m=makeMachine(sc.cam,0.5,{x:1000,y:620});setAt(m.id,0,{o:0});setAt(m.id,T0(sid)+5.0,{o:1});machineBob(m,T0(sid)+5,T1(sid),1.5);
   tag(sc.cam,'clic',T0(sid)+8.8,T0(sid)+9.6,1240,560,-6);
   const card=stampCard(sc.cam,'<div style="font:400 24px/1.1 \'Oswald\';letter-spacing:.14em;color:#6b6f75">BILHETE · 4 PARADAS</div>',{w:560,h:170,font:`400 20px/1.1 ${FO}`});const cardId=R(card,{x:1200,y:80,rot:3});pop(cardId,T0(sid)+8.4,0.5,0.6,'backSoft');
-  const st=stamp(sc.cam,'CONFIAR',{size:36,color:C.red,pad:'10px 16px',border:5});const stid=R(st,{x:1360,y:120,rot:-10});slam(stid,T0(sid)+8.9,2.6,-10);camBump(sid,T0(sid)+8.9,0.02);}
+  const st=stamp(sc.cam,'⚿ CHAVE',{size:36,color:C.red,pad:'10px 16px',border:5});const stid=R(st,{x:1360,y:120,rot:-10});slam(stid,T0(sid)+8.9,2.6,-10);camBump(sid,T0(sid)+8.9,0.02);}
 /* ---------- S10 · 1985: glitch — a rota, resolvida ---------- */
 function buildS10(){const sid='S10';const sc=mkScene(sid,'#2a0f3a',T0(sid),T1(sid));H('div',{style:'position:absolute;inset:0;background:linear-gradient(160deg,#3b1254,#1a0a2a 60%,#102040)'},sc.cam);scanlines(sc.cam,.22);glitchAt(T0(sid),0.5);
   const pc=photo(sc.cam,IMG.c_office80s,{w:900,h:620,fit:'cover',tape:'both',sa:.5});const pcid=R(pc,{x:120,y:180,rot:-2});pop(pcid,T0(sid)+0.3,0.5,0.7,'backSoft');
@@ -98,7 +98,7 @@ function buildS12(){const sid='S12';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(si
   visorSeq(m.visor,[[T0(sid)+8.2,'PASSAGEIROS: 0']],20);
   cap(sc.cam,'…',T0(sid)+8.6,T1(sid),930,160,{size:60,font:FP});}
 /* ---------- S13 · Alguém ensina + carimbo APRENDER ---------- */
-function buildS13(){const sid='S13';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(sid));skyGrass(sc.cam);
+function buildS14(){const sid='S14';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(sid));skyGrass(sc.cam);
   const m=flyingMachine(sc.cam,0.75,620,560,T0(sid),T1(sid)+30);
   // P04 (o do feno) entra primeiro; a Máquina buzina; ele ri
   const p4=collageChar(sc.cam,{body:IMG.col_soldados_esq_gabriel_body,head:IMG['faces_felipe-treistman'],meta:META.col_soldados_esq_gabriel,scale:0.33});cameoSlide(p4,T0(sid)+1.0,T1(sid)+10,{x:-300,y:420,rot:-5},{x:700,y:420,rot:0},{inDur:1.2,exit:{x:700,y:420}});headWobble(p4,3,1.5,4);
@@ -111,9 +111,9 @@ function buildS13(){const sid='S13';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(si
   // contador de passageiros 0 → 14
   const cnt=captionBox(sc.cam,'PASSAGEIROS: 0',{size:28,font:FTW,pad:'8px 16px'});const cid=R(cnt,{x:1240,y:200,rot:2});pop(cid,T0(sid)+0.4,0.4,0.6,'backSoft');counter(cnt,T0(sid)+6.8,1.8,14,'PASSAGEIROS: ','');
   const card=stampCard(sc.cam,'<div style="font:400 24px/1.1 \'Oswald\';letter-spacing:.14em;color:#6b6f75">BILHETE · 4 PARADAS</div>',{w:560,h:170,font:`400 20px/1.1 ${FO}`});const cardId=R(card,{x:1200,y:60,rot:3});pop(cardId,T0(sid)+7.2,0.5,0.6,'backSoft');
-  const st=stamp(sc.cam,'APRENDER',{size:36,color:C.red,pad:'10px 16px',border:5});const stid=R(st,{x:1340,y:100,rot:-10});slam(stid,T0(sid)+7.8,2.6,-10);camBump(sid,T0(sid)+7.8,0.02);}
+  const st=stamp(sc.cam,'∞ CINTO',{size:36,color:C.red,pad:'10px 16px',border:5});const stid=R(st,{x:1340,y:100,rot:-10});slam(stid,T0(sid)+7.8,2.6,-10);camBump(sid,T0(sid)+7.8,0.02);}
 /* ---------- S14 · O corredor das ideias geniais que ninguém usou ---------- */
-function buildS14(){const sid='S14';const sc=mkScene(sid,'#1b2a2a',T0(sid),T1(sid));
+function buildS13(){const sid='S13';const sc=mkScene(sid,'#1b2a2a',T0(sid),T1(sid));
   const ph=photo(sc.cam,IMG.p_ward,{w:2100,h:1180,fit:'cover',shadow:false,filter:'saturate(.7) brightness(.85)'});const pid=R(ph,{x:-90,y:-50});kb(pid,T0(sid),T1(sid),{s:1.0},{s:1.1});
   H('div',{style:'position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(0,20,20,.6) 100%)'},sc.cam);
   const m=flyingMachine(sc.cam,0.42,120,700,T0(sid),T1(sid)+30);visorSeq(m.visor,[[T0(sid)+0.2,'RECALCULANDO_']],20);
@@ -139,7 +139,7 @@ function buildS15(){const sid='S15';const sc=mkScene(sid,'#7fb6ff',T0(sid),T1(si
   for(let i=0;i<14;i++){const a=i/14*Math.PI*2;const hx=960+Math.cos(a)*1100,hy=520+Math.sin(a)*700;const h=paperHand(sc.cam,cols[i%cols.length],0);const hid=R(h,{x:hx,y:hy,rot:(a*180/Math.PI)+90});setAt(hid,0,{o:0});setAt(hid,T0(sid)+4.5+i*0.05,{o:1});tw(hid,T0(sid)+4.5+i*0.05,0.9,{x:960+Math.cos(a)*150-60,y:520+Math.sin(a)*120-80},'inOut')}
   tw(bid,T0(sid)+5.6,0.12,{sx:0.85,sy:0.7},'in');tw(bid,T0(sid)+5.75,0.4,{sx:1,sy:1},'elastic');camBump(sid,T0(sid)+5.6,0.04);flashAt(T0(sid)+5.65,0.6,0.3,'#fff6d0');debris(sc.cam,{t0:T0(sid)+5.6,cx:960,cy:520,n:40,dur:1.4,colors:[C.cream,'#101214','#ffb347']});
   const card=stampCard(sc.cam,'<div style="font:400 24px/1.1 \'Oswald\';letter-spacing:.14em;color:#6b6f75">BILHETE · 4 PARADAS</div>',{w:560,h:170,font:`400 20px/1.1 ${FO}`});const cardId=R(card,{x:1200,y:60,rot:3});pop(cardId,T0(sid)+6.2,0.5,0.6,'backSoft');
-  const st=stamp(sc.cam,'ADOTAR',{size:36,color:C.red,pad:'10px 16px',border:5});const stid=R(st,{x:1360,y:100,rot:-10});slam(stid,T0(sid)+6.8,2.6,-10);camBump(sid,T0(sid)+6.8,0.02);}
+  const st=stamp(sc.cam,'✋ MÃO',{size:36,color:C.red,pad:'10px 16px',border:5});const stid=R(st,{x:1360,y:100,rot:-10});slam(stid,T0(sid)+6.8,2.6,-10);camBump(sid,T0(sid)+6.8,0.02);}
 /* ---------- S16 · Revelação — GESTÃO DA MUDANÇA ---------- */
 function buildS16(){const sid='S16';const sc=mkScene(sid,C.green,T0(sid),T1(sid));
   const paper=H('div',{style:'position:absolute;inset:0'},sc.cam);bgPaperPrint(paper,'#efe7d4');const papId=R(paper,{},{noTransform:true});

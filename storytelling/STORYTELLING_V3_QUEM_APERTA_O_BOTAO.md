@@ -1,6 +1,6 @@
 # QUEM APERTA O BOTÃO? — storytelling completo (v3)
 
-> Vídeo de abertura do treinamento de Gestão da Mudança · **2:10.0** · pt-BR · 16:9 Full HD · colagem real (corpos de foto + cabeças reais da turma) · 211 palavras de narração em duas vozes.
+> Vídeo de abertura do treinamento de Gestão da Mudança · **2:10.0** · pt-BR · 16:9 Full HD · colagem real (corpos de foto + cabeças reais da turma) · 185 palavras de narração em duas vozes.
 > Documento gerado pela sala de roteiristas (6 conceitos → 5 jurados → chefe de roteiro → 3 críticos) e consolidado para aprovação. Substitui o `ROTEIRO_CENAS.md` (v2) como guia de produção; o briefing (`BRIEFING_CLAUDE.md`) continua sendo a espinha obrigatória.
 
 ## 0 · Versão executiva (para apresentar em 1 minuto)
@@ -52,71 +52,37 @@ Em **1985**, a rota é calculada por um PC que cospe um mapa infinito. O seletor
 
 A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém usou: PLANILHA 4.0, APP INTERNO, PROCESSO REVISADO v7_final_FINAL — todas com troféu "FUNCIONA 100%" e teia de aranha. De volta ao céu: *quem aperta o botão?* Todo mundo aponta para o vizinho, o gato boceja… e **catorze mãos apertam juntas**. THUNK: **ADOTAR**, cartão completo. O cartão vira: *É por isso que existe.* E o nome cai, em letras grandes e lentas: **GESTÃO DA MUDANÇA**. A Máquina: *Você chegou ao seu destino.* Narrador: *Próxima parada: esta sala.*
 
-## 4 · Roteiro de narração (duas vozes · 211 palavras)
+## 4 · Roteiro de narração (duas vozes · 185 palavras)
 
-> 🎙️ Toda mudança começa assim: duas pessoas que não combinaram nada, andando na mesma direção.
+> 🎙️ Estação Central. Plataforma três. Um cientista, um jovem… e um trem atrasado cento e dezoito anos.
 >
-> 🎙️ O Cientista montou a máquina com o que tinha em casa.
+> 🤖 **A MÁQUINA:** Olá. Sou a Máquina. Disque o ano.» Um. Nove. Zero. Oito. E agora… quem aperta? «Aguardando o botão.
 >
-> 🤖 **A MÁQUINA:** Olá. Sou a Máquina. Disque o ano.
+> 🤖 **A MÁQUINA:** Mil novecentos e oito.» Sair de casa era um projeto.
 >
-> 🎙️ Um. Nove. Zero. Oito.
+> 🎙️ Aí veio o Ford T. Não o primeiro do mundo: o primeiro que muita gente podia ter.
 >
-> 🎙️ Agora... alguém confirma?
+> 🎙️ E a reação foi… humana. «Erro: ninguém explicou.» Então alguém pegou o giz.
 >
-> 🤖 **A MÁQUINA:** Aguardando confirmação.
+> 🤖 **A MÁQUINA:** Trânsito à frente.» Todo mundo tinha carro. Logo, todo mundo tinha trânsito.
 >
-> 🤖 **A MÁQUINA:** Chegamos. Mil novecentos e oito.
+> 🎙️ Resolve uma dor, inventa outra. Até alguém trocar de carro. «Passageira a bordo.»
 >
-> 🎙️ Naquela época, sair de casa era um projeto.
+> 🤖 **A MÁQUINA:** Rota calculada.» Oitenta e cinco. A rota, resolvida. O trânsito, não.
 >
-> 🎙️ Aí apareceu o Ford T. Não o primeiro do mundo. O primeiro que muita gente podia ter.
+> 🤖 **A MÁQUINA:** Atualização instalada.» Hipoteticamente.
 >
-> 🎙️ E a reação foi... humana.
+> 🎙️ Um quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante. «Passageiros: zero.»
 >
-> 🤖 **A MÁQUINA:** Erro: ninguém explicou. Recalculando.
+> 🤖 **A MÁQUINA:** Recalculando.» Corredor errado. Aqui moram as ideias geniais que ninguém usou.
 >
-> 🎙️ A máquina não quebrou. Só faltava alguém explicar.
+> 🎙️ Quem se assustou em mil novecentos e oito entrou primeiro. Quem sabia, mostrou. «Passageiros: catorze.»
 >
-> 🤖 **A MÁQUINA:** Trânsito à frente.
+> 🎙️ Quem aperta o botão? Todo mundo.
 >
-> 🎙️ Todo mundo tinha carro. Logo, todo mundo tinha trânsito.
+> 🎙️ A máquina sempre funcionou. Faltava levar as pessoas. Isso tem nome. Gestão da Mudança.
 >
-> 🎙️ Tecnologia resolve a dor antiga e inventa uma nova. Na fila, ninguém dá passagem. Até alguém trocar de carro.
->
-> 🤖 **A MÁQUINA:** Passageira a bordo.
->
-> 🤖 **A MÁQUINA:** Rota calculada.
->
-> 🎙️ Oitenta e cinco. A rota, resolvida. O trânsito, não.
->
-> 🤖 **A MÁQUINA:** Atualização instalada.
->
-> 🎙️ Hipoteticamente.
->
-> 🎙️ Um quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante.
->
-> 🤖 **A MÁQUINA:** Passageiros: zero.
->
-> 🎙️ Quem levou o susto em mil novecentos e oito entrou primeiro. E quem sabia, mostrou.
->
-> 🤖 **A MÁQUINA:** Passageiros: catorze.
->
-> 🤖 **A MÁQUINA:** Recalculando.
->
-> 🎙️ Corredor errado. Aqui moram as ideias geniais que ninguém usou.
->
-> 🎙️ Quem aperta o botão?
->
-> 🎙️ Todo mundo.
->
-> 🎙️ A máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome.
->
-> 🎙️ Gestão da Mudança.
->
-> 🤖 **A MÁQUINA:** Você chegou ao seu destino.
->
-> 🎙️ Próxima parada: esta sala.
+> 🤖 **A MÁQUINA:** Você chegou ao seu destino.» Próxima parada: esta sala.
 
 **Narrador — persona.** Duas vozes, em contraste cômico. (1) O NARRADOR RESENHA: voz pt-BR nativa, jovem (fim dos vinte), clara como narrador de documentário mas com sorriso na voz — o amigo que comenta a história enquanto ela acontece, fala com os personagens ('Agora... alguém confirma?'), soletra o disco junto ('Um. Nove. Zero. Oito.') e solta tiradas de uma palavra ('Hipoteticamente.'). Frases curtas, pausas generosas, zero gíria datada, nunca ironiza um participante — só a situação. Nunca diz o nome de ninguém da turma. (2) A MÁQUINA: voz feminina sintética de GPS, educada, plana, levemente orgulhosa de si; só fala entre 2 e 6 palavras («Erro: ninguém explicou. Recalculando.» / «Passageiros: zero.» / «Você chegou ao seu destino.»). É ela que anuncia a tese como punchline muito antes de alguém dizê-la. A flatness da TTS é o recurso cômico, não um defeito. O Cientista nunca fala; o Jovem e a turma só se expressam por pictogramas (?, !, lâmpada, gota).
 
@@ -126,21 +92,21 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 |---|---|---|---|---|
 | S01 | 0:00.0–0:09.0 |  9.0 s | `████` | Estação do Tempo |
 | S02 | 0:09.0–0:12.0 |  3.0 s | `██` | Título |
-| S03 | 0:12.0–0:26.0 | 14.0 s | `███████` | A Máquina |
-| S04 | 0:26.0–0:32.0 |  6.0 s | `███` | Chegada: 1908 |
-| S05 | 0:32.0–0:41.0 |  9.0 s | `████` | A dor da carroça → chega o Ford T |
-| S06 | 0:41.0–0:53.0 | 12.0 s | `██████` | Primeira pane humana + carimbo ENTENDER |
-| S07 | 0:53.0–0:56.0 |  3.0 s | `██` | Disca 1965 |
-| S08 | 0:56.0–1:03.0 |  7.0 s | `████` | Chegada: 1965 |
-| S09 | 1:03.0–1:13.0 | 10.0 s | `█████` | A dor mudou de lugar + carimbo CONFIAR |
-| S10 | 1:13.0–1:19.0 |  6.0 s | `███` | 1985: glitch |
-| S11 | 1:19.0–1:23.0 |  4.0 s | `██` | 2026: atualização instalada (hipoteticamente) |
-| S12 | 1:23.0–1:33.0 | 10.0 s | `█████` | Ninguém entra (o silêncio) |
-| S13 | 1:33.0–1:42.0 |  9.0 s | `████` | Alguém ensina + carimbo APRENDER |
-| S14 | 1:42.0–1:50.0 |  8.0 s | `████` | O corredor das ideias geniais que ninguém usou |
-| S15 | 1:50.0–1:58.0 |  8.0 s | `████` | Quem aperta o botão? → carimbo ADOTAR |
-| S16 | 1:58.0–2:05.0 |  7.0 s | `████` | Revelação |
-| S17 | 2:05.0–2:10.0 |  5.0 s | `██` | Cartela final |
+| S03 | 0:12.0–0:24.0 | 12.0 s | `██████` | A Máquina |
+| S04 | 0:24.0–0:30.0 |  6.0 s | `███` | Chegada: 1908 |
+| S05 | 0:30.0–0:39.0 |  9.0 s | `████` | A dor da carroça → chega o Ford T |
+| S06 | 0:39.0–0:50.0 | 11.0 s | `██████` | Primeira pane humana + carimbo ENTENDER |
+| S07 | 0:50.0–0:53.0 |  3.0 s | `██` | Disca 1965 |
+| S08 | 0:53.0–1:00.0 |  7.0 s | `████` | Chegada: 1965 |
+| S09 | 1:00.0–1:10.0 | 10.0 s | `█████` | A dor mudou de lugar + carimbo CONFIAR |
+| S10 | 1:10.0–1:16.0 |  6.0 s | `███` | 1985: glitch |
+| S11 | 1:16.0–1:20.0 |  4.0 s | `██` | 2026: atualização instalada (hipoteticamente) |
+| S12 | 1:20.0–1:30.0 | 10.0 s | `█████` | Ninguém entra (o silêncio) |
+| S13 | 1:30.0–1:38.0 |  8.0 s | `████` | O corredor das ideias geniais que ninguém usou |
+| S14 | 1:38.0–1:47.0 |  9.0 s | `████` | Alguém ensina + carimbo APRENDER |
+| S15 | 1:47.0–1:55.0 |  8.0 s | `████` | Quem aperta o botão? → carimbo ADOTAR |
+| S16 | 1:55.0–2:04.0 |  9.0 s | `████` | Revelação |
+| S17 | 2:04.0–2:10.0 |  6.0 s | `███` | Cartela final |
 
 ## 6 · Storyboard cena a cena
 
@@ -148,9 +114,9 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Imagem.** Foto real do corredor de hospital abandonado vestida de estação de metrô (nunca o frame do filme): azulejos bege em SVG na metade inferior das paredes, faixa amarela no piso, painel de partidas preto com letras amarelas, o RELÓGIO DE ESTAÇÃO (foto) na parede e a PLACA AZUL DE SETA (foto) apontando para cima. Parallax em 3 camadas, push-in lento, vinheta preta nas bordas (Ex2). Beat 1 (0–4 s): a dupla entra pela esquerda e caminha em direção à câmera ombro a ombro — passo de boneco feito com cameoSlide lento + paperBob: O CIENTISTA (rosto licenciado/caricatura de Elon Musk, jaleco de papel com bordas rasgadas, cabelo branco de papel arrepiado, relógio de estação pendurado no peito por barbante, giz na mão) e O JOVEM (rosto de Gabriel, colete vermelho acolchoado de papel, mochila). Balões só com pictogramas: Cientista → rabisco de foguete; Jovem → '?'. Beat 2 (4–6,5 s): param diante de uma MÁQUINA DE LANCHE de papel; o Cientista insere uma moeda — ela cai de volta na bandeja, plinc. Beat 3 (6,5–9 s): o Jovem encosta o celular (foto do Pix) no leitor: plim genérico, a máquina treme e cospe uma TECLA VERDE gigante escrita CONFIRMA; ele segura a tecla, vira a cabeça para a câmera (lookAt) com cara de 'sério isso?'; o Cientista acende um balão de lâmpada.
 
-**Narração.** Toda mudança começa assim: duas pessoas que não combinaram nada, andando na mesma direção.
+**Narração.** Estação Central. Plataforma três. Um cientista, um jovem… e um trem atrasado cento e dezoito anos.
 
-**Texto na tela.** Painel de partidas: 'PRÓXIMO TREM → 1908 · PLATAFORMA 3' (0–9 s) · etiquetas de fita-crepe 'O CIENTISTA' / 'O JOVEM' (1–4 s) · frente da máquina de lanche: 'PEÇAS · BOTÕES · LANCHES' · etiqueta na tecla: 'CONFIRMA' · micro-legenda fixa no canto inferior direito durante toda a cena: 'paródia · cena fictícia · nenhuma fala real'
+**Texto na tela.** Painel de partidas piscando: 'PRÓXIMO TREM → 1908 · ATRASADO: 118 ANOS' · etiquetas de fita-crepe 'O CIENTISTA' / 'O JOVEM' · máquina de lanche 'PEÇAS · BOTÕES · LANCHES' · botão redondo de fliperama laranja 'PARTIU'
 
 **Participações da turma.**
 
@@ -172,13 +138,13 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Sting de abertura: pizzicato + tímpano de brinquedo; whoosh de papel; o tema principal (ukulele + glockenspiel, ~92 bpm) nasce no último segundo.
 
-### S03 · 0:12.0 → 0:26.0 · A Máquina — montagem e discar 1908
+### S03 · 0:12.0 → 0:24.0 · A Máquina — montagem e discar 1908
 
-**Imagem.** Mesa de madeira vista de cima (Ex4). 12–13,5 s: o Cientista desenrola uma planta em papel vegetal. 13,5–21 s: cinco peças caem, UMA a cada 1,5 s, cada uma com baque surdo e nuvem de poeira: (1) banco de couro recortado da foto do carro de época + a PLACA AZUL DE SETA fixada ao lado como alavanca de marcha; (2) o RELÓGIO DE ESTAÇÃO como medidor de fluxo com ponteiro vermelho; (3) o TELEFONE DE DISCO como seletor de ano; (4) a MÁQUINA DE ESCREVER como visor, com a XÍCARA DE CAFÉ num suporte 'COMBUSTÍVEL'; (5) o Jovem encaixa a TECLA VERDE comprada na estação, ainda com a etiqueta de preço. 21–23,5 s: close no disco, a mão de papel do Jovem disca 1-9-0-8; o disco volta devagar, clac-clac-clac, o narrador soletra junto. 23,5–25,5 s: loop 'quem aperta' — o Cientista vira a cabeça para o Jovem (lookAt) e aponta com o braço de papel; o Jovem vira para o Cientista e aponta de volta; uma volta lenta, 2 s. 25,5–26 s: o Jovem aperta. Íris fecha.
+**Imagem.** Mesa de madeira vista de cima (Ex4). 12–13,5 s: o Cientista desenrola uma planta em papel vegetal. 13,5–21 s: três peças caem, UMA a cada 1,5 s (banco; relógio + telefone; máquina de escrever + botão), cada uma com baque surdo e nuvem de poeira: (1) banco de couro recortado da foto do carro de época + a PLACA AZUL DE SETA fixada ao lado como alavanca de marcha; (2) o RELÓGIO DE ESTAÇÃO como medidor de fluxo com ponteiro vermelho; (3) o TELEFONE DE DISCO como seletor de ano; (4) a MÁQUINA DE ESCREVER como visor, com a XÍCARA DE CAFÉ num suporte 'COMBUSTÍVEL'; (5) o Jovem encaixa a TECLA VERDE comprada na estação, ainda com a etiqueta de preço. 21–23,5 s: close no disco, a mão de papel do Jovem disca 1-9-0-8; o disco volta devagar, clac-clac-clac, o narrador soletra junto. 23,5–25,5 s: loop 'quem aperta' — o Cientista vira a cabeça para o Jovem (lookAt) e aponta com o braço de papel; o Jovem vira para o Cientista e aponta de volta; uma volta lenta, 2 s. 25,5–26 s: o Jovem aperta. Íris fecha.
 
-**Narração.** O Cientista montou a máquina com o que tinha em casa. «Olá. Sou a Máquina. Disque o ano.» Um. Nove. Zero. Oito. Agora... alguém confirma? «Aguardando confirmação.»
+**Narração.** «Olá. Sou a Máquina. Disque o ano.» Um. Nove. Zero. Oito. E agora… quem aperta? «Aguardando o botão.»
 
-**Texto na tela.** Etiquetas de fita-crepe nas peças (cada uma ≥2 s): 'FLUXO', 'DISQUE O ANO', 'COMBUSTÍVEL', '← PASSADO | FUTURO →', 'CONFIRMA' · visor da máquina de escrever: 'AGUARDANDO CONFIRMAÇÃO_' (24–26 s)
+**Texto na tela.** Etiquetas de fita-crepe: 'DISQUE O ANO', 'FLUXO', 'PARTIU' · visor: 'AGUARDANDO O BOTÃO_'
 
 **Participações da turma.**
 
@@ -188,21 +154,21 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Baques de madeira/papel por peça (5, regulares); clac-clac do disco rotativo (4 retornos lentos); bipe discreto e chime próprio da Máquina; tema principal entra leve em ukulele.
 
-### S04 · 0:26.0 → 0:32.0 · Chegada: 1908
+### S04 · 0:24.0 → 0:30.0 · Chegada: 1908
 
 **Imagem.** 26–28,5 s: grade verde + '1908' gigante em 3D amarelo deslizando e assentando (fica 2,5 s), a fala da Máquina por cima. 28,5 s: wipe de papel rasgado para a foto real da rua de Viena c. 1900 com carruagem, em sépia, textura de papel com impressão fraca (Ex1), push-in lento. A Máquina 'cai' recortada (cameoDrop) com nuvem de poeira de papel e três gotas de lama recortadas; o ponteiro do relógio de estação gira para trás e para com um 'tóin'. O ano '1908' já saiu de tela antes de qualquer preço aparecer.
 
-**Narração.** «Chegamos. Mil novecentos e oito.» Naquela época, sair de casa era um projeto.
+**Narração.** «Mil novecentos e oito.» Sair de casa era um projeto.
 
 **Texto na tela.** '1908' (3D amarelo, 26–28,5 s) · tarja de papel em serifa: 'antes do carro popular' (29–32 s)
 
 **Som.** Whoosh grave, baque de pouso, poeira; a música vira valsinha em pizzicato; relincho distante sintetizado.
 
-### S05 · 0:32.0 → 0:41.0 · A dor da carroça → chega o Ford T
+### S05 · 0:30.0 → 0:39.0 · A dor da carroça → chega o Ford T
 
 **Imagem.** Beat 1 (32–34,5 s): sobre a foto da carruagem, a roda gira no mesmo lugar, atolada (loop lento, respingos em stop-motion de 2 quadros/s), enquanto o relógio de estação no canto gira rápido — o tempo passa, ninguém sai do lugar. P02 Cocheiro entra pela esquerda (cameoSlide) e puxa as rédeas com o braço de papel, bochechas vermelhas de papel. Beat 2 (34,5–38 s): uma página de jornal se desdobra na tela inteira — fac-símile tipográfico RECRIADO sobre a foto dos jornais antigos (não o arquivo .webp), com rótulo pequeno 'anúncio de época' e SEM ano; o carro de época isolado (foto, recorte) entra rolando da direita com buzina de pera; P03 Vendedora espia pela direita (cameoPeek), segura o jornal, a sobrancelha sobe (lookAt para cima), balão com LÂMPADA — ela entende antes de todo mundo. Beat 3 (38–41 s): P05 Fotógrafo surge (cameoPop) e monta o tripé sob o pano preto, câmera de fole, preparando o flash; P02 olha o carro, olha as rédeas na própria mão (lookAt duas vezes, lento), balão '?'. As rédeas ficam com ele pelo resto do filme.
 
-**Narração.** Aí apareceu o Ford T. Não o primeiro do mundo. O primeiro que muita gente podia ter.
+**Narração.** Aí veio o Ford T. Não o primeiro do mundo: o primeiro que muita gente podia ter.
 
 **Texto na tela.** Jornal fac-símile recriado (34,5–38 s): manchete 'O AUTOMÓVEL QUE CABE NO BOLSO', preço de época com rótulo 'anúncio de época · preço aproximado' (nunca ao lado de um ano), carimbo vermelho 'ACESSO' (≥2 s)
 
@@ -216,13 +182,13 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Rangido de roda, respingo; folhear de jornal gigante; buzina de pera a-uu-ga; tripé armando; a valsa continua.
 
-### S06 · 0:41.0 → 0:53.0 · Primeira pane humana + carimbo ENTENDER
+### S06 · 0:39.0 → 0:50.0 · Primeira pane humana + carimbo ENTENDER
 
 **Imagem.** Beat 1 (41–44 s): a Máquina estacionada ao lado do carro. P04 Rapaz do Feno entra (cameoSlide) oferecendo um fardo de feno ao radiador e dá um tapinha no capô como em cavalo; o carro responde com buzina de pera — ele pula (surprise + salto por keyframe) e, meio segundo depois, ri (nodYes). Beat 2 (44–46 s): o visor da máquina de escrever datilografa 'ERRO: NINGUÉM EXPLICOU · RECALCULANDO' (fica 2 s) enquanto a Máquina fala. Beat 3 (46–49,5 s): o Jovem pega o giz da mão do Cientista (braço de papel) e desenha no quadro-negro de papel: cavalo + relógio = muitas horas; carro + relógio = poucas horas; UMA lâmpada grande acende sobre o grupo (um só beat, sem cascata). Beat 4 (49,5–51 s): P05 dispara o flash: POOF branco → a cena congela em FOTO SÉPIA DE GRUPO em volta do carro, feita com collageFrame só com recortes nossos (P02 segurando as rédeas, P03 de braços cruzados piscando para a câmera, P04 com o feno, o Jovem com o giz, o Cientista com o quadro, a Máquina atrás). Beat 5 (51–53 s): mesa de madeira: entra o CARTÃO DE CARIMBOS perfurado com 4 casas; o carimbo de borracha desce: THUNK, tinta vermelha, ENTENDER. Depois deste carimbo o cartão desliza para o canto inferior esquerdo e fica como HUD discreto até o fim.
 
-**Narração.** E a reação foi... humana. «Erro: ninguém explicou. Recalculando.» A máquina não quebrou. Só faltava alguém explicar.
+**Narração.** E a reação foi… humana. «Erro: ninguém explicou.» Então alguém pegou o giz.
 
-**Texto na tela.** Visor: 'ERRO: NINGUÉM EXPLICOU · RECALCULANDO' (44–46 s) · quadro-negro em giz: pictogramas (46–49,5 s) · carimbo 'ENTENDER' no cartão, casa 1 de 4 (51–53 s)
+**Texto na tela.** Visor: 'ERRO: NINGUÉM EXPLICOU' · quadro-negro em giz: pictogramas · carimbo com o OBJETO (o giz), casa 1 de 4 — sem verbo
 
 **Participações da turma.**
 
@@ -236,7 +202,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Burburinho de papel; buzina de pera; teclas de máquina de escrever; giz no quadro; um único 'tin' de lâmpada; flash de pólvora POOF; THUNK grave e satisfatório do carimbo.
 
-### S07 · 0:53.0 → 0:56.0 · Disca 1965
+### S07 · 0:50.0 → 0:53.0 · Disca 1965
 
 **Imagem.** Close no disco: o Jovem disca 1-9-6-5 um pouco mais rápido, sorrindo (53–55 s, um beat contínuo); o Cientista empurra a alavanca-placa para 'FUTURO →' e aperta CONFIRMA com o COTOVELO porque está com a xícara de café nas duas mãos (55–56 s). Visor mostra '1965'. Íris.
 
@@ -252,7 +218,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Clac-clac mais curto; bipe; whoosh.
 
-### S08 · 0:56.0 → 1:03.0 · Chegada: 1965 — e a solução óbvia
+### S08 · 0:53.0 → 1:00.0 · Chegada: 1965 — e a solução óbvia
 
 **Imagem.** 56–58,5 s: grade azul + '1965' em 3D amarelo (2,5 s) com a fala da Máquina; no canto inferior, P05 Fotógrafo espia com uma câmera compacta anos 1960 (cameoPeek de fundo, sem beat próprio). 58,5–60,5 s: wipe para a foto P&B da rua de Havana; a cor 'entra' por um rasgo de papel revelando a foto colorida dos carros clássicos; os carros recortados se empilham em três fileiras formando um engarrafamento de colagem, nuvens de fumaça de papel pulsando devagar; a Máquina recortada aparece no fim da fila com pisca-alerta de papel. 60,5–63 s: P08 Engenheiro da prancheta surge (cameoPop) e abre uma planta 'SOLUÇÃO: MAIS FAIXAS'; a estrada se alarga em acordeão de papel... e o engarrafamento se alarga junto; ele risca a planta e desenha um '?'.
 
@@ -269,13 +235,13 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Buzinas em coro sintetizadas, afinadas na tonalidade da música (nunca agressivas); acordeão de papel esticando; a música vira lounge/surf leve.
 
-### S09 · 1:03.0 → 1:13.0 · A dor mudou de lugar + carimbo CONFIAR
+### S09 · 1:00.0 → 1:10.0 · A dor mudou de lugar + carimbo CONFIAR
 
-**Imagem.** Cruzamento de papel sobre a colagem de Havana. Beat 1 (63–66 s): P06 Guarda de trânsito num pedestal, luvas brancas, apito; a cada gesto, os braços dele vão sendo substituídos por um SEMÁFORO de papel que brota do pedestal; ele olha os próprios braços (lookAt), dá de ombros (headWobble + braço de papel) e pega um café. Beat 2 (66–68,5 s): P09 Passageiro no ponto de ônibus sob o RELÓGIO DE ESTAÇÃO (foto) cujo mostrador tem ANOS no lugar das horas (1965, 1966, 1967...); os ponteiros giram e a barba de papel dele cresce continuamente (três camadas em crossfade); a Máquina tenta entrar na fila com pisca-alerta e os carros se fecham como dominó. Beat 3 (68,5–71,5 s): P07 Motorista de 1965 (penteado colmeia, óculos gatinho) no conversível com um MAPA que se desdobra maior que o carro e cobre o para-brisa (68,5–70 s); corte: ela já está sentada no banco de trás da Máquina, o mapa dobrado num quadradinho no colo, a chave do próprio carro pendurada no relógio de estação; cinto de papel 'clic' (70–71,5 s). Beat 4 (71,5–73 s): THUNK no cartão HUD: CONFIAR.
+**Imagem.** Cruzamento de papel sobre a colagem de Havana. Beat 1 (63–66 s): P06 Guarda de trânsito num pedestal, luvas brancas, apito; a cada gesto, um SEMÁFORO de papel brota do pedestal e COPIA os gestos dele — é ele quem ensina o semáforo; ele aprova com um café (figurante quase estático). Beat 2 (66–68,5 s): P09 Passageiro no ponto de ônibus sob o RELÓGIO DE ESTAÇÃO (foto) cujo mostrador tem ANOS no lugar das horas (1965, 1966, 1967...); os ponteiros giram e a barba de papel dele cresce continuamente (três camadas em crossfade); a Máquina tenta entrar na fila com pisca-alerta e os carros se fecham como dominó. Beat 3 (68,5–71,5 s): P07 Motorista de 1965 (penteado colmeia, óculos gatinho) no conversível com um MAPA que se desdobra maior que o carro e cobre o para-brisa (68,5–70 s); corte: ela já está sentada no banco de trás da Máquina, o mapa dobrado num quadradinho no colo, a chave do próprio carro pendurada no relógio de estação; cinto de papel 'clic' (70–71,5 s). Beat 4 (71,5–73 s): THUNK no cartão HUD: CONFIAR.
 
-**Narração.** Tecnologia resolve a dor antiga e inventa uma nova. Na fila, ninguém dá passagem. Até alguém trocar de carro. «Passageira a bordo.»
+**Narração.** Resolve uma dor, inventa outra. Até alguém trocar de carro. «Passageira a bordo.»
 
-**Texto na tela.** Mostrador do relógio com anos no lugar das horas (66–68,5 s) · carimbo 'CONFIAR', casa 2 de 4 (71,5–73 s)
+**Texto na tela.** Mostrador do relógio com anos no lugar das horas · carimbo com o OBJETO (a chave do carro pendurada no relógio), casa 2 de 4
 
 **Participações da turma.**
 
@@ -287,7 +253,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Apito, clique de semáforo, folha de jornal, tique-taque que vira batida grave, pisca-alerta tic-tac, mapa desdobrando, 'clic' do cinto, THUNK.
 
-### S10 · 1:13.0 → 1:19.0 · 1985: glitch — a rota, resolvida
+### S10 · 1:10.0 → 1:16.0 · 1985: glitch — a rota, resolvida
 
 **Imagem.** Glitch VHS roxo rasga a tela (0,5 s); fundo magenta/azul com scanlines (Ex4). Beat 1 (73,5–76 s): P10 Analista de 1985 (ombreiras de papel, cabelo volumoso) diante do PC retrô (foto), tela verde 'ROTA CALCULADA · TEMPO: 4 HORAS'; a impressora matricial cospe um mapa contínuo que desenrola até o chão e sai do quadro; ao fundo, P05 espia com uma filmadora de ombro (peek de fundo). Beat 2 (76–77,5 s): a Máquina atualizou o seletor — um celular touch no lugar do disco; o Jovem toca 2-0-2-6 num gesto só; o Cientista guarda o telefone de disco no bolso do jaleco e dá um tapinha nele. Beat 3 (77,5–79 s): P10 estica o braço de papel e aperta CONFIRMA pela dupla, sem nem olhar — quem já aprendeu aperta fácil.
 
@@ -305,7 +271,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Ruído VHS, teclado de membrana, impressora matricial, synthwave breve (4 compassos no mesmo andamento), bipe, tapinha no bolso.
 
-### S11 · 1:19.0 → 1:23.0 · 2026: atualização instalada (hipoteticamente)
+### S11 · 1:16.0 → 1:20.0 · 2026: atualização instalada (hipoteticamente)
 
 **Imagem.** Bloco de cor vermelho (Ex2) entra por slam + '2026' em 3D amarelo (79–81,5 s). 81,5–83 s: a Máquina no centro — POP: quatro rotores de papel brotam dos cantos e giram devagar, um contorno neon roxo acende em volta do banco, o RELÓGIO DE ESTAÇÃO vira painel e, no capô, um GATO de papel já instalado olha fixo para a câmera, dono do carro. Uma etiqueta de fita-crepe pendurada balança: 'HIPOTÉTICO' (fica presa à Máquina por toda a S12). É a mesma máquina do tempo — mesmo banco, mesmo relógio, mesma tecla verde — agora em modo voo; não existe segundo veículo.
 
@@ -317,11 +283,11 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Nota de produção.** O 'modo voo' usa também o quadro real do seu vídeo (carro no ar com propulsores azuis, `imagens/recortes/carro-voador_recorte.png`) e a sua imagem de Elon apresentando (meio corpo) na 'atualização instalada'; os rotores de papel e a etiqueta HIPOTÉTICO ficam por cima.
 
-### S12 · 1:23.0 → 1:33.0 · Ninguém entra (o silêncio)
+### S12 · 1:20.0 → 1:30.0 · Ninguém entra (o silêncio)
 
 **Imagem.** Wipe de papel rasgado para grama + céu estilo XP (recriação em vetor/gradiente, não a foto original). A Máquina em modo voo flutua a 20 cm do chão (paperBob), rotores devagar, gato no capô, etiqueta HIPOTÉTICO. Câmera parada; a turma entra num semicírculo, UM beat de 2 s por pessoa, cada um com sua frase: (83–85 s) P11 Engenheiro do Manual, capacete e doze volumes empilhados, lendo com o dedo na linha; (85–87 s) P12 Criadora de conteúdo, celular na vertical, tenta uma selfie com o gato — o gato vira a cara; (87–89 s) P13 Cauteloso das alturas sobe UM degrau de uma escadinha, olha para baixo, balão com gota de suor; (89–91 s) P14 Piloto pronta (touca de aviador, óculos, cachecol) procura o volante, não acha, tira um VOLANTE da própria bolsa e tenta encaixar. Beat 5 (91–93 s): as portas de papel abrem para cima. A MÚSICA PARA. Dois segundos de silêncio total; todas as cabeças viram devagar para a porta aberta (lookAt em cadeia); ninguém entra. O visor mostra 'PASSAGEIROS: 0'.
 
-**Narração.** Um quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante.
+**Narração.** Um quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante. «Passageiros: zero.»
 
 **Texto na tela.** Lombada do manual: 'MANUAL DO CARRO VOADOR — VOL. 1 de 12' (83–85 s) · visor: 'PASSAGEIROS: 0' (91–94 s) · etiqueta 'HIPOTÉTICO' na Máquina (toda a cena)
 
@@ -338,28 +304,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Nota de produção.** Transição de entrada com o relâmpago de papel do salto no tempo (sua referência 'após o carro do Elon voar'): flash curto (≤0,3 s), raios recortados, rasgo de papel — nunca mais rápido que 2 s por beat.
 
-### S13 · 1:33.0 → 1:42.0 · Alguém ensina + carimbo APRENDER
-
-**Imagem.** A fala da Máquina quebra o silêncio (93–94 s) e a música volta baixinha. Beat 1 (94–96,5 s): P04 Rapaz do Feno — mesma cabeça, ainda com o fardo de feno debaixo do braço — sobe no banco de trás; a Máquina solta a mesma buzina de pera de 1908; desta vez ele ri na hora (nodYes). Beat 2 (96,5–99 s): P11 fecha o manual (vira almofada do banco), estende o braço de papel para P13 no degrau; P13 senta; P11 mostra o cinto: 'clic'; mão no ombro. Beat 3 (99–100,5 s): num só beat, P14 ri, guarda o volante na bolsa e segura o relógio-painel com as duas mãos, e P12 abaixa o celular e entra por último. Beat 4 (100,5–102 s): o contador mecânico do visor rola de 0 a 14 numa rolagem contínua enquanto as janelas da Máquina se enchem com a turma inteira numa única composição (collageFrame: todas as épocas, cada um com seu adereço — rédeas, feno, apito, planta, jornal, mapa, disquete, manual-almofada, celular, cinto, touca); THUNK no cartão HUD: APRENDER.
-
-**Narração.** «Passageiros: zero.» Quem levou o susto em mil novecentos e oito entrou primeiro. E quem sabia, mostrou. «Passageiros: catorze.»
-
-**Texto na tela.** Visor: 'PASSAGEIROS: 0' → rolagem contínua → 'PASSAGEIROS: 14' (100,5–102 s) · carimbo 'APRENDER', casa 3 de 4 (100,5–102 s)
-
-**Participações da turma.**
-
-| Slot | Papel | Reação à mudança | Entrada / saída | Piada |
-|---|---|---|---|---|
-| P04 | O Rapaz do Feno de 1908 é o primeiro a embarcar em 2026 | Quem se assustou primeiro entra primeiro: a mudança é processo, não defeito | Entra pela esquerda (cameoSlide 94 s) direto para o banco de trás; fica a bordo | A Máquina buzina de novo; desta vez ele ri na hora |
-| P11 | O Engenheiro do Manual vira o instrutor | Prudência que vira ajuda: quem leu, ensina | Do semicírculo para o banco (96,5 s); fica a bordo | O manual de doze volumes vira almofada do banco; o cinto 'clic' na mão dele |
-| P13 | O Cauteloso embarca com uma mão no ombro | Confiança construída por alguém que mostra como se faz | Do degrau para o banco (97 s); fica a bordo | O 'clic' do cinto é o alívio do filme |
-| P14 | A Piloto adota o painel-relógio | Adaptação rindo: guarda o volante, assume o novo painel | Senta ao painel (99 s); fica a bordo | Guarda o volante na bolsa de onde ele saiu |
-| P12 | A Criadora de conteúdo entra por último, celular abaixado | Da plateia para dentro: empolgação que vira participação | Entra por último (99,5 s); fica a bordo | Abaixa o celular e sorri |
-| P02, P03, P05, P06, P07, P08, P09, P10 | O resto da turma aparece já a bordo na composição das janelas (todas as épocas juntas) | Adoção coletiva em progresso | Fade-in único da composição (100,5–102 s); permanecem até o retrato final | Os adereços de todas as eras viajam no mesmo carro |
-
-**Som.** Chime + fala da Máquina rompendo o silêncio; buzina de pera suave; manual fechando; 'clic' do cinto; bolsa fechando; contador mecânico rolando; a música volta em ukulele e cresce; THUNK.
-
-### S14 · 1:42.0 → 1:50.0 · O corredor das ideias geniais que ninguém usou
+### S13 · 1:30.0 → 1:38.0 · O corredor das ideias geniais que ninguém usou
 
 **Imagem.** A Máquina sobe um metro, a Máquina diz 'Recalculando' e entra pela porta errada: wipe vertical para a foto real do corredor de hospital abandonado (verde frio, push-in lento de 8 s). A narração termina aos 106,5 s e a voz fica em silêncio enquanto as placas são lidas. Portas de papel aparecem UMA a cada 2 s e todas ficam: 104 s 'PLANILHA 4.0', 106 s 'APP INTERNO', 108 s 'PROCESSO REVISADO v7_final_FINAL'; cada placa datilografada traz debaixo um troféu pequeno recortado 'FUNCIONA 100%' coberto de teia de papel. Encostada na parede desde o primeiro quadro, sem beat próprio, uma peça cromada de quebra-cabeça com a etiqueta 'MAIS TECNOLOGIA', empoeirada — a solução que já tentaram. Poeira em partículas, gotejar. O Jovem, no banco da frente, balão '!'. O Cientista olha o quadro-negro e apaga o foguete.
 
@@ -375,13 +320,34 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Eco de corredor, gotejar, vento de papel; a música para e sobra um pad frio; máquina de escrever a cada placa; silêncio de voz de 106,5 a 110 s.
 
-### S15 · 1:50.0 → 1:58.0 · Quem aperta o botão? → carimbo ADOTAR
+### S14 · 1:38.0 → 1:47.0 · Alguém ensina + carimbo APRENDER
+
+**Imagem.** A fala da Máquina quebra o silêncio (93–94 s) e a música volta baixinha. Beat 1 (94–96,5 s): P04 Rapaz do Feno — mesma cabeça, ainda com o fardo de feno debaixo do braço — sobe no banco de trás; a Máquina solta a mesma buzina de pera de 1908; desta vez ele ri na hora (nodYes). Beat 2 (96,5–99 s): P11 fecha o manual (vira almofada do banco), estende o braço de papel para P13 no degrau; P13 senta; P11 mostra o cinto: 'clic'; mão no ombro. Beat 3 (99–100,5 s): num só beat, P14 ri, guarda o volante na bolsa e segura o relógio-painel com as duas mãos, e P12 abaixa o celular e entra por último. Beat 4 (100,5–102 s): o contador mecânico do visor rola de 0 a 14 numa rolagem contínua enquanto as janelas da Máquina se enchem com a turma inteira numa única composição (collageFrame: todas as épocas, cada um com seu adereço — rédeas, feno, apito, planta, jornal, mapa, disquete, manual-almofada, celular, cinto, touca); THUNK no cartão HUD: APRENDER.
+
+**Narração.** Quem se assustou em mil novecentos e oito entrou primeiro. Quem sabia, mostrou. «Passageiros: catorze.»
+
+**Texto na tela.** Visor: 'PASSAGEIROS: 0' → 'PASSAGEIROS: 14' · carimbo com o OBJETO (o cinto), casa 3 de 4
+
+**Participações da turma.**
+
+| Slot | Papel | Reação à mudança | Entrada / saída | Piada |
+|---|---|---|---|---|
+| P04 | O Rapaz do Feno de 1908 é o primeiro a embarcar em 2026 | Quem se assustou primeiro entra primeiro: a mudança é processo, não defeito | Entra pela esquerda (cameoSlide 94 s) direto para o banco de trás; fica a bordo | A Máquina buzina de novo; desta vez ele ri na hora |
+| P11 | O Engenheiro do Manual vira o instrutor | Prudência que vira ajuda: quem leu, ensina | Do semicírculo para o banco (96,5 s); fica a bordo | O manual de doze volumes vira almofada do banco; o cinto 'clic' na mão dele |
+| P13 | O Cauteloso embarca com uma mão no ombro | Confiança construída por alguém que mostra como se faz | Do degrau para o banco (97 s); fica a bordo | O 'clic' do cinto é o alívio do filme |
+| P14 | A Piloto adota o painel-relógio | Adaptação rindo: guarda o volante, assume o novo painel | Senta ao painel (99 s); fica a bordo | Guarda o volante na bolsa de onde ele saiu |
+| P12 | A Criadora de conteúdo entra por último, celular abaixado | Da plateia para dentro: empolgação que vira participação | Entra por último (99,5 s); fica a bordo | Abaixa o celular e sorri |
+| P02, P03, P05, P06, P07, P08, P09, P10 | O resto da turma aparece já a bordo na composição das janelas (todas as épocas juntas) | Adoção coletiva em progresso | Fade-in único da composição (100,5–102 s); permanecem até o retrato final | Os adereços de todas as eras viajam no mesmo carro |
+
+**Som.** Chime + fala da Máquina rompendo o silêncio; buzina de pera suave; manual fechando; 'clic' do cinto; bolsa fechando; contador mecânico rolando; a música volta em ukulele e cresce; THUNK.
+
+### S15 · 1:47.0 → 1:55.0 · Quem aperta o botão? → carimbo ADOTAR
 
 **Imagem.** Wipe de volta ao céu XP. Beat 1 (110–112 s): o Cientista vira o quadro-negro para a câmera: desenhou a TECLA CONFIRMA com catorze dedinhos de giz em volta (2 s). Beat 2 (112–114,5 s): a tecla verde cresce no centro do painel; todos apontam para o vizinho — cadeia lenta de lookAt + um braço de papel por pessoa, callback da S03 — e o gato boceja; a narração está em pausa (1,5 s de silêncio cômico; só o bocejo). Beat 3 (114,5–116 s): catorze MÃOS DE PAPEL (um único SVG de mão, catorze instâncias em cores de papel e rotações diferentes) entram por todos os lados e apertam juntas: THUNK gigante com sub. Beat 4 (116–118 s): mesa de madeira em quadro cheio (callback do primeiro carimbo): o quarto carimbo desce, ADOTAR; o cartão está completo. Pausa de 1 s sem nada se mexer.
 
 **Narração.** Quem aperta o botão? Todo mundo.
 
-**Texto na tela.** Quadro-negro: tecla + catorze dedinhos (110–112 s) · tecla 'CONFIRMA' gigante (112–116 s) · carimbo 'ADOTAR', casa 4 de 4, cartão completo (116–118 s)
+**Texto na tela.** Quadro-negro: botão redondo + catorze dedinhos · botão 'PARTIU' gigante · carimbo com o OBJETO (a mão), casa 4 de 4 — cartão completo, ainda sem verbos
 
 **Participações da turma.**
 
@@ -392,23 +358,23 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Silêncio cômico no loop de apontar (só o bocejo do gato); THUNK grande com sub; o carimbo final seco; 1 s de silêncio após o carimbo.
 
-### S16 · 1:58.0 → 2:05.0 · Revelação — GESTÃO DA MUDANÇA
+### S16 · 1:55.0 → 2:04.0 · Revelação — GESTÃO DA MUDANÇA
 
 **Imagem.** Beat 1 (118–120,5 s): o cartão completo vira (flip de papel) e no verso, em serifa elegante sobre papel (Ex1): 'É por isso que existe'. Beat 2 (120,5–125 s): corte para a grade verde; a frase em 3D amarelo entra palavra por palavra, lenta — GESTÃO (120,5 s), DA (121 s), MUDANÇA (121,5 s) — e fica parada, completa, de 121,5 a 125 s (3,5 s) sem nada se mexer além das partículas de papel. Embaixo, os quatro carimbos pequenos em linha (os objetos ganhos na história, não uma lista de método) e uma linha mínima em serifa. A voz faz 1 s de pausa antes de dizer o nome, que cai com a palavra já em tela.
 
-**Narração.** A máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome. Gestão da Mudança.
+**Narração.** A máquina sempre funcionou. Faltava levar as pessoas. Isso tem nome. Gestão da Mudança.
 
-**Texto na tela.** Verso do cartão: 'É por isso que existe' (118–120,5 s) · 'GESTÃO DA MUDANÇA' (3D amarelo, completa de 121,5 a 125 s) · linha de carimbos pequenos: 'ENTENDER · CONFIAR · APRENDER · ADOTAR' (122–125 s) · serifa mínima: 'Tecnologia constrói a possibilidade. Pessoas fazem a mudança.' (122–125 s)
+**Texto na tela.** Verso do cartão: os quatro objetos viram palavras — ENTENDER · CONFIAR · APRENDER · ADOTAR — e 'É por isso que existe' (118–120,5 s) · 'GESTÃO DA MUDANÇA' (3D amarelo, ≥3,5 s)
 
 **Som.** Flip de papel; a música volta num acorde quente e aberto (cordas + glockenspiel), ascendente; 'whump' leve em cada palavra 3D; silêncio de 1 s antes do nome.
 
-### S17 · 2:05.0 → 2:10.0 · Cartela final — próxima parada: esta sala
+### S17 · 2:04.0 → 2:10.0 · Cartela final — próxima parada: esta sala
 
 **Imagem.** P05 Fotógrafo, agora com celular e o capuz do moletom no lugar do pano preto, dispara: POOF → a imagem vira um retrato emoldurado numa parede vermelha (Ex4) com plaquinha de latão. No retrato, a Máquina em modo voo com a turma inteira (a composição de S13 reaproveitada), o Cientista segurando o telefone de disco como quem não abre mão dele, o gato de olhos fechados. Abaixo, uma linha em serifa sobre papel e, bem pequeno, o rodapé opcional e a linha legal. Tudo parado por 4 s; fade para preto no último segundo.
 
 **Narração.** «Você chegou ao seu destino.» Próxima parada: esta sala.
 
-**Texto na tela.** Plaquinha de latão: 'TURMA — PRIMEIRA VIAGEM · PRÓXIMA PARADA: ESTA SALA' (125,5–129 s) · serifa: 'Gestão da Mudança · Treinamento' · rodapé minúsculo opcional e removível: 'Referência do treinamento: ADKAR — Jeff Hiatt' · linha legal minúscula: 'Paródia e hipótese narrativa. Nenhuma fala atribuída a pessoas reais. Imagens de acervo licenciado.'
+**Texto na tela.** Plaquinha de latão: 'TURMA — PRIMEIRA VIAGEM · PRÓXIMA PARADA: ESTA SALA' (125,5–129 s) · serifa: 'Gestão da Mudança · Treinamento' · rodapé minúsculo opcional e removível: 'Referência do treinamento: ADKAR — Jeff Hiatt' · linha legal minúscula: 'Paródia e hipótese narrativa. Nenhuma fala atribuída a pessoas reais. Imagens de acervo licenciado.' · ÚNICA linha legal do filme (minúscula): 'Paródia e hipótese narrativa. Nenhuma fala atribuída a pessoas reais.'
 
 **Participações da turma.**
 
@@ -432,9 +398,9 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 | **O cartão perfurado** | S06 — carimbo ENTENDER | S09 CONFIAR · S13 APRENDER | S15 ADOTAR completa o cartão → S16 o cartão vira e revela o nome |
 | **O gato dono do carro** | S11 — já instalado no capô | S12 — vira a cara pra selfie | S15 — boceja no silêncio cômico · S17 — dorme no retrato |
 
-**Resumo do motor cômico (chefe de roteiro).** QUEM APERTA? — a tecla verde gigante CONFIRMA, comprada numa máquina de lanche de estação (a moeda do Cientista falha, o Pix do Jovem funciona). A tecnologia está sempre pronta; o que trava é alguém ter que apertar. S03: Cientista aponta pro Jovem, Jovem aponta pro Cientista, uma volta lenta, o Jovem aperta. S07: o Cientista aperta com o cotovelo porque segura o café com as duas mãos. S10: a Analista de 1985 aperta pela dupla sem nem olhar (quem já aprendeu aperta fácil). S15 (payoff): catorze pessoas dentro da Máquina apontando para o vizinho, o gato boceja — e catorze mãos de papel apertam juntas, THUNK, quarto carimbo ADOTAR. Gags de apoio que repetem e crescem: a Máquina anuncia cada pane humana como GPS educado («Erro: ninguém explicou.» → «Passageiros: zero.» → «Recalculando.» → «Você chegou ao seu destino.»); o telefone de disco para discar o ano, cada vez mais rápido, até virar touch em 1985 — e o Cientista guarda o disco no bolso com carinho e ainda o segura no retrato final; o cartão de quatro casas que só faz sentido completo no fim; e o Fotógrafo (P05) que registra todas as épocas com a câmera da vez (fole, compacta, filmadora, celular com capuz de moletom), sempre espiando ao fundo, sem beat próprio.
+**Resumo do motor cômico (chefe de roteiro).** QUEM APERTA? — a botão redondo de fliperama laranja PARTIU, comprada numa máquina de lanche de estação (a moeda do Cientista falha, o Pix do Jovem funciona). A tecnologia está sempre pronta; o que trava é alguém ter que apertar. S03: Cientista aponta pro Jovem, Jovem aponta pro Cientista, uma volta lenta, o Jovem aperta. S07: o Cientista aperta com o cotovelo porque segura o café com as duas mãos. S10: a Analista de 1985 aperta pela dupla sem nem olhar (quem já aprendeu aperta fácil). S15 (payoff): catorze pessoas dentro da Máquina apontando para o vizinho, o gato boceja — e catorze mãos de papel apertam juntas, THUNK, quarto carimbo ADOTAR. Gags de apoio que repetem e crescem: a Máquina anuncia cada pane humana como GPS educado («Erro: ninguém explicou.» → «Passageiros: zero.» → «Recalculando.» → «Você chegou ao seu destino.»); o telefone de disco para discar o ano, cada vez mais rápido, até virar touch em 1985 — e o Cientista guarda o disco no bolso com carinho e ainda o segura no retrato final; o cartão de quatro casas que só faz sentido completo no fim; e o Fotógrafo (P05) que registra todas as épocas com a câmera da vez (fole, compacta, filmadora, celular com capuz de moletom), sempre espiando ao fundo, sem beat próprio.
 
-**Como a revelação ganha.** Ganha pelo quebra-cabeça que a plateia viu encher: o cartão perfurado recebe um carimbo por parada, e cada carimbo é o ato humano que destravou a máquina — ENTENDER em 1908 (o Jovem explica com giz depois do 'Erro: ninguém explicou'), CONFIAR em 1965 (a motorista larga o carro antigo, pendura a chave no relógio e aperta o cinto), APRENDER em 2026 (as portas abrem, ninguém entra por dois segundos de silêncio, o Rapaz do Feno que levou susto em 1908 entra primeiro e o Engenheiro do Manual mostra o cinto ao Cauteloso). O custo de não fazer isso aparece sem palavras no corredor errado: ideias geniais que ninguém usou, troféus 'FUNCIONA 100%' com teia e a peça cromada 'MAIS TECNOLOGIA' encostada na parede. Então o Cientista mostra no quadro a tecla com catorze dedinhos, a voz pergunta 'Quem aperta o botão?', 1,5 s de silêncio com todos apontando para o vizinho e o gato bocejando, e catorze mãos de papel apertam juntas: THUNK, ADOTAR, cartão completo. O cartão vira ('É por isso que existe'), corte para a grade verde e GESTÃO DA MUDANÇA em 3D amarelo fica parada por 3,5 s com os quatro carimbos pequenos embaixo. Narração total da revelação, 21 palavras: 'Quem aperta o botão? ... Todo mundo. A máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome. Gestão da Mudança.' Nenhum método é explicado; os verbos são os próprios eventos da história e nunca são recitados em voz. A Máquina fecha: 'Você chegou ao seu destino.' e a última frase entrega o botão à sala: 'Próxima parada: esta sala.'
+**Como a revelação ganha.** Os quatro carimbos são OBJETOS (giz, chave, cinto, mão) — a plateia vê o cartão encher sem ler método nenhum. Só no flip (S16) os objetos viram palavras: ENTENDER · CONFIAR · APRENDER · ADOTAR, e o nome cai: Gestão da Mudança.
 
 **Cartela final.** S17 (125–130 s): flash de celular do Fotógrafo → retrato emoldurado em moldura dourada numa parede vermelha (Ex4): a Máquina em modo voo com a turma inteira a bordo (composição de S13 reaproveitada), o Cientista segurando o telefone de disco, o gato de olhos fechados. Plaquinha de latão: 'TURMA — PRIMEIRA VIAGEM · PRÓXIMA PARADA: ESTA SALA'. Abaixo, uma linha em serifa sobre papel: 'Gestão da Mudança · Treinamento'. Rodapé minúsculo, opcional e removível: 'Referência do treinamento: ADKAR — Jeff Hiatt' (texto apenas; sem foto). Linha legal minúscula: 'Paródia e hipótese narrativa. Nenhuma fala atribuída a pessoas reais. Imagens de acervo licenciado.' Áudio: chime próprio + «Você chegou ao seu destino.», depois o narrador: 'Próxima parada: esta sala.' Tudo parado por 4 s; fade para preto no último segundo. Sem logos de marcas; o logo da empresa do cliente pode entrar no canto inferior direito se fornecido.
 
@@ -663,6 +629,9 @@ Disponíveis hoje: Gabriel, Felipe, Fernando (prévias pequenas). Corrompidas: A
 - Passar de ~235 palavras a 0,92 ou acelerar a voz para caber; voz da Máquina simpática ou expressiva; falar por cima das placas do corredor.
 - Um segundo veículo 'carro voador' separado da Máquina (confunde qual máquina 'sempre funcionou'); mostrar o modo voo sem a etiqueta HIPOTÉTICO.
 - Logos de marcas (Tesla, Ford moderno, aplicativos, redes sociais) e telas de apps reconhecíveis.
+- Disclaimers no meio do filme: só a linha legal da cartela final.
+- Enunciar a tese antes de S16 (a frase "a máquina não quebrou / só faltava explicar" foi cortada de S06).
+- Mais de UMA coisa se movendo por beat; cada cameo tem um único gesto.
 
 **Decisões do solicitante que prevalecem sobre a cautela do júri (registradas):** usar a foto do metrô e a foto de Elon Musk que você enviou, recortadas de verdade, com as cabeças trocadas (uso interno de treinamento, paródia). Mitigações mantidas: etiqueta "O CIENTISTA", nenhuma fala atribuída, micro-legenda "paródia · cena fictícia", nenhum título/logo/trilha/carro do filme, linha legal na cartela final.
 
