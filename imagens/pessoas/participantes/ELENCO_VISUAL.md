@@ -16,3 +16,16 @@
 - Evitar cenas que ridicularizem pessoas; preferir humor relacionado às dores de mobilidade e à adaptação às novas tecnologias.
 - Estas imagens são **prévias compactadas para reconhecimento visual e planejamento**: para montagem e render final, priorizar os arquivos originais enviados na conversa ou novas fotos de resolução superior.
 - **Restam fotos a receber** para completar as 14 participações previstas. Não confundir a pessoa apenas pelo rosto nem inventar imagem ausente.
+
+## Verificação técnica (19/10, sessão de produção)
+| Arquivo | Estado | Recorte de cabeça |
+|---|---|---|
+| `felipe-treistman-preview.jpg` | abre (148 × 148 px) | `recortes/felipe-treistman.png` |
+| `fernando-cattan-preview.jpg` | abre (126 × 170 px, muito borrada) | `recortes/fernando-cattan.png` |
+| `gabriel.png` | abre (81 × 105 px) | `recortes/gabriel.png` |
+| `alessandra-preview.jpg` | **corrompida** (JPEG truncado: SOS antes de SOF) | — |
+| `francislene-preview.jpg` | **corrompida** (comprimento de marcador inválido) | — |
+| `paulo-sergio-preview.jpg` | **corrompida** (SOS antes de SOF) | — |
+| `rogerio-menezes-preview.jpg` | **corrompida** (SOS antes de SOF) | — |
+
+As quatro prévias corrompidas precisam ser reenviadas (de preferência as fotos originais, rosto ≥ 800 px).

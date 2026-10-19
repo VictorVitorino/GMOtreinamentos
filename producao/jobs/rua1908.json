@@ -4,8 +4,8 @@
  "out": "out/img/col/rua1908",
  "figures": [
   {
-   "name": "cartola_elon",
-   "head": "out/img/faces/elon.png",
+   "name": "cartola_fernando",
+   "head": "out/img/faces/fernando-cattan.png",
    "face": [
     50,
     172,
@@ -40,7 +40,45 @@
     292,
     330
    ]
+  },
+  {
+   "name": "bone_felipe",
+   "head": "out/img/faces/felipe-treistman.png",
+   "face": [
+    289,
+    177,
+    17,
+    19
+   ],
+   "scale": 1.3,
+   "rot": 3,
+   "keep_hair": true,
+   "crop": [
+    270,
+    150,
+    330,
+    330
+   ]
+  },
+  {
+   "name": "dama_elon",
+   "head": "out/img/faces/elon.png",
+   "face": [
+    334,
+    179,
+    17,
+    20
+   ],
+   "scale": 1.25,
+   "rot": -3,
+   "keep_hair": true,
+   "crop": [
+    312,
+    150,
+    372,
+    400
+   ]
   }
  ],
- "debug": true
+ "debug": false
 }
