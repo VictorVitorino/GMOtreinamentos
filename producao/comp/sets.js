@@ -33,6 +33,9 @@ function pictoBubble(parent,kind,o){o=o||{};const w=o.w||150,h=o.h||120;const wr
     case 'coffee':S('path',Object.assign({d:'M-26 -10 h44 l-5 40 h-34z M18 -4 q18 0 14 18 q-3 10 -16 10 M-14 -26 q6 -8 0 -16 M0 -26 q6 -8 0 -16'},ink),g);break;
     case 'car':S('path',Object.assign({d:'M-40 14 h80 v-16 l-16 -16 h-28 l-18 16z M-26 14 v8 M26 14 v8'},ink),g);S('circle',{cx:-22,cy:18,r:8,fill:'#1b1e21'},g);S('circle',{cx:22,cy:18,r:8,fill:'#1b1e21'},g);break;
     case 'horse':S('path',Object.assign({d:'M-34 20 v-26 q0 -14 14 -14 h26 l12 -16 l10 6 l-6 14 v36 M-22 20 v-12 M22 20 v-12'},ink),g);break;
+    case 'coin':S('circle',{cx:0,cy:0,r:34,fill:'#d8b24a',stroke:'#1b1e21','stroke-width':4},g);S('circle',{cx:0,cy:0,r:24,fill:'none',stroke:'#8a6a22','stroke-width':2,'stroke-dasharray':'4 3'},g);S('text',{x:0,y:12,'font-family':FA,'font-size':34,'text-anchor':'middle',fill:'#1b1e21'},g).textContent='$';break;
+    case 'phone':S('rect',{x:-22,y:-44,width:44,height:88,rx:8,fill:'#1b1e21'},g);S('rect',{x:-17,y:-36,width:34,height:66,rx:3,fill:'#7fd1ff'},g);S('path',{d:'M-8 -10 l6 6 l10 -12',fill:'none',stroke:'#1b1e21','stroke-width':4,'stroke-linecap':'round'},g);break;
+    case 'bulb':S('path',{d:'M0 -40 a26 26 0 0 1 14 48 v10 h-28 v-10 a26 26 0 0 1 14 -48z',fill:'#ffe680',stroke:'#1b1e21','stroke-width':4},g);S('rect',{x:-12,y:20,width:24,height:14,rx:3,fill:'#9a9ea3',stroke:'#1b1e21','stroke-width':3},g);break;
     case 'hand':S('path',Object.assign({d:'M-18 30 v-40 M-6 30 v-52 M6 30 v-48 M18 30 v-40 M-18 -10 q-16 10 -8 30 M-18 30 h36'},ink),g);break;
   }
   return wrap}
