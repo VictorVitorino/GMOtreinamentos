@@ -1,51 +1,40 @@
-# Elenco de papel — personagens do vídeo "Ford T"
+# Personagens — colagem real (corpo de recorte + cabeça verdadeira)
 
-Bonecos de papel articulados (estilo recorte de revista com colchetes de latão), gerados por código em
-[`producao/comp/puppet.js`](../../../producao/comp/puppet.js). Cada boneco tem **encaixe de rosto**: enquanto a foto
-do participante não chega, o encaixe mostra uma cara de papel com o crachá amarelo do código (P02…P18).
+Direção definida pelo solicitante em 19/10: **nada desenhado do zero**. Os personagens são colagens de revista:
+o **corpo é recortado de uma foto real** (as imagens de referência enviadas e fotos de época do acervo) e a
+**cabeça real do participante** entra no lugar da original, com borda branca de papel recortado.
 
-![Elenco v1](elenco-v1.jpg)
+| Teste | Fonte do corpo | Resultado |
+|---|---|---|
+| Metrô (dupla da viagem no tempo) | `imagens/referencias-visuais/de-volta-para-o-futuro-referencia.png` | ![metrô](testes/metro_cabecas-trocadas.png) |
+| Rua de 1908 | `imagens/referencias-visuais/pessoas-carro-epoca.webp` | ![1908](testes/rua1908_cabecas-trocadas.png) |
 
-## Figurinos disponíveis (18)
+Recortes avulsos (entram e saem de cena): `testes/recorte_metro_gabriel.png`, `testes/recorte_metro_elon.png`.
 
-| Chave | Figurino | Época / uso na história | Adereço |
-|---|---|---|---|
-| `carroceiro` | Carroceiro | Era das carroças | feno |
-| `motorista1908` | Motorista 1908 | Primeiros Ford T (óculos de proteção, boné) | volante |
-| `dama1908` | Dama 1908 | Rua de 1908 | sombrinha |
-| `fordista` | Operário da linha | Linha de montagem | parafuso |
-| `mecanico` | Mecânico | "Como liga isso?" | chave inglesa |
-| `guarda` | Guarda de trânsito 1920 | Nascimento das regras | placa PARE |
-| `senhor1950` | Senhor 1950 | Décadas / rádio | jornal |
-| `dona1960` | Dona 1960 | Décadas / cidade cresce | bolsa |
-| `piloto` | Piloto | Carro voador | cachecol |
-| `marty1985` | Jovem 1985 (**Gabriel · P01**) | Dupla-paródia da viagem no tempo | skate |
-| `doc` | Cientista (**Elon**) | Dupla-paródia / carro voador | controle remoto |
-| `vovo` | Vovó | Reação à novidade | tricô |
-| `executivo` | Executiva(o) | Hoje | maleta |
-| `engenheiro_hoje` | Engenheira(o) hoje | Hoje / futuro | tablet |
-| `hoodie_hoje` | Hoodie hoje | Hoje / app | celular |
-| `entregador` | Entregador(a) | Hoje / trânsito | celular |
-| `passageiro` | Passageiro(a) de hoje | Hoje / trânsito | café |
+## Como é feito (`producao/headswap.py`)
 
-Poses prontas: `puppetIdle`, `puppetWalk`, `puppetWave`, `puppetNod`, `puppetPoint`, `puppetShrug`,
-`puppetFacepalm`, `puppetJump`, `puppetScared`. Qualquer articulação (cabeça, braços, pernas, tronco) aceita
-keyframes do motor.
+1. A foto-fonte é ampliada (2,5–3×) e nitidez leve.
+2. Rosto original localizado (detector de rostos; para figuras pequenas, caixa manual no arquivo de job).
+3. Rosto original apagado e preenchido (inpaint); cabelo/chapéu/roupa de época **ficam** (`keep_hair`).
+4. Cabeça real (recortada por `producao/face_prep.py`) entra alinhada pelo queixo, com escala ~1,3× o rosto
+   original (leve exagero de caricatura) e rotação opcional.
+5. Saídas: quadro inteiro trocado (`*_frame.png`), recorte corpo+cabeça com borda de papel (`*_flat.png`),
+   corpo sem cabeça (`*_body.png`) e `*_meta.json` (ponto do pescoço → a cabeça pode balançar separada do corpo).
+
+Jobs de exemplo: `producao/jobs/metro.json`, `producao/jobs/rua1908.json`.
+
+## Fontes de corpo disponíveis hoje
+
+- Referências enviadas: metrô (2 figuras), rua 1908 (6 figuras), Elon apresentando (meio corpo).
+- Acervo licenciado (Adobe Stock, ativos gratuitos já baixados na sessão): 3 soldados c. 1900, operário de
+  linha de montagem, homem de chapéu e gravata-borboleta (anos 40), homem de terno (anos 50), multidões.
+- **Pendente**: as imagens de corpo "colete vermelho" e "smoking" vieram coladas na mensagem e não como
+  arquivo — reenviar como anexo para entrarem no acervo.
 
 ## Especificação das fotos dos participantes
 
-- **Rosto com pelo menos 400 px de altura** (ideal ≥ 800 px). A foto do Gabriel chegou com 81 × 105 px e por isso
-  aparece borrada no elenco v1 — basta reenviar em resolução maior.
-- Frontal ou levemente de 3/4, olhando para a câmera, **expressão neutra ou sorrindo** (a expressão vira a
-  "cara padrão" do boneco).
-- Fundo qualquer: o recorte é automático (`producao/face_prep.py`, cabelo + rosto + pescoço).
-- Sem óculos escuros; óculos de grau podem.
+- Rosto com **≥ 400 px de altura** (ideal ≥ 800 px). A foto do Gabriel veio com 81 × 105 px e por isso a
+  cabeça dele sai borrada nos testes; basta reenviar maior.
+- Frontal ou 3/4 leve, olhando para a câmera, expressão neutra ou sorrindo; fundo qualquer (recorte automático).
 - Nome do arquivo: `imagens/pessoas/participantes/<primeiro-nome>.png` (sem e-mail, sem sobrenome completo).
-- **Só entram rostos autorizados** (autorização de todos confirmada pelo solicitante em 19/10/2026).
-
-## Como um rosto entra no boneco
-
-```
-python3 producao/face_prep.py imagens/pessoas/participantes/gabriel.png out/img/faces/gabriel.png --size 480
-```
-Saída: PNG RGBA (cabeça com borda de papel branca e sombra), usado como `face: IMG.faces_gabriel` em `puppet()`.
+- Só entram rostos autorizados (autorização de todos confirmada pelo solicitante em 19/10/2026).

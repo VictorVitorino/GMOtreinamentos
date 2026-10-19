@@ -1,0 +1,46 @@
+{
+ "src": "/home/user/gmotreinamentos/imagens/referencias-visuais/pessoas-carro-epoca.webp",
+ "up": 3.0,
+ "out": "out/img/col/rua1908",
+ "figures": [
+  {
+   "name": "cartola_elon",
+   "head": "out/img/faces/elon.png",
+   "face": [
+    50,
+    172,
+    18,
+    20
+   ],
+   "scale": 1.3,
+   "rot": 2,
+   "keep_hair": true,
+   "crop": [
+    20,
+    140,
+    110,
+    420
+   ]
+  },
+  {
+   "name": "barba_gabriel",
+   "head": "out/img/faces/gabriel.png",
+   "face": [
+    244,
+    177,
+    20,
+    22
+   ],
+   "scale": 1.3,
+   "rot": -2,
+   "keep_hair": false,
+   "crop": [
+    218,
+    150,
+    292,
+    330
+   ]
+  }
+ ],
+ "debug": true
+}
