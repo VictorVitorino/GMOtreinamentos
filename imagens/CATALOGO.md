@@ -17,6 +17,10 @@ Nomes padronizados para o Claude referenciar arquivos sem ambiguidade. **Nomes d
 | `ford-t-referencia.png` | `referencias-visuais/` | Ford Model T (foto atual) | Enviada pelo solicitante; somente referência |
 | `ford-t-1908-cidade.png` | `referencias-visuais/` | Cenário de 1908 com Ford T | Enviada pelo solicitante; somente referência |
 | `pessoas-carro-epoca.webp` | `referencias-visuais/` | Pessoas de época + carro (cena para rostos dos participantes) | Enviada pelo solicitante; somente referência |
+| `linha-do-tempo-carros.png` | `referencias-visuais/` | Linha do tempo de carros antigos (infográfico) | Enviada pelo solicitante; somente referência |
+| `mudanca-relogio-colagem.png` | `referencias-visuais/` | Mudança: homem com relógio no lugar da cabeça (colagem) | Enviada pelo solicitante; somente referência |
+| `ruptura-tecnologica.png` | `referencias-visuais/` | Ruptura tecnológica: cabeça aberta com escritório antigo | Enviada pelo solicitante; somente referência |
+| `carro-com-gato.png` | `referencias-visuais/` | Carro com gato em primeiro plano (humor) | Enviada pelo solicitante; somente referência |
 | `NOME-SOBRENOME.jpg` | `pessoas/participantes/` | Pessoa participante no treinamento | Obter foto e consentimento — pendente |
 
 ## Convenção
