@@ -1,0 +1,444 @@
+{
+ "titulo": "QUEM APERTA O BOTÃO?",
+ "versao": "v3",
+ "alvo_segundos": 130,
+ "vozes": {
+  "N": "Narrador · Lax (ElevenLabs tS45q0QcrDHqHoaWdCDR)",
+  "M": "A Máquina · Monica (ElevenLabs 9K5K6kEHsM7u8gMJHU9C), direção monótona"
+ },
+ "mensagem_central": "A máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome: Gestão da Mudança.",
+ "cenas": [
+  {
+   "id": "S01",
+   "nome": "Estação do Tempo — a dupla (cena-paródia, recriada)",
+   "t0": 0,
+   "t1": 9,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s01a",
+     "voz": "N",
+     "texto": "Toda mudança começa assim: duas pessoas que não combinaram nada, andando na mesma direção.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "Foto real do corredor de hospital abandonado vestida de estação de metrô (nunca o frame do filme): azulejos bege em SVG na metade inferior das paredes, faixa amarela no piso, painel de partidas preto com letras amarelas, o RELÓGIO DE ESTAÇÃO (foto) na parede e a PLACA AZUL DE SETA (foto) apontando para cima. Parallax em 3 camadas, push-in lento, vinheta preta nas bordas (Ex2). Beat 1 (0–4 s): a du"
+  },
+  {
+   "id": "S02",
+   "nome": "Título",
+   "t0": 9,
+   "t1": 12,
+   "pre": 0.4,
+   "falas": [],
+   "visual": "Flash branco (Ex2) → grade verde (Ex4). O título em letras 3D amarelas extrudadas entra com rotação leve e assenta com sombra dura; partículas de papel picado caem devagar. Abaixo, serifa elegante pequena sobre tarja de papel. Nada mais se move."
+  },
+  {
+   "id": "S03",
+   "nome": "A Máquina — montagem e discar 1908",
+   "t0": 12,
+   "t1": 26,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s03a",
+     "voz": "N",
+     "texto": "O Cientista montou a máquina com o que tinha em casa.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s03b",
+     "voz": "M",
+     "texto": "Olá. Sou a Máquina. Disque o ano.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s03c",
+     "voz": "N",
+     "texto": "Um. Nove. Zero. Oito.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s03d",
+     "voz": "N",
+     "texto": "Agora... alguém confirma?",
+     "pausa": 0.6
+    },
+    {
+     "id": "s03e",
+     "voz": "M",
+     "texto": "Aguardando confirmação.",
+     "pausa": 0.5
+    }
+   ],
+   "visual": "Mesa de madeira vista de cima (Ex4). 12–13,5 s: o Cientista desenrola uma planta em papel vegetal. 13,5–21 s: cinco peças caem, UMA a cada 1,5 s, cada uma com baque surdo e nuvem de poeira: (1) banco de couro recortado da foto do carro de época + a PLACA AZUL DE SETA fixada ao lado como alavanca de marcha; (2) o RELÓGIO DE ESTAÇÃO como medidor de fluxo com ponteiro vermelho; (3) o TELEFONE DE DISC"
+  },
+  {
+   "id": "S04",
+   "nome": "Chegada: 1908",
+   "t0": 26,
+   "t1": 32,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s04a",
+     "voz": "M",
+     "texto": "Chegamos. Mil novecentos e oito.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s04b",
+     "voz": "N",
+     "texto": "Naquela época, sair de casa era um projeto.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "26–28,5 s: grade verde + '1908' gigante em 3D amarelo deslizando e assentando (fica 2,5 s), a fala da Máquina por cima. 28,5 s: wipe de papel rasgado para a foto real da rua de Viena c. 1900 com carruagem, em sépia, textura de papel com impressão fraca (Ex1), push-in lento. A Máquina 'cai' recortada (cameoDrop) com nuvem de poeira de papel e três gotas de lama recortadas; o ponteiro do relógio de "
+  },
+  {
+   "id": "S05",
+   "nome": "A dor da carroça → chega o Ford T",
+   "t0": 32,
+   "t1": 41,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s05a",
+     "voz": "N",
+     "texto": "Aí apareceu o Ford T.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s05b",
+     "voz": "N",
+     "texto": "Não o primeiro do mundo.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s05c",
+     "voz": "N",
+     "texto": "O primeiro que muita gente podia ter.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "Beat 1 (32–34,5 s): sobre a foto da carruagem, a roda gira no mesmo lugar, atolada (loop lento, respingos em stop-motion de 2 quadros/s), enquanto o relógio de estação no canto gira rápido — o tempo passa, ninguém sai do lugar. P02 Cocheiro entra pela esquerda (cameoSlide) e puxa as rédeas com o braço de papel, bochechas vermelhas de papel. Beat 2 (34,5–38 s): uma página de jornal se desdobra na t"
+  },
+  {
+   "id": "S06",
+   "nome": "Primeira pane humana + carimbo ENTENDER",
+   "t0": 41,
+   "t1": 53,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s06a",
+     "voz": "N",
+     "texto": "E a reação foi... humana.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s06b",
+     "voz": "M",
+     "texto": "Erro: ninguém explicou. Recalculando.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s06c",
+     "voz": "N",
+     "texto": "A máquina não quebrou.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s06d",
+     "voz": "N",
+     "texto": "Só faltava alguém explicar.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "Beat 1 (41–44 s): a Máquina estacionada ao lado do carro. P04 Rapaz do Feno entra (cameoSlide) oferecendo um fardo de feno ao radiador e dá um tapinha no capô como em cavalo; o carro responde com buzina de pera — ele pula (surprise + salto por keyframe) e, meio segundo depois, ri (nodYes). Beat 2 (44–46 s): o visor da máquina de escrever datilografa 'ERRO: NINGUÉM EXPLICOU · RECALCULANDO' (fica 2 "
+  },
+  {
+   "id": "S07",
+   "nome": "Disca 1965",
+   "t0": 53,
+   "t1": 56,
+   "pre": 0.4,
+   "falas": [],
+   "visual": "Close no disco: o Jovem disca 1-9-6-5 um pouco mais rápido, sorrindo (53–55 s, um beat contínuo); o Cientista empurra a alavanca-placa para 'FUTURO →' e aperta CONFIRMA com o COTOVELO porque está com a xícara de café nas duas mãos (55–56 s). Visor mostra '1965'. Íris."
+  },
+  {
+   "id": "S08",
+   "nome": "Chegada: 1965 — e a solução óbvia",
+   "t0": 56,
+   "t1": 63,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s08a",
+     "voz": "M",
+     "texto": "Trânsito à frente.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s08b",
+     "voz": "N",
+     "texto": "Todo mundo tinha carro.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s08c",
+     "voz": "N",
+     "texto": "Logo, todo mundo tinha trânsito.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "56–58,5 s: grade azul + '1965' em 3D amarelo (2,5 s) com a fala da Máquina; no canto inferior, P05 Fotógrafo espia com uma câmera compacta anos 1960 (cameoPeek de fundo, sem beat próprio). 58,5–60,5 s: wipe para a foto P&B da rua de Havana; a cor 'entra' por um rasgo de papel revelando a foto colorida dos carros clássicos; os carros recortados se empilham em três fileiras formando um engarrafament"
+  },
+  {
+   "id": "S09",
+   "nome": "A dor mudou de lugar + carimbo CONFIAR",
+   "t0": 63,
+   "t1": 73,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s09a",
+     "voz": "N",
+     "texto": "Tecnologia resolve a dor antiga e inventa uma nova.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s09b",
+     "voz": "N",
+     "texto": "Na fila, ninguém dá passagem.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s09c",
+     "voz": "N",
+     "texto": "Até alguém trocar de carro.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s09d",
+     "voz": "M",
+     "texto": "Passageira a bordo.",
+     "pausa": 0.5
+    }
+   ],
+   "visual": "Cruzamento de papel sobre a colagem de Havana. Beat 1 (63–66 s): P06 Guarda de trânsito num pedestal, luvas brancas, apito; a cada gesto, os braços dele vão sendo substituídos por um SEMÁFORO de papel que brota do pedestal; ele olha os próprios braços (lookAt), dá de ombros (headWobble + braço de papel) e pega um café. Beat 2 (66–68,5 s): P09 Passageiro no ponto de ônibus sob o RELÓGIO DE ESTAÇÃO "
+  },
+  {
+   "id": "S10",
+   "nome": "1985: glitch — a rota, resolvida",
+   "t0": 73,
+   "t1": 79,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s10a",
+     "voz": "M",
+     "texto": "Rota calculada.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s10b",
+     "voz": "N",
+     "texto": "Oitenta e cinco. A rota, resolvida.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s10c",
+     "voz": "N",
+     "texto": "O trânsito, não.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "Glitch VHS roxo rasga a tela (0,5 s); fundo magenta/azul com scanlines (Ex4). Beat 1 (73,5–76 s): P10 Analista de 1985 (ombreiras de papel, cabelo volumoso) diante do PC retrô (foto), tela verde 'ROTA CALCULADA · TEMPO: 4 HORAS'; a impressora matricial cospe um mapa contínuo que desenrola até o chão e sai do quadro; ao fundo, P05 espia com uma filmadora de ombro (peek de fundo). Beat 2 (76–77,5 s)"
+  },
+  {
+   "id": "S11",
+   "nome": "2026: atualização instalada (hipoteticamente)",
+   "t0": 79,
+   "t1": 83,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s11a",
+     "voz": "M",
+     "texto": "Atualização instalada.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s11b",
+     "voz": "N",
+     "texto": "Hipoteticamente.",
+     "pausa": 0.9
+    }
+   ],
+   "visual": "Bloco de cor vermelho (Ex2) entra por slam + '2026' em 3D amarelo (79–81,5 s). 81,5–83 s: a Máquina no centro — POP: quatro rotores de papel brotam dos cantos e giram devagar, um contorno neon roxo acende em volta do banco, o RELÓGIO DE ESTAÇÃO vira painel e, no capô, um GATO de papel já instalado olha fixo para a câmera, dono do carro. Uma etiqueta de fita-crepe pendurada balança: 'HIPOTÉTICO' (f"
+  },
+  {
+   "id": "S12",
+   "nome": "Ninguém entra (o silêncio)",
+   "t0": 83,
+   "t1": 93,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s12a",
+     "voz": "N",
+     "texto": "Um quer o manual.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s12b",
+     "voz": "N",
+     "texto": "Outra, o vídeo. Um olha pra baixo.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s12c",
+     "voz": "N",
+     "texto": "Outra procura o volante.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "Wipe de papel rasgado para grama + céu estilo XP (recriação em vetor/gradiente, não a foto original). A Máquina em modo voo flutua a 20 cm do chão (paperBob), rotores devagar, gato no capô, etiqueta HIPOTÉTICO. Câmera parada; a turma entra num semicírculo, UM beat de 2 s por pessoa, cada um com sua frase: (83–85 s) P11 Engenheiro do Manual, capacete e doze volumes empilhados, lendo com o dedo na l"
+  },
+  {
+   "id": "S13",
+   "nome": "Alguém ensina + carimbo APRENDER",
+   "t0": 93,
+   "t1": 102,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s13a",
+     "voz": "M",
+     "texto": "Passageiros: zero.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s13b",
+     "voz": "N",
+     "texto": "Quem levou o susto em mil novecentos e oito entrou primeiro.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s13c",
+     "voz": "N",
+     "texto": "E quem sabia, mostrou.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s13d",
+     "voz": "M",
+     "texto": "Passageiros: catorze.",
+     "pausa": 0.5
+    }
+   ],
+   "visual": "A fala da Máquina quebra o silêncio (93–94 s) e a música volta baixinha. Beat 1 (94–96,5 s): P04 Rapaz do Feno — mesma cabeça, ainda com o fardo de feno debaixo do braço — sobe no banco de trás; a Máquina solta a mesma buzina de pera de 1908; desta vez ele ri na hora (nodYes). Beat 2 (96,5–99 s): P11 fecha o manual (vira almofada do banco), estende o braço de papel para P13 no degrau; P13 senta; P"
+  },
+  {
+   "id": "S14",
+   "nome": "O corredor das ideias geniais que ninguém usou",
+   "t0": 102,
+   "t1": 110,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s14a",
+     "voz": "M",
+     "texto": "Recalculando.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s14b",
+     "voz": "N",
+     "texto": "Corredor errado. Aqui moram as ideias geniais que ninguém usou.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "A Máquina sobe um metro, a Máquina diz 'Recalculando' e entra pela porta errada: wipe vertical para a foto real do corredor de hospital abandonado (verde frio, push-in lento de 8 s). A narração termina aos 106,5 s e a voz fica em silêncio enquanto as placas são lidas. Portas de papel aparecem UMA a cada 2 s e todas ficam: 104 s 'PLANILHA 4.0', 106 s 'APP INTERNO', 108 s 'PROCESSO REVISADO v7_final"
+  },
+  {
+   "id": "S15",
+   "nome": "Quem aperta o botão? → carimbo ADOTAR",
+   "t0": 110,
+   "t1": 118,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s15a",
+     "voz": "N",
+     "texto": "Quem aperta o botão?",
+     "pausa": 1.5
+    },
+    {
+     "id": "s15b",
+     "voz": "N",
+     "texto": "Todo mundo.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "Wipe de volta ao céu XP. Beat 1 (110–112 s): o Cientista vira o quadro-negro para a câmera: desenhou a TECLA CONFIRMA com catorze dedinhos de giz em volta (2 s). Beat 2 (112–114,5 s): a tecla verde cresce no centro do painel; todos apontam para o vizinho — cadeia lenta de lookAt + um braço de papel por pessoa, callback da S03 — e o gato boceja; a narração está em pausa (1,5 s de silêncio cômico; s"
+  },
+  {
+   "id": "S16",
+   "nome": "Revelação — GESTÃO DA MUDANÇA",
+   "t0": 118,
+   "t1": 125,
+   "pre": 1.2,
+   "falas": [
+    {
+     "id": "s16a",
+     "voz": "N",
+     "texto": "A máquina sempre funcionou.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s16b",
+     "voz": "N",
+     "texto": "Faltava levar as pessoas junto.",
+     "pausa": 0.6
+    },
+    {
+     "id": "s16c",
+     "voz": "N",
+     "texto": "Isso tem nome.",
+     "pausa": 1.0
+    },
+    {
+     "id": "s16d",
+     "voz": "N",
+     "texto": "Gestão da Mudança.",
+     "pausa": 1.5
+    }
+   ],
+   "visual": "Beat 1 (118–120,5 s): o cartão completo vira (flip de papel) e no verso, em serifa elegante sobre papel (Ex1): 'É por isso que existe'. Beat 2 (120,5–125 s): corte para a grade verde; a frase em 3D amarelo entra palavra por palavra, lenta — GESTÃO (120,5 s), DA (121 s), MUDANÇA (121,5 s) — e fica parada, completa, de 121,5 a 125 s (3,5 s) sem nada se mexer além das partículas de papel. Embaixo, os"
+  },
+  {
+   "id": "S17",
+   "nome": "Cartela final — próxima parada: esta sala",
+   "t0": 125,
+   "t1": 130,
+   "pre": 0.4,
+   "falas": [
+    {
+     "id": "s17a",
+     "voz": "M",
+     "texto": "Você chegou ao seu destino.",
+     "pausa": 0.5
+    },
+    {
+     "id": "s17b",
+     "voz": "N",
+     "texto": "Próxima parada: esta sala.",
+     "pausa": 0.6
+    }
+   ],
+   "visual": "P05 Fotógrafo, agora com celular e o capuz do moletom no lugar do pano preto, dispara: POOF → a imagem vira um retrato emoldurado numa parede vermelha (Ex4) com plaquinha de latão. No retrato, a Máquina em modo voo com a turma inteira (a composição de S13 reaproveitada), o Cientista segurando o telefone de disco como quem não abre mão dele, o gato de olhos fechados. Abaixo, uma linha em serifa sob"
+  }
+ ]
+}
