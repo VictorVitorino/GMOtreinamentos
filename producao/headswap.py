@@ -122,6 +122,24 @@ def main(job):
             pts = fg.get('touch') or [[fcx / cw, (fcy + fh * 2.0) / ch], [fcx / cw, (fcy + fh * 3.6) / ch], [fcx / cw, fcy / ch]]
             pts = [[min(0.99, max(0.01, a)), min(0.99, max(0.01, b))] for a, b in pts]
             tm = mask_touch(crop, pts)
+            # tentativa 1: segmentação selfie num recorte justo da figura (ampliado), que o modelo entende melhor
+            tx0, ty0 = int(max(0, fcx - fw * 1.7)), int(max(0, fcy - fh * 1.3)); tx1, ty1 = int(min(cw, fcx + fw * 1.7)), ch
+            tight = crop.crop((tx0, ty0, tx1, ty1)); kk = max(1.0, 640 / max(1, tight.width)); tight2 = tight.resize((int(tight.width * kk), int(tight.height * kk)), Image.LANCZOS)
+            sg2 = segment(tight2); pm = Image.fromarray((np.clip(sg2['person'], 0, 1) * 255).astype(np.uint8)).resize(tight.size, Image.BILINEAR)
+            cov2 = float((np.asarray(pm) > 115).mean())
+            if cov2 > 0.08:
+                full = np.zeros_like(tm); full[ty0:ty1, tx0:tx1] = np.asarray(pm) / 255.0; tm = full.astype(np.float32); print(f'[{name}] selfie no recorte justo (cobertura={cov2:.2f})')
+                for kname in ('hair', 'face', 'body', 'clothes', 'acc'):
+                    m2 = Image.fromarray((np.clip(sg2[kname], 0, 1) * 255).astype(np.uint8)).resize(tight.size, Image.BILINEAR); f2 = np.zeros_like(tm); f2[ty0:ty1, tx0:tx1] = np.asarray(m2) / 255.0; seg[kname] = np.maximum(seg[kname], f2)
+            elif cv2 is not None and float((tm > 0.5).mean()) > 0.55:
+                arr = cv2.cvtColor(np.asarray(crop), cv2.COLOR_RGB2BGR); gm = np.zeros(arr.shape[:2], np.uint8)
+                rx0 = int(max(0, fcx - fw * 1.7)); ry0 = int(max(0, fcy - fh * 0.9)); rx1 = int(min(cw - 1, fcx + fw * 1.7)); ry1 = ch - 1
+                bgd = np.zeros((1, 65), np.float64); fgd = np.zeros((1, 65), np.float64)
+                try:
+                    cv2.grabCut(arr, gm, (rx0, ry0, rx1 - rx0, ry1 - ry0), bgd, fgd, 6, cv2.GC_INIT_WITH_RECT)
+                    tm = np.where((gm == 1) | (gm == 3), 1.0, 0.0).astype(np.float32)
+                    print(f'[{name}] grabcut (toque cobriu demais)')
+                except Exception as e: print('grabcut falhou', e)
             seg['person'] = np.maximum(seg['person'], tm)
             seg['face'] = np.maximum(seg['face'], ellipse_mask(tm.shape, fcx, fcy, fw * 0.58, fh * 0.66))
             seg['hair'] = np.maximum(seg['hair'], ellipse_mask(tm.shape, fcx, fcy - fh * 0.25, fw * 0.62, fh * 0.6) * (1 - seg['face']))
