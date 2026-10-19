@@ -35,3 +35,13 @@ function lookAt(ch,t0,dur,deg){if(!ch.head)return;tw(ch.head,t0,dur||0.3,{rot:de
 function surprise(ch,t0,dur){if(!ch.head)return;tw(ch.head,t0,0.15,{sx:1.12,sy:1.12},'out');tw(ch.head,t0+0.15,dur||0.5,{sx:1,sy:1},'elastic')}
 /* ---- legenda em caixinha creme (referência 'Exemplo bacana 2') ---- */
 function captionBox(parent,txt,o){o=o||{};return H('div',{style:`position:absolute;left:0;top:0;transform-origin:50% 50%;background:${o.bg||'#f3ecd8'};color:${o.color||'#1b1e21'};font:${o.weight||400} ${o.size||36}px/1.25 ${o.font||FS};padding:${o.pad||'10px 26px'};box-shadow:0 6px 18px rgba(0,0,0,.28);white-space:${o.wrap?'normal':'nowrap'};${o.w?`width:${o.w}px;`:''}${o.style||''}`},parent,txt)}
+/* quadro inteiro (foto com rostos apagados) + cabeças reais pinadas nas posições originais */
+function collageFrame(parent,o){const sc=o.scale||1;const [FW,FH]=o.metas[0].meta.frame_size;const W=FW*sc,Hh=FH*sc;
+  const wrap=H('div',{style:`position:absolute;left:0;top:0;width:${W}px;height:${Hh}px;transform-origin:50% 50%;overflow:${o.overflow||'visible'}`},parent);
+  wrap.appendChild(imgEl(o.base,`position:absolute;left:0;top:0;width:${W}px;height:${Hh}px`));
+  const fr={id:null,wrap,w:W,h:Hh,heads:[]};
+  o.metas.forEach(({meta:m,head,headScale})=>{const k=m.head_scale*sc*(headScale||1);const [hx0,hy0,hx1,hy1]=m.head_box;const chin={x:(hx0+hx1)/2*k,y:hy1*k};const nx=m.frame_neck[0]*sc,ny=m.frame_neck[1]*sc;
+    const hb=H('div',{style:`position:absolute;left:${nx-chin.x}px;top:${ny-chin.y}px;width:${m.head_size[0]*k}px;height:${m.head_size[1]*k}px`},wrap);
+    const im=imgEl(head,`position:absolute;left:0;top:0;width:${m.head_size[0]*k}px;height:${m.head_size[1]*k}px;transform-origin:${chin.x}px ${chin.y}px`);hb.appendChild(im);
+    fr.heads.push(R(im,{rot:m.rot||0}))});
+  fr.id=R(wrap,{x:o.x||0,y:o.y||0});return fr}
