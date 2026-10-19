@@ -23,7 +23,7 @@ Nomes padronizados para o Claude referenciar arquivos sem ambiguidade. **Nomes d
 | `carro-com-gato.png` | `referencias-visuais/` | Carro com gato em primeiro plano (humor) | Enviada pelo solicitante; somente referência |
 | `de-volta-para-o-futuro-referencia.png` | `referencias-visuais/` | Dupla do filme "De Volta para o Futuro" (base da paródia) | Enviada pelo solicitante; somente referência |
 | `elon-musk-rosto-referencia.png` | `referencias-visuais/` | Rosto de Elon Musk (montagem no papel do cientista) | Enviada pelo solicitante; somente referência |
-| `gabriel-rosto.png` | `pessoas/participantes/` | Gabriel, participante (montagem no papel do jovem) | Foto recebida; **aguardando confirmação de autorização antes de subir ao repositório público** |
+| `gabriel.png` | `pessoas/participantes/` | Gabriel, participante (montagem no papel do jovem) | Foto enviada; uso autorizado pelo solicitante em nome dos participantes |
 | `NOME-SOBRENOME.jpg` | `pessoas/participantes/` | Pessoa participante no treinamento | Obter foto e consentimento — pendente |
 
 ## Convenção
