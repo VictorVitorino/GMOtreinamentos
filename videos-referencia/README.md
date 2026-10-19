@@ -15,3 +15,9 @@ Os quatro vídeos foram fornecidos na conversa como anexos. Para uso pelo Claude
 - Referências de linguagem visual: recriar estética e dinâmica, não copiar trechos sem autorização.
 - Material que retrate produtos e pessoas reais: distinguir de simulação/efeitos e conferir licença.
 - Produção: enquadramento final 1920x1080, duração <=120 segundos.
+
+## Adições 19/10 — "tipos bacanas"
+| Arquivo | Duração | Formato | Observação |
+|---|---|---|---|
+| `Exemplo bacana 1.mp4` | 8,6 s | 550×626 · 10 fps | Referência de estilo enviada pelo solicitante (colagem/recorte). |
+| `Exemplo bacana 2.mp4` | 12,1 s | 550×626 · 10 fps | Referência de estilo enviada pelo solicitante (colagem/recorte). |
