@@ -1,0 +1,816 @@
+{
+ "title": "QUEM APERTA O BOTÃO?",
+ "logline": "Um cientista excêntrico (rosto de Elon Musk em paródia muda) e um jovem cético (Gabriel) compram uma tecla verde CONFIRMA numa máquina de lanche de estação e viajam de 1908 a 2026 numa máquina do tempo feita de telefone de disco, relógio de estação e cafezinho. A máquina nunca quebra: em toda época, quem trava é a gente — até que, em 2026, as portas abrem, ninguém entra, alguém ensina, e catorze mãos apertam o botão juntas. Só então a história ganha nome: Gestão da Mudança.",
+ "narrator_persona": "Duas vozes, em contraste cômico. (1) O NARRADOR RESENHA: voz pt-BR nativa, jovem (fim dos vinte), clara como narrador de documentário mas com sorriso na voz — o amigo que comenta a história enquanto ela acontece, fala com os personagens ('Agora... alguém confirma?'), soletra o disco junto ('Um. Nove. Zero. Oito.') e solta tiradas de uma palavra ('Hipoteticamente.'). Frases curtas, pausas generosas, zero gíria datada, nunca ironiza um participante — só a situação. Nunca diz o nome de ninguém da turma. (2) A MÁQUINA: voz feminina sintética de GPS, educada, plana, levemente orgulhosa de si; só fala entre 2 e 6 palavras («Erro: ninguém explicou. Recalculando.» / «Passageiros: zero.» / «Você chegou ao seu destino.»). É ela que anuncia a tese como punchline muito antes de alguém dizê-la. A flatness da TTS é o recurso cômico, não um defeito. O Cientista nunca fala; o Jovem e a turma só se expressam por pictogramas (?, !, lâmpada, gota).",
+ "voice_direction": "ElevenLabs, modelo Multilingual v2 (ou v3 com tags de pausa), vozes de catálogo pt-BR nativas — nunca clones de pessoas reais, conferir que não sai pt-PT. NARRADOR: speed 0,92 · stability 0,45 · similarity 0,80 · style 0,35. MÁQUINA: speed 0,95 · stability 0,90 · style 0,0 · similarity 0,75; leve EQ de alto-falante pequeno (corte abaixo de 200 Hz e acima de 7 kHz) e chime próprio de três notas sintetizado antes de cada fala (nunca som de app real). Gerar e OUVIR as falas da Máquina antes de animar: se sair simpática em vez de plana, trocar a voz — o contraste 'amigo animado × GPS imperturbável' é a comédia de voz do filme. Higiene de texto para a TTS: remover as aspas « », parênteses e marcações de cena do texto enviado; números sempre por extenso (já estão); pausas feitas com ponto final e reticências, nunca com cadeias de reticências; testar antes 'Ford T', 'Pix', 'Hipoteticamente', 'catorze' (ou 'quatorze', o que a voz disser melhor), 'Recalculando'. Montagem: um stem por frase, nomeado por cena (S01_narr_01, S03_maq_01...), intervalo fixo de 0,4 s entre voz e voz; a pausa de 1,5 s após 'Quem aperta o botão?' e a de 1 s antes de 'Gestão da Mudança.' são silêncio real na timeline, não ponto. Orçamento: 211 palavras a 0,92 ≈ 96 s de fala em 130 s — há 34 s de ar para gags, para o silêncio de 2 s e para os carimbos. Travar o áudio final ANTES de timar os visuais; o SRT só depois. Se a locução estourar, cortar nesta ordem: (1) 'Tecnologia resolve a dor antiga e inventa uma nova.' (S09), (2) 'E quem sabia, mostrou.' (S13), (3) 'Naquela época,' (S04). Pronomes de gênero ('Passageira', 'Outra') se ajustam depois do mapeamento P02–P14. Música e SFX sintetizados (ukulele + glockenspiel ~92 bpm, variações por era, parada total em 91–93 s).",
+ "scenes": [
+  {
+   "id": "S01",
+   "t0": 0,
+   "t1": 9,
+   "title": "Estação do Tempo — a dupla (cena-paródia, recriada)",
+   "narration": "Toda mudança começa assim: duas pessoas que não combinaram nada, andando na mesma direção.",
+   "visual": "Foto real do corredor de hospital abandonado vestida de estação de metrô (nunca o frame do filme): azulejos bege em SVG na metade inferior das paredes, faixa amarela no piso, painel de partidas preto com letras amarelas, o RELÓGIO DE ESTAÇÃO (foto) na parede e a PLACA AZUL DE SETA (foto) apontando para cima. Parallax em 3 camadas, push-in lento, vinheta preta nas bordas (Ex2). Beat 1 (0–4 s): a dupla entra pela esquerda e caminha em direção à câmera ombro a ombro — passo de boneco feito com cameoSlide lento + paperBob: O CIENTISTA (rosto licenciado/caricatura de Elon Musk, jaleco de papel com bordas rasgadas, cabelo branco de papel arrepiado, relógio de estação pendurado no peito por barbante, giz na mão) e O JOVEM (rosto de Gabriel, colete vermelho acolchoado de papel, mochila). Balões só com pictogramas: Cientista → rabisco de foguete; Jovem → '?'. Beat 2 (4–6,5 s): param diante de uma MÁQUINA DE LANCHE de papel; o Cientista insere uma moeda — ela cai de volta na bandeja, plinc. Beat 3 (6,5–9 s): o Jovem encosta o celular (foto do Pix) no leitor: plim genérico, a máquina treme e cospe uma TECLA VERDE gigante escrita CONFIRMA; ele segura a tecla, vira a cabeça para a câmera (lookAt) com cara de 'sério isso?'; o Cientista acende um balão de lâmpada.",
+   "transition_in": "Fade de preto com vinheta; o zumbido de estação entra 0,5 s antes da imagem.",
+   "text_on_screen": "Painel de partidas: 'PRÓXIMO TREM → 1908 · PLATAFORMA 3' (0–9 s) · etiquetas de fita-crepe 'O CIENTISTA' / 'O JOVEM' (1–4 s) · frente da máquina de lanche: 'PEÇAS · BOTÕES · LANCHES' · etiqueta na tecla: 'CONFIRMA' · micro-legenda fixa no canto inferior direito durante toda a cena: 'paródia · cena fictícia · nenhuma fala real'",
+   "cameos": [
+    {
+     "slot": "P01",
+     "role": "O Jovem — herói da dupla (rosto de Gabriel), colete vermelho de papel sobre jaqueta jeans, mochila, celular com Pix",
+     "reaction": "Ceticismo simpático que resolve na prática: não pediu pra mudar, mas é ele quem faz a máquina funcionar",
+     "body": "Corpo 'colete vermelho' (reenvio pendente) ou corpo civil licenciado + colete vermelho de papel sobreposto; cabeça pinada no pescoço (collageChar)",
+     "entry_exit": "Entra pela esquerda em caminhada lenta (cameoSlide 0–4 s), fica em quadro até a íris de S02",
+     "gag": "Moeda do Cientista falha, Pix do Jovem funciona — e o que sai da máquina de lanche é a tecla CONFIRMA que vai mover o filme inteiro"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "máquina de lanche de papel que vende peças e botões",
+    "moeda antiga que cai de volta",
+    "celular com Pix (foto do acervo)",
+    "tecla verde CONFIRMA com etiqueta de preço",
+    "relógio de estação (foto) na parede",
+    "placa azul de seta (foto) apontando para cima"
+   ],
+   "sfx_music": "Sem música ainda. Zumbido de estação, passos de papel toc-toc, moeda plinc-plinc na bandeja, plim genérico de pagamento (sintetizado, não o som de nenhum app), baque surdo da tecla caindo, sino de aviso distante."
+  },
+  {
+   "id": "S02",
+   "t0": 9,
+   "t1": 12,
+   "title": "Título",
+   "narration": "",
+   "visual": "Flash branco (Ex2) → grade verde (Ex4). O título em letras 3D amarelas extrudadas entra com rotação leve e assenta com sombra dura; partículas de papel picado caem devagar. Abaixo, serifa elegante pequena sobre tarja de papel. Nada mais se move.",
+   "transition_in": "Flash branco de 0,3 s.",
+   "text_on_screen": "'QUEM APERTA O BOTÃO?' (3D amarelo, 9,3–12 s, 2,7 s) · tarja serif: 'uma viagem no tempo em dois minutos' (10–12 s)",
+   "cameos": [],
+   "props_random_but_meaningful": [],
+   "sfx_music": "Sting de abertura: pizzicato + tímpano de brinquedo; whoosh de papel; o tema principal (ukulele + glockenspiel, ~92 bpm) nasce no último segundo."
+  },
+  {
+   "id": "S03",
+   "t0": 12,
+   "t1": 26,
+   "title": "A Máquina — montagem e discar 1908",
+   "narration": "O Cientista montou a máquina com o que tinha em casa. «Olá. Sou a Máquina. Disque o ano.» Um. Nove. Zero. Oito. Agora... alguém confirma? «Aguardando confirmação.»",
+   "visual": "Mesa de madeira vista de cima (Ex4). 12–13,5 s: o Cientista desenrola uma planta em papel vegetal. 13,5–21 s: cinco peças caem, UMA a cada 1,5 s, cada uma com baque surdo e nuvem de poeira: (1) banco de couro recortado da foto do carro de época + a PLACA AZUL DE SETA fixada ao lado como alavanca de marcha; (2) o RELÓGIO DE ESTAÇÃO como medidor de fluxo com ponteiro vermelho; (3) o TELEFONE DE DISCO como seletor de ano; (4) a MÁQUINA DE ESCREVER como visor, com a XÍCARA DE CAFÉ num suporte 'COMBUSTÍVEL'; (5) o Jovem encaixa a TECLA VERDE comprada na estação, ainda com a etiqueta de preço. 21–23,5 s: close no disco, a mão de papel do Jovem disca 1-9-0-8; o disco volta devagar, clac-clac-clac, o narrador soletra junto. 23,5–25,5 s: loop 'quem aperta' — o Cientista vira a cabeça para o Jovem (lookAt) e aponta com o braço de papel; o Jovem vira para o Cientista e aponta de volta; uma volta lenta, 2 s. 25,5–26 s: o Jovem aperta. Íris fecha.",
+   "transition_in": "Whoosh de papel: a câmera 'cai' sobre a mesa de madeira.",
+   "text_on_screen": "Etiquetas de fita-crepe nas peças (cada uma ≥2 s): 'FLUXO', 'DISQUE O ANO', 'COMBUSTÍVEL', '← PASSADO | FUTURO →', 'CONFIRMA' · visor da máquina de escrever: 'AGUARDANDO CONFIRMAÇÃO_' (24–26 s)",
+   "cameos": [
+    {
+     "slot": "P01",
+     "role": "O Jovem disca o ano e, depois do loop de apontar, é quem aperta CONFIRMA",
+     "reaction": "Dúvida → iniciativa: alguém tem que ser o primeiro",
+     "body": "Corpo colete vermelho; braço de papel articulado para discar e apertar",
+     "entry_exit": "Já em quadro (mãos e tronco entram pela borda inferior na vista de cima); fica até a íris",
+     "gag": "Discar 1908 num telefone de disco é lento e a sala inteira sente; depois, o 'você aperta / não, você' em volta da tecla verde"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "banco do carro de época como assento",
+    "relógio de estação como medidor de fluxo",
+    "telefone de disco como seletor de ano",
+    "máquina de escrever como visor",
+    "xícara de café como combustível",
+    "placa azul de seta como alavanca PASSADO/FUTURO",
+    "tecla verde CONFIRMA com etiqueta de preço"
+   ],
+   "sfx_music": "Baques de madeira/papel por peça (5, regulares); clac-clac do disco rotativo (4 retornos lentos); bipe discreto e chime próprio da Máquina; tema principal entra leve em ukulele."
+  },
+  {
+   "id": "S04",
+   "t0": 26,
+   "t1": 32,
+   "title": "Chegada: 1908",
+   "narration": "«Chegamos. Mil novecentos e oito.» Naquela época, sair de casa era um projeto.",
+   "visual": "26–28,5 s: grade verde + '1908' gigante em 3D amarelo deslizando e assentando (fica 2,5 s), a fala da Máquina por cima. 28,5 s: wipe de papel rasgado para a foto real da rua de Viena c. 1900 com carruagem, em sépia, textura de papel com impressão fraca (Ex1), push-in lento. A Máquina 'cai' recortada (cameoDrop) com nuvem de poeira de papel e três gotas de lama recortadas; o ponteiro do relógio de estação gira para trás e para com um 'tóin'. O ano '1908' já saiu de tela antes de qualquer preço aparecer.",
+   "transition_in": "Íris abre sobre a grade verde.",
+   "text_on_screen": "'1908' (3D amarelo, 26–28,5 s) · tarja de papel em serifa: 'antes do carro popular' (29–32 s)",
+   "cameos": [],
+   "props_random_but_meaningful": [
+    "gotas de lama de papel",
+    "relógio de estação girando para trás"
+   ],
+   "sfx_music": "Whoosh grave, baque de pouso, poeira; a música vira valsinha em pizzicato; relincho distante sintetizado."
+  },
+  {
+   "id": "S05",
+   "t0": 32,
+   "t1": 41,
+   "title": "A dor da carroça → chega o Ford T",
+   "narration": "Aí apareceu o Ford T. Não o primeiro do mundo. O primeiro que muita gente podia ter.",
+   "visual": "Beat 1 (32–34,5 s): sobre a foto da carruagem, a roda gira no mesmo lugar, atolada (loop lento, respingos em stop-motion de 2 quadros/s), enquanto o relógio de estação no canto gira rápido — o tempo passa, ninguém sai do lugar. P02 Cocheiro entra pela esquerda (cameoSlide) e puxa as rédeas com o braço de papel, bochechas vermelhas de papel. Beat 2 (34,5–38 s): uma página de jornal se desdobra na tela inteira — fac-símile tipográfico RECRIADO sobre a foto dos jornais antigos (não o arquivo .webp), com rótulo pequeno 'anúncio de época' e SEM ano; o carro de época isolado (foto, recorte) entra rolando da direita com buzina de pera; P03 Vendedora espia pela direita (cameoPeek), segura o jornal, a sobrancelha sobe (lookAt para cima), balão com LÂMPADA — ela entende antes de todo mundo. Beat 3 (38–41 s): P05 Fotógrafo surge (cameoPop) e monta o tripé sob o pano preto, câmera de fole, preparando o flash; P02 olha o carro, olha as rédeas na própria mão (lookAt duas vezes, lento), balão '?'. As rédeas ficam com ele pelo resto do filme.",
+   "transition_in": "Continuidade (mesma foto); o jornal entra como desdobramento de papel.",
+   "text_on_screen": "Jornal fac-símile recriado (34,5–38 s): manchete 'O AUTOMÓVEL QUE CABE NO BOLSO', preço de época com rótulo 'anúncio de época · preço aproximado' (nunca ao lado de um ano), carimbo vermelho 'ACESSO' (≥2 s)",
+   "cameos": [
+    {
+     "slot": "P02",
+     "role": "O Cocheiro de 1908 — cartola de papel, rédeas de couro, botas",
+     "reaction": "Hábito: aplica o jeito antigo à ferramenta nova, com pose e dignidade (não é burrice, é costume)",
+     "body": "Corpo civil 1908 (rua1908, variante 1) + cartola e rédeas como recortes sobrepostos",
+     "entry_exit": "Entra pela esquerda (cameoSlide 32 s), permanece; sai no flash de S06 já dentro da foto de grupo",
+     "gag": "Puxa as rédeas da carroça atolada enquanto o relógio dispara; quando o carro chega, olha o carro, olha as rédeas, olha o carro — e fica com as rédeas na mão"
+    },
+    {
+     "slot": "P03",
+     "role": "A Vendedora da General Store — avental, lápis na orelha, jornal na mão",
+     "reaction": "Entendimento rápido: ela sempre entende primeiro",
+     "body": "Corpo civil 1908 (rua1908, variante 2) + avental de papel e jornal recortado",
+     "entry_exit": "Espia pela borda direita (cameoPeek 34,5 s), fica até a foto de grupo de S06",
+     "gag": "Lê o anúncio e a lâmpada acende antes de qualquer outra pessoa"
+    },
+    {
+     "slot": "P05",
+     "role": "O Fotógrafo de 1908 — pano preto, câmera de fole no tripé, flash de pólvora",
+     "reaction": "Curiosidade: quer registrar o que está acontecendo (volta em todas as épocas)",
+     "body": "Corpo civil 1908 (rua1908, variante 3) + pano preto e câmera de fole em recorte",
+     "entry_exit": "Aparece com pop (cameoPop 38 s) no canto inferior esquerdo; permanece até disparar o flash em S06",
+     "gag": "Prepara o flash que vai virar a transição da cena seguinte"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "roda de carruagem atolada em loop",
+    "jornais antigos (foto) como base do fac-símile",
+    "carro de época isolado (foto) com buzina de pera",
+    "câmera de fole com flash de pólvora"
+   ],
+   "sfx_music": "Rangido de roda, respingo; folhear de jornal gigante; buzina de pera a-uu-ga; tripé armando; a valsa continua."
+  },
+  {
+   "id": "S06",
+   "t0": 41,
+   "t1": 53,
+   "title": "Primeira pane humana + carimbo ENTENDER",
+   "narration": "E a reação foi... humana. «Erro: ninguém explicou. Recalculando.» A máquina não quebrou. Só faltava alguém explicar.",
+   "visual": "Beat 1 (41–44 s): a Máquina estacionada ao lado do carro. P04 Rapaz do Feno entra (cameoSlide) oferecendo um fardo de feno ao radiador e dá um tapinha no capô como em cavalo; o carro responde com buzina de pera — ele pula (surprise + salto por keyframe) e, meio segundo depois, ri (nodYes). Beat 2 (44–46 s): o visor da máquina de escrever datilografa 'ERRO: NINGUÉM EXPLICOU · RECALCULANDO' (fica 2 s) enquanto a Máquina fala. Beat 3 (46–49,5 s): o Jovem pega o giz da mão do Cientista (braço de papel) e desenha no quadro-negro de papel: cavalo + relógio = muitas horas; carro + relógio = poucas horas; UMA lâmpada grande acende sobre o grupo (um só beat, sem cascata). Beat 4 (49,5–51 s): P05 dispara o flash: POOF branco → a cena congela em FOTO SÉPIA DE GRUPO em volta do carro, feita com collageFrame só com recortes nossos (P02 segurando as rédeas, P03 de braços cruzados piscando para a câmera, P04 com o feno, o Jovem com o giz, o Cientista com o quadro, a Máquina atrás). Beat 5 (51–53 s): mesa de madeira: entra o CARTÃO DE CARIMBOS perfurado com 4 casas; o carimbo de borracha desce: THUNK, tinta vermelha, ENTENDER. Depois deste carimbo o cartão desliza para o canto inferior esquerdo e fica como HUD discreto até o fim.",
+   "transition_in": "Continuidade; corte para a mesa só no carimbo.",
+   "text_on_screen": "Visor: 'ERRO: NINGUÉM EXPLICOU · RECALCULANDO' (44–46 s) · quadro-negro em giz: pictogramas (46–49,5 s) · carimbo 'ENTENDER' no cartão, casa 1 de 4 (51–53 s)",
+   "cameos": [
+    {
+     "slot": "P04",
+     "role": "O Rapaz do Feno — boné, suspensórios, fardo de feno",
+     "reaction": "Cuidado e curiosidade: trata o novo com o carinho de quem só conhecia cavalo; leva um susto e ri de si mesmo",
+     "body": "Corpo operário/civil 1908 (rua1908, variante 4) + boné e fardo de feno recortados",
+     "entry_exit": "Entra pela direita (cameoSlide 41 s), fica até congelar na foto de grupo",
+     "gag": "Dá feno ao radiador, faz carinho no capô, o carro buzina de volta; ele pula e depois ri — o susto que vai ser resgatado em 2026"
+    },
+    {
+     "slot": "P01",
+     "role": "O Jovem desenha a explicação no quadro-negro",
+     "reaction": "Descoberta: o problema não era a máquina, era a explicação",
+     "body": "Corpo colete vermelho + braço de papel com giz",
+     "entry_exit": "Já em quadro; congela na foto de grupo",
+     "gag": "Rouba o giz do Cientista — o humano explica melhor que o inventor"
+    },
+    {
+     "slot": "P05",
+     "role": "O Fotógrafo dispara o flash",
+     "reaction": "Registra a descoberta",
+     "body": "Corpo civil 1908 + câmera de fole",
+     "entry_exit": "Dispara e sai de quadro no POOF",
+     "gag": "O flash vira a transição: a cena inteira congela em foto sépia de grupo"
+    },
+    {
+     "slot": "P02",
+     "role": "Cocheiro no grupo da foto",
+     "reaction": "Entendeu, mas segue com as rédeas na mão",
+     "body": "Corpo civil 1908 + rédeas",
+     "entry_exit": "Congela na foto; sai com o corte para a mesa",
+     "gag": "Ainda segura as rédeas na foto de grupo"
+    },
+    {
+     "slot": "P03",
+     "role": "Vendedora no grupo da foto",
+     "reaction": "Já estava entendida; cruza os braços satisfeita",
+     "body": "Corpo civil 1908 + avental",
+     "entry_exit": "Congela na foto; sai com o corte para a mesa",
+     "gag": "Única que olha para a câmera e pisca"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "fardo de feno oferecido a um radiador",
+    "quadro-negro de papel com giz",
+    "cartão de carimbos perfurado (4 casas)",
+    "carimbo de borracha vermelho"
+   ],
+   "sfx_music": "Burburinho de papel; buzina de pera; teclas de máquina de escrever; giz no quadro; um único 'tin' de lâmpada; flash de pólvora POOF; THUNK grave e satisfatório do carimbo."
+  },
+  {
+   "id": "S07",
+   "t0": 53,
+   "t1": 56,
+   "title": "Disca 1965",
+   "narration": "",
+   "visual": "Close no disco: o Jovem disca 1-9-6-5 um pouco mais rápido, sorrindo (53–55 s, um beat contínuo); o Cientista empurra a alavanca-placa para 'FUTURO →' e aperta CONFIRMA com o COTOVELO porque está com a xícara de café nas duas mãos (55–56 s). Visor mostra '1965'. Íris.",
+   "transition_in": "Íris abre no disco.",
+   "text_on_screen": "Visor: '1965' (54–56 s)",
+   "cameos": [
+    {
+     "slot": "P01",
+     "role": "O Jovem discando",
+     "reaction": "Já está mais à vontade com a máquina",
+     "body": "Braço de papel + mão no disco",
+     "entry_exit": "Só a mão em quadro",
+     "gag": "Callback: desta vez quem aperta é o Cientista — com o cotovelo, segurando café"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "xícara de café segurada com as duas mãos",
+    "alavanca-placa em FUTURO →"
+   ],
+   "sfx_music": "Clac-clac mais curto; bipe; whoosh."
+  },
+  {
+   "id": "S08",
+   "t0": 56,
+   "t1": 63,
+   "title": "Chegada: 1965 — e a solução óbvia",
+   "narration": "«Trânsito à frente.» Todo mundo tinha carro. Logo, todo mundo tinha trânsito.",
+   "visual": "56–58,5 s: grade azul + '1965' em 3D amarelo (2,5 s) com a fala da Máquina; no canto inferior, P05 Fotógrafo espia com uma câmera compacta anos 1960 (cameoPeek de fundo, sem beat próprio). 58,5–60,5 s: wipe para a foto P&B da rua de Havana; a cor 'entra' por um rasgo de papel revelando a foto colorida dos carros clássicos; os carros recortados se empilham em três fileiras formando um engarrafamento de colagem, nuvens de fumaça de papel pulsando devagar; a Máquina recortada aparece no fim da fila com pisca-alerta de papel. 60,5–63 s: P08 Engenheiro da prancheta surge (cameoPop) e abre uma planta 'SOLUÇÃO: MAIS FAIXAS'; a estrada se alarga em acordeão de papel... e o engarrafamento se alarga junto; ele risca a planta e desenha um '?'.",
+   "transition_in": "Whoosh + grade azul.",
+   "text_on_screen": "'1965' (3D amarelo, 56–58,5 s) · placa serif em papel: 'A CIDADE CRESCEU' (59–61 s) · planta: 'SOLUÇÃO: MAIS FAIXAS' (60,5–63 s)",
+   "cameos": [
+    {
+     "slot": "P08",
+     "role": "O Engenheiro da prancheta — óculos grandes, bigode anos 1970, planta debaixo do braço",
+     "reaction": "Resolve com técnica e descobre, honesto, que a dor só mudou de lugar (piada para engenheiro, com voluntário que topa)",
+     "body": "Corpo homem anos 50 (terno) + óculos e bigode de papel + planta recortada",
+     "entry_exit": "Pop no canto direito (60,5 s), sai por baixo antes do push-in de S09",
+     "gag": "'MAIS FAIXAS' alarga a estrada e o engarrafamento alarga junto"
+    },
+    {
+     "slot": "P05",
+     "role": "Fotógrafo de fundo, agora com câmera compacta anos 1960",
+     "reaction": "A mesma curiosidade em outra época (gag silencioso de fundo)",
+     "body": "Corpo civil 1908 + câmera compacta recortada (sem pano preto)",
+     "entry_exit": "Espia pela borda inferior durante o ano 3D (57–59 s) e some",
+     "gag": "Registra todas as épocas; a câmera muda, o propósito não"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "carros de Havana empilhados em fila",
+    "planta de engenharia que alarga a rua em acordeão",
+    "pisca-alerta de papel"
+   ],
+   "sfx_music": "Buzinas em coro sintetizadas, afinadas na tonalidade da música (nunca agressivas); acordeão de papel esticando; a música vira lounge/surf leve."
+  },
+  {
+   "id": "S09",
+   "t0": 63,
+   "t1": 73,
+   "title": "A dor mudou de lugar + carimbo CONFIAR",
+   "narration": "Tecnologia resolve a dor antiga e inventa uma nova. Na fila, ninguém dá passagem. Até alguém trocar de carro. «Passageira a bordo.»",
+   "visual": "Cruzamento de papel sobre a colagem de Havana. Beat 1 (63–66 s): P06 Guarda de trânsito num pedestal, luvas brancas, apito; a cada gesto, os braços dele vão sendo substituídos por um SEMÁFORO de papel que brota do pedestal; ele olha os próprios braços (lookAt), dá de ombros (headWobble + braço de papel) e pega um café. Beat 2 (66–68,5 s): P09 Passageiro no ponto de ônibus sob o RELÓGIO DE ESTAÇÃO (foto) cujo mostrador tem ANOS no lugar das horas (1965, 1966, 1967...); os ponteiros giram e a barba de papel dele cresce continuamente (três camadas em crossfade); a Máquina tenta entrar na fila com pisca-alerta e os carros se fecham como dominó. Beat 3 (68,5–71,5 s): P07 Motorista de 1965 (penteado colmeia, óculos gatinho) no conversível com um MAPA que se desdobra maior que o carro e cobre o para-brisa (68,5–70 s); corte: ela já está sentada no banco de trás da Máquina, o mapa dobrado num quadradinho no colo, a chave do próprio carro pendurada no relógio de estação; cinto de papel 'clic' (70–71,5 s). Beat 4 (71,5–73 s): THUNK no cartão HUD: CONFIAR.",
+   "transition_in": "Push-in da foto para o cruzamento de papel (wipe lateral).",
+   "text_on_screen": "Mostrador do relógio com anos no lugar das horas (66–68,5 s) · carimbo 'CONFIAR', casa 2 de 4 (71,5–73 s)",
+   "cameos": [
+    {
+     "slot": "P06",
+     "role": "O Guarda de trânsito — luvas brancas, apito, pedestal",
+     "reaction": "Adaptação: o jeito dele de organizar vira sistema, e ele aceita com um café",
+     "body": "Corpo uniforme c. 1900 (soldados, variante 1) + luvas brancas e quepe de papel",
+     "entry_exit": "Já em quadro no pedestal (63 s), sai com o wipe para o ponto de ônibus",
+     "gag": "Os braços viram um semáforo de papel; ele dá de ombros e pega um café"
+    },
+    {
+     "slot": "P09",
+     "role": "O Passageiro do ponto — jornal, guarda-chuva, relógio de estação acima",
+     "reaction": "Paciência: a dor nova é o tempo",
+     "body": "Corpo homem anos 40 (gravata-borboleta) + jornal, guarda-chuva e barba de papel em três camadas",
+     "entry_exit": "Entra pela borda direita (cameoSlide 66 s), sai com o corte para o conversível",
+     "gag": "O relógio da estação conta anos, não horas; a barba cresce enquanto ele espera"
+    },
+    {
+     "slot": "P07",
+     "role": "A Motorista de 1965 — colmeia, óculos gatinho, conversível, mapa gigante",
+     "reaction": "Confiança: larga a solução antiga, entra no novo mesmo sem enxergar o caminho inteiro",
+     "body": "Corpo homem anos 50 (só o tronco, dentro do recorte do conversível) + peruca colmeia e óculos gatinho de papel; depois pinada no banco de trás da Máquina",
+     "entry_exit": "Aparece no conversível (68,5 s); reaparece por corte já sentada na Máquina (70 s); fica a bordo até o fim",
+     "gag": "O mapa se desdobra maior que o carro; ela troca de carro e pendura a chave do antigo no relógio da Máquina"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "semáforo de papel que brota de um pedestal",
+    "relógio de estação com anos no mostrador",
+    "mapa rodoviário maior que o carro",
+    "chave de carro pendurada no relógio"
+   ],
+   "sfx_music": "Apito, clique de semáforo, folha de jornal, tique-taque que vira batida grave, pisca-alerta tic-tac, mapa desdobrando, 'clic' do cinto, THUNK."
+  },
+  {
+   "id": "S10",
+   "t0": 73,
+   "t1": 79,
+   "title": "1985: glitch — a rota, resolvida",
+   "narration": "«Rota calculada.» Oitenta e cinco. A rota, resolvida. O trânsito, não.",
+   "visual": "Glitch VHS roxo rasga a tela (0,5 s); fundo magenta/azul com scanlines (Ex4). Beat 1 (73,5–76 s): P10 Analista de 1985 (ombreiras de papel, cabelo volumoso) diante do PC retrô (foto), tela verde 'ROTA CALCULADA · TEMPO: 4 HORAS'; a impressora matricial cospe um mapa contínuo que desenrola até o chão e sai do quadro; ao fundo, P05 espia com uma filmadora de ombro (peek de fundo). Beat 2 (76–77,5 s): a Máquina atualizou o seletor — um celular touch no lugar do disco; o Jovem toca 2-0-2-6 num gesto só; o Cientista guarda o telefone de disco no bolso do jaleco e dá um tapinha nele. Beat 3 (77,5–79 s): P10 estica o braço de papel e aperta CONFIRMA pela dupla, sem nem olhar — quem já aprendeu aperta fácil.",
+   "transition_in": "Glitch VHS roxo (0,5 s).",
+   "text_on_screen": "Tela do PC: 'ROTA CALCULADA · TEMPO: 4 HORAS' (73,5–76 s) · visor da Máquina: '2026' (76,5–79 s)",
+   "cameos": [
+    {
+     "slot": "P10",
+     "role": "A Analista de 1985 — ombreiras, PC retrô, disquete no bolso",
+     "reaction": "Confiança na ferramenta nova: já aprendeu a apertar botões, então aperta",
+     "body": "Corpo homem anos 40 (gravata-borboleta) + ombreiras e cabelo volumoso de papel (ou corpo moderno licenciado se chegar)",
+     "entry_exit": "Já em quadro ao PC (73,5 s), aperta CONFIRMA e sai com o slam de S11",
+     "gag": "O mapa da matricial não acaba nunca; ela aperta CONFIRMA pela dupla sem pestanejar"
+    },
+    {
+     "slot": "P01",
+     "role": "O Jovem toca 2026 no touch",
+     "reaction": "Adaptação rápida; olha de canto o Cientista guardando o telefone de disco",
+     "body": "Braço de papel + celular touch",
+     "entry_exit": "Mãos em quadro no beat 2",
+     "gag": "O inventor do futuro guarda o telefone de disco com carinho — todo mundo tem seu antigo favorito"
+    },
+    {
+     "slot": "P05",
+     "role": "Fotógrafo de fundo, agora com filmadora de ombro",
+     "reaction": "Registra também os anos 80",
+     "body": "Corpo civil 1908 + filmadora recortada",
+     "entry_exit": "Espia pela borda esquerda (74–76 s) e some",
+     "gag": "Terceira aparição silenciosa do registrador de épocas"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "PC retrô anos 80 (foto)",
+    "impressora matricial com mapa infinito",
+    "telefone de disco indo para o bolso do jaleco",
+    "disquete no bolso"
+   ],
+   "sfx_music": "Ruído VHS, teclado de membrana, impressora matricial, synthwave breve (4 compassos no mesmo andamento), bipe, tapinha no bolso."
+  },
+  {
+   "id": "S11",
+   "t0": 79,
+   "t1": 83,
+   "title": "2026: atualização instalada (hipoteticamente)",
+   "narration": "«Atualização instalada.» Hipoteticamente.",
+   "visual": "Bloco de cor vermelho (Ex2) entra por slam + '2026' em 3D amarelo (79–81,5 s). 81,5–83 s: a Máquina no centro — POP: quatro rotores de papel brotam dos cantos e giram devagar, um contorno neon roxo acende em volta do banco, o RELÓGIO DE ESTAÇÃO vira painel e, no capô, um GATO de papel já instalado olha fixo para a câmera, dono do carro. Uma etiqueta de fita-crepe pendurada balança: 'HIPOTÉTICO' (fica presa à Máquina por toda a S12). É a mesma máquina do tempo — mesmo banco, mesmo relógio, mesma tecla verde — agora em modo voo; não existe segundo veículo.",
+   "transition_in": "Slam do bloco vermelho vindo da esquerda.",
+   "text_on_screen": "'2026' (3D amarelo, 79–81,5 s) · etiqueta 'HIPOTÉTICO' (81,5 s em diante, ≥2 s sempre que o modo voo está em tela) · placa neon pequena: 'VOA DE VERDADE (NESTA HISTÓRIA)' (81,5–83,5 s)",
+   "cameos": [],
+   "props_random_but_meaningful": [
+    "rotores de papel",
+    "contorno neon roxo",
+    "gato de papel no capô",
+    "etiqueta HIPOTÉTICO em fita-crepe"
+   ],
+   "sfx_music": "Rufo de tambor de brinquedo, pop dos rotores, zumbido suave, 'miau' curto sintetizado, música aérea com pads."
+  },
+  {
+   "id": "S12",
+   "t0": 83,
+   "t1": 93,
+   "title": "Ninguém entra (o silêncio)",
+   "narration": "Um quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante.",
+   "visual": "Wipe de papel rasgado para grama + céu estilo XP (recriação em vetor/gradiente, não a foto original). A Máquina em modo voo flutua a 20 cm do chão (paperBob), rotores devagar, gato no capô, etiqueta HIPOTÉTICO. Câmera parada; a turma entra num semicírculo, UM beat de 2 s por pessoa, cada um com sua frase: (83–85 s) P11 Engenheiro do Manual, capacete e doze volumes empilhados, lendo com o dedo na linha; (85–87 s) P12 Criadora de conteúdo, celular na vertical, tenta uma selfie com o gato — o gato vira a cara; (87–89 s) P13 Cauteloso das alturas sobe UM degrau de uma escadinha, olha para baixo, balão com gota de suor; (89–91 s) P14 Piloto pronta (touca de aviador, óculos, cachecol) procura o volante, não acha, tira um VOLANTE da própria bolsa e tenta encaixar. Beat 5 (91–93 s): as portas de papel abrem para cima. A MÚSICA PARA. Dois segundos de silêncio total; todas as cabeças viram devagar para a porta aberta (lookAt em cadeia); ninguém entra. O visor mostra 'PASSAGEIROS: 0'.",
+   "transition_in": "Wipe de papel rasgado para a grama XP.",
+   "text_on_screen": "Lombada do manual: 'MANUAL DO CARRO VOADOR — VOL. 1 de 12' (83–85 s) · visor: 'PASSAGEIROS: 0' (91–94 s) · etiqueta 'HIPOTÉTICO' na Máquina (toda a cena)",
+   "cameos": [
+    {
+     "slot": "P11",
+     "role": "O Engenheiro do Manual — capacete, colete refletivo, doze volumes, marca-texto",
+     "reaction": "Prudência legítima: quer entender antes de usar (e vai ser quem ensina)",
+     "body": "Corpo operário (macacão) + capacete e colete refletivo de papel + pilha de volumes recortada",
+     "entry_exit": "Entra pela esquerda (cameoSlide 83 s), fica no semicírculo",
+     "gag": "Lê o volume 1 de 12 com o dedo na linha enquanto o carro flutua ao lado"
+    },
+    {
+     "slot": "P12",
+     "role": "A Criadora de conteúdo — celular na vertical, filmando tudo",
+     "reaction": "Empolgação à distância: registra antes de entrar (entra por último, de boa vontade)",
+     "body": "Corpo civil licenciado + moletom de papel e celular recortado (ou corpo moderno se chegar)",
+     "entry_exit": "Entra pela direita (cameoSlide 85 s), fica no semicírculo",
+     "gag": "Selfie com o gato no capô; o gato não colabora"
+    },
+    {
+     "slot": "P13",
+     "role": "O Cauteloso das alturas — escadinha de dois degraus, colete salva-vidas de papel",
+     "reaction": "Receio honesto e universal: sobe um degrau, olha para baixo (papel sensível: só com OK da pessoa; alternativa de troca com P14)",
+     "body": "Corpo operário/civil + colete salva-vidas de papel + escadinha recortada",
+     "entry_exit": "Entra pela esquerda com a escadinha (87 s), fica",
+     "gag": "Gota de suor gigante no balão; o 'clic' do cinto em S13 é o som mais aliviado do filme"
+    },
+    {
+     "slot": "P14",
+     "role": "A Piloto pronta — touca de aviador, óculos, cachecol, bolsa",
+     "reaction": "Preparada para o antigo, descobre o novo: ri e adota o painel-relógio",
+     "body": "Corpo civil licenciado + touca, óculos e cachecol de papel + volante recortado",
+     "entry_exit": "Entra pela direita (89 s), fica",
+     "gag": "Tira um volante da própria bolsa e tenta encaixar num carro que não tem volante"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "manual em doze volumes",
+    "volante que sai de dentro de uma bolsa",
+    "escadinha de dois degraus para um carro a 20 cm do chão",
+    "gato que não colabora com a selfie"
+   ],
+   "sfx_music": "Folhas de manual, obturador de celular, rangido de escadinha, bolsa abrindo; portas hidráulicas suaves — e então SILÊNCIO ABSOLUTO (91–93 s): música e ambiente cortados; só o miado curto do gato no fim."
+  },
+  {
+   "id": "S13",
+   "t0": 93,
+   "t1": 102,
+   "title": "Alguém ensina + carimbo APRENDER",
+   "narration": "«Passageiros: zero.» Quem levou o susto em mil novecentos e oito entrou primeiro. E quem sabia, mostrou. «Passageiros: catorze.»",
+   "visual": "A fala da Máquina quebra o silêncio (93–94 s) e a música volta baixinha. Beat 1 (94–96,5 s): P04 Rapaz do Feno — mesma cabeça, ainda com o fardo de feno debaixo do braço — sobe no banco de trás; a Máquina solta a mesma buzina de pera de 1908; desta vez ele ri na hora (nodYes). Beat 2 (96,5–99 s): P11 fecha o manual (vira almofada do banco), estende o braço de papel para P13 no degrau; P13 senta; P11 mostra o cinto: 'clic'; mão no ombro. Beat 3 (99–100,5 s): num só beat, P14 ri, guarda o volante na bolsa e segura o relógio-painel com as duas mãos, e P12 abaixa o celular e entra por último. Beat 4 (100,5–102 s): o contador mecânico do visor rola de 0 a 14 numa rolagem contínua enquanto as janelas da Máquina se enchem com a turma inteira numa única composição (collageFrame: todas as épocas, cada um com seu adereço — rédeas, feno, apito, planta, jornal, mapa, disquete, manual-almofada, celular, cinto, touca); THUNK no cartão HUD: APRENDER.",
+   "transition_in": "Continuidade; o corte de som (silêncio → fala da Máquina) é a transição.",
+   "text_on_screen": "Visor: 'PASSAGEIROS: 0' → rolagem contínua → 'PASSAGEIROS: 14' (100,5–102 s) · carimbo 'APRENDER', casa 3 de 4 (100,5–102 s)",
+   "cameos": [
+    {
+     "slot": "P04",
+     "role": "O Rapaz do Feno de 1908 é o primeiro a embarcar em 2026",
+     "reaction": "Quem se assustou primeiro entra primeiro: a mudança é processo, não defeito",
+     "body": "Mesmo corpo civil 1908 + boné + fardo de feno",
+     "entry_exit": "Entra pela esquerda (cameoSlide 94 s) direto para o banco de trás; fica a bordo",
+     "gag": "A Máquina buzina de novo; desta vez ele ri na hora"
+    },
+    {
+     "slot": "P11",
+     "role": "O Engenheiro do Manual vira o instrutor",
+     "reaction": "Prudência que vira ajuda: quem leu, ensina",
+     "body": "Corpo operário + capacete; braço de papel para o cinto",
+     "entry_exit": "Do semicírculo para o banco (96,5 s); fica a bordo",
+     "gag": "O manual de doze volumes vira almofada do banco; o cinto 'clic' na mão dele"
+    },
+    {
+     "slot": "P13",
+     "role": "O Cauteloso embarca com uma mão no ombro",
+     "reaction": "Confiança construída por alguém que mostra como se faz",
+     "body": "Corpo operário/civil + colete salva-vidas de papel",
+     "entry_exit": "Do degrau para o banco (97 s); fica a bordo",
+     "gag": "O 'clic' do cinto é o alívio do filme"
+    },
+    {
+     "slot": "P14",
+     "role": "A Piloto adota o painel-relógio",
+     "reaction": "Adaptação rindo: guarda o volante, assume o novo painel",
+     "body": "Corpo civil + touca e cachecol",
+     "entry_exit": "Senta ao painel (99 s); fica a bordo",
+     "gag": "Guarda o volante na bolsa de onde ele saiu"
+    },
+    {
+     "slot": "P12",
+     "role": "A Criadora de conteúdo entra por último, celular abaixado",
+     "reaction": "Da plateia para dentro: empolgação que vira participação",
+     "body": "Corpo civil + moletom de papel + celular",
+     "entry_exit": "Entra por último (99,5 s); fica a bordo",
+     "gag": "Abaixa o celular e sorri"
+    },
+    {
+     "slot": "P02, P03, P05, P06, P07, P08, P09, P10",
+     "role": "O resto da turma aparece já a bordo na composição das janelas (todas as épocas juntas)",
+     "reaction": "Adoção coletiva em progresso",
+     "body": "Cabeças pinadas por collageFrame sobre a arte da Máquina em modo voo; discos-placeholder até as fotos chegarem",
+     "entry_exit": "Fade-in único da composição (100,5–102 s); permanecem até o retrato final",
+     "gag": "Os adereços de todas as eras viajam no mesmo carro"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "manual em doze volumes virando almofada",
+    "cinto de segurança de papel",
+    "contador mecânico de passageiros",
+    "buzina de pera de 1908 no carro de 2026"
+   ],
+   "sfx_music": "Chime + fala da Máquina rompendo o silêncio; buzina de pera suave; manual fechando; 'clic' do cinto; bolsa fechando; contador mecânico rolando; a música volta em ukulele e cresce; THUNK."
+  },
+  {
+   "id": "S14",
+   "t0": 102,
+   "t1": 110,
+   "title": "O corredor das ideias geniais que ninguém usou",
+   "narration": "«Recalculando.» Corredor errado. Aqui moram as ideias geniais que ninguém usou.",
+   "visual": "A Máquina sobe um metro, a Máquina diz 'Recalculando' e entra pela porta errada: wipe vertical para a foto real do corredor de hospital abandonado (verde frio, push-in lento de 8 s). A narração termina aos 106,5 s e a voz fica em silêncio enquanto as placas são lidas. Portas de papel aparecem UMA a cada 2 s e todas ficam: 104 s 'PLANILHA 4.0', 106 s 'APP INTERNO', 108 s 'PROCESSO REVISADO v7_final_FINAL'; cada placa datilografada traz debaixo um troféu pequeno recortado 'FUNCIONA 100%' coberto de teia de papel. Encostada na parede desde o primeiro quadro, sem beat próprio, uma peça cromada de quebra-cabeça com a etiqueta 'MAIS TECNOLOGIA', empoeirada — a solução que já tentaram. Poeira em partículas, gotejar. O Jovem, no banco da frente, balão '!'. O Cientista olha o quadro-negro e apaga o foguete.",
+   "transition_in": "Wipe vertical: a Máquina sobe e entra na porta.",
+   "text_on_screen": "Placas datilografadas, cada uma ≥2 s, cumulativas: 'PLANILHA 4.0' (104 s), 'APP INTERNO' (106 s), 'PROCESSO REVISADO v7_final_FINAL' (108 s) · troféus 'FUNCIONA 100%' · etiqueta na peça cromada: 'MAIS TECNOLOGIA' (102–110 s, estática)",
+   "cameos": [
+    {
+     "slot": "P01",
+     "role": "O Jovem no banco da frente, olhando as portas",
+     "reaction": "Descoberta: a ficha cai — e cai para o Cientista também",
+     "body": "Corpo colete vermelho a bordo",
+     "entry_exit": "A bordo o tempo todo",
+     "gag": "'v7_final_FINAL' e os troféus 'FUNCIONA 100%' cobertos de teia — a risada que é a lição, sem uma palavra de aula"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "placas de porta datilografadas",
+    "troféus FUNCIONA 100% com teia de aranha",
+    "peça cromada MAIS TECNOLOGIA encostada na parede",
+    "quadro-negro com o foguete sendo apagado"
+   ],
+   "sfx_music": "Eco de corredor, gotejar, vento de papel; a música para e sobra um pad frio; máquina de escrever a cada placa; silêncio de voz de 106,5 a 110 s."
+  },
+  {
+   "id": "S15",
+   "t0": 110,
+   "t1": 118,
+   "title": "Quem aperta o botão? → carimbo ADOTAR",
+   "narration": "Quem aperta o botão? Todo mundo.",
+   "visual": "Wipe de volta ao céu XP. Beat 1 (110–112 s): o Cientista vira o quadro-negro para a câmera: desenhou a TECLA CONFIRMA com catorze dedinhos de giz em volta (2 s). Beat 2 (112–114,5 s): a tecla verde cresce no centro do painel; todos apontam para o vizinho — cadeia lenta de lookAt + um braço de papel por pessoa, callback da S03 — e o gato boceja; a narração está em pausa (1,5 s de silêncio cômico; só o bocejo). Beat 3 (114,5–116 s): catorze MÃOS DE PAPEL (um único SVG de mão, catorze instâncias em cores de papel e rotações diferentes) entram por todos os lados e apertam juntas: THUNK gigante com sub. Beat 4 (116–118 s): mesa de madeira em quadro cheio (callback do primeiro carimbo): o quarto carimbo desce, ADOTAR; o cartão está completo. Pausa de 1 s sem nada se mexer.",
+   "transition_in": "Wipe de papel de volta ao céu XP.",
+   "text_on_screen": "Quadro-negro: tecla + catorze dedinhos (110–112 s) · tecla 'CONFIRMA' gigante (112–116 s) · carimbo 'ADOTAR', casa 4 de 4, cartão completo (116–118 s)",
+   "cameos": [
+    {
+     "slot": "P01",
+     "role": "O Jovem no banco da frente ao lado do Cientista",
+     "reaction": "Adoção: a mão dele é a primeira a entrar no quadro",
+     "body": "Corpo colete vermelho + braço de papel",
+     "entry_exit": "A bordo; a mão dele lidera as catorze",
+     "gag": "Callback do loop de apontar — agora com catorze pessoas e um gato entediado"
+    },
+    {
+     "slot": "P02–P14",
+     "role": "Toda a turma dentro da Máquina, cada um ainda com seu adereço de época",
+     "reaction": "Adoção coletiva: catorze mãos apertam CONFIRMA juntas",
+     "body": "Composição collageFrame + catorze mãos de papel",
+     "entry_exit": "A bordo desde S13; as mãos entram pelas quatro bordas",
+     "gag": "O 'você aperta / não, você' de S03 vira catorze pessoas apontando — e catorze mãos apertando"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "quadro-negro com a tecla e catorze dedinhos",
+    "catorze mãos de papel",
+    "gato bocejando",
+    "cartão de carimbos completo"
+   ],
+   "sfx_music": "Silêncio cômico no loop de apontar (só o bocejo do gato); THUNK grande com sub; o carimbo final seco; 1 s de silêncio após o carimbo."
+  },
+  {
+   "id": "S16",
+   "t0": 118,
+   "t1": 125,
+   "title": "Revelação — GESTÃO DA MUDANÇA",
+   "narration": "A máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome. Gestão da Mudança.",
+   "visual": "Beat 1 (118–120,5 s): o cartão completo vira (flip de papel) e no verso, em serifa elegante sobre papel (Ex1): 'É por isso que existe'. Beat 2 (120,5–125 s): corte para a grade verde; a frase em 3D amarelo entra palavra por palavra, lenta — GESTÃO (120,5 s), DA (121 s), MUDANÇA (121,5 s) — e fica parada, completa, de 121,5 a 125 s (3,5 s) sem nada se mexer além das partículas de papel. Embaixo, os quatro carimbos pequenos em linha (os objetos ganhos na história, não uma lista de método) e uma linha mínima em serifa. A voz faz 1 s de pausa antes de dizer o nome, que cai com a palavra já em tela.",
+   "transition_in": "Flip de papel do cartão → corte seco para a grade verde.",
+   "text_on_screen": "Verso do cartão: 'É por isso que existe' (118–120,5 s) · 'GESTÃO DA MUDANÇA' (3D amarelo, completa de 121,5 a 125 s) · linha de carimbos pequenos: 'ENTENDER · CONFIAR · APRENDER · ADOTAR' (122–125 s) · serifa mínima: 'Tecnologia constrói a possibilidade. Pessoas fazem a mudança.' (122–125 s)",
+   "cameos": [],
+   "props_random_but_meaningful": [
+    "cartão de carimbos virando"
+   ],
+   "sfx_music": "Flip de papel; a música volta num acorde quente e aberto (cordas + glockenspiel), ascendente; 'whump' leve em cada palavra 3D; silêncio de 1 s antes do nome."
+  },
+  {
+   "id": "S17",
+   "t0": 125,
+   "t1": 130,
+   "title": "Cartela final — próxima parada: esta sala",
+   "narration": "«Você chegou ao seu destino.» Próxima parada: esta sala.",
+   "visual": "P05 Fotógrafo, agora com celular e o capuz do moletom no lugar do pano preto, dispara: POOF → a imagem vira um retrato emoldurado numa parede vermelha (Ex4) com plaquinha de latão. No retrato, a Máquina em modo voo com a turma inteira (a composição de S13 reaproveitada), o Cientista segurando o telefone de disco como quem não abre mão dele, o gato de olhos fechados. Abaixo, uma linha em serifa sobre papel e, bem pequeno, o rodapé opcional e a linha legal. Tudo parado por 4 s; fade para preto no último segundo.",
+   "transition_in": "Flash de celular POOF (0,3 s).",
+   "text_on_screen": "Plaquinha de latão: 'TURMA — PRIMEIRA VIAGEM · PRÓXIMA PARADA: ESTA SALA' (125,5–129 s) · serifa: 'Gestão da Mudança · Treinamento' · rodapé minúsculo opcional e removível: 'Referência do treinamento: ADKAR — Jeff Hiatt' · linha legal minúscula: 'Paródia e hipótese narrativa. Nenhuma fala atribuída a pessoas reais. Imagens de acervo licenciado.'",
+   "cameos": [
+    {
+     "slot": "P05",
+     "role": "O Fotógrafo — da câmera de fole de 1908 ao celular de 2026",
+     "reaction": "A ferramenta muda, o propósito não: registrar a turma",
+     "body": "Corpo civil 1908 + capuz de moletom de papel + celular",
+     "entry_exit": "Pop no canto inferior (125 s), dispara e desaparece no POOF",
+     "gag": "Mesma pose sob o 'pano preto', só que agora o pano é o capuz do moletom"
+    },
+    {
+     "slot": "P01–P14",
+     "role": "Todos no retrato de parede vermelha",
+     "reaction": "Orgulho de turma",
+     "body": "Composição collageFrame emoldurada",
+     "entry_exit": "Aparecem no POOF, ficam até o fade",
+     "gag": "O gato está na moldura também, de olhos fechados; o Cientista não largou o telefone de disco"
+    }
+   ],
+   "props_random_but_meaningful": [
+    "moldura dourada em parede vermelha",
+    "plaquinha de latão",
+    "telefone de disco na mão do Cientista",
+    "capuz de moletom como pano de fotógrafo"
+   ],
+   "sfx_music": "Flash de celular; chime próprio da Máquina (três notas); última nota de glockenspiel; fade de 1 s para preto."
+  }
+ ],
+ "narration_full": "Toda mudança começa assim: duas pessoas que não combinaram nada, andando na mesma direção.\nO Cientista montou a máquina com o que tinha em casa.\n«Olá. Sou a Máquina. Disque o ano.»\nUm. Nove. Zero. Oito.\nAgora... alguém confirma?\n«Aguardando confirmação.»\n«Chegamos. Mil novecentos e oito.»\nNaquela época, sair de casa era um projeto.\nAí apareceu o Ford T. Não o primeiro do mundo. O primeiro que muita gente podia ter.\nE a reação foi... humana.\n«Erro: ninguém explicou. Recalculando.»\nA máquina não quebrou. Só faltava alguém explicar.\n«Trânsito à frente.»\nTodo mundo tinha carro. Logo, todo mundo tinha trânsito.\nTecnologia resolve a dor antiga e inventa uma nova. Na fila, ninguém dá passagem. Até alguém trocar de carro.\n«Passageira a bordo.»\n«Rota calculada.»\nOitenta e cinco. A rota, resolvida. O trânsito, não.\n«Atualização instalada.»\nHipoteticamente.\nUm quer o manual. Outra, o vídeo. Um olha pra baixo. Outra procura o volante.\n«Passageiros: zero.»\nQuem levou o susto em mil novecentos e oito entrou primeiro. E quem sabia, mostrou.\n«Passageiros: catorze.»\n«Recalculando.»\nCorredor errado. Aqui moram as ideias geniais que ninguém usou.\nQuem aperta o botão?\nTodo mundo.\nA máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome.\nGestão da Mudança.\n«Você chegou ao seu destino.»\nPróxima parada: esta sala.",
+ "word_count": 211,
+ "cameo_plan": [
+  {
+   "slot": "P01",
+   "scene": "S01, S03, S06, S07, S10, S13–S15, S17",
+   "reaction": "Ceticismo simpático → iniciativa → descoberta → adoção (a primeira mão)",
+   "body": "Corpo colete vermelho (pendente) ou civil + colete de papel; rosto de Gabriel (pedir ≥800 px)",
+   "era": "Hoje → todas"
+  },
+  {
+   "slot": "P02",
+   "scene": "S05, S06 (foto de grupo), S13–S17 (a bordo)",
+   "reaction": "Hábito: aplica o antigo ao novo com dignidade; as rédeas viram adereço",
+   "body": "Civil 1908 + cartola + rédeas",
+   "era": "1908"
+  },
+  {
+   "slot": "P03",
+   "scene": "S05, S06 (foto de grupo), S13–S17 (a bordo)",
+   "reaction": "Entendimento rápido: entende primeiro",
+   "body": "Civil 1908 + avental + jornal",
+   "era": "1908"
+  },
+  {
+   "slot": "P04",
+   "scene": "S06, S13 (primeiro a embarcar), S15–S17",
+   "reaction": "Susto afetuoso em 1908 → primeiro a entrar em 2026 (callback)",
+   "body": "Civil 1908 + boné + feno",
+   "era": "1908 → 2026"
+  },
+  {
+   "slot": "P05",
+   "scene": "S05, S06 (flash), S08 e S10 (espiadas de fundo), S17 (flash final)",
+   "reaction": "Curiosidade constante: registra todas as épocas; a câmera muda, o propósito não",
+   "body": "Civil 1908 + câmera de fole → compacta → filmadora → celular",
+   "era": "Todas"
+  },
+  {
+   "slot": "P06",
+   "scene": "S09",
+   "reaction": "Adaptação: o jeito dele vira sistema (braços → semáforo), aceita com café",
+   "body": "Uniforme c. 1900 + luvas brancas + quepe",
+   "era": "1965"
+  },
+  {
+   "slot": "P07",
+   "scene": "S09 (ato de CONFIAR), S13–S17 (a bordo)",
+   "reaction": "Confiança: troca o carro antigo pela Máquina sem ver o caminho inteiro",
+   "body": "Homem anos 50 (tronco) + colmeia + óculos gatinho + mapa gigante",
+   "era": "1965"
+  },
+  {
+   "slot": "P08",
+   "scene": "S08",
+   "reaction": "Técnica honesta: 'MAIS FAIXAS' e a dor muda de lugar (voluntário que topa)",
+   "body": "Homem anos 50 + óculos + bigode + planta",
+   "era": "1965/1970"
+  },
+  {
+   "slot": "P09",
+   "scene": "S09",
+   "reaction": "Paciência: o relógio conta anos, a barba cresce",
+   "body": "Homem anos 40 + jornal + guarda-chuva + barba em camadas",
+   "era": "1965"
+  },
+  {
+   "slot": "P10",
+   "scene": "S10",
+   "reaction": "Confiança na ferramenta: aperta CONFIRMA pela dupla sem olhar",
+   "body": "Homem anos 40 + ombreiras + cabelo volumoso de papel",
+   "era": "1985"
+  },
+  {
+   "slot": "P11",
+   "scene": "S12, S13 (ensina o cinto), S15–S17",
+   "reaction": "Prudência → ajuda: quem leu o manual é quem ensina",
+   "body": "Operário + capacete + colete refletivo + doze volumes",
+   "era": "2026"
+  },
+  {
+   "slot": "P12",
+   "scene": "S12, S13 (entra por último), S15–S17",
+   "reaction": "Empolgação à distância → participação",
+   "body": "Civil + moletom de papel + celular vertical",
+   "era": "2026"
+  },
+  {
+   "slot": "P13",
+   "scene": "S12, S13 (cinto com P11), S15–S17",
+   "reaction": "Receio honesto → confiança construída por alguém (papel sensível, com OK e troca possível)",
+   "body": "Operário/civil + colete salva-vidas de papel + escadinha",
+   "era": "2026"
+  },
+  {
+   "slot": "P14",
+   "scene": "S12, S13, S15–S17",
+   "reaction": "Preparada para o antigo, adota o novo painel rindo",
+   "body": "Civil + touca de aviador + óculos + cachecol + volante na bolsa",
+   "era": "2026"
+  }
+ ],
+ "character_sheets": [
+  {
+   "name": "O CIENTISTA (rosto de Elon Musk, paródia muda)",
+   "body_design": "Corpo de foto licenciada de homem em pé (homem anos 40 ou 50 do acervo) com JALECO DE PAPEL branco sobreposto, bordas rasgadas e fita-crepe; peruca de cabelo branco de papel arrepiado; óculos de proteção na testa; o RELÓGIO DE ESTAÇÃO (foto) pendurado no peito por barbante. Cabeça: retrato licenciado/CC com atribuição OU caricatura vetorial estilizada — nunca os PNGs de referência nem o recorte derivado. Etiqueta de fita-crepe 'O CIENTISTA'. Nunca fala, nunca escreve palavras: só pictogramas de giz (foguete, lâmpada, tecla com catorze dedinhos).",
+   "era": "Hoje / viajante",
+   "props": "Giz, quadro-negro de papel, moeda, xícara de café (segurada com as duas mãos em S07), telefone de disco que vai para o bolso do jaleco em S10 e reaparece no retrato final",
+   "animation": "cameoSlide + paperBob (caminhada), headWobble leve, lookAt (loop de apontar), surprise na buzina; braço de papel reutilizável para apontar, apertar com o cotovelo e desenhar"
+  },
+  {
+   "name": "O JOVEM — P01 (Gabriel)",
+   "body_design": "Corpo 'colete vermelho acolchoado' (arquivo pendente de reenvio) ou corpo civil licenciado + colete vermelho de papel sobreposto, jaqueta jeans, tênis, mochila. Cabeça real pinada no pescoço com rebite (collageChar); pedir foto frontal ≥800 px (a atual tem 81×105 px). Etiqueta de fita-crepe 'O JOVEM'. Sem nome em tela e sem nome na narração.",
+   "era": "Hoje / viajante",
+   "props": "Celular com Pix (foto), tecla verde CONFIRMA, giz emprestado, mão no disco rotativo e no touch",
+   "animation": "cameoSlide + paperBob, lookAt para a câmera ('sério isso?'), nodYes, surprise; braço de papel para discar, apertar e desenhar"
+  },
+  {
+   "name": "CIVIL 1908 (base reutilizável, 6 variantes rua1908) → P02 Cocheiro, P03 Vendedora, P04 Rapaz do Feno, P05 Fotógrafo",
+   "body_design": "Corpos recortados das fotos licenciadas da rua de 1908 (acervo Adobe Stock fora do repositório), borda de papel, cabeça real pinada no pescoço. Diferenciação só por sobreposições de papel: cartola + rédeas (P02); avental + lápis na orelha + jornal (P03); boné + suspensórios + fardo de feno (P04); pano preto + câmera de fole, depois câmera compacta, filmadora e celular com capuz de moletom (P05). Rostos ausentes: disco-placeholder creme com o código do slot (já existe em collage.js).",
+   "era": "1908 (P05 atravessa todas as épocas)",
+   "props": "Rédeas, jornal fac-símile, fardo de feno, câmera de fole com flash de pólvora",
+   "animation": "cameoSlide/cameoPeek/cameoPop nas entradas, lookAt duplo (carro → rédeas), surprise + salto por keyframe (buzina), nodYes (riso), congelamento em collageFrame para a foto sépia"
+  },
+  {
+   "name": "UNIFORME c. 1900 (base reutilizável, 3 variantes soldados) → P06 Guarda de trânsito + figurantes",
+   "body_design": "Corpos recortados das fotos licenciadas de uniformizados c. 1900; sobreposições: luvas brancas de papel, quepe, apito; pedestal de papel. Para P06, os braços de foto são cobertos progressivamente por um semáforo de papel que sobe do pedestal (máscara animada).",
+   "era": "1965 (anacronismo proposital de colagem)",
+   "props": "Apito, luvas brancas, café, semáforo de papel",
+   "animation": "lookAt para os próprios braços, headWobble de 'dar de ombros' com o braço de papel, pega o café"
+  },
+  {
+   "name": "HOMEM ANOS 40 / ANOS 50 (ternos) → P08 Engenheiro da prancheta, P09 Passageiro do ponto, P10 Analista de 1985",
+   "body_design": "Dois corpos recortados licenciados (gravata-borboleta anos 40; terno anos 50) reutilizados com sobreposições: óculos grandes + bigode + planta (P08); jornal + guarda-chuva + barba de papel em três camadas com crossfade (P09); ombreiras + cabelo volumoso de papel + disquete no bolso (P10). Se chegarem corpos modernos licenciados ou fotos de corpo inteiro dos próprios participantes, P10 migra para um deles.",
+   "era": "1965 / 1970 / 1985",
+   "props": "Planta 'SOLUÇÃO: MAIS FAIXAS' em acordeão, relógio de estação com anos, PC retrô (foto), impressora matricial de papel",
+   "animation": "cameoPop/cameoSlide, lookAt, braço de papel para riscar a planta e apertar CONFIRMA sem olhar"
+  },
+  {
+   "name": "MOTORISTA 1965 — P07",
+   "body_design": "Tronco de corpo licenciado (anos 50) dentro do recorte de um conversível de Havana; peruca colmeia e óculos gatinho de papel; depois a mesma cabeça pinada no banco de trás da Máquina com cinto de papel. Gênero da fala da Máquina ('Passageira/Passageiro') ajustado após o mapeamento.",
+   "era": "1965",
+   "props": "Mapa rodoviário que se desdobra maior que o carro (depois dobrado num quadradinho), chave do carro pendurada no relógio",
+   "animation": "Mapa por keyframes de escala, corte seco para o banco da Máquina, 'clic' de cinto"
+  },
+  {
+   "name": "TURMA 2026 — P11 Engenheiro do Manual, P12 Criadora de conteúdo, P13 Cauteloso das alturas, P14 Piloto pronta",
+   "body_design": "Não existem corpos modernos no acervo: usar corpo operário (macacão) e corpos civis licenciados com sobreposições de papel — capacete + colete refletivo (P11), moletom + celular vertical (P12), colete salva-vidas (P13), touca de aviador + óculos + cachecol (P14). Recomendação ao cliente: ao coletar os rostos, pedir também fotos de corpo inteiro dos próprios participantes (fundo liso) — viram corpos modernos licenciados de graça e fecham o pedido de 'nada desenhado do zero'.",
+   "era": "2026",
+   "props": "Manual em doze volumes (vira almofada), celular, escadinha de dois degraus, volante que sai da bolsa, cinto de papel",
+   "animation": "Um beat de 2 s por pessoa, cameoSlide nas entradas, lookAt em cadeia para a porta aberta, nodYes, braço de papel para o cinto e o volante"
+  },
+  {
+   "name": "A MÁQUINA (adereço-herói, dois modos)",
+   "body_design": "Modo tempo: banco de couro recortado da foto do carro de época + placa azul de seta (foto) como alavanca ← PASSADO | FUTURO →, relógio de estação (foto) como medidor de fluxo, telefone de disco (foto) como seletor de ano (vira celular touch em 1985), máquina de escrever (foto) como visor, xícara de café (foto) no suporte COMBUSTÍVEL, tecla verde CONFIRMA (SVG). Modo voo (2026): a MESMA máquina ganha quatro rotores de papel, contorno neon roxo e etiqueta 'HIPOTÉTICO'; nunca um segundo veículo, nunca os recortes do vídeo de terceiros. Montada como grupo no terço inferior do quadro, o fundo troca por era (diorama persistente).",
+   "era": "Todas",
+   "props": "Pisca-alerta de papel, cinto de papel, portas que abrem para cima, contador mecânico de passageiros",
+   "animation": "cameoDrop nos pousos, paperBob no modo voo, rotores em rotação lenta, visor datilografado por caracteres, tecla que pulsa"
+  },
+  {
+   "name": "GATO DE PAPEL",
+   "body_design": "Gato recortado em papel/vetor (não existe foto licenciada; a referência roxa do cliente não é usada), sentado no capô, olhar fixo para a câmera; variações: vira a cara (selfie), boceja, olhos fechados (retrato). Decisão do cliente: vetor ou cortar.",
+   "era": "2026",
+   "props": "Nenhum",
+   "animation": "Olhos piscam a cada 3 s, bocejo em S15, cabeça vira 20° na selfie"
+  },
+  {
+   "name": "BRAÇO DE PAPEL + CATORZE MÃOS (rig reutilizável)",
+   "body_design": "Um único SVG de braço articulado (pivôs de ombro e cotovelo) em três cores de papel e três mãos (apontar, segurar, espalmar), sobreposto a qualquer corpo de foto — resolve apontar, apertar, discar, desenhar, oferecer feno, mostrar o cinto sem rig de corpo. Mais um SVG de mão espalmada em catorze instâncias (cores e rotações diferentes) para o THUNK final.",
+   "era": "Todas",
+   "props": "—",
+   "animation": "Keyframes de rotação nos pivôs; nunca mais de uma ação por 1,5 s"
+  },
+  {
+   "name": "CARTÃO DE CARIMBOS + CARIMBO (o quebra-cabeça)",
+   "body_design": "Cartão perfurado de papel com quatro casas, carimbo de borracha com cabo de madeira, tinta vermelha; aparece em quadro cheio na mesa de madeira no primeiro (ENTENDER) e no último carimbo (ADOTAR); entre eles vive como HUD discreto no canto inferior esquerdo, onde o carimbo entra de fora do quadro. Verso: 'É por isso que existe'.",
+   "era": "Todas",
+   "props": "—",
+   "animation": "stamp/stampCard do motor (THUNK com squash de 1 quadro), flip de papel em S16"
+  }
+ ],
+ "final_reveal": "Ganha pelo quebra-cabeça que a plateia viu encher: o cartão perfurado recebe um carimbo por parada, e cada carimbo é o ato humano que destravou a máquina — ENTENDER em 1908 (o Jovem explica com giz depois do 'Erro: ninguém explicou'), CONFIAR em 1965 (a motorista larga o carro antigo, pendura a chave no relógio e aperta o cinto), APRENDER em 2026 (as portas abrem, ninguém entra por dois segundos de silêncio, o Rapaz do Feno que levou susto em 1908 entra primeiro e o Engenheiro do Manual mostra o cinto ao Cauteloso). O custo de não fazer isso aparece sem palavras no corredor errado: ideias geniais que ninguém usou, troféus 'FUNCIONA 100%' com teia e a peça cromada 'MAIS TECNOLOGIA' encostada na parede. Então o Cientista mostra no quadro a tecla com catorze dedinhos, a voz pergunta 'Quem aperta o botão?', 1,5 s de silêncio com todos apontando para o vizinho e o gato bocejando, e catorze mãos de papel apertam juntas: THUNK, ADOTAR, cartão completo. O cartão vira ('É por isso que existe'), corte para a grade verde e GESTÃO DA MUDANÇA em 3D amarelo fica parada por 3,5 s com os quatro carimbos pequenos embaixo. Narração total da revelação, 21 palavras: 'Quem aperta o botão? ... Todo mundo. A máquina sempre funcionou. Faltava levar as pessoas junto. Isso tem nome. Gestão da Mudança.' Nenhum método é explicado; os verbos são os próprios eventos da história e nunca são recitados em voz. A Máquina fecha: 'Você chegou ao seu destino.' e a última frase entrega o botão à sala: 'Próxima parada: esta sala.'",
+ "running_gag": "QUEM APERTA? — a tecla verde gigante CONFIRMA, comprada numa máquina de lanche de estação (a moeda do Cientista falha, o Pix do Jovem funciona). A tecnologia está sempre pronta; o que trava é alguém ter que apertar. S03: Cientista aponta pro Jovem, Jovem aponta pro Cientista, uma volta lenta, o Jovem aperta. S07: o Cientista aperta com o cotovelo porque segura o café com as duas mãos. S10: a Analista de 1985 aperta pela dupla sem nem olhar (quem já aprendeu aperta fácil). S15 (payoff): catorze pessoas dentro da Máquina apontando para o vizinho, o gato boceja — e catorze mãos de papel apertam juntas, THUNK, quarto carimbo ADOTAR. Gags de apoio que repetem e crescem: a Máquina anuncia cada pane humana como GPS educado («Erro: ninguém explicou.» → «Passageiros: zero.» → «Recalculando.» → «Você chegou ao seu destino.»); o telefone de disco para discar o ano, cada vez mais rápido, até virar touch em 1985 — e o Cientista guarda o disco no bolso com carinho e ainda o segura no retrato final; o cartão de quatro casas que só faz sentido completo no fim; e o Fotógrafo (P05) que registra todas as épocas com a câmera da vez (fole, compacta, filmadora, celular com capuz de moletom), sempre espiando ao fundo, sem beat próprio.",
+ "end_card": "S17 (125–130 s): flash de celular do Fotógrafo → retrato emoldurado em moldura dourada numa parede vermelha (Ex4): a Máquina em modo voo com a turma inteira a bordo (composição de S13 reaproveitada), o Cientista segurando o telefone de disco, o gato de olhos fechados. Plaquinha de latão: 'TURMA — PRIMEIRA VIAGEM · PRÓXIMA PARADA: ESTA SALA'. Abaixo, uma linha em serifa sobre papel: 'Gestão da Mudança · Treinamento'. Rodapé minúsculo, opcional e removível: 'Referência do treinamento: ADKAR — Jeff Hiatt' (texto apenas; sem foto). Linha legal minúscula: 'Paródia e hipótese narrativa. Nenhuma fala atribuída a pessoas reais. Imagens de acervo licenciado.' Áudio: chime próprio + «Você chegou ao seu destino.», depois o narrador: 'Próxima parada: esta sala.' Tudo parado por 4 s; fade para preto no último segundo. Sem logos de marcas; o logo da empresa do cliente pode entrar no canto inferior direito se fornecido.",
+ "estimated_duration_s": 130,
+ "facts_to_verify": [
+  "Ford Model T: lançamento em outubro de 1908, preço inicial aproximado de US$ 825–850 (Touring); o anúncio com '$590' é de c. 1912 (Torpedo/Runabout) e '$260' é de meados dos anos 1920. Decidir se o fac-símile usa $590 com rótulo 'anúncio de época · preço aproximado' (sem ano em tela) ou é recriado com $825; nunca mostrar ano ao lado do preço.",
+  "O Ford T não foi o primeiro automóvel (Benz Patent-Motorwagen, 1886) nem a primeira produção em série; a linha de montagem móvel é de 1913 e não é mostrada como foto — a narração diz apenas 'o primeiro que muita gente podia ter'.",
+  "As fotos de acervo que o briefing lista (Viena c. 1900 com carruagem, carro de época isolado, relógio de estação, corredor de hospital abandonado, Havana P&B e cor, PC retrô, telefone de disco, máquina de escrever, xícaras, celular com Pix, jornais antigos, multidão, sala de aula vintage, retrato anos 40, mãos na água) não estão no repositório público nem existe creditos_imagens.md neste checkout: confirmar que existem como recortes tratados no acervo licenciado (Adobe Stock, fora do repo) e registrar fonte/licença; no motor v3 anterior, Viena e urna eram arte desenhada.",
+  "O 'carro de época isolado' é um carro brass-era genérico, não necessariamente um Ford T: na ficha técnica chamá-lo de 'carro de época'; o nome Ford T fica só no fac-símile e na narração. Se o cliente exigir um Ford T real, buscar foto de domínio público identificada (download de stock está indisponível no momento).",
+  "Rosto de Elon Musk: nenhuma licença no repositório (elon-musk-referencia.png, elon-musk-rosto-referencia.png e recortes/elon-musk_meio-corpo_recorte.png são referência sem direito de uso). Obter retrato licenciado/CC com atribuição ou produzir caricatura vetorial antes do render.",
+  "Cena-paródia: producao/jobs/metro.json ainda usa de-volta-para-o-futuro-referencia.png como fonte de corpo — refazer a dupla com corpos licenciados e o corredor de hospital vestido de estação; verificar que não restou título, logo, trilha, carro, prancha ou bordão do filme em nenhum arquivo entregável.",
+  "Carro voador: não usar imagens/recortes/carro-voador_*.png (frames de vídeo de terceiros); o modo voo da Máquina é recriação em papel e a etiqueta HIPOTÉTICO fica ≥2 s em tela sempre que ele aparece.",
+  "Fotos dos participantes: só gabriel.png existe e tem 81×105 px (vai borrar); pedir fotos frontais ≥800 px, luz uniforme, e opcionalmente corpo inteiro em fundo liso para virar corpos modernos. Consentimento dos 14 confirmado pelo cliente em 19/10 — manter a tabela nome→slot fora do repositório; nomes, sobrenomes e e-mails nunca em tela.",
+  "Mapeamento P02–P14 → pessoas é do cliente: papéis que pedem OK explícito e têm troca pronta são P13 (olha para baixo da escadinha), P08 (a solução MAIS FAIXAS falha), P12 (filma antes de embarcar), P02 (fica com as rédeas), P04 (leva susto com a buzina); nenhum apelido ou texto negativo encosta em rosto real.",
+  "Corpos de foto disponíveis segundo a produção (rua1908 ×6, soldados c. 1900 ×3, operário de linha, homem anos 40, homem anos 50) estão fora do repo público: confirmar licença e que cobrem os 14 slots com sobreposições; corpos 'colete vermelho' e 'smoking' ainda pendentes de reenvio como anexo.",
+  "Vocabulário de movimento real do collage.js: cameoSlide/Peek/Pop/Drop, headWobble, paperBob, nodYes, shakeNo, lookAt, surprise, captionBox, collageFrame e disco-placeholder; apontar, apertar, discar, desenhar e cinto dependem do rig 'braço de papel' que ainda precisa ser construído (um SVG, três mãos).",
+  "Pix: só gesto visual e 'plim' sintetizado, sem logotipo oficial, sem estatística de adoção; cédulas de real não são usadas.",
+  "Fundo 'grama + céu XP' é recriação em vetor/gradiente, não a fotografia Bliss.",
+  "ElevenLabs: vozes de catálogo (nunca clones), conferir pt-BR nativo; testar a pronúncia de 'Ford T', 'Pix', 'Hipoteticamente', 'catorze/quatorze', 'Recalculando'; confirmar que a voz da Máquina sai plana (stability 0,90, style 0).",
+  "Chime da Máquina, buzina de pera, apito, 'plim' e 'clic' são todos sintetizados; nenhum som de GPS real, do Pix ou de filme.",
+  "Jeff Hiatt / ADKAR: apenas rodapé de texto opcional; a foto encaminhada não está no repositório e não tem direitos estabelecidos — não usar imagem.",
+  "Gag 'MAIS FAIXAS' se apoia no efeito real de indução de demanda; o vídeo não afirma número nem estudo — manter como piada visual.",
+  "Data de produção 19/10/2026, entre os turnos da eleição: nenhuma urna eletrônica, nenhuma tecla CORRIGE/BRANCO, nenhuma mão ou rosto real votando; a tecla verde CONFIRMA é genérica, sem números ou logotipo.",
+  "Duração: 130 s cravados (último segundo em preto). Travar a locução ElevenLabs primeiro; se estourar, aplicar a lista de cortes da direção de voz e só então timar visuais e gerar o SRT (DIRETRIZES_SRT)."
+ ],
+ "avoid": [
+  "Frame original do filme de 1985, seu título (inclusive em português), logo, trilha, carro, prancha, '88' e bordões; ids internos de assets com nomes de personagens protegidos ('marty', 'doc').",
+  "Qualquer fala, texto ou balão com palavras para o Cientista/Elon Musk; qualquer sugestão de anúncio real ou endosso; citação atribuída a Henry Ford.",
+  "'Primeiro carro do mundo' em qualquer lugar; '$590' (ou qualquer preço) ao lado de '1908' ou de outro ano; o arquivo ford-t-anuncio-jornal.webp em si (só o fac-símile recriado).",
+  "Urna eletrônica, teclas CORRIGE/BRANCO, números de candidato, partidos, gesto de voto com rosto real (janela eleitoral de outubro de 2026).",
+  "Explicar Gestão da Mudança, ADKAR ou 'resistência' antes da revelação; recitar os quatro verbos em voz; listar metodologia na cartela (ADKAR só como rodapé minúsculo e removível).",
+  "Enunciar a tese ('a máquina sempre funcionou, faltava levar as pessoas') antes de S16 — a Máquina só a insinua como punchline de GPS.",
+  "Beats mais rápidos que 1,5 s; cascatas de lâmpadas, carimbos ou peças em rajada; texto grande abaixo de 2 s; anos 3D abaixo de 2,5 s; GESTÃO DA MUDANÇA abaixo de 3,5 s; mais de uma camada de texto ao mesmo tempo (letreiro + caixa + balão); balões com frases em rostos reais (só pictogramas).",
+  "Nomes, sobrenomes ou e-mails em tela; chamar qualquer participante pelo nome na narração (o nome 'Gabriel' nunca é dito).",
+  "Humor de incompetência, burrice, preguiça ou idade (vovó, 'no meu tempo', mapa de cabeça para baixo, 'li tudo'); apelidos pseudo-latinos ou negativos em rostos reais; cast automático do papel sensível (P13) sem OK.",
+  "Conteúdo do setor de energia; nomes reais de projetos internos nas placas do corredor sem aprovação explícita por escrito.",
+  "Pixels de terceiros: as 11 imagens de referência do cliente, os recortes do carro voador do vídeo, o gato roxo, a colagem relógio-cabeça, a cabeça aberta, o infográfico de linha do tempo, pessoas-carro-epoca.webp, a foto Bliss, o retrato de Jeff Hiatt.",
+  "Sons oficiais ou clonados: chime de GPS real, som do Pix, som da urna, trilha do filme, voz clonada de qualquer pessoa real (inclusive 'estilo Attenborough' por clone).",
+  "Desenhar pessoas do zero (direção do cliente de 19/10): pessoas são colagem de foto licenciada + cabeça real; apenas objetos e adereços podem ser vetor/papel.",
+  "Passar de ~235 palavras a 0,92 ou acelerar a voz para caber; voz da Máquina simpática ou expressiva; falar por cima das placas do corredor.",
+  "Um segundo veículo 'carro voador' separado da Máquina (confunde qual máquina 'sempre funcionou'); mostrar o modo voo sem a etiqueta HIPOTÉTICO.",
+  "Logos de marcas (Tesla, Ford moderno, aplicativos, redes sociais) e telas de apps reconhecíveis."
+ ],
+ "what_was_taken_from_each_concept": "Espinha e motor cômico de QUEM APERTA O BOTÃO? (42 pontos): a dupla Cientista mudo + Jovem, a máquina do tempo feita de telefone de disco / relógio de estação / máquina de escrever / café / placa de seta, a tecla verde CONFIRMA, a Máquina como segunda voz de GPS deadpan, o cartão de quatro carimbos, os cameos por época (rédeas, feno + buzina, braços-semáforo, barba no ponto, mapa gigante, manual de doze volumes virando almofada, volante da bolsa, analista que aperta sem olhar, Cientista que guarda o disco no bolso), o corredor das ideias geniais que ninguém usou e a cartela de latão. Consertos aplicados do júri: S09 e S12 reduzidos a três gags e a um beat de 2 s por pessoa; 'Carimbo um/dois/três' cortado da voz e verbos só como objetos; 'ERRO: HUMANOS EM VOLTA' virou «Erro: ninguém explicou» (a culpa nunca é da pessoa); 'Ninguém está errado. Só ninguém ensinou' + bonequinhos de mãos dadas trocados pelo Cientista desenhando a tecla com catorze dedinhos; CONFIAR agora é um ato reconhecível (a motorista troca de carro e pendura a chave no relógio); APRENDER tem professor (P11 mostra o cinto a P13); o carro voador É a Máquina atualizada (um veículo só); a paródia ganhou 9 s e uma piada física; lightbulb único; S07 com 3 s; loops de apontar feitos com lookAt + um rig de braço; Pix da Vendedora cortado; 211 palavras em vez de 257. De A PEÇA QUE FALTAVA: a máquina de lanche onde a moeda do Cientista falha e o Pix do Jovem funciona (agora é a origem da tecla), a peça cromada 'MAIS TECNOLOGIA' que não coube (encostada no corredor, sem beat extra), a lógica de diorama persistente (a Máquina fixa, o fundo troca), a tirada 'Hipoteticamente' e o disco-placeholder digno para as treze fotos que faltam. De PLANETA NOVIDADE: os dois segundos de silêncio com música parada quando as portas abrem e ninguém entra; quem levou susto em 1908 é o primeiro a embarcar em 2026; o corredor de hospital vestido de estação em vez de um metrô construído do zero; a micro-legenda 'paródia · cena fictícia · nenhuma fala real'; a última frase virando a câmera para a sala ('Próxima parada: esta sala'); a disciplina de texto grande ≥2,5 s. De JORNAL DA MUDANÇA: o 'fura-quadro' convertido no Fotógrafo que registra todas as épocas (fole → compacta → filmadora → celular), a etiqueta HIPOTÉTICO presa ao carro sempre que ele voa, e a regra de uma camada de texto por vez. De QUEM QUER ADOTAR A INOVAÇÃO?: o relógio de estação que conta anos em vez de horas, o rodapé jurídico como humor discreto e a honestidade artesanal (fita-crepe, barbante, papel) na cartela. De O MANUAL QUE NINGUÉM LEU: o orçamento de palavras (~210, uma frase por beat, voz com ar), o manual gigante como adereço cômico e a decisão de nunca culpar quem não leu — aqui quem leu o manual é quem ensina."
+}
