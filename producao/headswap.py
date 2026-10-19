@@ -166,7 +166,7 @@ def main(job):
         rx = dxp * math.cos(a) + dyp * math.sin(a); ry = -dxp * math.sin(a) + dyp * math.cos(a)
         chin_r = (head_r.width / 2 + rx, head_r.height / 2 + ry)
         px, py = int(round(neck_xy[0] - chin_r[0])), int(round(neck_xy[1] - chin_r[1]))
-        heads_layer.alpha_composite(head_r, (max(0, px), max(0, py)) if px >= 0 and py >= 0 else (0, 0), (max(0, -px), max(0, -py)))
+        heads_layer.alpha_composite(head_r, (max(0, px), max(0, py)), (max(0, -px), max(0, -py)))
         # ---- recorte da figura (corpo + cabeça) ----
         person = seg['person'] > 0.45
         if 'xclip' in fg:

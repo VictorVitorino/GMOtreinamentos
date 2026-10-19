@@ -12,6 +12,11 @@ function collageChar(parent,o){const sc=o.scale||1;const m=o.meta;const W=m.size
     const im=imgEl(o.head,`position:absolute;left:0;top:0;width:${m.head_size[0]*k}px;height:${m.head_size[1]*k}px;transform-origin:${chin.x}px ${chin.y}px`);hb.appendChild(im);
     ch.head=R(im,{rot:m.rot||0});
     if(o.rivet!==false)H('div',{style:`position:absolute;left:${ch.neck[0]-7}px;top:${ch.neck[1]-9}px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f1d98a,#c9a24a 55%,#8a6a22);box-shadow:0 1px 2px rgba(0,0,0,.5)`},inner)}
+  if(!o.head&&o.placeholder){/* sem foto ainda: disco de papel com o código, pinado no pescoço */const d=Math.round((m.face_px?m.face_px[2]*(o.headScale||1.3):140)*sc*1.15);
+    const hb=H('div',{style:`position:absolute;left:${ch.neck[0]-d/2}px;top:${ch.neck[1]-d*0.98}px;width:${d}px;height:${d}px`},inner);
+    const disc=H('div',{style:`position:absolute;left:0;top:0;width:${d}px;height:${d}px;border-radius:50%;background:#f3ecd8;border:${Math.max(3,d*0.04)}px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;font:400 ${d*0.34}px/1 ${FA};color:#1b1e21;transform-origin:50% 98%`},hb,o.placeholder);
+    H('div',{style:`position:absolute;left:${d*0.3}px;top:${d*0.22}px;width:${d*0.09}px;height:${d*0.09}px;border-radius:50%;background:#1b1e21`},disc);H('div',{style:`position:absolute;right:${d*0.3}px;top:${d*0.22}px;width:${d*0.09}px;height:${d*0.09}px;border-radius:50%;background:#1b1e21`},disc);
+    ch.head=R(disc,{rot:m.rot||0})}
   ch.id=R(wrap,{x:o.x||0,y:o.y||0,rot:o.rot||0});return ch}
 /* ---- movimentos de papel ---- */
 function headWobble(ch,amp,speed,seed){if(!ch.head)return;proc(t=>{REG[ch.head].cur.rot+=Math.sin(t*(speed||1.3)+(seed||0))*(amp||3)+noise1(t*0.4,(seed||0)+9)*1.5})}
