@@ -199,7 +199,7 @@ def main(job):
             Wd = sum(q.width for q in pan) + 40; Hd = max(q.height for q in pan); sh = Image.new('RGB', (Wd, Hd), (40, 40, 40)); xx = 0
             for q in pan: sh.paste(q, (xx, 0)); xx += q.width + 10
             sh.save(f'{out}_{name}_dbg.jpg', quality=85)
-        meta = {'neck': [neck_xy[0] - cx0 - bb[0] + pad, neck_xy[1] - cy0 - bb[1] + pad], 'size': flat_p.size, 'head': os.path.basename(fg['head']), 'head_scale': k, 'rot': rot, 'face_px': [fx, fy, fw, fh], 'frame_offset': [cx0 + bb[0] - pad, cy0 + bb[1] - pad]}
+        meta = {'neck': [neck_xy[0] - cx0 - bb[0] + pad, neck_xy[1] - cy0 - bb[1] + pad], 'size': flat_p.size, 'head': os.path.basename(fg['head']), 'head_scale': k, 'head_box': [hx0, hy0, hx1, hy1], 'head_size': list(head.size), 'rot': rot, 'face_px': [fx, fy, fw, fh], 'frame_offset': [cx0 + bb[0] - pad, cy0 + bb[1] - pad]}
         json.dump(meta, open(f'{out}_{name}_meta.json', 'w'), indent=1, default=lambda v: float(v) if hasattr(v, '__float__') else str(v)); report.append((name, flat_p.size, meta['neck']))
     frame = Image.fromarray(frame_np).convert('RGBA'); frame.alpha_composite(heads_layer); frame.convert('RGB').save(f'{out}_frame.png')
     print('ok', out, report)

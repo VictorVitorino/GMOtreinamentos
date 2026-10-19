@@ -1,0 +1,54 @@
+{
+ "src": "bodies/a_workers__445719818.jpg",
+ "up": 1.0,
+ "out": "out/img/col/soldados",
+ "debug": true,
+ "figures": [
+  {
+   "name": "esq_gabriel",
+   "head": "out/img/faces/gabriel.png",
+   "face": [
+    341,
+    579,
+    119,
+    127
+   ],
+   "scale": 1.3,
+   "rot": 2,
+   "keep_hair": true,
+   "crop": [
+    120,
+    380,
+    720,
+    2100
+   ],
+   "xclip": [
+    120,
+    690
+   ]
+  },
+  {
+   "name": "dir_elon",
+   "head": "out/img/faces/elon.png",
+   "face": [
+    1181,
+    515,
+    135,
+    135
+   ],
+   "scale": 1.3,
+   "rot": -2,
+   "keep_hair": true,
+   "crop": [
+    980,
+    330,
+    1600,
+    2100
+   ],
+   "xclip": [
+    1010,
+    1600
+   ]
+  }
+ ]
+}
