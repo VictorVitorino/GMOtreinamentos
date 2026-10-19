@@ -160,6 +160,8 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Sem música ainda. Zumbido de estação, passos de papel toc-toc, moeda plinc-plinc na bandeja, plim genérico de pagamento (sintetizado, não o som de nenhum app), baque surdo da tecla caindo, sino de aviso distante.
 
+**Nota de produção (decisão do solicitante, 19/10).** A estação É a sua foto do metrô, recortada de verdade: rostos originais apagados e preenchidos, cabeças reais de Gabriel e Elon pinadas no pescoço, push-in lento, etiquetas de fita, balões só com pictograma e micro-legenda 'paródia · cena fictícia'. Já está montada no motor (`imagens/pessoas/personagens/testes/metro_cena-montada.jpg`). A máquina de lanche e a tecla verde entram como recortes sobre essa foto.
+
 ### S02 · 0:09.0 → 0:12.0 · Título
 
 **Imagem.** Flash branco (Ex2) → grade verde (Ex4). O título em letras 3D amarelas extrudadas entra com rotação leve e assenta com sombra dura; partículas de papel picado caem devagar. Abaixo, serifa elegante pequena sobre tarja de papel. Nada mais se move.
@@ -313,6 +315,8 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Som.** Rufo de tambor de brinquedo, pop dos rotores, zumbido suave, 'miau' curto sintetizado, música aérea com pads.
 
+**Nota de produção.** O 'modo voo' usa também o quadro real do seu vídeo (carro no ar com propulsores azuis, `imagens/recortes/carro-voador_recorte.png`) e a sua imagem de Elon apresentando (meio corpo) na 'atualização instalada'; os rotores de papel e a etiqueta HIPOTÉTICO ficam por cima.
+
 ### S12 · 1:23.0 → 1:33.0 · Ninguém entra (o silêncio)
 
 **Imagem.** Wipe de papel rasgado para grama + céu estilo XP (recriação em vetor/gradiente, não a foto original). A Máquina em modo voo flutua a 20 cm do chão (paperBob), rotores devagar, gato no capô, etiqueta HIPOTÉTICO. Câmera parada; a turma entra num semicírculo, UM beat de 2 s por pessoa, cada um com sua frase: (83–85 s) P11 Engenheiro do Manual, capacete e doze volumes empilhados, lendo com o dedo na linha; (85–87 s) P12 Criadora de conteúdo, celular na vertical, tenta uma selfie com o gato — o gato vira a cara; (87–89 s) P13 Cauteloso das alturas sobe UM degrau de uma escadinha, olha para baixo, balão com gota de suor; (89–91 s) P14 Piloto pronta (touca de aviador, óculos, cachecol) procura o volante, não acha, tira um VOLANTE da própria bolsa e tenta encaixar. Beat 5 (91–93 s): as portas de papel abrem para cima. A MÚSICA PARA. Dois segundos de silêncio total; todas as cabeças viram devagar para a porta aberta (lookAt em cadeia); ninguém entra. O visor mostra 'PASSAGEIROS: 0'.
@@ -331,6 +335,8 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 | P14 | A Piloto pronta — touca de aviador, óculos, cachecol, bolsa | Preparada para o antigo, descobre o novo: ri e adota o painel-relógio | Entra pela direita (89 s), fica | Tira um volante da própria bolsa e tenta encaixar num carro que não tem volante |
 
 **Som.** Folhas de manual, obturador de celular, rangido de escadinha, bolsa abrindo; portas hidráulicas suaves — e então SILÊNCIO ABSOLUTO (91–93 s): música e ambiente cortados; só o miado curto do gato no fim.
+
+**Nota de produção.** Transição de entrada com o relâmpago de papel do salto no tempo (sua referência 'após o carro do Elon voar'): flash curto (≤0,3 s), raios recortados, rasgo de papel — nunca mais rápido que 2 s por beat.
 
 ### S13 · 1:33.0 → 1:42.0 · Alguém ensina + carimbo APRENDER
 
@@ -522,7 +528,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 - Animação: stamp/stampCard do motor (THUNK com squash de 1 quadro), flip de papel em S16
 
 
-## 4 · Linguagem visual — colagem real (decisão de 19/10)
+## 9 · Linguagem visual — colagem real (decisão de 19/10)
 
 - **Nada desenhado do zero.** Corpo = recorte de foto real (suas referências + fotos de época do acervo). Cabeça = foto real do
   participante, recortada com borda branca de papel e **pinada no pescoço com colchete de latão** (balança separada do corpo).
@@ -535,7 +541,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 - Elon Musk e carro voador: imagens reais que você enviou (meio corpo apresentando; quadro do vídeo do carro no ar com os
   propulsores) — sempre tratados como **hipótese cômica**, nunca como produto.
 
-## 5 · Elenco e corpos disponíveis
+## 10 · Elenco e corpos disponíveis
 
 | Corpo real | Fonte | Para quem serve |
 |---|---|---|
@@ -550,7 +556,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Faltam corpos de hoje** (hoodie, engenheira de capacete, piloto, entregador, vovó, mulher anos 60). Ver pedidos no item 9.
 
-## 6 · Voz e trilha
+## 11 · Voz e trilha
 
 - **Narrador:** *Lax* (ElevenLabs v4) — amostra enviada ("Antes de falar de mudança… a gente precisa falar de cavalo"). Tom de
   contador de história sem pressa; ~105–115 palavras/min; pausas de 0,8–1,2 s antes de cada virada. Alternativas prontas:
@@ -560,7 +566,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
   antes da revelação. Prévia enviada.
 - **SFX de papel:** deslize, rasgo, fita, carimbo (THUNK), colchete, buzina do Ford T, relincho, propulsor — todos sintetizados.
 
-## 7 · Regras de ritmo (para não dar dor de cabeça)
+## 12 · Regras de ritmo (para não dar dor de cabeça)
 
 1. Narração ≤ 230 palavras em 2:10 → nunca mais de 2 ideias por frase.
 2. Cada cena ≥ 6 s; cada cameo 1,5–2,5 s; no máximo 3 gags por cena; **nenhum cameo em cima de frase-chave**.
@@ -570,7 +576,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Direção de voz (chefe de roteiro).** ElevenLabs, modelo Multilingual v2 (ou v3 com tags de pausa), vozes de catálogo pt-BR nativas — nunca clones de pessoas reais, conferir que não sai pt-PT. NARRADOR: speed 0,92 · stability 0,45 · similarity 0,80 · style 0,35. MÁQUINA: speed 0,95 · stability 0,90 · style 0,0 · similarity 0,75; leve EQ de alto-falante pequeno (corte abaixo de 200 Hz e acima de 7 kHz) e chime próprio de três notas sintetizado antes de cada fala (nunca som de app real). Gerar e OUVIR as falas da Máquina antes de animar: se sair simpática em vez de plana, trocar a voz — o contraste 'amigo animado × GPS imperturbável' é a comédia de voz do filme. Higiene de texto para a TTS: remover as aspas « », parênteses e marcações de cena do texto enviado; números sempre por extenso (já estão); pausas feitas com ponto final e reticências, nunca com cadeias de reticências; testar antes 'Ford T', 'Pix', 'Hipoteticamente', 'catorze' (ou 'quatorze', o que a voz disser melhor), 'Recalculando'. Montagem: um stem por frase, nomeado por cena (S01_narr_01, S03_maq_01...), intervalo fixo de 0,4 s entre voz e voz; a pausa de 1,5 s após 'Quem aperta o botão?' e a de 1 s antes de 'Gestão da Mudança.' são silêncio real na timeline, não ponto. Orçamento: 211 palavras a 0,92 ≈ 96 s de fala em 130 s — há 34 s de ar para gags, para o silêncio de 2 s e para os carimbos. Travar o áudio final ANTES de timar os visuais; o SRT só depois. Se a locução estourar, cortar nesta ordem: (1) 'Tecnologia resolve a dor antiga e inventa uma nova.' (S09), (2) 'E quem sabia, mostrou.' (S13), (3) 'Naquela época,' (S04). Pronomes de gênero ('Passageira', 'Outra') se ajustam depois do mapeamento P02–P14. Música e SFX sintetizados (ukulele + glockenspiel ~92 bpm, variações por era, parada total em 91–93 s).
 
-## 8 · Manifesto de ativos do roteiro (o que existe · o que construo · o que depende de você)
+## 13 · Manifesto de ativos do roteiro (o que existe · o que construo · o que depende de você)
 
 | Ativo | Cena | Estado |
 |---|---|---|
@@ -617,7 +623,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 Disponíveis hoje: Gabriel, Felipe, Fernando (prévias pequenas). Corrompidas: Alessandra, Francislene, Paulo Sergio, Rogério. Faltam 7 fotos.
 
-## 9 · Fatos, direitos e o que evitar
+## 14 · Fatos, direitos e o que evitar
 
 **Fatos a manter verificados.**
 - Ford Model T: lançamento em outubro de 1908, preço inicial aproximado de US$ 825–850 (Touring); o anúncio com '$590' é de c. 1912 (Torpedo/Runabout) e '$260' é de meados dos anos 1920. Decidir se o fac-símile usa $590 com rótulo 'anúncio de época · preço aproximado' (sem ano em tela) ou é recriado com $825; nunca mostrar ano ao lado do preço.
@@ -660,7 +666,7 @@ Disponíveis hoje: Gabriel, Felipe, Fernando (prévias pequenas). Corrompidas: A
 
 **Decisões do solicitante que prevalecem sobre a cautela do júri (registradas):** usar a foto do metrô e a foto de Elon Musk que você enviou, recortadas de verdade, com as cabeças trocadas (uso interno de treinamento, paródia). Mitigações mantidas: etiqueta "O CIENTISTA", nenhuma fala atribuída, micro-legenda "paródia · cena fictícia", nenhum título/logo/trilha/carro do filme, linha legal na cartela final.
 
-## 10 · Soluções alternativas consideradas (e por que não)
+## 15 · Soluções alternativas consideradas (e por que não)
 
 | Conceito | Logline | Média do júri (5 lentes) | O que aproveitamos |
 |---|---|---|---|
@@ -673,7 +679,7 @@ Disponíveis hoje: Gabriel, Felipe, Fernando (prévias pequenas). Corrompidas: A
 
 **Peças roubadas dos outros conceitos (síntese do chefe de roteiro):** Espinha e motor cômico de QUEM APERTA O BOTÃO? (42 pontos): a dupla Cientista mudo + Jovem, a máquina do tempo feita de telefone de disco / relógio de estação / máquina de escrever / café / placa de seta, a tecla verde CONFIRMA, a Máquina como segunda voz de GPS deadpan, o cartão de quatro carimbos, os cameos por época (rédeas, feno + buzina, braços-semáforo, barba no ponto, mapa gigante, manual de doze volumes virando almofada, volante da bolsa, analista que aperta sem olhar, Cientista que guarda o disco no bolso), o corredor das ideias geniais que ninguém usou e a cartela de latão. Consertos aplicados do júri: S09 e S12 reduzidos a três gags e a um beat de 2 s por pessoa; 'Carimbo um/dois/três' cortado da voz e verbos só como objetos; 'ERRO: HUMANOS EM VOLTA' virou «Erro: ninguém explicou» (a culpa nunca é da pessoa); 'Ninguém está errado. Só ninguém ensinou' + bonequinhos de mãos dadas trocados pelo Cientista desenhando a tecla com catorze dedinhos; CONFIAR agora é um ato reconhecível (a motorista troca de carro e pendura a chave no relógio); APRENDER tem professor (P11 mostra o cinto a P13); o carro voador É a Máquina atualizada (um veículo só); a paródia ganhou 9 s e uma piada física; lightbulb único; S07 com 3 s; loops de apontar feitos com lookAt + um rig de braço; Pix da Vendedora cortado; 211 palavras em vez de 257. De A PEÇA QUE FALTAVA: a máquina de lanche onde a moeda do Cientista falha e o Pix do Jovem funciona (agora é a origem da tecla), a peça cromada 'MAIS TECNOLOGIA' que não coube (encostada no corredor, sem beat extra), a lógica de diorama persistente (a Máquina fixa, o fundo troca), a tirada 'Hipoteticamente' e o disco-placeholder digno para as treze fotos que faltam. De PLANETA NOVIDADE: os dois segundos de silêncio com música parada quando as portas abrem e ninguém entra; quem levou susto em 1908 é o primeiro a embarcar em 2026; o corredor de hospital vestido de estação em vez de um metrô construído do zero; a micro-legenda 'paródia · cena fictícia · nenhuma fala real'; a última frase virando a câmera para a sala ('Próxima parada: esta sala'); a disciplina de texto grande ≥2,5 s. De JORNAL DA MUDANÇA: o 'fura-quadro' convertido no Fotógrafo que registra todas as épocas (fole → compacta → filmadora → celular), a etiqueta HIPOTÉTICO presa ao carro sempre que ele voa, e a regra de uma camada de texto por vez. De QUEM QUER ADOTAR A INOVAÇÃO?: o relógio de estação que conta anos em vez de horas, o rodapé jurídico como humor discreto e a honestidade artesanal (fita-crepe, barbante, papel) na cartela. De O MANUAL QUE NINGUÉM LEU: o orçamento de palavras (~210, uma frase por beat, voz com ar), o manual gigante como adereço cômico e a decisão de nunca culpar quem não leu — aqui quem leu o manual é quem ensina.
 
-## 11 · Ganhos esperados e diferenciais
+## 16 · Ganhos esperados e diferenciais
 
 | Ganho | Como o filme entrega |
 |---|---|
@@ -685,7 +691,7 @@ Disponíveis hoje: Gabriel, Felipe, Fernando (prévias pequenas). Corrompidas: A
 
 **Diferenciais inovadores:** segunda voz de GPS como narradora da tese; cartão perfurado como quebra-cabeça que a plateia vê encher; colagem real com cabeças pinadas por colchete; referência de época com fac-símile recriado (sem erro histórico); salto no tempo com relâmpago de papel ligando o carro voador às épocas (sua referência "após o carro voar").
 
-## 12 · Próximos passos
+## 17 · Próximos passos
 
 1. **Sua aprovação** deste storytelling (ou ajustes) → gero a locução final (Narrador *Lax* + Máquina) e só então travo os tempos.
 2. Você entrega as **fotos em boa qualidade** quando puder; eu troco as cabeças (o encaixe é automático) e defino com você quem é quem nos slots.

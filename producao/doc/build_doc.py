@@ -3,7 +3,13 @@
 import json, sys, re, os
 HERE=os.path.dirname(os.path.abspath(__file__))
 S=json.load(open(sys.argv[1])); out=sys.argv[2]
-rd=lambda n: open(os.path.join(HERE,n),encoding='utf-8').read().strip()
+def rd(n, shift=0):
+    t=open(os.path.join(HERE,n),encoding='utf-8').read().strip()
+    if shift: t=re.sub(r'^## (\d+) ·', lambda m: f"## {int(m.group(1))+shift} ·", t, flags=re.M)
+    return t
+NOTES={1:"**Nota de produção (decisão do solicitante, 19/10).** A estação É a sua foto do metrô, recortada de verdade: rostos originais apagados e preenchidos, cabeças reais de Gabriel e Elon pinadas no pescoço, push-in lento, etiquetas de fita, balões só com pictograma e micro-legenda 'paródia · cena fictícia'. Já está montada no motor (`imagens/pessoas/personagens/testes/metro_cena-montada.jpg`). A máquina de lanche e a tecla verde entram como recortes sobre essa foto.",
+       11:"**Nota de produção.** O 'modo voo' usa também o quadro real do seu vídeo (carro no ar com propulsores azuis, `imagens/recortes/carro-voador_recorte.png`) e a sua imagem de Elon apresentando (meio corpo) na 'atualização instalada'; os rotores de papel e a etiqueta HIPOTÉTICO ficam por cima.",
+       12:"**Nota de produção.** Transição de entrada com o relâmpago de papel do salto no tempo (sua referência 'após o carro do Elon voar'): flash curto (≤0,3 s), raios recortados, rasgo de papel — nunca mais rápido que 2 s por beat."}
 alts=json.load(open(os.path.join(HERE,'alternativas.json')))
 def tc(s):
     s=float(s); m=int(s//60); return f"{m}:{s-60*m:04.1f}"
@@ -44,6 +50,7 @@ def scene_blocks():
                 parts.append(f"| {c.get('slot','')} | {c.get('role','')} | {c.get('reaction','')} | {c.get('entry_exit','')} | {c.get('gag','')} |")
             parts.append("")
         if sc.get('sfx_music'): parts.append(f"**Som.** {sc['sfx_music'].strip()}\n")
+        if i in NOTES: parts.append(NOTES[i]+"\n")
     return "\n".join(parts)
 def cameo_table():
     rows=["| Slot | Cenas | Reação à mudança (o que a pessoa representa) | Corpo real | Época |","|---|---|---|---|---|"]
@@ -147,13 +154,13 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 {sheets()}
 
-{rd('secoes_fixas.md')}
+{rd('secoes_fixas.md',5)}
 
 **Direção de voz (chefe de roteiro).** {S.get('voice_direction','')}
 
-{rd('manifesto_assets.md')}
+{rd('manifesto_assets.md',5)}
 
-## 9 · Fatos, direitos e o que evitar
+## 14 · Fatos, direitos e o que evitar
 
 **Fatos a manter verificados.**
 {chr(10).join('- '+f for f in S.get('facts_to_verify',[]))}
@@ -163,11 +170,11 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Decisões do solicitante que prevalecem sobre a cautela do júri (registradas):** usar a foto do metrô e a foto de Elon Musk que você enviou, recortadas de verdade, com as cabeças trocadas (uso interno de treinamento, paródia). Mitigações mantidas: etiqueta "O CIENTISTA", nenhuma fala atribuída, micro-legenda "paródia · cena fictícia", nenhum título/logo/trilha/carro do filme, linha legal na cartela final.
 
-## 10 · Soluções alternativas consideradas (e por que não)
+## 15 · Soluções alternativas consideradas (e por que não)
 
 {alts_table()}
 
-## 11 · Ganhos esperados e diferenciais
+## 16 · Ganhos esperados e diferenciais
 
 | Ganho | Como o filme entrega |
 |---|---|
@@ -179,7 +186,7 @@ A Máquina erra o corredor e entra onde moram as ideias geniais que ninguém uso
 
 **Diferenciais inovadores:** segunda voz de GPS como narradora da tese; cartão perfurado como quebra-cabeça que a plateia vê encher; colagem real com cabeças pinadas por colchete; referência de época com fac-símile recriado (sem erro histórico); salto no tempo com relâmpago de papel ligando o carro voador às épocas (sua referência "após o carro voar").
 
-## 12 · Próximos passos
+## 17 · Próximos passos
 
 1. **Sua aprovação** deste storytelling (ou ajustes) → gero a locução final (Narrador *Lax* + Máquina) e só então travo os tempos.
 2. Você entrega as **fotos em boa qualidade** quando puder; eu troco as cabeças (o encaixe é automático) e defino com você quem é quem nos slots.
