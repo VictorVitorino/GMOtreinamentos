@@ -134,3 +134,45 @@ def clock_tick_train(dur,bpm=60,amp=1.0):
     return x
 def shutter(amp=1.0):
     x=click(1.0,0.01,1500); x=mixin(x,fftfilt(noise(0.05),lo=600,hi=5000)*np.exp(-tline(0.05)*100),0.8); return x*amp
+
+# ---------- SFX extras (colagem Ford T) ----------
+def hooves(dur=2.0,bpm=150,amp=0.6):
+    """cascos em trote: pares de toques surdos com variação"""
+    out=np.zeros(int(dur*SR)); step=60/bpm
+    t=0.0; k=0
+    while t<dur-0.1:
+        for j,(off,a) in enumerate([(0,1.0),(0.09,0.7)]):
+            i=int((t+off)*SR); x=thud(0.25*a*amp*(0.85+0.3*hsh(k*3+j)))
+            x=fftfilt(x,hi=900); n=min(len(x),len(out)-i)
+            if n>0: out[i:i+n]+=x[:n]
+        t+=step; k+=1
+    return out
+def neigh(amp=0.6,dur=1.1):
+    """relincho: glissando descendente com vibrato e ruído de sopro"""
+    t=tline(dur); f=np.interp(t,[0,0.15,0.5,dur],[620,880,520,300])*(1+0.06*np.sin(2*np.pi*23*t))
+    x=osc(f,dur,'saw')*0.5+osc(f*2.01,dur,'sine')*0.2
+    x=fftfilt(x,lo=250,hi=4200)*env(len(t),0.03,0.25)*np.exp(-t*1.4)
+    br=fftfilt(noise(dur),lo=1500,hi=6000)*np.exp(-t*3)*0.12
+    return (x+br)*amp
+def thruster(dur=2.5,amp=0.7):
+    """propulsor: rumble grave + jato filtrado com flutuação"""
+    t=tline(dur); j=fftfilt(noise(dur),lo=600,hi=5200)*(0.55+0.25*np.sin(2*np.pi*7*t)+0.15*np.sin(2*np.pi*0.9*t))
+    r=osc(48+6*np.sin(2*np.pi*0.5*t),dur,'saw')*0.35+osc(31,dur,'sine')*0.3
+    return (j*0.6+r)*env(len(t),0.35,0.6)*amp
+def machine_chime(amp=0.6):
+    """campainha da 'máquina' (sinal próprio, três notas curtas)"""
+    out=np.zeros(int(0.9*SR))
+    for i,f in enumerate([1046.5,1318.5,1568.0]):
+        x=bell(f,0.5,0.55*amp); o=int(i*0.13*SR); n=min(len(x),len(out)-o); out[o:o+n]+=x[:n]
+    return out
+def rivet_click(amp=0.8):
+    """colchete de latão encaixando"""
+    return np.concatenate([click(amp,0.006,3000),np.zeros(int(0.03*SR)),click(0.6*amp,0.01,1800)])
+def paper_slide(dur=0.5,amp=0.5):
+    """papel deslizando sobre papel"""
+    t=tline(dur); return fftfilt(noise(dur),lo=900,hi=7000)*(np.sin(np.pi*t/dur)**0.7)*amp*0.6
+def crank_start(amp=0.7):
+    """manivela + motor pegando (Ford T)"""
+    parts=[]
+    for i in range(4): parts.append(fftfilt(noise(0.12),lo=200,hi=1800)*np.exp(-tline(0.12)*25)*amp*(0.6+0.1*i)); parts.append(np.zeros(int(0.16*SR)))
+    parts.append(engine_idle(1.6,amp*0.8,rate=11)); return np.concatenate(parts)
