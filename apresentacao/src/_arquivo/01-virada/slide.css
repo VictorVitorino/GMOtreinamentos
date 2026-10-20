@@ -1,0 +1,69 @@
+/* =====================================================================
+   01 · VIRADA DE CHAVE
+   ===================================================================== */
+.s1-grid{position:absolute;inset:0;display:grid;grid-template-columns:470px 1fr 250px;gap:26px}
+.def{display:flex;flex-direction:column;gap:14px;padding:24px 26px}
+.def .label{color:var(--steel-300)}
+.def p.d{font-size:23px;line-height:1.45;color:#fff;font-weight:600;letter-spacing:-.01em}
+.def p.d em{font-style:normal;color:var(--orange-400)}
+.def ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:2px}
+.def li{display:flex;gap:10px;font-size:15.5px;line-height:1.45;color:var(--steel-200)}
+.def li::before{content:"";flex:none;width:6px;height:6px;margin-top:7px;border-radius:50%;background:var(--orange-500)}
+.def li b{color:#fff}
+.eq{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.eq-row{display:flex;align-items:baseline;gap:10px;font-family:var(--fm);color:var(--steel-200);font-size:13px;white-space:nowrap}
+.eq-row b{font-family:var(--fb);font-weight:800;font-size:34px;letter-spacing:-.03em;color:#fff}
+.eq-row b.r{color:var(--orange-400)}
+.eq-row .op{font-size:22px;color:var(--steel-400)}
+.eq-lbls{display:grid;grid-template-columns:auto auto auto auto auto;justify-content:start;gap:10px;font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-300);margin-top:2px}
+.eq-ctl{display:flex;align-items:center;gap:12px;margin-top:10px}
+.eq-ctl span{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-300);white-space:nowrap}
+.eq input[type=range]{flex:1;accent-color:var(--orange-500);height:22px;cursor:pointer}
+.eq-bar{height:8px;border-radius:99px;background:rgba(255,255,255,.1);margin-top:8px;overflow:hidden}
+.eq-bar i{display:block;height:100%;width:30%;border-radius:99px;background:linear-gradient(90deg,var(--orange-600),var(--orange-400));transition:width .35s var(--ease)}
+.eq-msg{font-size:12.5px;color:var(--steel-200);margin-top:8px;min-height:18px}
+
+.flip{perspective:1800px;position:relative}
+.flip-in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1s var(--spring)}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;overflow:hidden;padding:28px 32px;display:flex;flex-direction:column}
+.face.a{background:linear-gradient(160deg,#FFF6EF 0%,#FDE8DC 60%,#FFD9C2 100%);border:1px solid var(--orange-200);box-shadow:0 20px 50px rgba(242,107,33,.18)}
+.face.b{transform:rotateY(180deg);background:radial-gradient(700px 400px at 80% 0%,rgba(42,90,150,.6),transparent 60%),linear-gradient(160deg,#0B2545,#04101F);color:#fff;box-shadow:0 20px 50px rgba(4,16,31,.4)}
+.chip{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 13px;border-radius:99px;font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;align-self:flex-start}
+.face.a .chip{background:#fff;color:var(--orange-600);border:1px solid var(--orange-200)}
+.face.b .chip{background:rgba(255,255,255,.08);color:var(--orange-200);border:1px solid rgba(255,255,255,.18)}
+.face .tag{font-family:var(--fm);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:22px}
+.face.a .tag{color:var(--orange-600)}.face.b .tag{color:var(--steel-300)}
+.face h3{font-size:56px;font-weight:800;line-height:1.04;letter-spacing:-.035em;margin-top:8px}
+.face.a h3{color:var(--navy-900)}
+.face .scene{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.face .scene div{border-radius:16px;padding:18px;font-size:16px;line-height:1.4;font-weight:600}
+.face.a .scene div{background:rgba(255,255,255,.75);border:1px solid var(--orange-200);color:var(--navy-800)}
+.face .scene i{display:block;font-style:normal;font-size:40px;margin-bottom:10px}
+.face.a .mot{margin-top:auto}
+.face.a .miss{margin-top:18px;padding:12px 16px;border:2px dashed var(--orange-400);border-radius:14px;font-size:16px;line-height:1.4;font-weight:600;color:var(--navy-800);background:rgba(255,255,255,.5)}
+.face.a .miss b{color:var(--orange-600)}
+.mot-l{display:flex;justify-content:space-between;font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
+.mot-bar{height:12px;border-radius:99px;background:rgba(255,255,255,.7);margin-top:6px;overflow:hidden;border:1px solid var(--orange-200)}
+.mot-bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--orange-400),var(--orange-500))}
+.face.b .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.face.b .fact{border-radius:16px;padding:18px 20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.face.b .fact b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;color:var(--orange-400);line-height:1}
+.face.b .fact span{display:block;font-size:15px;line-height:1.42;color:var(--steel-200);margin-top:6px}
+.face.b .fact em{font-style:normal;color:#fff;font-weight:700}
+.face.b .fact small{display:block;font-family:var(--fm);font-size:9.5px;color:var(--steel-400);margin-top:6px}
+.punch{margin-top:auto;border-radius:16px;padding:18px 22px;background:linear-gradient(100deg,rgba(242,107,33,.22),rgba(242,107,33,.05));border:1px solid rgba(242,107,33,.45);font-size:24px;line-height:1.35;font-weight:700;letter-spacing:-.01em}
+.punch em{font-style:normal;color:var(--orange-400)}
+.keybtn{position:absolute;right:22px;top:22px;z-index:4;display:flex;align-items:center;gap:10px;height:46px;padding:0 16px 0 10px;border-radius:99px;background:var(--navy-800);color:#fff;font-weight:700;font-size:14px;box-shadow:0 10px 26px rgba(11,37,69,.3);transition:transform .2s var(--ease),background .2s}
+.keybtn:hover{transform:translateY(-2px);background:var(--orange-500)}
+.keybtn .k{width:30px;height:30px;border-radius:50%;background:var(--orange-500);display:grid;place-items:center;transition:transform .8s var(--spring)}
+.keybtn:hover .k{background:var(--navy-800)}
+.flip.on .keybtn .k{transform:rotate(90deg)}
+.keybtn svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.flip.on .keybtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+.s1-isa{position:relative}
+.s1-isa .char{left:50px;bottom:0;width:150px}
+.s1-isa .bubble{left:0;right:0;top:20px;font-size:15px}
+.s1-isa .bubble .v2{display:none}
+.s1.flipped .s1-isa .bubble .v1{display:none}.s1.flipped .s1-isa .bubble .v2{display:block}
+.s1.flipped .s1-isa .bubble{animation:aPop .6s var(--spring)}
