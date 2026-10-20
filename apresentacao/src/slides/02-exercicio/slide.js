@@ -368,13 +368,64 @@ hnd.addEventListener('pointerdown',startCut);svgA.addEventListener('pointerdown'
 scene.addEventListener('pointermove',e=>{if(cdrag===e.pointerId)setCut(toSvg(e)[0]/W*100)});
 const endCut=e=>{if(cdrag===e.pointerId)cdrag=null};scene.addEventListener('pointerup',endCut);scene.addEventListener('pointercancel',endCut);
 
-/* ---------- passos: Ver → Sentir → comparar → Decidir + Agir → Repetir ---------- */
+/* ---------- CURIOSIDADE: de fora para dentro ou de dentro para fora? ----------
+   CUR=0 fechado · 1 pergunta + votação · 2 resposta (ciclo). Abre pelos passos 6–7
+   ou pelo chip 💡 (modo livre: → revela, → de novo fecha; ← desfaz). */
+const curEl=$('#exCur',SEC),curBtn=$('#exCurBtn',SEC),cyc=$('#exCyc',SEC),tug=$('#exTug',SEC);
+let CUR=0,free=false;const V={a:0,b:0};
+(()=>{const c=100,RO=84,RI=56,RN=70,
+ xy=(r,d)=>{const a=d*Math.PI/180;return [(c+r*Math.cos(a)).toFixed(1),(c+r*Math.sin(a)).toFixed(1)]},
+ head=(r,d,cw)=>{const [x,y]=xy(r,d);return `<path d="M-3.5 -5 2 0 -3.5 5" transform="translate(${x} ${y}) rotate(${d+(cw?90:-90)})"/>`},
+ node=(d,t,w,k)=>{const [x,y]=xy(RN,d);return `<g class="nd ${k}" transform="translate(${x} ${y})"><rect x="${-w/2}" y="-12" width="${w}" height="24" rx="12"/><text y="4">${t}</text></g>`};
+ /* anel de fora (navy, horário: hipótese A) e anel de dentro (laranja, anti-horário: hipótese B): VER ↔ SENTIR ↔ AGIR */
+ cyc.innerHTML=`<circle class="halo" cx="${c}" cy="${c}" r="${RO+8}"/>`+
+  `<g class="cw"><circle cx="${c}" cy="${c}" r="${RO}"/>${[-30,90,210].map(d=>head(RO,d,1)).join('')}</g>`+
+  `<g class="ccw"><circle cx="${c}" cy="${c}" r="${RI}"/>${[-30,90,210].map(d=>head(RI,d,0)).join('')}</g>`+
+  node(-90,'VER',52,'v')+node(30,'SENTIR',70,'s')+node(150,'AGIR',56,'g')+
+  `<text class="ct" x="${c}" y="${c-4}">é um</text><text class="cb" x="${c}" y="${c+14}">ciclo</text>`})();
+/* até HMAX mãozinhas; acima disso, "+N" (cabe mesmo com contagem de 3 dígitos) */
+const HMAX=6;
+function paintVotes(bump){const t=V.a+V.b,p=t?V.a/t*100:50;
+ ['a','b'].forEach(k=>{const n=$('#exV'+k,SEC),h=$('#exH'+k,SEC),v=V[k];n.textContent=v;n.nextElementSibling.textContent=v===1?'mão':'mãos';
+  if(bump===k){n.classList.remove('bump');void n.offsetWidth;n.classList.add('bump')}
+  const show=Math.min(v,HMAX),have=h.querySelectorAll('i').length;
+  if(show<have||!v)h.innerHTML='';
+  for(let i=h.querySelectorAll('i').length;i<show;i++)h.insertAdjacentHTML('beforeend','<i>✋</i>');
+  const em=h.querySelector('em');if(v>HMAX){if(em)em.textContent='+'+(v-HMAX);else h.insertAdjacentHTML('beforeend',`<em>+${v-HMAX}</em>`)}else if(em)em.remove()});
+ $('#exTa',SEC).textContent=V.a;$('#exTb',SEC).textContent=V.b;
+ tug.style.setProperty('--p',p.toFixed(1)+'%');tug.classList.toggle('zero',!t)}
+function vote(k){V[k]++;paintVotes(k);tone(k==='a'?520:660,.09,'triangle',.05,k==='a'?700:880)}
+function zeroVotes(sound=true){V.a=V.b=0;paintVotes();if(sound)tone(420,.12,'sine',.04,260)}
+function setCur(m,sound=true){const was=CUR;CUR=m;
+ curEl.classList.toggle('open',m>0);curEl.classList.toggle('rev',m===2);curEl.setAttribute('aria-hidden',m?'false':'true');
+ curBtn.classList.toggle('on',m>0);curBtn.setAttribute('aria-pressed',m>0);
+ if(!m)free=false;
+ if(!sound||m===was)return;
+ if(m===1&&!was){boing();later(()=>tone(990,.12,'sine',.05,1320),260)}
+ else if(m===2){ding();later(()=>tone(660,.5,'sine',.04,990),380)}
+ else if(!m)tone(500,.12,'sine',.04,300)}
+$$('.ex-plus',SEC).forEach(b=>b.addEventListener('click',()=>vote(b.dataset.v)));
+$('#exCurZero',SEC).onclick=()=>zeroVotes();
+/* fechar: se veio pelos passos, volta ao passo 5; se veio pelo chip, só fecha */
+function closeCur(){if(S>=6)setS(5,-1);else setCur(0)}
+function openCur(){if(S===5)setS(6,1);else if(S<5){free=true;setCur(1)}}
+curBtn.onclick=()=>{CUR?closeCur():openCur()};
+$('#exCurX',SEC).onclick=closeCur;
+$('#exCurRev',SEC).onclick=()=>{if(S===6)setS(7,1);else if(free)setCur(2)};
+/* Esc fecha o cartão só quando nada do shell está por cima (roda, painéis, tela preta, Fernando):
+   escuta na captura, antes do shell, para ler o estado de antes da tecla */
+addEventListener('keydown',e=>{if(e.key!=='Escape'||!CUR||!DECK.isActive('exercicio'))return;
+ if(document.querySelector('#wheel.on,#infoP.on,#idxP.on,#blackout.on')||window.fernVisible?.())return;closeCur()},true);
+$$('.ex-curb,.ex-plus,.ex-cur-z,.ex-cur-x',SEC).forEach(b=>b.addEventListener('click',e=>{if(e.detail)b.blur()}));
+paintVotes();
+
+/* ---------- passos: Ver → Sentir → comparar → Decidir + Agir → Repetir → Curiosidade (pergunta, resposta) ---------- */
 const rows=$$('#exSteps li',SEC),panel=$('#exPanel',SEC),regs=$$('#exBrain .rg',SEC),q=$('#exIsaQ',SEC),isa=$('#exIsa',SEC);
-const ON={0:[],1:[1],2:[2],3:[],4:[3,4],5:[5]},DONE={0:0,1:0,2:1,3:2,4:2,5:4};
-const QS=['Pode bagunçar mais! O que mais incomoda aqui?','O que salta aos olhos primeiro?','E o que você sente olhando para isso?','Agora compare. Dá vontade de arrumar?','Querer não basta: alguém precisou agir.','E amanhã? Quem garante que ela continua assim?'];
+const ON={0:[],1:[1],2:[2],3:[],4:[3,4],5:[5],6:[],7:[]},DONE={0:0,1:0,2:1,3:2,4:2,5:4,6:5,7:5};
+const QS=['Pode bagunçar mais! O que mais incomoda aqui?','O que salta aos olhos primeiro?','E o que você sente olhando para isso?','Agora compare. Dá vontade de arrumar?','Querer não basta: alguém precisou agir.','E amanhã? Quem garante que ela continua assim?','Curiosidade: começa por fora ou por dentro?','As duas! E na sua área, por onde começar?'];
 let S=0;
 /* linha de progresso entre os ícones (Progress Motion) */
-const ol=$('#exSteps',SEC),ics=$$('#exSteps .ic',SEC),LAST={0:0,1:0,2:1,3:1,4:3,5:4};
+const ol=$('#exSteps',SEC),ics=$$('#exSteps .ic',SEC),LAST={0:0,1:0,2:1,3:1,4:3,5:4,6:4,7:4};
 function track(n){const k=DECK.scale()||1,o=ol.getBoundingClientRect(),c=ics.map(ic=>{const r=ic.getBoundingClientRect();return (r.top+r.height/2-o.top)/k});
  if(!o.height)return;ol.style.setProperty('--t0',c[0]+'px');ol.style.setProperty('--len',(c[c.length-1]-c[0])+'px');ol.style.setProperty('--fill',(c[LAST[n]]-c[0])+'px')}
 function ask(n){if(q.textContent===QS[n])return;isa.classList.remove('pop');void isa.offsetWidth;q.textContent=QS[n];isa.classList.add('pop')}
@@ -394,6 +445,7 @@ function setS(n,dir=1){const prev=S;S=n;
  if(n===1&&dir>0)tone(440,.5,'sine',.04,880);
  if(n===2&&dir>0){tone(110,.14,'sine',.09);later(()=>tone(100,.16,'sine',.08),190)}
  if(n===5&&dir>0){ding();later(()=>tone(990,.3,'sine',.05),420)}
+ setCur(n===6?1:n===7?2:0,n>=5||CUR>0);
  ask(n)}
 rows.forEach(li=>li.addEventListener('click',()=>{const i=+li.dataset.s,n={1:1,2:2,3:4,4:4,5:5}[i];setS(n===S?0:n,n>=S?1:-1)}));
 
@@ -407,11 +459,14 @@ function drop(){svgB.classList.remove('ex-spring','ex-drop');
  later(()=>svgB.classList.remove('ex-drop'),3000)}
 
 function resetAll(){clearT();cancelAnimationFrame(raf);drag=null;cdrag=null;
- restore(false);setCompare(false);setCut(50);S=0;setS(0,0)}
+ restore(false);setCompare(false);setCut(50);setCur(0,false);zeroVotes(false);S=0;setS(0,0)}
 resetAll();
 DECK.register('exercicio',{
  enter(){resetAll();drop()},
  leave(){resetAll()},
- step(d){if(d>0&&S<5){setS(S+1,1);return true}if(d<0&&S>0){setS(S-1,-1);return true}return false}
+ step(d){
+  /* cartão aberto pelo chip (fora da sequência): → revela e depois fecha; ← desfaz */
+  if(free&&CUR){if(d>0){if(CUR===1)setCur(2);else setCur(0)}else{if(CUR===2)setCur(1);else setCur(0)}return true}
+  if(d>0&&S<7){setS(S+1,1);return true}if(d<0&&S>0){setS(S-1,-1);return true}return false}
 });
 })();
