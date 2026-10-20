@@ -1,25 +1,40 @@
-(()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('numeros');
-/* ---------- 03 · indicadores ---------- */
+(()=>{const {tone,ding}=DECK, SEC=DECK.el('numeros');
+const q=s=>SEC.querySelector(s), qa=s=>[...SEC.querySelectorAll(s)];
+/* ---------- 05 · números: sem × com gestão da mudança ----------
+   a = sem (ou com pouca/ruim) GMO · b = com GMO. Fontes no data-src do slide. */
 const BARS=[
- {nm:'Transformação corporativa',src:'McKinsey · 2026 · multissetorial',v:30,dim:1},
- {nm:'Mudança organizacional',src:'Gartner · iniciativas de mudança',v:34,dim:1},
- {nm:'Fusões & aquisições',src:'Christensen et al. · HBR · 2011',r:[10,30],dim:1},
- {nm:'Transformação digital',src:'BCG · 2020 · com 6 fatores críticos',v:30,to:80},
- {nm:'Projetos (todos os setores)',src:'Prosci · 2023 · GMO ruim → excelente',v:13,to:88}
+ {nm:'Projetos atingem os objetivos',src:'Prosci · 2023',cmp:'GMO ruim × excelente',a:13,b:88,la:'GMO ruim',lb:'GMO excelente'},
+ {nm:'Iniciativas batem a meta original',src:'PMI · 2014',cmp:'pouco × muito eficaz em GMO',a:31,b:65,la:'pouco eficaz',lb:'muito eficaz'},
+ {nm:'Transformação bem-sucedida',src:'McKinsey · 2017',cmp:'sem × com engajar a linha de frente',a:3,b:28,la:'sem engajar',lb:'engajando'},
+ {nm:'Resultado financeiro forte',src:'BCG · 2018 · transformação digital',cmp:'sem × com foco em cultura',a:17,b:90,la:'sem foco',lb:'com foco'}
 ];
-(()=>{const s=SEC,chart=$('#chart'),box=$('#bars');let on=false,ready=false;
-box.innerHTML=BARS.map(b=>`<div class="brow ${b.dim?'dim':'boost-row'}"><div class="nm"><b>${b.nm}</b><span>${b.src}</span></div><div class="btrack">${b.r?`<i class="range" style="left:${b.r[0]}%;width:${b.r[1]-b.r[0]}%"></i>`:`<i class="base" data-w="${b.v}"></i>`}${b.to?`<i class="boost" style="left:${b.v}%;--bw:${b.to-b.v}%"></i><span class="gap" style="left:${(b.v+b.to)/2}%">+${b.to-b.v} p.p.</span>`:''}</div><div class="val" data-v="${b.v}" data-to="${b.to||''}">${b.r?`${b.r[0]}–${b.r[1]}%<small>criam valor</small>`:b.v+'%'}</div></div>`).join('')+`<div class="base-line" style="left:calc(244px + (100% - 350px) * .3)"><span>~30%</span></div>`;
-const setOn=v=>{on=v;chart.classList.toggle('on',v);$('#gmoTg').classList.toggle('on',v);
-$$('.boost-row .val',box).forEach(el=>{const a=+el.dataset.v,b=+el.dataset.to;count(el,v?a:b,v?b:a,900)});
-$('#chartMsg').innerHTML=v?'Quando o lado humano é gerido, o sucesso salta para <em>80% a 88%</em>: de 2,7× a 7× mais.':'Sem as pessoas no centro, <em>cerca de 3 em cada 10</em> mudanças entregam o que prometeram.';
-if(v){ding();burstStage()}};
-$('#gmoTg').onclick=()=>setOn(!on);
-function count(el,a,b,ms){const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,3);el.firstChild.nodeValue=Math.round(a+(b-a)*e)+'%';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
-function burstStage(){}
-DECK.register('numeros',{enter:()=>{setOn(false);chart.classList.remove('ready');$$('.base',box).forEach(b=>b.style.width='0');$$('.range',box).forEach(r=>r.style.opacity=0);
- $('#ringF').style.strokeDashoffset=540.4;$('#ringF2').style.strokeDashoffset=389.6;$('#seal').classList.remove('stamp');
- setTimeout(()=>{$$('.base',box).forEach(b=>b.style.width=b.dataset.w+'%');$$('.range',box).forEach(r=>r.style.opacity=1);chart.classList.add('ready')},700);
- setTimeout(()=>{$('#ringF').style.strokeDashoffset=540.4*(1-.88);$('#ringF2').style.strokeDashoffset=389.6*(1-.13);const v=$('#ringV');const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1800),e=1-Math.pow(1-k,3);v.textContent=Math.round(88*e)+'%';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)},600);
- setTimeout(()=>{$('#seal').classList.add('stamp');setTimeout(()=>{s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake');tone(90,.25,'square',.12,40)},420)},2500)},
- step:d=>{if(d>0&&!on){setOn(true);return true}if(d<0&&on){setOn(false);return true}return false}})})();
+const MSG_OFF='Com gestão da mudança fraca ou ausente, os estudos ficam <em>entre 3% e 31%</em>.';
+const MSG_ON='Com a mudança gerida, todas sobem: <em>de ≈2× a ≈9× mais chance</em>. Métricas diferentes, mesma direção.';
+const chart=q('.n5-chart'),box=q('.n5-bars'),tg=q('.n5-tg'),ring=q('.n5-ring'),seal=q('.n5-seal'),rv=q('.n5-rv'),msg=q('.n5-cf .msg');
+box.innerHTML=BARS.map(r=>`<div class="n5-row"><div class="nm"><b>${r.nm}</b><span>${r.src}<br>${r.cmp}</span></div><div class="trk"><i class="base" data-w="${r.a}"></i><i class="boost" style="left:${r.a}%;--bw:${r.b-r.a}%"></i><span class="gap" style="left:${(r.a+r.b)/2}%">+${r.b-r.a} p.p. · ≈${Math.round(r.b/r.a)}×</span></div><div class="val"><b data-v0="${r.a}" data-v1="${r.b}">${r.a}%</b><small data-l0="${r.la}" data-l1="${r.lb}">${r.la}</small></div></div>`).join('');
+const fmtX=v=>(v===1?'1':(Math.round(v*10)/10).toString().replace('.',','))+'×';
+let on=false,timers=[],raf=new Set();
+const later=(fn,ms)=>timers.push(setTimeout(fn,ms));
+/* anim: contagem com easing; com 'el', uma nova contagem no mesmo elemento cancela a anterior (cliques rápidos não brigam) */
+function anim(ms,cb,el){const t0=performance.now(),tok={};if(el)el._n5=tok;const f=t=>{if(el&&el._n5!==tok)return;const k=Math.min(1,(t-t0)/ms);cb(1-Math.pow(1-k,3));if(k<1){const id=requestAnimationFrame(f);raf.add(id)}};raf.add(requestAnimationFrame(f))}
+function stopAll(){timers.forEach(clearTimeout);timers=[];raf.forEach(cancelAnimationFrame);raf.clear()}
+function paint(v,animate){
+ qa('.n5-row .val b').forEach(el=>{const a=+el.dataset.v0,b=+el.dataset.v1,from=v?a:b,to=v?b:a;if(!animate){el._n5=null;el.textContent=to+'%';return}anim(900,e=>el.textContent=Math.round(from+(to-from)*e)+'%',el)});
+ qa('.n5-row .val small').forEach(el=>el.textContent=v?el.dataset.l1:el.dataset.l0);
+ qa('.n5-mult .chip b').forEach(el=>{const to=+el.dataset.to,A=v?1:to,B=v?to:1;if(!animate){el._n5=null;el.textContent=(v?'≈':'')+fmtX(B);return}
+  anim(900,e=>{const x=A+(B-A)*e,r=B%1||A%1?Math.round(x*10)/10:Math.round(x);el.textContent=(x>1.04?'≈':'')+fmtX(r)},el)});
+ msg.innerHTML=v?MSG_ON:MSG_OFF}
+function setOn(v,animate=true){on=v;chart.classList.toggle('on',v);tg.classList.toggle('on',v);tg.setAttribute('aria-pressed',v);paint(v,animate);if(v&&animate)ding()}
+tg.onclick=()=>setOn(!on);
+function reset(){stopAll();setOn(false,false);
+ qa('.n5-row .base').forEach(b=>b.style.width='0');
+ ring.classList.add('n5-now');ring.classList.remove('on');void ring.offsetWidth;ring.classList.remove('n5-now');rv.textContent='0%';
+ seal.classList.remove('stamp');SEC.classList.remove('n5-shake')}
+DECK.register('numeros',{
+ enter(){reset();
+  later(()=>{qa('.n5-row .base').forEach(b=>b.style.width=b.dataset.w+'%')},700);
+  later(()=>{ring.classList.add('on');anim(1800,e=>rv.textContent=Math.round(88*e)+'%')},600);
+  later(()=>{seal.classList.add('stamp');later(()=>{SEC.classList.remove('n5-shake');void SEC.offsetWidth;SEC.classList.add('n5-shake');tone(90,.25,'square',.12,40)},420)},2700)},
+ leave(){reset()},
+ step(d){if(d>0&&!on){setOn(true);return true}if(d<0&&on){setOn(false);return true}return false}});
 })();
