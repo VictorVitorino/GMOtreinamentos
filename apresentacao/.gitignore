@@ -1,0 +1,4 @@
+# Versão de arquivo único (contém todas as fotos embutidas): gerar com `python3 build.py`
+dist/
+# Foto da Isabella: aguardando autorização expressa para publicação em repositório público
+assets/isabella.webp

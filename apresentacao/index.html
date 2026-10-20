@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestão de Mudanças · Treinamento</title>
+<meta name="description" content="Alvarez & Marsal · Digital & Technology Services — Treinamento de Gestão de Mudanças: uma abordagem entusiasta à mudança.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   TREINAMENTO · GESTÃO DE MUDANÇAS
+   Alvarez & Marsal · Digital & Technology Services
+   Arquitetura do Portfólio DTS: palco 1600×900, superfícies "paper" (grade fina)
+   e "stage" (navy profundo), Inter 800 nos títulos, JetBrains Mono nos rótulos.
+   Efeitos do Guia DTS: Glow / Light Sweep, Progress Motion, Data Highlight.
+   ===================================================================== */
+:root{
+  --navy-950:#04101F;--navy-900:#071A33;--navy-800:#0B2545;--navy-700:#13315C;--navy-600:#1B4479;--navy-500:#2A5A96;
+  --steel-600:#3D5F93;--steel-500:#4A6FA5;--steel-400:#6E8FBF;--steel-300:#A3B8D6;--steel-200:#C9D6E8;--steel-100:#E4EBF5;
+  --orange-600:#D9521A;--orange-500:#F26B21;--orange-400:#FF8A4C;--orange-200:#FFC7A6;--orange-100:#FDE8DC;
+  --off:#F6F8FB;--surface-2:#EEF2F7;--surface-3:#E6EBF2;--line:#E2E7EF;--line-strong:#CBD4E1;
+  --grey-900:#1F2937;--grey-700:#3E4C5E;--grey-500:#6B7A90;--grey-400:#8A97A8;--grey-300:#B6C0CD;
+  --m-kotter:#0B2545;--m-adkar:#F26B21;--m-hcmbok:#2A5A96;--m-cmak:#6E8FBF;
+  --fb:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --fm:'JetBrains Mono','SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);--ease-io:cubic-bezier(.65,0,.35,1);--spring:cubic-bezier(.34,1.56,.64,1);
+  --am-logo:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOMAAAAkCAYAAAB7Y41AAAAOa0lEQVR42u2deXRV1RXGfy8TIQlhCpMikwwRUFRU1BZstaUqqKUItYpa61y0pS2tLrW1VqrUuhzqbNVV6aSiYKuiqFVQK2opBgVBEVtmMJBACJlI8vrH+c7K4Xrvffclj9A/7rfWW3Dfu8O5++zh23ufe5NIJpPEiBHjwCMnw+fLAo4HCp3v1gGfxKKOEaN9jXEc8BxQ5Hx3NzAjFnWMGKkjWaaQD1zjMUSAxljMMWK0rzFOU2SMESPGATTGgcB0oCAWaYwYB9YYLweG6/+1wJ5YtDFitL8xjgOmAHnafgb4PBZtjBjta4wdgQuB/treANwBNMSijRGjfY1xInAmkK3tezA9xUQs2hgx2s8Y+wLnAyXaXgb8GWiKjTFGjPY1xjOB053tu4BmndNdY2e/K4rFHSNG5o1xuHJFS08XAO8CI/jiqp5m4BDg0FjcMWJk1hjzgLOB47S9B3gA6O1QVq8x5shQe8QijxEjc8Z4NKavaPEX4DNgGMFrXZuUYw6N88kYMTJjjJ0wK20O0vZmYG5IVLSwOeQooFcs9hgxvoh0n9o4WRTV0s+/yiDHKX8MeziyGegOHA7sAPY6v+WKwu4A6kPOkQA6K9LuDvi9FFMsSvr8Vgdsw39RQiFmWV+BxhrmwBrEBqr03Qgd53fNRqACWB8gnyJgsOh/quvuAf4D1ASkD/0k42zJZyNQGXLOjsAg3bvftfcCWyUzP+Tq3vOAamBVCh2wyAcOAzoA5ZjH7KI+UJANdNG/9cAu57feup+Nkneq8/TRuaoxPfKmkP1LFIQ66B4rdB2/nnqxxpGbQh4JyX0FUJ+OMXbDPJWRr+1PgCf1fbcUN+IaZCnwnkeIo0V9/wAsTpGvHoFZcvevAOW4QVQaDyVOSEHXAq8BT3jGMBiYJSrdHEKnE8B2YCawRNuzdF9+12zQpL0jSr/Gc75hmIUSvTRxiRBjXAlcD3zkucbXgG9Ijn0lh+3a/zVgXoDz6gf8Wobhd8+1wKeak7k+RlmMeUSul4z2OuDtCHrwFeA3cgJ/k/wqI+phqeY3R+Ny53CixvChdHV1yHmKgKuAr0pOM2VgfjL6JnCC5so6ro1AGaZ4+brnmJHArUBPH53wCxATgQ3pGONFGhBSsGdkEBPSyAOT8ixZngm1T3t8WQreEDL4ohB6nZBRlYaMYbSEewTwc2cCOsoQh0a4j56i7PaehqS45kjgVGAs8AOPMRViqtMlEa6713GGKBr/BPgeMMCzb3/d6yQp/82K5t4INSTFPR8JnKEU40YxITe62LEPAy7FVNXDHHN3pTpHOMoeVQ87yRAHKpLVyZGscuZloD67ZWw7Q1jhKEwhskB66cUpMupTfHSuVE5wEqat97Cjt0UaV9SCZW46NHWIlMhiBfB4K6mxN2wPlVAeA74FjAHeTHF8WOi3dKcMmK3thI7pCUyVcl6u6HGjc15LnecC8yXchE+EqtX5XSNBdOs6Z1KSmpgJwFma1FuAc6RIdh875t8DLwU4m2zR+M8cZboB+LEUab2i/QrRt4FyOscD31X0uhjY4pGlHfuTwLPaTjjUbLKU7kJFg9meVMJNN76ufReGzM8p2sc7X1FwuKhog3TkbBnlKqdQaDFF7O2WkGs0OP96dWoc8KCcewPwAvCqUpxijWUqpmV3s46/z5GrPfd8pXPJgODRaBlHVGO8Rh4MeZw/+tCt1qCDvO4WKVsCOBZ4K2LuEYZNUjAvXsWsFDpWRjFH1NXFMgkwXVSKinqxQPczGTgNGA/83We/JaKUUXAx8H3J8E3NUZkchZ3oeaK15+m6v9AxfrJ9X8bsN6a7gZOkfM8D/w4YUx9d6w1nHN6860ee6B4VPRWNOgIfSF+uFLsJSmlmiLLOT/NafUUzB8th/1bBZ5uHlbwI3KZgchrwlHJgF2Vy7hmppo6XV3dP/jiZwcGiV7dKoeYooT4sA+fODqDPa4A/6f+9HOrtpTC5rbhmIsDBlQP3K7LlKb8LpCsRcKjShs6KxtNlNLWeqLdGNPZlfXeuUoEgeWX7fL9c82Lz29KAWkCd9Gm8KLkfzhItbAww1jA9Han52gMsBa6W7oQ57a7KTY9KU2+mACcquj0C3OmTL9dIrtcCj4qlVAacj0wYY6ESW5vP7JRSVWbIGLc6NLGzItIDESphbcVyUZpcOYT2wBqnCtrWa54q5USK8mHIvjuA2+UQipXXpYu1YkTZyvn8jHG5HEIv0cfuPpFtphzWShXxoqKfnECuIng/pTRBil4h516lFOtOGWYUdMasubYM6WEPFffiZUXgMtr4iplUxniRcg6LtxSKM4UaTd5s5TWTRVmr97NhDNBENgY4liwnsmZ5Pq1dtFDiFAm2R4yy7sdbhCqUc3wxwrneoOUNfScGGFQYetDyxr+qAHmtlaNGqcfJnn0ukUFt1X7bI147TxG5RMeUiTl1DomKWdKpZ+UoxopORknLDnGY2TJMKykMzSn0NdtHh3x1KWxwg4ALnKphhZLh5gwbRoHygBoy/xxkMiDan+0oll/+MwXTP2v2Eex6ectP0rgmyk+7KiIvCThmPP6vLslSkeJF0fg++v5jnxzFD01S4hN0/EGKmN4xNAc4kdM1hvU++bUdXwPwCvAPFWm+I+e9RZXdyx3H8JxyrKhRcYQTfSsiUL+EDGSmqr3HaDwrVflMZYz5On51BnRwEv7rsrMkm9tshTrMGC9RYmoxz0eJ2oo80ZcuGvAiUbhNGTh3EaZ87j7SVYBpA9icbbFojxfDCW5VrAaeDvgtXzJr8BjwBOAy/V6G6a35YbI+fnhCxlhMyxMwm9OgRpUyuDzJ26/4MspTTS1S0eZCGcMCFU8IyLO3qTg2Vvf8tApa01UUKQfu9Vwj1RweqYDgvn83yrFZut7PlPP2Vf68KkW1176xopbMvLGilODW0WdKy0Ij41hFDzuwLaooZRr9FYUuUhSeg2lCz23DOZMOHVsWkky/q8KRXzR4G/9+WbZksSXg2kM9uVCzQ3kbZcgzQyjaSkyp3k/RrdPYTcs7hkqIvqSxSErcREtbxcV0VVpdOSY09hrlYPexb5PdG42Qoi8UVb1ATmCqxvm8omXvNNKJwTKMjyKyAC9ex7Qe7pBB3iSjDpoDK5sOaeSZYVgC/DPAWWzHWWjgZ4z2VRpDnO/uZ/+8FXyHhDxKXv4d/Jd6tQb18mzuypJmTez7KmqsDDj2eVXh0oVdPmaNuNjJz5Yq0X83RJHvAR5KcY1dDsUcptxpV4SxjZQCVAcYfJXOY+XVRR8bEWdEZCybMS2lk5Q3DhIt3iqZR0Un5cZ50r22UMbH5ChnYPrYv5RR+hVm7GKCQsIXckTFQjmDlPAzxtMxy3MsPlDpdn8gF7OSp1jKOl9K0yck+kQpfIBpfl/noUTNUuSVEcaVm6KK5oeNmN5XvQyyFPipFKFeVCtVMYAI+5SpmtgTs5wrVatpjPIuO59bffaZL0pp5XWUagQ5MtJ0KNsLmMULUx2nPod9Vx6lmsPhyt9267iqNuhZoxjXAKUBk3S+Yp991ys3HYPpRQ8A/pvi/B0JbtVEXuXmpTgHiTL2cjz9XQGTlwlMA65QKF8jI7ySlmcl24LPMQ3+xcpFF6l4sJL9hypMqXux6NgjmAUStYoUl0V0JFGU3S66uBqz2iasQHaVKqKNtPRY/XJhV173KufLwazk+XYactgpw7a9ubVubhQBXVV0Sco4Ps7A3FRieoFLFXXP1zW82E1LX3WUWGJYKjBclduJ7Ps3ZtJGlkcRzlAlzOJVUbb99aeqBqhwYyPx0ZglVZ0zcO5sWt+GaGxFVLQy9HrCx508cjoti9jbgo8wLaY6UbnZAZSqs9jBWRrXS6pkBnnwbA/lvkPRvDtmxU//NMb4EmaVUTnwuwiswMWxoshViuT1GdK31ZhVSOslm64BzONZOaRCTF/2Cqd+4qX+t2CWit4UUKiJ3Ht0FWeIolK+k5s82MqkOari7lZye5yiYzdRhAP9qseRigYNAV4xS+OMomAbFBVGiFZejymzt/Ue78f0w84VHTxYud0KGVI/ObZTpVQfKDKk08Ndrjz2dky/eZoMP8oTOvXKu5+SM4rq0PtKVk2S76cZntuFcjKzCH4v02bgVxrLYOWYx2PaNp/LMI/EtGfG6JiygFx8uCft89Ol94Ct1hjzFI5HeXKIN/az0ieVnJcoamzQwHLbaOTpUD6/Y89ULpYM2e8axxgTAbTfYp5y8WmamGkqKrRlzBUaw25MG+pLiijlGnexkxO9ooiwPIQdJQKixBOY/ud4RcdFnupg2NjX4t+XDDouS/eRr2CwlPDGflbAObNS5NyPipFdHTL2RcAPZZSjRWsnYCrZ2XKsOXI6D2Eq89t95DoB050I07lLgQXWGEez7zKpdcp1dkZU4EQayp7wCK1cn3NU7Ah7RMo2psMKHbWiBnVpGqKttDbIGZSE3EM2+z5yU6dPbYAs9ipKHCNPe4Vyy426bg37Pr2RTsHoWqUTF2PaOXapXYMc2xxMX3NjgDxrnTH6YZNo5kjlpueJJlc6x9ekSSWTzv71jsEdprpBPaYfuDng+CYZRY4nSlu2sSeFjlQr2vdTalbnY/RJMY1P5TzPEXvspt/LaVlP/bqnwGTntI6WB+eDkGd1KaG/XNyTfR+q3alBRBFwF9EgK+BKRdiOjsJso6XEn1Sob5IwdkkJ++uaJVKM8gBDsE/xVwf8Pkj7VJF6KZO30NFX405GNIQKh+LbilrY0yx2bM2Yhm+NZNdfE7IO/wdcozi5LprH7tquUuGtIoRW5qti2Un3E1Qx7aD8vkByXyfFz6bl3Uc7ib6mOEey7qZoskljLHD0pjpE/7rLaBMaizWEHjpvgyqgqf7mS2997BsUGkPuv4eu2VX7b9XY/dpKRZJrFIaXpWvvSsR/RjxGjP8P/A8VjJfUZGHMQQAAAABJRU5ErkJggg==);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--navy-950);color:var(--navy-900);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--orange-500);outline-offset:3px;border-radius:4px}
+img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
+#viewport{position:fixed;inset:0;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%);transform-origin:center;overflow:hidden;background:var(--off);border-radius:6px;box-shadow:0 40px 120px rgba(0,0,0,.55)}
+body.fs #stage{border-radius:0}
+
+/* ---------- slides e superfícies ---------- */
+.slide{position:absolute;inset:0;display:none;overflow:hidden;color:var(--navy-900);background-color:var(--off);
+  background-image:linear-gradient(rgba(11,37,69,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(11,37,69,.045) 1px,transparent 1px);background-size:44px 44px}
+.slide.active{display:block}
+.slide.stage{background:radial-gradient(1100px 700px at 75% 20%,rgba(27,68,121,.55),transparent 60%),radial-gradient(900px 600px at 10% 90%,rgba(242,107,33,.10),transparent 60%),linear-gradient(160deg,var(--navy-900),var(--navy-950));color:#fff}
+.slide.stage::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(163,184,214,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(163,184,214,.06) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(1200px 700px at 60% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(1200px 700px at 60% 40%,#000 30%,transparent 80%);pointer-events:none}
+
+/* ---------- coreografia de entrada ---------- */
+[data-a]{opacity:0}
+.play [data-a]{animation:.8s var(--ease) both;animation-delay:calc(var(--d,0)*90ms + 140ms)}
+.play [data-a=up]{animation-name:aUp}.play [data-a=fade]{animation-name:aF}.play [data-a=zoom]{animation-name:aZ}
+.play [data-a=left]{animation-name:aL}.play [data-a=right]{animation-name:aR}.play [data-a=blur]{animation-name:aBl}
+.play [data-a=pop]{animation-name:aPop;animation-timing-function:var(--spring)}
+@keyframes aUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes aF{from{opacity:0}to{opacity:1}}
+@keyframes aZ{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes aL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes aR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes aBl{from{opacity:0;filter:blur(12px)}to{opacity:1;filter:none}}
+@keyframes aPop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+.kw{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .02em .12em;margin-bottom:-.12em}
+.kw>span{display:inline-block;transform:translateY(110%)}
+.play .kw>span{animation:kUp .8s var(--ease) both;animation-delay:calc(var(--k,0)*70ms + 200ms)}
+@keyframes kUp{to{transform:none}}
+.hl{position:relative;color:var(--orange-500);white-space:nowrap}
+.stage .hl{color:var(--orange-400)}
+.hl::after{content:"";position:absolute;left:0;right:0;bottom:-.04em;height:.09em;border-radius:2px;background:currentColor;transform:scaleX(0);transform-origin:left}
+.play .hl::after{animation:ul .7s var(--ease) forwards;animation-delay:1.05s}
+@keyframes ul{to{transform:scaleX(1)}}
+
+/* ---------- chrome: topo, corpo, rodapé ---------- */
+.top{position:absolute;left:0;right:0;top:0;height:66px;display:flex;align-items:center;gap:18px;padding:0 40px;z-index:6;border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.stage .top{background:rgba(4,16,31,.35);border-bottom-color:rgba(163,184,214,.14)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-div{width:1px;height:28px;background:var(--line-strong)}.stage .brand-div{background:rgba(163,184,214,.25)}
+.top-title{margin-left:20px;display:flex;flex-direction:column;line-height:1.2;white-space:nowrap}
+.top-title span{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500)}
+.top-title b{font-size:14px;font-weight:700;color:var(--navy-800)}
+.stage .top-title span{color:var(--steel-300)}.stage .top-title b{color:#fff}
+.top-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.pg{font-family:var(--fm);font-size:12px;color:var(--grey-500);white-space:nowrap}.pg b{color:var(--navy-800);font-weight:600}
+.stage .pg{color:var(--steel-300)}.stage .pg b{color:#fff}
+.foot{position:absolute;left:40px;right:40px;bottom:0;height:42px;display:flex;align-items:center;gap:16px;z-index:5;border-top:1px solid var(--line);font-size:10.5px;color:var(--grey-500)}
+.stage .foot{border-top-color:rgba(163,184,214,.14);color:var(--steel-300)}
+.foot .src{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:1240px}
+.foot .src b{font-family:var(--fm);font-weight:600;letter-spacing:.1em;color:var(--navy-700);margin-right:8px}
+.stage .foot .src b{color:var(--steel-200)}
+.body{position:absolute;left:40px;right:40px;top:66px;bottom:42px;padding:22px 0 16px;display:flex;flex-direction:column;min-height:0}
+.body>.main{flex:1;min-height:0;position:relative}
+.am-logo{display:inline-block;flex:none;width:170px;height:27px;-webkit-mask:var(--am-logo) no-repeat center/contain;mask:var(--am-logo) no-repeat center/contain;
+  background:linear-gradient(100deg,#fff 0%,#fff 40%,#A3B8D6 47%,#FF8A4C 52%,#fff 60%,#fff 100%);background-size:280% 100%;animation:shimmer 7s linear infinite}
+.slide:not(.stage):not(.cover) .am-logo{background-image:linear-gradient(100deg,#0B2545 0%,#0B2545 40%,#4A6FA5 47%,#F26B21 52%,#0B2545 60%,#0B2545 100%)}
+@keyframes shimmer{0%{background-position:130% 0}100%{background-position:-130% 0}}
+.dts-logo{height:27px;width:auto}
+.slide:not(.stage):not(.cover) .dts-logo{filter:brightness(0) saturate(100%) invert(11%) sepia(39%) saturate(2650%) hue-rotate(197deg) brightness(92%)}
+
+/* ---------- tipografia ---------- */
+.hd{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:40px;margin-bottom:20px;flex:none}
+.hd-r{display:flex;flex-direction:column;align-items:flex-end;gap:10px;padding-bottom:4px}
+.eyebrow{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-600);margin-bottom:10px;white-space:nowrap}
+.stage .eyebrow{color:var(--orange-400)}
+.h2{font-weight:800;font-size:40px;line-height:1.08;letter-spacing:-.03em;color:var(--navy-900);white-space:nowrap}
+.stage .h2{color:#fff}
+.lead{font-size:15px;line-height:1.5;color:var(--grey-700);max-width:470px;text-align:right}
+.lead b{color:var(--navy-800)}
+.stage .lead{color:var(--steel-200)}.stage .lead b{color:#fff}
+.label{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.stage .label{color:var(--steel-300)}
+.hint{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10.5px;letter-spacing:.08em;color:var(--grey-500);white-space:nowrap}
+.hint::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange-500);box-shadow:0 0 0 4px rgba(242,107,33,.18)}
+.stage .hint{color:var(--steel-300)}
+kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;border:1px solid currentColor;opacity:.9}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06)}
+.card.nv{background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);color:#fff;box-shadow:0 18px 40px rgba(11,37,69,.22)}
+.stage .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);box-shadow:none;color:#fff}
+.srcx{font-family:var(--fm);font-size:9.5px;letter-spacing:.02em;color:var(--grey-400)}
+.stage .srcx,.card.nv .srcx{color:var(--steel-300)}
+.beacon{position:relative;display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange-500);flex:none}
+.beacon::before,.beacon::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--orange-500);animation:bc 2.4s ease-out infinite}
+.beacon::after{animation-delay:1.2s}
+@keyframes bc{from{transform:scale(1);opacity:.85}to{transform:scale(3.4);opacity:0}}
+/* light sweep (Guia DTS · efeito 06) */
+.sweep{position:relative;overflow:hidden;isolation:isolate}
+.sweep::after{content:"";position:absolute;inset:-50%;pointer-events:none;z-index:5;mix-blend-mode:screen;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.10) 46%,rgba(255,255,255,.45) 50%,rgba(255,138,76,.32) 54%,transparent 60%);transform:translateX(-80%);animation:hsweep 5.2s var(--ease-io) infinite;animation-delay:var(--hd,1.2s)}
+@keyframes hsweep{0%,60%{transform:translateX(-80%)}100%{transform:translateX(80%)}}
+.glow{animation:glowP 3s ease-in-out infinite}
+@keyframes glowP{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.12) inset,0 0 18px 2px rgba(242,107,33,.30),0 18px 40px rgba(11,37,69,.25)}50%{box-shadow:0 0 0 1px rgba(255,255,255,.2) inset,0 0 44px 10px rgba(242,107,33,.55),0 18px 40px rgba(11,37,69,.25)}}
+
+/* ---------- personagens (Isabella) ---------- */
+.char{position:absolute;pointer-events:none}
+.char img{width:100%;height:auto;filter:drop-shadow(0 18px 22px rgba(4,16,31,.35))}
+.char .floor{position:absolute;left:12%;right:12%;bottom:-10px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(4,16,31,.38),transparent);z-index:-1}
+.idle{animation:idle 4.2s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes idle{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(1.2deg) translateY(-6px)}}
+.bubble{position:absolute;background:#fff;color:var(--navy-900);border-radius:18px;padding:13px 16px;font-size:15px;line-height:1.38;font-weight:600;box-shadow:0 16px 40px rgba(4,16,31,.25);border:1px solid var(--line)}
+.bubble b{color:var(--orange-600)}
+.bubble::after{content:"";position:absolute;width:18px;height:18px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.bubble.tail-r::after{right:-9px;top:calc(50% - 9px);transform:rotate(-45deg)}
+.bubble.tail-b::after{left:40px;bottom:-9px}
+.bubble.tail-l::after{left:-9px;top:calc(50% - 9px);transform:rotate(135deg)}
+.bubble .who{display:block;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500);margin-bottom:4px}
+
+/* =====================================================================
+   CAPA
+   ===================================================================== */
+.cover{background:var(--navy-900)}
+.cv-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 82% 70%,rgba(242,107,33,.20),transparent 60%),radial-gradient(ellipse 70% 60% at 15% 20%,#13315C,transparent 70%),linear-gradient(160deg,#0B2545,#071A33)}
+.cv-cv{position:absolute;inset:0;width:1600px;height:900px}
+.cv-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(4,16,31,.85),rgba(7,26,51,.45) 46%,rgba(7,26,51,0) 70%),linear-gradient(0deg,rgba(4,16,31,.7),rgba(4,16,31,0) 34%)}
+.cv-top{position:absolute;left:64px;right:64px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:3}
+.cv-conf{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300)}
+.cv-title{position:absolute;left:96px;top:186px;width:800px;z-index:3;display:flex;flex-direction:column;gap:20px;color:#fff}
+.cv-eyebrow{font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-400)}
+.cv-kicker{font-family:var(--fm);font-size:15px;letter-spacing:.32em;text-transform:uppercase;color:var(--steel-200);margin-bottom:-6px}
+.cv-h{font-weight:800;font-size:112px;line-height:.94;letter-spacing:-.045em;text-shadow:0 16px 40px rgba(4,16,31,.6)}
+.cv-sub{font-weight:800;font-size:38px;line-height:1.1;letter-spacing:-.03em;color:var(--orange-400);white-space:nowrap}
+.cv-meta{font-size:19px;line-height:1.55;color:var(--steel-200);max-width:640px}
+.cv-moments{display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;white-space:nowrap;margin-top:8px}
+.cv-moments i{width:34px;height:2px;background:linear-gradient(90deg,var(--orange-500),rgba(242,107,33,.15))}
+.cv-foot{position:absolute;left:96px;bottom:40px;display:flex;align-items:center;gap:12px;font-family:var(--fm);font-size:11px;letter-spacing:.06em;color:var(--steel-300);z-index:3}
+.cv-foot kbd{color:#fff}
+.cv-delta{position:absolute;left:0;top:0;width:1600px;height:900px;z-index:2;pointer-events:none}
+.cv-delta .rings circle{fill:none;stroke:rgba(163,184,214,.10);stroke-width:1;stroke-dasharray:2 10;transform-origin:1290px 520px;animation:spin 80s linear infinite}
+.cv-delta .rings circle:nth-child(2){animation-direction:reverse;animation-duration:120s;stroke:rgba(242,107,33,.12)}
+.cv-delta .fill{fill:url(#dF);opacity:0}
+.play .cv-delta .fill{animation:aF 1.2s var(--ease) 1.6s forwards}
+.cv-delta .d1{fill:none;stroke:url(#dG);stroke-width:4;stroke-linejoin:round;filter:url(#dGlow);stroke-dasharray:1;stroke-dashoffset:1}
+.play .cv-delta .d1{animation:drw 2.2s var(--ease-io) .4s forwards}
+.cv-delta .d2{fill:none;stroke:rgba(163,184,214,.22);stroke-width:1.2;stroke-linejoin:round;opacity:0}
+.play .cv-delta .d2{animation:aF 1s var(--ease) 1.9s forwards}
+@keyframes drw{to{stroke-dashoffset:0}}
+.cv-delta .spark{fill:#fff;filter:url(#dGlow);opacity:0}
+.play .cv-delta .spark{animation:aF .5s 2.6s forwards}
+.cv-delta .dl{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;fill:var(--steel-300);opacity:0}
+.play .cv-delta .dl{animation:aF .8s 2.4s forwards}
+.cv-isa{left:1182px;top:262px;width:216px;z-index:3}
+.cv-isa img{filter:drop-shadow(0 0 26px rgba(242,107,33,.38)) drop-shadow(0 24px 26px rgba(4,16,31,.6))}
+.cv-isa .floor{left:-60%;right:-60%;background:radial-gradient(closest-side,rgba(242,107,33,.55),rgba(4,16,31,0));bottom:-18px;height:40px}
+.play .cv-isa{animation:isaIn 1.1s var(--spring) 1.6s both}
+@keyframes isaIn{from{opacity:0;transform:translateY(-60px) scale(.9)}to{opacity:1;transform:none}}
+.cv-bub{left:890px;top:300px;width:278px;z-index:4;opacity:0}
+.play .cv-bub{animation:aPop .7s var(--spring) 2.5s both}
+
+/* =====================================================================
+   01 · VIRADA DE CHAVE
+   ===================================================================== */
+.s1-grid{position:absolute;inset:0;display:grid;grid-template-columns:470px 1fr 250px;gap:26px}
+.def{display:flex;flex-direction:column;gap:14px;padding:24px 26px}
+.def .label{color:var(--steel-300)}
+.def p.d{font-size:23px;line-height:1.45;color:#fff;font-weight:600;letter-spacing:-.01em}
+.def p.d em{font-style:normal;color:var(--orange-400)}
+.def ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:2px}
+.def li{display:flex;gap:10px;font-size:15.5px;line-height:1.45;color:var(--steel-200)}
+.def li::before{content:"";flex:none;width:6px;height:6px;margin-top:7px;border-radius:50%;background:var(--orange-500)}
+.def li b{color:#fff}
+.eq{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.eq-row{display:flex;align-items:baseline;gap:10px;font-family:var(--fm);color:var(--steel-200);font-size:13px;white-space:nowrap}
+.eq-row b{font-family:var(--fb);font-weight:800;font-size:34px;letter-spacing:-.03em;color:#fff}
+.eq-row b.r{color:var(--orange-400)}
+.eq-row .op{font-size:22px;color:var(--steel-400)}
+.eq-lbls{display:grid;grid-template-columns:auto auto auto auto auto;justify-content:start;gap:10px;font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-300);margin-top:2px}
+.eq-ctl{display:flex;align-items:center;gap:12px;margin-top:10px}
+.eq-ctl span{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-300);white-space:nowrap}
+.eq input[type=range]{flex:1;accent-color:var(--orange-500);height:22px;cursor:pointer}
+.eq-bar{height:8px;border-radius:99px;background:rgba(255,255,255,.1);margin-top:8px;overflow:hidden}
+.eq-bar i{display:block;height:100%;width:30%;border-radius:99px;background:linear-gradient(90deg,var(--orange-600),var(--orange-400));transition:width .35s var(--ease)}
+.eq-msg{font-size:12.5px;color:var(--steel-200);margin-top:8px;min-height:18px}
+
+.flip{perspective:1800px;position:relative}
+.flip-in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1s var(--spring)}
+.flip.on .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;overflow:hidden;padding:28px 32px;display:flex;flex-direction:column}
+.face.a{background:linear-gradient(160deg,#FFF6EF 0%,#FDE8DC 60%,#FFD9C2 100%);border:1px solid var(--orange-200);box-shadow:0 20px 50px rgba(242,107,33,.18)}
+.face.b{transform:rotateY(180deg);background:radial-gradient(700px 400px at 80% 0%,rgba(42,90,150,.6),transparent 60%),linear-gradient(160deg,#0B2545,#04101F);color:#fff;box-shadow:0 20px 50px rgba(4,16,31,.4)}
+.chip{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 13px;border-radius:99px;font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;align-self:flex-start}
+.face.a .chip{background:#fff;color:var(--orange-600);border:1px solid var(--orange-200)}
+.face.b .chip{background:rgba(255,255,255,.08);color:var(--orange-200);border:1px solid rgba(255,255,255,.18)}
+.face .tag{font-family:var(--fm);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:22px}
+.face.a .tag{color:var(--orange-600)}.face.b .tag{color:var(--steel-300)}
+.face h3{font-size:56px;font-weight:800;line-height:1.04;letter-spacing:-.035em;margin-top:8px}
+.face.a h3{color:var(--navy-900)}
+.face .scene{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.face .scene div{border-radius:16px;padding:18px;font-size:16px;line-height:1.4;font-weight:600}
+.face.a .scene div{background:rgba(255,255,255,.75);border:1px solid var(--orange-200);color:var(--navy-800)}
+.face .scene i{display:block;font-style:normal;font-size:40px;margin-bottom:10px}
+.face.a .mot{margin-top:auto}
+.face.a .miss{margin-top:18px;padding:12px 16px;border:2px dashed var(--orange-400);border-radius:14px;font-size:16px;line-height:1.4;font-weight:600;color:var(--navy-800);background:rgba(255,255,255,.5)}
+.face.a .miss b{color:var(--orange-600)}
+.mot-l{display:flex;justify-content:space-between;font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
+.mot-bar{height:12px;border-radius:99px;background:rgba(255,255,255,.7);margin-top:6px;overflow:hidden;border:1px solid var(--orange-200)}
+.mot-bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--orange-400),var(--orange-500))}
+.face.b .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.face.b .fact{border-radius:16px;padding:18px 20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.face.b .fact b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;color:var(--orange-400);line-height:1}
+.face.b .fact span{display:block;font-size:15px;line-height:1.42;color:var(--steel-200);margin-top:6px}
+.face.b .fact em{font-style:normal;color:#fff;font-weight:700}
+.face.b .fact small{display:block;font-family:var(--fm);font-size:9.5px;color:var(--steel-400);margin-top:6px}
+.punch{margin-top:auto;border-radius:16px;padding:18px 22px;background:linear-gradient(100deg,rgba(242,107,33,.22),rgba(242,107,33,.05));border:1px solid rgba(242,107,33,.45);font-size:24px;line-height:1.35;font-weight:700;letter-spacing:-.01em}
+.punch em{font-style:normal;color:var(--orange-400)}
+.keybtn{position:absolute;right:22px;top:22px;z-index:4;display:flex;align-items:center;gap:10px;height:46px;padding:0 16px 0 10px;border-radius:99px;background:var(--navy-800);color:#fff;font-weight:700;font-size:14px;box-shadow:0 10px 26px rgba(11,37,69,.3);transition:transform .2s var(--ease),background .2s}
+.keybtn:hover{transform:translateY(-2px);background:var(--orange-500)}
+.keybtn .k{width:30px;height:30px;border-radius:50%;background:var(--orange-500);display:grid;place-items:center;transition:transform .8s var(--spring)}
+.keybtn:hover .k{background:var(--navy-800)}
+.flip.on .keybtn .k{transform:rotate(90deg)}
+.keybtn svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.flip.on .keybtn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+.s1-isa{position:relative}
+.s1-isa .char{left:50px;bottom:0;width:150px}
+.s1-isa .bubble{left:0;right:0;top:20px;font-size:15px}
+.s1-isa .bubble .v2{display:none}
+.s1.flipped .s1-isa .bubble .v1{display:none}.s1.flipped .s1-isa .bubble .v2{display:block}
+.s1.flipped .s1-isa .bubble{animation:aPop .6s var(--spring)}
+
+/* =====================================================================
+   02 · LINHA DO TEMPO
+   ===================================================================== */
+.tl{position:relative;height:196px;flex:none}
+.tl-eras{position:absolute;left:0;right:0;top:0;height:22px}
+.tl-era{position:absolute;top:0;height:22px;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300);border-radius:6px;background:rgba(163,184,214,.07);border:1px solid rgba(163,184,214,.14);white-space:nowrap;transition:background .4s,color .4s,border-color .4s}
+.tl-era.on{background:rgba(242,107,33,.16);border-color:rgba(242,107,33,.5);color:#fff}
+.tl-line{position:absolute;left:0;right:0;top:148px;height:4px;border-radius:99px;background:rgba(163,184,214,.18)}
+.tl-prog{position:absolute;left:0;top:148px;height:4px;border-radius:99px;background:linear-gradient(90deg,var(--steel-400),var(--orange-500));box-shadow:0 0 16px rgba(242,107,33,.6);width:0;transition:width .9s var(--ease)}
+.tl-node{position:absolute;top:150px;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:var(--navy-900);border:3px solid var(--steel-400);transition:all .45s var(--spring);cursor:pointer;z-index:2}
+.tl-node.past{border-color:var(--orange-500);background:var(--orange-500)}
+.tl-node.on{width:30px;height:30px;border-color:#fff;background:var(--orange-500);box-shadow:0 0 0 8px rgba(242,107,33,.22),0 0 30px rgba(242,107,33,.8)}
+.tl-yr{position:absolute;top:172px;transform:translateX(-50%);font-family:var(--fm);font-size:13px;font-weight:600;color:var(--steel-300);cursor:pointer;white-space:nowrap;transition:color .3s}
+.tl-yr.on{color:#fff}
+.tl-yr small{display:block;text-align:center;font-size:9.5px;font-weight:500;letter-spacing:.1em;color:var(--steel-400);text-transform:uppercase}
+.tl-yr.on small{color:var(--orange-200)}
+.tl-isa{position:absolute;top:30px;width:52px;margin-left:-26px;transition:left .9s var(--ease);z-index:3}
+.tl-isa img{width:100%;filter:drop-shadow(0 0 14px rgba(242,107,33,.45))}
+.tl-isa.hop img{animation:hop .9s var(--ease)}
+@keyframes hop{0%{transform:none}35%{transform:translateY(-26px) rotate(-6deg)}70%{transform:translateY(0) rotate(3deg)}85%{transform:translateY(-5px)}100%{transform:none}}
+.tl-detail{flex:1;min-height:0;display:grid;grid-template-columns:400px 1fr 430px;gap:18px;margin-top:22px}
+.tl-detail>div{border-radius:18px}
+.tl-id{padding:22px 24px;display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.tl-id .yr{font-family:var(--fm);font-weight:600;font-size:76px;line-height:1;letter-spacing:-.04em;color:#fff}
+.tl-id .era{margin-top:10px;font-family:var(--fm);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-400)}
+.tl-id h3{font-size:30px;font-weight:800;line-height:1.12;letter-spacing:-.025em;margin-top:12px}
+.tl-id .lic{margin-top:auto;padding:14px 16px;border-left:3px solid var(--orange-500);background:rgba(242,107,33,.09);border-radius:0 12px 12px 0;font-size:15px;line-height:1.45;font-weight:600;color:#fff}
+.tl-id .lic span{display:block;font-family:var(--fm);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-200);margin-bottom:4px;font-weight:500}
+.tl-how{display:grid;grid-template-rows:repeat(3,1fr);gap:12px}
+.tl-how .h{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center;padding:12px 18px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.tl-how .ic{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:rgba(163,184,214,.1);border:1px solid rgba(163,184,214,.2)}
+.tl-how .ic svg{width:26px;height:26px;fill:none;stroke:var(--orange-400);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tl-how .h b{display:block;font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-300);margin-bottom:4px}
+.tl-how .h p{font-size:15px;line-height:1.42;color:#fff}
+.tl-case{padding:22px 24px;display:flex;flex-direction:column;background:linear-gradient(155deg,#16396B 0%,#0B2545 60%,#071A33 100%);border:1px solid rgba(255,255,255,.14)}
+.tl-case .ct{display:flex;align-items:center;justify-content:space-between}
+.tl-case .ct span{font-family:var(--fm);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-300)}
+.tl-case .brand-n{font-size:15px;font-weight:800;letter-spacing:-.01em;color:#fff;padding:6px 12px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.tl-case .num{font-weight:800;font-size:92px;line-height:1;letter-spacing:-.05em;color:var(--orange-400);margin-top:26px;text-shadow:0 0 40px rgba(242,107,33,.45)}
+.tl-case .cap{font-size:16px;line-height:1.45;color:var(--steel-200);margin-top:12px;max-width:360px}
+.tl-case .srcx{margin-top:auto;white-space:normal;line-height:1.5}
+.swap{animation:swapIn .6s var(--ease) both}
+.swap.d1{animation-delay:.06s}.swap.d2{animation-delay:.12s}
+@keyframes swapIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tl-nav{display:flex;gap:8px}
+.tl-nav button{height:34px;padding:0 14px;border-radius:9px;font-size:12.5px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff}
+.tl-nav button:hover{background:rgba(242,107,33,.28);border-color:var(--orange-400)}
+
+/* =====================================================================
+   03 · INDICADORES + SELO
+   ===================================================================== */
+.s3-grid{position:absolute;inset:0;display:grid;grid-template-columns:400px 1fr 350px;gap:20px}
+.s3-l{display:flex;flex-direction:column;gap:14px;min-height:0;position:relative}
+.hero{flex:none;height:392px;border-radius:20px;padding:24px 26px;color:#fff;background:linear-gradient(155deg,#1B4479,#0B2545 62%,#071A33);display:flex;flex-direction:column}
+.hero .lbl{font-family:var(--fm);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300)}
+.hero .ttl{font-size:17px;font-weight:700;line-height:1.3;margin-top:8px;max-width:220px}
+.ring{position:relative;width:200px;height:200px;margin-top:16px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-linecap:round}
+.ring .t{stroke:rgba(255,255,255,.1);stroke-width:14}
+.ring .f{stroke:url(#rg);stroke-width:14;stroke-dasharray:540.4;stroke-dashoffset:540.4;transition:stroke-dashoffset 1.8s var(--ease)}
+.ring .t2{stroke:rgba(255,255,255,.06);stroke-width:8}
+.ring .f2{stroke:var(--steel-400);stroke-width:8;stroke-dasharray:389.6;stroke-dashoffset:389.6;transition:stroke-dashoffset 1.8s var(--ease) .3s}
+.ring .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .v b{font-family:var(--fm);font-weight:600;font-size:52px;line-height:1;letter-spacing:-.03em}
+.ring .v span{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-200);margin-top:4px}
+.hero .vs{display:flex;gap:16px;margin-top:16px;align-items:center}
+.hero .vs div{font-size:13px;line-height:1.35;color:var(--steel-200)}
+.hero .vs i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.hero .vs b{color:#fff;font-family:var(--fm);font-size:15px}
+.hero .srcx{margin-top:auto}
+.seal{position:absolute;left:222px;top:128px;width:190px;height:190px;z-index:6;opacity:0;pointer-events:none}
+.seal.stamp{animation:stamp .7s cubic-bezier(.2,1.6,.5,1) both}
+@keyframes stamp{0%{opacity:0;transform:scale(2.6) rotate(-40deg)}60%{opacity:1;transform:scale(.92) rotate(-10deg)}100%{opacity:1;transform:scale(1) rotate(-12deg)}}
+.seal .disc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FF9A62,#F26B21 45%,#C24A14);box-shadow:0 0 0 6px rgba(255,255,255,.95),0 0 0 8px rgba(242,107,33,.6),0 0 46px 10px rgba(242,107,33,.55),0 18px 30px rgba(4,16,31,.35);overflow:hidden}
+.seal .disc::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.15) 46%,rgba(255,255,255,.6) 50%,rgba(255,255,255,.2) 54%,transparent 60%);animation:hsweep 4.2s var(--ease-io) infinite 1s}
+.seal svg.txt{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
+.seal svg.txt text{font-family:var(--fm);font-size:11.5px;font-weight:600;letter-spacing:.2em;fill:#fff}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal .core{position:absolute;inset:34px;border-radius:50%;border:2px dashed rgba(255,255,255,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
+.seal .core b{font-weight:800;font-size:54px;line-height:.9;letter-spacing:-.04em}
+.seal .core span{font-family:var(--fm);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;margin-top:4px}
+.shake{animation:shake .45s ease}
+@keyframes shake{0%,100%{transform:none}20%{transform:translate(-3px,2px)}40%{transform:translate(3px,-2px)}60%{transform:translate(-2px,1px)}80%{transform:translate(1px,-1px)}}
+.s3-isa{flex:1;position:relative;min-height:0}
+.s3-isa .char{left:6px;bottom:0;width:96px}
+.s3-isa .bubble{left:118px;right:0;top:22px;font-size:14.5px}
+.chart{display:flex;flex-direction:column;padding:20px 22px}
+.chart-h{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.chart-h h3{font-size:19px;font-weight:800;letter-spacing:-.02em;color:var(--navy-900)}
+.chart-h p{font-size:12.5px;color:var(--grey-500);margin-top:4px}
+.toggle{display:flex;align-items:center;gap:10px;height:44px;padding:0 8px 0 16px;border-radius:99px;background:var(--navy-800);color:#fff;font-weight:700;font-size:13.5px;white-space:nowrap;box-shadow:0 10px 24px rgba(11,37,69,.22);flex:none}
+.toggle .sw{width:46px;height:26px;border-radius:99px;background:rgba(255,255,255,.18);position:relative;transition:background .3s}
+.toggle .sw::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .35s var(--spring)}
+.toggle.on .sw{background:var(--orange-500)}
+.toggle.on .sw::after{transform:translateX(20px)}
+.bars{flex:1;display:flex;flex-direction:column;justify-content:space-around;margin-top:10px;position:relative}
+.brow{display:grid;grid-template-columns:230px 1fr 92px;gap:14px;align-items:center;transition:opacity .4s}
+.brow .nm b{display:block;font-size:14.5px;font-weight:700;color:var(--navy-800);line-height:1.25}
+.brow .nm span{display:block;font-family:var(--fm);font-size:9.5px;color:var(--grey-500);margin-top:3px;letter-spacing:.02em}
+.btrack{position:relative;height:30px;border-radius:8px;background:var(--surface-2)}
+.btrack .base{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:8px;background:linear-gradient(90deg,var(--navy-600),var(--steel-500));transition:width 1.2s var(--ease)}
+.btrack .range{position:absolute;top:0;bottom:0;border-radius:8px;background:repeating-linear-gradient(135deg,var(--steel-400) 0 6px,var(--steel-300) 6px 12px);opacity:0;transition:opacity .8s .6s}
+.btrack .boost{position:absolute;top:0;bottom:0;width:0;border-radius:0 8px 8px 0;background:linear-gradient(90deg,var(--orange-600),var(--orange-400));box-shadow:0 0 18px rgba(242,107,33,.55);transition:width 1.1s var(--ease)}
+.btrack .gap{position:absolute;top:-24px;font-family:var(--fm);font-size:11px;font-weight:600;color:var(--orange-600);white-space:nowrap;opacity:0;transform:translateX(-50%);transition:opacity .4s .8s}
+.brow .val{font-family:var(--fm);font-weight:600;font-size:22px;color:var(--navy-800);text-align:right;white-space:nowrap}
+.brow .val small{display:block;font-size:9.5px;color:var(--grey-500);font-weight:500}
+.base-line{position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px dashed var(--orange-500);opacity:0;transition:opacity .5s .9s;pointer-events:none}
+.base-line span{position:absolute;top:-8px;left:6px;padding:2px 6px;border-radius:5px;background:#fff;font-family:var(--fm);font-size:10px;font-weight:600;color:var(--orange-600);white-space:nowrap}
+.chart.on .brow.dim{opacity:.28}
+.chart.on .boost-row .boost{width:var(--bw)}
+.chart.on .boost-row .gap{opacity:1}
+.chart.on .boost-row .val{color:var(--orange-600)}
+.chart.ready:not(.on) .base-line{opacity:1}
+.chart-f{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.chart-f .msg{font-size:14px;font-weight:600;color:var(--navy-800)}
+.chart-f .msg em{font-style:normal;color:var(--orange-600)}
+.s3-r{display:flex;flex-direction:column;gap:12px;min-height:0}
+.s3-r .label{margin-bottom:-2px}
+.seg{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14px 18px}
+.seg .sg{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-600)}
+.seg .n{font-weight:800;font-size:40px;line-height:1;letter-spacing:-.04em;color:var(--navy-800);margin-top:6px}
+.seg p{font-size:13px;line-height:1.42;color:var(--grey-700);margin-top:6px}
+.seg p b{color:var(--navy-800)}
+.seg .srcx{margin-top:6px;white-space:normal}
+
+/* =====================================================================
+   04 · CAIXA DE FERRAMENTAS
+   ===================================================================== */
+.s4 .hd{position:absolute;left:40px;right:40px;top:88px;z-index:4}
+.tk{position:absolute;inset:0}
+.tb{position:absolute;left:630px;top:330px;width:340px;height:250px;transition:transform .9s var(--spring);cursor:pointer;z-index:5}
+.tb .shadow{position:absolute;left:10px;right:10px;bottom:-26px;height:30px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent)}
+.tb .bodyb{position:absolute;left:0;right:0;bottom:0;height:170px;border-radius:14px 14px 22px 22px;background:linear-gradient(180deg,#FF8A4C 0%,#F26B21 40%,#C24A14 100%);box-shadow:inset 0 -10px 0 rgba(0,0,0,.12),inset 0 3px 0 rgba(255,255,255,.35),0 24px 50px rgba(0,0,0,.4);z-index:2}
+.tb .inside{position:absolute;left:10px;right:10px;top:72px;height:22px;border-radius:6px;background:linear-gradient(#071A33,#0B2545);z-index:1;opacity:0;transition:opacity .2s}
+.tb .plate{position:absolute;left:50%;top:44px;transform:translateX(-50%);padding:9px 18px;border-radius:10px;background:var(--navy-800);color:#fff;font-family:var(--fm);font-size:13px;font-weight:600;letter-spacing:.24em;white-space:nowrap;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.tb .plate b{color:var(--orange-400)}
+.tb .latch{position:absolute;top:-4px;width:34px;height:26px;border-radius:6px;background:linear-gradient(#E4EBF5,#A3B8D6);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.tb .latch.l{left:40px}.tb .latch.r{right:40px}
+.tb .bolts{position:absolute;left:24px;right:24px;bottom:22px;display:flex;justify-content:space-between}
+.tb .bolts i{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.tb .lid{position:absolute;left:-6px;right:-6px;top:30px;height:56px;border-radius:16px 16px 6px 6px;background:linear-gradient(180deg,#FF9A62,#F26B21);box-shadow:inset 0 3px 0 rgba(255,255,255,.4),0 6px 14px rgba(0,0,0,.25);transform-origin:20% 100%;transition:transform .7s var(--spring);z-index:3}
+.tb .handle{position:absolute;left:50%;top:-34px;width:120px;height:44px;margin-left:-60px;border:12px solid var(--navy-800);border-bottom:0;border-radius:30px 30px 0 0}
+.tb .ttxt{position:absolute;left:0;right:0;top:100%;margin-top:40px;text-align:center;white-space:nowrap}
+.tb .ttxt b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;color:#fff}
+.tb .ttxt span{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300)}
+.tb .ttxt .beacon{margin-right:10px;vertical-align:1px}
+.tb:hover .lid{transform:rotate(-6deg)}
+.tb .close-x{position:absolute;left:50%;top:100%;margin-top:14px;transform:translateX(-50%);display:none;white-space:nowrap;height:84px;padding:0 34px;border-radius:99px;background:#fff;color:var(--navy-800);font-weight:800;font-size:44px;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.tk.open .tb{transform:translate(738px,368px) scale(.3)}
+.tk.open .tb .lid{transform:rotate(-24deg) translate(-10px,-34px)}
+.tk.open .tb .inside{opacity:1}
+.tk.open .tb .ttxt{display:none}
+.tk.open .tb .close-x{display:inline-flex}
+.tk.open .tb:hover{transform:translate(738px,368px) scale(.34)}
+.burst{position:absolute;left:800px;top:400px;z-index:4;pointer-events:none}
+.burst i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--orange-400);opacity:0}
+.burst.go i{animation:spark .9s var(--ease) forwards;animation-delay:calc(var(--i)*8ms)}
+@keyframes spark{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.3)}}
+.mcard{position:absolute;top:178px;width:352px;height:574px;border-radius:20px;background:#fff;color:var(--navy-900);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translate(var(--bx),var(--by)) scale(.1);z-index:3;display:flex;flex-direction:column;transition:box-shadow .3s,filter .3s}
+.tk.open .mcard{pointer-events:auto}
+.tk.opening .mcard{animation:flyOut 1.15s var(--spring) both;animation-delay:calc(var(--i)*130ms + 280ms)}
+.tk.open:not(.opening) .mcard{opacity:1;transform:none}
+.tk.closing .mcard{animation:flyIn .7s var(--ease-io) both;animation-delay:calc((3 - var(--i))*90ms)}
+@keyframes flyOut{0%{opacity:0;transform:translate(var(--bx),var(--by)) scale(.1) rotate(0)}40%{opacity:1;transform:translate(var(--sx),var(--sy)) scale(.72) rotate(var(--r))}100%{opacity:1;transform:none}}
+@keyframes flyIn{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(var(--bx2),var(--by2)) scale(.06) rotate(var(--r))}}
+.mcard:hover{box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 3px var(--mc)}
+.tk.focus .mcard{filter:saturate(.4) brightness(.55)}
+.tk.focus .mcard.f{filter:none;transform:translateY(-8px) scale(1.03)!important;z-index:6;box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 3px var(--mc),0 0 40px rgba(242,107,33,.35)}
+.mc-h{position:relative;padding:18px 20px 16px;background:var(--mc);color:#fff;flex:none;overflow:hidden}
+.mc-h::before{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.08)}
+.mc-h .no{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.mc-h h3{font-size:46px;font-weight:800;letter-spacing:-.04em;line-height:1;margin-top:6px}
+.mc-h .full{font-size:13px;font-weight:600;line-height:1.3;margin-top:6px;opacity:.92}
+.mc-h .ic{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.mc-h .ic svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mc-b{flex:1;padding:14px 18px 14px;display:flex;flex-direction:column;gap:10px;min-height:0}
+.mc-b .orig{display:flex;gap:8px;flex-wrap:wrap}
+.mc-b .orig span{font-family:var(--fm);font-size:9.5px;letter-spacing:.06em;padding:4px 8px;border-radius:6px;background:var(--surface-2);color:var(--grey-700);white-space:nowrap}
+.mc-b .q{font-size:14px;line-height:1.42;font-weight:600;color:var(--navy-800);padding-left:12px;border-left:3px solid var(--mc)}
+.mc-b .lbl{font-family:var(--fm);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey-500)}
+.steps8{display:grid;grid-template-columns:1fr 1fr;gap:5px 8px}
+.steps8 div{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--navy-800);padding:5px 8px;border-radius:8px;background:var(--off);border:1px solid var(--line)}
+.steps8 div i{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-family:var(--fm);font-size:10.5px;color:#fff;background:var(--navy-800)}
+.steps8 .g2 i{background:var(--steel-500)}.steps8 .g3 i{background:var(--orange-500)}
+.phases{display:flex;gap:6px;font-family:var(--fm);font-size:9px;letter-spacing:.06em;color:var(--grey-500)}
+.phases span{flex:1;padding-top:5px;border-top:3px solid var(--navy-800)}
+.phases span:nth-child(2){border-color:var(--steel-500)}.phases span:nth-child(3){border-color:var(--orange-500)}
+.adkar{display:flex;flex-direction:column;gap:5px}
+.adkar div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;padding:4px 8px 4px 4px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+.adkar b{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:20px;font-weight:800;color:#fff;background:var(--orange-500)}
+.adkar span{font-size:12px;line-height:1.25;color:var(--grey-700)}
+.adkar span em{font-style:normal;display:block;font-weight:700;color:var(--navy-800);font-size:12.5px}
+.tip{font-size:11.5px;line-height:1.4;color:var(--grey-700);padding:8px 10px;border-radius:10px;background:var(--orange-100);border:1px solid var(--orange-200)}
+.tip b{color:var(--orange-600)}
+.hcm{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.hcm div{font-size:12px;line-height:1.3;font-weight:600;color:var(--navy-800);padding:8px 10px;border-radius:10px;background:var(--steel-100);border:1px solid var(--steel-200)}
+.hcm div small{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.1em;color:var(--steel-600);font-weight:500;text-transform:uppercase;margin-bottom:2px}
+.lifecyc{display:flex;align-items:center;gap:4px;font-family:var(--fm);font-size:9.5px;color:var(--steel-600);white-space:nowrap}
+.lifecyc span{padding:4px 7px;border-radius:6px;background:var(--surface-2)}
+.lifecyc i{flex:1;height:2px;background:var(--steel-300)}
+.kpis{display:flex;flex-direction:column;gap:6px}
+.kpi{display:grid;grid-template-columns:98px 1fr 44px;gap:8px;align-items:center;font-size:11.5px;color:var(--grey-700)}
+.kpi b{font-size:12px;font-weight:700;color:var(--navy-800)}
+.kpi .kb{position:relative;height:9px;border-radius:99px;background:var(--surface-2)}
+.kpi .kb i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,var(--steel-500),var(--steel-400));width:0;transition:width 1s var(--ease) .9s}
+.kpi .kb u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--orange-500);border-radius:1px}
+.kpi em{font-style:normal;font-family:var(--fm);font-size:10px;color:var(--orange-600);text-align:right;white-space:nowrap}
+.tk.open .kpi .kb i{width:var(--w)}
+.mc-f{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-top:1px solid var(--line);flex:none}
+.mc-f .foc{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500)}
+.mc-f .foc b{color:var(--navy-800)}
+.mc-f .lvl{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:#fff;padding:5px 10px;border-radius:99px;background:var(--mc)}
+.tk-hint{position:absolute;left:0;right:0;bottom:62px;text-align:center;z-index:2;transition:opacity .3s}
+.tk.open .tk-hint{opacity:0}
+
+/* =====================================================================
+   05 · ONDE USAR
+   ===================================================================== */
+.s5-grid{position:absolute;inset:0;display:grid;grid-template-columns:1fr 520px;gap:20px}
+.hm{padding:18px 20px;display:flex;flex-direction:column}
+.hm-head,.hm-row{display:grid;grid-template-columns:1fr repeat(4,118px);gap:10px;align-items:center}
+.hm-head{padding:0 12px 10px;border-bottom:1px solid var(--line)}
+.hm-head .mh{display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:800;font-size:14px;color:var(--navy-800)}
+.hm-head .mh i{width:100%;height:5px;border-radius:99px;background:var(--mc)}
+.hm-head .mh span{font-family:var(--fm);font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500)}
+.hm-rows{flex:1;display:flex;flex-direction:column;justify-content:space-around;margin-top:6px}
+.hm-row{padding:7px 12px;border-radius:14px;cursor:pointer;transition:background .25s,opacity .35s,transform .25s}
+.hm-row:hover{background:var(--off)}
+.hm-row .sc b{display:block;font-size:15px;font-weight:700;color:var(--navy-800);line-height:1.25}
+.hm-row .sc span{display:block;font-size:12px;color:var(--grey-500);margin-top:2px}
+.cell{height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:transform .3s var(--spring),box-shadow .3s}
+.cell.l1{background:var(--steel-100);color:var(--steel-600)}
+.cell.l2{background:var(--steel-400);color:#fff}
+.cell.l3{background:var(--navy-800);color:#fff}
+.cell.l3::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange-500);box-shadow:0 0 0 3px rgba(242,107,33,.25)}
+.hm.sel .hm-row{opacity:.32}
+.hm.sel .hm-row.on{opacity:1;background:#fff;box-shadow:0 10px 30px rgba(11,37,69,.12),0 0 0 2px var(--orange-500);transform:scale(1.01)}
+.hm.sel .hm-row.on .cell.l3{box-shadow:0 0 22px rgba(242,107,33,.55);transform:scale(1.05)}
+.hm-leg{display:flex;gap:16px;align-items:center;margin-top:8px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;font-weight:600;color:var(--grey-700)}
+.hm-leg i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-2px}
+.hm-leg .note{margin-left:auto;font-family:var(--fm);font-size:9.5px;font-weight:500;color:var(--grey-400)}
+.s5-r{display:flex;flex-direction:column;gap:14px;min-height:0}
+.recipe{flex:none;height:300px;padding:22px 24px;display:flex;flex-direction:column}
+.recipe .label{color:var(--orange-200)}
+.recipe h3{font-size:26px;font-weight:800;letter-spacing:-.025em;line-height:1.12;margin-top:8px;color:#fff}
+.recipe p{font-size:15px;line-height:1.5;color:var(--steel-200);margin-top:12px}
+.recipe p b{color:#fff}
+.recipe .mix{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+.recipe .mix span{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 12px;border-radius:99px;font-size:12.5px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff}
+.recipe .mix span i{width:9px;height:9px;border-radius:50%;background:var(--mc)}
+.recipe .mix span.k{background:rgba(242,107,33,.2);border-color:var(--orange-400)}
+.layers{flex:1;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.layers .lh{display:flex;justify-content:space-between;align-items:baseline}
+.layers .lh b{font-size:15px;font-weight:800;color:var(--navy-800)}
+.ly{flex:1;display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;padding:0 14px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:all .35s var(--ease)}
+.ly b{font-size:15px;font-weight:800;color:var(--navy-800);display:flex;align-items:center;gap:8px}
+.ly b i{width:10px;height:10px;border-radius:50%;background:var(--mc)}
+.ly span{font-size:12.5px;line-height:1.35;color:var(--grey-700)}
+.ly span em{font-style:normal;font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500);display:block}
+.layers.sel .ly{opacity:.35}
+.layers.sel .ly.v2{opacity:1;background:#fff;border-color:var(--steel-300)}
+.layers.sel .ly.v3{opacity:1;background:#fff;border-color:var(--orange-500);box-shadow:0 8px 24px rgba(242,107,33,.18);transform:translateX(-6px)}
+
+/* =====================================================================
+   FERNANDO (tecla N)
+   ===================================================================== */
+#fern{position:absolute;inset:0;z-index:80;pointer-events:none}
+#fern .fig{position:absolute;width:300px;transition:transform .7s var(--spring),opacity .3s}
+#fern .fig img{width:100%;filter:drop-shadow(0 16px 26px rgba(4,16,31,.45))}
+#fern .fb{position:absolute;max-width:380px;background:#fff;color:var(--navy-900);border-radius:22px;padding:16px 20px;font-size:24px;line-height:1.25;font-weight:800;letter-spacing:-.02em;box-shadow:0 24px 50px rgba(4,16,31,.35);border:3px solid var(--orange-500);opacity:0;transform:scale(.4);transition:opacity .25s,transform .5s var(--spring);pointer-events:auto}
+#fern .fb small{display:block;font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-600);margin-bottom:6px}
+#fern .fb button{margin-top:12px;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 18px;border-radius:99px;background:var(--orange-500);color:#fff;font-size:15px;font-weight:800;box-shadow:0 8px 20px rgba(242,107,33,.4)}
+#fern .fb button:hover{background:var(--orange-600)}
+#fern.on .fb{opacity:1;transform:none;transition-delay:.25s}
+/* posições */
+#fern.p-right .fig{right:-34px;bottom:-30px;transform:translateX(130%) rotate(-14deg)}
+#fern.p-right.on .fig{transform:translateX(0) rotate(-14deg)}
+#fern.p-right .fb{right:250px;bottom:300px;transform-origin:100% 100%}
+#fern.p-bottom .fig{left:120px;bottom:-60px;transform:translateY(120%)}
+#fern.p-bottom.on .fig{transform:translateY(0)}
+#fern.p-bottom .fb{left:400px;bottom:240px;transform-origin:0 100%}
+#fern.p-left .fig{left:-34px;bottom:120px;transform:translateX(-130%) scaleX(-1) rotate(-14deg)}
+#fern.p-left.on .fig{transform:translateX(0) scaleX(-1) rotate(-14deg)}
+#fern.p-left .fb{left:280px;bottom:420px;transform-origin:0 100%}
+#fern.p-top .fig{right:240px;top:-70px;transform:translateY(-130%) rotate(180deg)}
+#fern.p-top.on .fig{transform:translateY(0) rotate(180deg);animation:dangle 2.6s ease-in-out .7s infinite}
+@keyframes dangle{0%,100%{transform:rotate(180deg)}50%{transform:rotate(174deg)}}
+#fern.p-top .fb{right:560px;top:120px;transform-origin:100% 0;max-width:430px}
+#fern .fb .wave{display:inline-block;animation:wave 1s ease-in-out infinite;transform-origin:70% 80%}
+@keyframes wave{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}
+
+/* =====================================================================
+   RODA DA MUDANÇA (tecla R)
+   ===================================================================== */
+#wheel{position:absolute;inset:0;z-index:85;display:none;background:radial-gradient(900px 600px at 30% 50%,rgba(27,68,121,.6),transparent 70%),rgba(4,16,31,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff}
+#wheel.on{display:block;animation:aF .35s var(--ease)}
+.wh-top{position:absolute;left:60px;right:60px;top:40px;display:flex;align-items:center;justify-content:space-between}
+.wh-top .t b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.wh-top .t span{font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-400)}
+.wh-x{height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);font-weight:700;font-size:14px}
+.wh-x:hover{background:rgba(255,255,255,.14)}
+.wh-wrap{position:absolute;left:110px;top:160px;width:640px;height:640px}
+.wh-svg{position:absolute;inset:0;width:640px;height:640px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+.wh-svg text{font-family:var(--fb);font-weight:800;font-size:19px;fill:#fff;letter-spacing:-.01em}
+.wh-svg text.dk{fill:var(--navy-900)}
+.wh-svg .used{opacity:.35}
+.wh-ptr{position:absolute;left:50%;top:-26px;width:52px;height:64px;margin-left:-26px;z-index:3;transform-origin:50% 20%}
+.wh-ptr svg{width:100%;height:100%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+.wh-ptr.tick{animation:tick .12s ease-out}
+@keyframes tick{50%{transform:rotate(-16deg)}}
+.wh-hub{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#16396B,#071A33);border:6px solid #fff;box-shadow:0 0 0 6px var(--orange-500),0 0 40px rgba(242,107,33,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:24px;letter-spacing:-.02em;z-index:2;transition:transform .2s var(--spring)}
+.wh-hub span{font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.16em;color:var(--steel-300);margin-top:4px}
+.wh-hub:hover{transform:scale(1.06)}
+.wh-hub:disabled{cursor:default;transform:none}
+.wh-card{position:absolute;left:830px;top:180px;width:680px;min-height:560px;border-radius:24px;padding:30px 34px;background:linear-gradient(155deg,#16396B 0%,#0B2545 60%,#071A33);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 60px rgba(0,0,0,.4);display:flex;flex-direction:column}
+.wh-card .cat{display:flex;align-items:center;justify-content:space-between}
+.wh-card .cat span{font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-400)}
+.wh-timer{position:relative;width:74px;height:74px}
+.wh-timer svg{width:100%;height:100%;transform:rotate(-90deg)}
+.wh-timer circle{fill:none;stroke-width:6}
+.wh-timer .t{stroke:rgba(255,255,255,.12)}
+.wh-timer .f{stroke:var(--orange-500);stroke-dasharray:201;stroke-dashoffset:0;stroke-linecap:round}
+.wh-timer b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--fm);font-size:22px;font-weight:600}
+.wh-timer.late .f{stroke:#fff}
+.wh-card .q{font-size:36px;font-weight:800;line-height:1.16;letter-spacing:-.025em;margin-top:20px}
+.wh-card .ans{margin-top:22px;padding:18px 20px;border-radius:16px;background:rgba(242,107,33,.14);border:1px solid rgba(242,107,33,.45);font-size:20px;line-height:1.45;color:#fff;display:none}
+.wh-card .ans.on{display:block;animation:aUp .5s var(--ease)}
+.wh-card .ans b{color:var(--orange-200)}
+.wh-card .ctl{display:flex;gap:10px;margin-top:auto;padding-top:22px}
+.wh-btn{height:52px;padding:0 22px;border-radius:14px;font-weight:800;font-size:16px;background:var(--orange-500);color:#fff;box-shadow:0 10px 24px rgba(242,107,33,.35)}
+.wh-btn:hover{background:var(--orange-600)}
+.wh-btn.g{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);box-shadow:none}
+.wh-btn.g:hover{background:rgba(255,255,255,.16)}
+.wh-empty{margin:auto 0;text-align:center;color:var(--steel-200);font-size:20px;line-height:1.5}
+.wh-empty b{display:block;font-size:56px;margin-bottom:10px}
+.wh-score{font-family:var(--fm);font-size:12px;color:var(--steel-300);letter-spacing:.1em}
+.confetti{position:absolute;inset:0;pointer-events:none;z-index:90}
+
+/* =====================================================================
+   ROTEIRO (tecla S) e UI fora do palco
+   ===================================================================== */
+#wipe{position:absolute;inset:0;z-index:95;pointer-events:none;overflow:hidden;visibility:hidden}
+#wipe i{position:absolute;top:-5%;bottom:-5%;left:-10%;width:120%;transform:translateX(-110%) skewX(-10deg)}
+#wipe i:nth-child(1){background:var(--orange-500)}#wipe i:nth-child(2){background:var(--steel-500)}#wipe i:nth-child(3){background:var(--navy-900)}
+#wipe.go{visibility:visible}
+#wipe.go i{animation:wp .82s var(--ease-io) both}
+#wipe.go i:nth-child(2){animation-delay:.06s}#wipe.go i:nth-child(3){animation-delay:.12s}
+@keyframes wp{0%{transform:translateX(-110%) skewX(-10deg)}45%,55%{transform:translateX(0) skewX(-10deg)}100%{transform:translateX(110%) skewX(-10deg)}}
+#blackout{position:fixed;inset:0;background:#000;z-index:200;display:none}
+#blackout.on{display:block}
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--steel-400),var(--orange-500));z-index:50;transition:width .5s var(--ease)}
+#controls{position:fixed;right:18px;bottom:14px;z-index:60;display:flex;gap:8px;align-items:center;transition:opacity .4s}
+#controls button{height:40px;padding:0 14px;border-radius:10px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:8px;background:rgba(11,37,69,.92);color:#fff;border:1px solid rgba(255,255,255,.14);transition:background .2s}
+#controls button:hover{background:var(--orange-500)}
+#controls button.p{background:var(--orange-500);border-color:var(--orange-500)}
+#controls button kbd{font-size:10px;border-color:rgba(255,255,255,.4)}
+#rail{position:fixed;left:18px;bottom:16px;z-index:60;display:flex;gap:8px;align-items:flex-end;transition:opacity .4s}
+#rail .sg{display:flex;flex-direction:column;gap:6px;cursor:pointer;min-width:64px;background:none}
+#rail .sg span{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-400);white-space:nowrap;transition:color .3s;text-align:left}
+#rail .sg i{display:block;height:4px;border-radius:99px;background:rgba(255,255,255,.16);position:relative;overflow:hidden}
+#rail .sg i b{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--orange-500);transition:width .55s var(--ease)}
+#rail .sg.on span{color:#fff}#rail .sg:hover span{color:var(--orange-400)}
+body.ui-hide #controls,body.ui-hide #rail{opacity:0}
+@media (max-width:1180px){#rail{display:none}}
+@media (max-width:760px){#controls{right:8px;bottom:8px}#controls button{height:36px;padding:0 10px}#controls .lb{display:none}}
+#notes{position:fixed;right:18px;top:18px;bottom:66px;width:420px;max-width:calc(100vw - 36px);z-index:70;background:#fff;color:var(--navy-900);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.45);display:flex;flex-direction:column;transform:translateX(calc(100% + 30px));transition:transform .4s var(--ease)}
+#notes.on{transform:none}
+#notes .nh{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
+#notes .nh b{font-weight:800;font-size:15px}
+#notes .nh span{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-600)}
+#notes .nb{padding:16px 18px;overflow:auto;font-size:14px;line-height:1.6;color:var(--grey-700)}
+#notes .nb h4{font-size:12px;font-family:var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500);margin:14px 0 6px;font-weight:600}
+#notes .nb h4:first-child{margin-top:0}
+#notes .nb p+p{margin-top:8px}
+#notes .nb b{color:var(--navy-800)}
+#notes .nb .say{padding:10px 12px;border-left:3px solid var(--orange-500);background:var(--orange-100);border-radius:0 10px 10px 0;color:var(--navy-900);font-weight:600;margin:8px 0}
+#notes .nb li{margin-left:18px;margin-top:4px}
+#notes .x{font-size:22px;line-height:1;color:var(--grey-500);padding:4px 8px}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- ===================================================== CAPA -->
+<section class="slide cover" data-t="Capa" data-rail="Capa">
+  <div class="cv-bg"></div>
+  <canvas class="cv-cv" id="cvParticles" width="1600" height="900" aria-hidden="true"></canvas>
+  <div class="cv-shade"></div>
+  <svg class="cv-delta" viewBox="0 0 1600 900" aria-hidden="true">
+    <defs>
+      <linearGradient id="dG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C9D6E8"/><stop offset=".5" stop-color="#6E8FBF"/><stop offset="1" stop-color="#FF8A4C"/></linearGradient>
+      <linearGradient id="dF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A5A96" stop-opacity=".0"/><stop offset="1" stop-color="#F26B21" stop-opacity=".16"/></linearGradient>
+      <filter id="dGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g class="rings"><circle cx="1290" cy="520" r="300"/><circle cx="1290" cy="520" r="380"/><circle cx="1290" cy="520" r="460"/></g>
+    <path class="fill" d="M1290 150 L1590 790 L990 790 Z"/>
+    <path class="d2" d="M1290 210 L1548 762 L1032 762 Z"/>
+    <path class="d1" pathLength="1" d="M1290 150 L1590 790 L990 790 Z"/>
+    <circle class="spark" r="6"><animateMotion dur="9s" repeatCount="indefinite" path="M1290 150 L1590 790 L990 790 Z"/></circle>
+    <text class="dl" x="990" y="828">Δ · na matemática, o símbolo da mudança</text>
+  </svg>
+  <div class="char cv-isa"><div class="idle"><img src="assets/isabella.webp" alt="Isabella"></div><i class="floor"></i></div>
+  <div class="bubble tail-r cv-bub"><span class="who">Isabella</span>Spoiler: a tecnologia é a parte fácil. <b>O desafio somos nós.</b> 😉</div>
+  <div class="cv-top">
+    <div class="brand"><span class="am-logo" role="img" aria-label="Alvarez &amp; Marsal"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS · Digital &amp; Technology Services"></div>
+    <span class="cv-conf">Treinamento · Gestão de Mudanças · 2026</span>
+  </div>
+  <div class="cv-title">
+    <span class="cv-eyebrow" data-a="fade" style="--d:1">Alvarez &amp; Marsal · Digital &amp; Technology Services</span>
+    <span class="cv-kicker" data-a="fade" style="--d:2">Treinamento</span>
+    <b class="cv-h"><span class="kw" style="--k:1"><span>Gestão de</span></span><br><span class="kw" style="--k:3"><span>Mudanças</span></span></b>
+    <span class="cv-sub" data-a="up" style="--d:6">Uma abordagem entusiasta à mudança.</span>
+    <span class="cv-meta" data-a="up" style="--d:8">Por que a mudança dá certo (ou não), como aprendemos a conduzi-la em 113 anos, o que os números provam e quais ferramentas usar em cada desafio.</span>
+    <div class="cv-moments" data-a="up" style="--d:10"><span>Por quê</span><i></i><span>Como evoluiu</span><i></i><span>O que prova</span><i></i><span>Ferramentas</span><i></i><span>Onde usar</span></div>
+  </div>
+  <div class="cv-foot"><span class="beacon"></span><kbd>→</kbd> avança · <kbd>N</kbd> chama o Fernando · <kbd>R</kbd> gira a Roda da Mudança · <kbd>S</kbd> roteiro · <kbd>F</kbd> tela cheia</div>
+</section>
+
+<!-- ===================================================== 01 · VIRADA DE CHAVE -->
+<section class="slide s1" data-t="O que é Gestão da Mudança" data-rail="Por quê" data-src="Definição: adaptada de Prosci (o lado humano da mudança). Quitter's Day: análise de atividades da Strava (2ª sexta-feira de janeiro). Lacuna intenção–comportamento: Sheeran (2002), meta-análise de 422 estudos, 82.107 participantes.">
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">01 · Por que importa</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar não é decidir.</span></span> <span class="kw" style="--k:3"><span class="hl">É sustentar.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique na chave · ou <kbd>→</kbd></span></div>
+    </div>
+    <div class="main">
+      <div class="s1-grid">
+        <div class="card nv def" data-a="left" style="--d:3">
+          <span class="label">O que é Gestão da Mudança</span>
+          <p class="d">É a disciplina que <em>prepara, equipa e apoia as pessoas</em> para que adotem uma mudança, e para que o projeto entregue o resultado que prometeu.</p>
+          <span class="label" style="margin-top:4px">Por que importa nas empresas</span>
+          <ul>
+            <li><span><b>Sistema no ar ≠ sistema em uso.</b> O go-live acontece numa data; a adoção, nas pessoas.</span></li>
+            <li><span><b>Processo novo, planilha antiga.</b> Sem reforço, todos voltam ao jeito conhecido.</span></li>
+            <li><span><b>O ROI depende de comportamento.</b> Quem não usa não gera o retorno do investimento.</span></li>
+          </ul>
+          <div class="eq">
+            <div class="eq-row"><b>100%</b><span class="op">×</span><b id="eqA">30%</b><span class="op">=</span><b class="r" id="eqR">30%</b></div>
+            <div class="eq-lbls"><span>Solução</span><span></span><span>Adoção</span><span></span><span>Resultado</span></div>
+            <div class="eq-ctl"><span>Adoção</span><input type="range" id="eqIn" min="0" max="100" value="30" aria-label="Percentual de adoção"></div>
+            <div class="eq-bar"><i id="eqBar"></i></div>
+            <div class="eq-msg" id="eqMsg">A solução perfeita com pouca adoção entrega pouco.</div>
+          </div>
+        </div>
+        <div class="flip" id="flip" data-a="zoom" style="--d:5">
+          <button class="keybtn" id="keyBtn" type="button" aria-label="Virar a chave"><span class="k"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 20 3M16 7l3 3M14 9l2 2"/></svg></span><span class="kt">Virar a chave</span></button>
+          <div class="flip-in">
+            <div class="face a">
+              <span class="chip">📅 1º de janeiro</span>
+              <span class="tag">Expectativa · como imaginamos a mudança</span>
+              <h3>“Este ano eu vou<br>para a academia.”</h3>
+              <div class="scene">
+                <div><i>🏋️</i>Matrícula feita, plano anual pago.</div>
+                <div><i>👟</i>Tênis novo, roupa nova, garrafinha.</div>
+                <div><i>🎧</i>Playlist pronta e meta no calendário.</div>
+              </div>
+              <p class="miss">Repare: tudo nesta lista é <b>decisão e compra</b>. Nenhum item é <b>comportamento</b>.</p>
+              <div class="mot"><div class="mot-l"><span>Motivação</span><span>100%</span></div><div class="mot-bar"><i></i></div></div>
+            </div>
+            <div class="face b">
+              <span class="chip">🌧️ 2ª sexta-feira de janeiro</span>
+              <span class="tag">Realidade · como a mudança acontece</span>
+              <h3>“Tá chovendo.<br>Amanhã eu vou.”</h3>
+              <div class="facts">
+                <div class="fact"><b>Quitter’s Day</b><span>A Strava analisou as atividades de janeiro e encontrou o dia em que as resoluções mais caem: <em>a segunda sexta-feira do ano.</em></span><small>Fonte: análise de dados da Strava</small></div>
+                <div class="fact"><b>28%</b><span>É o quanto a intenção explica do que fazemos. A psicologia chama isso de <em>lacuna intenção–comportamento.</em></span><small>Sheeran (2002) · 422 estudos</small></div>
+              </div>
+              <div class="punch">Nas empresas é igual: o go-live é o <em>1º de janeiro</em>.<br>A Gestão da Mudança cuida da <em>segunda sexta-feira</em>.</div>
+            </div>
+          </div>
+        </div>
+        <div class="s1-isa" data-a="right" style="--d:7">
+          <div class="bubble tail-b"><span class="who">Isabella pergunta</span><span class="v1">Quem aqui já fez uma resolução de Ano Novo? <b>Levanta a mão!</b> 🙋‍♀️<br><br>E quem ainda está cumprindo? 😅</span><span class="v2">Viu? O problema nunca foi a academia. <b>Foi o que acontece depois da matrícula.</b></span></div>
+          <div class="char"><div class="idle"><img src="assets/isabella.webp" alt="Isabella"></div><i class="floor"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===================================================== 02 · LINHA DO TEMPO -->
+<section class="slide stage s2" data-t="Linha do tempo da GMO" data-rail="Como evoluiu">
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">02 · Como chegamos aqui</div><h2 class="h2"><span class="kw" style="--k:1"><span>Do decreto ao dado:</span></span> <span class="kw" style="--k:3"><span class="hl">113 anos aprendendo a mudar</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><div class="tl-nav"><button type="button" id="tlPrev">← Anterior</button><button type="button" id="tlNext">Próximo →</button></div></div>
+    </div>
+    <div class="main" style="display:flex;flex-direction:column">
+      <div class="tl" id="tl" data-a="fade" style="--d:3">
+        <div class="tl-eras" id="tlEras"></div>
+        <div class="tl-line"></div><div class="tl-prog" id="tlProg"></div>
+        <div class="tl-isa" id="tlIsa"><img src="assets/isabella.webp" alt="Isabella viajando no tempo"></div>
+      </div>
+      <div class="tl-detail" data-a="up" style="--d:5">
+        <div class="tl-id"><span class="yr" id="tdY"></span><span class="era" id="tdE"></span><h3 id="tdT"></h3><div class="lic"><span>Lição para a GMO</span><b id="tdL"></b></div></div>
+        <div class="tl-how">
+          <div class="h"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M4 5v14"/></svg></span><div><b>Como a mudança era feita</b><p id="tdM"></p></div></div>
+          <div class="h"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg></span><div><b>Como se comunicava</b><p id="tdC"></p></div></div>
+          <div class="h"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 11.5l2 2 4-4"/></svg></span><div><b>Como se buscava a adoção</b><p id="tdA"></p></div></div>
+        </div>
+        <div class="tl-case"><div class="ct"><span>Case</span><b class="brand-n" id="tdB"></b></div><div class="num" id="tdN"></div><p class="cap" id="tdK"></p><p class="srcx" id="tdS"></p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"><b>FONTES</b>The Henry Ford (US$ 5/dia, 1914) · Lewin (1947) · Rogers, Diffusion of Innovations (1962) · Kübler-Ross (1969) · Kotter, HBR (1995) · Prosci/ADKAR · Netflix 3T2011 (AP) · Coca-Cola (1985) · Banco Central do Brasil (Pix) · McKinsey (2026)</span></footer>
+</section>
+
+<!-- ===================================================== 03 · INDICADORES -->
+<section class="slide s3" data-t="O que os números dizem" data-rail="O que prova" data-src="Prosci, Best Practices in Change Management, 12ª ed. (2023) · McKinsey (2026): ~30% das transformações entregam o valor esperado · Gartner: 34% das iniciativas de mudança são sucesso claro · BCG (2020): 30% → 80% com seis fatores críticos · Christensen et al., HBR (2011): 70–90% das aquisições falham · Morris, Wooding &amp; Grant, JRSM (2011) · Banco Central (Pix, 2025). Estudos com metodologias diferentes: leitura direcional, não comparação direta.">
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">03 · O que os números dizem</div><h2 class="h2"><span class="kw" style="--k:1"><span>GMO não é custo.</span></span> <span class="kw" style="--k:3"><span class="hl">É seguro de resultado.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Ligue a Gestão da Mudança · ou <kbd>→</kbd></span></div>
+    </div>
+    <div class="main">
+      <div class="s3-grid">
+        <div class="s3-l">
+          <div class="hero glow sweep" data-a="zoom" style="--d:3">
+            <span class="lbl">Projetos com GMO excelente</span>
+            <span class="ttl">atingiram ou superaram os objetivos</span>
+            <div class="ring">
+              <svg viewBox="0 0 200 200"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFC7A6"/><stop offset="1" stop-color="#F26B21"/></linearGradient></defs>
+                <circle class="t" cx="100" cy="100" r="86"/><circle class="f" id="ringF" cx="100" cy="100" r="86"/>
+                <circle class="t2" cx="100" cy="100" r="62"/><circle class="f2" id="ringF2" cx="100" cy="100" r="62"/></svg>
+              <div class="v"><b id="ringV">0%</b><span>com GMO excelente</span></div>
+            </div>
+            <div class="vs"><div><i style="background:var(--orange-500)"></i>Excelente <b>88%</b></div><div><i style="background:var(--steel-400)"></i>Ruim <b>13%</b></div></div>
+            <span class="srcx">Prosci · Best Practices in Change Management, 12ª ed. (2023)</span>
+          </div>
+          <div class="seal" id="seal">
+            <div class="disc"></div>
+            <svg class="txt" viewBox="0 0 190 190"><defs><path id="sealP" d="M95,95 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><text><textPath href="#sealP">SELO DE ADOÇÃO · GESTÃO DA MUDANÇA · SELO DE ADOÇÃO · </textPath></text></svg>
+            <div class="core"><b>7×</b><span>mais chance de<br>atingir objetivos</span></div>
+          </div>
+          <div class="s3-isa" data-a="up" style="--d:9">
+            <div class="char"><div class="idle"><img src="assets/isabella.webp" alt="Isabella"></div><i class="floor"></i></div>
+            <div class="bubble tail-l"><span class="who">Isabella</span>Mesma tecnologia, resultado <b>7× diferente</b>. A diferença? <b>Gente.</b></div>
+          </div>
+        </div>
+        <div class="card chart" id="chart" data-a="up" style="--d:5">
+          <div class="chart-h">
+            <div><h3>Taxa de sucesso por tipo de mudança</h3><p>Barras navy: cenário geral. Laranja: quando o lado humano é gerido.</p></div>
+            <button type="button" class="toggle" id="gmoTg"><span>Ligar a Gestão da Mudança</span><span class="sw"></span></button>
+          </div>
+          <div class="bars" id="bars"></div>
+          <div class="chart-f"><span class="msg" id="chartMsg">Sem as pessoas no centro, <em>cerca de 3 em cada 10</em> mudanças entregam o que prometeram.</span><span class="srcx">estudos distintos · leitura direcional</span></div>
+        </div>
+        <div class="s3-r">
+          <span class="label" data-a="fade" style="--d:6">Além da tecnologia</span>
+          <div class="card seg" data-a="right" style="--d:7"><span class="sg">Saúde</span><b class="n">17 anos</b><p>tempo médio para uma <b>evidência de pesquisa virar prática clínica</b>. Saber não é adotar.</p><span class="srcx">Morris, Wooding &amp; Grant · J R Soc Med (2011)</span></div>
+          <div class="card seg" data-a="right" style="--d:8"><span class="sg">Serviços financeiros</span><b class="n">175 mi</b><p>usuários do <b>Pix</b> em 2025. A adoção foi aquecida antes do go-live: cadastro de chaves <b>6 semanas antes</b> do lançamento.</p><span class="srcx">Banco Central do Brasil · dados de 2025</span></div>
+          <div class="card seg" data-a="right" style="--d:9"><span class="sg">Fusões &amp; aquisições</span><b class="n">70–90%</b><p>das aquisições <b>não geram o valor esperado</b>. Integração é, antes de tudo, integração de pessoas.</p><span class="srcx">Christensen et al. · Harvard Business Review (2011)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===================================================== 04 · CAIXA DE FERRAMENTAS -->
+<section class="slide stage s4" data-t="Abordagens de GMO" data-rail="Ferramentas" data-src="Kotter, “Leading Change: Why Transformation Efforts Fail”, HBR (1995) e Leading Change (1996) · Hiatt, ADKAR (Prosci, 2006) · Gonçalves &amp; Campos, HCMBOK 3ª ed. (HUCMI, 2018) · CMAK: abordagem aplicada orientada a KPIs (metas ilustrativas).">
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="hd">
+    <div><div class="eyebrow" data-a="fade">04 · Abordagens de Gestão da Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Quatro ferramentas,</span></span> <span class="kw" style="--k:3"><span class="hl">um só objetivo: adoção.</span></span></h2></div>
+  </div>
+  <div class="tk" id="tk">
+    <div class="burst" id="burst"></div>
+
+    <article class="mcard" style="--mc:var(--m-kotter);left:66px;--i:0">
+      <div class="mc-h"><span class="no">01 · Organização</span><h3>KOTTER</h3><p class="full">8 Etapas para Liderar a Mudança</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg></span></div>
+      <div class="mc-b">
+        <div class="orig"><span>John P. Kotter · Harvard</span><span>HBR 1995 · livro 1996</span></div>
+        <p class="q">A mudança começa no topo: sem senso de urgência e coalizão de líderes, nada se move.</p>
+        <span class="lbl">As 8 etapas</span>
+        <div class="steps8">
+          <div><i>1</i>Senso de urgência</div><div><i>2</i>Coalizão de líderes</div>
+          <div><i>3</i>Visão e estratégia</div><div class="g2"><i>4</i>Comunicar a visão</div>
+          <div class="g2"><i>5</i>Remover barreiras</div><div class="g2"><i>6</i>Vitórias rápidas</div>
+          <div class="g3"><i>7</i>Não parar cedo</div><div class="g3"><i>8</i>Ancorar na cultura</div>
+        </div>
+        <div class="phases"><span>Criar o clima</span><span>Engajar e capacitar</span><span>Implementar e sustentar</span></div>
+      </div>
+      <div class="mc-f"><span class="foc">Lente · <b>Liderança</b></span><span class="lvl">Top-down</span></div>
+    </article>
+
+    <article class="mcard" style="--mc:var(--m-adkar);left:438px;--i:1">
+      <div class="mc-h"><span class="no">02 · Indivíduo</span><h3>ADKAR</h3><p class="full">A mudança acontece uma pessoa por vez</p><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c1-4.4 4.2-6.5 8-6.5s7 2.1 8 6.5"/></svg></span></div>
+      <div class="mc-b">
+        <div class="orig"><span>Jeff Hiatt · Prosci</span><span>modelo dos anos 1990 · livro 2006</span></div>
+        <div class="adkar">
+          <div><b>A</b><span><em>Awareness · Consciência</em>Por que precisamos mudar?</span></div>
+          <div><b>D</b><span><em>Desire · Desejo</em>Eu quero fazer parte disso.</span></div>
+          <div><b>K</b><span><em>Knowledge · Conhecimento</em>Eu sei como mudar.</span></div>
+          <div><b>A</b><span><em>Ability · Habilidade</em>Eu consigo fazer na prática.</span></div>
+          <div><b>R</b><span><em>Reinforcement · Reforço</em>Eu não volto ao jeito antigo.</span></div>
+        </div>
+        <p class="tip"><b>Ponto de barreira:</b> o 1º elemento com nota ≤ 3 (escala 1–5). Treinar quem ainda não tem “D” é desperdício.</p>
+      </div>
+      <div class="mc-f"><span class="foc">Lente · <b>Pessoa</b></span><span class="lvl">Bottom-up</span></div>
+    </article>
+
+    <article class="mcard" style="--mc:var(--m-hcmbok);left:810px;--i:2">
+      <div class="mc-h"><span class="no">03 · Projeto</span><h3>HCMBOK</h3><p class="full">Human Change Management Body of Knowledge</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg></span></div>
+      <div class="mc-b">
+        <div class="orig"><span>HUCMI · Brasil</span><span>Vicente Gonçalves &amp; Carla Campos</span><span>3ª ed. 2018</span></div>
+        <p class="q">O fator humano dentro do projeto: GMO amarrada às fases e entregas, não um anexo.</p>
+        <div class="lifecyc"><span>Iniciar</span><i></i><span>Planejar</span><i></i><span>Executar</span><i></i><span>Sustentar</span></div>
+        <span class="lbl">Macroatividades do plano (PEGM)</span>
+        <div class="hcm">
+          <div><small>Patrocínio</small>Patrocinador definido e preparado</div>
+          <div><small>Liderança</small>Alinhamento e mobilização</div>
+          <div><small>Identidade</small>Propósito e marca do projeto</div>
+          <div><small>Cultura</small>Avaliação da cultura</div>
+          <div><small>Governança</small>Papéis (RACI) e estrutura</div>
+          <div><small>CMO</small>Escritório de Gestão da Mudança</div>
+        </div>
+      </div>
+      <div class="mc-f"><span class="foc">Lente · <b>Projeto</b></span><span class="lvl">Integrado ao PMO</span></div>
+    </article>
+
+    <article class="mcard" style="--mc:var(--m-cmak);left:1182px;--i:3">
+      <div class="mc-h"><span class="no">04 · Evidência</span><h3>CMAK</h3><p class="full">Change Management Applicable by KPI</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span></div>
+      <div class="mc-b">
+        <div class="orig"><span>Abordagem aplicada</span><span>orientada a fatos e dados</span></div>
+        <p class="q">Cada frente de GMO com meta, métrica e dono: o que não tem número vira opinião.</p>
+        <span class="lbl">Painel por frente · meta ▏</span>
+        <div class="kpis">
+          <div class="kpi"><b>Comunicação</b><span class="kb"><i style="--w:84%"></i><u style="left:90%"></u></span><em>≥ 90%</em></div>
+          <div class="kpi"><b>Resistência</b><span class="kb"><i style="--w:22%"></i><u style="left:15%"></u></span><em>≤ 15%</em></div>
+          <div class="kpi"><b>Cultura</b><span class="kb"><i style="--w:70%"></i><u style="left:80%"></u></span><em>≥ 4/5</em></div>
+          <div class="kpi"><b>Impactos</b><span class="kb"><i style="--w:92%"></i><u style="left:100%"></u></span><em>100%</em></div>
+          <div class="kpi"><b>Treinamento</b><span class="kb"><i style="--w:88%"></i><u style="left:85%"></u></span><em>≥ 85%</em></div>
+          <div class="kpi"><b>Adoção</b><span class="kb"><i style="--w:66%"></i><u style="left:80%"></u></span><em>≥ 80%</em></div>
+        </div>
+        <p class="tip"><b>Exemplo ilustrativo.</b> Alcance, resistência por área, prontidão cultural, impactos tratados, proficiência e uso real × meta.</p>
+      </div>
+      <div class="mc-f"><span class="foc">Lente · <b>Dados</b></span><span class="lvl">Medição contínua</span></div>
+    </article>
+
+    <div class="tb" id="tb" role="button" tabindex="0" aria-label="Abrir a caixa de ferramentas">
+      <div class="shadow"></div>
+      <div class="inside"></div>
+      <div class="bodyb"><span class="latch l"></span><span class="latch r"></span><span class="plate">GMO · <b>TOOLKIT</b></span><span class="bolts"><i></i><i></i></span></div>
+      <div class="lid"><span class="handle"></span></div>
+      <div class="ttxt"><b>Caixa de Ferramentas da Mudança</b><span><i class="beacon"></i>Clique para abrir · ou <kbd>→</kbd></span></div>
+      <span class="close-x">✕ Fechar</span>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===================================================== 05 · ONDE USAR -->
+<section class="slide s5" data-t="Onde cada abordagem brilha" data-rail="Onde usar" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam.">
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Onde cada uma brilha</div><h2 class="h2"><span class="kw" style="--k:1"><span>Não existe a melhor.</span></span> <span class="kw" style="--k:3"><span class="hl">Existe a certa para o desafio.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique em um cenário</span></div>
+    </div>
+    <div class="main">
+      <div class="s5-grid">
+        <div class="card hm" id="hm" data-a="up" style="--d:3">
+          <div class="hm-head"><span class="label">Cenário de mudança</span>
+            <span class="mh" style="--mc:var(--m-kotter)"><i></i>Kotter<span>Organização</span></span>
+            <span class="mh" style="--mc:var(--m-adkar)"><i></i>ADKAR<span>Pessoa</span></span>
+            <span class="mh" style="--mc:var(--m-hcmbok)"><i></i>HCMBOK<span>Projeto</span></span>
+            <span class="mh" style="--mc:var(--m-cmak)"><i></i>CMAK<span>Dados</span></span>
+          </div>
+          <div class="hm-rows" id="hmRows"></div>
+          <div class="hm-leg"><span><i style="background:var(--navy-800)"></i>Protagonista</span><span><i style="background:var(--steel-400)"></i>Apoia</span><span><i style="background:var(--steel-100)"></i>Pontual</span><span class="note">curadoria do treinamento · as abordagens se combinam</span></div>
+        </div>
+        <div class="s5-r">
+          <div class="card nv recipe" id="recipe" data-a="right" style="--d:5"></div>
+          <div class="card layers" id="layers" data-a="right" style="--d:7">
+            <div class="lh"><b>Como elas se encaixam</b><span class="label">4 lentes, 1 mudança</span></div>
+            <div class="ly" data-m="0" style="--mc:var(--m-kotter)"><b><i></i>Kotter</b><span><em>Organização</em>Mobiliza a liderança e cria o “porquê” coletivo.</span></div>
+            <div class="ly" data-m="2" style="--mc:var(--m-hcmbok)"><b><i></i>HCMBOK</b><span><em>Projeto</em>Coloca a GMO no plano, no cronograma e na governança.</span></div>
+            <div class="ly" data-m="1" style="--mc:var(--m-adkar)"><b><i></i>ADKAR</b><span><em>Pessoa</em>Leva cada pessoa da consciência ao reforço.</span></div>
+            <div class="ly" data-m="3" style="--mc:var(--m-cmak)"><b><i></i>CMAK</b><span><em>Evidência</em>Prova com metas e indicadores se a adoção aconteceu.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===================================================== FERNANDO -->
+<div id="fern" class="p-right" aria-live="polite">
+  <div class="fig"><img src="assets/fernando_peek.webp" alt="Fernando"></div>
+  <div class="fb" id="fernB"></div>
+</div>
+
+<!-- ===================================================== RODA DA MUDANÇA -->
+<div id="wheel" role="dialog" aria-label="Roda da Mudança">
+  <div class="wh-top"><div class="t"><span>Rodada relâmpago</span><b>Roda da Mudança</b></div><div style="display:flex;gap:14px;align-items:center"><span class="wh-score" id="whScore"></span><button class="wh-x" id="whReset" type="button">↺ Reiniciar</button><button class="wh-x" id="whClose" type="button">✕ Fechar <kbd>Esc</kbd></button></div></div>
+  <div class="wh-wrap">
+    <div class="wh-ptr" id="whPtr"><svg viewBox="0 0 52 64"><path d="M26 62 4 14A22 22 0 0 1 48 14z" fill="#fff"/><path d="M26 54 10 16a16 16 0 0 1 32 0z" fill="#F26B21"/></svg></div>
+    <svg class="wh-svg" id="whSvg" viewBox="-320 -320 640 640"></svg>
+    <button class="wh-hub" id="whHub" type="button">GIRAR<span>ESPAÇO</span></button>
+  </div>
+  <div class="wh-card" id="whCard"></div>
+  <canvas class="confetti" id="confetti" width="1600" height="900"></canvas>
+</div>
+
+<div id="wipe"><i></i><i></i><i></i></div>
+</div></div>
+
+<div id="progress"></div>
+<nav id="rail" aria-label="Capítulos"></nav>
+<div id="controls">
+  <button type="button" id="bFern" title="Fernando (N)">🙋 <span class="lb">Fernando</span> <kbd>N</kbd></button>
+  <button type="button" id="bWheel" title="Roda da Mudança (R)">🎡 <span class="lb">Roda</span> <kbd>R</kbd></button>
+  <button type="button" id="bNotes" title="Roteiro (S)">📝 <span class="lb">Roteiro</span> <kbd>S</kbd></button>
+  <button type="button" id="bFs" title="Tela cheia (F)">⛶</button>
+  <button type="button" id="bPrev" aria-label="Anterior">‹</button>
+  <button type="button" class="p" id="bNext" aria-label="Próximo">›</button>
+</div>
+<aside id="notes" aria-label="Roteiro do apresentador"><div class="nh"><div><span>Roteiro do apresentador</span><br><b id="nTitle"></b></div><button class="x" id="nClose" type="button" aria-label="Fechar">×</button></div><div class="nb" id="nBody"></div></aside>
+<div id="blackout"></div>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const stage=$('#stage'), slides=$$('.slide');
+let cur=0, busy=false;
+
+/* ---------- escala do palco ---------- */
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+addEventListener('resize',fit);fit();
+
+/* ---------- som (Web Audio, sem arquivos) ---------- */
+let ac=null, muted=false;
+function tone(f=600,d=.08,type='sine',v=.08,slide=0){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(f,ac.currentTime);if(slide)o.frequency.exponentialRampToValueAtTime(slide,ac.currentTime+d);g.gain.setValueAtTime(v,ac.currentTime);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d+.02)}catch(e){}}
+const boing=()=>{tone(220,.25,'triangle',.12,660)}, ding=()=>{tone(880,.18,'sine',.1);setTimeout(()=>tone(1320,.25,'sine',.08),110)};
+
+/* ---------- rodapés, paginação, trilho ---------- */
+slides.forEach((s,i)=>{const src=s.dataset.src, f=$('.foot .src',s);if(src&&f&&!f.innerHTML)f.innerHTML='<b>FONTES</b>'+src;const pg=$('.pg',s);if(pg)pg.innerHTML=`<b>${String(i).padStart(2,'0')}</b> / ${String(slides.length-1).padStart(2,'0')}`});
+const rail=$('#rail');
+slides.forEach((s,i)=>{const b=document.createElement('button');b.className='sg';b.type='button';b.innerHTML=`<span>${s.dataset.rail}</span><i><b></b></i>`;b.onclick=()=>go(i);rail.appendChild(b)});
+
+/* ---------- navegação ---------- */
+const hooks={};
+function show(n){const old=slides[cur];old.classList.remove('active','play');hooks[cur]?.leave?.();cur=n;const s=slides[n];s.classList.add('active');void s.offsetWidth;s.classList.add('play');hooks[n]?.enter?.();ui()}
+function go(n){if(busy||n===cur||n<0||n>=slides.length)return;busy=true;const w=$('#wipe');w.classList.remove('go');void w.offsetWidth;w.classList.add('go');setTimeout(()=>show(n),380);setTimeout(()=>{w.classList.remove('go');busy=false},900)}
+function next(){if(hooks[cur]?.step?.(1))return;go(cur+1)}
+function prev(){if(hooks[cur]?.step?.(-1))return;go(cur-1)}
+function ui(){$('#progress').style.width=(cur/(slides.length-1)*100)+'%';$$('#rail .sg').forEach((b,i)=>{b.classList.toggle('on',i===cur);$('b',b).style.width=i<=cur?'100%':'0'});renderNotes()}
+
+/* ---------- CAPA: partículas ---------- */
+(()=>{const cv=$('#cvParticles'),x=cv.getContext('2d');const P=[];for(let i=0;i<80;i++)P.push({x:Math.random()*1600,y:Math.random()*900,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.8+.6});
+let mx=-999,my=-999;cv.parentElement.addEventListener('mousemove',e=>{const r=stage.getBoundingClientRect(),k=r.width/1600;mx=(e.clientX-r.left)/k;my=(e.clientY-r.top)/k});
+function f(){if(slides[0].classList.contains('active')){x.clearRect(0,0,1600,900);for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>1600)p.vx*=-1;if(p.y<0||p.y>900)p.vy*=-1;const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<120){p.x+=dx/d*1.6;p.y+=dy/d*1.6}}
+for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){x.strokeStyle=`rgba(163,184,214,${(1-d/130)*.22})`;x.lineWidth=1;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+for(const p of P){x.fillStyle=p.r>2?'rgba(255,138,76,.8)':'rgba(201,214,232,.7)';x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()}}requestAnimationFrame(f)}f()})();
+
+/* ---------- 01 · virada de chave + equação ---------- */
+(()=>{const s=slides[1],flip=$('#flip');let on=false;
+const set=v=>{on=v;flip.classList.toggle('on',v);s.classList.toggle('flipped',v);$('.kt',flip).textContent=v?'Voltar à expectativa':'Virar a chave';tone(v?520:420,.12,'triangle',.08,v?880:300)};
+$('#keyBtn').onclick=()=>set(!on);
+hooks[1]={step:d=>{if(d>0&&!on){set(true);return true}if(d<0&&on){set(false);return true}return false},leave:()=>set(false)};
+const inp=$('#eqIn'),msgs=[[0,'Adoção zero: a solução perfeita entrega zero.'],[1,'Quase ninguém usa: o investimento vira custo.'],[40,'A solução perfeita com pouca adoção entrega pouco.'],[70,'Metade do caminho: o ROI ainda está na mesa.'],[90,'Agora sim: a adoção transforma a solução em resultado.'],[100,'Adoção total: o resultado que o projeto prometeu.']];
+const upd=()=>{const v=+inp.value;$('#eqA').textContent=v+'%';$('#eqR').textContent=v+'%';$('#eqBar').style.width=v+'%';let m=msgs[0][1];for(const [k,t] of msgs)if(v>=k)m=t;$('#eqMsg').textContent=m};
+inp.addEventListener('input',upd);inp.addEventListener('keydown',e=>e.stopPropagation());upd()})();
+
+/* ---------- 02 · linha do tempo ---------- */
+const ERAS=[{n:'Intuição',a:0,b:0},{n:'Primeiros modelos',a:1,b:2},{n:'Mudança sem ouvir',a:3,b:3},{n:'Métodos',a:4,b:4},{n:'Profissão',a:5,b:5},{n:'Mudança contínua',a:6,b:7}];
+const M=[
+ {y:'1913',e:'Era da intuição',t:'Ford e a linha de montagem',m:'Por decreto: a linha de montagem móvel muda o trabalho de um dia para o outro. Ninguém pergunta; todos executam.',c:'De cima para baixo: aviso no chão de fábrica e, em 1914, a manchete no jornal.',a:'Comprada, não construída: em 1914 o pagamento dobra para US$ 5 por dia (parte como bônus condicionado) para segurar as pessoas.',b:'Ford Motor Co.',n:'370%',k:'de rotatividade anual na Ford em 1913, quando o trabalho virou linha de montagem.',s:'The Henry Ford · “Ford’s Five-Dollar Day”',l:'Sem método, a empresa pagou caro pela adoção: o “plano de mudança” foi um contracheque.'},
+ {y:'1947',e:'Primeiros modelos',t:'Kurt Lewin: a mudança ganha um modelo',m:'Mudança vira processo em três tempos: descongelar o jeito atual, mudar, recongelar o novo.',c:'Explicar por que o estado atual não serve mais: é o “descongelar”.',a:'Estabilizar o novo comportamento (“recongelar”) para ninguém voltar ao antigo.',b:'Psicologia social',n:'3 fases',k:'Descongelar · Mudar · Recongelar. Pela primeira vez, a mudança tem antes, durante e depois.',s:'Kurt Lewin (1947) · modelo atribuído a ele pela literatura',l:'Mudança não é evento, é travessia. E toda travessia tem um ponto de partida emocional.'},
+ {y:'1962',e:'Primeiros modelos',t:'Rogers e Kübler-Ross: adoção e emoção têm curva',m:'Rogers mostra que a inovação se espalha por grupos, não de uma vez. Em 1969, Kübler-Ross descreve a curva emocional que depois foi adaptada às empresas.',c:'Primeiro com quem puxa os outros: inovadores e adotantes iniciais convencem a maioria.',a:'Segmentada: 2,5% inovadores · 13,5% adotantes iniciais · 34% maioria inicial · 34% maioria tardia · 16% retardatários.',b:'Difusão de Inovações',n:'2,5%',k:'das pessoas são inovadoras. A maioria espera ver alguém de confiança usando antes de aderir.',s:'Rogers, Diffusion of Innovations (1962) · Kübler-Ross (1969)',l:'Não comunique para “todos”. Comunique para quem os outros escutam.'},
+ {y:'1985',e:'Mudança sem ouvir',t:'New Coke: o produto venceu, o vínculo perdeu',m:'Decisão baseada em testes de sabor às cegas, nos quais a nova fórmula venceu.',c:'Anúncio em coletiva de imprensa: “a Coca-Cola mudou”.',a:'Rejeitada: milhares de ligações de protesto. A fórmula original volta como Coca-Cola Classic.',b:'Coca-Cola',n:'79 dias',k:'entre o lançamento da New Coke (23/abr) e a volta da fórmula original (11/jul/1985).',s:'History.com · cobertura histórica do caso',l:'Testaram o produto, não o vínculo emocional. Resistência é informação, não birra.'},
+ {y:'1995',e:'Era dos métodos',t:'Nascem os métodos: Kotter, Prosci e ADKAR',m:'Kotter publica “Leading Change” na HBR (1995): 8 etapas puxadas pela liderança. Jeff Hiatt funda a Prosci (1994) e cria o ADKAR.',c:'Comunicação vira plano: mensagem certa, emissor certo, momento certo.',a:'Medida por pessoa: consciência, desejo, conhecimento, habilidade e reforço.',b:'Harvard · Prosci',n:'8 + 5',k:'as 8 etapas de Kotter (organização) e os 5 elementos do ADKAR (indivíduo).',s:'Kotter, HBR (1995) · Hiatt, ADKAR (2006)',l:'Gestão da Mudança deixa de ser “bom senso” e vira disciplina.'},
+ {y:'2011',e:'Profissão',t:'Netflix e o Qwikster: estratégia certa, mudança errada',m:'Aumento de até 60% no preço e anúncio da separação do DVD numa nova marca, o Qwikster.',c:'Por e-mail e post no blog, com a decisão já tomada e sem preparar o cliente.',a:'Revolta dos assinantes; o Qwikster é cancelado em poucas semanas.',b:'Netflix',n:'−800 mil',k:'assinantes nos EUA em um trimestre; a ação caiu cerca de 35% em um dia (out/2011).',s:'Associated Press, out/2011 · Yale SOM case',l:'Uma boa estratégia mal comunicada vira uma péssima experiência.'},
+ {y:'2020',e:'Mudança contínua',t:'Pix: a adoção começou antes do go-live',m:'Em plena pandemia, o Brasil ganha um novo jeito de pagar, com cronograma público e participação de todo o sistema financeiro.',c:'Calendário aberto: cadastro de chaves em 5/out e lançamento para todos em 16/nov/2020.',a:'Aquecida antes do go-live: mais de 10 milhões de chaves nos dois primeiros dias de cadastro.',b:'Pix · Banco Central',n:'175 mi',k:'de usuários cadastrados em 2025, entre pessoas e empresas.',s:'Banco Central do Brasil · dados de 2025',l:'Quem já tem a chave no dia 1 usa no dia 1. Adoção se prepara antes.'},
+ {y:'2026',e:'Mudança contínua',t:'IA generativa: a mudança não para mais',m:'Ferramentas mudam a cada trimestre: a mudança deixa de ser projeto e vira condição permanente.',c:'Contínua e de mão dupla: comunidades, multiplicadores e feedback em tempo real.',a:'Medida por dados de uso: quem usa, quanto e com que qualidade. KPI de adoção ao vivo.',b:'Hoje',n:'~30%',k:'das iniciativas de transformação entregam o valor que os líderes esperavam.',s:'McKinsey (jun/2026)',l:'A tecnologia chega em semanas. A adoção continua sendo o gargalo e o diferencial.'}
+];
+(()=>{const tl=$('#tl'),W=1520,pad=70,xs=M.map((_,i)=>pad+i*(W-2*pad)/(M.length-1));let idx=0;
+const eras=$('#tlEras');ERAS.forEach(e=>{const d=document.createElement('div');d.className='tl-era';const l=e.a===0?0:(xs[e.a-1]+xs[e.a])/2,r=e.b===M.length-1?W:(xs[e.b]+xs[e.b+1])/2;d.style.left=(l+3)+'px';d.style.width=(r-l-6)+'px';d.textContent=e.n;d.dataset.ea=e.a;d.dataset.eb=e.b;eras.appendChild(d)});
+M.forEach((m,i)=>{const n=document.createElement('button');n.type='button';n.className='tl-node';n.style.left=xs[i]+'px';n.setAttribute('aria-label',m.y);n.onclick=()=>sel(i);tl.appendChild(n);const y=document.createElement('button');y.type='button';y.className='tl-yr';y.style.left=xs[i]+'px';y.innerHTML=`${m.y}<small>${m.b.split(' ')[0]}</small>`;y.onclick=()=>sel(i);tl.appendChild(y)});
+const nodes=$$('.tl-node',tl),yrs=$$('.tl-yr',tl),isa=$('#tlIsa');
+function sel(i,quiet){idx=i;const m=M[i];nodes.forEach((n,j)=>{n.classList.toggle('on',j===i);n.classList.toggle('past',j<i)});yrs.forEach((n,j)=>n.classList.toggle('on',j===i));
+$$('.tl-era',tl).forEach(e=>e.classList.toggle('on',i>=+e.dataset.ea&&i<=+e.dataset.eb));
+$('#tlProg').style.width=xs[i]+'px';isa.style.left=xs[i]+'px';isa.classList.remove('hop');void isa.offsetWidth;isa.classList.add('hop');
+const set=(id,v,html)=>{const el=$(id);html?el.innerHTML=v:el.textContent=v};
+set('#tdY',m.y);set('#tdE',m.e);set('#tdT',m.t);set('#tdL',m.l);set('#tdM',m.m);set('#tdC',m.c);set('#tdA',m.a);set('#tdB',m.b);set('#tdN',m.n);set('#tdK',m.k);set('#tdS','Fonte: '+m.s);
+$$('.tl-id,.tl-how .h,.tl-case',slides[2]).forEach((el,j)=>{el.classList.remove('swap','d1','d2');void el.offsetWidth;el.classList.add('swap');if(j%3===1)el.classList.add('d1');if(j%3===2)el.classList.add('d2')});
+if(!quiet)tone(520+i*60,.1,'sine',.06)}
+$('#tlPrev').onclick=()=>idx>0&&sel(idx-1);$('#tlNext').onclick=()=>idx<M.length-1&&sel(idx+1);
+hooks[2]={enter:()=>sel(idx,true),step:d=>{const n=idx+d;if(n<0||n>=M.length)return false;sel(n);return true}};sel(0,true)})();
+
+/* ---------- 03 · indicadores ---------- */
+const BARS=[
+ {nm:'Transformação corporativa',src:'McKinsey · 2026 · multissetorial',v:30,dim:1},
+ {nm:'Mudança organizacional',src:'Gartner · iniciativas de mudança',v:34,dim:1},
+ {nm:'Fusões & aquisições',src:'Christensen et al. · HBR · 2011',r:[10,30],dim:1},
+ {nm:'Transformação digital',src:'BCG · 2020 · com 6 fatores críticos',v:30,to:80},
+ {nm:'Projetos (todos os setores)',src:'Prosci · 2023 · GMO ruim → excelente',v:13,to:88}
+];
+(()=>{const s=slides[3],chart=$('#chart'),box=$('#bars');let on=false,ready=false;
+box.innerHTML=BARS.map(b=>`<div class="brow ${b.dim?'dim':'boost-row'}"><div class="nm"><b>${b.nm}</b><span>${b.src}</span></div><div class="btrack">${b.r?`<i class="range" style="left:${b.r[0]}%;width:${b.r[1]-b.r[0]}%"></i>`:`<i class="base" data-w="${b.v}"></i>`}${b.to?`<i class="boost" style="left:${b.v}%;--bw:${b.to-b.v}%"></i><span class="gap" style="left:${(b.v+b.to)/2}%">+${b.to-b.v} p.p.</span>`:''}</div><div class="val" data-v="${b.v}" data-to="${b.to||''}">${b.r?`${b.r[0]}–${b.r[1]}%<small>criam valor</small>`:b.v+'%'}</div></div>`).join('')+`<div class="base-line" style="left:calc(244px + (100% - 350px) * .3)"><span>~30%</span></div>`;
+const setOn=v=>{on=v;chart.classList.toggle('on',v);$('#gmoTg').classList.toggle('on',v);
+$$('.boost-row .val',box).forEach(el=>{const a=+el.dataset.v,b=+el.dataset.to;count(el,v?a:b,v?b:a,900)});
+$('#chartMsg').innerHTML=v?'Quando o lado humano é gerido, o sucesso salta para <em>80% a 88%</em>: de 2,7× a 7× mais.':'Sem as pessoas no centro, <em>cerca de 3 em cada 10</em> mudanças entregam o que prometeram.';
+if(v){ding();burstStage()}};
+$('#gmoTg').onclick=()=>setOn(!on);
+function count(el,a,b,ms){const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,3);el.firstChild.nodeValue=Math.round(a+(b-a)*e)+'%';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+function burstStage(){}
+hooks[3]={enter:()=>{setOn(false);chart.classList.remove('ready');$$('.base',box).forEach(b=>b.style.width='0');$$('.range',box).forEach(r=>r.style.opacity=0);
+ $('#ringF').style.strokeDashoffset=540.4;$('#ringF2').style.strokeDashoffset=389.6;$('#seal').classList.remove('stamp');
+ setTimeout(()=>{$$('.base',box).forEach(b=>b.style.width=b.dataset.w+'%');$$('.range',box).forEach(r=>r.style.opacity=1);chart.classList.add('ready')},700);
+ setTimeout(()=>{$('#ringF').style.strokeDashoffset=540.4*(1-.88);$('#ringF2').style.strokeDashoffset=389.6*(1-.13);const v=$('#ringV');const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1800),e=1-Math.pow(1-k,3);v.textContent=Math.round(88*e)+'%';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)},600);
+ setTimeout(()=>{$('#seal').classList.add('stamp');setTimeout(()=>{s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake');tone(90,.25,'square',.12,40)},420)},2500)},
+ step:d=>{if(d>0&&!on){setOn(true);return true}if(d<0&&on){setOn(false);return true}return false}}})();
+
+/* ---------- 04 · caixa de ferramentas ---------- */
+(()=>{const tk=$('#tk'),tb=$('#tb'),cards=$$('.mcard',tk),burst=$('#burst');let open=false,anim=false;
+const BX=800,BY=455, CX=800+738,CY=455+368;
+cards.forEach((c,i)=>{const cx=parseFloat(c.style.left)+176,cy=178+287;c.style.setProperty('--bx',(BX-cx)+'px');c.style.setProperty('--by',(BY-cy)+'px');c.style.setProperty('--bx2',(CX-cx)+'px');c.style.setProperty('--by2',(CY-cy)+'px');c.style.setProperty('--sx',((BX-cx)*.45+(i-1.5)*60)+'px');c.style.setProperty('--sy',(-120-Math.random()*80)+'px');c.style.setProperty('--r',((i-1.5)*14)+'deg');
+ c.addEventListener('click',()=>{if(!open)return;const f=c.classList.contains('f');cards.forEach(x=>x.classList.remove('f'));tk.classList.toggle('focus',!f);if(!f)c.classList.add('f')})});
+for(let i=0;i<36;i++){const s=document.createElement('i');const a=Math.random()*Math.PI*2,d=160+Math.random()*260;s.style.setProperty('--x',Math.cos(a)*d+'px');s.style.setProperty('--y',Math.sin(a)*d-80+'px');s.style.setProperty('--i',i);if(i%3===0)s.style.background='#fff';if(i%3===1)s.style.background='var(--steel-300)';burst.appendChild(s)}
+function doOpen(){if(anim||open)return;anim=true;open=true;tk.classList.add('open','opening');burst.classList.remove('go');void burst.offsetWidth;burst.classList.add('go');boing();cards.forEach((c,i)=>setTimeout(()=>tone(500+i*120,.12,'triangle',.06),420+i*130));setTimeout(()=>{tk.classList.remove('opening');anim=false},1900)}
+function doClose(){if(anim||!open)return;anim=true;tk.classList.remove('focus');cards.forEach(x=>x.classList.remove('f'));tk.classList.add('closing');tone(700,.25,'triangle',.08,200);setTimeout(()=>{tk.classList.remove('open','closing');open=false;anim=false},900)}
+tb.addEventListener('click',()=>open?doClose():doOpen());tb.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();open?doClose():doOpen()}});
+hooks[4]={step:d=>{if(d>0&&!open){doOpen();return true}if(d<0&&open){doClose();return true}return false},leave:()=>{tk.classList.remove('open','opening','closing','focus');cards.forEach(x=>x.classList.remove('f'));open=false;anim=false}}})();
+
+/* ---------- 05 · onde usar ---------- */
+const SC=[
+ {t:'Transformação cultural ou nova estratégia',d:'mudar o “jeito de ser” da empresa',h:[3,2,1,2],r:'Kotter na frente: urgência, coalizão e visão puxadas pela liderança. <b>ADKAR</b> leva a visão para cada pessoa. <b>CMAK</b> mede a prontidão cultural a cada onda.'},
+ {t:'Implantação de sistema (ERP, CRM, IA)',d:'tecnologia nova no dia a dia',h:[1,3,3,3],r:'<b>ADKAR</b> mostra onde cada grupo trava (ponto de barreira). <b>HCMBOK</b> amarra as ações de GMO ao cronograma. <b>CMAK</b> prova a adoção com uso real do sistema × meta.'},
+ {t:'Fusão, aquisição ou integração',d:'duas culturas, uma empresa',h:[3,2,2,3],r:'<b>Kotter</b> cria a narrativa única e a coalizão das duas empresas. <b>CMAK</b> monitora resistência, cultura e retenção por área. <b>ADKAR</b> apoia as transições individuais.'},
+ {t:'Projeto com PMO e cronograma rígido',d:'entregas, marcos e status report',h:[1,2,3,3],r:'<b>HCMBOK</b> coloca a GMO dentro do plano do projeto: patrocinador, governança e RACI. <b>CMAK</b> leva a GMO ao status report, com metas e semáforo.'},
+ {t:'Novo processo ou rotina operacional',d:'o “como fazemos” muda',h:[1,3,2,2],r:'<b>ADKAR</b> é o protagonista: conhecimento e habilidade vêm de prática; o reforço evita a volta ao jeito antigo. <b>HCMBOK</b> organiza as ações no projeto.'},
+ {t:'Reestruturação de áreas',d:'papéis, líderes e times mudam',h:[2,3,1,2],r:'<b>ADKAR</b> cuida da transição de cada pessoa: desejo e reforço são críticos. <b>Kotter</b> garante a mensagem da liderança. <b>CMAK</b> acompanha clima e riscos.'},
+ {t:'Programa multiondas com reporte ao board',d:'anos de mudança, várias frentes',h:[2,1,2,3],r:'<b>CMAK</b> é a espinha: metas e indicadores por onda. <b>Kotter</b> sustenta a urgência ao longo dos anos. <b>HCMBOK</b> padroniza a execução em cada projeto.'}
+];
+(()=>{const rows=$('#hmRows'),hm=$('#hm'),rec=$('#recipe'),lay=$('#layers'),NM=['Kotter','ADKAR','HCMBOK','CMAK'],CL=['var(--m-kotter)','var(--m-adkar)','var(--m-hcmbok)','var(--m-cmak)'],LV=['','Pontual','Apoia','Protagonista'];
+rows.innerHTML=SC.map((s,i)=>`<div class="hm-row" data-i="${i}" role="button" tabindex="0"><div class="sc"><b>${s.t}</b><span>${s.d}</span></div>${s.h.map(v=>`<span class="cell l${v}">${LV[v]}</span>`).join('')}</div>`).join('');
+const intro=()=>{rec.innerHTML=`<span class="label">Receita da mudança</span><h3>Escolha um cenário e veja a combinação.</h3><p>As quatro abordagens não competem: cada uma enxerga a mudança de uma altura diferente. <b>A pergunta certa não é “qual é a melhor?”, e sim “qual combinação resolve o meu desafio?”</b></p><div class="mix">${NM.map((n,i)=>`<span style="--mc:${CL[i]}"><i></i>${n}</span>`).join('')}</div>`};
+function sel(i){const r=$$('.hm-row',rows);if(i===null||r[i].classList.contains('on')){r.forEach(x=>x.classList.remove('on'));hm.classList.remove('sel');lay.classList.remove('sel');$$('.ly',lay).forEach(l=>l.classList.remove('v2','v3'));intro();return}
+r.forEach((x,j)=>x.classList.toggle('on',j===i));hm.classList.add('sel');lay.classList.add('sel');const s=SC[i];
+$$('.ly',lay).forEach(l=>{const v=s.h[+l.dataset.m];l.classList.toggle('v3',v===3);l.classList.toggle('v2',v===2)});
+const ord=s.h.map((v,j)=>[v,j]).filter(x=>x[0]>1).sort((a,b)=>b[0]-a[0]);
+rec.innerHTML=`<span class="label">Receita da mudança</span><h3>${s.t}</h3><p>${s.r}</p><div class="mix">${ord.map(([v,j])=>`<span class="${v===3?'k':''}" style="--mc:${CL[j]}"><i></i>${NM[j]}${v===3?' · protagonista':''}</span>`).join('')}</div>`;
+rec.classList.remove('swap');void rec.offsetWidth;rec.classList.add('swap');tone(600,.08,'sine',.05)}
+rows.addEventListener('click',e=>{const r=e.target.closest('.hm-row');if(r)sel(+r.dataset.i)});
+rows.addEventListener('keydown',e=>{if(e.key==='Enter'){const r=e.target.closest('.hm-row');if(r){e.stopPropagation();sel(+r.dataset.i)}}});
+intro();hooks[5]={leave:()=>sel(null)}})();
+
+/* ---------- FERNANDO (N) ---------- */
+const FALAS=[
+ {p:'p-right',t:'Tá prestando atenção? <span class="wave">👀</span>'},
+ {p:'p-bottom',t:'Tá entendendo? 🤔'},
+ {p:'p-left',t:'Posso seguir? 👍'},
+ {p:'p-top',t:'Vamos acordar! ⚡<br>Rodada Relâmpago: vamos girar a Roda da Mudança!',btn:1}
+];
+(()=>{const f=$('#fern'),b=$('#fernB');let k=0,timer=null,visible=false;
+function hide(){f.classList.remove('on');visible=false;clearTimeout(timer)}
+function showF(i){clearTimeout(timer);const F=FALAS[i];const doShow=()=>{f.className=F.p;b.innerHTML=`<small>Fernando</small>${F.t}${F.btn?'<br><button type="button" id="fGo">🎡 Girar a roda <kbd>R</kbd></button>':''}`;void f.offsetWidth;f.classList.add('on');visible=true;boing();const g=$('#fGo');if(g)g.onclick=()=>{hide();openWheel()};if(!F.btn)timer=setTimeout(hide,6500)};
+ if(visible){f.classList.remove('on');setTimeout(doShow,380)}else doShow()}
+window.fernando=()=>{showF(k);k=(k+1)%FALAS.length};window.fernHide=hide;window.fernVisible=()=>visible;
+b.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')hide()})})();
+
+/* ---------- RODA DA MUDANÇA (R) ---------- */
+const QS=[
+ {c:'ADKAR',q:'O que significa o “D” do ADKAR, e por que ele vem antes do “K”?',a:'<b>Desire · Desejo.</b> Não adianta treinar (Knowledge) quem ainda não quer mudar: o treinamento vira desperdício.'},
+ {c:'Kotter',q:'Qual é a primeira das 8 etapas de Kotter?',a:'<b>Criar senso de urgência.</b> Sem um “porquê agora”, a organização não sai do lugar.'},
+ {c:'New Coke',q:'Quantos dias a New Coke durou antes de a fórmula original voltar?',a:'<b>79 dias</b> (abril a julho de 1985). Testaram o sabor, não o vínculo emocional.'},
+ {c:'Números',q:'Com GMO excelente, quantos % dos projetos atingem os objetivos? E com GMO ruim?',a:'<b>88% contra 13%</b> (Prosci, 2023): cerca de 7× mais chance.'},
+ {c:'HCMBOK',q:'O que significa HCMBOK e de onde ele vem?',a:'<b>Human Change Management Body of Knowledge</b>, da HUCMI, com origem no Brasil (Vicente Gonçalves e Carla Campos).'},
+ {c:'CMAK',q:'Cite 3 indicadores que você mediria numa mudança.',a:'Ex.: <b>alcance e compreensão da comunicação, índice de resistência por área, cobertura de treinamento, proficiência e uso real × meta.</b>'},
+ {c:'Psicologia',q:'Como se chama a distância entre o que a gente quer fazer e o que a gente faz?',a:'<b>Lacuna intenção–comportamento.</b> A intenção explica só cerca de 28% do comportamento (Sheeran, 2002).'},
+ {c:'Desafio',q:'Todos de pé! Cruzem os braços. Agora cruzem ao contrário. O que vocês sentiram?',a:'Estranheza, desconforto, vontade de voltar. <b>Isso é mudança:</b> o jeito novo não é pior, só não é automático (ainda).'},
+ {c:'Lewin',q:'Quais são as 3 fases do modelo de Lewin?',a:'<b>Descongelar → Mudar → Recongelar.</b>'},
+ {c:'Pix',q:'O que o Banco Central fez antes de o Pix ir ao ar para todos?',a:'Abriu o <b>cadastro de chaves seis semanas antes</b> (5/out/2020): a adoção foi aquecida antes do go-live.'}
+];
+const COLORS=['#0B2545','#F26B21','#2A5A96','#FF8A4C','#13315C','#4A6FA5','#D9521A','#1B4479','#6E8FBF','#FFC7A6'];
+let openWheel,closeWheel,wheelOn=()=>false,wheelSpin;
+(()=>{const W=$('#wheel'),svg=$('#whSvg'),hub=$('#whHub'),card=$('#whCard'),ptr=$('#whPtr'),N=QS.length,seg=360/N,R=300;let rot=0,spinning=false,used=new Set(),tmr=null;
+const pt=(a,r)=>[Math.sin(a*Math.PI/180)*r,-Math.cos(a*Math.PI/180)*r];
+function draw(){svg.innerHTML=`<circle r="${R+12}" fill="#fff"/><circle r="${R+6}" fill="#F26B21"/>`+QS.map((q,i)=>{const a0=i*seg,a1=a0+seg,[x0,y0]=pt(a0,R),[x1,y1]=pt(a1,R),am=a0+seg/2,[tx,ty]=pt(am,R*.66),dk=['#FF8A4C','#FFC7A6','#6E8FBF'].includes(COLORS[i]);
+ return `<g class="${used.has(i)?'used':''}"><path d="M0 0L${x0} ${y0}A${R} ${R} 0 0 1 ${x1} ${y1}Z" fill="${COLORS[i]}" stroke="#fff" stroke-width="3"/><text class="${dk?'dk':''}" x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" transform="rotate(${am-90} ${tx} ${ty})">${q.c}</text></g>`}).join('')+Array.from({length:N},(_,i)=>{const [x,y]=pt(i*seg,R+1);return `<circle cx="${x}" cy="${y}" r="5" fill="#fff"/>`}).join('');svg.style.transform=`rotate(${rot}deg)`;$('#whScore').textContent=`${used.size}/${N} perguntas`}
+function idle(){card.innerHTML=`<div class="wh-empty"><b>🎡</b>Gire a roda e responda em <b style="display:inline;font-size:inherit;color:var(--orange-400)">20 segundos</b>.<br>Clique em <b style="display:inline;font-size:inherit">GIRAR</b> ou aperte <kbd>Espaço</kbd>.</div>`}
+function spin(){if(spinning)return;if(used.size>=N)used.clear();spinning=true;hub.disabled=true;clearInterval(tmr);
+ let pick;do{pick=Math.floor(Math.random()*N)}while(used.has(pick));
+ const target=360-(pick*seg+seg/2)+(Math.random()-.5)*seg*.6, base=rot-(rot%360), end=base+360*6+target, start=rot, dur=5200, t0=performance.now();let last=Math.floor(start/seg);
+ const f=t=>{const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);rot=start+(end-start)*e;svg.style.transform=`rotate(${rot}deg)`;const s=Math.floor(rot/seg);if(s!==last){last=s;ptr.classList.remove('tick');void ptr.offsetWidth;ptr.classList.add('tick');tone(1200,.03,'square',.03)}
+  if(k<1)requestAnimationFrame(f);else{spinning=false;hub.disabled=false;used.add(pick);draw();ask(pick)}};requestAnimationFrame(f)}
+function ask(i){const q=QS[i];ding();confetti();card.innerHTML=`<div class="cat"><span>${q.c} · pergunta ${used.size} de ${N}</span><div class="wh-timer" id="whT"><svg viewBox="0 0 74 74"><circle class="t" cx="37" cy="37" r="32"/><circle class="f" cx="37" cy="37" r="32"/></svg><b>20</b></div></div><p class="q">${q.q}</p><div class="ans" id="whA">${q.a}</div><div class="ctl"><button class="wh-btn" id="whRev" type="button">Revelar resposta</button><button class="wh-btn g" id="whAgain" type="button">🎡 Girar de novo</button></div>`;
+ $('#whRev').onclick=()=>{$('#whA').classList.add('on');clearInterval(tmr);tone(660,.15,'sine',.07)};$('#whAgain').onclick=spin;
+ let left=20;const T=$('#whT'),fc=$('.f',T),lb=$('b',T);clearInterval(tmr);tmr=setInterval(()=>{left--;lb.textContent=left;fc.style.strokeDashoffset=201*(1-left/20);if(left<=5){T.classList.add('late');tone(440,.06,'square',.04)}if(left<=0){clearInterval(tmr);tone(180,.5,'sawtooth',.08,90)}},1000)}
+function confetti(){const cv=$('#confetti'),x=cv.getContext('2d'),P=[];for(let i=0;i<120;i++)P.push({x:1170,y:300,vx:(Math.random()-.5)*16,vy:-Math.random()*14-4,c:COLORS[i%COLORS.length],s:Math.random()*8+4,r:Math.random()*6});let n=0;const f=()=>{x.clearRect(0,0,1600,900);for(const p of P){p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.r+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()}if(++n<110)requestAnimationFrame(f);else x.clearRect(0,0,1600,900)};f()}
+openWheel=()=>{window.fernHide();W.classList.add('on');draw();if(!card.innerHTML)idle()};closeWheel=()=>{W.classList.remove('on');clearInterval(tmr)};wheelOn=()=>W.classList.contains('on');wheelSpin=spin;
+hub.onclick=spin;$('#whClose').onclick=closeWheel;$('#whReset').onclick=()=>{used.clear();clearInterval(tmr);draw();idle()};draw();idle()})();
+
+/* ---------- ROTEIRO (S) ---------- */
+const NOTES=[
+ `<h4>Objetivo · 1 min</h4><p>Ponte entre o vídeo “Do Ford T ao carro voador” e o treinamento.</p><h4>Fala sugerida</h4><p class="say">“Vocês viram: a tecnologia sempre chega. A pergunta é se as pessoas chegam junto.”</p><p>Apresente a promessa: <b>em 40 minutos, vocês saem com 4 ferramentas e um critério para escolher entre elas.</b></p><h4>Interação</h4><ul><li>Mostre o Δ: “Na matemática, delta é o símbolo da mudança. Hoje, o delta somos nós.”</li><li>Avise as regras do jogo: o Fernando aparece quando a energia cair (tecla <b>N</b>).</li></ul>`,
+ `<h4>Objetivo · 5 min</h4><p>Criar a virada de chave antes da definição.</p><h4>Roteiro</h4><ul><li>Pergunte como a Isabella: <b>“Quem já fez resolução de Ano Novo?”</b> (mãos). <b>“Quem ainda está cumprindo?”</b> (risos).</li><li>Clique na chave (ou <b>→</b>). Conte o Quitter’s Day e a lacuna intenção–comportamento.</li></ul><p class="say">“Nas empresas é igual: o go-live é o 1º de janeiro. A Gestão da Mudança cuida da segunda sexta-feira.”</p><ul><li>Leve o controle de adoção a 0%: <b>“Solução perfeita × adoção zero = zero.”</b></li><li>Só então leia a definição.</li></ul>`,
+ `<h4>Objetivo · 7 min</h4><p>Mostrar que a GMO evoluiu do decreto ao dado.</p><h4>Roteiro</h4><ul><li>Use <b>→</b> para viajar parada a parada; a Isabella acompanha.</li><li>Em cada parada, faça a mesma pergunta: <b>como mudava, como comunicava, como buscava adoção?</b></li><li>1913 conecta com o vídeo (Ford T). 1985 e 2011 são os “erros famosos”; 2020 é o acerto brasileiro.</li></ul><p class="say">“O padrão é claro: saímos do decreto, passamos por modelos e métodos, e hoje medimos adoção com dados.”</p>`,
+ `<h4>Objetivo · 5 min</h4><p>Provar com números, com honestidade.</p><h4>Roteiro</h4><ul><li>Espere o selo cair: <b>88% contra 13%</b> = 7× mais chance.</li><li>Mostre a linha dos ~30% e depois <b>ligue a Gestão da Mudança</b> (botão ou <b>→</b>).</li><li>Ressalva que gera credibilidade: <b>“São estudos diferentes; a leitura é direcional, mas todos apontam para o mesmo lado.”</b></li><li>Feche com saúde: 17 anos. Saber não é adotar.</li></ul><p>Boa hora para o Fernando (<b>N</b>): “Tá entendendo?”</p>`,
+ `<h4>Objetivo · 8 min</h4><p>Apresentar as 4 abordagens, uma frase por ferramenta.</p><h4>Roteiro</h4><p class="say">“Se vocês tivessem uma caixa de ferramentas para mudança, o que teria dentro?” (ouça 2 respostas e abra a caixa)</p><ul><li><b>Kotter</b> mobiliza a organização (liderança, urgência).</li><li><b>ADKAR</b> move cada pessoa (ponto de barreira).</li><li><b>HCMBOK</b> encaixa a GMO no projeto (origem brasileira, HUCMI).</li><li><b>CMAK</b> prova com dados (meta, métrica e dono).</li></ul><p>Clique num card para destacá-lo. Clique na caixa no canto para recolher tudo.</p>`,
+ `<h4>Objetivo · 6 min</h4><p>Dar critério de escolha.</p><h4>Roteiro</h4><ul><li>Pergunte à turma qual cenário ela vive hoje e clique nele.</li><li>Leia a receita e mostre as camadas que acendem.</li></ul><p class="say">“Não existe a melhor metodologia. Existe a combinação certa para o desafio.”</p><h4>Fechamento</h4><p>Momento ideal para a <b>Rodada Relâmpago</b>: tecla <b>N</b> até a 4ª fala do Fernando, ou <b>R</b> direto.</p>`
+];
+function renderNotes(){$('#nTitle').textContent=slides[cur].dataset.t;$('#nBody').innerHTML=NOTES[cur]||''}
+const notes=$('#notes');const toggleNotes=()=>notes.classList.toggle('on');$('#nClose').onclick=toggleNotes;
+
+/* ---------- controles ---------- */
+const fs=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};
+document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('fs',!!document.fullscreenElement);fit()});
+$('#bNext').onclick=next;$('#bPrev').onclick=prev;$('#bFern').onclick=()=>window.fernando();$('#bWheel').onclick=()=>openWheel();$('#bNotes').onclick=toggleNotes;$('#bFs').onclick=fs;
+addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;const k=e.key;
+ if($('#blackout').classList.contains('on')){$('#blackout').classList.remove('on');e.preventDefault();return}
+ if(wheelOn()){if(k==='Escape'||k==='r'||k==='R')closeWheel();else if(k===' '||k==='Enter'||k==='PageDown'||k==='ArrowRight'){e.preventDefault();wheelSpin()}return}
+ if(k==='ArrowRight'||k==='PageDown'||k===' '||k==='Enter'){if(e.target.closest&&e.target.closest('button')&&(k===' '||k==='Enter'))return;e.preventDefault();next()}
+ else if(k==='ArrowLeft'||k==='PageUp'||k==='Backspace'){e.preventDefault();prev()}
+ else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);
+ else if(k==='n'||k==='N')window.fernando();
+ else if(k==='r'||k==='R')openWheel();
+ else if(k==='s'||k==='S')toggleNotes();
+ else if(k==='f'||k==='F')fs();
+ else if(k==='m'||k==='M')muted=!muted;
+ else if(k==='b'||k==='B'||k==='.')$('#blackout').classList.add('on');
+ else if(k==='Escape'){window.fernHide();notes.classList.remove('on')}
+ else if(/^[1-9]$/.test(k)&&+k<slides.length)go(+k)});
+$('#blackout').onclick=()=>$('#blackout').classList.remove('on');
+let it;const wake=()=>{document.body.classList.remove('ui-hide');clearTimeout(it);it=setTimeout(()=>document.body.classList.add('ui-hide'),3500)};addEventListener('mousemove',wake);wake();
+
+/* início */
+const h=parseInt(location.hash.slice(1));slides[0].classList.add('active');ui();requestAnimationFrame(()=>{slides[0].classList.add('play');if(h>0&&h<slides.length)show(h)});
+})();
+</script>
+</body>
+</html>
