@@ -4,7 +4,7 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 
 | # | Slide | Interação |
 |---|---|---|
-| 0 | Capa · Δ, o símbolo da mudança, com a Isabella | partículas reagem ao mouse |
+| 0 | Capa · metamorfose low-poly (lagarta → casulo → borboleta) | **✦ Evoluir** ou clique no estágio; o cursor desloca os fragmentos |
 | 1 | O que é GMO · virada de chave (1º de janeiro × Quitter's Day) | chave vira o cartão; controle "Solução × Adoção" |
 | 2 | Linha do tempo 1913 → 2026 | `→` viaja parada a parada; a Isabella acompanha |
 | 3 | Indicadores + Selo de Adoção (88% × 13%) | "Ligar a Gestão da Mudança" (Data Highlight) |
@@ -12,7 +12,9 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 | 5 | Onde cada abordagem brilha (heatmap) | clique no cenário mostra a receita |
 
 ## Teclas
-`→`/`Espaço`/`PageDown` avança (clicker funciona) · `←` volta · `N` Fernando (4 falas; a 4ª chama a roda) · `R` Roda da Mudança · `S` roteiro do apresentador · `F` tela cheia · `B` tela preta · `M` som · `1–5` vai ao slide · `Esc` fecha.
+Menu inferior fixo: **Roda** (ícone) · **Sobre este slide** (`I`) · **Voltar** · **contador/índice** · **Avançar**.
+
+`→`/`Espaço`/`PageDown` avança (clicker funciona) · `←` volta · `N` Fernando (sem botão: 4 falas, a 4ª chama a roda) · `R` Roda da Mudança · `I` sobre este slide · `F` tela cheia · `B` tela preta · `M` som · `1–5` vai ao slide · `Esc` fecha.
 
 ## Arquivos
 - `index.html` — fonte (usa `assets/`).
