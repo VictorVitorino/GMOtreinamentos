@@ -132,8 +132,8 @@
 .hx .hx-side .sh em{margin-left:auto;font-style:normal;font-family:var(--fm);font-size:9.5px;letter-spacing:.06em;padding:3px 8px;border-radius:99px;background:rgba(255,255,255,.08);color:var(--steel-200);white-space:nowrap}
 .hx .hx-side .sh em:empty{display:none}
 .hx .hx-side p{font-size:17px;line-height:1.5;color:#fff}
-.hx .hx-side .tg{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px}
-.hx .hx-side .tg span{height:24px;display:inline-flex;align-items:center;padding:0 10px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.hx .hx-side .tg{margin-top:auto;display:flex;flex-wrap:nowrap;gap:5px;overflow:hidden}
+.hx .hx-side .tg span{height:22px;display:inline-flex;align-items:center;padding:0 8px;border-radius:99px;font-size:10.5px;flex:0 1 auto;min-width:0;font-weight:600;white-space:nowrap}
 .hx .hx-side.a .tg span{color:var(--hx-hot-l);background:rgba(228,80,42,.14);border:1px solid rgba(255,120,80,.35)}
 .hx .hx-side.b .tg span{color:var(--orange-200);background:rgba(4,16,31,.35);border:1px solid rgba(255,138,76,.4)}
 .hx .hx-side .tg span.x{color:var(--steel-200);background:transparent;border:1px dashed rgba(163,184,214,.5)}

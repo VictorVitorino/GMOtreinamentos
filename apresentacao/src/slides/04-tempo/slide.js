@@ -42,7 +42,7 @@ const M=[
  {l:1,k:'sem',ic:'server',f:.7,y:'1983',yy:'1983',nm:'Internet:<br>NCP → TCP/IP',
   t:'Internet, 1983: a virada por prazo',
   w:'Em 1º de janeiro de 1983, a ARPANET desligou o protocolo antigo (NCP) e passou a usar o TCP/IP, a base da internet de hoje. Quem não tinha convertido perdia a conexão, salvo exceções autorizadas.',
-  a:{h:'Sem método',t:'por prazo',p:'Data única e imposta: os pacotes do protocolo antigo passaram a ser descartados. As exceções vinham por telefonema, e problemas nos gateways de e-mail duraram semanas.',g:["prazo único","corte forçado","exceção por telefone"]},
+  a:{h:'Sem método',t:'por prazo',p:'Data única e imposta: os pacotes do protocolo antigo passaram a ser descartados. As exceções vinham por telefonema, e problemas nos gateways de e-mail duraram semanas.',g:["prazo único","corte forçado","exceção por fone"]},
   b:{h:'Preparo parcial',t:'ensaios em 1982',p:'Teve ensaio técnico: em alguns dias do fim de 1982, o NCP foi desligado para a maioria dos hosts, e havia procedimento para exceções. A adesão, porém, veio pela regra, não pela escolha.',g:["ensaios técnicos","x:adesão por escolha"]},on:'a',
   n:'~400',nk:'computadores na ARPANET em 1983. Poucos, e ainda assim a virada gerou exceções e semanas de ajustes.',
   s:'Wikipedia (Network Control Protocol) · InternetNews (2013) · relato de A. Malis, lista Internet History',
