@@ -20,7 +20,7 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 
 Barra inferior: trilha de capítulos · **Roda** (ícone) · **Sobre este slide** (`I`) · **Voltar** · contador/índice · **Avançar**.
 
-`→` / `Espaço` / `PageDown` avança (passador de slides funciona) · `←` volta · `N` Fernando (a 4ª fala chama a roda) · `F` Felipe · `M` Marcelo · `V` Vitor Bravo · `R` Roda da Mudança · `I` sobre este slide · `T` tela cheia · `B` tela preta · `S` som · `0` capa e `1`–`7` vão ao capítulo de mesmo número · `Esc` fecha.
+`→` / `Espaço` / `PageDown` avança (passador de slides funciona) · `←` volta · `N` Fernando (a 4ª fala chama a roda) · `F` Felipe · `M` Marcelo · `V` Vitor Bravo · `R` Roda da Mudança (botão "😄 Mini roda divertida" troca para perguntas de quebra-gelo) · `I` sobre este slide · `T` tela cheia · `B` tela preta · `S` som · `0` capa e `1`–`7` vão ao capítulo de mesmo número · `Esc` fecha.
 
 ## Estrutura e build
 

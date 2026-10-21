@@ -1,9 +1,9 @@
 (()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('caixa');
 /* ---------- 06 · caixa de ferramentas ---------- */
 (()=>{const tk=$('#tk'),tb=$('#tb'),cards=$$('.mcard',tk),burst=$('#burst'),hint=$('#cxHint');let open=false,timers=[];
-const BX=800,BY=455, CX=800+700,CY=455-312, TOP=196,H=578;
+const BX=800,BY=455, CX=800+700,CY=455-312, TOP=184,H=602;
 const HINT_C='Clique na caixa para abrir · ou <kbd>→</kbd>',HINT_O='Clique num card para destacar · <kbd>→</kbd> onde usar cada uma';
-cards.forEach((c,i)=>{const cx=parseFloat(c.style.left)+176,cy=TOP+H/2;c.style.setProperty('--bx',(BX-cx)+'px');c.style.setProperty('--by',(BY-cy)+'px');c.style.setProperty('--bx2',(CX-cx)+'px');c.style.setProperty('--by2',(CY-cy)+'px');c.style.setProperty('--sx',((BX-cx)*.45+(i-1.5)*60)+'px');c.style.setProperty('--sy',(-120-Math.random()*80)+'px');c.style.setProperty('--r',((i-1.5)*14)+'deg');
+cards.forEach((c,i)=>{const cx=parseFloat(c.style.left)+183,cy=TOP+H/2;c.style.setProperty('--bx',(BX-cx)+'px');c.style.setProperty('--by',(BY-cy)+'px');c.style.setProperty('--bx2',(CX-cx)+'px');c.style.setProperty('--by2',(CY-cy)+'px');c.style.setProperty('--sx',((BX-cx)*.45+(i-1.5)*60)+'px');c.style.setProperty('--sy',(-120-Math.random()*80)+'px');c.style.setProperty('--r',((i-1.5)*14)+'deg');
  c.addEventListener('click',()=>{if(!open)return;const f=c.classList.contains('f');cards.forEach(x=>x.classList.remove('f'));tk.classList.toggle('focus',!f);if(!f)c.classList.add('f')})});
 for(let i=0;i<36;i++){const s=document.createElement('i');const a=Math.random()*Math.PI*2,d=160+Math.random()*260;s.style.setProperty('--x',Math.cos(a)*d+'px');s.style.setProperty('--y',Math.sin(a)*d-80+'px');s.style.setProperty('--i',i);if(i%3===0)s.style.background='#fff';if(i%3===1)s.style.background='var(--steel-300)';burst.appendChild(s)}
 /* o estado "open" muda na hora; animações em curso são interrompidas, nunca ignoradas */

@@ -180,6 +180,8 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .wh-top .t b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1}
 .wh-top .t span{font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-400)}
 .wh-x{height:36px;padding:0 16px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);font-weight:700;font-size:14px}
+.wh-x.wh-fun{border-color:var(--orange-400);background:rgba(242,107,33,.18)}
+#wheel.fun .wh-hub{box-shadow:0 0 0 6px #FFC7A6,0 0 40px rgba(255,199,166,.6)}
 .wh-x:hover{background:rgba(255,255,255,.14)}
 .wh-wrap{position:absolute;left:110px;top:160px;width:640px;height:640px}
 .wh-wrap::before{content:"";position:absolute;inset:8px;border-radius:50%;box-shadow:0 30px 60px rgba(0,0,0,.5)}
@@ -306,7 +308,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===================================================== RODA DA MUDANÇA -->
 <div id="wheel" role="dialog" aria-label="Roda da Mudança">
-  <div class="wh-top"><div class="t"><span>Rodada relâmpago</span><b>Roda da Mudança</b></div><div style="display:flex;gap:14px;align-items:center"><span class="wh-score" id="whScore"></span><button class="wh-x" id="whReset" type="button">↺ Reiniciar</button><button class="wh-x" id="whClose" type="button">✕ Fechar <kbd>Esc</kbd></button></div></div>
+  <div class="wh-top"><div class="t"><span id="whKick">Rodada relâmpago</span><b id="whTitle">Roda da Mudança</b></div><div style="display:flex;gap:14px;align-items:center"><span class="wh-score" id="whScore"></span><button class="wh-x wh-fun" id="whMode" type="button">😄 Mini roda divertida</button><button class="wh-x" id="whReset" type="button">↺ Reiniciar</button><button class="wh-x" id="whClose" type="button">✕ Fechar <kbd>Esc</kbd></button></div></div>
   <div class="wh-wrap">
     <div class="wh-ptr" id="whPtr"><svg viewBox="0 0 52 64"><path d="M26 62 4 14A22 22 0 0 1 48 14z" fill="#fff"/><path d="M26 54 10 16a16 16 0 0 1 32 0z" fill="#F26B21"/></svg></div>
     <svg class="wh-svg" id="whSvg" viewBox="-320 -320 640 640"></svg>
@@ -412,19 +414,35 @@ const QS=[
  {c:'Hábito',q:'Quanto tempo um hábito novo levou, tipicamente (mediana), para ficar automático no estudo de Lally (2010)?',a:'<b>Mediana de 66 dias</b> (de 18 a 254), e não os famosos 21 dias. Por isso mudar exige sustentar.'},
  {c:'Vacina',q:'Em 1904 a vacinação virou revolta. Em 1980 virou sucesso. O que mudou?',a:'<b>O jeito de conduzir.</b> Em 1904, imposição pela força: a obrigatoriedade caiu em 16 dias. Em 1980, mobilização e comunicação nos Dias Nacionais de Vacinação: os casos de pólio caíram cerca de 90% em um ano.'},
 ];
+const FUN=[
+ {c:'Engraçado',q:'Conte algo engraçado sobre você.'},
+ {c:'Curiosidade',q:'Conte uma curiosidade sobre você que quase ninguém sabe.'},
+ {c:'Gatos',q:'Qual seria a regra mais absurda de uma empresa administrada por gatos?'},
+ {c:'Robô',q:'Se você tivesse um assistente robô, qual tarefa absurda daria a ele?'},
+ {c:'Feriado',q:'Se você pudesse criar um feriado nacional completamente inútil, qual seria?'},
+ {c:'Animais',q:'Se os animais falassem, qual seria o mais mal-educado?'},
+ {c:'Pombos',q:'Se os pombos dominassem o mundo, qual seria a primeira lei?'},
+ {c:'Fantasia',q:'Se você fosse obrigado a usar uma fantasia todos os dias, qual escolheria?'},
+ {c:'Eletro',q:'Se você pudesse conversar com um eletrodoméstico por cinco minutos, qual escolheria?'},
+ {c:'Gelatinas',q:'Qual objeto você levaria para uma batalha contra um exército de gelatinas?'},
+ {c:'Pato × galinhas',q:'Você prefere ser perseguido por um pato muito bravo ou por dez galinhas extremamente organizadas?'},
+ {c:'Robô × comentarista',q:'Você prefere ter um robô que faz tudo errado ou um assistente que comenta tudo que você faz?'}
+];
+const FUNCOL=['#F26B21','#2A5A96','#FF8A4C','#13315C','#FFC7A6','#D9521A','#4A6FA5','#FF8A4C','#1B4479','#F26B21','#6E8FBF','#0B2545'];
 const COLORS=['#0B2545','#F26B21','#2A5A96','#FF8A4C','#13315C','#4A6FA5','#D9521A','#1B4479','#6E8FBF','#FFC7A6'];
 let openWheel,closeWheel,wheelOn=()=>false,wheelSpin;
-(()=>{const W=$('#wheel'),svg=$('#whSvg'),hub=$('#whHub'),card=$('#whCard'),ptr=$('#whPtr'),N=QS.length,seg=360/N,R=300;let rot=0,spinning=false,spinId=0,used=new Set(),tmr=null;
+(()=>{const W=$('#wheel'),svg=$('#whSvg'),hub=$('#whHub'),card=$('#whCard'),ptr=$('#whPtr'),R=300;let CUR=QS,N=QS.length,seg=360/N;let rot=0,spinning=false,spinId=0,used=new Set(),tmr=null;
 const pt=(a,r)=>[Math.sin(a*Math.PI/180)*r,-Math.cos(a*Math.PI/180)*r];
-function draw(){svg.innerHTML=`<circle r="${R+12}" fill="#fff"/><circle r="${R+6}" fill="#F26B21"/>`+QS.map((q,i)=>{const a0=i*seg,a1=a0+seg,[x0,y0]=pt(a0,R),[x1,y1]=pt(a1,R),am=a0+seg/2,[tx,ty]=pt(am,R*.66),dk=['#FF8A4C','#FFC7A6','#6E8FBF'].includes(COLORS[i]);
- return `<g class="${used.has(i)?'used':''}"><path d="M0 0L${x0} ${y0}A${R} ${R} 0 0 1 ${x1} ${y1}Z" fill="${COLORS[i]}" stroke="#fff" stroke-width="3"/><text class="${dk?'dk':''}" x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" transform="rotate(${am-90} ${tx} ${ty})">${q.c}</text></g>`}).join('')+Array.from({length:N},(_,i)=>{const [x,y]=pt(i*seg,R+1);return `<circle cx="${x}" cy="${y}" r="5" fill="#fff"/>`}).join('');svg.style.transform=`rotate(${rot}deg)`;$('#whScore').textContent=`${used.size}/${N} perguntas`}
+const COL=()=>CUR===FUN?FUNCOL:COLORS;
+function draw(){svg.innerHTML=`<circle r="${R+12}" fill="#fff"/><circle r="${R+6}" fill="#F26B21"/>`+CUR.map((q,i)=>{const a0=i*seg,a1=a0+seg,[x0,y0]=pt(a0,R),[x1,y1]=pt(a1,R),am=a0+seg/2,[tx,ty]=pt(am,R*.66),dk=['#FF8A4C','#FFC7A6','#6E8FBF'].includes(COL()[i]);
+ return `<g class="${used.has(i)?'used':''}"><path d="M0 0L${x0} ${y0}A${R} ${R} 0 0 1 ${x1} ${y1}Z" fill="${COL()[i]}" stroke="#fff" stroke-width="3"/><text class="${dk?'dk':''}" x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" transform="rotate(${am-90} ${tx} ${ty})">${q.c}</text></g>`}).join('')+Array.from({length:N},(_,i)=>{const [x,y]=pt(i*seg,R+1);return `<circle cx="${x}" cy="${y}" r="5" fill="#fff"/>`}).join('');svg.style.transform=`rotate(${rot}deg)`;$('#whScore').textContent=`${used.size}/${N} perguntas`}
 function idle(){card.innerHTML=`<div class="wh-empty"><b>🎡</b>Gire a roda e responda em <b style="display:inline;font-size:inherit;color:var(--orange-400)">20 segundos</b>.<br>Clique em <b style="display:inline;font-size:inherit">GIRAR</b> ou aperte <kbd>Espaço</kbd>.</div>`}
 function spin(){if(spinning)return;if(used.size>=N)used.clear();spinning=true;hub.disabled=true;clearInterval(tmr);const id=++spinId;
  let pick;do{pick=Math.floor(Math.random()*N)}while(used.has(pick));
  const target=360-(pick*seg+seg/2)+(Math.random()-.5)*seg*.6, base=rot-(rot%360), end=base+360*6+target, start=rot, dur=5200, t0=performance.now();let last=Math.floor(start/seg);
  const f=t=>{if(id!==spinId)return;const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,4);rot=start+(end-start)*e;svg.style.transform=`rotate(${rot}deg)`;const s=Math.floor(rot/seg);if(s!==last){last=s;ptr.classList.remove('tick');void ptr.offsetWidth;ptr.classList.add('tick');tone(1200,.03,'square',.03)}
   if(k<1)requestAnimationFrame(f);else{spinning=false;hub.disabled=false;used.add(pick);draw();ask(pick)}};requestAnimationFrame(f)}
-function ask(i){const q=QS[i];ding();confetti();card.innerHTML=`<div class="cat"><span>${q.c} · pergunta ${used.size} de ${N}</span><div class="wh-timer" id="whT"><svg viewBox="0 0 74 74"><circle class="t" cx="37" cy="37" r="32"/><circle class="f" cx="37" cy="37" r="32"/></svg><b>20</b></div></div><p class="q">${q.q}</p><div class="ans" id="whA">${q.a}</div><div class="ctl"><button class="wh-btn" id="whRev" type="button">Revelar resposta</button><button class="wh-btn g" id="whAgain" type="button">🎡 Girar de novo</button></div>`;
+function ask(i){const q=CUR[i];ding();confetti();card.innerHTML=`<div class="cat"><span>${q.c} · pergunta ${used.size} de ${N}</span><div class="wh-timer" id="whT"><svg viewBox="0 0 74 74"><circle class="t" cx="37" cy="37" r="32"/><circle class="f" cx="37" cy="37" r="32"/></svg><b>20</b></div></div><p class="q">${q.q}</p><div class="ans" id="whA">${q.a||'Aqui não existe resposta certa: ganha a ideia mais criativa. A turma vota no aplauso! 👏'}</div><div class="ctl"><button class="wh-btn" id="whRev" type="button">${CUR===FUN?'Valendo aplausos 👏':'Revelar resposta'}</button><button class="wh-btn g" id="whAgain" type="button">🎡 Girar de novo</button></div>`;
  $('#whRev').onclick=()=>{$('#whA').classList.add('on');clearInterval(tmr);tone(660,.15,'sine',.07)};$('#whAgain').onclick=spin;
  let left=20;const T=$('#whT'),fc=$('.f',T),lb=$('b',T);clearInterval(tmr);tmr=setInterval(()=>{left--;lb.textContent=left;fc.style.strokeDashoffset=201*(1-left/20);if(left<=5){T.classList.add('late');tone(440,.06,'square',.04)}if(left<=0){clearInterval(tmr);tone(180,.5,'sawtooth',.08,90)}},1000)}
 function confetti(){const cv=$('#confetti'),x=cv.getContext('2d'),P=[];for(let i=0;i<120;i++)P.push({x:1170,y:300,vx:(Math.random()-.5)*16,vy:-Math.random()*14-4,c:COLORS[i%COLORS.length],s:Math.random()*8+4,r:Math.random()*6});let n=0;const f=()=>{x.clearRect(0,0,1600,900);for(const p of P){p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.r+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()}if(++n<110)requestAnimationFrame(f);else x.clearRect(0,0,1600,900)};f()}
@@ -433,6 +451,9 @@ closeWheel=()=>{W.classList.remove('on');clearInterval(tmr);if(spinning){spinId+
 wheelOn=()=>W.classList.contains('on');
 /* passador: → revela a resposta da pergunta na tela; se já revelada (ou sem pergunta), gira. ← esconde a resposta ou fecha */
 wheelSpin=d=>{if(spinning)return;const a=$('#whA');if(d<0){if(a&&a.classList.contains('on'))a.classList.remove('on');else closeWheel();return}if(a&&!a.classList.contains('on'))$('#whRev').click();else spin()};
+const setMode=fun=>{CUR=fun?FUN:QS;N=CUR.length;seg=360/N;used.clear();clearInterval(tmr);spinId++;spinning=false;hub.disabled=false;rot=0;svg.style.transition='none';svg.style.transform='rotate(0deg)';void svg.offsetWidth;svg.style.transition='';
+ $('#whKick').textContent=fun?'Quebra-gelo':'Rodada relâmpago';$('#whTitle').textContent=fun?'Mini roda divertida':'Roda da Mudança';$('#whMode').textContent=fun?'🎓 Voltar à Roda da Mudança':'😄 Mini roda divertida';W.classList.toggle('fun',fun);draw();idle()};
+$('#whMode').onclick=()=>{$('#whMode').blur();setMode(CUR===QS)};
 hub.onclick=spin;$('#whClose').onclick=closeWheel;$('#whReset').onclick=()=>{used.clear();clearInterval(tmr);draw();idle()};draw();idle()})();
 
 /* ---------- SOBRE ESTE SLIDE (I) e ÍNDICE ---------- */
