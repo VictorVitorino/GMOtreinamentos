@@ -22,10 +22,10 @@
 @keyframes cvUl{to{transform:scaleX(1)}}
 
 /* logos e etiqueta (rodapé da capa) */
-.slide[data-id="capa"] .cv-logos{position:absolute;left:120px;bottom:52px;display:flex;align-items:center;gap:22px;z-index:3;pointer-events:none}
-.slide[data-id="capa"] .cv-logos .am-logo{width:226px;height:36px}
-.slide[data-id="capa"] .cv-logos i{width:1px;height:38px;background:rgba(255,255,255,.25)}
-.slide[data-id="capa"] .cv-logos .dts-logo{height:34px}
+.slide[data-id="capa"] .cv-logos{display:flex;align-items:center;gap:16px;margin-bottom:6px;opacity:.92}
+.slide[data-id="capa"] .cv-logos .am-logo{width:152px;height:24px}
+.slide[data-id="capa"] .cv-logos i{width:1px;height:24px;background:rgba(255,255,255,.28)}
+.slide[data-id="capa"] .cv-logos .dts-logo{height:23px}
 .slide[data-id="capa"] .cv-tag{position:absolute;right:28px;bottom:52px;font:500 13px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--steel-300);z-index:3;pointer-events:none}
 
 /* leitura compacta da metamorfose (canto superior direito, padrão AXON) */
