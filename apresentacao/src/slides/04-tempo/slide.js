@@ -16,28 +16,13 @@ const IC={
  server:'<rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M7.5 7h.01M7.5 17h.01"/><path d="M13 7l2-1.5M13 17l2 1.5"/>',
  badge:'<circle cx="12" cy="9" r="5.5"/><path d="M8.6 13.4 7 21l5-2.6 5 2.6-1.6-7.6"/><path d="M9.8 9l1.5 1.5 3-3"/>',
  phone:'<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8.2l3.2 3.3-3.2 3.3-3.2-3.3z"/><path d="M10.5 18.5h3"/>',
+ fly:'<path d="M4 15h16l-1.6 3H5.6z"/><path d="M12 15v-3.5M6 9h12M9 9V7.5M15 9V7.5"/><path d="M4.5 7.5h3M16.5 7.5h3"/>',
  spark:'<path d="M11 3l1.9 5.6 5.6 1.9-5.6 1.9L11 18l-1.9-5.6-5.6-1.9 5.6-1.9z"/><path d="M19 3v4M17 5h4"/>'
 };
 const KIND={sem:'Sem método',com:'Com método',met:'Como aprendemos',abr:'Em aberto'};
 /* l: raia (1 = o que mudou, 2 = como foi conduzida) · k: sem | com | met | abr · f: atrito ilustrativo (0–1)
    a/b: paralelo lado a lado (a = sem método, b = com método) · on: lado em destaque */
 const M=[
- {l:1,k:'sem',ic:'book',f:.72,y:'c. 1450',yy:'c. 1450–1500',nm:'Imprensa de<br>Gutenberg',
-  t:'Imprensa: a mudança se espalha sem plano',
-  w:'De Mainz, a prensa chegou a cerca de 200 cidades europeias até 1500, sem plano nenhum: impressores levavam a técnica de cidade em cidade.',
-  a:{h:'Sem método',t:'como foi',p:'Difusão espontânea, de cidade em cidade, e, em alguns lugares, resistência de quem perdia com a mudança, como os calígrafos.',g:["acaso", "difusão espontânea", "resistência"]},
-  b:{h:'Com método',t:'ainda não existia',p:'Não houve. É o ponto de partida da história: a mudança acontecia por acaso ou por força.',g:["x:condução"]},on:'a',
-  n:'~270 anos',nk:'até a primeira gráfica em turco otomano (caracteres árabes) ser autorizada, em Istambul (1727). As causas da demora ainda são debatidas.',
-  s:'Dittmar (2011), Quarterly Journal of Economics · McGill Library (Müteferrika) · Schwartz (2017)',
-  les:'Sem condução, a mudança segue o acaso: rápida aqui, travada ali.'},
- {l:1,k:'sem',ic:'hammer',f:1,y:'1811',yy:'1811–1813',nm:'Teares e<br>luditas',
-  t:'Luditas: mudança imposta pela força',
-  w:'Trabalhadores têxteis quebraram máquinas. Não eram contra a tecnologia, e sim contra o uso dela para burlar práticas de trabalho e rebaixar salários.',
-  a:{h:'Sem método',t:'repressão',p:'Mais de 12 mil soldados e, em 1812, pena de morte para quem quebrasse máquinas. Após o julgamento de York (jan/1813), 17 homens foram executados.',g:["imposição", "força", "repressão"]},
-  b:{h:'Com método',t:'ainda não existia',p:'Não houve. Nenhum diálogo e nenhuma transição para quem perdia o ofício.',g:["x:diálogo", "x:transição"]},on:'a',
-  n:'12 mil+',nk:'soldados mobilizados contra os luditas. Uma lei de 1812 passou a punir a quebra de máquinas com a morte.',
-  s:'Smithsonian Magazine (Conniff, 2011) · Hobsbawm',
-  les:'Força não elimina a resistência: transforma resistência em custo.'},
  {l:1,k:'sem',ic:'bolt',f:.84,y:'1882',yy:'1882 → anos 1920',nm:'Eletrificação<br>das fábricas',
   t:'Eletrificação: trocaram o motor, não o processo',
   w:'A eletricidade chegou às fábricas nos anos 1880, mas o ganho de produtividade só apareceu nos anos 1920.',
@@ -46,14 +31,6 @@ const M=[
   n:'~40 anos',nk:'entre a usina de Pearl Street (1882) e o ganho de produtividade nas fábricas, nos anos 1920.',
   s:'Paul A. David (1990), American Economic Review 80(2)',
   les:'Tecnologia nova em processo velho não gera resultado.'},
- {l:1,k:'sem',ic:'syringe',f:1,y:'1904',yy:'1904',nm:'Revolta da<br>Vacina',
-  t:'Revolta da Vacina: a mudança por decreto',
-  w:'A vacinação obrigatória contra a varíola foi imposta por lei, com entrada forçada nas casas. Somada à reforma urbana e à demolição de cortiços, gerou a revolta.',
-  a:{h:'Sem método',t:'1904',p:'Decreto, força policial e invasão de casas, sem explicar nem envolver a população. Revolta de 10 a 16/nov: cerca de 30 mortos e 945 presos.',g:["decreto", "força policial", "sem explicar"]},
-  b:{h:'Com método',t:'1980 · veja adiante',p:'A mesma ideia, outra condução: data única nacional, mobilização de estados e municípios e comunicação de massa.',g:["data única", "mobilização", "comunicação"]},on:'a',
-  n:'16 dias',nk:'entre a lei da vacinação obrigatória (31/out/1904) e a suspensão da obrigatoriedade (16/nov), depois da revolta.',
-  s:'Fiocruz · Sevcenko, A Revolta da Vacina (números oficiais) · Lei nº 1.261/1904',
-  les:'Impor sem explicar transforma uma boa causa em conflito.'},
  {l:1,k:'sem',ic:'car',f:.9,y:'1913',yy:'1913–1914',nm:'Ford: linha<br>de montagem',
   t:'Ford: eficiência imposta, gente indo embora',
   w:'A linha de montagem reduziu a montagem do Model T de cerca de 12,5 horas para 93 minutos, mas chegou em ritmo de máquina, sem preparar as pessoas.',
@@ -62,38 +39,6 @@ const M=[
   n:'370%',nk:'de rotatividade na Ford em 1913: cerca de 52 mil contratações em um ano para manter uns 14 mil postos.',
   s:'The Henry Ford, “Ford’s Five-Dollar Day” · Raff & Summers (1987)',
   les:'Quem não prepara as pessoas paga a conta depois, e mais caro.'},
- {l:2,k:'met',ic:'group',f:.7,y:'1943',yy:'1943 · 1947',nm:'Lewin:<br>grupo decide',
-  t:'Lewin: quem decide junto, muda junto',
-  w:'Na Segunda Guerra, Lewin testou como convencer donas de casa a servir cortes de carne pouco usados. Em 1947, descreveu a mudança como descongelar, mover e congelar.',
-  a:{h:'Palestra',t:'3% aderiram',p:'Depois de uma palestra, só 3% passaram a servir os cortes de carne.',g:["explicar e pedir"]},
-  b:{h:'Decisão em grupo',t:'32% aderiram',p:'Quando o próprio grupo discutiu e decidiu, 32% passaram a servir: quase 11 vezes mais.',g:["participação", "compromisso do grupo"]},on:'b',
-  n:'3% → 32%',nk:'de adesão: palestra × decisão em grupo, quase 11 vezes mais. Experimento clássico, com amostras pequenas.',
-  s:'Lewin (1947), “Group Decision and Social Change” · as 3 etapas são atribuídas a Lewin (Cummings et al., 2016)',
-  les:'Quem participa da decisão sustenta a mudança.'},
- {l:2,k:'met',ic:'factory',f:.62,y:'1948',yy:'1948',nm:'Coch & French<br>(Harwood)',
-  t:'Harwood: mudanças parecidas, dois jeitos',
-  w:'Na fábrica de pijamas Harwood (EUA), Coch e French conduziram, de jeitos diferentes, mudanças parecidas no método de trabalho.',
-  a:{h:'Só informados',t:'sem participação',p:'Receberam a mudança pronta. A produção caiu e não se recuperou, e houve pedidos de demissão.',g:["decisão pronta"]},
-  b:{h:'Participaram',t:'participação total',p:'Ajudaram a desenhar o novo método. Recuperaram a produção rapidamente e superaram o nível anterior.',g:["participação", "desenho conjunto"]},on:'b',
-  n:'Mudança parecida, resultados opostos',nt:1,nk:'Quem só foi informado não recuperou a produção. Quem participou do desenho superou o nível anterior.',
-  s:'Coch & French (1948), “Overcoming Resistance to Change”, Human Relations 1(4)',
-  les:'Envolver quem executa custa menos do que vencer a resistência depois.'},
- {l:2,k:'met',ic:'scurve',f:.52,y:'1962',yy:'1943 · 1962',nm:'Rogers:<br>difusão',
-  t:'Rogers: a adoção se espalha por influência',
-  w:'O milho híbrido levou anos para pegar em Iowa, e a decisão dependia dos vizinhos. Em 1962, Rogers reuniu esses estudos em Diffusion of Innovations: a curva em S.',
-  a:{h:'Difusão natural',t:'curva em S',p:'Esperar que a novidade se espalhe sozinha: a adoção segue uma curva em S, dos inovadores aos retardatários, e leva anos.',g:["esperar a difusão"]},
-  b:{h:'Agentes de mudança',t:'influenciar',p:'Entender quem adota primeiro e usar essas pessoas como influenciadoras da maioria.',g:["agentes de mudança", "influência"]},on:'b',
-  n:'~13 anos',nk:'para o milho híbrido chegar a quase todos os agricultores de Iowa (c. 1928–1941), mesmo sendo claramente mais produtivo.',
-  s:'Ryan & Gross (1943), Rural Sociology · Rogers (1962), Diffusion of Innovations',
-  les:'Ser melhor não basta: as pessoas adotam o que veem alguém de confiança usar.'},
- {l:1,k:'com',ic:'drop',f:.26,y:'1980',yy:'1980',nm:'Dias de<br>Vacinação',
-  t:'Vacinação de 1980: a mesma mudança, com método',
-  w:'Os Dias Nacionais de Vacinação contra a pólio (14/jun e 16/ago/1980) mobilizaram o país inteiro. O Zé Gotinha viria em 1986, como reforço.',
-  a:{h:'Sem método',t:'1904',p:'Decreto, força policial e entrada forçada nas casas. Revolta, e a obrigatoriedade suspensa em 16 dias.',g:["decreto", "força policial"]},
-  b:{h:'Com método',t:'1980',p:'Data única nacional, mobilização de estados e municípios, comunicação de massa e postos em todo o país. Depois, um símbolo de reforço: o Zé Gotinha.',g:["mobilização", "comunicação de massa", "reforço"]},on:'b',
-  n:'−90%',nk:'nos casos de pólio em um ano: de 1.290 (1980) para 122 (1981). O último caso no Brasil foi em 1989.',
-  s:'Fiocruz, “Cronologia da Poliomielite” · Revista Pesquisa FAPESP · Funed',
-  les:'Mesma população, outra condução, outro resultado.'},
  {l:2,k:'met',ic:'steps',f:.32,y:'1994–96',yy:'1994–1996',nm:'Kotter e<br>Prosci/ADKAR',
   t:'Nascem os métodos: Kotter e Prosci/ADKAR',
   w:'Jeff Hiatt funda a Prosci (1994) e cria o ADKAR (1996). Em 1995, Kotter publica na HBR os 8 erros que derrubam transformações; em 1996, as 8 etapas.',
@@ -102,14 +47,6 @@ const M=[
   n:'8 + 5',nk:'as 8 etapas de Kotter (a organização) e os 5 elementos do ADKAR (cada pessoa).',
   s:'Kotter, HBR (1995) e Leading Change (1996) · Prosci (ADKAR)',
   les:'A mudança vira disciplina: dá para planejar, e não só torcer.'},
- {l:1,k:'sem',ic:'server',f:.95,y:'1999',yy:'1999',nm:'Hershey:<br>ERP big bang',
-  t:'Hershey: havia método, prevaleceu a pressa',
-  w:'Em jul/1999, a Hershey ligou de uma só vez (big bang) um sistema de gestão de US$ 112 milhões, às vésperas do Halloween, sua maior temporada.',
-  a:{h:'Sem método',t:'jul/1999',p:'Tudo de uma vez, com cronograma comprimido e sem preparar processos e pessoas, na pior janela do ano. Os pedidos travaram.',g:["big bang", "cronograma comprimido", "pior janela"]},
-  b:{h:'Com método',t:'já existia',p:'O livro de Kotter já tinha saído (1996) e a Prosci pesquisava o tema desde 1994. Ter método disponível não basta: é preciso aplicar.',g:["x:implantação gradual"]},on:'a',
-  n:'−19%',nk:'no lucro do 3º trimestre de 1999, com pedidos de Halloween atrasados e estoques parados nos depósitos.',
-  s:'Computerworld (1999–2000)',
-  les:'A história não é linear: sem gestão da mudança, o erro se repete.'},
  {l:2,k:'met',ic:'badge',f:.26,y:'2014',yy:'2009 · 2014',nm:'ACMP:<br>profissão',
   t:'A gestão da mudança vira profissão',
   w:'Em 2009, mais de 200 praticantes se reuniram para discutir o que faltava para a gestão da mudança ser reconhecida como profissão. Daí nasceu a ACMP, formalizada em 2011.',
@@ -133,7 +70,15 @@ const M=[
   b:{h:'Com método',t:'pessoas e processos',p:'Redesenhar fluxos de trabalho, capacitar, patrocinar e medir. Para a BCG, as líderes seguem a regra 10-20-70: cerca de 70% do esforço em pessoas e processos.',g:["redesenho", "capacitação", "patrocínio", "medição"]},on:'',
   n:'39%',nk:'dos adultos de 18 a 64 anos nos EUA já usavam IA generativa em ago/2024, menos de 2 anos depois do ChatGPT.',
   s:'Bick, Blandin & Deming (2024), NBER w32966 · BCG (out/2024)',
-  les:'Adotar a ferramenta não é capturar valor: o resto é gestão da mudança.'}
+  les:'Adotar a ferramenta não é capturar valor: o resto é gestão da mudança.'},
+ {l:1,k:'abr',kl:'Previsão',ic:'fly',f:.38,y:'Futuro?',yy:'Futuro · hipótese',nm:'Carro<br>voador',
+  t:'Carro voador: o futuro já tem roteiro',
+  w:'Ninguém sabe se, nem quando, o carro voador vai fazer parte do dia a dia. Mas a história mostra o que decide se uma tecnologia assim é adotada ou rejeitada.',
+  a:{h:'Sem método',t:'um cenário',p:'Lançam o veículo e esperam a adoção: sem regras claras, sem treinamento e sem confiança. Cada cidade improvisa e o medo cresce.',g:["só tecnologia","regra improvisada","medo"]},
+  b:{h:'Com método',t:'o outro cenário',p:'Preparam as pessoas antes: regras e rotas claras, treinamento e certificação, pilotos em pequena escala, comunicação aberta e reforço do uso seguro.',g:["regras claras","treinamento","piloto pequeno","confiança"]},on:'',
+  n:'Hipótese',nt:1,nk:'um exercício para discutir, não um fato: vale o que a história já mostrou nos outros marcos.',
+  s:'Hipótese ilustrativa do treinamento, sem dado',
+  les:'A tecnologia chega rápido; a confiança chega com método.'}
 ];
 
 /* ---------- geometria (px do palco; .hx-tl tem 1520 × 330) ---------- */
@@ -149,14 +94,13 @@ const tl=q('#hxTl'), ghost=q('#hxGhost'), lit=q('#hxLit'), onL=q('#hxOn'), isa=q
 function ribbonD(){const top=[],bot=[];for(let x=RX0;x<=RX1;x+=(x-RX0<30||RX1-x<30?1:4)){const h=hAt(x);top.push(x.toFixed(1)+' '+(AX-h).toFixed(1));bot.unshift(x.toFixed(1)+' '+(AX+h).toFixed(1))}return {d:'M'+top.join('L')+'L'+bot.join('L')+'Z',edge:'M'+top.join('L')}}
 (function draw(){const r=ribbonD(),stops=M.map((m,i)=>`<stop offset="${((XS[i]-RX0)/(RX1-RX0)).toFixed(4)}" stop-color="${col(m.f)}"/>`).join('');
  const grad=id=>`<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${RX0}" y1="0" x2="${RX1}" y2="0"><stop offset="0" stop-color="${col(F[0])}"/>${stops}<stop offset="1" stop-color="${col(F[N-1])}"/></linearGradient>`;
- const xm=(XS[0]+XS[1])/2;
- const brk=`<path d="M${xm-7} ${AX+32}L${xm+1} ${AX-32}M${xm-1} ${AX+32}L${xm+7} ${AX-32}" stroke="#071A33" stroke-width="3"/>`;
+ const brk='';
  let st='';M.forEach((m,i)=>{const x=XS[i],h=hAt(x);
   if(m.l===1)st+=`<line class="st l1 k-${m.k}" data-i="${i}" style="--hl:${Math.max(0,AX-h-86-95).toFixed(1)}px" x1="${x}" y1="95" x2="${x}" y2="${(AX-h-3).toFixed(1)}"/>`;
   else st+=`<line class="st k-${m.k}" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="237"/>`;
-  if(i<=4)st+=`<line class="st sp k-sem" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="251"/>`});
+  if(i<=1)st+=`<line class="st sp k-sem" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="251"/>`});
  ghost.innerHTML=`<defs>${grad('hxGg')}</defs><line x1="${RX0}" y1="${AX}" x2="${RX1}" y2="${AX}" stroke="rgba(163,184,214,.25)" stroke-width="1"/>
-  <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}${brk}<text class="brk" x="${xm}" y="${AX-54}" text-anchor="middle"><tspan x="${xm}">~360</tspan><tspan x="${xm}" dy="12">anos</tspan></text>`;
+  <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}`;
  lit.innerHTML=`<defs>${grad('hxGl')}<filter id="hxBlur" x="-5%" y="-200%" width="110%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs>
   <path d="${r.d}" fill="url(#hxGl)" opacity=".55" filter="url(#hxBlur)"/><path d="${r.d}" fill="url(#hxGl)"/><path d="${r.edge}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>${brk}`})();
 
@@ -166,9 +110,9 @@ M.forEach((m,i)=>{const c=document.createElement('button');c.type='button';c.cla
  c.innerHTML=`<span class="ic"><svg viewBox="0 0 24 24">${IC[m.ic]}</svg></span><span class="y">${m.y}</span><span class="n">${m.nm}</span>`;c.onclick=()=>sel(i);tl.appendChild(c);
  const n=document.createElement('button');n.type='button';n.className=`hx-node k-${m.k}`;n.style.left=XS[i]+'px';n.dataset.i=i;n.setAttribute('aria-label',m.yy);n.onclick=()=>sel(i);tl.appendChild(n)});
 const spanA=q('#hxSpanA'),spanB=q('#hxSpanB');
-spanA.style.left=(XS[0]-46)+'px';spanA.style.width=(XS[4]-XS[0]+92)+'px';
-spanB.style.left=(XS[12]-46)+'px';spanB.style.width=(RX1-XS[12]+46)+'px';
-const note=document.createElement('div');note.className='hx-note';note.style.left=(XS[5]-44)+'px';note.style.width=(XS[7]-XS[5]+88)+'px';
+spanA.style.left=(XS[0]-46)+'px';spanA.style.width=(XS[1]-XS[0]+92)+'px';
+spanB.style.left=(XS[4]-46)+'px';spanB.style.width=(RX1-XS[4]+46)+'px';
+const note=document.createElement('div');note.className='hx-note';note.style.left=(XS[2]-44)+'px';note.style.width=(XS[3]-XS[2]+88)+'px';
 note.innerHTML='<b>Enquanto isso, a ciência estuda como as pessoas mudam</b><span>veja a raia de baixo ↓</span>';tl.appendChild(note);
 const chips=qa('.hx-chip'),nodes=qa('.hx-node'),stems=()=>qa('.hx-svg .st');
 
@@ -188,7 +132,7 @@ function walk(x,instant,rx){cancelAnimationFrame(raf);isa.classList.remove('walk
 /* ---------- filtro (Data Highlight) ---------- */
 let flt='all';
 const match=m=>flt==='all'||(flt==='sem'?m.k==='sem':(m.k==='com'||m.k==='met'));
-const HINT={all:'Clique num marco ou avance com <kbd>→</kbd>',sem:'6 mudanças por força, decreto ou acaso',com:'7 marcos com método: participação, comunicação, patrocínio'};
+const HINT={all:'Clique num marco ou avance com <kbd>→</kbd>',sem:'2 mudanças sem preparar as pessoas',com:'3 marcos com método: participação, comunicação, patrocínio'};
 function setFlt(f,quiet){flt=f;qa('.hx-flt button').forEach(b=>b.classList.toggle('on',b.dataset.f===f));
  M.forEach((m,i)=>{const ok=match(m),act=f!=='all';chips[i].classList.toggle('dim',act&&!ok);chips[i].classList.toggle('hx-hl',act&&ok);nodes[i].classList.toggle('dim',act&&!ok)});
  stems().forEach(s=>s.classList.toggle('dim',f!=='all'&&!match(M[+s.dataset.i])));
@@ -213,7 +157,7 @@ function sel(i,quiet,instant){idx=i;const fin=i===N;det.classList.toggle('fin',f
  spanB.classList.toggle('lit',fin);
  if(fin){qa('.hx-det .hx-sw').forEach(el=>el.classList.remove('swap','d1','d2','d3'));walk(RX1-24,instant,1556);if(!quiet)ding();return}
  const m=M[i];
- const K=q('#hxK');K.className='hx-kind k-'+m.k;K.textContent=KIND[m.k];
+ const K=q('#hxK');K.className='hx-kind k-'+m.k;K.textContent=m.kl||KIND[m.k];
  setT('#hxY',m.yy);setT('#hxT',m.t);setT('#hxW',m.w);
  setT('#hxAh',m.a.h);setT('#hxAt',m.a.t);setT('#hxAp',m.a.p);setT('#hxBh',m.b.h);setT('#hxBt',m.b.t);setT('#hxBp',m.b.p);
  q('#hxAg').innerHTML=tags(m.a.g);q('#hxBg').innerHTML=tags(m.b.g);meter(m.f);
