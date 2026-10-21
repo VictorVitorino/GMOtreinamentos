@@ -1744,8 +1744,16 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 #wheel.fun .wh-wrap{left:56px;top:190px;transform:scale(.84);transform-origin:0 0}
 #wheel.fun .wh-card{left:930px;top:200px;width:590px;min-height:520px}
 #wheel.fun .wh-card .q{font-size:32px}
-#whIsa{position:absolute;left:600px;top:250px;width:250px;display:none;z-index:4}
-#wheel.fun #whIsa{display:block}
+#whIsa{position:absolute;left:585px;top:270px;width:215px;display:none;z-index:4}
+#wheel.fun #whIsa,#wheel.fun #whMaisa{display:block}
+#whMaisa{position:absolute;left:775px;top:455px;width:150px;display:none;z-index:4}
+#whMaisa img{width:100%;display:block;filter:drop-shadow(0 14px 20px rgba(0,0,0,.5))}
+#whMaisa i{position:absolute;left:10%;right:10%;bottom:-6px;height:18px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent);z-index:-1}
+#whMaisa .bub{position:absolute;left:-20px;top:-58px;min-width:190px;text-align:center;padding:8px 14px;border-radius:18px;background:#FFE3EF;color:#B01357;font-weight:900;font-size:21px;line-height:1.1;border:3px solid #FF5FA2;box-shadow:0 12px 26px rgba(0,0,0,.4);opacity:0;transform:scale(.4) rotate(6deg);transition:opacity .12s,transform .25s var(--spring);white-space:nowrap}
+#whMaisa .bub::after{content:"";position:absolute;left:52%;bottom:-12px;width:18px;height:18px;background:#FFE3EF;border-right:3px solid #FF5FA2;border-bottom:3px solid #FF5FA2;transform:rotate(45deg)}
+#whMaisa .bub.on{opacity:1;transform:scale(1) rotate(var(--rt,0deg))}
+#whMaisa.talk img{animation:maisaJump .3s ease-in-out infinite alternate;transform-origin:50% 100%}
+@keyframes maisaJump{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-16px) rotate(3deg)}}
 #whIsa img{width:100%;display:block;filter:drop-shadow(0 18px 24px rgba(0,0,0,.5))}
 #whIsa i{position:absolute;left:12%;right:12%;bottom:-8px;height:22px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent);z-index:-1}
 #whIsa .bub{position:absolute;left:-60px;top:-62px;min-width:250px;text-align:center;padding:10px 18px;border-radius:20px;background:#fff;color:var(--navy-900);font-weight:900;font-size:26px;letter-spacing:-.02em;line-height:1.1;border:3px solid var(--orange-500);box-shadow:0 14px 30px rgba(0,0,0,.4);opacity:0;transform:scale(.4) rotate(-6deg);transition:opacity .12s,transform .25s var(--spring);white-space:nowrap}
@@ -2608,13 +2616,14 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===================================================== RODA DA MUDANÇA -->
 <div id="wheel" role="dialog" aria-label="Roda da Mudança">
-  <div class="wh-top"><div class="t"><span id="whKick">Rodada relâmpago</span><b id="whTitle">Roda da Mudança</b></div><div style="display:flex;gap:14px;align-items:center"><span class="wh-score" id="whScore"></span><button class="wh-x wh-fun" id="whMode" type="button">😄 Mini roda divertida</button><button class="wh-x" id="whReset" type="button">↺ Reiniciar</button><button class="wh-x" id="whClose" type="button">✕ Fechar <kbd>Esc</kbd></button></div></div>
+  <div class="wh-top"><div class="t"><span id="whKick">Rodada relâmpago</span><b id="whTitle">Roda da Mudança</b></div><div style="display:flex;gap:14px;align-items:center"><span class="wh-score" id="whScore"></span><button class="wh-x wh-fun" id="whMode" type="button">😄 Roda da Alegria</button><button class="wh-x" id="whReset" type="button">↺ Reiniciar</button><button class="wh-x" id="whClose" type="button">✕ Fechar <kbd>Esc</kbd></button></div></div>
   <div class="wh-wrap">
     <div class="wh-ptr" id="whPtr"><svg viewBox="0 0 52 64"><path d="M26 62 4 14A22 22 0 0 1 48 14z" fill="#fff"/><path d="M26 54 10 16a16 16 0 0 1 32 0z" fill="#F26B21"/></svg></div>
     <svg class="wh-svg" id="whSvg" viewBox="-320 -320 640 640"></svg>
     <button class="wh-hub" id="whHub" type="button">GIRAR<span>ESPAÇO</span></button>
   </div>
   <div id="whIsa"><div class="bub" id="whBub"></div><img src="assets/isabella.webp" alt="Isabella"><i></i></div>
+  <div id="whMaisa"><div class="bub" id="whBub2"></div><img src="assets/maisa.webp" alt="Maísa"><i></i></div>
   <div class="wh-card" id="whCard"></div>
   <canvas class="confetti" id="confetti" width="1600" height="900"></canvas>
 </div>
@@ -2739,10 +2748,12 @@ function draw(){svg.innerHTML=`<circle r="${R+12}" fill="#fff"/><circle r="${R+6
  return `<g class="${used.has(i)?'used':''}"><path d="M0 0L${x0} ${y0}A${R} ${R} 0 0 1 ${x1} ${y1}Z" fill="${COL()[i]}" stroke="#fff" stroke-width="3"/><text style="${CUR===FUN?'font-size:46px':''}" class="${dk?'dk':''}" x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" transform="rotate(${am-90} ${tx} ${ty})">${CUR===FUN?q.e:q.c}</text></g>`}).join('')+Array.from({length:N},(_,i)=>{const [x,y]=pt(i*seg,R+1);return `<circle cx="${x}" cy="${y}" r="5" fill="#fff"/>`}).join('');svg.style.transform=`rotate(${rot}deg)`;$('#whScore').textContent=`${used.size}/${N} perguntas`}
 function idle(){if(CUR===FUN){card.innerHTML=`<div class="wh-empty"><b>🎮</b>Aperte <b style="display:inline;font-size:inherit">GIRAR</b> ou <kbd>Espaço</kbd> e veja a Isabella ficar animada!</div>`;return}card.innerHTML=`<div class="wh-empty"><b>🎡</b>Gire a roda e responda em <b style="display:inline;font-size:inherit;color:var(--orange-400)">20 segundos</b>.<br>Clique em <b style="display:inline;font-size:inherit">GIRAR</b> ou aperte <kbd>Espaço</kbd>.</div>`}
 let shoutT=null,shoutN=0;
-function shout(on){const I=$('#whIsa'),B=$('#whBub');clearInterval(shoutT);try{speechSynthesis.cancel()}catch(e){}
- if(!on||CUR!==FUN){I.classList.remove('talk');B.classList.remove('on');return}
- I.classList.add('talk');shoutN=0;
- const say=()=>{shoutN++;const w=['Playstation!','PLAYSTATION!!','Playstation!!!','PLAYSTATION!'][shoutN%4];B.classList.remove('on');void B.offsetWidth;B.textContent=w;B.style.setProperty('--rt',((shoutN%2?-1:1)*(3+shoutN%3))+'deg');B.classList.add('on');
+function shout(on){const I=$('#whIsa'),B=$('#whBub'),M=$('#whMaisa'),B2=$('#whBub2');clearInterval(shoutT);try{speechSynthesis.cancel()}catch(e){}
+ if(!on||CUR!==FUN){I.classList.remove('talk');M.classList.remove('talk');B.classList.remove('on');B2.classList.remove('on');return}
+ I.classList.add('talk');M.classList.add('talk');shoutN=0;
+ const pop=(el,t,rt)=>{el.classList.remove('on');void el.offsetWidth;el.textContent=t;el.style.setProperty('--rt',rt+'deg');el.classList.add('on')};
+ const say=()=>{shoutN++;const w=['Playstation!','PLAYSTATION!!','Playstation!!!','PLAYSTATION!'][shoutN%4];pop(B,w,(shoutN%2?-1:1)*(3+shoutN%3));
+  setTimeout(()=>pop(B2,['Eba! 🎉','Playstation!','Uhuul! 🎮','PLAYSTATION!'][shoutN%4],(shoutN%2?1:-1)*4),380);
   if(!DECK.muted){try{const u=new SpeechSynthesisUtterance('Playstation!');u.lang='pt-BR';u.rate=1.25;u.pitch=1.7;speechSynthesis.speak(u)}catch(e){}}};
  say();shoutT=setInterval(say,760)}
 function spin(){if(spinning)return;if(used.size>=N)used.clear();spinning=true;hub.disabled=true;clearInterval(tmr);const id=++spinId;shout(true);
@@ -2760,7 +2771,7 @@ wheelOn=()=>W.classList.contains('on');
 /* passador: → revela a resposta da pergunta na tela; se já revelada (ou sem pergunta), gira. ← esconde a resposta ou fecha */
 wheelSpin=d=>{if(spinning)return;const a=$('#whA');if(d<0){if(a&&a.classList.contains('on'))a.classList.remove('on');else closeWheel();return}if(a&&!a.classList.contains('on'))$('#whRev').click();else spin()};
 const setMode=fun=>{shout(false);CUR=fun?FUN:QS;N=CUR.length;seg=360/N;used.clear();clearInterval(tmr);spinId++;spinning=false;hub.disabled=false;rot=0;svg.style.transition='none';svg.style.transform='rotate(0deg)';void svg.offsetWidth;svg.style.transition='';
- $('#whKick').textContent=fun?'Quebra-gelo':'Rodada relâmpago';$('#whTitle').textContent=fun?'Mini roda divertida':'Roda da Mudança';$('#whMode').textContent=fun?'🎓 Voltar à Roda da Mudança':'😄 Mini roda divertida';W.classList.toggle('fun',fun);draw();idle()};
+ $('#whKick').textContent=fun?'Quebra-gelo':'Rodada relâmpago';$('#whTitle').textContent=fun?'Roda da Alegria':'Roda da Mudança';$('#whMode').textContent=fun?'🎓 Voltar à Roda da Mudança':'😄 Roda da Alegria';W.classList.toggle('fun',fun);draw();idle()};
 $('#whMode').onclick=()=>{$('#whMode').blur();setMode(CUR===QS)};
 hub.onclick=spin;$('#whClose').onclick=closeWheel;$('#whReset').onclick=()=>{used.clear();clearInterval(tmr);draw();idle()};draw();idle()})();
 
