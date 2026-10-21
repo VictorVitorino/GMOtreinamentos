@@ -435,7 +435,7 @@ function setS(n,dir=1){const prev=S;S=n;
  rows.forEach(li=>{const i=+li.dataset.s;li.classList.toggle('on',on.includes(i));li.classList.toggle('done',!on.includes(i)&&i<=done)});
  regs.forEach(g=>{const r=+g.dataset.r;g.classList.toggle('on',on.includes(r));g.classList.toggle('done',!on.includes(r)&&r<=done)});
  panel.classList.toggle('going',n>0);track(n);
- $('#exKotter',SEC).classList.toggle('on',n===3);
+ 
  scene.classList.toggle('see',n===1);scene.classList.toggle('feel',n===2);scene.classList.toggle('fin',n===5);
  if(n>=3&&!cmp)setCompare(true,n===3);
  else if(n<3&&cmp)setCompare(false);

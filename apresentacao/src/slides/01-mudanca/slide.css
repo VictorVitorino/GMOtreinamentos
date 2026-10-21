@@ -223,21 +223,21 @@
 .slide[data-id="mudanca"] .mu-pc.mu-sw>*{animation:aUp .55s var(--ease) both}
 .slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(2){animation-delay:.04s}.slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(3){animation-delay:.08s}.slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(4){animation-delay:.12s}.slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(n+5){animation-delay:.16s}
 .slide[data-id="mudanca"] .pc-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.slide[data-id="mudanca"] .pc-n{font:600 10.5px var(--fm);letter-spacing:.16em;color:var(--orange-400);text-transform:uppercase}
+.slide[data-id="mudanca"] .pc-n{font:600 12px var(--fm);letter-spacing:.16em;color:var(--orange-400);text-transform:uppercase}
 .slide[data-id="mudanca"] .pc-dots{display:flex;gap:5px}
 .slide[data-id="mudanca"] .pc-dots i{width:6px;height:6px;border-radius:50%;background:rgba(163,184,214,.3);transition:background .3s,width .3s}
 .slide[data-id="mudanca"] .pc-dots i.on{width:16px;border-radius:3px;background:var(--orange-500)}
-.slide[data-id="mudanca"] .pc-name{font-size:26px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#fff;margin-top:14px}
-.slide[data-id="mudanca"] .pc-sub{font-size:14px;font-weight:600;color:var(--steel-200);margin-top:4px}
+.slide[data-id="mudanca"] .pc-name{font-size:29px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#fff;margin-top:14px}
+.slide[data-id="mudanca"] .pc-sub{font-size:16px;font-weight:600;color:var(--steel-200);margin-top:4px}
 .slide[data-id="mudanca"] .pc-where{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;margin-top:10px;min-height:22px;padding:4px 9px;line-height:1.35;border-radius:6px;font:500 9.5px var(--fm);letter-spacing:.06em;color:var(--steel-200);background:rgba(4,16,31,.4);border:1px solid rgba(163,184,214,.2)}
 .slide[data-id="mudanca"] .pc-where i{flex:none;width:8px;height:8px;border-radius:50%;background:rgba(110,143,191,.55);border:1px solid var(--steel-200)}
 .slide[data-id="mudanca"] .pc-where.dp i{border-style:dashed;background:transparent}
-.slide[data-id="mudanca"] .pc-q{font-size:27px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--orange-400);margin-top:12px}
+.slide[data-id="mudanca"] .pc-q{font-size:30px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--orange-400);margin-top:12px}
 .slide[data-id="mudanca"] .pc-q.kn{color:var(--steel-100)}
 .slide[data-id="mudanca"] .pc-rows{display:flex;flex-direction:column;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(163,184,214,.16)}
-.slide[data-id="mudanca"] .pc-row p{font-size:14px;line-height:1.5;color:var(--steel-100);margin-top:5px}
+.slide[data-id="mudanca"] .pc-row p{font-size:16px;line-height:1.5;color:var(--steel-100);margin-top:5px}
 .slide[data-id="mudanca"] .pc-row p b{color:#fff}
-.slide[data-id="mudanca"] .pc-row .label{font-size:9.5px;color:var(--steel-300)}
+.slide[data-id="mudanca"] .pc-row .label{font-size:11px;color:var(--steel-300)}
 .slide[data-id="mudanca"] .pc-row.pc-tip{padding:10px 12px 11px;border-radius:10px;background:rgba(242,107,33,.12);border:1px solid rgba(242,107,33,.32)}
 .slide[data-id="mudanca"] .pc-row.pc-tip .label{color:var(--orange-200)}
 .slide[data-id="mudanca"] .pc-row.pc-tip p{color:#fff;font-weight:600}

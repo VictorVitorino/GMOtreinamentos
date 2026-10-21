@@ -13,7 +13,7 @@
 .gs-steps button.on i{background:var(--orange-500);box-shadow:0 0 0 3px rgba(242,107,33,.25)}
 
 /* ---------- grade ---------- */
-.gs-grid{position:absolute;inset:0;display:grid;grid-template-columns:428px minmax(0,1fr) 204px;grid-template-rows:minmax(0,1fr) 212px;gap:18px}
+.gs-grid{position:absolute;inset:0;display:grid;grid-template-columns:500px minmax(0,1fr) 204px;grid-template-rows:minmax(0,1fr) 212px;gap:18px}
 .gs-word{grid-column:1;grid-row:1}
 .gs-chart{grid-column:2;grid-row:1}
 .gs-isa{grid-column:3;grid-row:1}
@@ -29,10 +29,10 @@
 .gs-brk{position:absolute;left:0;top:8px;bottom:30px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--navy-700),var(--orange-500));transform:scaleY(0);transform-origin:top;transition:transform .8s var(--ease) .15s}
 .gs-w{position:relative;transition:transform .8s var(--spring)}
 .gs-big{display:block;font-size:56px;font-weight:800;line-height:.96;letter-spacing:-.045em;color:var(--navy-900);transition:color .6s}
-.gs-ety{display:inline-block;height:22px;line-height:22px;margin-top:8px;padding:0 10px;border-radius:99px;background:var(--steel-100);font-family:var(--fm);font-size:10px;letter-spacing:.02em;color:var(--steel-600);white-space:nowrap}
+.gs-ety{display:inline-block;height:26px;line-height:26px;margin-top:10px;padding:0 12px;border-radius:99px;background:var(--steel-100);font-family:var(--fm);font-size:11.5px;letter-spacing:.02em;color:var(--steel-600);white-space:nowrap}
 .gs-ety i{font-style:italic;color:var(--navy-700)}
-.gs-role{margin-top:6px;font-size:13px;line-height:1.35;color:var(--grey-700)}
-.gs-role em{display:inline-block;min-width:58px;margin-right:6px;font-family:var(--fm);font-style:normal;font-weight:600;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
+.gs-role{margin-top:8px;font-size:15.5px;line-height:1.4;color:var(--grey-700)}
+.gs-role em{display:inline-block;min-width:70px;margin-right:8px;font-family:var(--fm);font-style:normal;font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
 .gs-join{position:relative;height:40px;display:flex;align-items:center}
 .gs-plus{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line-strong);background:#fff;font-size:17px;font-weight:600;line-height:1;color:var(--grey-500);transition:transform .5s var(--ease),opacity .35s}
 .gs-da{position:absolute;left:2px;top:50%;font-size:26px;font-weight:800;font-style:italic;letter-spacing:-.02em;color:var(--orange-500);opacity:0;transform:translateY(-50%) scale(.4);transform-origin:left center;transition:opacity .4s .2s,transform .7s var(--spring) .2s}
@@ -40,11 +40,11 @@
 .gs-eqs{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface-2);color:var(--grey-500);font-size:18px;font-weight:800;line-height:1;transition:background .5s,color .5s,box-shadow .5s}
 .gs-res-t{position:relative;flex:1;min-height:78px}
 .gs-res-a,.gs-res-b{position:absolute;left:0;right:0;top:0;transition:opacity .45s,transform .6s var(--ease)}
-.gs-res-a{display:flex;flex-direction:column;gap:4px;font-size:13.5px;font-weight:600;color:var(--grey-500);padding-top:5px}
-.gs-res-k{font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);font-weight:500}
+.gs-res-a{display:flex;flex-direction:column;gap:6px;font-size:16px;font-weight:600;color:var(--grey-500);padding-top:6px}
+.gs-res-k{font-family:var(--fm);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);font-weight:500}
 .gs-res-b{opacity:0;transform:translateY(10px);pointer-events:none}
-.gs-res-b b{display:block;font-size:15.5px;line-height:1.3;font-weight:800;letter-spacing:-.01em;color:var(--navy-900)}
-.gs-res-b span{display:block;margin-top:5px;font-size:11px;line-height:1.45;color:var(--grey-500)}
+.gs-res-b b{display:block;font-size:17px;line-height:1.3;font-weight:800;letter-spacing:-.01em;color:var(--navy-900)}
+.gs-res-b span{display:block;margin-top:6px;font-size:12.5px;line-height:1.45;color:var(--grey-500)}
 .gs-res-b span i{color:var(--navy-700)}
 /* composição montada */
 .gs.gs-s1 .gs-stack{padding-left:18px}

@@ -135,7 +135,7 @@
 .slide[data-id="exercicio"] .ex-brain .rg.on .h{fill:rgba(242,107,33,.85);transform-box:fill-box;transform-origin:center;animation:exRg 1.5s ease-in-out infinite}
 @keyframes exRg{0%,100%{transform:scale(.75);opacity:1}50%{transform:scale(1.15);opacity:.65}}
 
-.slide[data-id="exercicio"] .ex-steps{list-style:none;position:relative;display:flex;flex-direction:column;gap:13px;margin-top:12px;--t0:26px;--len:0px;--fill:0px}
+.slide[data-id="exercicio"] .ex-steps{list-style:none;position:relative;display:flex;flex-direction:column;gap:30px;margin-top:20px;--t0:26px;--len:0px;--fill:0px}
 .slide[data-id="exercicio"] .ex-steps::before,.slide[data-id="exercicio"] .ex-steps::after{content:"";position:absolute;left:27px;top:var(--t0);width:2px;margin-left:-1px;border-radius:2px}
 .slide[data-id="exercicio"] .ex-steps::before{height:var(--len);background:rgba(163,184,214,.22)}
 .slide[data-id="exercicio"] .ex-steps::after{height:var(--fill);background:linear-gradient(180deg,var(--steel-400),var(--orange-500));box-shadow:0 0 10px rgba(242,107,33,.6);transition:height .8s var(--ease)}

@@ -77,7 +77,8 @@ img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
 .top-right{margin-left:auto;display:flex;align-items:center;gap:14px}
 .pg{font-family:var(--fm);font-size:12px;color:var(--grey-500);white-space:nowrap}.pg b{color:var(--navy-800);font-weight:600}
 .stage .pg{color:var(--steel-300)}.stage .pg b{color:#fff}
-.foot{position:absolute;left:40px;right:40px;bottom:0;height:42px;display:flex;align-items:center;gap:16px;z-index:5;border-top:1px solid var(--line);font-size:11px;line-height:1.3;color:var(--grey-500)}
+.srcx{display:none!important}
+.foot{display:none!important;position:absolute;left:40px;right:40px;bottom:0;height:42px;display:flex;align-items:center;gap:16px;z-index:5;border-top:1px solid var(--line);font-size:11px;line-height:1.3;color:var(--grey-500)}
 .stage .foot{border-top-color:rgba(163,184,214,.14);color:var(--steel-300)}
 .foot .src{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;max-width:1360px}
 .foot .src .more{font:inherit;font-weight:600;color:var(--navy-700);white-space:nowrap;text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:2px}
@@ -409,21 +410,21 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .slide[data-id="mudanca"] .mu-pc.mu-sw>*{animation:aUp .55s var(--ease) both}
 .slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(2){animation-delay:.04s}.slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(3){animation-delay:.08s}.slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(4){animation-delay:.12s}.slide[data-id="mudanca"] .mu-pc.mu-sw>*:nth-child(n+5){animation-delay:.16s}
 .slide[data-id="mudanca"] .pc-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.slide[data-id="mudanca"] .pc-n{font:600 10.5px var(--fm);letter-spacing:.16em;color:var(--orange-400);text-transform:uppercase}
+.slide[data-id="mudanca"] .pc-n{font:600 12px var(--fm);letter-spacing:.16em;color:var(--orange-400);text-transform:uppercase}
 .slide[data-id="mudanca"] .pc-dots{display:flex;gap:5px}
 .slide[data-id="mudanca"] .pc-dots i{width:6px;height:6px;border-radius:50%;background:rgba(163,184,214,.3);transition:background .3s,width .3s}
 .slide[data-id="mudanca"] .pc-dots i.on{width:16px;border-radius:3px;background:var(--orange-500)}
-.slide[data-id="mudanca"] .pc-name{font-size:26px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#fff;margin-top:14px}
-.slide[data-id="mudanca"] .pc-sub{font-size:14px;font-weight:600;color:var(--steel-200);margin-top:4px}
+.slide[data-id="mudanca"] .pc-name{font-size:29px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:#fff;margin-top:14px}
+.slide[data-id="mudanca"] .pc-sub{font-size:16px;font-weight:600;color:var(--steel-200);margin-top:4px}
 .slide[data-id="mudanca"] .pc-where{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;margin-top:10px;min-height:22px;padding:4px 9px;line-height:1.35;border-radius:6px;font:500 9.5px var(--fm);letter-spacing:.06em;color:var(--steel-200);background:rgba(4,16,31,.4);border:1px solid rgba(163,184,214,.2)}
 .slide[data-id="mudanca"] .pc-where i{flex:none;width:8px;height:8px;border-radius:50%;background:rgba(110,143,191,.55);border:1px solid var(--steel-200)}
 .slide[data-id="mudanca"] .pc-where.dp i{border-style:dashed;background:transparent}
-.slide[data-id="mudanca"] .pc-q{font-size:27px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--orange-400);margin-top:12px}
+.slide[data-id="mudanca"] .pc-q{font-size:30px;font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--orange-400);margin-top:12px}
 .slide[data-id="mudanca"] .pc-q.kn{color:var(--steel-100)}
 .slide[data-id="mudanca"] .pc-rows{display:flex;flex-direction:column;gap:14px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(163,184,214,.16)}
-.slide[data-id="mudanca"] .pc-row p{font-size:14px;line-height:1.5;color:var(--steel-100);margin-top:5px}
+.slide[data-id="mudanca"] .pc-row p{font-size:16px;line-height:1.5;color:var(--steel-100);margin-top:5px}
 .slide[data-id="mudanca"] .pc-row p b{color:#fff}
-.slide[data-id="mudanca"] .pc-row .label{font-size:9.5px;color:var(--steel-300)}
+.slide[data-id="mudanca"] .pc-row .label{font-size:11px;color:var(--steel-300)}
 .slide[data-id="mudanca"] .pc-row.pc-tip{padding:10px 12px 11px;border-radius:10px;background:rgba(242,107,33,.12);border:1px solid rgba(242,107,33,.32)}
 .slide[data-id="mudanca"] .pc-row.pc-tip .label{color:var(--orange-200)}
 .slide[data-id="mudanca"] .pc-row.pc-tip p{color:#fff;font-weight:600}
@@ -629,7 +630,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .slide[data-id="exercicio"] .ex-brain .rg.on .h{fill:rgba(242,107,33,.85);transform-box:fill-box;transform-origin:center;animation:exRg 1.5s ease-in-out infinite}
 @keyframes exRg{0%,100%{transform:scale(.75);opacity:1}50%{transform:scale(1.15);opacity:.65}}
 
-.slide[data-id="exercicio"] .ex-steps{list-style:none;position:relative;display:flex;flex-direction:column;gap:13px;margin-top:12px;--t0:26px;--len:0px;--fill:0px}
+.slide[data-id="exercicio"] .ex-steps{list-style:none;position:relative;display:flex;flex-direction:column;gap:30px;margin-top:20px;--t0:26px;--len:0px;--fill:0px}
 .slide[data-id="exercicio"] .ex-steps::before,.slide[data-id="exercicio"] .ex-steps::after{content:"";position:absolute;left:27px;top:var(--t0);width:2px;margin-left:-1px;border-radius:2px}
 .slide[data-id="exercicio"] .ex-steps::before{height:var(--len);background:rgba(163,184,214,.22)}
 .slide[data-id="exercicio"] .ex-steps::after{height:var(--fill);background:linear-gradient(180deg,var(--steel-400),var(--orange-500));box-shadow:0 0 10px rgba(242,107,33,.6);transition:height .8s var(--ease)}
@@ -867,7 +868,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .gs-steps button.on i{background:var(--orange-500);box-shadow:0 0 0 3px rgba(242,107,33,.25)}
 
 /* ---------- grade ---------- */
-.gs-grid{position:absolute;inset:0;display:grid;grid-template-columns:428px minmax(0,1fr) 204px;grid-template-rows:minmax(0,1fr) 212px;gap:18px}
+.gs-grid{position:absolute;inset:0;display:grid;grid-template-columns:500px minmax(0,1fr) 204px;grid-template-rows:minmax(0,1fr) 212px;gap:18px}
 .gs-word{grid-column:1;grid-row:1}
 .gs-chart{grid-column:2;grid-row:1}
 .gs-isa{grid-column:3;grid-row:1}
@@ -883,10 +884,10 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .gs-brk{position:absolute;left:0;top:8px;bottom:30px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--navy-700),var(--orange-500));transform:scaleY(0);transform-origin:top;transition:transform .8s var(--ease) .15s}
 .gs-w{position:relative;transition:transform .8s var(--spring)}
 .gs-big{display:block;font-size:56px;font-weight:800;line-height:.96;letter-spacing:-.045em;color:var(--navy-900);transition:color .6s}
-.gs-ety{display:inline-block;height:22px;line-height:22px;margin-top:8px;padding:0 10px;border-radius:99px;background:var(--steel-100);font-family:var(--fm);font-size:10px;letter-spacing:.02em;color:var(--steel-600);white-space:nowrap}
+.gs-ety{display:inline-block;height:26px;line-height:26px;margin-top:10px;padding:0 12px;border-radius:99px;background:var(--steel-100);font-family:var(--fm);font-size:11.5px;letter-spacing:.02em;color:var(--steel-600);white-space:nowrap}
 .gs-ety i{font-style:italic;color:var(--navy-700)}
-.gs-role{margin-top:6px;font-size:13px;line-height:1.35;color:var(--grey-700)}
-.gs-role em{display:inline-block;min-width:58px;margin-right:6px;font-family:var(--fm);font-style:normal;font-weight:600;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
+.gs-role{margin-top:8px;font-size:15.5px;line-height:1.4;color:var(--grey-700)}
+.gs-role em{display:inline-block;min-width:70px;margin-right:8px;font-family:var(--fm);font-style:normal;font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
 .gs-join{position:relative;height:40px;display:flex;align-items:center}
 .gs-plus{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line-strong);background:#fff;font-size:17px;font-weight:600;line-height:1;color:var(--grey-500);transition:transform .5s var(--ease),opacity .35s}
 .gs-da{position:absolute;left:2px;top:50%;font-size:26px;font-weight:800;font-style:italic;letter-spacing:-.02em;color:var(--orange-500);opacity:0;transform:translateY(-50%) scale(.4);transform-origin:left center;transition:opacity .4s .2s,transform .7s var(--spring) .2s}
@@ -894,11 +895,11 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .gs-eqs{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface-2);color:var(--grey-500);font-size:18px;font-weight:800;line-height:1;transition:background .5s,color .5s,box-shadow .5s}
 .gs-res-t{position:relative;flex:1;min-height:78px}
 .gs-res-a,.gs-res-b{position:absolute;left:0;right:0;top:0;transition:opacity .45s,transform .6s var(--ease)}
-.gs-res-a{display:flex;flex-direction:column;gap:4px;font-size:13.5px;font-weight:600;color:var(--grey-500);padding-top:5px}
-.gs-res-k{font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);font-weight:500}
+.gs-res-a{display:flex;flex-direction:column;gap:6px;font-size:16px;font-weight:600;color:var(--grey-500);padding-top:6px}
+.gs-res-k{font-family:var(--fm);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);font-weight:500}
 .gs-res-b{opacity:0;transform:translateY(10px);pointer-events:none}
-.gs-res-b b{display:block;font-size:15.5px;line-height:1.3;font-weight:800;letter-spacing:-.01em;color:var(--navy-900)}
-.gs-res-b span{display:block;margin-top:5px;font-size:11px;line-height:1.45;color:var(--grey-500)}
+.gs-res-b b{display:block;font-size:17px;line-height:1.3;font-weight:800;letter-spacing:-.01em;color:var(--navy-900)}
+.gs-res-b span{display:block;margin-top:6px;font-size:12.5px;line-height:1.45;color:var(--grey-500)}
 .gs-res-b span i{color:var(--navy-700)}
 /* composição montada */
 .gs.gs-s1 .gs-stack{padding-left:18px}
@@ -1819,7 +1820,6 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 </g></svg>
             <div class="mu-pins"></div>
             <div class="mu-say" aria-live="polite"></div>
-            <div class="mu-leg"><span><i class="s"></i>superfície</span><span><i class="d"></i>estrutura profunda, vista em transparência</span><span class="il">mapa ilustrativo</span></div>
           </div>
         </div>
         <div class="mu-tug" data-a="up" style="--d:7">
@@ -2029,12 +2029,6 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
             <li data-s="4"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11m0-1V4a1.5 1.5 0 0 1 3 0v7m0-5.5a1.5 1.5 0 0 1 3 0V13c0 4-2.6 7-6.4 7-2.5 0-4-1-5.3-2.8L3.5 14a1.5 1.5 0 0 1 2.3-1.9L8 14.5"/></svg></span><div class="tx"><div class="nm"><b>Agir</b><span class="rgn">córtex motor</span></div><p>A mudança real: o plano vira movimento. Decidir ainda não é fazer.</p></div></li>
             <li data-s="5"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 11a8 8 0 0 1 14-5.3L20 8"/><path d="M20 3.5V8h-4.5"/><path d="M20 13a8 8 0 0 1-14 5.3L4 16"/><path d="M4 20.5V16h4.5"/></svg></span><div class="tx"><div class="nm"><b>Repetir</b><span class="rgn">gânglios da base</span></div><p>De novo e de novo, até virar piloto automático.</p><div class="ex-streak" aria-hidden="true"><i></i><span>dia 1</span><span>66 dias (mediana)</span></div><span class="srcx">Lally et al. (2010) · 18 a 254 dias, estimados por modelo</span></div></li>
           </ol>
-          <div class="ex-kotter" id="exKotter">
-            <span class="label">Kotter &amp; Cohen · The Heart of Change (2002)</span>
-            <div class="ex-kr no"><b>Analisar → Pensar → Mudar</b><span>sozinho, raramente mobiliza</span></div>
-            <div class="ex-kr yes"><b>Ver → Sentir → Mudar</b><span>o padrão das mudanças bem-sucedidas</span></div>
-            <p>As pessoas mudam menos pelo que analisam e mais pelo que <b>veem e sentem</b>. <span class="srcx">paráfrase</span></p>
-          </div>
         </aside>
       </div>
     </div>
@@ -2094,11 +2088,6 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
           <div class="gs-ch-h"><span class="label">A sala do exercício · 90 dias depois <em>ilustrativo</em></span><div class="gs-seg" role="group" aria-label="Cenário do gráfico"><button type="button" data-v="sem"><i></i>Sem gestão</button><button type="button" data-v="com"><i></i>Com gestão</button></div></div>
           <h3 class="gs-ch-t">Arrumar a sala é mudança. <span>Manter arrumada é Gestão da Mudança.</span></h3>
           <div class="gs-plot"><svg class="gs-svg" aria-label="Gráfico ilustrativo: estado da sala do dia 1 ao dia 90, sem e com gestão"></svg></div>
-          <div class="gs-facts">
-            <span class="label gs-fl">Na vida real</span>
-            <div class="gs-f"><b>28%</b><p>Querer não basta: em média, a intenção explica só cerca de <em>28% da variação do comportamento</em>.<span class="srcx">Sheeran (2002) · 422 estudos, 82 mil pessoas</span></p></div>
-            <div class="gs-f"><b>Quitter’s Day</b><p>Em meados de janeiro (a data varia por ano), o dia de <em>maior queda nos treinos</em> registrados após o Ano-Novo.<span class="srcx">Strava · dados de usuários do app</span></p></div>
-          </div>
         </div>
 
         <!-- (e) Isabella -->
@@ -3451,7 +3440,7 @@ function setS(n,dir=1){const prev=S;S=n;
  rows.forEach(li=>{const i=+li.dataset.s;li.classList.toggle('on',on.includes(i));li.classList.toggle('done',!on.includes(i)&&i<=done)});
  regs.forEach(g=>{const r=+g.dataset.r;g.classList.toggle('on',on.includes(r));g.classList.toggle('done',!on.includes(r)&&r<=done)});
  panel.classList.toggle('going',n>0);track(n);
- $('#exKotter',SEC).classList.toggle('on',n===3);
+ 
  scene.classList.toggle('see',n===1);scene.classList.toggle('feel',n===2);scene.classList.toggle('fin',n===5);
  if(n>=3&&!cmp)setCompare(true,n===3);
  else if(n<3&&cmp)setCompare(false);
