@@ -383,3 +383,4 @@
 .slide[data-id="mudanca"] .ma-card .lg i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
 @media (prefers-reduced-motion:reduce){.slide[data-id="mudanca"] .ma-wire{animation:none!important;opacity:1}}
 .slide[data-id="mudanca"] .mu-brain{transform:scale(1.1);transform-origin:50% 46%}
+.slide[data-id="mudanca"] .pc-where{white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
