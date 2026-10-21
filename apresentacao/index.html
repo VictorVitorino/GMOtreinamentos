@@ -1463,6 +1463,15 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .n5-seg .n{font-weight:800;font-size:38px;line-height:1;letter-spacing:-.04em;color:var(--navy-800);margin-top:10px}
 .n5-seg p{font-size:14px;line-height:1.4;color:var(--grey-700);margin-top:6px;text-wrap:pretty}
 .n5-seg .srcx{margin-top:8px;white-space:nowrap}
+/* Além da tecnologia: contexto lado a lado (tecnologia × pessoas) */
+.n5-seg{justify-content:flex-start;gap:0;padding:12px 16px 11px}
+.n5-seg .rw{display:grid;grid-template-columns:82px 1fr;gap:8px;align-items:baseline;margin-top:7px}
+.n5-seg .rw i{font:600 9.5px var(--fm);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500)}
+.n5-seg .rw.p i{color:var(--orange-600)}
+.n5-seg .rw p{margin:0;font-size:13px;line-height:1.4;color:var(--grey-700)}
+.n5-seg .rw.p p{color:var(--navy-800);font-weight:500}
+.n5-seg .rw p b{color:var(--orange-600);font-weight:800}
+.n5-seg .rs{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);font-size:12px;font-weight:600;line-height:1.35;color:var(--navy-700)}
 
 /* ===== 06-caixa ===== */
 /* =====================================================================
@@ -2409,23 +2418,23 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
         <div class="n5-r">
           <span class="label" data-a="fade" style="--d:6">Além da tecnologia</span>
           <p class="n5-lead" data-a="fade" style="--d:6">A tecnologia muda o sistema. <b>As pessoas mudam o resultado.</b></p>
-          <div class="card n5-seg" data-a="right" style="--d:7">
-            <div class="sh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/><path d="M7.5 12.5h2.6l1.4-2.6 2 4.6 1.3-2h1.7"/></svg></span><span class="sg">Saúde</span></div>
-            <b class="n">17 anos</b>
-            <p>da pesquisa até a prática clínica: a estimativa mais citada.</p>
-            <span class="srcx">Balas &amp; Boren (2000) · Morris et al. (2011)</span>
+                    <div class="card n5-seg" data-a="right" style="--d:7">
+            <div class="sh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 4.5 14h6.5l-1 7.5L19 10h-6.5z"/></svg></span><span class="sg">Eletrificação das fábricas</span></div>
+            <div class="rw t"><i>Tecnologia</i><p>Trocaram o motor a vapor pelo elétrico.</p></div>
+            <div class="rw p"><i>Pessoas</i><p>Redesenharam o trabalho e treinaram a equipe: o salto veio <b>~40 anos depois</b>.</p></div>
+            <span class="rs">Mesma tecnologia: o resultado veio com as pessoas.</span>
           </div>
           <div class="card n5-seg" data-a="right" style="--d:8">
-            <div class="sh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3M12 8.2l2.6 2.6L12 13.4l-2.6-2.6z"/></svg></span><span class="sg">Pagamentos (Pix)</span></div>
-            <b class="n">6 semanas</b>
-            <p>de cadastro de chaves: a adoção começou antes do lançamento.</p>
-            <span class="srcx">Banco Central do Brasil · 2020</span>
+            <div class="sh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3M12 8.2l2.6 2.6L12 13.4l-2.6-2.6z"/></svg></span><span class="sg">Pix, o pagamento instantâneo</span></div>
+            <div class="rw t"><i>Tecnologia</i><p>Pagamento instantâneo, no ar para o país.</p></div>
+            <div class="rw p"><i>Pessoas</i><p>Mercado ouvido por 2 anos e chaves cadastradas <b>6 semanas antes</b>: 10 milhões em 2 dias.</p></div>
+            <span class="rs">Adoção preparada antes do lançamento.</span>
           </div>
           <div class="card n5-seg" data-a="right" style="--d:9">
-            <div class="sh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9.5 2.5v3.5M14.5 2.5v3.5M9.5 18v3.5M14.5 18v3.5M2.5 9.5H6M2.5 14.5H6M18 9.5h3.5M18 14.5h3.5"/><path d="M10 14l2-4.5 2 4.5M10.7 12.6h2.6"/></svg></span><span class="sg">Inteligência artificial</span></div>
-            <b class="n">70%</b>
-            <p>do esforço em IA: pessoas e processos.</p>
-            <span class="srcx">BCG · regra 10-20-70 (diretriz de esforço)</span>
+            <div class="sh"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9.5 2.5v3.5M14.5 2.5v3.5M9.5 18v3.5M14.5 18v3.5M2.5 9.5H6M2.5 14.5H6M18 9.5h3.5M18 14.5h3.5"/><path d="M10 14l2-4.5 2 4.5M10.7 12.6h2.6"/></svg></span><span class="sg">IA generativa, hoje</span></div>
+            <div class="rw t"><i>Tecnologia</i><p>Ferramenta liberada para todos.</p></div>
+            <div class="rw p"><i>Pessoas</i><p>Redesenhar o trabalho, capacitar e patrocinar: a BCG sugere <b>~70% do esforço</b> em pessoas e processos.</p></div>
+            <span class="rs">Usar é fácil; ganhar valor é gestão da mudança.</span>
           </div>
         </div>
       </div>
