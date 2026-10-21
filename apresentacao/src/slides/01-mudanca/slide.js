@@ -144,6 +144,12 @@ DECK.register('mudanca',{
 /* ---------- Anatomia · Córtex: vídeo + marcações ---------- */
 (()=>{
 const btn=$('#muAnatBtn',SEC), ov=$('#muAnat',SEC), vid=$('#maVid',SEC), zoom=$('#maZoom',SEC), layer=$('#maLayer',SEC), marks=$('#maMarks',SEC), list=$('#maList',SEC), card=$('#maCard',SEC), cap=$('#maCap',SEC);
+const SIMPLES={
+ pfc:'É o <b>planejador</b>: guarda a meta nova e decide o que fazer para chegar lá. É o “GPS” da mudança.',
+ acc:'É o <b>detector do diferente</b>: percebe quando o jeito novo briga com o hábito e avisa o resto do cérebro.',
+ amy:'É o <b>alarme</b>: quando não sabe o que vem pela frente, trata a novidade como um possível perigo.',
+ bg:'É o <b>piloto automático</b>: guarda o que fazemos sem pensar. Por isso o hábito antigo é tão confortável.',
+ da:'É o <b>professor</b>: quando algo dá mais certo do que o esperado, libera um “sinal de recompensa” que ensina o cérebro a repetir.'};
 const NS='http://www.w3.org/2000/svg', mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
 // coordenadas no quadro do vídeo (854×480): pin = marcador; tag = canto do rótulo; lp = ponto de ligação do rótulo
 const P={
@@ -184,14 +190,14 @@ function selA(n){A.sel=n;
  zoom.classList.toggle('focus',n>0);zoom.classList.toggle('f0',n===0);
  if(n){const p=P[R[n-1].id].pin;zoom.style.setProperty('--zo','50% 50%');zoom.style.setProperty('--z',1.06)}else{zoom.style.setProperty('--z',1)}
  if(!n){card.innerHTML=`<span class="ct">Visão geral</span><h4>Cinco regiões, uma só mudança</h4><p>Clique numa região, na lista ou use <b>→</b>. As laranjas puxam para <b>o novo</b>; as azuis, para <b>o conhecido</b>.</p><div class="lg"><span><i style="background:var(--orange-400)"></i>o novo</span><span><i style="background:var(--steel-200)"></i>o conhecido</span></div>`}
- else{const r=R[n-1];card.innerHTML=`<span class="ct">Voz ${n} de ${R.length} · ${r.where||''}</span><h4>${r.name}</h4><q>${r.q}</q><p>${r.papel}</p>`}
+ else{const r=R[n-1];card.innerHTML=`<span class="ct">Voz ${n} de ${R.length}</span><span class="cw">${r.where||''}</span><h4>${r.name}</h4><q>${r.q}</q><span class="cs">Em palavras simples</span><p>${SIMPLES[r.id]}</p><div class="ctip"><b>Dica de GMO</b>${r.dica}</div>`}
  if(n)tone(560+n*70,.09,'sine',.05)}
 const CAPS=[[0,'1 · Superfície'],[2.9,'2 · Músculos e vasos'],[5.6,'3 · Crânio'],[8.2,'4 · O cérebro']];
 function showCap(t){const c=[...CAPS].reverse().find(x=>t>=x[0]);if(c&&cap.textContent!==c[1])cap.textContent=c[1]}
 function ready(){if(A.ready)return;A.ready=true;ov.classList.add('ready');cap.textContent='Córtex · cinco regiões';selA(0)}
 vid.addEventListener('timeupdate',()=>{if(!A.ready)showCap(vid.currentTime)});
 vid.addEventListener('ended',ready);
-function play(){A.ready=false;ov.classList.remove('ready');zoom.classList.remove('focus');zoom.style.setProperty('--z',1);selA(0);cap.textContent=CAPS[0][1];try{vid.currentTime=0}catch(e){}const p=vid.play();if(p&&p.catch)p.catch(()=>ready())}
+function play(){vid.playbackRate=1.5;A.ready=false;ov.classList.remove('ready');zoom.classList.remove('focus');zoom.style.setProperty('--z',1);selA(0);cap.textContent=CAPS[0][1];try{vid.currentTime=0}catch(e){}const p=vid.play();if(p&&p.catch)p.catch(()=>ready())}
 function skip(){try{vid.pause();vid.currentTime=Math.max(0,(vid.duration||12.4)-0.04)}catch(e){}ready()}
 function openA(){build();if(A.open)return;A.open=true;ov.classList.add('on');ov.removeAttribute('inert');ov.setAttribute('aria-hidden','false');btn.setAttribute('aria-expanded','true');btn.querySelector('span').textContent='Fechar anatomia';play();tone(420,.18,'triangle',.07,760)}
 function closeA(quiet){if(!A.open)return;A.open=false;ov.classList.remove('on');ov.setAttribute('inert','');ov.setAttribute('aria-hidden','true');btn.setAttribute('aria-expanded','false');btn.querySelector('span').textContent='Anatomia · Córtex';try{vid.pause()}catch(e){}if(!quiet)tone(500,.14,'triangle',.06,300)}
