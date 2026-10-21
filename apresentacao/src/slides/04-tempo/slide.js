@@ -39,6 +39,14 @@ const M=[
   n:'370%',nk:'de rotatividade na Ford em 1913: cerca de 52 mil contratações em um ano para manter uns 14 mil postos.',
   s:'The Henry Ford, “Ford’s Five-Dollar Day” · Raff & Summers (1987)',
   les:'Quem não prepara as pessoas paga a conta depois, e mais caro.'},
+ {l:1,k:'sem',ic:'server',f:.7,y:'1983',yy:'1983',nm:'Internet:<br>NCP → TCP/IP',
+  t:'Internet, 1983: a virada por prazo',
+  w:'Em 1º de janeiro de 1983, a ARPANET desligou o protocolo antigo (NCP) e passou a usar o TCP/IP, a base da internet de hoje. Quem não tinha convertido perdia a conexão, salvo exceções autorizadas.',
+  a:{h:'Sem método',t:'por prazo',p:'Data única e imposta: os pacotes do protocolo antigo passaram a ser descartados. As exceções vinham por telefonema, e problemas nos gateways de e-mail duraram semanas.',g:["prazo único","corte forçado","exceção por telefone"]},
+  b:{h:'Preparo parcial',t:'ensaios em 1982',p:'Teve ensaio técnico: em alguns dias do fim de 1982, o NCP foi desligado para a maioria dos hosts, e havia procedimento para exceções. A adesão, porém, veio pela regra, não pela escolha.',g:["ensaios técnicos","x:adesão por escolha"]},on:'a',
+  n:'~400',nk:'computadores na ARPANET em 1983. Poucos, e ainda assim a virada gerou exceções e semanas de ajustes.',
+  s:'Wikipedia (Network Control Protocol) · InternetNews (2013) · relato de A. Malis, lista Internet History',
+  les:'O prazo força a troca; só a preparação das pessoas faz ela se sustentar.'},
  {l:2,k:'met',ic:'steps',f:.32,y:'1994–96',yy:'1994–1996',nm:'Kotter e<br>Prosci/ADKAR',
   t:'Nascem os métodos: Kotter e Prosci/ADKAR',
   w:'Jeff Hiatt funda a Prosci (1994) e cria o ADKAR (1996). Em 1995, Kotter publica na HBR os 8 erros que derrubam transformações; em 1996, as 8 etapas.',
@@ -98,7 +106,7 @@ function ribbonD(){const top=[],bot=[];for(let x=RX0;x<=RX1;x+=(x-RX0<30||RX1-x<
  let st='';M.forEach((m,i)=>{const x=XS[i],h=hAt(x);
   if(m.l===1)st+=`<line class="st l1 k-${m.k}" data-i="${i}" style="--hl:${Math.max(0,AX-h-86-95).toFixed(1)}px" x1="${x}" y1="95" x2="${x}" y2="${(AX-h-3).toFixed(1)}"/>`;
   else st+=`<line class="st k-${m.k}" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="237"/>`;
-  if(i<=1)st+=`<line class="st sp k-sem" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="251"/>`});
+  if(i<=2)st+=`<line class="st sp k-sem" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="251"/>`});
  ghost.innerHTML=`<defs>${grad('hxGg')}</defs><line x1="${RX0}" y1="${AX}" x2="${RX1}" y2="${AX}" stroke="rgba(163,184,214,.25)" stroke-width="1"/>
   <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}`;
  lit.innerHTML=`<defs>${grad('hxGl')}<filter id="hxBlur" x="-5%" y="-200%" width="110%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs>
@@ -110,9 +118,9 @@ M.forEach((m,i)=>{const c=document.createElement('button');c.type='button';c.cla
  c.innerHTML=`<span class="ic"><svg viewBox="0 0 24 24">${IC[m.ic]}</svg></span><span class="y">${m.y}</span><span class="n">${m.nm}</span>`;c.onclick=()=>sel(i);tl.appendChild(c);
  const n=document.createElement('button');n.type='button';n.className=`hx-node k-${m.k}`;n.style.left=XS[i]+'px';n.dataset.i=i;n.setAttribute('aria-label',m.yy);n.onclick=()=>sel(i);tl.appendChild(n)});
 const spanA=q('#hxSpanA'),spanB=q('#hxSpanB');
-spanA.style.left=(XS[0]-46)+'px';spanA.style.width=(XS[1]-XS[0]+92)+'px';
-spanB.style.left=(XS[4]-46)+'px';spanB.style.width=(RX1-XS[4]+46)+'px';
-const note=document.createElement('div');note.className='hx-note';note.style.left=(XS[2]-44)+'px';note.style.width=(XS[3]-XS[2]+88)+'px';
+spanA.style.left=(XS[0]-46)+'px';spanA.style.width=(XS[2]-XS[0]+92)+'px';
+spanB.style.left=(XS[5]-46)+'px';spanB.style.width=(RX1-XS[5]+46)+'px';
+const note=document.createElement('div');note.className='hx-note';note.style.left=(XS[3]-44)+'px';note.style.width=(XS[4]-XS[3]+88)+'px';
 note.innerHTML='<b>Enquanto isso, a ciência estuda como as pessoas mudam</b><span>veja a raia de baixo ↓</span>';tl.appendChild(note);
 const chips=qa('.hx-chip'),nodes=qa('.hx-node'),stems=()=>qa('.hx-svg .st');
 
@@ -132,7 +140,7 @@ function walk(x,instant,rx){cancelAnimationFrame(raf);isa.classList.remove('walk
 /* ---------- filtro (Data Highlight) ---------- */
 let flt='all';
 const match=m=>flt==='all'||(flt==='sem'?m.k==='sem':(m.k==='com'||m.k==='met'));
-const HINT={all:'Clique num marco ou avance com <kbd>→</kbd>',sem:'2 mudanças sem preparar as pessoas',com:'3 marcos com método: participação, comunicação, patrocínio'};
+const HINT={all:'Clique num marco ou avance com <kbd>→</kbd>',sem:'3 mudanças sem preparar as pessoas',com:'3 marcos com método: participação, comunicação, patrocínio'};
 function setFlt(f,quiet){flt=f;qa('.hx-flt button').forEach(b=>b.classList.toggle('on',b.dataset.f===f));
  M.forEach((m,i)=>{const ok=match(m),act=f!=='all';chips[i].classList.toggle('dim',act&&!ok);chips[i].classList.toggle('hx-hl',act&&ok);nodes[i].classList.toggle('dim',act&&!ok)});
  stems().forEach(s=>s.classList.toggle('dim',f!=='all'&&!match(M[+s.dataset.i])));
