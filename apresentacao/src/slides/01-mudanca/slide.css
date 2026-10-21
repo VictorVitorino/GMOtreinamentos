@@ -1,7 +1,7 @@
 /* =====================================================================
    01 · MUDANÇA · contexto + o cérebro na mudança (mapa ilustrativo)
    ===================================================================== */
-.slide[data-id="mudanca"] .mu-grid{position:absolute;inset:0;display:grid;grid-template-columns:300px minmax(0,1fr) 350px;grid-template-rows:minmax(0,1fr) 222px;gap:16px 20px}
+.slide[data-id="mudanca"] .mu-grid{position:absolute;inset:0;display:grid;grid-template-columns:300px minmax(0,1fr) 350px;grid-template-rows:minmax(0,1fr) 244px;gap:16px 20px}
 .slide[data-id="mudanca"] .mu-ctx{grid-column:1;grid-row:1}
 .slide[data-id="mudanca"] .mu-mid{grid-column:2;grid-row:1}
 .slide[data-id="mudanca"] .mu-tug{grid-column:1/3;grid-row:2}
@@ -131,7 +131,7 @@
 .slide[data-id="mudanca"] .mu-tag.on b{color:#fff}
 .slide[data-id="mudanca"] .mu-tag.on small{color:var(--orange-200)}
 .slide[data-id="mudanca"] .mu-brain.focus .mu-tag:not(.on){opacity:.35!important}
-.slide[data-id="mudanca"] .mu-say{position:absolute;z-index:4;padding:9px 15px 10px;border-radius:14px;font:800 17px/1.15 var(--fb);letter-spacing:-.01em;white-space:nowrap;background:#fff;color:var(--navy-900);box-shadow:0 14px 30px rgba(4,16,31,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.slide[data-id="mudanca"] .mu-say{position:absolute;z-index:4;margin-left:calc(50% - 312px);padding:9px 15px 10px;border-radius:14px;font:800 17px/1.15 var(--fb);letter-spacing:-.01em;white-space:nowrap;background:#fff;color:var(--navy-900);box-shadow:0 14px 30px rgba(4,16,31,.45);opacity:0;pointer-events:none;transition:opacity .25s}
 .slide[data-id="mudanca"] .mu-say.nw{background:var(--orange-500);color:#fff;box-shadow:0 14px 30px rgba(4,16,31,.45),0 0 26px rgba(242,107,33,.45)}
 .slide[data-id="mudanca"] .mu-say::after{content:"";position:absolute;width:12px;height:12px;background:inherit;transform:rotate(45deg)}
 .slide[data-id="mudanca"] .mu-say.d-tr{transform:translate(-14px,calc(-100% - 12px))}.slide[data-id="mudanca"] .mu-say.d-tr::after{left:10px;bottom:-5px}
@@ -150,8 +150,8 @@
 /* ---------- cabo de guerra · cena ilustrativa ---------- */
 .slide[data-id="mudanca"] .mu-tug{position:relative;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.1);overflow:hidden}
 .slide[data-id="mudanca"] .tg-lb{position:absolute;left:16px;top:9px;z-index:3}
-.slide[data-id="mudanca"] .tg-scene{position:absolute;left:0;right:0;top:20px;height:196px}
-.slide[data-id="mudanca"] .tg-svg{position:absolute;left:50%;top:0;margin-left:-561px;width:1122px;height:196px;overflow:visible}
+.slide[data-id="mudanca"] .tg-scene{position:absolute;left:0;right:0;top:20px;height:214px}
+.slide[data-id="mudanca"] .tg-svg{position:absolute;left:50%;top:0;margin-left:-561px;width:1122px;height:214px;overflow:visible}
 .slide[data-id="mudanca"] .tg-msg{position:absolute;left:50%;top:-2px;transform:translateX(-50%);z-index:2;text-align:center;font-size:15px;font-weight:700;line-height:1.3;color:#fff;white-space:nowrap}
 .slide[data-id="mudanca"] .tg-msg em{font-style:normal;color:var(--orange-400)}
 .slide[data-id="mudanca"] .tg-msg.mu-sw{animation:aF .5s var(--ease)}
@@ -161,7 +161,7 @@
 .slide[data-id="mudanca"] .tg-cord{fill:none;stroke-linecap:round}
 .slide[data-id="mudanca"] .tg-cord.c0{stroke:#04101F;stroke-width:15;opacity:.6}
 .slide[data-id="mudanca"] .tg-cord.c1{stroke:#B6C8E0;stroke-width:11}
-.slide[data-id="mudanca"] .tg-cord.c2{stroke:#5B7CAD;stroke-width:11;stroke-dasharray:3.5 8.5}
+.slide[data-id="mudanca"] .tg-cord.c2{stroke:#41639B;stroke-width:11;stroke-dasharray:4 8}
 /* nó */
 .slide[data-id="mudanca"] .tg-knot{transform:translateX(var(--kx,0px));transition:transform 1.1s var(--spring)}
 .slide[data-id="mudanca"] .tg-knot .kb{fill:var(--orange-500);stroke:#fff;stroke-width:2}
@@ -171,24 +171,31 @@
 @keyframes muWob{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(5px)}}
 /* personagens: corpos chapados, contorno branco tipo adesivo */
 .slide[data-id="mudanca"] .tg-fig{transform-box:view-box;transition:transform 1.1s var(--spring)}
-.slide[data-id="mudanca"] .tg-fig.l{transform-origin:265px 192px;transform:rotate(var(--ln,-8deg))}
-.slide[data-id="mudanca"] .tg-fig.r{transform-origin:857px 192px;transform:rotate(var(--ln,8deg))}
-.slide[data-id="mudanca"] .tg-fig .torso{fill:none;stroke-width:38;stroke-linecap:round}
-.slide[data-id="mudanca"] .tg-fig .arm{fill:none;stroke-width:13;stroke-linecap:round;stroke-linejoin:round}
-.slide[data-id="mudanca"] .tg-fig .arm.bk{stroke-width:12}
-.slide[data-id="mudanca"] .tg-fig .leg{fill:none;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
-.slide[data-id="mudanca"] .tg-fig .leg.bk{stroke-width:16}
-.slide[data-id="mudanca"] .tg-fig.l .torso,.slide[data-id="mudanca"] .tg-fig.l .arm{stroke:#2A5A96}
+.slide[data-id="mudanca"] .tg-fig.l{transform-origin:205px 206px;transform:translateX(var(--tx,0px)) rotate(var(--ln,0deg))}
+.slide[data-id="mudanca"] .tg-fig.r{transform-origin:917px 206px;transform:translateX(var(--tx,0px)) rotate(var(--ln,0deg))}
+.slide[data-id="mudanca"] .tg-fig .torso{stroke:#061528;stroke-width:3.5;stroke-linejoin:round}
+.slide[data-id="mudanca"] .tg-fig .ol{stroke:#061528!important;fill:none}
+.slide[data-id="mudanca"] .tg-fig .arm.ol{stroke-width:20}
+.slide[data-id="mudanca"] .tg-fig .arm.bk.ol{stroke-width:18.5}
+.slide[data-id="mudanca"] .tg-fig .leg.ol{stroke-width:26}
+.slide[data-id="mudanca"] .tg-fig .leg.bk.ol{stroke-width:24}
+.slide[data-id="mudanca"] .tg-fig .arm{fill:none;stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
+.slide[data-id="mudanca"] .tg-fig .arm.bk{stroke-width:13.5}
+.slide[data-id="mudanca"] .tg-fig .leg{fill:none;stroke-width:21;stroke-linecap:round;stroke-linejoin:round}
+.slide[data-id="mudanca"] .tg-fig .leg.bk{stroke-width:19}
+.slide[data-id="mudanca"] .tg-fig.l .torso{fill:#2A5A96;stroke:#2A5A96}
+.slide[data-id="mudanca"] .tg-fig.l .arm{stroke:#2A5A96}
 .slide[data-id="mudanca"] .tg-fig.l .arm.bk{stroke:#1B4479}
-.slide[data-id="mudanca"] .tg-fig.l .leg{stroke:#0B2545}
-.slide[data-id="mudanca"] .tg-fig.l .leg.bk{stroke:#071A33}
-.slide[data-id="mudanca"] .tg-fig.l .shoe{fill:#04101F}
+.slide[data-id="mudanca"] .tg-fig.l .leg{stroke:#16386B}
+.slide[data-id="mudanca"] .tg-fig.l .leg.bk{stroke:#0A2244}
+.slide[data-id="mudanca"] .tg-fig.l .shoe{fill:#04101F;stroke:rgba(163,184,214,.3);stroke-width:1.5}
 .slide[data-id="mudanca"] .tg-fig.l .hand{fill:#EFC9A6;stroke:#C79A72;stroke-width:1.5}
-.slide[data-id="mudanca"] .tg-fig.r .torso,.slide[data-id="mudanca"] .tg-fig.r .arm{stroke:#F26B21}
+.slide[data-id="mudanca"] .tg-fig.r .torso{fill:#F26B21;stroke:#F26B21}
+.slide[data-id="mudanca"] .tg-fig.r .arm{stroke:#F26B21}
 .slide[data-id="mudanca"] .tg-fig.r .arm.bk{stroke:#D9521A}
 .slide[data-id="mudanca"] .tg-fig.r .leg{stroke:#3D5F93}
 .slide[data-id="mudanca"] .tg-fig.r .leg.bk{stroke:#2A5A96}
-.slide[data-id="mudanca"] .tg-fig.r .shoe{fill:#0B2545}
+.slide[data-id="mudanca"] .tg-fig.r .shoe{fill:#071A33;stroke:rgba(163,184,214,.3);stroke-width:1.5}
 .slide[data-id="mudanca"] .tg-fig.r .hand{fill:#D99B72;stroke:#B07A53;stroke-width:1.5}
 /* esforço: suor, linhas de movimento e poeira nos calcanhares */
 .slide[data-id="mudanca"] .tg-fx .eff{fill:none;stroke:rgba(163,184,214,.42);stroke-width:2.2;stroke-linecap:round}
@@ -201,8 +208,10 @@
 @keyframes muSweat{0%{opacity:0;transform:translateY(-3px)}18%{opacity:.9}62%{opacity:.9}100%{opacity:0;transform:translateY(13px)}}
 /* rótulos das pontas: o lado, nunca a pessoa */
 .slide[data-id="mudanca"] .tg-lab{opacity:.72;transition:opacity .5s}
-.slide[data-id="mudanca"] .tg-lab .eb{font:600 9.5px var(--fm);letter-spacing:.16em;fill:var(--steel-300)}
-.slide[data-id="mudanca"] .tg-lab .nm{font:800 15px var(--fb);letter-spacing:-.01em;fill:var(--steel-100)}
+.slide[data-id="mudanca"] .tg-lab .eb{font:600 10px var(--fm);letter-spacing:.16em;fill:var(--steel-300)}
+.slide[data-id="mudanca"] .tg-lab .ar{fill:none;stroke:var(--steel-300);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.slide[data-id="mudanca"] .tg-lab.r .ar{stroke:var(--orange-400)}
+.slide[data-id="mudanca"] .tg-lab .nm{font:800 16px var(--fb);letter-spacing:-.01em;fill:var(--steel-100)}
 .slide[data-id="mudanca"] .tg-lab.r .eb{fill:var(--orange-400)}
 .slide[data-id="mudanca"] .tg-lab.r .nm{fill:#fff}
 .slide[data-id="mudanca"] .mu-tug.win-kn .tg-lab.l,.slide[data-id="mudanca"] .mu-tug.win-nw .tg-lab.r{opacity:1}
@@ -269,22 +278,22 @@
 /* ---------- borboleta passeando pelo título (só neste slide) ---------- */
 .slide[data-id="mudanca"] .top-title{position:relative}
 .slide[data-id="mudanca"] .top-title>span:first-child,.slide[data-id="mudanca"] .top-title>b{position:relative;z-index:1}
-.slide[data-id="mudanca"] .mu-orbit{position:absolute;left:50%;top:50%;width:208px;height:52px;margin:-26px 0 0 -104px;pointer-events:none}
-.slide[data-id="mudanca"] .mu-fly{position:absolute;left:0;top:0;width:21px;height:18px;z-index:2;opacity:.9;
- offset-path:path("M 204 26 A 100 24 0 1 1 4 26 A 100 24 0 1 1 204 26");offset-rotate:0deg;offset-anchor:50% 50%;offset-distance:18%}
+.slide[data-id="mudanca"] .mu-orbit{position:absolute;left:50%;top:50%;width:170px;height:50px;margin:-25px 0 0 -85px;pointer-events:none}
+.slide[data-id="mudanca"] .mu-fly{position:absolute;left:0;top:0;width:20px;height:17px;z-index:2;opacity:.92;
+ offset-path:path("M 163 25 A 78 17 0 1 1 7 25 A 78 17 0 1 1 163 25");offset-rotate:0deg;offset-anchor:50% 50%;offset-distance:18%}
 .slide[data-id="mudanca"].play .mu-fly{animation:muFlyGo 13s linear infinite,muFlyZ 13s step-end infinite,muFlyDepth 13s ease-in-out infinite}
 @keyframes muFlyGo{from{offset-distance:0%}to{offset-distance:100%}}
 @keyframes muFlyZ{0%,48%{z-index:2}50%,100%{z-index:0}}
-@keyframes muFlyDepth{0%{transform:scale(1);opacity:.9}24%{transform:scale(1.06);opacity:1}50%{transform:scale(.76);opacity:.48}74%{transform:scale(.76);opacity:.48}100%{transform:scale(1);opacity:.9}}
-.slide[data-id="mudanca"] .mu-fw{display:block;width:21px;height:18px;overflow:visible}
-.slide[data-id="mudanca"] .mu-fw .wg{fill:var(--orange-500);transform-box:view-box;transform-origin:12px 10px}
-.slide[data-id="mudanca"] .mu-fw .wl{fill:var(--orange-400)}
+@keyframes muFlyDepth{0%{transform:scale(1);opacity:1}24%{transform:scale(1.06);opacity:1}50%{transform:scale(.82);opacity:.72}74%{transform:scale(.82);opacity:.72}100%{transform:scale(1);opacity:1}}
+.slide[data-id="mudanca"] .mu-fw{display:block;width:20px;height:17px;overflow:visible}
+.slide[data-id="mudanca"] .mu-fw .wg{fill:var(--orange-400);transform-box:view-box;transform-origin:12px 10px}
+.slide[data-id="mudanca"] .mu-fw .wl{fill:var(--orange-500)}
 .slide[data-id="mudanca"] .mu-fw .bd{fill:var(--orange-600)}
 .slide[data-id="mudanca"] .mu-fw .an{fill:none;stroke:var(--orange-600);stroke-width:1.1;stroke-linecap:round}
 .slide[data-id="mudanca"].play .mu-fw{animation:muFlyBob 3.1s ease-in-out infinite}
 .slide[data-id="mudanca"].play .mu-fw .wg{animation:muFlap .52s ease-in-out infinite}
-@keyframes muFlyBob{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
-@keyframes muFlap{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.46)}}
+@keyframes muFlyBob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes muFlap{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.66)}}
 @media (prefers-reduced-motion:reduce){
  .slide[data-id="mudanca"].play .mu-fly,.slide[data-id="mudanca"].play .mu-fw,.slide[data-id="mudanca"].play .mu-fw .wg,
  .slide[data-id="mudanca"].play .tg-fx .sw{animation:none}

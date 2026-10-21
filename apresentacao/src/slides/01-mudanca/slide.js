@@ -35,7 +35,7 @@ const R=[
 ];
 /* posição do nó, em % da corda: <50 puxa para o conhecido, >50 para o novo */
 const KNOT=[50,66,57,40,27,45,80];
-const CORD=[256,866], KX=k=>CORD[0]+(CORD[1]-CORD[0])*k/100-561;
+const CORD=[222,900], KX=k=>CORD[0]+(CORD[1]-CORD[0])*k/100-561;
 const MSG=[
  'Toda mudança puxa o cérebro para dois lados. <em>Quem vence?</em>',
  'O pré-frontal puxa para <em>o novo</em>: ele tem uma meta.',
@@ -122,8 +122,8 @@ function sel(i,quiet,late){idx=Math.max(0,Math.min(LAST,i));const r=R[idx-1];cle
  // cabo de guerra: o nó anda para o lado que está puxando e os personagens se inclinam
  const k=KNOT[idx], ln=(50-k)/50;
  knot.style.setProperty('--kx',KX(k).toFixed(1)+'px');
- figL.style.setProperty('--ln',(-8-ln*6.5).toFixed(2)+'deg');
- figR.style.setProperty('--ln',(8-ln*6.5).toFixed(2)+'deg');
+ figL.style.setProperty('--ln',(-ln*7).toFixed(2)+'deg');figL.style.setProperty('--tx',(-ln*11).toFixed(1)+'px');
+ figR.style.setProperty('--ln',(-ln*7).toFixed(2)+'deg');figR.style.setProperty('--tx',(-ln*11).toFixed(1)+'px');
  tug.classList.toggle('win-kn',k<49);tug.classList.toggle('win-nw',k>51);
  knot.classList.remove('shake');if(idx===2){void knot.getBoundingClientRect();knot.classList.add('shake')}
  msg.innerHTML=MSG[idx];msg.classList.remove('mu-sw');void msg.offsetWidth;msg.classList.add('mu-sw');
