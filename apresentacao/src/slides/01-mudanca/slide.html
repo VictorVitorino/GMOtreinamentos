@@ -1,13 +1,38 @@
 <!-- ===================================================== 01 · MUDANÇA -->
 <section data-id="mudanca" class="slide stage" data-t="Mudança: o que acontece no cérebro" data-rail="Mudança">
-  <template class="info"><h5>Contexto</h5><p>O que é <b>mudar</b> e o que acontece no cérebro quando algo muda. No mapa <b>ilustrativo</b>, o pré-frontal é a voz que pede a mudança; o cingulado e a ínsula percebem o diferente; a amígdala dá o alarme; os gânglios da base sustentam o piloto automático; a dopamina ensina o que vale repetir. Tudo funciona em rede. Quem resiste é o <b>cérebro</b>, não a pessoa.</p><h5>Como usar</h5><ul><li>Clique numa região do cérebro, na lista à direita, ou use <b>→</b> para percorrer as cinco vozes.</li><li>O <b>cabo de guerra</b> mostra o lado que está puxando: <b>o conhecido</b> × <b>o novo</b>.</li><li>O último passo traz a síntese e a ponte para o exercício.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>vozes do cérebro</span></div><div><b>2</b><span>lados puxando a corda</span></div></div></template>
+  <template class="info"><h5>Contexto</h5><p>O que é <b>mudar</b> e o que acontece no cérebro quando algo muda. No mapa <b>ilustrativo</b>, o pré-frontal é a voz que pede a mudança; o cingulado e a ínsula percebem o diferente; a amígdala dá o alarme; os gânglios da base sustentam o piloto automático; a dopamina ensina o que vale repetir. Tudo funciona em rede. Quem resiste é o <b>cérebro</b>, não a pessoa.</p><h5>Como usar</h5><ul><li><b>Anatomia · Córtex</b> (botão no cabeçalho) abre o vídeo da anatomia do cérebro: do rosto ao córtex, parando no cérebro inteiro com as cinco regiões marcadas. Clique numa região (ou use <b>→</b>) e <b>Esc</b> fecha. Clique numa região do cérebro, na lista à direita, ou use <b>→</b> para percorrer as cinco vozes.</li><li>O <b>cabo de guerra</b> mostra o lado que está puxando: <b>o conhecido</b> × <b>o novo</b>.</li><li>O último passo traz a síntese e a ponte para o exercício.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>vozes do cérebro</span></div><div><b>2</b><span>lados puxando a corda</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b><span class="mu-orbit" aria-hidden="true"><span class="mu-fly"><svg class="mu-fw" viewBox="0 0 24 20"><path class="wg wl" d="M12 10C9.6 3.4 5.3 1 2.7 2.5 .2 3.9 .7 8.3 3.4 10.7 1.3 11.7 1.3 15.3 3.6 16.8 6.1 18.3 10 15.9 12 10Z"/><path class="wg wr" d="M12 10C14.4 3.4 18.7 1 21.3 2.5 23.8 3.9 23.3 8.3 20.6 10.7 22.7 11.7 22.7 15.3 20.4 16.8 17.9 18.3 14 15.9 12 10Z"/><path class="bd" d="M12 4.3C12.95 4.3 13.45 5.2 13.4 6.5L12.9 14.6C12.86 15.5 12.5 16 12 16 11.5 16 11.14 15.5 11.1 14.6L10.6 6.5C10.55 5.2 11.05 4.3 12 4.3Z"/><path class="an" d="M11.3 4.6C10.6 3.1 9.4 2.3 8.2 2.1M12.7 4.6C13.4 3.1 14.6 2.3 15.8 2.1"/></svg></span></span></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
       <div><div class="eyebrow" data-a="fade">01 · Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar é um cabo de guerra</span></span> <span class="kw" style="--k:3"><span class="hl">dentro do cérebro.</span></span></h2></div>
-      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa região do cérebro · ou <kbd>→</kbd></span></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa região do cérebro · ou <kbd>→</kbd></span><button type="button" class="mu-anat-btn" id="muAnatBtn" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a2 2 0 0 0-3-1z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/></svg><span>Anatomia · Córtex</span></button></div>
     </div>
     <div class="main">
+      <div class="mu-anat" id="muAnat" aria-hidden="true" inert>
+        <div class="ma-wrap">
+          <div class="ma-stage" id="maStage">
+            <div class="ma-zoom" id="maZoom">
+              <video class="ma-vid" id="maVid" muted playsinline preload="auto"><source src="assets/anatomia-cortex.mp4" type="video/mp4"><source src="assets/anatomia-cortex.webm" type="video/webm"></video>
+              <svg class="ma-svg" id="maSvg" viewBox="0 0 854 480" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <filter id="maGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  <radialGradient id="maPf" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#F26B21" stop-opacity=".42"/><stop offset="1" stop-color="#F26B21" stop-opacity=".10"/></radialGradient>
+                </defs>
+                <g id="maLayer"></g>
+              </svg>
+              <div class="ma-marks" id="maMarks"></div>
+            </div>
+            <div class="ma-cap" id="maCap"></div>
+            <div class="ma-ctl"><button type="button" id="maSkip">Pular ›</button><button type="button" id="maReplay">↺ Rever</button></div>
+          </div>
+          <aside class="ma-side">
+            <div class="ma-head"><span class="label">Anatomia · Córtex</span><button type="button" id="maX" aria-label="Fechar">×</button></div>
+            <h3 class="ma-h">Onde mora cada “voz”</h3>
+            <ol class="ma-list" id="maList"></ol>
+            <div class="ma-card" id="maCard"></div>
+          </aside>
+        </div>
+      </div>
       <div class="mu-grid">
         <aside class="mu-ctx">
           <div class="card mu-def" data-a="left" style="--d:2">

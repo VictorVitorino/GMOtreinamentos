@@ -138,6 +138,69 @@ sel(0,true);
 
 DECK.register('mudanca',{
  enter(){sel(0,true,2300)},
- leave(){sel(0,true);clearTimeout(tSay);say.classList.remove('show')},
- step(d){const n=idx+d;if(n<0||n>LAST)return false;sel(n);return true}});
+ leave(){window.__muAnat?.close(true);sel(0,true);clearTimeout(tSay);say.classList.remove('show')},
+ step(d){if(window.__muAnat?.step(d))return true;const n=idx+d;if(n<0||n>LAST)return false;sel(n);return true}});
+
+/* ---------- Anatomia · Córtex: vídeo + marcações ---------- */
+(()=>{
+const btn=$('#muAnatBtn',SEC), ov=$('#muAnat',SEC), vid=$('#maVid',SEC), zoom=$('#maZoom',SEC), layer=$('#maLayer',SEC), marks=$('#maMarks',SEC), list=$('#maList',SEC), card=$('#maCard',SEC), cap=$('#maCap',SEC);
+const NS='http://www.w3.org/2000/svg', mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+// coordenadas no quadro do vídeo (854×480): pin = marcador; tag = canto do rótulo; lp = ponto de ligação do rótulo
+const P={
+ pfc:{pin:[236,190],tag:[22,66],lp:[132,82],ti:'superfície'},
+ acc:{pin:[330,168],tag:[258,20],lp:[314,44],ti:'profunda'},
+ amy:{pin:[338,284],tag:[22,334],lp:[132,346],ti:'profunda'},
+ bg:{pin:[416,220],tag:[566,150],lp:[566,162],ti:'profunda'},
+ da:{pin:[472,336],tag:[594,398],lp:[594,410],ti:'profunda'}};
+const W=[['pfc','acc','nw',-26],['acc','bg','mx',-22],['bg','amy','kn',24],['amy','pfc','kn',30],['da','pfc','nw',-60],['da','bg','nw',-18]];
+const T={nw:'o novo',kn:'o conhecido',ref:'o conflito'};
+let built=false,A={open:false,sel:0,ready:false};
+const pc=(x,y)=>[(x/854*100)+'%',(y/480*100)+'%'];
+function build(){ if(built)return; built=true;
+ // moldura + brilho do pré-frontal
+ const g=mk('g',{});layer.appendChild(g);
+ g.appendChild(mk('path',{class:'ma-pf',d:'M150 208 C150 140 196 84 266 66 C318 54 352 90 346 152 C340 212 336 262 298 292 C248 312 176 292 150 208Z'}));
+ [[150,70,'M150 92V70H172'],[322,70,'M300 70H322V92'],[150,300,'M150 278V300H172'],[322,300,'M300 300H322V278']].forEach(([x,y,d])=>g.appendChild(mk('path',{class:'ma-corner',d})));
+ R.forEach((r,i)=>{const p=P[r.id],k=i;
+  const deep=r.id!=='pfc';
+  if(deep){g.appendChild(mk('circle',{class:'ma-deep '+(r.tm==='nw'?'nw':''),cx:p.pin[0],cy:p.pin[1],r:i===3?34:26,style:`--k:${k}`,'data-i':i+1}))}
+  const lead=mk('path',{class:'ma-lead',d:`M${p.lp[0]} ${p.lp[1]} L${p.pin[0]} ${p.pin[1]}`,'data-i':i+1});g.appendChild(lead)});
+ W.forEach(([a,b,t,bend],j)=>{const A_=P[a].pin,B_=P[b].pin,mx=(A_[0]+B_[0])/2,my=(A_[1]+B_[1])/2,dx=B_[0]-A_[0],dy=B_[1]-A_[1],L=Math.hypot(dx,dy)||1,cx=mx-dy/L*bend*2,cy=my+dx/L*bend*2;
+  const w=mk('path',{class:'ma-wire '+t,d:`M${A_[0]} ${A_[1]} Q${cx} ${cy} ${B_[0]} ${B_[1]}`,style:`--k:${j}`,'data-a':a,'data-b':b});g.appendChild(w)});
+ R.forEach((r,i)=>{const p=P[r.id],[lx,ly]=pc(...p.pin),[tx,ty]=pc(...p.tag);
+  const pin=document.createElement('button');pin.type='button';pin.className='ma-pin '+r.tm;pin.dataset.i=i+1;pin.style.cssText=`left:${lx};top:${ly};--k:${i}`;pin.textContent=i+1;pin.setAttribute('aria-label',r.name);
+  const tag=document.createElement('button');tag.type='button';tag.className='ma-tag '+r.tm;tag.dataset.i=i+1;tag.style.cssText=`left:${tx};top:${ty};--k:${i}`;tag.innerHTML=`${r.tag}<i>${p.ti}</i>`;
+  marks.append(pin,tag);
+  const li=document.createElement('li');li.innerHTML=`<button type="button" data-i="${i+1}"><i class="${r.tm}">${i+1}</i><div><b>${r.name}</b><span>${r.sub}</span></div></button>`;list.appendChild(li)});
+ marks.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;b.blur();const i=+b.dataset.i;selA(A.sel===i?0:i)});
+ list.addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b)return;b.blur();const i=+b.dataset.i;selA(A.sel===i?0:i)});
+}
+function selA(n){A.sel=n;
+ $$('.ma-pin,.ma-tag',ov).forEach(e=>e.classList.toggle('on',+e.dataset.i===n));
+ $$('.ma-deep,.ma-lead',ov).forEach(e=>e.classList.toggle('on',+e.dataset.i===n));
+ const id=n?R[n-1].id:null;
+ $$('.ma-wire',ov).forEach(w=>w.classList.toggle('on',!!id&&(w.dataset.a===id||w.dataset.b===id)));
+ $$('button[data-i]',list).forEach(b=>b.classList.toggle('on',+b.dataset.i===n));
+ zoom.classList.toggle('focus',n>0);zoom.classList.toggle('f0',n===0);
+ if(n){const p=P[R[n-1].id].pin;zoom.style.setProperty('--zo','50% 50%');zoom.style.setProperty('--z',1.06)}else{zoom.style.setProperty('--z',1)}
+ if(!n){card.innerHTML=`<span class="ct">Visão geral</span><h4>Cinco regiões, uma só mudança</h4><p>Clique numa região, na lista ou use <b>→</b>. As laranjas puxam para <b>o novo</b>; as azuis, para <b>o conhecido</b>.</p><div class="lg"><span><i style="background:var(--orange-400)"></i>o novo</span><span><i style="background:var(--steel-200)"></i>o conhecido</span></div>`}
+ else{const r=R[n-1];card.innerHTML=`<span class="ct">Voz ${n} de ${R.length} · ${r.where||''}</span><h4>${r.name}</h4><q>${r.q}</q><p>${r.papel}</p>`}
+ if(n)tone(560+n*70,.09,'sine',.05)}
+const CAPS=[[0,'1 · Superfície'],[2.9,'2 · Músculos e vasos'],[5.6,'3 · Crânio'],[8.2,'4 · O cérebro']];
+function showCap(t){const c=[...CAPS].reverse().find(x=>t>=x[0]);if(c&&cap.textContent!==c[1])cap.textContent=c[1]}
+function ready(){if(A.ready)return;A.ready=true;ov.classList.add('ready');cap.textContent='Córtex · cinco regiões';selA(0)}
+vid.addEventListener('timeupdate',()=>{if(!A.ready)showCap(vid.currentTime)});
+vid.addEventListener('ended',ready);
+function play(){A.ready=false;ov.classList.remove('ready');zoom.classList.remove('focus');zoom.style.setProperty('--z',1);selA(0);cap.textContent=CAPS[0][1];try{vid.currentTime=0}catch(e){}const p=vid.play();if(p&&p.catch)p.catch(()=>ready())}
+function skip(){try{vid.pause();vid.currentTime=Math.max(0,(vid.duration||12.4)-0.04)}catch(e){}ready()}
+function openA(){build();if(A.open)return;A.open=true;ov.classList.add('on');ov.removeAttribute('inert');ov.setAttribute('aria-hidden','false');btn.setAttribute('aria-expanded','true');btn.querySelector('span').textContent='Fechar anatomia';play();tone(420,.18,'triangle',.07,760)}
+function closeA(quiet){if(!A.open)return;A.open=false;ov.classList.remove('on');ov.setAttribute('inert','');ov.setAttribute('aria-hidden','true');btn.setAttribute('aria-expanded','false');btn.querySelector('span').textContent='Anatomia · Córtex';try{vid.pause()}catch(e){}if(!quiet)tone(500,.14,'triangle',.06,300)}
+btn.addEventListener('click',()=>{btn.blur();A.open?closeA():openA()});
+$('#maX',SEC).addEventListener('click',()=>closeA());
+$('#maSkip',SEC).addEventListener('click',e=>{e.currentTarget.blur();skip()});
+$('#maReplay',SEC).addEventListener('click',e=>{e.currentTarget.blur();play()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&A.open)closeA()});
+// ganchos: o slide passa a delegar passos/saída para a anatomia quando ela está aberta
+window.__muAnat={open:()=>A.open,step(d){if(!A.open)return false;if(!A.ready){if(d>0)skip();return true}const n=A.sel+d;if(n<0||n>R.length){closeA();return true}selA(n);return true},close:closeA};
+})();
 })();

@@ -492,6 +492,84 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .slide[data-id="mudanca"] .pc-h,.slide[data-id="mudanca"] .pc-name,.slide[data-id="mudanca"] .pc-big,.slide[data-id="mudanca"] .pc-q,.slide[data-id="mudanca"] .pc-where{text-wrap:balance}
 .slide[data-id="mudanca"] .mu-def p,.slide[data-id="mudanca"] .pc-row p,.slide[data-id="mudanca"] .pc-syn span,.slide[data-id="mudanca"] .pc-rs,.slide[data-id="mudanca"] .pc-foot .srcx,.slide[data-id="mudanca"] .pc-isa .bubble{text-wrap:pretty}
 
+/* ---------- Anatomia · Córtex (vídeo + marcações) ---------- */
+.slide[data-id="mudanca"] .hd-r{align-items:flex-end;gap:8px}
+.slide[data-id="mudanca"] .mu-anat-btn{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 13px 0 10px;border-radius:99px;font:700 12px var(--fb);color:#fff;background:rgba(242,107,33,.16);border:1px solid rgba(242,107,33,.7);box-shadow:0 0 16px rgba(242,107,33,.22);transition:background .2s,box-shadow .2s,transform .2s}
+.slide[data-id="mudanca"] .mu-anat-btn svg{width:16px;height:16px;fill:none;stroke:var(--orange-400);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.slide[data-id="mudanca"] .mu-anat-btn:hover{background:rgba(242,107,33,.32);transform:translateY(-1px)}
+.slide[data-id="mudanca"] .mu-anat-btn[aria-expanded="true"]{background:var(--orange-500);border-color:var(--orange-500)}
+.slide[data-id="mudanca"] .mu-anat-btn[aria-expanded="true"] svg{stroke:#fff}
+.slide[data-id="mudanca"] .mu-anat{position:absolute;inset:0;z-index:30;border-radius:18px;background:linear-gradient(160deg,#071A33,#04101F);border:1px solid rgba(163,184,214,.2);box-shadow:0 30px 70px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:scale(.985);transition:opacity .35s var(--ease),transform .4s var(--ease),visibility 0s .4s;overflow:hidden}
+.slide[data-id="mudanca"] .mu-anat.on{opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--ease),transform .4s var(--ease)}
+.slide[data-id="mudanca"] .ma-wrap{position:absolute;inset:0;display:grid;grid-template-columns:1fr 330px;gap:0}
+.slide[data-id="mudanca"] .ma-stage{position:relative;overflow:hidden;background:#02070D;align-self:stretch;container-type:size}
+.slide[data-id="mudanca"] .ma-zoom{position:absolute;left:50%;top:50%;width:min(100cqw,calc(100cqh*1.7792));aspect-ratio:854/480;transform:translate(-50%,-50%) scale(var(--z,1));transform-origin:var(--zo,50% 50%);transition:transform 1s var(--ease)}
+.slide[data-id="mudanca"] .ma-vid,.slide[data-id="mudanca"] .ma-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.slide[data-id="mudanca"] .ma-vid{object-fit:cover;background:#02070D}
+.slide[data-id="mudanca"] .ma-svg{pointer-events:none}
+.slide[data-id="mudanca"] .ma-marks{position:absolute;inset:0}
+.slide[data-id="mudanca"] .ma-cap{position:absolute;left:18px;bottom:16px;z-index:5;font:600 11px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--steel-200);padding:6px 11px;border-radius:99px;background:rgba(4,16,31,.62);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .4s}
+.slide[data-id="mudanca"] .ma-ctl{position:absolute;right:16px;bottom:14px;z-index:5;display:flex;gap:8px}
+.slide[data-id="mudanca"] .ma-ctl button{height:30px;padding:0 13px;border-radius:99px;font:700 12px var(--fb);color:#fff;background:rgba(4,16,31,.7);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.slide[data-id="mudanca"] .ma-ctl button:hover{border-color:var(--orange-400);background:rgba(242,107,33,.3)}
+.slide[data-id="mudanca"] .mu-anat:not(.ready) #maReplay,.slide[data-id="mudanca"] .mu-anat.ready #maSkip{display:none}
+.slide[data-id="mudanca"] .mu-anat:not(.ready) .ma-svg,.slide[data-id="mudanca"] .mu-anat:not(.ready) .ma-marks{opacity:0}
+.slide[data-id="mudanca"] .ma-svg,.slide[data-id="mudanca"] .ma-marks{transition:opacity .5s}
+/* marcações */
+.slide[data-id="mudanca"] .ma-pf{fill:url(#maPf);stroke:var(--orange-400);stroke-width:1.6;filter:url(#maGlow);opacity:0;animation:none}
+.slide[data-id="mudanca"] .ready .ma-pf{animation:maIn .8s var(--ease) .15s forwards,maBreath 3.2s ease-in-out 1s infinite}
+.slide[data-id="mudanca"] .ma-corner{fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;opacity:0}
+.slide[data-id="mudanca"] .ready .ma-corner{animation:maIn .5s var(--ease) .5s forwards}
+.slide[data-id="mudanca"] .ma-deep{fill:rgba(163,184,214,.16);stroke:var(--steel-200);stroke-width:1.4;stroke-dasharray:4 4;opacity:0;filter:url(#maGlow)}
+.slide[data-id="mudanca"] .ready .ma-deep{animation:maIn .6s var(--ease) calc(.55s + var(--k)*.12s) forwards}
+.slide[data-id="mudanca"] .ma-deep.nw{fill:rgba(242,107,33,.22);stroke:var(--orange-400)}
+.slide[data-id="mudanca"] .ma-wire{fill:none;stroke-width:2;stroke-linecap:round;stroke-dasharray:7 7;opacity:0;filter:url(#maGlow)}
+.slide[data-id="mudanca"] .ma-wire.nw{stroke:var(--orange-400)}
+.slide[data-id="mudanca"] .ma-wire.kn{stroke:var(--steel-200)}
+.slide[data-id="mudanca"] .ma-wire.mx{stroke:#fff}
+.slide[data-id="mudanca"] .ready .ma-wire{animation:maIn .6s var(--ease) calc(1.1s + var(--k)*.14s) forwards,maFlow 1.4s linear infinite}
+.slide[data-id="mudanca"] .ma-lead{stroke:rgba(255,255,255,.55);stroke-width:1;fill:none;opacity:0}
+.slide[data-id="mudanca"] .ready .ma-lead{animation:maIn .5s var(--ease) 1.4s forwards}
+@keyframes maIn{to{opacity:1}}
+@keyframes maFlow{to{stroke-dashoffset:-28}}
+@keyframes maBreath{50%{filter:url(#maGlow) brightness(1.25)}}
+.slide[data-id="mudanca"] .ma-pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);color:#fff;background:var(--navy-800);border:2px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.5);opacity:0;transform:scale(.4);transition:opacity .4s,transform .5s var(--spring),box-shadow .3s,filter .3s}
+.slide[data-id="mudanca"] .ready .ma-pin{opacity:1;transform:none;transition-delay:calc(.7s + var(--k)*.12s),calc(.7s + var(--k)*.12s),0s,0s}
+.slide[data-id="mudanca"] .ma-pin.nw{background:var(--orange-500)}
+.slide[data-id="mudanca"] .ma-pin.on{box-shadow:0 0 0 5px rgba(242,107,33,.3),0 0 26px rgba(242,107,33,.9);transform:scale(1.18)}
+.slide[data-id="mudanca"] .ma-tag{position:absolute;z-index:3;padding:5px 11px 6px;border-radius:9px;font:700 13px var(--fb);color:#fff;white-space:nowrap;background:rgba(4,16,31,.78);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);opacity:0;transform:translateY(5px);transition:opacity .4s,transform .4s var(--ease),filter .3s,border-color .3s;cursor:pointer}
+.slide[data-id="mudanca"] .ma-tag i{display:block;font:500 9.5px var(--fm);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-300);margin-top:1px}
+.slide[data-id="mudanca"] .ready .ma-tag{opacity:1;transform:none;transition-delay:calc(1.2s + var(--k)*.12s),calc(1.2s + var(--k)*.12s),0s,0s}
+.slide[data-id="mudanca"] .ma-tag.nw{border-color:rgba(255,138,76,.8)}
+.slide[data-id="mudanca"] .ma-tag.on{border-color:var(--orange-400);background:rgba(242,107,33,.4)}
+.slide[data-id="mudanca"] .ma-zoom.focus .ma-pin:not(.on),.slide[data-id="mudanca"] .ma-zoom.focus .ma-tag:not(.on),.slide[data-id="mudanca"] .ma-zoom.focus .ma-deep:not(.on),.slide[data-id="mudanca"] .ma-zoom.focus .ma-lead:not(.on){filter:saturate(.3);opacity:.25!important}
+.slide[data-id="mudanca"] .ma-zoom.focus .ma-wire:not(.on){opacity:.15!important}
+.slide[data-id="mudanca"] .ma-zoom.focus .ma-pf{opacity:.35!important}
+.slide[data-id="mudanca"] .ma-zoom.focus.f0 .ma-pf{opacity:1!important}
+/* coluna lateral */
+.slide[data-id="mudanca"] .ma-side{display:flex;flex-direction:column;padding:16px 18px 18px;min-height:0;border-left:1px solid rgba(163,184,214,.16)}
+.slide[data-id="mudanca"] .ma-head{display:flex;align-items:center;justify-content:space-between}
+.slide[data-id="mudanca"] .ma-head .label{color:var(--orange-400)}
+.slide[data-id="mudanca"] .ma-head button{font-size:22px;line-height:1;color:var(--steel-300);padding:2px 8px;border-radius:8px}
+.slide[data-id="mudanca"] .ma-head button:hover{background:rgba(255,255,255,.08);color:#fff}
+.slide[data-id="mudanca"] .ma-h{font-size:21px;font-weight:800;letter-spacing:-.02em;color:#fff;margin-top:8px}
+.slide[data-id="mudanca"] .ma-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.slide[data-id="mudanca"] .ma-list button{width:100%;display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:center;text-align:left;padding:7px 10px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .2s,border-color .2s}
+.slide[data-id="mudanca"] .ma-list button:hover{border-color:rgba(242,107,33,.6)}
+.slide[data-id="mudanca"] .ma-list button.on{background:rgba(242,107,33,.18);border-color:var(--orange-400)}
+.slide[data-id="mudanca"] .ma-list i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:800 12px var(--fb);font-style:normal;color:#fff;background:var(--navy-600);border:1.5px solid rgba(255,255,255,.5)}
+.slide[data-id="mudanca"] .ma-list i.nw{background:var(--orange-500)}
+.slide[data-id="mudanca"] .ma-list b{display:block;font-size:14px;font-weight:700;color:#fff;line-height:1.2}
+.slide[data-id="mudanca"] .ma-list span{display:block;font-size:12px;color:var(--steel-300);line-height:1.3;margin-top:1px}
+.slide[data-id="mudanca"] .ma-card{margin-top:auto;padding:13px 14px 14px;border-radius:14px;background:linear-gradient(155deg,#16396B,#0B2545 60%,#071A33);border:1px solid rgba(255,255,255,.14);min-height:172px}
+.slide[data-id="mudanca"] .ma-card .ct{font:600 9.5px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--orange-200)}
+.slide[data-id="mudanca"] .ma-card h4{font-size:18px;font-weight:800;letter-spacing:-.02em;color:#fff;margin-top:4px;line-height:1.15}
+.slide[data-id="mudanca"] .ma-card q{display:block;quotes:"“" "”";font-size:17px;font-weight:800;letter-spacing:-.02em;color:var(--orange-400);margin-top:5px;line-height:1.15}
+.slide[data-id="mudanca"] .ma-card p{font-size:13px;line-height:1.45;color:var(--steel-100);margin-top:7px}
+.slide[data-id="mudanca"] .ma-card .lg{display:flex;gap:12px;margin-top:9px;font:500 10px var(--fm);letter-spacing:.06em;color:var(--steel-300)}
+.slide[data-id="mudanca"] .ma-card .lg i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+@media (prefers-reduced-motion:reduce){.slide[data-id="mudanca"] .ma-wire{animation:none!important;opacity:1}}
+
 /* ===== 02-exercicio ===== */
 /* =====================================================================
    02 · EXERCÍCIO · sala bagunçada (editável) + antes/depois + processo
@@ -1766,14 +1844,39 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 <!-- ===== 01-mudanca ===== -->
 <!-- ===================================================== 01 · MUDANÇA -->
 <section data-id="mudanca" class="slide stage" data-t="Mudança: o que acontece no cérebro" data-rail="Mudança">
-  <template class="info"><h5>Contexto</h5><p>O que é <b>mudar</b> e o que acontece no cérebro quando algo muda. No mapa <b>ilustrativo</b>, o pré-frontal é a voz que pede a mudança; o cingulado e a ínsula percebem o diferente; a amígdala dá o alarme; os gânglios da base sustentam o piloto automático; a dopamina ensina o que vale repetir. Tudo funciona em rede. Quem resiste é o <b>cérebro</b>, não a pessoa.</p><h5>Como usar</h5><ul><li>Clique numa região do cérebro, na lista à direita, ou use <b>→</b> para percorrer as cinco vozes.</li><li>O <b>cabo de guerra</b> mostra o lado que está puxando: <b>o conhecido</b> × <b>o novo</b>.</li><li>O último passo traz a síntese e a ponte para o exercício.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>vozes do cérebro</span></div><div><b>2</b><span>lados puxando a corda</span></div></div></template>
+  <template class="info"><h5>Contexto</h5><p>O que é <b>mudar</b> e o que acontece no cérebro quando algo muda. No mapa <b>ilustrativo</b>, o pré-frontal é a voz que pede a mudança; o cingulado e a ínsula percebem o diferente; a amígdala dá o alarme; os gânglios da base sustentam o piloto automático; a dopamina ensina o que vale repetir. Tudo funciona em rede. Quem resiste é o <b>cérebro</b>, não a pessoa.</p><h5>Como usar</h5><ul><li><b>Anatomia · Córtex</b> (botão no cabeçalho) abre o vídeo da anatomia do cérebro: do rosto ao córtex, parando no cérebro inteiro com as cinco regiões marcadas. Clique numa região (ou use <b>→</b>) e <b>Esc</b> fecha. Clique numa região do cérebro, na lista à direita, ou use <b>→</b> para percorrer as cinco vozes.</li><li>O <b>cabo de guerra</b> mostra o lado que está puxando: <b>o conhecido</b> × <b>o novo</b>.</li><li>O último passo traz a síntese e a ponte para o exercício.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>vozes do cérebro</span></div><div><b>2</b><span>lados puxando a corda</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b><span class="mu-orbit" aria-hidden="true"><span class="mu-fly"><svg class="mu-fw" viewBox="0 0 24 20"><path class="wg wl" d="M12 10C9.6 3.4 5.3 1 2.7 2.5 .2 3.9 .7 8.3 3.4 10.7 1.3 11.7 1.3 15.3 3.6 16.8 6.1 18.3 10 15.9 12 10Z"/><path class="wg wr" d="M12 10C14.4 3.4 18.7 1 21.3 2.5 23.8 3.9 23.3 8.3 20.6 10.7 22.7 11.7 22.7 15.3 20.4 16.8 17.9 18.3 14 15.9 12 10Z"/><path class="bd" d="M12 4.3C12.95 4.3 13.45 5.2 13.4 6.5L12.9 14.6C12.86 15.5 12.5 16 12 16 11.5 16 11.14 15.5 11.1 14.6L10.6 6.5C10.55 5.2 11.05 4.3 12 4.3Z"/><path class="an" d="M11.3 4.6C10.6 3.1 9.4 2.3 8.2 2.1M12.7 4.6C13.4 3.1 14.6 2.3 15.8 2.1"/></svg></span></span></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
       <div><div class="eyebrow" data-a="fade">01 · Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar é um cabo de guerra</span></span> <span class="kw" style="--k:3"><span class="hl">dentro do cérebro.</span></span></h2></div>
-      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa região do cérebro · ou <kbd>→</kbd></span></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa região do cérebro · ou <kbd>→</kbd></span><button type="button" class="mu-anat-btn" id="muAnatBtn" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a2 2 0 0 0-3-1z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/></svg><span>Anatomia · Córtex</span></button></div>
     </div>
     <div class="main">
+      <div class="mu-anat" id="muAnat" aria-hidden="true" inert>
+        <div class="ma-wrap">
+          <div class="ma-stage" id="maStage">
+            <div class="ma-zoom" id="maZoom">
+              <video class="ma-vid" id="maVid" muted playsinline preload="auto"><source src="assets/anatomia-cortex.mp4" type="video/mp4"><source src="assets/anatomia-cortex.webm" type="video/webm"></video>
+              <svg class="ma-svg" id="maSvg" viewBox="0 0 854 480" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <filter id="maGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  <radialGradient id="maPf" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#F26B21" stop-opacity=".42"/><stop offset="1" stop-color="#F26B21" stop-opacity=".10"/></radialGradient>
+                </defs>
+                <g id="maLayer"></g>
+              </svg>
+              <div class="ma-marks" id="maMarks"></div>
+            </div>
+            <div class="ma-cap" id="maCap"></div>
+            <div class="ma-ctl"><button type="button" id="maSkip">Pular ›</button><button type="button" id="maReplay">↺ Rever</button></div>
+          </div>
+          <aside class="ma-side">
+            <div class="ma-head"><span class="label">Anatomia · Córtex</span><button type="button" id="maX" aria-label="Fechar">×</button></div>
+            <h3 class="ma-h">Onde mora cada “voz”</h3>
+            <ol class="ma-list" id="maList"></ol>
+            <div class="ma-card" id="maCard"></div>
+          </aside>
+        </div>
+      </div>
       <div class="mu-grid">
         <aside class="mu-ctx">
           <div class="card mu-def" data-a="left" style="--d:2">
@@ -3008,8 +3111,71 @@ sel(0,true);
 
 DECK.register('mudanca',{
  enter(){sel(0,true,2300)},
- leave(){sel(0,true);clearTimeout(tSay);say.classList.remove('show')},
- step(d){const n=idx+d;if(n<0||n>LAST)return false;sel(n);return true}});
+ leave(){window.__muAnat?.close(true);sel(0,true);clearTimeout(tSay);say.classList.remove('show')},
+ step(d){if(window.__muAnat?.step(d))return true;const n=idx+d;if(n<0||n>LAST)return false;sel(n);return true}});
+
+/* ---------- Anatomia · Córtex: vídeo + marcações ---------- */
+(()=>{
+const btn=$('#muAnatBtn',SEC), ov=$('#muAnat',SEC), vid=$('#maVid',SEC), zoom=$('#maZoom',SEC), layer=$('#maLayer',SEC), marks=$('#maMarks',SEC), list=$('#maList',SEC), card=$('#maCard',SEC), cap=$('#maCap',SEC);
+const NS='http://www.w3.org/2000/svg', mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+// coordenadas no quadro do vídeo (854×480): pin = marcador; tag = canto do rótulo; lp = ponto de ligação do rótulo
+const P={
+ pfc:{pin:[236,190],tag:[22,66],lp:[132,82],ti:'superfície'},
+ acc:{pin:[330,168],tag:[258,20],lp:[314,44],ti:'profunda'},
+ amy:{pin:[338,284],tag:[22,334],lp:[132,346],ti:'profunda'},
+ bg:{pin:[416,220],tag:[566,150],lp:[566,162],ti:'profunda'},
+ da:{pin:[472,336],tag:[594,398],lp:[594,410],ti:'profunda'}};
+const W=[['pfc','acc','nw',-26],['acc','bg','mx',-22],['bg','amy','kn',24],['amy','pfc','kn',30],['da','pfc','nw',-60],['da','bg','nw',-18]];
+const T={nw:'o novo',kn:'o conhecido',ref:'o conflito'};
+let built=false,A={open:false,sel:0,ready:false};
+const pc=(x,y)=>[(x/854*100)+'%',(y/480*100)+'%'];
+function build(){ if(built)return; built=true;
+ // moldura + brilho do pré-frontal
+ const g=mk('g',{});layer.appendChild(g);
+ g.appendChild(mk('path',{class:'ma-pf',d:'M150 208 C150 140 196 84 266 66 C318 54 352 90 346 152 C340 212 336 262 298 292 C248 312 176 292 150 208Z'}));
+ [[150,70,'M150 92V70H172'],[322,70,'M300 70H322V92'],[150,300,'M150 278V300H172'],[322,300,'M300 300H322V278']].forEach(([x,y,d])=>g.appendChild(mk('path',{class:'ma-corner',d})));
+ R.forEach((r,i)=>{const p=P[r.id],k=i;
+  const deep=r.id!=='pfc';
+  if(deep){g.appendChild(mk('circle',{class:'ma-deep '+(r.tm==='nw'?'nw':''),cx:p.pin[0],cy:p.pin[1],r:i===3?34:26,style:`--k:${k}`,'data-i':i+1}))}
+  const lead=mk('path',{class:'ma-lead',d:`M${p.lp[0]} ${p.lp[1]} L${p.pin[0]} ${p.pin[1]}`,'data-i':i+1});g.appendChild(lead)});
+ W.forEach(([a,b,t,bend],j)=>{const A_=P[a].pin,B_=P[b].pin,mx=(A_[0]+B_[0])/2,my=(A_[1]+B_[1])/2,dx=B_[0]-A_[0],dy=B_[1]-A_[1],L=Math.hypot(dx,dy)||1,cx=mx-dy/L*bend*2,cy=my+dx/L*bend*2;
+  const w=mk('path',{class:'ma-wire '+t,d:`M${A_[0]} ${A_[1]} Q${cx} ${cy} ${B_[0]} ${B_[1]}`,style:`--k:${j}`,'data-a':a,'data-b':b});g.appendChild(w)});
+ R.forEach((r,i)=>{const p=P[r.id],[lx,ly]=pc(...p.pin),[tx,ty]=pc(...p.tag);
+  const pin=document.createElement('button');pin.type='button';pin.className='ma-pin '+r.tm;pin.dataset.i=i+1;pin.style.cssText=`left:${lx};top:${ly};--k:${i}`;pin.textContent=i+1;pin.setAttribute('aria-label',r.name);
+  const tag=document.createElement('button');tag.type='button';tag.className='ma-tag '+r.tm;tag.dataset.i=i+1;tag.style.cssText=`left:${tx};top:${ty};--k:${i}`;tag.innerHTML=`${r.tag}<i>${p.ti}</i>`;
+  marks.append(pin,tag);
+  const li=document.createElement('li');li.innerHTML=`<button type="button" data-i="${i+1}"><i class="${r.tm}">${i+1}</i><div><b>${r.name}</b><span>${r.sub}</span></div></button>`;list.appendChild(li)});
+ marks.addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(!b)return;b.blur();const i=+b.dataset.i;selA(A.sel===i?0:i)});
+ list.addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(!b)return;b.blur();const i=+b.dataset.i;selA(A.sel===i?0:i)});
+}
+function selA(n){A.sel=n;
+ $$('.ma-pin,.ma-tag',ov).forEach(e=>e.classList.toggle('on',+e.dataset.i===n));
+ $$('.ma-deep,.ma-lead',ov).forEach(e=>e.classList.toggle('on',+e.dataset.i===n));
+ const id=n?R[n-1].id:null;
+ $$('.ma-wire',ov).forEach(w=>w.classList.toggle('on',!!id&&(w.dataset.a===id||w.dataset.b===id)));
+ $$('button[data-i]',list).forEach(b=>b.classList.toggle('on',+b.dataset.i===n));
+ zoom.classList.toggle('focus',n>0);zoom.classList.toggle('f0',n===0);
+ if(n){const p=P[R[n-1].id].pin;zoom.style.setProperty('--zo','50% 50%');zoom.style.setProperty('--z',1.06)}else{zoom.style.setProperty('--z',1)}
+ if(!n){card.innerHTML=`<span class="ct">Visão geral</span><h4>Cinco regiões, uma só mudança</h4><p>Clique numa região, na lista ou use <b>→</b>. As laranjas puxam para <b>o novo</b>; as azuis, para <b>o conhecido</b>.</p><div class="lg"><span><i style="background:var(--orange-400)"></i>o novo</span><span><i style="background:var(--steel-200)"></i>o conhecido</span></div>`}
+ else{const r=R[n-1];card.innerHTML=`<span class="ct">Voz ${n} de ${R.length} · ${r.where||''}</span><h4>${r.name}</h4><q>${r.q}</q><p>${r.papel}</p>`}
+ if(n)tone(560+n*70,.09,'sine',.05)}
+const CAPS=[[0,'1 · Superfície'],[2.9,'2 · Músculos e vasos'],[5.6,'3 · Crânio'],[8.2,'4 · O cérebro']];
+function showCap(t){const c=[...CAPS].reverse().find(x=>t>=x[0]);if(c&&cap.textContent!==c[1])cap.textContent=c[1]}
+function ready(){if(A.ready)return;A.ready=true;ov.classList.add('ready');cap.textContent='Córtex · cinco regiões';selA(0)}
+vid.addEventListener('timeupdate',()=>{if(!A.ready)showCap(vid.currentTime)});
+vid.addEventListener('ended',ready);
+function play(){A.ready=false;ov.classList.remove('ready');zoom.classList.remove('focus');zoom.style.setProperty('--z',1);selA(0);cap.textContent=CAPS[0][1];try{vid.currentTime=0}catch(e){}const p=vid.play();if(p&&p.catch)p.catch(()=>ready())}
+function skip(){try{vid.pause();vid.currentTime=Math.max(0,(vid.duration||12.4)-0.04)}catch(e){}ready()}
+function openA(){build();if(A.open)return;A.open=true;ov.classList.add('on');ov.removeAttribute('inert');ov.setAttribute('aria-hidden','false');btn.setAttribute('aria-expanded','true');btn.querySelector('span').textContent='Fechar anatomia';play();tone(420,.18,'triangle',.07,760)}
+function closeA(quiet){if(!A.open)return;A.open=false;ov.classList.remove('on');ov.setAttribute('inert','');ov.setAttribute('aria-hidden','true');btn.setAttribute('aria-expanded','false');btn.querySelector('span').textContent='Anatomia · Córtex';try{vid.pause()}catch(e){}if(!quiet)tone(500,.14,'triangle',.06,300)}
+btn.addEventListener('click',()=>{btn.blur();A.open?closeA():openA()});
+$('#maX',SEC).addEventListener('click',()=>closeA());
+$('#maSkip',SEC).addEventListener('click',e=>{e.currentTarget.blur();skip()});
+$('#maReplay',SEC).addEventListener('click',e=>{e.currentTarget.blur();play()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&A.open)closeA()});
+// ganchos: o slide passa a delegar passos/saída para a anatomia quando ela está aberta
+window.__muAnat={open:()=>A.open,step(d){if(!A.open)return false;if(!A.ready){if(d>0)skip();return true}const n=A.sel+d;if(n<0||n>R.length){closeA();return true}selA(n);return true},close:closeA};
+})();
 })();
 </script>
 <script>/* ===== 02-exercicio ===== */

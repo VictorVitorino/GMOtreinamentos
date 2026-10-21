@@ -15,7 +15,7 @@ import base64, pathlib, re, sys
 
 here = pathlib.Path(__file__).parent
 src = here / 'src'
-MIME = {'.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml'}
+MIME = {'.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.mp4': 'video/mp4', '.webm': 'video/webm'}
 
 
 def assemble():

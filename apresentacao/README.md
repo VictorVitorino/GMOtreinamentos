@@ -8,6 +8,7 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 |---|---|---|
 | — | **Capa** · metamorfose low-poly | lagarta → casulo → borboleta, que bate as asas e **voa para fora da tela**; o ciclo recomeça sozinho. Chip discreto no canto superior direito avança os estágios; o cursor desloca os fragmentos |
 | 01 | **Mudança** · o que acontece no cérebro | mapa ilustrativo das "vozes" (pré-frontal, cingulado, amígdala, gânglios da base, dopamina) e o cabo de guerra entre mudar e ficar como está |
+| 01+ | **Anatomia · Córtex** (botão no cabeçalho do 01) | vídeo da anatomia (rosto → crânio → cérebro) que para no cérebro inteiro e ganha moldura no pré-frontal, regiões profundas em transparência e fios entre as 5 "vozes"; `→` percorre as regiões, `Esc` fecha |
 | 02 | **Exercício** · a sala bagunçada | arraste e gire os objetos, "🎲 Bagunçar mais", slider **antes/depois** revelando a sala arrumada, processo Ver → Sentir → Decidir → Agir → Repetir e o card **💡 Curiosidade** ("de fora para dentro ou de dentro para fora?") com votação da turma |
 | 03 | **Gestão da Mudança** · mudar é um evento, sustentar é gestão | GESTÃO + MUDANÇA com etimologia, curva com × sem gestão (efeito sanfona) e por que a GMO importa |
 | 04 | **História** · da força ao método | duas raias (o que mudou × como foi conduzida), faixa de atrito e o paralelo **sem método × com método** em cada marco |
