@@ -159,7 +159,7 @@ const tags=g=>(g||[]).map(t=>t.startsWith('x:')?`<span class="x">faltou: ${t.sli
 function meter(f){const W=q('#hxMt');W.innerHTML=Array.from({length:10},(_,j)=>`<i style="${j<Math.round(f*10)?'background:'+col(f)+';box-shadow:0 0 8px '+col(f):''}"></i>`).join('');
  q('#hxMv').textContent=f>=.8?'alto':f>=.6?'médio-alto':f>=.4?'médio':'baixo';q('#hxMv').style.color=col(Math.max(f,.35))}
 function anim(){qa('.hx-det .hx-sw').forEach((el,j)=>{el.classList.remove('swap','d1','d2','d3');void el.offsetWidth;el.classList.add('swap','d'+Math.min(3,j))})}
-function sel(i,quiet,instant){idx=i;const fin=i===N;det.classList.toggle('fin',fin);q('#hxFin').setAttribute('aria-hidden',!fin);
+function sel(i,quiet,instant){idx=i;const fin=i===N;det.classList.toggle('fin',fin);
  chips.forEach((c,j)=>c.classList.toggle('on',j===i));nodes.forEach((n,j)=>{n.classList.toggle('on',j===i);n.classList.toggle('past',j<i)});
  stems().forEach(s=>s.classList.toggle('on',+s.dataset.i===i));
  spanB.classList.toggle('lit',fin);
@@ -176,7 +176,7 @@ function sel(i,quiet,instant){idx=i;const fin=i===N;det.classList.toggle('fin',f
 DECK.register('tempo',{
  enter(){setFlt('all',true);sel(0,true,true)},
  leave(){cancelAnimationFrame(raf);isa.classList.remove('walk','hop');setFlt('all',true)},
- step(d){const n=idx+d;if(n<0||n>N)return false;sel(n);return true}
+ step(d){const n=idx+d;if(n<0||n>=N)return false;sel(n);return true}
 });
 sel(0,true,true);
 })();
