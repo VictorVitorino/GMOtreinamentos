@@ -79,14 +79,14 @@ const M=[
   n:'39%',nk:'dos adultos de 18 a 64 anos nos EUA já usavam IA generativa em ago/2024, menos de 2 anos depois do ChatGPT.',
   s:'Bick, Blandin & Deming (2024), NBER w32966 · BCG (out/2024)',
   les:'Adotar a ferramenta não é capturar valor: o resto é gestão da mudança.'},
- {l:1,k:'abr',kl:'Previsão',ic:'fly',f:.38,y:'Futuro?',yy:'Futuro · hipótese',nm:'Carro<br>voador',
-  t:'Carro voador: o futuro já tem roteiro',
-  w:'Ninguém sabe se, nem quando, o carro voador vai fazer parte do dia a dia. Mas a história mostra o que decide se uma tecnologia assim é adotada ou rejeitada.',
-  a:{h:'Sem método',t:'um cenário',p:'Lançam o veículo e esperam a adoção: sem regras claras, sem treinamento e sem confiança. Cada cidade improvisa e o medo cresce.',g:["só tecnologia","regra improvisada","medo"]},
-  b:{h:'Com método',t:'o outro cenário',p:'Preparam as pessoas antes: regras e rotas claras, treinamento e certificação, pilotos em pequena escala, comunicação aberta e reforço do uso seguro.',g:["regras claras","treinamento","piloto pequeno","confiança"]},on:'',
+ {l:1,k:'abr',kl:'Previsão',ic:'fly',f:.38,y:'Futuro?',yy:'Futuro · hipótese',nm:'Carro voador<br>(Elon Musk)',
+  t:'Carro voador de Musk: quem ensina a voar?',
+  w:'Elon Musk já falou em um carro capaz de voar, ainda sem data confirmada. Se vier, teremos autoescola aérea? Faixas no céu? Trânsito em três dimensões? Quem decide?',
+  a:{h:'Sem método',t:'um cenário',p:'O carro chega e cada um aprende sozinho: sem habilitação, sem faixas no céu e sem regra de trânsito. Congestionamento em 3D, medo e acidentes.',g:["sem autoescola","sem faixas","trânsito em 3D"]},
+  b:{h:'Com método',t:'o outro cenário',p:'Autoescola e habilitação para pilotar, corredores aéreos como faixas, sinalização, regras claras, testes em escala pequena e diálogo aberto com a população.',g:["autoescola aérea","faixas no céu","regras claras"]},on:'',
   n:'Hipótese',nt:1,nk:'um exercício para discutir, não um fato: vale o que a história já mostrou nos outros marcos.',
   s:'Hipótese ilustrativa do treinamento, sem dado',
-  les:'A tecnologia chega rápido; a confiança chega com método.'}
+  les:'A tecnologia chega rápido; autoescola, faixas e confiança chegam com método.'}
 ];
 
 /* ---------- geometria (px do palco; .hx-tl tem 1520 × 330) ---------- */

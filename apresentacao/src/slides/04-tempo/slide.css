@@ -120,7 +120,7 @@
 .hx .hx-id p{margin-top:10px;font-size:15px;line-height:1.5;color:var(--steel-200)}
 
 .hx .hx-par{min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}
-.hx .hx-sides{position:relative;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hx .hx-sides{position:relative;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
 .hx .hx-side{min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px 18px;border-radius:16px;transition:opacity .4s,box-shadow .4s,border-color .4s}
 .hx .hx-side.a{background:linear-gradient(160deg,rgba(228,80,42,.17),rgba(228,80,42,.04));border:1px solid rgba(255,120,80,.26)}
 .hx .hx-side.b{background:linear-gradient(160deg,rgba(42,90,150,.48),rgba(11,37,69,.55));border:1px solid rgba(163,184,214,.22)}
