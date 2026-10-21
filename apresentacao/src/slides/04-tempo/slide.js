@@ -85,7 +85,7 @@ const M=[
 const N=M.length, X0=196, X1=1468, AX=204, RX0=150, RX1=1514, D=(X1-X0)/(N-1);
 const XS=M.map((_,i)=>X0+i*D), F=M.map(m=>m.f);
 function fAt(x){if(x<=XS[0])return F[0];if(x>=XS[N-1])return F[N-1];const i=Math.min(N-2,Math.floor((x-X0)/D)),t=(x-XS[i])/D,s=(1-Math.cos(Math.PI*t))/2;return F[i]+(F[i+1]-F[i])*s}
-function hAt(x){const hb=5+18*fAt(x),d=Math.min(x-RX0,RX1-x);if(d>=hb)return hb;const t=Math.max(0,d/hb);return Math.max(.6,hb*Math.sqrt(1-(1-t)*(1-t)))}
+function hAt(x){const hb=3.5,d=Math.min(x-RX0,RX1-x);if(d>=hb)return hb;const t=Math.max(0,d/hb);return Math.max(.6,hb*Math.sqrt(1-(1-t)*(1-t)))}
 /* cor do atrito: navy calmo → laranja → vermelho-alaranjado intenso */
 const RAMP=[[0,[42,90,150]],[.3,[74,111,165]],[.5,[163,128,140]],[.66,[242,138,76]],[.82,[242,107,33]],[1,[226,66,34]]];
 function col(f){for(let i=1;i<RAMP.length;i++)if(f<=RAMP[i][0]){const [a,ca]=RAMP[i-1],[b,cb]=RAMP[i],t=(f-a)/(b-a);return 'rgb('+ca.map((v,j)=>Math.round(v+(cb[j]-v)*t)).join(',')+')'}return 'rgb(226,66,34)'}
