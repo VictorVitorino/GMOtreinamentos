@@ -41,7 +41,7 @@ const MSG=[
  'O alarme puxa para trás: <em>incerteza parece ameaça</em>.',
  'Sob estresse, podemos voltar ao <em>piloto automático</em>.',
  'Pequenas vitórias trazem <em>o novo</em> de volta ao jogo.',
- 'Com gestão, <em>o novo ganha força</em>: mudança se conduz.'
+ 'Com gestão, <em>o novo ganha força</em>: a mudança se conduz.'
 ];
 const N=R.length, LAST=N+1;
 const grid=$('.mu-grid',SEC), brain=$('.mu-brain',SEC), pins=$('.mu-pins',SEC), say=$('.mu-say',SEC), pc=$('.mu-pc',SEC),

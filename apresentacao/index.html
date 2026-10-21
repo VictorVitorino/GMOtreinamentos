@@ -212,6 +212,8 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .slide[data-id="mudanca"] .mu-way .n.f i{border-color:var(--orange-400);background:var(--orange-500);box-shadow:0 0 0 4px rgba(242,107,33,.2),0 0 14px rgba(242,107,33,.6)}
 .slide[data-id="mudanca"] .mu-way .n b{font-size:13px;font-weight:700;color:#fff}
 .slide[data-id="mudanca"] .mu-way .n span{font-family:var(--fm);font-size:9.5px;letter-spacing:.04em;color:var(--steel-300);margin-top:2px}
+.slide[data-id="mudanca"] .mu-way .n span em{display:block;font-style:normal;color:var(--steel-400);opacity:.85}
+.slide[data-id="mudanca"] .mu-way .n.f span em{color:var(--orange-400);opacity:1}
 .slide[data-id="mudanca"] .mu-lb2{margin-top:13px}
 .slide[data-id="mudanca"] .mu-chips{display:grid;grid-template-columns:repeat(2,max-content);gap:6px;margin-top:8px}
 .slide[data-id="mudanca"] .mu-chips span{height:24px;display:inline-flex;align-items:center;justify-content:center;padding:0 10px;border-radius:99px;font-size:11.5px;font-weight:600;color:var(--steel-100);background:rgba(255,255,255,.06);border:1px solid rgba(163,184,214,.2)}
@@ -1003,6 +1005,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .hx .hx-flt i{width:8px;height:8px;border-radius:50%;flex:none}
 .hx .d-sem{background:var(--hx-hot)}
 .hx .d-com{background:var(--orange-400);box-shadow:0 0 0 2px var(--navy-500)}
+.hx .hd-r{gap:9px} /* hd-r com 67px: não empurra o título (alinhamento com os outros slides) */
 .hx #hxHint{height:20px}
 .hx #hxHint kbd{margin-left:2px}
 
@@ -1319,21 +1322,20 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .tb .handle{position:absolute;left:50%;top:-34px;width:120px;height:44px;margin-left:-60px;border:12px solid var(--navy-800);border-bottom:0;border-radius:30px 30px 0 0}
 .tb .ttxt{position:absolute;left:0;right:0;top:100%;margin-top:40px;text-align:center;white-space:nowrap}
 .tb .ttxt b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;color:#fff}
-.tb .ttxt span{font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300)}
-.tb .ttxt .beacon{margin-right:10px;vertical-align:1px}
 .tb:hover .lid{transform:rotate(-6deg)}
 .tb .close-x{position:absolute;right:100%;top:50%;margin-right:40px;transform:translateY(-50%);display:none;white-space:nowrap;height:84px;padding:0 34px;border-radius:99px;background:#fff;color:var(--navy-800);font-weight:800;font-size:44px;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
-.tk.open .tb{transform:translate(700px,-337px) scale(.3)}
-.tk.open .tb .lid{transform:rotate(-24deg) translate(-10px,-34px)}
+.tk.open .tb{transform:translate(700px,-312px) scale(.3)}
+.tk.open .tb .lid{transform:rotate(-12deg) translate(-6px,-14px)}
+.tk.open .tb .shadow{opacity:.5}
 .tk.open .tb .inside{opacity:1}
 .tk.open .tb .ttxt{display:none}
 .tk.open .tb .close-x{display:inline-flex}
-.tk.open .tb:hover{transform:translate(700px,-337px) scale(.34)}
+.tk.open .tb:hover{transform:translate(700px,-312px) scale(.32)}
 .burst{position:absolute;left:800px;top:400px;z-index:4;pointer-events:none}
 .burst i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--orange-400);opacity:0}
 .burst.go i{animation:spark .9s var(--ease) forwards;animation-delay:calc(var(--i)*8ms)}
 @keyframes spark{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.3)}}
-.mcard{position:absolute;top:178px;width:352px;height:574px;border-radius:20px;background:#fff;color:var(--navy-900);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translate(var(--bx),var(--by)) scale(.1);z-index:3;display:flex;flex-direction:column;transition:box-shadow .3s,filter .3s}
+.mcard{position:absolute;top:196px;width:352px;height:578px;border-radius:20px;background:#fff;color:var(--navy-900);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translate(var(--bx),var(--by)) scale(.1);z-index:3;display:flex;flex-direction:column;transition:box-shadow .3s,filter .3s}
 .tk.open .mcard{pointer-events:auto}
 .tk.opening .mcard{animation:flyOut 1.15s var(--spring) both;animation-delay:calc(var(--i)*130ms + 280ms)}
 .tk.open:not(.opening) .mcard{opacity:1;transform:none}
@@ -1342,14 +1344,13 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 @keyframes flyIn{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(var(--bx2),var(--by2)) scale(.06) rotate(var(--r))}}
 .mcard:hover{box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 3px var(--mc)}
 .tk.focus .mcard{filter:saturate(.4) brightness(.55)}
-.tk.focus .mcard.f{filter:none;transform:translateY(-8px) scale(1.03)!important;z-index:6;box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 3px var(--mc),0 0 40px rgba(242,107,33,.35)}
-.mc-h{position:relative;padding:18px 20px 16px;background:var(--mc);color:#fff;flex:none;overflow:hidden}
-.mc-h::before{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.08)}
-.mc-h .no{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
-.mc-h h3{font-size:46px;font-weight:800;letter-spacing:-.04em;line-height:1;margin-top:6px}
-.mc-h .full{font-size:13px;font-weight:600;line-height:1.3;margin-top:6px;opacity:.92}
-.mc-h .ic{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.14);display:grid;place-items:center}
-.mc-h .ic svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tk.focus .mcard.f{filter:none;transform-origin:50% 0;transform:scale(1.02)!important;z-index:6;box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 3px var(--mc),0 0 40px rgba(242,107,33,.35)}
+.mc-h{position:relative;padding:20px 20px 14px;background:linear-gradient(180deg,color-mix(in srgb,var(--mc) 9%,#fff),#fff);color:var(--navy-900);flex:none;overflow:hidden;border-top:5px solid var(--mc);border-bottom:1px solid var(--line)}
+.mc-h .no{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mc)}
+.mc-h h3{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1;margin-top:6px;color:var(--navy-900)}
+.mc-h .full{font-size:13px;font-weight:600;line-height:1.3;margin-top:6px;color:var(--grey-700)}
+.mc-h .ic{position:absolute;right:18px;top:18px;width:42px;height:42px;border-radius:12px;background:color-mix(in srgb,var(--mc) 12%,#fff);display:grid;place-items:center}
+.mc-h .ic svg{width:22px;height:22px;fill:none;stroke:var(--mc);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .mc-b{flex:1;padding:14px 18px 14px;display:flex;flex-direction:column;gap:10px;min-height:0}
 .mc-b .orig{display:flex;gap:8px;flex-wrap:wrap}
 .mc-b .orig span{font-family:var(--fm);font-size:9.5px;letter-spacing:.06em;padding:4px 8px;border-radius:6px;background:var(--surface-2);color:var(--grey-700);white-space:nowrap}
@@ -1359,7 +1360,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .steps8 div{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--navy-800);padding:5px 8px;border-radius:8px;background:var(--off);border:1px solid var(--line)}
 .steps8 div i{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-family:var(--fm);font-size:10.5px;color:#fff;background:var(--navy-800)}
 .steps8 .g2 i{background:var(--steel-500)}.steps8 .g3 i{background:var(--orange-500)}
-.phases{display:flex;gap:6px;font-family:var(--fm);font-size:9px;letter-spacing:.06em;color:var(--grey-500)}
+.phases{display:flex;gap:6px;font-family:var(--fm);font-size:10px;letter-spacing:.04em;color:var(--grey-700)}
 .phases span{flex:1;padding-top:5px;border-top:3px solid var(--navy-800)}
 .phases span:nth-child(2){border-color:var(--steel-500)}.phases span:nth-child(3){border-color:var(--orange-500)}
 .adkar{display:flex;flex-direction:column;gap:5px}
@@ -1372,6 +1373,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .hcm{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .hcm div{font-size:12px;line-height:1.3;font-weight:600;color:var(--navy-800);padding:8px 10px;border-radius:10px;background:var(--steel-100);border:1px solid var(--steel-200)}
 .hcm div small{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.1em;color:var(--steel-600);font-weight:500;text-transform:uppercase;margin-bottom:2px}
+.hcm div small{font-size:9.5px}
 .lifecyc{display:flex;align-items:center;gap:4px;font-family:var(--fm);font-size:9.5px;color:var(--steel-600);white-space:nowrap}
 .lifecyc span{padding:4px 7px;border-radius:6px;background:var(--surface-2)}
 .lifecyc i{flex:1;height:2px;background:var(--steel-300)}
@@ -1387,8 +1389,18 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .mc-f .foc{font-family:var(--fm);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500)}
 .mc-f .foc b{color:var(--navy-800)}
 .mc-f .lvl{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:#fff;padding:5px 10px;border-radius:99px;background:var(--mc)}
-.tk-hint{position:absolute;left:0;right:0;bottom:62px;text-align:center;z-index:2;transition:opacity .3s}
-.tk.open .tk-hint{opacity:0}
+/* cabeçalho: dica à direita, sem colidir com a caixa recolhida no canto */
+.s4 .hd-r{transition:padding .5s var(--ease)}
+.s4.cx-open .hd-r{padding-right:250px}
+.s4 .hint kbd{margin-left:2px}
+/* lição + Isabella (aparece com a caixa aberta) */
+.cx-les{position:absolute;left:66px;right:66px;top:790px;height:52px;display:flex;align-items:center;gap:14px;padding:0 18px 0 8px;border-left:3px solid var(--orange-500);border-radius:0 14px 14px 0;background:rgba(242,107,33,.09);opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none;z-index:2}
+.tk.open:not(.opening):not(.closing) .cx-les{opacity:1;transform:none}
+.cx-isa{flex:none;position:relative;width:40px;height:40px;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 0 0 2px var(--orange-400)}
+.cx-isa img{position:absolute;width:92px;left:-26px;top:-1px;max-width:none}
+.cx-les .who{flex:none;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-200)}
+.cx-les b{font-size:17px;line-height:1.3;font-weight:700;color:#fff}
+.cx-les b em{font-style:normal;color:var(--orange-400)}
 
 /* ===== 07-onde ===== */
 /* =====================================================================
@@ -1667,7 +1679,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
   <div class="cv-title">
     <span class="cv-eye" data-a="fade" style="--d:1">Alvarez &amp; Marsal · DTS · Treinamento</span>
     <b class="cv-h"><span class="kw" style="--k:1"><span>Gestão de</span></span><br><span class="kw" style="--k:3"><span>Mudanças</span></span></b>
-    <span class="cv-sub" data-a="up" style="--d:7">Uma abordagem entusiasta à mudança.</span>
+    <span class="cv-sub" data-a="up" style="--d:7">Um jeito entusiasmado de conduzir a mudança.</span>
   </div>
   <div class="cv-read" data-a="fade" style="--d:9" role="group" aria-label="Metamorfose">
     <button type="button" class="cv-st on" data-s="0" title="Lagarta · estado atual">lagarta</button><i>·</i>
@@ -1698,9 +1710,9 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
             <div class="mu-word"><b>mudar</b><span>do latim <i>mutare</i>: trocar</span></div>
             <p>Mudança é a passagem de um <b>estado atual</b> para um <b>estado futuro</b>. No meio do caminho, existe uma <b>transição</b>.</p>
             <div class="mu-way"><em class="ln"><s></s></em>
-              <div class="n a"><i></i><b>Hoje</b><span>estado atual</span></div>
-              <div class="n t"><i></i><b>Transição</b><span>meio do caminho</span></div>
-              <div class="n f"><i></i><b>Amanhã</b><span>estado futuro</span></div>
+              <div class="n a"><i></i><b>Hoje</b><span>estado atual<em>lagarta</em></span></div>
+              <div class="n t"><i></i><b>Transição</b><span>meio do caminho<em>casulo</em></span></div>
+              <div class="n f"><i></i><b>Amanhã</b><span>estado futuro<em>borboleta</em></span></div>
             </div>
             <span class="label mu-lb2">Acontece o tempo todo</span>
             <div class="mu-chips"><span>Tecnologia</span><span>Processos</span><span>Estrutura</span><span>Vida pessoal</span></div>
@@ -1781,7 +1793,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 <!-- ===== 02-exercicio ===== -->
 <!-- ===================================================== 02 · EXERCÍCIO -->
 <section data-id="exercicio" class="slide" data-t="Exercício: a sala bagunçada" data-rail="Exercício" data-src="Kotter &amp; Cohen, The Heart of Change (2002): ver → sentir → mudar, em vez de analisar → pensar → mudar (tradução livre) · Miller &amp; Cohen (2001): córtex pré-frontal, metas e plano · Seeley et al. (2007): rede de saliência (cingulado anterior + ínsula) · Yin &amp; Knowlton (2006): gânglios da base e hábitos · Lally et al. (2010), 96 voluntários: mediana de 66 dias (18 a 254) para um hábito ficar automático, estimada por modelo no subgrupo com bom ajuste · NINDS, Brain Basics. Sequência Ver → Sentir → Decidir → Agir → Repetir: síntese didática do curso. Sala e mapa do cérebro: ilustrativos. · Curiosidade: Skinner (1953), Science and Human Behavior: antecedentes e consequências · Beck &amp; Haigh (2014), Annual Review of Clinical Psychology 10, e Beck Institute: modelo cognitivo · Padesky &amp; Greenberger (2020), Clinician’s Guide to CBT Using Mind Over Mood: as cinco áreas interagem · Bem (1972), Advances in Experimental Social Psychology 6: autopercepção, quando os sinais internos são fracos ou ambíguos. Hipóteses A e B: leitura didática (em Beck, o “dentro” é sobretudo pensamento e crença).">
-  <template class="info"><p>Exercício lúdico: uma sala bagunçada e <b>editável</b>. Arraste qualquer objeto (até o cachorro e o gato) e gire com a <b>roda do mouse</b> ou <b>duplo clique</b> (15° por vez). <b>Bagunçar mais</b> embaralha, <b>Original</b> volta à bagunça inicial e <b>Comparar antes/depois</b> abre o slider da sala arrumada.</p><p>Com <b>→</b>: 1) Ver · 2) Sentir · 3) comparação com varredura · 4) Decidir e Agir · 5) Repetir e frase final · 6) <b>Curiosidade</b>: de fora para dentro ou de dentro para fora? A turma vota com a mão e você registra com <b>+1</b> · 7) a resposta (<b>as duas, é um ciclo</b>) e a ponte para a Gestão. O chip <b>💡 Curiosidade</b> abre o cartão a qualquer momento; <b>Esc</b> ou <b>×</b> fecha.</p><p>O painel mostra o cérebro em cada etapa (síntese didática; mapa ilustrativo), ancorado em Kotter &amp; Cohen. A Isabella faz uma pergunta ao público a cada passo.</p></template>
+  <template class="info"><p>Exercício lúdico: uma sala bagunçada e <b>editável</b>. Arraste qualquer objeto (até o cachorro e o gato) e gire com a <b>roda do mouse</b> ou <b>duplo clique</b> (15° por vez). <b>Bagunçar mais</b> embaralha, <b>Original</b> volta à bagunça inicial e <b>Comparar antes/depois</b> abre o slider da sala arrumada.</p><p>Com <b>→</b>: 1) Ver · 2) Sentir · 3) comparação com varredura · 4) Decidir e Agir · 5) Repetir e frase final · 6) <b>Curiosidade</b>: de fora para dentro ou de dentro para fora? A turma vota com a mão e você registra com <b>+1</b> · 7) a resposta (<b>as duas, é um ciclo</b>), a base científica de cada hipótese (Skinner e Beck) e a ponte para a Gestão. O chip <b>💡 Curiosidade</b> abre o cartão a qualquer momento; <b>Esc</b> ou <b>×</b> fecha.</p><p>O painel mostra o cérebro em cada etapa (síntese didática; mapa ilustrativo), ancorado em Kotter &amp; Cohen. A Isabella faz uma pergunta ao público a cada passo.</p></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
@@ -2021,12 +2033,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 04-tempo ===== -->
 <!-- ===================================================== 04 · HISTÓRIA DA MUDANÇA -->
-<section data-id="tempo" class="slide stage hx" data-t="História da mudança" data-rail="História" data-src="Faixa de atrito ilustrativa e eixo de anos fora de escala. Dittmar (2011), Quarterly Journal of Economics; Schwartz (2017) · Smithsonian (Conniff, 2011) · David (1990), American Economic Review · Fiocruz, Sevcenko e Revista Pesquisa FAPESP (vacinação) · The Henry Ford; Raff &amp; Summers (1987) · Lewin (1947); Cummings, Bridgman &amp; Brown (2016) · Coch &amp; French (1948), Human Relations · Ryan &amp; Gross (1943); Rogers (1962) · Kotter, HBR (1995); Prosci (ADKAR) · Computerworld (Hershey, 1999–2000) · ACMP (2014) · Banco Central, Relatório de Gestão do Pix (2026) · Bick, Blandin &amp; Deming, NBER (2024); BCG (2024) · Comin &amp; Hobijn (2010), AER.">
+<section data-id="tempo" class="slide stage hx" data-t="História: da força ao método" data-rail="História" data-src="Faixa de atrito ilustrativa e eixo de anos fora de escala. Dittmar (2011), Quarterly Journal of Economics; Schwartz (2017) · Smithsonian (Conniff, 2011) · David (1990), American Economic Review · Fiocruz, Sevcenko e Revista Pesquisa FAPESP (vacinação) · The Henry Ford; Raff &amp; Summers (1987) · Lewin (1947); Cummings, Bridgman &amp; Brown (2016) · Coch &amp; French (1948), Human Relations · Ryan &amp; Gross (1943); Rogers (1962) · Kotter, HBR (1995); Prosci (ADKAR) · Computerworld (Hershey, 1999–2000) · ACMP (2014) · Banco Central, Relatório de Gestão do Pix (2026) · Bick, Blandin &amp; Deming, NBER (2024); BCG (2024) · Comin &amp; Hobijn (2010), AER.">
   <template class="info"><p>A mudança sempre existiu; o que evoluiu foi o jeito de conduzi-la. Na raia de cima, grandes mudanças da história, marcadas como <b>sem método</b> (força, decreto ou acaso) ou <b>com método</b> (participação, comunicação, patrocínio e reforço). Na de baixo, como aprendemos a conduzi-las: de Lewin (1943) aos métodos (1994–96) e à profissão (2014). A faixa do meio é <b>ilustrativa</b> (atrito: custo, tempo e resistência) e o eixo de anos não está em escala. Use <b>→</b> para percorrer os 14 marcos e o fecho, clique em qualquer marco ou use <b>Sem método / Com método</b> para destacar cada lado.</p><p>Ressalvas honestas: a adoção também ficou mais rápida por causa da tecnologia, da renda e dos efeitos de rede (Comin &amp; Hobijn, 2010: em média 45 anos entre a invenção e a adoção, menos para tecnologias novas). O que a história mostra é que, com a mesma tecnologia, quem conduz as pessoas colhe o resultado antes. A Revolta da Vacina teve outras causas (reforma urbana, demolição de cortiços, tentativa de golpe); na eletrificação, custos afundados também pesaram; o modelo de 3 etapas é <i>atribuído</i> a Lewin e foi consolidado por outros autores.</p></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow" data-a="fade">04 · História da mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Da força ao método:</span></span> <span class="kw" style="--k:3"><span class="hl">a evolução da mudança</span></span></h2></div>
+      <div><div class="eyebrow" data-a="fade">04 · História da mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Da força ao método:</span></span> <span class="kw" style="--k:3"><span class="hl">a evolução da gestão da mudança.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4">
         <div class="hx-flt" role="group" aria-label="Destacar marcos">
           <button type="button" data-f="all" class="on">Tudo</button>
@@ -2104,7 +2116,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 05-numeros ===== -->
 <!-- ===================================================== 05 · NÚMEROS -->
-<section data-id="numeros" class="slide n5" data-t="O que os números dizem" data-rail="Números" data-src="Prosci, Best Practices in Change Management, 12ª ed. (2023), 2.668 respondentes, 38 setores, 101 países: projetos que atingiram ou superaram os objetivos, 88% com gestão da mudança excelente × 13% com gestão ruim (≈7×); excelente × ruim também tem quase 5× mais chance de ficar no prazo ou adiantado e quase 1,5× de ficar no orçamento ou abaixo · PMI, Pulse of the Profession: Enabling Organizational Change Through Strategic Initiatives (2014), mais de 2.500 líderes de projetos: 65% das iniciativas estratégicas atingem a meta original nas organizações eficazes em gestão da mudança × 31% nas menos eficazes · McKinsey, The people power of transformations (2017): 3% de sucesso quando a transformação não engajou gerentes de linha nem a linha de frente × 26% e 28% com cada um desses grupos engajado · BCG, It’s Not a Digital Transformation Without a Digital Culture (2018), cerca de 40 transformações digitais: 90% × 17% com desempenho financeiro forte ou excepcional, com e sem foco em cultura · Balas &amp; Boren, Yearbook of Medical Informatics (2000): ~17 anos da pesquisa à prática clínica, a estimativa mais citada; Morris, Wooding &amp; Grant, J R Soc Med (2011), mostram que o número varia conforme o trecho medido · Banco Central do Brasil (Pix): cadastro de chaves a partir de 5/out/2020, lançamento em 16/nov/2020 · BCG, regra 10-20-70 para IA: 10% algoritmos, 20% tecnologia e dados, 70% pessoas e processos (diretriz de esforço, não resultado medido). Levantamentos autodeclarados, com métricas diferentes: mostram correlação, não causalidade. Multiplicadores ≈2× a ≈9× calculados a partir dos percentuais publicados. Leitura direcional.">
+<section data-id="numeros" class="slide n5" data-t="Números: o que a pesquisa mostra" data-rail="Números" data-src="Prosci, Best Practices in Change Management, 12ª ed. (2023), 2.668 respondentes, 38 setores, 101 países: projetos que atingiram ou superaram os objetivos, 88% com gestão da mudança excelente × 13% com gestão ruim (≈7×); excelente × ruim também tem quase 5× mais chance de ficar no prazo ou adiantado e quase 1,5× de ficar no orçamento ou abaixo · PMI, Pulse of the Profession: Enabling Organizational Change Through Strategic Initiatives (2014), mais de 2.500 líderes de projetos: 65% das iniciativas estratégicas atingem a meta original nas organizações eficazes em gestão da mudança × 31% nas menos eficazes · McKinsey, The people power of transformations (2017): 3% de sucesso quando a transformação não engajou gerentes de linha nem a linha de frente × 26% e 28% com cada um desses grupos engajado · BCG, It’s Not a Digital Transformation Without a Digital Culture (2018), cerca de 40 transformações digitais: 90% × 17% com desempenho financeiro forte ou excepcional, com e sem foco em cultura · Balas &amp; Boren, Yearbook of Medical Informatics (2000): ~17 anos da pesquisa à prática clínica, a estimativa mais citada; Morris, Wooding &amp; Grant, J R Soc Med (2011), mostram que o número varia conforme o trecho medido · Banco Central do Brasil (Pix): cadastro de chaves a partir de 5/out/2020, lançamento em 16/nov/2020 · BCG, regra 10-20-70 para IA: 10% algoritmos, 20% tecnologia e dados, 70% pessoas e processos (diretriz de esforço, não resultado medido). Levantamentos autodeclarados, com métricas diferentes: mostram correlação, não causalidade. Multiplicadores ≈2× a ≈9× calculados a partir dos percentuais publicados. Leitura direcional.">
   <template class="info"><p>O <b>Selo de Adoção</b> resume a Prosci (2023): 88% dos projetos com gestão da mudança excelente atingiram ou superaram os objetivos, contra 13% com gestão ruim, cerca de 7× mais. No anel, o arco laranja é o 88% e o arco azul, encaixado no espaço que sobra, é o 13%.</p><p>Clique em <b>Ligar a Gestão da Mudança</b> (ou <b>→</b>): as quatro barras comparam o resultado sem e com a mudança gerida (Prosci, PMI, McKinsey e BCG), e os chips mostram prazo e orçamento. São estudos com métricas diferentes que apontam na mesma direção: correlação, não garantia.</p></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
@@ -2182,17 +2194,18 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 06-caixa ===== -->
 <!-- ===================================================== 04 · CAIXA DE FERRAMENTAS -->
-<section data-id="caixa" class="slide stage s4" data-t="Abordagens de GMO" data-rail="Ferramentas" data-src="Kotter, “Leading Change: Why Transformation Efforts Fail”, HBR (1995) e Leading Change (1996) · Hiatt, ADKAR (Prosci, 2006) · Gonçalves &amp; Campos, HCMBOK 3ª ed. (HUCMI, 2018) · CMAK: abordagem aplicada orientada a KPIs (metas ilustrativas).">
-  <template class="info"><p>A caixa de ferramentas com as quatro abordagens: <b>Kotter</b> (organização e liderança), <b>ADKAR</b> (cada pessoa), <b>HCMBOK</b> (GMO dentro do projeto) e <b>CMAK</b> (GMO medida por KPIs).</p><p>Clique na caixa (ou <b>→</b>) para abrir; clique num card para destacá-lo; clique na caixa no canto para recolher tudo.</p></template>
+<section data-id="caixa" class="slide stage s4" data-t="Ferramentas: Kotter, ADKAR, HCMBOK e CMAK" data-rail="Ferramentas" data-src="Kotter, “Leading Change: Why Transformation Efforts Fail”, HBR (1995), e livro (1996) · Hiatt, ADKAR (Prosci, 1996; livro 2006) · Gonçalves &amp; Campos, HCMBOK 3ª ed. (HUCMI, 2018) · CMAK: prática de KPIs, sem autor acadêmico.">
+  <template class="info"><p>A caixa de ferramentas com as quatro abordagens: <b>Kotter</b> (lente: organização), <b>ADKAR</b> (lente: pessoa), <b>HCMBOK</b> (lente: projeto) e <b>CMAK</b> (lente: dados, GMO medida por KPIs). O CMAK é uma prática aplicada de medição, não um modelo acadêmico com autor; o painel é ilustrativo.</p><p>Clique na caixa (ou <b>→</b>) para abrir; clique num card para destacá-lo; clique na caixa no canto para recolher tudo.</p></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="hd">
     <div><div class="eyebrow" data-a="fade">06 · Abordagens de Gestão da Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Quatro ferramentas,</span></span> <span class="kw" style="--k:3"><span class="hl">um só objetivo: adoção.</span></span></h2></div>
+    <div class="hd-r" data-a="fade" style="--d:4"><span class="hint" id="cxHint">Clique na caixa para abrir · ou <kbd>→</kbd></span></div>
   </div>
   <div class="tk" id="tk">
     <div class="burst" id="burst"></div>
 
     <article class="mcard" style="--mc:var(--m-kotter);left:66px;--i:0">
-      <div class="mc-h"><span class="no">01 · Organização</span><h3>KOTTER</h3><p class="full">8 Etapas para Liderar a Mudança</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg></span></div>
+      <div class="mc-h"><span class="no">Organização</span><h3>KOTTER</h3><p class="full">8 etapas para liderar a mudança</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg></span></div>
       <div class="mc-b">
         <div class="orig"><span>John P. Kotter · Harvard</span><span>HBR 1995 · livro 1996</span></div>
         <p class="q">A mudança começa no topo: sem senso de urgência e coalizão de líderes, nada se move.</p>
@@ -2205,13 +2218,13 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
         </div>
         <div class="phases"><span>Criar o clima</span><span>Engajar e capacitar</span><span>Implementar e sustentar</span></div>
       </div>
-      <div class="mc-f"><span class="foc">Lente · <b>Liderança</b></span><span class="lvl">Top-down</span></div>
+      <div class="mc-f"><span class="foc">Lente · <b>Organização</b></span><span class="lvl">De cima para baixo</span></div>
     </article>
 
     <article class="mcard" style="--mc:var(--m-adkar);left:438px;--i:1">
-      <div class="mc-h"><span class="no">02 · Indivíduo</span><h3>ADKAR</h3><p class="full">A mudança acontece uma pessoa por vez</p><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c1-4.4 4.2-6.5 8-6.5s7 2.1 8 6.5"/></svg></span></div>
+      <div class="mc-h"><span class="no">Pessoa</span><h3>ADKAR</h3><p class="full">A mudança acontece uma pessoa por vez</p><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c1-4.4 4.2-6.5 8-6.5s7 2.1 8 6.5"/></svg></span></div>
       <div class="mc-b">
-        <div class="orig"><span>Jeff Hiatt · Prosci</span><span>modelo dos anos 1990 · livro 2006</span></div>
+        <div class="orig"><span>Jeff Hiatt · Prosci</span><span>modelo de 1996 · livro 2006</span></div>
         <div class="adkar">
           <div><b>A</b><span><em>Awareness · Consciência</em>Por que precisamos mudar?</span></div>
           <div><b>D</b><span><em>Desire · Desejo</em>Eu quero fazer parte disso.</span></div>
@@ -2221,32 +2234,32 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
         </div>
         <p class="tip"><b>Ponto de barreira:</b> o 1º elemento com nota ≤ 3 (escala 1–5). Treinar quem ainda não tem “D” é desperdício.</p>
       </div>
-      <div class="mc-f"><span class="foc">Lente · <b>Pessoa</b></span><span class="lvl">Bottom-up</span></div>
+      <div class="mc-f"><span class="foc">Lente · <b>Pessoa</b></span><span class="lvl">Pessoa a pessoa</span></div>
     </article>
 
     <article class="mcard" style="--mc:var(--m-hcmbok);left:810px;--i:2">
-      <div class="mc-h"><span class="no">03 · Projeto</span><h3>HCMBOK</h3><p class="full">Human Change Management Body of Knowledge</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg></span></div>
+      <div class="mc-h"><span class="no">Projeto</span><h3>HCMBOK</h3><p class="full">Human Change Management Body of Knowledge</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/></svg></span></div>
       <div class="mc-b">
         <div class="orig"><span>HUCMI · Brasil</span><span>Vicente Gonçalves &amp; Carla Campos</span><span>3ª ed. 2018</span></div>
         <p class="q">O fator humano dentro do projeto: GMO amarrada às fases e entregas, não um anexo.</p>
         <div class="lifecyc"><span>Iniciar</span><i></i><span>Planejar</span><i></i><span>Executar</span><i></i><span>Sustentar</span></div>
-        <span class="lbl">Macroatividades do plano (PEGM)</span>
+        <span class="lbl">Macroatividades do plano de GMO</span>
         <div class="hcm">
           <div><small>Patrocínio</small>Patrocinador definido e preparado</div>
           <div><small>Liderança</small>Alinhamento e mobilização</div>
           <div><small>Identidade</small>Propósito e marca do projeto</div>
           <div><small>Cultura</small>Avaliação da cultura</div>
           <div><small>Governança</small>Papéis (RACI) e estrutura</div>
-          <div><small>CMO</small>Escritório de Gestão da Mudança</div>
+          <div><small>Escritório</small>Escritório de gestão da mudança (CMO)</div>
         </div>
       </div>
       <div class="mc-f"><span class="foc">Lente · <b>Projeto</b></span><span class="lvl">Integrado ao PMO</span></div>
     </article>
 
     <article class="mcard" style="--mc:var(--m-cmak);left:1182px;--i:3">
-      <div class="mc-h"><span class="no">04 · Evidência</span><h3>CMAK</h3><p class="full">Change Management Applicable by KPI</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span></div>
+      <div class="mc-h"><span class="no">Dados</span><h3>CMAK</h3><p class="full">Change Management Applicable by KPI</p><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span></div>
       <div class="mc-b">
-        <div class="orig"><span>Abordagem aplicada</span><span>orientada a fatos e dados</span></div>
+        <div class="orig"><span>Prática aplicada de medição</span><span>sem autor acadêmico</span></div>
         <p class="q">Cada frente de GMO com meta, métrica e dono: o que não tem número vira opinião.</p>
         <span class="lbl">Painel por frente · meta ▏</span>
         <div class="kpis">
@@ -2265,18 +2278,19 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
     <div class="tb" id="tb" role="button" tabindex="0" aria-label="Abrir a caixa de ferramentas">
       <div class="shadow"></div>
       <div class="inside"></div>
-      <div class="bodyb"><span class="latch l"></span><span class="latch r"></span><span class="plate">GMO · <b>TOOLKIT</b></span><span class="bolts"><i></i><i></i></span></div>
+      <div class="bodyb"><span class="latch l"></span><span class="latch r"></span><span class="plate">GMO · <b>FERRAMENTAS</b></span><span class="bolts"><i></i><i></i></span></div>
       <div class="lid"><span class="handle"></span></div>
-      <div class="ttxt"><b>Caixa de Ferramentas da Mudança</b><span><i class="beacon"></i>Clique para abrir · ou <kbd>→</kbd></span></div>
+      <div class="ttxt"><b>Caixa de ferramentas da mudança</b></div>
       <span class="close-x">✕ Fechar</span>
     </div>
+    <div class="cx-les"><span class="cx-isa"><img src="assets/isabella.webp" alt="Isabella"></span><span class="who">Isabella · Lição</span><b>Cada uma enxerga a mudança de uma altura: organização, pessoa, projeto e dados. <em>O projeto pede a combinação.</em></b></div>
   </div>
   <footer class="foot"><span class="src"></span></footer>
 </section>
 
 <!-- ===== 07-onde ===== -->
 <!-- ===================================================== 07 · ONDE USAR + ENCERRAMENTO -->
-<section data-id="onde" class="slide s5" data-t="Onde cada abordagem brilha" data-rail="Onde usar" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam. · Encerramento: síntese do treinamento (slides 03, 05 e 07); Prosci, Best Practices in Change Management, 12ª ed. (2023): 88% × 13% dos projetos atingem os objetivos com GMO excelente × ruim; metamorfose da capa como metáfora ilustrativa, com base em William Bridges, Managing Transitions (1991).">
+<section data-id="onde" class="slide s5" data-t="Onde usar: qual abordagem para cada desafio" data-rail="Onde usar" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam. · Encerramento: síntese do treinamento (slides 03, 05 e 07); Prosci, Best Practices in Change Management, 12ª ed. (2023): 88% × 13% dos projetos atingem os objetivos com GMO excelente × ruim; metamorfose da capa como metáfora ilustrativa, com base em William Bridges, Managing Transitions (1991).">
   <template class="info"><p>Matriz de aplicabilidade: qual abordagem é protagonista em cada tipo de mudança. As abordagens não competem, se combinam.</p><p>Clique em um cenário para ver a receita e as camadas que acendem, ou use <b>→</b> para percorrer os 7 cenários. O último <b>→</b> abre o <b>encerramento</b>: a volta à borboleta da capa (o voo é a mudança adotada), as três ideias para levar e a pergunta da Isabella para a turma. O botão <b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago; <b>←</b> volta à matriz.</p></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
@@ -2720,8 +2734,12 @@ function draw(dt){x.setTransform(ck,0,0,ck,0,0);x.clearRect(0,0,1600,900);
  const on=sts[stg===4?3:stg];if(on)on.style.setProperty('--p',stg===0?clamp((T-sT0)/DUR.cat):stg===1?clamp((T-sT0)/DUR.chr):stg===2?clamp((T-sT0)/durB):stg===3?tau:1)}
 
 function fit(){const k=Math.min(2,Math.max(1,(window.devicePixelRatio||1)*DECK.scale()));if(Math.abs(k-ck)>.04||cv.width!==Math.round(1600*k)){ck=k;cv.width=Math.round(1600*k);cv.height=Math.round(900*k)}}
-function loop(now){if(!SEC.classList.contains('active')){run=false;return}requestAnimationFrame(loop);const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;T+=dt;tick(dt);draw(dt)}
+// pausa sob a tela preta (B/.) e a Roda (R): nada a desenhar por baixo; retoma quando a camada fecha
+const covered=()=>!!document.querySelector('#blackout.on,#wheel.on');
+function loop(now){if(!SEC.classList.contains('active')||covered()){run=false;return}requestAnimationFrame(loop);const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;T+=dt;tick(dt);draw(dt)}
 function start(){fit();if(!run){run=true;last=performance.now();requestAnimationFrame(loop)}}
+{const mo=new MutationObserver(()=>{if(!run&&SEC.classList.contains('active')&&!covered())start()});
+ for(const id of ['blackout','wheel']){const el=document.getElementById(id);if(el)mo.observe(el,{attributes:true,attributeFilter:['class']})}}
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(run)fit()},150)});
 DECK.register('capa',{
  enter(){D.length=0;stg=4;shape='scat';prev='scat';OX.fill(0);OY.fill(0);WA.fill(0);setStage(0);sT0=T-.3;start()},
@@ -2773,7 +2791,7 @@ const MSG=[
  'O alarme puxa para trás: <em>incerteza parece ameaça</em>.',
  'Sob estresse, podemos voltar ao <em>piloto automático</em>.',
  'Pequenas vitórias trazem <em>o novo</em> de volta ao jogo.',
- 'Com gestão, <em>o novo ganha força</em>: mudança se conduz.'
+ 'Com gestão, <em>o novo ganha força</em>: a mudança se conduz.'
 ];
 const N=R.length, LAST=N+1;
 const grid=$('.mu-grid',SEC), brain=$('.mu-brain',SEC), pins=$('.mu-pins',SEC), say=$('.mu-say',SEC), pc=$('.mu-pc',SEC),
@@ -3554,7 +3572,7 @@ const M=[
   les:'Quem participa da decisão sustenta a mudança.'},
  {l:2,k:'met',ic:'factory',f:.62,y:'1948',yy:'1948',nm:'Coch & French<br>(Harwood)',
   t:'Harwood: mudanças parecidas, dois jeitos',
-  w:'Na fábrica de pijamas Harwood (EUA), Coch e French conduziram mudanças parecidas de método de trabalho de jeitos diferentes.',
+  w:'Na fábrica de pijamas Harwood (EUA), Coch e French conduziram, de jeitos diferentes, mudanças parecidas no método de trabalho.',
   a:{h:'Só informados',t:'sem participação',p:'Receberam a mudança pronta. A produção caiu e não se recuperou, e houve pedidos de demissão.',g:["decisão pronta"]},
   b:{h:'Participaram',t:'participação total',p:'Ajudaram a desenhar o novo método. Recuperaram a produção rapidamente e superaram o nível anterior.',g:["participação", "desenho conjunto"]},on:'b',
   n:'Mudança parecida, resultados opostos',nt:1,nk:'Quem só foi informado não recuperou a produção. Quem participou do desenho superou o nível anterior.',
@@ -3588,7 +3606,7 @@ const M=[
   t:'Hershey: havia método, prevaleceu a pressa',
   w:'Em jul/1999, a Hershey ligou de uma só vez (big bang) um sistema de gestão de US$ 112 milhões, às vésperas do Halloween, sua maior temporada.',
   a:{h:'Sem método',t:'jul/1999',p:'Tudo de uma vez, com cronograma comprimido e sem preparar processos e pessoas, na pior janela do ano. Os pedidos travaram.',g:["big bang", "cronograma comprimido", "pior janela"]},
-  b:{h:'Com método',t:'já existia',p:'Kotter já estava publicado (1996) e a Prosci pesquisava o tema desde 1994. Ter método disponível não basta: é preciso aplicar.',g:["x:implantação gradual"]},on:'a',
+  b:{h:'Com método',t:'já existia',p:'O livro de Kotter já tinha saído (1996) e a Prosci pesquisava o tema desde 1994. Ter método disponível não basta: é preciso aplicar.',g:["x:implantação gradual"]},on:'a',
   n:'−19%',nk:'no lucro do 3º trimestre de 1999, com pedidos de Halloween atrasados e estoques parados nos depósitos.',
   s:'Computerworld (1999–2000)',
   les:'A história não é linear: sem gestão da mudança, o erro se repete.'},
@@ -3604,7 +3622,7 @@ const M=[
   t:'Pix: um país inteiro, preparado com método',
   w:'O Banco Central preparou o Pix por mais de dois anos. Smartphones e gratuidade ajudaram; a preparação garantiu que milhões já tivessem chave no dia do lançamento.',
   a:{h:'O desafio',t:'um país inteiro',p:'Mudar o jeito de pagar de um país inteiro, com centenas de instituições financeiras no mesmo padrão.',g:["escala nacional", "centenas de instituições"]},
-  b:{h:'Com método',t:'2018 → 2020',p:'Patrocínio do BC, mercado ouvido (GT em 2018, Fórum Pix em 2019), adesão obrigatória para as grandes instituições, marca própria e cadastro de chaves 6 semanas antes.',g:["patrocínio", "escuta do mercado", "regra clara", "marca", "preparação"]},on:'b',
+  b:{h:'Com método',t:'2018 → 2020',p:'Patrocínio do BC, mercado ouvido (grupo de trabalho em 2018, Fórum Pix em 2019), adesão obrigatória para as grandes instituições, marca própria e cadastro de chaves 6 semanas antes.',g:["patrocínio", "escuta do mercado", "regra clara", "marca", "preparação"]},on:'b',
   n:'10 mi',nk:'de chaves cadastradas em 2 dias, antes do lançamento. No fim de 2025, 148 milhões de pessoas e 12,8 milhões de empresas já usavam o Pix.',
   s:'Banco Central, Relatório de Gestão do Pix (2026) · imprensa, out/2020',
   les:'A adoção se prepara antes do go-live.'},
@@ -3612,7 +3630,7 @@ const M=[
   t:'IA generativa: adoção recorde, valor em aberto',
   w:'A IA generativa teve uma das adoções mais rápidas já medidas, em ritmo igual ou maior que o do PC e o da internet. Mas adotar não é capturar valor.',
   a:{h:'Sem método',t:'muito uso',p:'Muito uso, pouco valor: 74% das empresas ainda não tinham valor tangível com IA (BCG, 2024).',g:["distribuir e esperar"]},
-  b:{h:'Com método',t:'pessoas e processos',p:'Redesenhar fluxos de trabalho, capacitar, patrocinar e medir. Para a BCG, as empresas líderes dedicam cerca de 70% do esforço a pessoas e processos.',g:["redesenho", "capacitação", "patrocínio", "medição"]},on:'',
+  b:{h:'Com método',t:'pessoas e processos',p:'Redesenhar fluxos de trabalho, capacitar, patrocinar e medir. Para a BCG, as líderes seguem a regra 10-20-70: cerca de 70% do esforço em pessoas e processos.',g:["redesenho", "capacitação", "patrocínio", "medição"]},on:'',
   n:'39%',nk:'dos adultos de 18 a 64 anos nos EUA já usavam IA generativa em ago/2024, menos de 2 anos depois do ChatGPT.',
   s:'Bick, Blandin & Deming (2024), NBER w32966 · BCG (out/2024)',
   les:'Adotar a ferramenta não é capturar valor: o resto é gestão da mudança.'}
@@ -3638,7 +3656,7 @@ function ribbonD(){const top=[],bot=[];for(let x=RX0;x<=RX1;x+=(x-RX0<30||RX1-x<
   else st+=`<line class="st k-${m.k}" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="237"/>`;
   if(i<=4)st+=`<line class="st sp k-sem" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="251"/>`});
  ghost.innerHTML=`<defs>${grad('hxGg')}</defs><line x1="${RX0}" y1="${AX}" x2="${RX1}" y2="${AX}" stroke="rgba(163,184,214,.25)" stroke-width="1"/>
-  <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}${brk}<text class="brk" x="${xm}" y="${AX-42}" text-anchor="middle">~360 anos</text>`;
+  <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}${brk}<text class="brk" x="${xm}" y="${AX-54}" text-anchor="middle"><tspan x="${xm}">~360</tspan><tspan x="${xm}" dy="12">anos</tspan></text>`;
  lit.innerHTML=`<defs>${grad('hxGl')}<filter id="hxBlur" x="-5%" y="-200%" width="110%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs>
   <path d="${r.d}" fill="url(#hxGl)" opacity=".55" filter="url(#hxBlur)"/><path d="${r.d}" fill="url(#hxGl)"/><path d="${r.edge}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>${brk}`})();
 
@@ -3756,16 +3774,21 @@ DECK.register('numeros',{
 </script>
 <script>/* ===== 06-caixa ===== */
 (()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('caixa');
-/* ---------- 04 · caixa de ferramentas ---------- */
-(()=>{const tk=$('#tk'),tb=$('#tb'),cards=$$('.mcard',tk),burst=$('#burst');let open=false,anim=false;
-const BX=800,BY=455, CX=800+700,CY=455-337;
-cards.forEach((c,i)=>{const cx=parseFloat(c.style.left)+176,cy=178+287;c.style.setProperty('--bx',(BX-cx)+'px');c.style.setProperty('--by',(BY-cy)+'px');c.style.setProperty('--bx2',(CX-cx)+'px');c.style.setProperty('--by2',(CY-cy)+'px');c.style.setProperty('--sx',((BX-cx)*.45+(i-1.5)*60)+'px');c.style.setProperty('--sy',(-120-Math.random()*80)+'px');c.style.setProperty('--r',((i-1.5)*14)+'deg');
+/* ---------- 06 · caixa de ferramentas ---------- */
+(()=>{const tk=$('#tk'),tb=$('#tb'),cards=$$('.mcard',tk),burst=$('#burst'),hint=$('#cxHint');let open=false,timers=[];
+const BX=800,BY=455, CX=800+700,CY=455-312, TOP=196,H=578;
+const HINT_C='Clique na caixa para abrir · ou <kbd>→</kbd>',HINT_O='Clique num card para destacar · <kbd>→</kbd> onde usar cada uma';
+cards.forEach((c,i)=>{const cx=parseFloat(c.style.left)+176,cy=TOP+H/2;c.style.setProperty('--bx',(BX-cx)+'px');c.style.setProperty('--by',(BY-cy)+'px');c.style.setProperty('--bx2',(CX-cx)+'px');c.style.setProperty('--by2',(CY-cy)+'px');c.style.setProperty('--sx',((BX-cx)*.45+(i-1.5)*60)+'px');c.style.setProperty('--sy',(-120-Math.random()*80)+'px');c.style.setProperty('--r',((i-1.5)*14)+'deg');
  c.addEventListener('click',()=>{if(!open)return;const f=c.classList.contains('f');cards.forEach(x=>x.classList.remove('f'));tk.classList.toggle('focus',!f);if(!f)c.classList.add('f')})});
 for(let i=0;i<36;i++){const s=document.createElement('i');const a=Math.random()*Math.PI*2,d=160+Math.random()*260;s.style.setProperty('--x',Math.cos(a)*d+'px');s.style.setProperty('--y',Math.sin(a)*d-80+'px');s.style.setProperty('--i',i);if(i%3===0)s.style.background='#fff';if(i%3===1)s.style.background='var(--steel-300)';burst.appendChild(s)}
-function doOpen(){if(anim||open)return;anim=true;open=true;tk.classList.add('open','opening');burst.classList.remove('go');void burst.offsetWidth;burst.classList.add('go');boing();cards.forEach((c,i)=>setTimeout(()=>tone(500+i*120,.12,'triangle',.06),420+i*130));setTimeout(()=>{tk.classList.remove('opening');anim=false},1900)}
-function doClose(){if(anim||!open)return;anim=true;tk.classList.remove('focus');cards.forEach(x=>x.classList.remove('f'));tk.classList.add('closing');tone(700,.25,'triangle',.08,200);setTimeout(()=>{tk.classList.remove('open','closing');open=false;anim=false},900)}
+/* o estado "open" muda na hora; animações em curso são interrompidas, nunca ignoradas */
+const later=(fn,ms)=>timers.push(setTimeout(fn,ms));
+function reset(){timers.forEach(clearTimeout);timers=[];tk.classList.remove('opening','closing','focus');burst.classList.remove('go');cards.forEach(x=>x.classList.remove('f'))}
+function setOpen(v){open=v;SEC.classList.toggle('cx-open',v);hint.innerHTML=v?HINT_O:HINT_C;tb.setAttribute('aria-label',v?'Fechar a caixa de ferramentas':'Abrir a caixa de ferramentas')}
+function doOpen(){if(open)return;reset();setOpen(true);tk.classList.add('open','opening');void burst.offsetWidth;burst.classList.add('go');boing();cards.forEach((c,i)=>later(()=>tone(500+i*120,.12,'triangle',.06),420+i*130));later(()=>tk.classList.remove('opening'),1900)}
+function doClose(){if(!open)return;reset();setOpen(false);tk.classList.add('closing');tone(700,.25,'triangle',.08,200);later(()=>tk.classList.remove('open','closing'),900)}
 tb.addEventListener('click',()=>open?doClose():doOpen());tb.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();open?doClose():doOpen()}});
-DECK.register('caixa',{step:d=>{if(d>0&&!open){doOpen();return true}if(d<0&&open){doClose();return true}return false},leave:()=>{tk.classList.remove('open','opening','closing','focus');cards.forEach(x=>x.classList.remove('f'));open=false;anim=false}})})();
+DECK.register('caixa',{step:d=>{if(d>0&&!open){doOpen();return true}if(d<0&&open){doClose();return true}return false},leave:()=>{reset();tk.classList.remove('open');setOpen(false)}})})();
 })();
 </script>
 <script>/* ===== 07-onde ===== */

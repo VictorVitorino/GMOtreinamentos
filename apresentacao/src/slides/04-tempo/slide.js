@@ -72,7 +72,7 @@ const M=[
   les:'Quem participa da decisão sustenta a mudança.'},
  {l:2,k:'met',ic:'factory',f:.62,y:'1948',yy:'1948',nm:'Coch & French<br>(Harwood)',
   t:'Harwood: mudanças parecidas, dois jeitos',
-  w:'Na fábrica de pijamas Harwood (EUA), Coch e French conduziram mudanças parecidas de método de trabalho de jeitos diferentes.',
+  w:'Na fábrica de pijamas Harwood (EUA), Coch e French conduziram, de jeitos diferentes, mudanças parecidas no método de trabalho.',
   a:{h:'Só informados',t:'sem participação',p:'Receberam a mudança pronta. A produção caiu e não se recuperou, e houve pedidos de demissão.',g:["decisão pronta"]},
   b:{h:'Participaram',t:'participação total',p:'Ajudaram a desenhar o novo método. Recuperaram a produção rapidamente e superaram o nível anterior.',g:["participação", "desenho conjunto"]},on:'b',
   n:'Mudança parecida, resultados opostos',nt:1,nk:'Quem só foi informado não recuperou a produção. Quem participou do desenho superou o nível anterior.',
@@ -106,7 +106,7 @@ const M=[
   t:'Hershey: havia método, prevaleceu a pressa',
   w:'Em jul/1999, a Hershey ligou de uma só vez (big bang) um sistema de gestão de US$ 112 milhões, às vésperas do Halloween, sua maior temporada.',
   a:{h:'Sem método',t:'jul/1999',p:'Tudo de uma vez, com cronograma comprimido e sem preparar processos e pessoas, na pior janela do ano. Os pedidos travaram.',g:["big bang", "cronograma comprimido", "pior janela"]},
-  b:{h:'Com método',t:'já existia',p:'Kotter já estava publicado (1996) e a Prosci pesquisava o tema desde 1994. Ter método disponível não basta: é preciso aplicar.',g:["x:implantação gradual"]},on:'a',
+  b:{h:'Com método',t:'já existia',p:'O livro de Kotter já tinha saído (1996) e a Prosci pesquisava o tema desde 1994. Ter método disponível não basta: é preciso aplicar.',g:["x:implantação gradual"]},on:'a',
   n:'−19%',nk:'no lucro do 3º trimestre de 1999, com pedidos de Halloween atrasados e estoques parados nos depósitos.',
   s:'Computerworld (1999–2000)',
   les:'A história não é linear: sem gestão da mudança, o erro se repete.'},
@@ -122,7 +122,7 @@ const M=[
   t:'Pix: um país inteiro, preparado com método',
   w:'O Banco Central preparou o Pix por mais de dois anos. Smartphones e gratuidade ajudaram; a preparação garantiu que milhões já tivessem chave no dia do lançamento.',
   a:{h:'O desafio',t:'um país inteiro',p:'Mudar o jeito de pagar de um país inteiro, com centenas de instituições financeiras no mesmo padrão.',g:["escala nacional", "centenas de instituições"]},
-  b:{h:'Com método',t:'2018 → 2020',p:'Patrocínio do BC, mercado ouvido (GT em 2018, Fórum Pix em 2019), adesão obrigatória para as grandes instituições, marca própria e cadastro de chaves 6 semanas antes.',g:["patrocínio", "escuta do mercado", "regra clara", "marca", "preparação"]},on:'b',
+  b:{h:'Com método',t:'2018 → 2020',p:'Patrocínio do BC, mercado ouvido (grupo de trabalho em 2018, Fórum Pix em 2019), adesão obrigatória para as grandes instituições, marca própria e cadastro de chaves 6 semanas antes.',g:["patrocínio", "escuta do mercado", "regra clara", "marca", "preparação"]},on:'b',
   n:'10 mi',nk:'de chaves cadastradas em 2 dias, antes do lançamento. No fim de 2025, 148 milhões de pessoas e 12,8 milhões de empresas já usavam o Pix.',
   s:'Banco Central, Relatório de Gestão do Pix (2026) · imprensa, out/2020',
   les:'A adoção se prepara antes do go-live.'},
@@ -130,7 +130,7 @@ const M=[
   t:'IA generativa: adoção recorde, valor em aberto',
   w:'A IA generativa teve uma das adoções mais rápidas já medidas, em ritmo igual ou maior que o do PC e o da internet. Mas adotar não é capturar valor.',
   a:{h:'Sem método',t:'muito uso',p:'Muito uso, pouco valor: 74% das empresas ainda não tinham valor tangível com IA (BCG, 2024).',g:["distribuir e esperar"]},
-  b:{h:'Com método',t:'pessoas e processos',p:'Redesenhar fluxos de trabalho, capacitar, patrocinar e medir. Para a BCG, as empresas líderes dedicam cerca de 70% do esforço a pessoas e processos.',g:["redesenho", "capacitação", "patrocínio", "medição"]},on:'',
+  b:{h:'Com método',t:'pessoas e processos',p:'Redesenhar fluxos de trabalho, capacitar, patrocinar e medir. Para a BCG, as líderes seguem a regra 10-20-70: cerca de 70% do esforço em pessoas e processos.',g:["redesenho", "capacitação", "patrocínio", "medição"]},on:'',
   n:'39%',nk:'dos adultos de 18 a 64 anos nos EUA já usavam IA generativa em ago/2024, menos de 2 anos depois do ChatGPT.',
   s:'Bick, Blandin & Deming (2024), NBER w32966 · BCG (out/2024)',
   les:'Adotar a ferramenta não é capturar valor: o resto é gestão da mudança.'}
@@ -156,7 +156,7 @@ function ribbonD(){const top=[],bot=[];for(let x=RX0;x<=RX1;x+=(x-RX0<30||RX1-x<
   else st+=`<line class="st k-${m.k}" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="237"/>`;
   if(i<=4)st+=`<line class="st sp k-sem" data-i="${i}" x1="${x}" y1="${(AX+h+3).toFixed(1)}" x2="${x}" y2="251"/>`});
  ghost.innerHTML=`<defs>${grad('hxGg')}</defs><line x1="${RX0}" y1="${AX}" x2="${RX1}" y2="${AX}" stroke="rgba(163,184,214,.25)" stroke-width="1"/>
-  <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}${brk}<text class="brk" x="${xm}" y="${AX-42}" text-anchor="middle">~360 anos</text>`;
+  <path d="${r.d}" fill="url(#hxGg)" opacity=".3"/>${st}${brk}<text class="brk" x="${xm}" y="${AX-54}" text-anchor="middle"><tspan x="${xm}">~360</tspan><tspan x="${xm}" dy="12">anos</tspan></text>`;
  lit.innerHTML=`<defs>${grad('hxGl')}<filter id="hxBlur" x="-5%" y="-200%" width="110%" height="500%"><feGaussianBlur stdDeviation="7"/></filter></defs>
   <path d="${r.d}" fill="url(#hxGl)" opacity=".55" filter="url(#hxBlur)"/><path d="${r.d}" fill="url(#hxGl)"/><path d="${r.edge}" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>${brk}`})();
 

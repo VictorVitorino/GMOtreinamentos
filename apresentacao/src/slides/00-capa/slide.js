@@ -197,8 +197,12 @@ function draw(dt){x.setTransform(ck,0,0,ck,0,0);x.clearRect(0,0,1600,900);
  const on=sts[stg===4?3:stg];if(on)on.style.setProperty('--p',stg===0?clamp((T-sT0)/DUR.cat):stg===1?clamp((T-sT0)/DUR.chr):stg===2?clamp((T-sT0)/durB):stg===3?tau:1)}
 
 function fit(){const k=Math.min(2,Math.max(1,(window.devicePixelRatio||1)*DECK.scale()));if(Math.abs(k-ck)>.04||cv.width!==Math.round(1600*k)){ck=k;cv.width=Math.round(1600*k);cv.height=Math.round(900*k)}}
-function loop(now){if(!SEC.classList.contains('active')){run=false;return}requestAnimationFrame(loop);const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;T+=dt;tick(dt);draw(dt)}
+// pausa sob a tela preta (B/.) e a Roda (R): nada a desenhar por baixo; retoma quando a camada fecha
+const covered=()=>!!document.querySelector('#blackout.on,#wheel.on');
+function loop(now){if(!SEC.classList.contains('active')||covered()){run=false;return}requestAnimationFrame(loop);const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;T+=dt;tick(dt);draw(dt)}
 function start(){fit();if(!run){run=true;last=performance.now();requestAnimationFrame(loop)}}
+{const mo=new MutationObserver(()=>{if(!run&&SEC.classList.contains('active')&&!covered())start()});
+ for(const id of ['blackout','wheel']){const el=document.getElementById(id);if(el)mo.observe(el,{attributes:true,attributeFilter:['class']})}}
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(run)fit()},150)});
 DECK.register('capa',{
  enter(){D.length=0;stg=4;shape='scat';prev='scat';OX.fill(0);OY.fill(0);WA.fill(0);setStage(0);sT0=T-.3;start()},

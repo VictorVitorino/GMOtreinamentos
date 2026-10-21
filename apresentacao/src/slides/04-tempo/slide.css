@@ -13,6 +13,7 @@
 .hx .hx-flt i{width:8px;height:8px;border-radius:50%;flex:none}
 .hx .d-sem{background:var(--hx-hot)}
 .hx .d-com{background:var(--orange-400);box-shadow:0 0 0 2px var(--navy-500)}
+.hx .hd-r{gap:9px} /* hd-r com 67px: não empurra o título (alinhamento com os outros slides) */
 .hx #hxHint{height:20px}
 .hx #hxHint kbd{margin-left:2px}
 
