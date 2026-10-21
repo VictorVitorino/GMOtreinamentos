@@ -19,7 +19,7 @@
 .gs-isa{grid-column:3;grid-row:1}
 .gs-defw{grid-column:1;grid-row:2;display:flex;flex-direction:column;min-height:0}
 .gs-why{grid-column:2/4;grid-row:2}
-.gs-word,.gs-chart,.gs-defw,.gs-why{transition:filter .5s var(--ease)}
+.gs-word,.gs-chart,.gs-defw .gs-why-h,.gs-def,.gs-def>*,.gs-why{transition:filter .5s var(--ease)}
 .gs-cap{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .gs-tag{font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);padding:3px 8px;border-radius:99px;background:var(--orange-100)}
 
@@ -143,6 +143,7 @@
 .gs-def{flex:1;min-height:0;margin-top:8px;display:flex;flex-direction:column;padding:16px 22px 16px;overflow:hidden}
 .gs-dq{margin-top:0;font-size:18px;line-height:1.4;font-weight:600;letter-spacing:-.01em;color:#fff}
 .gs-dq em{font-style:normal;color:var(--orange-400)}
+.gs-dq b{font-weight:800;color:#fff}
 .gs-flow{margin-top:auto;display:flex;align-items:center;gap:6px}
 .gs-flow span{height:24px;display:inline-flex;align-items:center;padding:0 10px;border-radius:99px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-200);white-space:nowrap}
 .gs-flow span.o{background:var(--orange-500);border-color:var(--orange-500);color:#fff}
@@ -185,7 +186,10 @@
 .gs-rng::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--orange-500);box-shadow:0 2px 6px rgba(11,37,69,.25)}
 .gs-eq-m{margin-top:4px;font-size:12px;line-height:1.35;color:var(--grey-700);min-height:16px}
 /* Data Highlight: destaca as razões, esmaece o resto */
-.gs.gs-s4 .gs-word,.gs.gs-s4 .gs-chart,.gs.gs-s4 .gs-defw{filter:opacity(.38) saturate(.35)}
+.gs.gs-s4 .gs-word,.gs.gs-s4 .gs-chart,.gs.gs-s4 .gs-defw .gs-why-h{filter:opacity(.38) saturate(.35)}
+/* o card navy recua sem virar cinza: o fundo segue navy e só o conteúdo esmaece (véu navy) */
+.gs.gs-s4 .gs-def{filter:opacity(.85)}
+.gs.gs-s4 .gs-def>*{filter:opacity(.55) saturate(.5)}
 .gs.gs-s4 .gs-why-h .label{color:var(--orange-600)}
 .gs.gs-s4 .gs-r{border-color:var(--orange-200);box-shadow:0 0 0 1px rgba(242,107,33,.25),0 10px 26px rgba(242,107,33,.14);animation:gsRise .7s var(--spring) both;animation-delay:calc(var(--i)*110ms)}
 .gs.gs-s4 .gs-ic{background:var(--orange-500)}

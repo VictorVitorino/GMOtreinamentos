@@ -60,7 +60,9 @@ function build(){const W=plot.clientWidth,H=plot.clientHeight;if(!W||!H)return;
  /* marcos COM: os verbos da gestão */
  /* uma única linha de marcos acima do teto (o rótulo do evento some quando a curva com gestão entra) */
  const aC=[];const mk=(d,v,t)=>{const g=el('g',{class:'gs-an com gs-mk','data-x':X(d)},svg);aC.push(g);const x=X(d),y=Y(v),by=Y0-25;
-  el('line',{x1:x,x2:x,y1:by+16,y2:y-5},g);const r=el('rect',{y:by,height:16,rx:5},g),tx=el('text',{x,y:by+11.4,'text-anchor':'middle'},g,t);const w=tw(tx,t.length*7)+14;r.setAttribute('x',x-w/2);r.setAttribute('width',w);el('circle',{cx:x,cy:y,r:4.4},g);return g};
+  el('line',{x1:x,x2:x,y1:by+16,y2:y-5},g);const r=el('rect',{y:by,height:16,rx:5},g),tx=el('text',{x,y:by+11.4,'text-anchor':'middle'},g,t);const w=tw(tx,t.length*7)+14;
+  /* o selo não encosta na guia tracejada do dia 15 */
+  const cx=x<qx?Math.min(x,qx-w/2-10):x;r.setAttribute('x',cx-w/2);r.setAttribute('width',w);tx.setAttribute('x',cx);el('circle',{cx:x,cy:y,r:4.4},g);return g};
  mk(10,84,'conduzir');mk(30,93.5,'medir');mk(52,96,'reforçar');
  {const g=el('g',{class:'gs-an com gs-end','data-x':X(89)},svg);aC.push(g);el('text',{x:X1+10,y:Y(98)+4},g,'novo normal')}
  /* rótulo da diferença */
@@ -79,7 +81,8 @@ function drawCurve(c,on,dur,done,quiet){if(!G)return;const p=G[c],d=c==='sem'?G.
  if(!dur){p.style.strokeDashoffset=1-to;if(!quiet)ann.forEach(a=>a.classList.toggle('on',on));d.style.opacity=0;done&&done();return}
  const t0=performance.now();const f=t=>{if(tok!==anim[c])return;const k=Math.min(1,(t-t0)/dur),e=from+(to-from)*ease(k),pt=p.getPointAtLength(L*e);
   p.style.strokeDashoffset=1-e;d.setAttribute('transform',`translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})`);d.style.opacity=e>0.002&&k<1?1:0;
-  if(!quiet)ann.forEach(a=>a.classList.toggle('on',on?+a.dataset.x<=pt.x+1:+a.dataset.x<pt.x-1));
+  /* ao desenhar, só acende rótulos enquanto esta curva for a vista atual (avançar no meio do traço não deixa rótulos presos) */
+  if(!quiet&&(!on||view===c))ann.forEach(a=>a.classList.toggle('on',on?+a.dataset.x<=pt.x+1:+a.dataset.x<pt.x-1));
   if(k<1)requestAnimationFrame(f);else{d.style.opacity=on?1:0;if(on){d.setAttribute('transform',`translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})`)}done&&done()}};requestAnimationFrame(f)}
 function clearT(){timers.forEach(clearTimeout);timers=[]}
 function setView(v,animate=true){view=v;clearT();
@@ -113,7 +116,11 @@ $$('.gs-seg button',SEC).forEach(b=>b.onclick=()=>{const v=b.dataset.v;b.blur();
 /* Resultado = Solução × Adoção (ilustrativo) */
 const rng=$('.gs-rng',SEC),MSG=[[0,'Adoção zero: a solução perfeita entrega zero.'],[1,'Quase ninguém usa: o investimento vira custo.'],[30,'A solução perfeita com pouca adoção entrega pouco.'],[60,'Metade do caminho: o retorno ainda está na mesa.'],[85,'Agora sim: a adoção transforma a solução em resultado.'],[100,'Adoção total: o resultado que o projeto prometeu.']];
 const upd=()=>{const v=+rng.value;$('.gs-eqa',SEC).textContent=v+'%';$('.gs-eqr',SEC).textContent=v+'%';rng.style.setProperty('--p',v+'%');let m=MSG[0][1];for(const [k,t] of MSG)if(v>=k)m=t;$('.gs-eq-m',SEC).textContent=m};
-rng.addEventListener('input',upd);rng.addEventListener('keydown',e=>e.stopPropagation());rng.addEventListener('change',()=>tone(500+(+rng.value)*4,.08,'sine',.04));upd();
+rng.addEventListener('input',upd);rng.addEventListener('change',()=>tone(500+(+rng.value)*4,.08,'sine',.04));upd();
+/* o controle não prende o passador: ao soltar o mouse, o foco volta ao deck; com foco pelo teclado (Tab), só setas/Home/End mexem no valor e as demais teclas (PageDown, PageUp, B, N, Esc…) seguem para o deck */
+rng.addEventListener('pointerdown',()=>{const up=()=>{removeEventListener('pointerup',up);removeEventListener('pointercancel',up);rng.blur()};addEventListener('pointerup',up);addEventListener('pointercancel',up)});
+rng.addEventListener('keydown',e=>{e.stopPropagation();if(/^(Arrow(Left|Right|Up|Down)|Home|End|Tab|Shift)$/.test(e.key)||e.ctrlKey||e.metaKey||e.altKey)return;
+ e.preventDefault();rng.blur();document.body.dispatchEvent(new KeyboardEvent('keydown',{key:e.key,code:e.code,shiftKey:e.shiftKey,bubbles:true,cancelable:true}))});
 
 function reset(){clearT();anim.sem++;anim.com++;view='none';G=null;svg.innerHTML='';SEC.classList.remove('gs-s1','gs-s4','gs-ghost','gs-v-sem');rng.value=40;upd()}
 DECK.register('gestao',{

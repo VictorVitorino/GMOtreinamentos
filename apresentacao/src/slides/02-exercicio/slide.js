@@ -355,7 +355,8 @@ $$('.ex-btn',SEC).forEach(b=>b.addEventListener('click',e=>{if(e.detail)b.blur()
 
 /* ---------- antes/depois ---------- */
 const btnCmp=$('#exCmp',SEC),hnd=$('#exHandle',SEC);let cmp=false,cut=50,raf=0,cdrag=null;
-const setCut=p=>{cut=clamp(p,0,100);scene.style.setProperty('--cut',cut.toFixed(2)+'%')};
+/* com o corte rente a uma borda, o chip daquele lado esmaece (a linha não passa por cima dele) */
+const setCut=p=>{cut=clamp(p,0,100);scene.style.setProperty('--cut',cut.toFixed(2)+'%');scene.classList.toggle('cut-lo',cut<12);scene.classList.toggle('cut-hi',cut>88)};
 function animCut(keys,dur){cancelAnimationFrame(raf);const t0=performance.now(),from=cut;const pts=[from,...keys],n=pts.length-1;
  const ease=k=>k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
  const f=t=>{const k=Math.min(1,(t-t0)/dur),seg=Math.min(n-1,Math.floor(k*n)),lk=k*n-seg;setCut(pts[seg]+(pts[seg+1]-pts[seg])*ease(Math.min(1,lk)));if(k<1)raf=requestAnimationFrame(f)};raf=requestAnimationFrame(f)}
@@ -422,7 +423,7 @@ paintVotes();
 /* ---------- passos: Ver → Sentir → comparar → Decidir + Agir → Repetir → Curiosidade (pergunta, resposta) ---------- */
 const rows=$$('#exSteps li',SEC),panel=$('#exPanel',SEC),regs=$$('#exBrain .rg',SEC),q=$('#exIsaQ',SEC),isa=$('#exIsa',SEC);
 const ON={0:[],1:[1],2:[2],3:[],4:[3,4],5:[5],6:[],7:[]},DONE={0:0,1:0,2:1,3:2,4:2,5:4,6:5,7:5};
-const QS=['Pode bagunçar mais! O que mais incomoda aqui?','O que salta aos olhos primeiro?','E o que você sente olhando para isso?','Agora compare. Dá vontade de arrumar?','Querer não basta: alguém precisou agir.','E amanhã? Quem garante que ela continua assim?','Curiosidade: começa por fora ou por dentro?','As duas! E na sua área, por onde começar?'];
+const QS=['Pode bagunçar mais! O que mais incomoda aqui?','O que salta aos olhos primeiro?','E o que você sente olhando para isso?','Agora compare. Dá vontade de arrumar?','Decidir arruma a sala? Quem pôs a mão na massa?','E amanhã? Quem garante que a sala continua assim?','Curiosidade: começa por fora ou por dentro?','As duas! E na sua área, por onde começar?'];
 let S=0;
 /* linha de progresso entre os ícones (Progress Motion) */
 const ol=$('#exSteps',SEC),ics=$$('#exSteps .ic',SEC),LAST={0:0,1:0,2:1,3:1,4:3,5:4,6:4,7:4};

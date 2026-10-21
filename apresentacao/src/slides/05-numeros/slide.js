@@ -3,14 +3,15 @@ const q=s=>SEC.querySelector(s), qa=s=>[...SEC.querySelectorAll(s)];
 /* ---------- 05 · números: sem × com gestão da mudança ----------
    a = sem (ou com pouca/ruim) GMO · b = com GMO. Fontes no data-src do slide. */
 const BARS=[
- {nm:'Projetos atingem os objetivos',src:'Prosci · 2023',cmp:'GMO ruim × excelente',a:13,b:88,la:'GMO ruim',lb:'GMO excelente'},
+ {nm:'Projetos atingem ou superam os objetivos',src:'Prosci · 2023',cmp:'GMO ruim × excelente',a:13,b:88,la:'GMO ruim',lb:'GMO excelente'},
  {nm:'Iniciativas batem a meta original',src:'PMI · 2014',cmp:'pouco × muito eficaz em GMO',a:31,b:65,la:'pouco eficaz',lb:'muito eficaz'},
  {nm:'Transformação bem-sucedida',src:'McKinsey · 2017',cmp:'sem × com engajar a linha de frente',a:3,b:28,la:'sem engajar',lb:'engajando'},
  {nm:'Resultado financeiro forte',src:'BCG · 2018 · transformação digital',cmp:'sem × com foco em cultura',a:17,b:90,la:'sem foco',lb:'com foco'}
 ];
 const MSG_OFF='Com gestão da mudança fraca ou ausente, os estudos ficam <em>entre 3% e 31%</em>.';
 const MSG_ON='Com a mudança gerida, todas sobem: <em>de ≈2× a ≈9× mais chance</em>. Métricas diferentes, mesma direção.';
-const chart=q('.n5-chart'),box=q('.n5-bars'),tg=q('.n5-tg'),ring=q('.n5-ring'),seal=q('.n5-seal'),rv=q('.n5-rv'),msg=q('.n5-cf .msg');
+const chart=q('.n5-chart'),box=q('.n5-bars'),tg=q('.n5-tg'),ring=q('.n5-ring'),seal=q('.n5-seal'),rv=q('.n5-rv'),msg=q('.n5-cf .msg'),hint=q('.hd-r .hint');
+const HINT_OFF=hint.innerHTML,HINT_ON='Próximo: a caixa de ferramentas · <kbd>→</kbd>';
 box.innerHTML=BARS.map(r=>`<div class="n5-row"><div class="nm"><b>${r.nm}</b><span>${r.src}<br>${r.cmp}</span></div><div class="trk"><i class="base" data-w="${r.a}"></i><i class="boost" style="left:${r.a}%;--bw:${r.b-r.a}%"></i><span class="gap" style="left:${(r.a+r.b)/2}%">+${r.b-r.a} p.p. · ≈${Math.round(r.b/r.a)}×</span></div><div class="val"><b data-v0="${r.a}" data-v1="${r.b}">${r.a}%</b><small data-l0="${r.la}" data-l1="${r.lb}">${r.la}</small></div></div>`).join('');
 const fmtX=v=>(v===1?'1':(Math.round(v*10)/10).toString().replace('.',','))+'×';
 let on=false,timers=[],raf=new Set();
@@ -24,7 +25,7 @@ function paint(v,animate){
  qa('.n5-mult .chip b').forEach(el=>{const to=+el.dataset.to,A=v?1:to,B=v?to:1;if(!animate){el._n5=null;el.textContent=(v?'≈':'')+fmtX(B);return}
   anim(900,e=>{const x=A+(B-A)*e,r=B%1||A%1?Math.round(x*10)/10:Math.round(x);el.textContent=(x>1.04?'≈':'')+fmtX(r)},el)});
  msg.innerHTML=v?MSG_ON:MSG_OFF}
-function setOn(v,animate=true){on=v;chart.classList.toggle('on',v);tg.classList.toggle('on',v);tg.setAttribute('aria-pressed',v);paint(v,animate);if(v&&animate)ding()}
+function setOn(v,animate=true){on=v;chart.classList.toggle('on',v);tg.classList.toggle('on',v);tg.setAttribute('aria-pressed',v);hint.innerHTML=v?HINT_ON:HINT_OFF;paint(v,animate);if(v&&animate)ding()}
 tg.onclick=()=>setOn(!on);
 function reset(){stopAll();setOn(false,false);
  qa('.n5-row .base').forEach(b=>b.style.width='0');
