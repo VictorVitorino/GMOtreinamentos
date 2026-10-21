@@ -1,8 +1,3 @@
 # Versão de arquivo único (contém todas as fotos embutidas): gerar com `python3 build.py`
 dist/
-# Foto da Isabella: aguardando autorização expressa para publicação em repositório público
-assets/isabella.webp
 __pycache__/
-# Rostos de participantes: aguardando autorizacao expressa para repositorio publico
-assets/rosto-a.webp
-assets/rosto-b.webp
