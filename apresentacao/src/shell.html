@@ -270,7 +270,17 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 #infoP .it{font-weight:800;font-size:16px;line-height:1.2;color:var(--navy-800);margin-top:4px}
 #infoP .id{font-size:12.5px;line-height:1.55;color:var(--grey-700);margin-top:6px}
 #infoP .id p+p{margin-top:6px}#infoP .id b{color:var(--navy-800)}
-#infoP .is{margin-top:10px;padding-top:8px;border-top:1px solid var(--line);font-size:11px;line-height:1.5;color:var(--grey-500)}
+#infoP{width:460px}
+#infoP .id h5{font:700 9.5px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--orange-600);margin:12px 0 4px}
+#infoP .id h5:first-child{margin-top:2px}
+#infoP .id ul{list-style:none;display:flex;flex-direction:column;gap:4px;padding:0}
+#infoP .id li{position:relative;padding-left:14px}
+#infoP .id li::before{content:"";position:absolute;left:2px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--orange-500)}
+#infoP .id .nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:6px}
+#infoP .id .nums div{padding:8px 10px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+#infoP .id .nums b{display:block;font:800 19px/1.1 var(--fb);letter-spacing:-.02em;color:var(--navy-800)}
+#infoP .id .nums span{display:block;margin-top:3px;font-size:11px;line-height:1.35;color:var(--grey-500)}
+#infoP .is{display:none;margin-top:10px;padding-top:8px;border-top:1px solid var(--line);font-size:11px;line-height:1.5;color:var(--grey-500)}
 #infoP .is b{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;color:var(--navy-700);margin-right:6px}
 #idxP{width:320px;border-top:4px solid var(--orange-500);padding-bottom:8px}
 #idxP .xh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 6px;font:700 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
@@ -316,7 +326,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
   <button type="button" class="c" id="cnt" title="Índice">1 / 1</button>
   <button type="button" class="p" id="bNext" title="Avançar (→)"><span class="lb">Avançar</span><span class="ar">→</span></button>
 </div>
-<div class="panel" id="infoP" role="dialog" aria-label="Sobre este slide" inert><div class="ih"><span class="ie">Sobre este slide</span><button class="ix" type="button" id="infoX" aria-label="Fechar">×</button></div><div class="it" id="infoT"></div><div class="id" id="infoD"></div><div class="is" id="infoS"></div></div>
+<div class="panel" id="infoP" role="dialog" aria-label="Sobre este slide" inert><div class="ih"><span class="ie">Sobre este slide</span><button class="ix" type="button" id="infoX" aria-label="Fechar">×</button></div><div class="it" id="infoT"></div><div class="id" id="infoD"></div></div>
 <div class="panel" id="idxP" role="dialog" aria-label="Índice" inert><div class="xh"><span>Índice</span><button class="ix" type="button" id="idxX" aria-label="Fechar">×</button></div><div id="idxL"></div></div>
 <div id="blackout"></div>
 <div id="toast" role="status" aria-live="polite"></div>
@@ -417,7 +427,7 @@ wheelSpin=d=>{if(spinning)return;const a=$('#whA');if(d<0){if(a&&a.classList.con
 hub.onclick=spin;$('#whClose').onclick=closeWheel;$('#whReset').onclick=()=>{used.clear();clearInterval(tmr);draw();idle()};draw();idle()})();
 
 /* ---------- SOBRE ESTE SLIDE (I) e ÍNDICE ---------- */
-function renderInfo(){const s=slides[cur];$('#infoT').textContent=s.dataset.t;$('#infoD').innerHTML=$('template.info',s)?.innerHTML||'';const src=s.dataset.src;$('#infoS').innerHTML=src?'<b>FONTES</b>'+src:'';$('#infoS').style.display=src?'':'none'}
+function renderInfo(){const s=slides[cur];$('#infoT').textContent=s.dataset.t;$('#infoD').innerHTML=$('template.info',s)?.innerHTML||'';}
 const infoP=$('#infoP'),idxP=$('#idxP');
 const togInfo=v=>{const on=v??!infoP.classList.contains('on');infoP.classList.toggle('on',on);infoP.inert=!on;$('#bInfo').classList.toggle('on',on);$('#bInfo').setAttribute('aria-expanded',on);if(on)togIdx(false)};
 const togIdx=v=>{const on=v??!idxP.classList.contains('on');idxP.classList.toggle('on',on);idxP.inert=!on;$('#cnt').classList.toggle('on',on);if(on)togInfo(false)};
