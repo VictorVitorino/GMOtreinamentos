@@ -1,0 +1,167 @@
+/* =====================================================================
+   05 · NA PRÁTICA · FRENTE 3 · IMPACTOS  (prefixo fi-, escopo .slide[data-id="impactos"])
+   esquerda: o que é + como fazer · direita: a matriz em 3 visões (categoria · severidade · status),
+   3 linhas de exemplo (impacto → mitigação → dono → status) e a leitura do índice ICI
+   ===================================================================== */
+.slide[data-id="impactos"]{--fi-c:var(--orange-500);--fi-c2:var(--orange-600);--fi-ct:rgba(242,107,33,.1);--fi-g:#2ECC71;--fi-gt:#1E8E4F;--fi-y:#F2B51D;--fi-yt:#3D2E00;--fi-r:#E5484D;--fi-rt:#B3261E}
+.fi-main{display:flex;flex-direction:column;gap:14px}
+.fi-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fi-grid{flex:1;min-height:0;display:grid;grid-template-columns:560px minmax(0,1fr);gap:20px}
+.fi-left{display:flex;flex-direction:column;gap:14px;min-height:0}
+@keyframes fiLetter{from{transform:rotate(-25deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes fiIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fiPop{from{transform:scale(.5);opacity:0}to{transform:none;opacity:1}}
+/* ---------- o que é ---------- */
+.fi-what{flex:none;padding:15px 20px 16px;border-top:5px solid var(--fi-c);display:flex;flex-direction:column;gap:12px}
+.fi-wh{display:flex;align-items:center;gap:12px}
+.fi-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .fi-ico{animation:fiLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.fi-wh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.fi-wh b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.fi-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:pretty}
+.fi-def b{color:var(--navy-900)}
+.fi-chip{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+.fi-chip b{padding:4px 9px;border-radius:7px;font:800 14px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.fi-chip span{font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fi-chip em{font-style:normal;margin-left:auto;font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+/* ---------- como fazer: 4 passos ---------- */
+.fi-how{flex:1;min-height:0;padding:15px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.fi-steps{flex:1;min-height:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.fi-steps li{flex:1;min-height:0;display:flex;align-items:center;gap:14px;padding:0 14px 0 12px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s}
+.fi-steps li:hover{background:#fff;border-color:var(--orange-200)}
+.fi-steps li i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:#fff;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.fi-steps li div{flex:1;min-width:0}
+.fi-steps li b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--navy-900)}
+.fi-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.fi-steps li em{flex:none;font-size:22px;line-height:1;font-style:normal}
+/* ---------- exemplo: o card grande ---------- */
+.fi-ex{min-height:0;display:flex;flex-direction:column;gap:12px;padding:14px 18px 16px;border-top:5px solid var(--fi-c)}
+.fi-exh{flex:none;display:flex;align-items:center;gap:16px}
+.fi-exh .fi-lb{color:var(--navy-800);font-weight:600}
+.fi-exh .fi-lb b{color:var(--orange-600);font-weight:600}
+.fi-tot{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:3px 12px 3px 7px;border-radius:99px;font-size:13px;font-weight:700;color:var(--navy-800);background:var(--fi-ct);white-space:nowrap}
+.fi-tot b{font:800 18px/1 var(--fb);letter-spacing:-.02em;color:var(--fi-c2)}
+/* ---------- as três visões ---------- */
+.fi-views{flex:none;height:200px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fi-v{display:flex;flex-direction:column;gap:9px;padding:11px 14px 10px;border-radius:12px;background:var(--off);border:1px dashed var(--line-strong);cursor:pointer;transition:background .4s,border-color .4s,box-shadow .4s}
+.fi-v.on{background:#fff;border-style:solid;border-color:var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05),0 6px 16px rgba(11,37,69,.07);cursor:default}
+.fi-vh{display:flex;align-items:center;gap:9px}
+.fi-vh i{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:var(--grey-500);background:#fff;border:1px solid var(--line-strong);transition:background .3s,color .3s,border-color .3s}
+.fi-v.on .fi-vh i{color:#fff;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));border-color:transparent;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18);animation:fiPop .5s var(--spring)}
+.fi-vh div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.fi-vh b{font-size:15px;font-weight:800;line-height:1.15;color:var(--navy-900);white-space:nowrap}
+.fi-vh span{font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+.fi-vb{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;transition:opacity .4s,filter .4s}
+.fi-v:not(.on) .fi-vb{opacity:.45;filter:grayscale(1)}
+.fi-v:not(.on) .fi-vn{display:none}
+.fi-v:not(.on) .fi-vb::after{content:"avance para revelar →";margin-top:auto;padding-top:7px;border-top:1px dashed var(--line-strong);font:500 12px var(--fm);letter-spacing:.06em;color:var(--grey-500)}
+.fi-vn{margin-top:auto;padding-top:7px;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.3;color:var(--grey-700);text-wrap:pretty;animation:fiIn .5s var(--ease) .35s both}
+.fi-vn b{color:var(--navy-900)}
+/* visão 1 · por categoria: barras horizontais */
+.fi-cat{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fi-cat li{display:grid;grid-template-columns:22px 80px minmax(0,1fr) 24px;align-items:center;gap:8px}
+.fi-cat em{font-style:normal;font-size:16px;line-height:1;text-align:center}
+.fi-cat span{font-size:13.5px;font-weight:600;color:var(--navy-800);white-space:nowrap}
+.fi-bar{height:14px;border-radius:99px;background:var(--steel-100)}
+.fi-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--navy-600),var(--navy-800));transition:width .9s var(--ease)}
+.fi-v.on .fi-bar i{width:calc(var(--n)/12*100%)}
+.fi-cat b{font:800 15px var(--fb);color:var(--navy-900);text-align:right}
+/* visão 2 · por severidade: três blocos proporcionais */
+.fi-sev{display:flex;gap:6px;height:64px}
+.fi-sb{flex:var(--n) 1 0;min-width:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px;background:var(--steel-100);color:var(--navy-800);transition:background .45s,color .45s}
+.fi-sb b{font:800 24px/1 var(--fb);letter-spacing:-.02em}
+.fi-sb span{font:600 12px var(--fm);letter-spacing:.08em;text-transform:uppercase}
+.fi-v.on .fi-sb[data-s="a"]{background:var(--fi-r);color:#fff}
+.fi-v.on .fi-sb[data-s="m"]{background:var(--fi-y);color:var(--fi-yt)}
+.fi-v.on .fi-sb[data-s="b"]{background:var(--fi-g);color:#0B3D20}
+/* visão 3 · por status: barra empilhada + legenda */
+.fi-st{display:flex;gap:2px;height:22px;border-radius:7px;overflow:hidden;background:var(--steel-100)}
+.fi-st i{display:block;height:100%;width:0;transition:width .9s var(--ease)}
+.fi-v.on .fi-st i{width:calc(var(--w)/22*100% - 1.4px)}
+.fi-st i.and{background:var(--steel-500)}.fi-st i.mit{background:var(--fi-g)}.fi-st i.pen{background:var(--fi-c)}
+.fi-stl{list-style:none;display:flex;flex-direction:column;gap:3px}
+.fi-stl li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--grey-700)}
+.fi-stl li::before{content:"";width:11px;height:11px;border-radius:3px;background:var(--steel-500)}
+.fi-stl li.mit::before{background:var(--fi-g)}.fi-stl li.pen::before{background:var(--fi-c)}
+.fi-stl b{font:800 15px var(--fb);color:var(--navy-900);min-width:22px;text-align:right}
+/* ---------- a matriz, linha a linha ---------- */
+.fi-tab{--cols:minmax(0,1.45fr) 150px minmax(0,1.2fr) 150px 112px;flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding:10px 14px 10px;border-radius:12px;background:var(--off);border:1px dashed var(--line-strong);transition:background .4s,border-color .4s}
+.fi-tab.on{background:#fff;border-style:solid;border-color:var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05),0 6px 16px rgba(11,37,69,.07)}
+.fi-th{flex:none;display:grid;grid-template-columns:var(--cols);gap:10px;padding:0 10px 6px;border-bottom:1px solid var(--line)}
+.fi-th span{font:500 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fi-ghost{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;gap:5px}
+.fi-sk{flex:1;min-height:0;display:grid;grid-template-columns:var(--cols);gap:10px;align-items:center;padding:4px 10px;border-radius:10px;border:1px dashed var(--line-strong);opacity:.7}
+.fi-sk i{height:12px;border-radius:99px;background:var(--line-strong);opacity:.55}
+.fi-sk i:nth-child(1){width:82%}.fi-sk i:nth-child(2){width:64%}.fi-sk i:nth-child(3){width:78%}.fi-sk i:nth-child(4){width:58%}.fi-sk i:nth-child(5){width:66%}
+.fi-gh{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 7px;border-radius:99px;background:#fff;border:1px solid var(--line-strong);box-shadow:0 6px 18px rgba(11,37,69,.12);font-size:14.5px;color:var(--grey-700);white-space:nowrap}
+.fi-gh b{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font:800 13px var(--fb);color:var(--grey-500);background:var(--off);border:1px solid var(--line-strong)}
+.fi-tab.on .fi-ghost{display:none}
+.fi-rows{flex:1;min-height:0;display:none;flex-direction:column;gap:5px}
+.fi-tab.on .fi-rows{display:flex}
+.fi-row{flex:1;min-height:0;display:grid;grid-template-columns:var(--cols);gap:10px;align-items:center;padding:4px 10px;border-radius:10px;text-align:left;background:#fff;border:1px solid var(--line);transition:border-color .3s,box-shadow .3s,opacity .3s,transform .4s var(--spring)}
+.fi-tab.on .fi-row{animation:fiIn .5s var(--ease) both;animation-delay:calc(var(--i)*110ms + 60ms)}
+.fi-row:hover{border-color:var(--orange-200);background:#fff}
+.fi-row.on{border-color:var(--fi-c);box-shadow:0 8px 20px rgba(242,107,33,.16);transform:scale(1.012)}
+.fi-tab.sel .fi-row:not(.on){opacity:.45}
+.fi-imp{font-size:14px;font-weight:700;line-height:1.25;color:var(--navy-900);text-wrap:pretty}
+.fi-tags{display:flex;gap:4px;flex-wrap:wrap}
+.fi-tags i{font:600 12px var(--fm);font-style:normal;letter-spacing:.02em;padding:2px 7px;border-radius:99px;color:var(--navy-800);background:var(--steel-100);white-space:nowrap}
+.fi-tags i.s.a{color:#fff;background:var(--fi-r)}.fi-tags i.s.m{color:var(--fi-yt);background:var(--fi-y)}.fi-tags i.s.b{color:#0B3D20;background:var(--fi-g)}
+.fi-mit{font-size:13.5px;line-height:1.3;color:var(--grey-700);text-wrap:pretty}
+.fi-own{font-size:13.5px;font-weight:700;line-height:1.3;color:var(--navy-800)}
+.fi-pill{justify-self:start;display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.fi-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.fi-pill.and{color:var(--steel-600);background:var(--steel-100)}
+.fi-pill.mit{color:var(--fi-gt);background:rgba(46,204,113,.16)}
+.fi-pill.pen{color:var(--fi-c2);background:var(--fi-ct)}
+/* ---------- leitura: o modelo do índice → o índice real ---------- */
+.fi-read{flex:none;height:96px;display:flex;flex-direction:column;justify-content:center;padding:0 18px}
+.fi-read.swap>*>*{animation:fiIn .45s var(--ease) both}
+.fi-read.swap>*>:nth-child(2){animation-delay:.07s}.fi-read.swap>*>:nth-child(3){animation-delay:.14s}
+.fi-read .fi-lb{color:var(--orange-200)}
+/* modelo (antes do último passo): ICI = 4 medidas com peso, em duas linhas */
+.fi-mo{display:flex;flex-direction:column;gap:9px}
+.fi-moh{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fi-mh{font:500 12px var(--fm);letter-spacing:.04em;color:var(--steel-300);white-space:nowrap}
+.fi-mh kbd{color:var(--orange-200);border-color:var(--orange-200)}
+.fi-mor{display:flex;align-items:center;gap:8px}
+.fi-mor>b{font:800 26px/1 var(--fb);letter-spacing:-.02em;color:#fff}
+.fi-mor>small{font-size:13px;font-weight:600;color:var(--steel-200);margin-right:4px;white-space:nowrap}
+.fi-mor>i{font-style:normal;font:800 18px var(--fb);color:var(--steel-300)}
+.fi-mor>i.fi-eq{font-size:22px;color:var(--orange-400)}
+.fi-kt{display:flex;flex-direction:column;gap:1px;padding:5px 11px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.fi-kt b{font-size:13.5px;font-weight:700;color:#fff;white-space:nowrap}
+.fi-kt span{font:500 12px var(--fm);color:var(--orange-200);white-space:nowrap}
+/* real (último passo): anel + ICI 49,5% + vermelho · leitura · onde agir */
+.fi-re{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);align-items:center;gap:18px}
+.fi-ring{position:relative;flex:none;width:60px;height:60px}
+.fi-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.fi-ring circle{fill:none;stroke-width:12}
+.fi-ring .bg{stroke:rgba(255,255,255,.14)}
+.fi-ring .fg{stroke:var(--fi-r);stroke-linecap:round;stroke-dasharray:49.5 100;animation:fiRing 1.1s var(--ease) .15s both}
+@keyframes fiRing{from{stroke-dasharray:0 100}}
+.fi-rh{flex:none;display:flex;align-items:center;gap:12px}
+.fi-rh>div{display:flex;flex-direction:column;gap:4px}
+.fi-rh b.big{font:800 24px/1 var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.fi-rr{display:flex;align-items:center;gap:8px}
+.fi-rr small{font-size:12.5px;font-weight:600;color:var(--steel-200);white-space:nowrap}
+.fi-rp{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#fff;background:var(--fi-r);white-space:nowrap}
+.fi-rp::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.fi-rs{min-width:0;padding-left:18px;border-left:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;gap:4px}
+.fi-rs p{font-size:16.5px;line-height:1.25;font-weight:700;color:#fff;text-wrap:pretty}
+.fi-rs p b{color:var(--orange-400)}
+.fi-rs span{font-size:14px;line-height:1.3;color:var(--steel-200);text-wrap:pretty}
+.fi-rs span b{color:#fff}
+.fi-act{min-width:0;display:flex;flex-direction:column;gap:3px;padding:8px 14px;border-radius:10px;background:rgba(242,107,33,.16);border-left:3px solid var(--orange-400)}
+.fi-act .fi-lb{color:var(--orange-400)}
+.fi-act p{font-size:14.5px;line-height:1.3;color:#fff;text-wrap:pretty}
+.fi-act p b{color:var(--orange-400)}
+/* ---------- faixa final: próximos 3 · 6 · 8 meses ---------- */
+.fi-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.fi-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fi-chips{display:flex;gap:10px}
+.fi-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fi-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
+.fi-chips span:nth-child(2) i{background:var(--steel-500)}
+.fi-chips span:nth-child(3) i{background:var(--orange-500)}
+.fi-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}

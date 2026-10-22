@@ -224,12 +224,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .ag-logos{position:absolute;left:0;top:56px;display:flex;align-items:center;gap:16px}
 .ag-logos i{width:1px;height:26px;background:rgba(163,184,214,.3)}
 .ag-h{font-size:64px;font-weight:600;letter-spacing:-.02em;color:var(--steel-300);margin:40px 0 26px}
-.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .ag-it{display:flex;flex-direction:column;gap:6px}
 .ag-main{display:flex;align-items:center;gap:34px;background:none;color:#fff;text-align:left;cursor:pointer}
-.ag-main b{width:46px;font-size:64px;line-height:1;font-weight:300;color:var(--orange-400);transition:transform .35s var(--spring),color .25s}
-.ag-main strong{font-size:30px;font-weight:600;letter-spacing:-.01em;transition:color .25s,transform .35s var(--ease)}
-.ag-subs{display:flex;gap:8px;padding-left:80px}
+.ag-main b{width:46px;font-size:56px;line-height:1;font-weight:300;color:var(--orange-400);transition:transform .35s var(--spring),color .25s}
+.ag-main strong{font-size:28px;font-weight:600;letter-spacing:-.01em;transition:color .25s,transform .35s var(--ease)}
+.ag-subs{display:flex;flex-wrap:wrap;gap:6px 8px;padding-left:80px;max-width:560px}
 .ag-subs button{font:500 10.5px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--steel-300);padding:5px 10px;border-radius:99px;border:1px solid rgba(163,184,214,.22);background:rgba(255,255,255,.03);transition:color .2s,border-color .2s,background .2s}
 .ag-subs button:hover{color:#fff;border-color:var(--orange-400);background:rgba(242,107,33,.14)}
 .ag-it.hot .ag-main b{transform:scale(1.12);color:var(--orange-500)}
@@ -1890,16 +1890,793 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .pm-rule{display:block;margin-top:10px;font-size:13px;color:var(--steel-300)}.pm-rule b{color:var(--steel-200)}
 
 /* ===== 10-cmak ===== */
+/* =====================================================================
+   05 · NA PRÁTICA · INDICADORES · CMAK  (prefixo ck-, escopo .slide[data-id="cmak"])
+   4 cards frente (modelo) e verso (dashboard real) com flip 3D
+   ===================================================================== */
+.slide[data-id="cmak"]{--ck-g:#2ECC71;--ck-gt:#1E8E4F;--ck-y:#F2B51D;--ck-yt:#8A6400;--ck-r:#E5484D;--ck-rt:#B3261E}
+.ck-main{display:flex;flex-direction:column;gap:14px}
+.ck-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+/* ---------- faixa de contexto: definição · semáforo · termômetro ---------- */
+.ck-band{flex:none;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:0;padding:9px 18px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05),0 4px 12px rgba(11,37,69,.05)}
+.ck-def{display:flex;align-items:center;gap:14px;min-width:0;padding-right:22px}
+.ck-tag{flex:none;padding:7px 11px;border-radius:9px;font:800 16px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--navy-700),var(--navy-900));box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.ck-def p{font-size:14.5px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.ck-def p b{color:var(--navy-900)}
+.ck-sem,.ck-therm{display:flex;flex-direction:column;gap:5px;padding:0 22px;border-left:1px solid var(--line)}
+.ck-therm{padding-right:0}
+.ck-sem>div{display:flex;align-items:center;gap:14px}
+.ck-sem>div span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.ck-sem>div span::before{content:"";width:12px;height:12px;border-radius:50%;box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+.ck-sem .g::before{background:var(--ck-g)}.ck-sem .y::before{background:var(--ck-y)}.ck-sem .r::before{background:var(--ck-r)}
+.ck-f{display:flex;align-items:center;gap:6px;font:600 13px var(--fm);color:var(--grey-500)}
+.ck-f s{text-decoration:none;font-weight:700;color:var(--grey-400)}
+.ck-f i{font-style:normal;display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:8px;color:var(--navy-800);background:var(--off);border:1px solid var(--line);white-space:nowrap}
+.ck-f i b{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border-radius:5px;font-size:12px;color:#fff}
+.ck-f .p b{background:var(--navy-600)}.ck-f .e b{background:var(--steel-500)}.ck-f .a b{background:var(--orange-500)}
+.ck-f em{font-style:normal;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font:700 13px var(--fb);color:var(--ck-gt);background:rgba(46,204,113,.14);white-space:nowrap}
+.ck-f em b{font:800 16px var(--fb);letter-spacing:-.02em}
+.ck-f em u{width:10px;height:10px;border-radius:50%;background:var(--ck-g);box-shadow:0 0 0 3px rgba(46,204,113,.22)}
+/* ---------- grade dos 4 cards ---------- */
+.ck-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.ck-slot{position:relative;min-height:0}
+.ck-card{position:absolute;inset:0;perspective:1900px;cursor:pointer}
+.ck-card[data-k="0"]{--c:var(--navy-700);--c2:var(--navy-900);--ct:rgba(19,49,92,.08)}
+.ck-card[data-k="1"]{--c:var(--steel-500);--c2:var(--navy-600);--ct:rgba(74,111,165,.12)}
+.ck-card[data-k="2"]{--c:var(--orange-500);--c2:var(--orange-600);--ct:var(--orange-100)}
+.ck-card[data-k="3"]{--c:var(--navy-500);--c2:var(--navy-700);--ct:rgba(42,90,150,.10)}
+.ck-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .75s var(--ease)}
+.ck-snap .ck-inner{transition:none}
+.ck-card.flip .ck-inner{transform:rotateY(180deg)}
+.ck-face{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;padding:14px 16px 11px;border-radius:16px;border:1px solid var(--line);border-top:5px solid var(--c);background:#fff;box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:box-shadow .35s}
+.ck-back{transform:rotateY(180deg);background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);border-top-color:var(--c);color:#fff;box-shadow:0 18px 40px rgba(11,37,69,.22)}
+.ck-card:hover .ck-face{box-shadow:0 14px 30px rgba(11,37,69,.16)}
+.ck-card.on .ck-face{box-shadow:0 0 0 2px var(--orange-400),0 18px 40px rgba(11,37,69,.22)}
+/* ---------- cabeçalho de cada face ---------- */
+.ck-ch{display:flex;align-items:center;gap:12px}
+.ck-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--c),var(--c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .ck-ico{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d,3)*90ms + 350ms)}
+.ck-ch>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ck-ch b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.ck-back .ck-ch b{color:#fff}
+.ck-back .ck-lb{color:var(--steel-300)}
+.ck-side{flex:none;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:99px;color:var(--c);background:var(--ct)}
+.ck-back .ck-side{color:#fff;background:rgba(255,255,255,.14)}
+/* ---------- FRENTE: o modelo ---------- */
+.ck-idx{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:9px 12px 8px;border-radius:12px;background:var(--ct)}
+.ck-idx>div{display:flex;flex-direction:column;gap:3px}
+.ck-big{font:800 36px/1 var(--fb);letter-spacing:-.03em;color:var(--c)}
+.ck-meta{align-items:flex-end;text-align:right}
+.ck-meta b{font-size:21px;font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--navy-900)}
+.ck-q{font-size:15px;line-height:1.35;font-weight:600;font-style:italic;color:var(--navy-800);padding:1px 0 1px 12px;border-left:3px solid var(--c)}
+/* tabela do modelo: uma grade só (cabeçalho + linhas compartilham as 3 colunas: medida · peso · meta) */
+.ck-kts{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 40px auto;grid-template-rows:auto;grid-auto-rows:minmax(0,1fr);align-items:center;column-gap:8px;row-gap:2px;padding-top:7px;border-top:1px dashed var(--line)}
+.ck-kth,.ck-kt{display:contents}
+.ck-kth .ck-lb{align-self:end;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.ck-kth .ck-lb:nth-child(2){text-align:right}
+.ck-kth .ck-lb:nth-child(3){justify-self:end}
+.ck-kt b{font-size:13.5px;font-weight:700;line-height:1.2;color:var(--navy-900);min-width:0;text-wrap:pretty}
+.ck-kt b small{display:block;margin-top:2px;font-size:12px;font-weight:500;line-height:1.2;color:var(--grey-500)}
+.ck-w{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font:600 13px var(--fm);line-height:1;color:var(--grey-500);white-space:nowrap}
+.ck-w i{display:block;width:100%;height:5px;border-radius:99px;background:var(--steel-100);position:relative;overflow:hidden}
+.ck-w i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--w)*2.85%);border-radius:99px;background:linear-gradient(90deg,var(--c),var(--c2));transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}
+.play .ck-w i::after{transform:none;transition-delay:.7s}
+.ck-kt.pre .ck-w{color:var(--grey-400)}
+.ck-kt.pre .ck-w i{background:repeating-linear-gradient(90deg,var(--steel-100) 0 5px,transparent 5px 8px)}
+.ck-kt em{justify-self:end;font-style:normal;font-size:12.5px;font-weight:700;color:var(--navy-800);padding:3px 7px;border-radius:6px;background:var(--off);border:1px solid var(--line);white-space:nowrap}
+.ck-turn{font:500 12px var(--fm);letter-spacing:.06em;color:var(--grey-500);text-align:center;white-space:nowrap}
+.ck-card:hover .ck-turn{color:var(--orange-600)}
+/* ---------- VERSO: o dashboard ---------- */
+.ck-dash{display:flex;align-items:center;gap:14px;padding:4px 0 2px}
+.ck-ring{position:relative;flex:none;width:98px;height:98px}
+.ck-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ck-ring circle{fill:none;stroke-width:11}
+.ck-ring .bg{stroke:rgba(255,255,255,.12)}
+.ck-ring .fg{stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray .6s var(--ease) .42s}
+.ck-card.flip .ck-ring .fg{stroke-dasharray:var(--v) 100;transition:stroke-dasharray 1s var(--ease) .35s}
+.ck-ring.g .fg{stroke:var(--ck-g)}.ck-ring.y .fg{stroke:var(--ck-y)}.ck-ring.r .fg{stroke:var(--ck-r)}
+.ck-n{position:absolute;inset:0;display:grid;grid-auto-flow:column;place-items:center;place-content:center;gap:1px;font:800 24px var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.ck-n small{font-size:12px;font-weight:600;color:var(--steel-300);align-self:end;padding-bottom:4px}
+.ck-dr{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+.ck-big2{font:800 30px/1 var(--fb);letter-spacing:-.03em;color:#fff}
+.ck-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.ck-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.ck-pill.g{color:#071A33;background:var(--ck-g)}.ck-pill.y{color:#3D2E00;background:var(--ck-y)}.ck-pill.r{color:#fff;background:var(--ck-r)}
+.ck-ms{font-size:13px;color:var(--steel-300);white-space:nowrap}
+.ck-ms b{color:#fff}
+.ck-bars{flex:1;min-height:0;display:flex;flex-direction:column;gap:3px;padding-top:6px;border-top:1px dashed rgba(255,255,255,.14)}
+/* legenda: barra = real · traço branco = meta */
+.ck-lg{flex:none;display:flex;align-items:center;gap:8px;font:500 12px var(--fm);letter-spacing:.08em;text-transform:uppercase;color:var(--steel-300);white-space:nowrap}
+.ck-lgs{position:relative;display:block;width:30px;height:6px;border-radius:99px;background:rgba(255,255,255,.14)}
+.ck-lgs b{position:absolute;left:0;top:0;bottom:0;width:60%;border-radius:99px;background:var(--orange-400)}
+.ck-lgs u{position:absolute;top:-3px;bottom:-3px;left:calc(82% - 2px);width:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(7,26,51,.6)}
+.ck-kr{flex:1 1 0;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) auto;row-gap:5px;column-gap:10px;align-items:baseline;align-content:center}
+.ck-kr span{font-size:13.5px;font-weight:600;color:var(--steel-200);white-space:nowrap}
+.ck-kr span em{font-style:normal;font:500 12px var(--fm);color:var(--steel-300);margin-left:4px}
+.ck-kr b{font:700 14px var(--fm);color:#fff}
+.ck-kr.ok b{color:var(--ck-g)}.ck-kr.ko b{color:var(--orange-400)}
+.ck-bar{grid-column:1/-1;position:relative;height:8px;border-radius:99px;background:rgba(255,255,255,.12)}
+.ck-bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;background:var(--orange-400);transition:width .9s var(--ease) .4s}
+.ck-kr.ok .ck-bar i{background:var(--ck-g)}
+.ck-card.flip .ck-bar i{width:calc(var(--v)*1%)}
+.ck-bar u{position:absolute;top:-3px;bottom:-3px;left:calc(var(--m)*1% - 2px);width:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(7,26,51,.6)}
+.ck-kr.na span,.ck-kr.na b{opacity:.6}
+.ck-kr.na .ck-bar{background:repeating-linear-gradient(90deg,rgba(255,255,255,.14) 0 6px,transparent 6px 10px)}
+.ck-kr.na .ck-bar u{opacity:.5}
+.ck-act{display:flex;flex-direction:column;gap:3px;padding:8px 12px;border-radius:10px;background:rgba(242,107,33,.16);border-left:3px solid var(--orange-400)}
+.ck-act .ck-lb{color:var(--orange-200)}
+.ck-act p{font-size:14px;line-height:1.3;color:#fff;text-wrap:pretty}
+.ck-act p b{color:var(--orange-400)}
+.ck-card.flip .ck-act{animation:ckIn .5s var(--ease) .45s both}
+@keyframes ckIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ---------- faixa final ---------- */
+.ck-foot{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.ck-foot p{font-size:15.5px;color:var(--navy-800);white-space:nowrap}
+.ck-foot p b{color:var(--orange-600)}
+.ck-foot .ck-lb{color:var(--orange-600)}
 
 /* ===== 11-roadmap ===== */
+/* =====================================================================
+   05 · NA PRÁTICA · ROADMAP 3·6·8 meses  (prefixo rm-, escopo .slide[data-id="roadmap"])
+   3 ondas (colunas) × 4 frentes + Medir (linhas). → abre uma onda por vez.
+   ===================================================================== */
+.rm-main{display:flex;flex-direction:column;gap:12px}
+.rm-grid{flex:1;min-height:0;display:grid;grid-template-columns:184px repeat(3,minmax(0,1fr));grid-template-rows:auto repeat(4,minmax(0,1fr)) auto;gap:10px 14px}
+/* ---------- canto ---------- */
+.rm-corner{display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:0 4px 6px}
+.rm-corner b{font-size:15px;font-weight:800;letter-spacing:-.01em;color:var(--navy-900)}
+.rm-corner span{font:500 12px var(--fm);letter-spacing:.04em;color:var(--grey-500);white-space:nowrap}
+/* ---------- cabeçalho de cada onda (botão) ----------
+   .rm-wv (wrapper) carrega a animação de entrada; assim .ghost/.cur no botão não são sobrescritos pelo fill-mode */
+.rm-wv{display:grid;min-width:0}
+.rm-wave{position:relative;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:14px;padding:10px 16px 10px 10px;border-radius:14px;text-align:left;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);transition:box-shadow .35s,border-color .35s,opacity .35s,transform .4s var(--spring)}
+.rm-wave:hover{border-color:var(--steel-300)}
+.rm-wave:not([data-w="2"])::after{content:"";position:absolute;right:-11px;top:50%;width:9px;height:9px;border-top:2px solid var(--grey-300);border-right:2px solid var(--grey-300);transform:translateY(-50%) rotate(45deg);pointer-events:none}
+/* badge "até · 3 · meses": prazo grande com unidade (só o dígito <i> tem a entrada; o wob fica no badge) */
+.rm-num{width:66px;height:66px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--grey-500);background:var(--surface-3);box-shadow:inset 0 -4px 0 rgba(0,0,0,.08);transition:background .4s,color .4s}
+.rm-num i{display:block;font:800 27px/1 var(--fb);font-style:normal;letter-spacing:-.02em}
+.rm-num small{display:block;font:500 12px/1 var(--fm);letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.play .rm-num i{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d)*90ms + 350ms)}
+.rm-wt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.rm-wt em{font:500 12px var(--fm);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.rm-wt b{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.rm-wt>span{font-size:14px;line-height:1.3;color:var(--grey-700)}
+/* estados: ghost (futura) · on (aberta) · cur (em destaque) */
+.rm-wave.ghost{opacity:.62;background:rgba(255,255,255,.55);border-style:dashed;border-color:var(--line-strong);box-shadow:none}
+.rm-wave.on .rm-num{background:linear-gradient(150deg,var(--navy-600),var(--navy-800));color:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
+.rm-wave.cur{border-color:var(--orange-400);box-shadow:0 0 0 2px var(--orange-500),0 14px 30px rgba(11,37,69,.14);transform:translateY(-3px)}
+.rm-wave.cur .rm-num{background:linear-gradient(150deg,var(--orange-400),var(--orange-600));animation:rmWob .7s var(--spring)}
+.rm-wave.cur .rm-wt em{color:var(--orange-600)}
+@keyframes rmWob{30%{transform:rotate(-8deg) scale(1.12)}60%{transform:rotate(5deg)}}
+/* ---------- rótulo das linhas (frentes) ---------- */
+.rm-row{display:flex;align-items:center;gap:10px;padding:0 12px 0 14px;border-radius:12px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);box-shadow:0 1px 2px rgba(11,37,69,.05)}
+.rm-row[data-f="com"],.rm-cell[data-f="com"]{--c:var(--navy-700)}
+.rm-row[data-f="stk"],.rm-cell[data-f="stk"]{--c:var(--steel-500)}
+.rm-row[data-f="imp"],.rm-cell[data-f="imp"]{--c:var(--orange-500)}
+.rm-row[data-f="cap"],.rm-cell[data-f="cap"]{--c:var(--navy-500)}
+.rm-row[data-f="med"],.rm-cell[data-f="med"]{--c:var(--orange-400)}
+.rm-ico{font-size:26px;line-height:1;filter:drop-shadow(0 2px 3px rgba(11,37,69,.18))}
+.rm-row b{display:block;font-size:15.5px;font-weight:800;letter-spacing:-.01em;line-height:1.15;color:var(--navy-900)}
+.rm-row em{display:block;margin-top:3px;font:500 12px var(--fm);font-style:normal;letter-spacing:.06em;color:var(--grey-500)}
+.rm-row.rm-mz{padding:10px 12px 10px 14px;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800)}
+.rm-row.rm-mz b{color:#fff}.rm-row.rm-mz em{color:var(--steel-300)}
+/* ---------- células ---------- */
+.rm-cell{display:flex;align-items:center;padding:9px 14px;border-radius:12px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05);transition:background .35s,border-color .35s,box-shadow .35s}
+.rm-cell ul{list-style:none;display:flex;flex-direction:column;gap:5px;width:100%;transition:opacity .4s,filter .4s}
+.rm-cell li{position:relative;padding-left:17px;font-size:14.5px;line-height:1.3;color:var(--grey-700);text-wrap:pretty}
+.rm-cell li::before{content:"";position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.rm-cell li b{color:var(--navy-900)}
+.rm-cell.rm-mc{padding:10px 14px;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800)}
+.rm-cell.rm-mc li{color:var(--steel-200)}
+.rm-cell.rm-mc li b{color:#fff}
+/* futura: esmaecida, texto desfocado · aberta: normal · em destaque: contorno laranja */
+.rm-cell.ghost{background:rgba(255,255,255,.45);border:1.5px dashed var(--line-strong);box-shadow:none}
+.rm-cell.ghost ul{opacity:.34;filter:blur(2px)}
+.rm-cell.rm-mc.ghost{background:rgba(11,37,69,.06);border-color:var(--steel-300)}
+.rm-cell.rm-mc.ghost li{color:var(--navy-800)}.rm-cell.rm-mc.ghost li b{color:var(--navy-900)}
+.rm-cell.cur{border-color:var(--orange-400);box-shadow:0 8px 20px rgba(11,37,69,.10)}
+.rm-cell.rm-mc.cur{border-color:var(--orange-400);box-shadow:0 0 0 1px var(--orange-400),0 8px 20px rgba(11,37,69,.18)}
+.rm-cell.in ul{animation:rmIn .5s var(--ease) both;animation-delay:calc(var(--r)*70ms)}
+@keyframes rmIn{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+/* ---------- faixa final: o ritual ---------- */
+.rm-rit{flex:none;display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:22px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.rm-rl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.rm-chain{display:flex;align-items:center;gap:8px}
+.rm-chain span{display:inline-flex;align-items:center;height:30px;padding:0 13px;border-radius:99px;background:#fff;font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.rm-chain i{font-style:normal;font-weight:700;color:var(--orange-500)}
+.rm-rit p{font-size:14px;color:var(--navy-800);text-align:right;white-space:nowrap}
 
 /* ===== 12-comunicacao ===== */
+/* =====================================================================
+   05 · NA PRÁTICA · FRENTE 1 · COMUNICAÇÃO  (prefixo fc-, escopo .slide[data-id="comunicacao"])
+   O que é · o que um plano precisa ter (checklist) · o plano em movimento (5 fases + marcos)
+   ===================================================================== */
+.slide[data-id="comunicacao"]{--c:var(--navy-700);--c2:var(--navy-900);--ct:rgba(19,49,92,.08);--fc-g:#2ECC71;--fc-gt:#1E8E4F}
+.fc-main{display:flex;flex-direction:column;gap:12px}
+.fc-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fc-grid{flex:1;min-height:0;display:grid;grid-template-columns:560px minmax(0,1fr);gap:18px}
+.fc-left{display:flex;flex-direction:column;gap:12px;min-height:0}
+/* ---------- o que é ---------- */
+.fc-what{flex:none;display:flex;flex-direction:column;gap:10px;padding:13px 18px 14px;border-top:5px solid var(--c)}
+.fc-ch{display:flex;align-items:center;gap:12px}
+.fc-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--c),var(--c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .fc-ico{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.fc-ch>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fc-ch b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.fc-what p{font-size:16.5px;line-height:1.4;color:var(--grey-700);text-wrap:pretty}
+.fc-what p b{color:var(--navy-900)}
+.fc-chip{display:flex;align-items:center;gap:10px;padding:7px 10px 7px 8px;border-radius:10px;background:var(--ct)}
+.fc-idx{font:800 18px/1 var(--fb);letter-spacing:-.02em;color:var(--c);padding:5px 8px;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fc-meta{font-size:14px;font-weight:800;color:var(--navy-900);white-space:nowrap}
+.fc-kts{margin-left:auto;display:flex;gap:5px}
+.fc-kts i{font:500 12px var(--fm);font-style:normal;letter-spacing:.03em;color:var(--navy-800);padding:3px 7px;border-radius:99px;background:#fff;border:1px solid var(--line);white-space:nowrap}
+/* ---------- o que um plano precisa ter: checklist clicável ---------- */
+.fc-plan{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:13px 18px 12px}
+.fc-plh{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fc-plh>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fc-plh b{font-size:15.5px;font-weight:800;letter-spacing:-.01em;color:var(--navy-900);white-space:nowrap}
+.fc-plr{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+.fc-plr em{font:500 12px var(--fm);font-style:normal;letter-spacing:.02em;color:var(--grey-500);white-space:nowrap}
+.fc-cnt{flex:none;font:600 13px var(--fm);color:var(--grey-500);padding:4px 10px;border-radius:99px;background:var(--off);border:1px solid var(--line);white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.fc-cnt b{font:800 15px var(--fb);color:var(--navy-900);transition:color .3s}
+.fc-cnt.ok{color:var(--fc-gt);background:rgba(46,204,113,.14);border-color:rgba(46,204,113,.35)}
+.fc-cnt.ok b{color:var(--fc-gt)}
+.fc-list{list-style:none;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-between;gap:3px;padding-top:8px;border-top:1px dashed var(--line)}
+.fc-list li{display:grid;grid-template-columns:34px minmax(0,1fr) 26px;align-items:center;gap:10px;padding:4px 8px 4px 6px;border-radius:10px;cursor:pointer;transition:background .25s,transform .3s var(--spring)}
+.fc-list li:hover{background:var(--off)}
+.fc-list li:active{transform:scale(.985)}
+.fc-li{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:19px;line-height:1;background:var(--ct);transition:background .3s}
+.fc-list li>div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.fc-list li b{font-size:15px;font-weight:800;line-height:1.2;color:var(--navy-900);transition:color .3s}
+.fc-list li>div span{font-size:13px;line-height:1.25;color:var(--grey-500);white-space:nowrap}
+.fc-ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--line-strong);display:grid;place-items:center;background:#fff;transition:background .3s,border-color .3s,transform .4s var(--spring)}
+.fc-ck::after{content:"✓";font:800 13px/1 var(--fb);color:#fff;transform:scale(0);transition:transform .35s var(--spring)}
+.fc-list li.on{background:rgba(46,204,113,.09)}
+.fc-list li.on .fc-li{background:rgba(46,204,113,.16)}
+.fc-list li.on .fc-ck{background:var(--fc-g);border-color:var(--fc-g);transform:scale(1.1)}
+.fc-list li.on .fc-ck::after{transform:none}
+.fc-list li.on b{color:var(--fc-gt)}
+/* ---------- exemplo: o plano em movimento ---------- */
+.fc-ex{min-height:0;display:flex;flex-direction:column;gap:12px;padding:13px 18px 14px;border-top:5px solid var(--c)}
+.fc-eh{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fc-eh>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fc-eh b{font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--navy-900);white-space:nowrap}
+/* botões de fase */
+.fc-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.fc-tabs button{position:relative;display:flex;align-items:center;gap:9px;padding:7px 10px 7px 7px;border-radius:12px;text-align:left;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s,box-shadow .3s,transform .4s var(--spring)}
+.fc-tabs button:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:9px;height:2px;background:var(--line-strong);pointer-events:none}
+.fc-tabs button i{flex:none;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:var(--grey-500);background:#fff;border:1px solid var(--line);transition:background .3s,color .3s,border-color .3s}
+.fc-tabs button div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.fc-tabs button b{font-size:15px;font-weight:800;line-height:1.15;color:var(--navy-900);white-space:nowrap;transition:color .3s}
+.fc-tabs button span{font:500 12px var(--fm);color:var(--grey-500);white-space:nowrap;transition:color .3s}
+.fc-tabs button:hover{border-color:var(--steel-300);background:#fff}
+.fc-tabs button.done i{font-size:0;color:#fff;background:var(--fc-g);border-color:var(--fc-g)}
+.fc-tabs button.done i::after{content:"✓";font:800 15px/1 var(--fb)}
+.fc-tabs button.done b{color:var(--fc-gt)}
+.fc-tabs button.on{background:linear-gradient(150deg,var(--c),var(--c2));border-color:var(--c);box-shadow:0 10px 22px rgba(11,37,69,.2);transform:translateY(-2px)}
+.fc-tabs button.on i{color:var(--c);background:#fff;border-color:#fff;animation:fcWob .6s var(--spring)}
+@keyframes fcWob{30%{transform:rotate(-8deg) scale(1.12)}60%{transform:rotate(5deg)}}
+.fc-tabs button.on b{color:#fff}.fc-tabs button.on span{color:var(--steel-200)}
+/* painel da fase: quando · o que fazer · entregável · indicador */
+.fc-panel{flex:1;min-height:0;position:relative}
+.fc-ph{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px}
+.fc-ph.in>*{animation:fcIn .45s var(--ease) both}
+.fc-ph.in>:nth-child(2){animation-delay:.08s}
+@keyframes fcIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fc-do{display:flex;flex-direction:column;gap:10px;padding:14px 18px 12px;border-radius:14px;background:var(--off);border:1px solid var(--line);min-height:0}
+.fc-when{display:flex;align-items:center;gap:10px}
+.fc-when em{flex:none;font-style:normal;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:#fff;padding:4px 9px;border-radius:99px;background:var(--c)}
+.fc-when b{font-size:15.5px;font-weight:700;color:var(--navy-900);text-wrap:pretty}
+.fc-steps{list-style:none;flex:1;display:flex;flex-direction:column;justify-content:space-evenly;gap:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.fc-steps li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:center;font-size:17px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.fc-steps li i{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:800 14px var(--fb);font-style:normal;color:var(--c);background:#fff;border:2px solid var(--c)}
+.fc-steps li b{color:var(--navy-900)}
+.fc-side{display:flex;flex-direction:column;gap:10px;min-height:0}
+.fc-mini{flex:1 1 0;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:12px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05)}
+.fc-mini p{font-size:15.5px;line-height:1.35;font-weight:600;color:var(--navy-900);text-wrap:pretty}
+.fc-mini.ind{flex:1.7 1 0;justify-content:center;gap:9px;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);box-shadow:0 12px 28px rgba(11,37,69,.2)}
+.fc-mini.ind .fc-lb{color:var(--orange-200)}
+.fc-mini.ind p{color:var(--steel-200);font-weight:600}
+.fc-mini.ind p b{display:block;margin-bottom:4px;font:800 30px/1.1 var(--fb);letter-spacing:-.02em;color:var(--orange-400)}
+.fc-calc{margin-top:4px;display:flex;flex-direction:column;gap:4px;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.fc-calc em{font-style:normal;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-200)}
+.fc-calc span{font-size:13.5px;line-height:1.35;font-weight:500;color:var(--steel-200);text-wrap:pretty}
+.fc-calc span b{color:#fff}
+/* leitura do ciclo fechado (último passo): frase + ciclo à esquerda · dashboard real do IEC à direita */
+.fc-sum{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 336px;align-items:center;gap:24px;padding:18px 22px;border-radius:14px;color:#fff;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);box-shadow:0 18px 40px rgba(11,37,69,.22)}
+.fc-sum.in>*{animation:fcIn .5s var(--ease) both}
+.fc-sum.in>:nth-child(2){animation-delay:.12s}
+.fc-sl{display:flex;flex-direction:column;gap:13px;min-width:0}
+.fc-sl .fc-lb,.fc-sr .fc-lb{color:var(--orange-200)}
+.fc-sl h3{font-size:26px;line-height:1.22;font-weight:800;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+.fc-sl h3 b{color:var(--orange-400)}
+.fc-chain{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.fc-chain span{display:inline-flex;align-items:center;height:30px;padding:0 9px;border-radius:99px;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);white-space:nowrap}
+.fc-chain i{font-style:normal;font-weight:800;font-size:15px;color:var(--orange-400)}
+.fc-sl p{font-size:15.5px;line-height:1.4;color:var(--steel-200);text-wrap:pretty}
+.fc-sl p b{color:#fff}
+.fc-sr{display:flex;flex-direction:column;gap:9px;padding-left:24px;border-left:1px solid rgba(255,255,255,.12)}
+.fc-kr{display:grid;grid-template-columns:minmax(0,1fr) auto;row-gap:4px;column-gap:10px;align-items:baseline}
+.fc-kr span{font-size:14px;font-weight:600;color:var(--steel-200);white-space:nowrap}
+.fc-kr span em{font-style:normal;font:500 12px var(--fm);color:var(--steel-300);margin-left:5px}
+.fc-kr b{font:700 14px var(--fm);color:#fff}
+.fc-kr.ok b{color:var(--fc-g)}.fc-kr.ko b{color:var(--orange-400)}
+.fc-bar{grid-column:1/-1;position:relative;height:8px;border-radius:99px;background:rgba(255,255,255,.12)}
+.fc-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--v)*1%);border-radius:99px;background:var(--orange-400);transform:scaleX(0);transform-origin:left;animation:fcBar .9s var(--ease) .35s forwards}
+.fc-kr.ok .fc-bar i{background:var(--fc-g)}
+@keyframes fcBar{to{transform:none}}
+.fc-bar u{position:absolute;top:-3px;bottom:-3px;left:calc(var(--m)*1% - 2px);width:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(7,26,51,.6)}
+.fc-iec{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:2px;padding:8px 12px;border-radius:10px;background:rgba(242,107,33,.16);border-left:3px solid var(--orange-400)}
+.fc-iec b{font:800 18px var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.fc-iec .y{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#3D2E00;background:#F2B51D;white-space:nowrap}
+.fc-iec .y::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.fc-iec em{flex-basis:100%;font-style:normal;font-size:13.5px;color:var(--steel-200);white-space:nowrap}
+.fc-iec em b{font:800 13.5px var(--fb);color:var(--orange-400)}
+/* mini linha do tempo dos marcos */
+.fc-tl{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px;padding:8px 16px 7px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .4s}
+.fc-tll{font:500 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;line-height:1.35;color:var(--grey-500);white-space:nowrap}
+.fc-marks{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.fc-marks::before{content:"";position:absolute;left:10%;right:10%;top:8px;height:2px;background:var(--line-strong)}
+.fc-mk{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.fc-mk i{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--steel-300);transition:background .35s,border-color .35s,box-shadow .35s}
+.fc-mk b{font-size:13.5px;font-weight:700;color:var(--navy-800);white-space:nowrap;transition:color .3s}
+.fc-mk span{display:inline-flex;align-items:center;min-height:20px;padding:0 8px;border-radius:99px;font:500 12px var(--fm);color:var(--grey-400);white-space:nowrap;transition:background .3s,color .3s}
+.fc-mk:not(.lit) span{visibility:hidden}
+.fc-tl.all .fc-mk span{visibility:visible}
+.fc-mk.lit i{background:var(--orange-500);border-color:var(--orange-500);box-shadow:0 0 0 4px rgba(242,107,33,.22)}
+.fc-mk.lit b{color:var(--orange-600)}
+.fc-mk.lit span{color:#fff;font-weight:600;background:var(--orange-500)}
+.fc-mk span.in{animation:fcPop .45s var(--spring)}
+@keyframes fcPop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.fc-tl.all{background:var(--ct)}
+.fc-tl.all .fc-mk i{background:var(--c);border-color:var(--c)}
+.fc-tl.all .fc-mk b{color:var(--c)}
+.fc-tl.all .fc-mk span{color:#fff;font-weight:600;background:var(--c)}
+/* ---------- faixa final: próximos 3 · 6 · 8 meses ---------- */
+.fc-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.fc-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fc-chips{display:flex;gap:10px}
+.fc-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fc-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
+.fc-chips span:nth-child(2) i{background:var(--steel-500)}
+.fc-chips span:nth-child(3) i{background:var(--orange-500)}
+.fc-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
 
 /* ===== 13-stakeholders ===== */
+/* =====================================================================
+   05 · NA PRÁTICA · FRENTE 2 · STAKEHOLDERS  (prefixo fs-, escopo .slide[data-id="stakeholders"])
+   esquerda: o que é + como fazer · direita: mapa influência × interesse + painel da pessoa + antes × depois
+   ===================================================================== */
+.slide[data-id="stakeholders"]{--fs-c:var(--steel-500);--fs-c2:var(--navy-600);--fs-ok:#2ECC71;--fs-okt:#1E8E4F}
+.slide[data-id="stakeholders"] [data-s="a"]{--pc:#2ECC71;--pct:#1E8E4F}
+.slide[data-id="stakeholders"] [data-s="n"]{--pc:var(--steel-400);--pct:var(--steel-600)}
+.slide[data-id="stakeholders"] [data-s="r"]{--pc:var(--orange-500);--pct:var(--orange-600)}
+.fs-main{display:flex;flex-direction:column;gap:14px}
+.fs-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fs-grid{flex:1;min-height:0;display:grid;grid-template-columns:560px minmax(0,1fr);gap:20px}
+.fs-left{display:flex;flex-direction:column;gap:14px;min-height:0}
+@keyframes fsLetter{from{transform:rotate(-25deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes fsIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ---------- o que é ---------- */
+.fs-what{flex:none;padding:15px 20px 16px;border-top:5px solid var(--fs-c);display:flex;flex-direction:column;gap:12px}
+.fs-wh{display:flex;align-items:center;gap:12px}
+.fs-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .fs-ico{animation:fsLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.fs-wh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.fs-wh b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.fs-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:pretty}
+.fs-def b{color:var(--navy-900)}
+.fs-chip{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+.fs-chip b{padding:4px 9px;border-radius:7px;font:800 14px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.fs-chip span{font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fs-chip em{font-style:normal;margin-left:auto;font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+/* ---------- como fazer: 4 passos ---------- */
+.fs-how{flex:1;min-height:0;padding:15px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.fs-steps{flex:1;min-height:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.fs-steps li{flex:1;min-height:0;display:flex;align-items:center;gap:14px;padding:0 14px 0 12px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s}
+.fs-steps li:hover{background:#fff;border-color:var(--steel-300)}
+.fs-steps li i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:#fff;background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.fs-steps li div{flex:1;min-width:0}
+.fs-steps li b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--navy-900)}
+.fs-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.fs-steps li em{flex:none;font-size:22px;line-height:1;font-style:normal}
+/* ---------- exemplo: o card grande ---------- */
+.fs-ex{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);gap:10px 18px;padding:14px 18px 16px;border-top:5px solid var(--fs-c)}
+.fs-exh{grid-column:1/-1;display:flex;align-items:center;gap:16px}
+.fs-exh .fs-lb{color:var(--navy-800);font-weight:600}
+.fs-exh .fs-lb b{color:var(--orange-600);font-weight:600}
+.fs-pl{margin-left:auto;display:flex;gap:14px}
+.fs-pl span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fs-pl span::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--pc);box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+/* ---------- o mapa 2×2 ---------- */
+.fs-map{min-height:0;display:grid;grid-template-columns:22px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 22px;gap:4px}
+.fs-ay,.fs-ax{display:flex;align-items:center;justify-content:center;font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fs-ay{grid-row:1;grid-column:1;writing-mode:vertical-rl;transform:rotate(180deg)}
+.fs-ax{grid-row:2;grid-column:2}
+.fs-ay b,.fs-ax b{font-weight:600;color:var(--navy-800);margin-inline:8px}
+.fs-plot{grid-row:1;grid-column:2;position:relative;min-height:0;border-radius:14px;background:#fff;border:1px solid var(--line-strong);background-image:linear-gradient(rgba(11,37,69,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(11,37,69,.045) 1px,transparent 1px);background-size:40px 40px}
+.fs-plot::before{content:"";position:absolute;left:50%;top:10px;bottom:10px;border-left:2px dashed var(--line-strong);z-index:1;pointer-events:none}
+.fs-plot::after{content:"";position:absolute;top:50%;left:10px;right:10px;border-top:2px dashed var(--line-strong);z-index:1;pointer-events:none}
+.fs-q{position:absolute;width:50%;height:50%;z-index:0;transition:background .45s}
+.fs-q[data-q="ms"]{left:0;top:0;border-radius:13px 0 0 0}
+.fs-q[data-q="gp"]{right:0;top:0;border-radius:0 13px 0 0}
+.fs-q[data-q="mo"]{left:0;bottom:0;border-radius:0 0 0 13px}
+.fs-q[data-q="mi"]{right:0;bottom:0;border-radius:0 0 13px 0}
+.fs-q.on{background:rgba(74,111,165,.13)}
+.fs-q span{position:absolute;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap;transition:color .3s}
+.fs-q.on span{color:var(--steel-600)}
+.fs-q[data-q="ms"] span{top:10px;left:12px}.fs-q[data-q="gp"] span{top:10px;right:12px}
+.fs-q[data-q="mo"] span{bottom:10px;left:12px}.fs-q[data-q="mi"] span{bottom:10px;right:12px}
+/* pessoas: ponto com a inicial do papel, cor da postura */
+.fs-pw{position:absolute;left:calc(var(--x)*1%);bottom:calc(var(--y)*1%);width:0;height:0;z-index:2}
+.fs-pw.on{z-index:4}
+.fs-p{position:absolute;left:-23px;top:-23px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 18px var(--fb);line-height:1;color:#fff;background:var(--pc);border:3px solid #fff;box-shadow:0 4px 12px rgba(11,37,69,.22),inset 0 -3px 0 rgba(0,0,0,.16);transition:transform .45s var(--spring),box-shadow .3s,opacity .3s}
+.fs-p.two{font-size:15px}
+.fs-p:hover{transform:scale(1.1)}
+.fs-p span{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font:700 12.5px var(--fb);line-height:1.2;color:var(--navy-800);white-space:nowrap;background:rgba(255,255,255,.94);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.fs-plot.sel .fs-pw:not(.on) .fs-p{opacity:.5}
+.fs-pw.on .fs-p{transform:scale(1.22);box-shadow:0 0 0 5px rgba(242,107,33,.28),0 12px 26px rgba(11,37,69,.28)}
+.fs-pw.on .fs-p::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--orange-500);animation:fsPulse 1.6s ease-out infinite}
+@keyframes fsPulse{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+/* ---------- lado direito: painel da pessoa + antes × depois ---------- */
+.fs-side{min-height:0;display:flex;flex-direction:column;gap:12px}
+.fs-panel{flex:1;min-height:0;padding:15px 18px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.fs-panel .fs-lb{color:var(--orange-200)}
+.fs-panel.swap>*{animation:fsIn .4s var(--ease) both}
+.fs-panel.swap>*:nth-child(2){animation-delay:.05s}.fs-panel.swap>*:nth-child(3){animation-delay:.1s}.fs-panel.swap>*:nth-child(4){animation-delay:.15s}
+/* estado inicial: como ler o mapa (mini-mapa 2×2 com quem está em cada quadrante) */
+.fs-pt{font-size:18px;font-weight:800;line-height:1.3;letter-spacing:-.01em;color:#fff;text-wrap:balance}
+.fs-pt b{color:var(--orange-400)}
+.fs-qg{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
+.fs-qg>div{min-height:0;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 11px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.fs-qg>div[data-q="gp"]{background:rgba(242,107,33,.14);border-color:rgba(255,138,76,.32)}
+.fs-qg b{font-size:13.5px;font-weight:700;line-height:1.2;color:#fff}
+.fs-qg span{font-size:12.5px;line-height:1.3;color:var(--steel-200)}
+.fs-qd{display:flex;align-items:center;gap:4px;margin-top:5px;min-height:24px}
+.fs-qd i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 12px var(--fb);font-style:normal;line-height:1;color:#fff;background:var(--pc);border:2px solid rgba(255,255,255,.85)}
+.fs-qd i.two{font-size:12px;letter-spacing:-.04em}
+.fs-qd em{font-style:normal;font-size:12px;color:var(--steel-300)}
+.fs-pn{margin-top:auto;font-size:14px;line-height:1.4;color:var(--steel-200)}
+.fs-pn b{color:#fff}
+.fs-pn kbd{color:var(--orange-200);border-color:var(--orange-200)}
+/* pessoa em destaque */
+.fs-ph{display:flex;align-items:center;gap:12px}
+.fs-pi{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 18px var(--fb);font-style:normal;line-height:1;color:#fff;background:var(--pc);border:3px solid rgba(255,255,255,.9);box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
+.fs-pi.two{font-size:15px}
+.fs-ph>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.fs-ph b{font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.15;color:#fff}
+.fs-tr{display:flex;flex-direction:column;gap:6px}
+.fs-trk{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.fs-trk i{height:30px;display:grid;place-items:center;border-radius:8px;font:700 12.5px var(--fb);font-style:normal;color:var(--steel-300);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:background .3s,color .3s}
+.fs-trk i.on{color:#fff;background:var(--pc);border-color:transparent;box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
+.fs-pr{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+.fs-pr div{flex:1;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.fs-pr .ok{background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.35)}
+.fs-pr .ok .fs-lb{color:#7FE3A8}
+.fs-pr .fs-lb{display:block;margin-bottom:4px}
+.fs-pr p{font-size:15.5px;line-height:1.34;color:#fff;text-wrap:pretty}
+.fs-pr .act{background:rgba(242,107,33,.16);border-color:rgba(255,138,76,.35)}
+.fs-pr .act .fs-lb{color:var(--orange-400)}
+/* antes × depois */
+.fs-ba{flex:none;padding:11px 14px 11px;border-radius:12px;background:var(--off);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.fs-bar{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:8px}
+.fs-bar em{font-style:normal;font-size:13px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fs-bt{display:flex;height:28px;border-radius:7px;overflow:hidden;background:var(--steel-100)}
+.fs-bt i{flex:none;width:calc(var(--w)*1%);display:grid;place-items:center;font:700 13px var(--fb);font-style:normal;color:#fff;overflow:hidden}
+.fs-bt i.r{background:var(--orange-500)}.fs-bt i.g{background:var(--fs-ok)}
+.play .fs-bt i{animation:fsGrow 1s var(--ease) both;animation-delay:calc(var(--d,8)*90ms + 300ms)}
+@keyframes fsGrow{from{width:0}}
+.fs-ban{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--grey-700);white-space:nowrap}
+.fs-ban i{width:11px;height:11px;border-radius:3px}
+.fs-ban i.r{background:var(--orange-500)}.fs-ban i.g{background:var(--fs-ok)}
+.fs-ban b{color:var(--navy-800)}
+/* ---------- faixa final: próximos 3 · 6 · 8 meses (mesmo padrão das frentes 1 e 3) ---------- */
+.fs-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.fs-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fs-chips{display:flex;gap:10px}
+.fs-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fs-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
+.fs-chips span:nth-child(2) i{background:var(--steel-500)}
+.fs-chips span:nth-child(3) i{background:var(--orange-500)}
+.fs-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
 
 /* ===== 14-impactos ===== */
+/* =====================================================================
+   05 · NA PRÁTICA · FRENTE 3 · IMPACTOS  (prefixo fi-, escopo .slide[data-id="impactos"])
+   esquerda: o que é + como fazer · direita: a matriz em 3 visões (categoria · severidade · status),
+   3 linhas de exemplo (impacto → mitigação → dono → status) e a leitura do índice ICI
+   ===================================================================== */
+.slide[data-id="impactos"]{--fi-c:var(--orange-500);--fi-c2:var(--orange-600);--fi-ct:rgba(242,107,33,.1);--fi-g:#2ECC71;--fi-gt:#1E8E4F;--fi-y:#F2B51D;--fi-yt:#3D2E00;--fi-r:#E5484D;--fi-rt:#B3261E}
+.fi-main{display:flex;flex-direction:column;gap:14px}
+.fi-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fi-grid{flex:1;min-height:0;display:grid;grid-template-columns:560px minmax(0,1fr);gap:20px}
+.fi-left{display:flex;flex-direction:column;gap:14px;min-height:0}
+@keyframes fiLetter{from{transform:rotate(-25deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes fiIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fiPop{from{transform:scale(.5);opacity:0}to{transform:none;opacity:1}}
+/* ---------- o que é ---------- */
+.fi-what{flex:none;padding:15px 20px 16px;border-top:5px solid var(--fi-c);display:flex;flex-direction:column;gap:12px}
+.fi-wh{display:flex;align-items:center;gap:12px}
+.fi-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .fi-ico{animation:fiLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.fi-wh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.fi-wh b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.fi-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:pretty}
+.fi-def b{color:var(--navy-900)}
+.fi-chip{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+.fi-chip b{padding:4px 9px;border-radius:7px;font:800 14px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.fi-chip span{font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fi-chip em{font-style:normal;margin-left:auto;font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+/* ---------- como fazer: 4 passos ---------- */
+.fi-how{flex:1;min-height:0;padding:15px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.fi-steps{flex:1;min-height:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.fi-steps li{flex:1;min-height:0;display:flex;align-items:center;gap:14px;padding:0 14px 0 12px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s}
+.fi-steps li:hover{background:#fff;border-color:var(--orange-200)}
+.fi-steps li i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:#fff;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.fi-steps li div{flex:1;min-width:0}
+.fi-steps li b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--navy-900)}
+.fi-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.fi-steps li em{flex:none;font-size:22px;line-height:1;font-style:normal}
+/* ---------- exemplo: o card grande ---------- */
+.fi-ex{min-height:0;display:flex;flex-direction:column;gap:12px;padding:14px 18px 16px;border-top:5px solid var(--fi-c)}
+.fi-exh{flex:none;display:flex;align-items:center;gap:16px}
+.fi-exh .fi-lb{color:var(--navy-800);font-weight:600}
+.fi-exh .fi-lb b{color:var(--orange-600);font-weight:600}
+.fi-tot{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:3px 12px 3px 7px;border-radius:99px;font-size:13px;font-weight:700;color:var(--navy-800);background:var(--fi-ct);white-space:nowrap}
+.fi-tot b{font:800 18px/1 var(--fb);letter-spacing:-.02em;color:var(--fi-c2)}
+/* ---------- as três visões ---------- */
+.fi-views{flex:none;height:200px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fi-v{display:flex;flex-direction:column;gap:9px;padding:11px 14px 10px;border-radius:12px;background:var(--off);border:1px dashed var(--line-strong);cursor:pointer;transition:background .4s,border-color .4s,box-shadow .4s}
+.fi-v.on{background:#fff;border-style:solid;border-color:var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05),0 6px 16px rgba(11,37,69,.07);cursor:default}
+.fi-vh{display:flex;align-items:center;gap:9px}
+.fi-vh i{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:var(--grey-500);background:#fff;border:1px solid var(--line-strong);transition:background .3s,color .3s,border-color .3s}
+.fi-v.on .fi-vh i{color:#fff;background:linear-gradient(150deg,var(--orange-400),var(--fi-c2));border-color:transparent;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18);animation:fiPop .5s var(--spring)}
+.fi-vh div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.fi-vh b{font-size:15px;font-weight:800;line-height:1.15;color:var(--navy-900);white-space:nowrap}
+.fi-vh span{font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+.fi-vb{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;transition:opacity .4s,filter .4s}
+.fi-v:not(.on) .fi-vb{opacity:.45;filter:grayscale(1)}
+.fi-v:not(.on) .fi-vn{display:none}
+.fi-v:not(.on) .fi-vb::after{content:"avance para revelar →";margin-top:auto;padding-top:7px;border-top:1px dashed var(--line-strong);font:500 12px var(--fm);letter-spacing:.06em;color:var(--grey-500)}
+.fi-vn{margin-top:auto;padding-top:7px;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.3;color:var(--grey-700);text-wrap:pretty;animation:fiIn .5s var(--ease) .35s both}
+.fi-vn b{color:var(--navy-900)}
+/* visão 1 · por categoria: barras horizontais */
+.fi-cat{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fi-cat li{display:grid;grid-template-columns:22px 80px minmax(0,1fr) 24px;align-items:center;gap:8px}
+.fi-cat em{font-style:normal;font-size:16px;line-height:1;text-align:center}
+.fi-cat span{font-size:13.5px;font-weight:600;color:var(--navy-800);white-space:nowrap}
+.fi-bar{height:14px;border-radius:99px;background:var(--steel-100)}
+.fi-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--navy-600),var(--navy-800));transition:width .9s var(--ease)}
+.fi-v.on .fi-bar i{width:calc(var(--n)/12*100%)}
+.fi-cat b{font:800 15px var(--fb);color:var(--navy-900);text-align:right}
+/* visão 2 · por severidade: três blocos proporcionais */
+.fi-sev{display:flex;gap:6px;height:64px}
+.fi-sb{flex:var(--n) 1 0;min-width:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px;background:var(--steel-100);color:var(--navy-800);transition:background .45s,color .45s}
+.fi-sb b{font:800 24px/1 var(--fb);letter-spacing:-.02em}
+.fi-sb span{font:600 12px var(--fm);letter-spacing:.08em;text-transform:uppercase}
+.fi-v.on .fi-sb[data-s="a"]{background:var(--fi-r);color:#fff}
+.fi-v.on .fi-sb[data-s="m"]{background:var(--fi-y);color:var(--fi-yt)}
+.fi-v.on .fi-sb[data-s="b"]{background:var(--fi-g);color:#0B3D20}
+/* visão 3 · por status: barra empilhada + legenda */
+.fi-st{display:flex;gap:2px;height:22px;border-radius:7px;overflow:hidden;background:var(--steel-100)}
+.fi-st i{display:block;height:100%;width:0;transition:width .9s var(--ease)}
+.fi-v.on .fi-st i{width:calc(var(--w)/22*100% - 1.4px)}
+.fi-st i.and{background:var(--steel-500)}.fi-st i.mit{background:var(--fi-g)}.fi-st i.pen{background:var(--fi-c)}
+.fi-stl{list-style:none;display:flex;flex-direction:column;gap:3px}
+.fi-stl li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--grey-700)}
+.fi-stl li::before{content:"";width:11px;height:11px;border-radius:3px;background:var(--steel-500)}
+.fi-stl li.mit::before{background:var(--fi-g)}.fi-stl li.pen::before{background:var(--fi-c)}
+.fi-stl b{font:800 15px var(--fb);color:var(--navy-900);min-width:22px;text-align:right}
+/* ---------- a matriz, linha a linha ---------- */
+.fi-tab{--cols:minmax(0,1.45fr) 150px minmax(0,1.2fr) 150px 112px;flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding:10px 14px 10px;border-radius:12px;background:var(--off);border:1px dashed var(--line-strong);transition:background .4s,border-color .4s}
+.fi-tab.on{background:#fff;border-style:solid;border-color:var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05),0 6px 16px rgba(11,37,69,.07)}
+.fi-th{flex:none;display:grid;grid-template-columns:var(--cols);gap:10px;padding:0 10px 6px;border-bottom:1px solid var(--line)}
+.fi-th span{font:500 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fi-ghost{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;gap:5px}
+.fi-sk{flex:1;min-height:0;display:grid;grid-template-columns:var(--cols);gap:10px;align-items:center;padding:4px 10px;border-radius:10px;border:1px dashed var(--line-strong);opacity:.7}
+.fi-sk i{height:12px;border-radius:99px;background:var(--line-strong);opacity:.55}
+.fi-sk i:nth-child(1){width:82%}.fi-sk i:nth-child(2){width:64%}.fi-sk i:nth-child(3){width:78%}.fi-sk i:nth-child(4){width:58%}.fi-sk i:nth-child(5){width:66%}
+.fi-gh{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 7px;border-radius:99px;background:#fff;border:1px solid var(--line-strong);box-shadow:0 6px 18px rgba(11,37,69,.12);font-size:14.5px;color:var(--grey-700);white-space:nowrap}
+.fi-gh b{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font:800 13px var(--fb);color:var(--grey-500);background:var(--off);border:1px solid var(--line-strong)}
+.fi-tab.on .fi-ghost{display:none}
+.fi-rows{flex:1;min-height:0;display:none;flex-direction:column;gap:5px}
+.fi-tab.on .fi-rows{display:flex}
+.fi-row{flex:1;min-height:0;display:grid;grid-template-columns:var(--cols);gap:10px;align-items:center;padding:4px 10px;border-radius:10px;text-align:left;background:#fff;border:1px solid var(--line);transition:border-color .3s,box-shadow .3s,opacity .3s,transform .4s var(--spring)}
+.fi-tab.on .fi-row{animation:fiIn .5s var(--ease) both;animation-delay:calc(var(--i)*110ms + 60ms)}
+.fi-row:hover{border-color:var(--orange-200);background:#fff}
+.fi-row.on{border-color:var(--fi-c);box-shadow:0 8px 20px rgba(242,107,33,.16);transform:scale(1.012)}
+.fi-tab.sel .fi-row:not(.on){opacity:.45}
+.fi-imp{font-size:14px;font-weight:700;line-height:1.25;color:var(--navy-900);text-wrap:pretty}
+.fi-tags{display:flex;gap:4px;flex-wrap:wrap}
+.fi-tags i{font:600 12px var(--fm);font-style:normal;letter-spacing:.02em;padding:2px 7px;border-radius:99px;color:var(--navy-800);background:var(--steel-100);white-space:nowrap}
+.fi-tags i.s.a{color:#fff;background:var(--fi-r)}.fi-tags i.s.m{color:var(--fi-yt);background:var(--fi-y)}.fi-tags i.s.b{color:#0B3D20;background:var(--fi-g)}
+.fi-mit{font-size:13.5px;line-height:1.3;color:var(--grey-700);text-wrap:pretty}
+.fi-own{font-size:13.5px;font-weight:700;line-height:1.3;color:var(--navy-800)}
+.fi-pill{justify-self:start;display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.fi-pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.fi-pill.and{color:var(--steel-600);background:var(--steel-100)}
+.fi-pill.mit{color:var(--fi-gt);background:rgba(46,204,113,.16)}
+.fi-pill.pen{color:var(--fi-c2);background:var(--fi-ct)}
+/* ---------- leitura: o modelo do índice → o índice real ---------- */
+.fi-read{flex:none;height:96px;display:flex;flex-direction:column;justify-content:center;padding:0 18px}
+.fi-read.swap>*>*{animation:fiIn .45s var(--ease) both}
+.fi-read.swap>*>:nth-child(2){animation-delay:.07s}.fi-read.swap>*>:nth-child(3){animation-delay:.14s}
+.fi-read .fi-lb{color:var(--orange-200)}
+/* modelo (antes do último passo): ICI = 4 medidas com peso, em duas linhas */
+.fi-mo{display:flex;flex-direction:column;gap:9px}
+.fi-moh{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fi-mh{font:500 12px var(--fm);letter-spacing:.04em;color:var(--steel-300);white-space:nowrap}
+.fi-mh kbd{color:var(--orange-200);border-color:var(--orange-200)}
+.fi-mor{display:flex;align-items:center;gap:8px}
+.fi-mor>b{font:800 26px/1 var(--fb);letter-spacing:-.02em;color:#fff}
+.fi-mor>small{font-size:13px;font-weight:600;color:var(--steel-200);margin-right:4px;white-space:nowrap}
+.fi-mor>i{font-style:normal;font:800 18px var(--fb);color:var(--steel-300)}
+.fi-mor>i.fi-eq{font-size:22px;color:var(--orange-400)}
+.fi-kt{display:flex;flex-direction:column;gap:1px;padding:5px 11px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.fi-kt b{font-size:13.5px;font-weight:700;color:#fff;white-space:nowrap}
+.fi-kt span{font:500 12px var(--fm);color:var(--orange-200);white-space:nowrap}
+/* real (último passo): anel + ICI 49,5% + vermelho · leitura · onde agir */
+.fi-re{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1fr);align-items:center;gap:18px}
+.fi-ring{position:relative;flex:none;width:60px;height:60px}
+.fi-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.fi-ring circle{fill:none;stroke-width:12}
+.fi-ring .bg{stroke:rgba(255,255,255,.14)}
+.fi-ring .fg{stroke:var(--fi-r);stroke-linecap:round;stroke-dasharray:49.5 100;animation:fiRing 1.1s var(--ease) .15s both}
+@keyframes fiRing{from{stroke-dasharray:0 100}}
+.fi-rh{flex:none;display:flex;align-items:center;gap:12px}
+.fi-rh>div{display:flex;flex-direction:column;gap:4px}
+.fi-rh b.big{font:800 24px/1 var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.fi-rr{display:flex;align-items:center;gap:8px}
+.fi-rr small{font-size:12.5px;font-weight:600;color:var(--steel-200);white-space:nowrap}
+.fi-rp{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#fff;background:var(--fi-r);white-space:nowrap}
+.fi-rp::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.fi-rs{min-width:0;padding-left:18px;border-left:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;gap:4px}
+.fi-rs p{font-size:16.5px;line-height:1.25;font-weight:700;color:#fff;text-wrap:pretty}
+.fi-rs p b{color:var(--orange-400)}
+.fi-rs span{font-size:14px;line-height:1.3;color:var(--steel-200);text-wrap:pretty}
+.fi-rs span b{color:#fff}
+.fi-act{min-width:0;display:flex;flex-direction:column;gap:3px;padding:8px 14px;border-radius:10px;background:rgba(242,107,33,.16);border-left:3px solid var(--orange-400)}
+.fi-act .fi-lb{color:var(--orange-400)}
+.fi-act p{font-size:14.5px;line-height:1.3;color:#fff;text-wrap:pretty}
+.fi-act p b{color:var(--orange-400)}
+/* ---------- faixa final: próximos 3 · 6 · 8 meses ---------- */
+.fi-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.fi-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fi-chips{display:flex;gap:10px}
+.fi-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fi-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
+.fi-chips span:nth-child(2) i{background:var(--steel-500)}
+.fi-chips span:nth-child(3) i{background:var(--orange-500)}
+.fi-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
 
 /* ===== 15-capacitacao ===== */
+/* =====================================================================
+   05 · NA PRÁTICA · FRENTE 4 · CAPACITAÇÃO  (prefixo ft-, escopo .slide[data-id="capacitacao"])
+   esquerda: o que é + como fazer · direita: funil da fase 1 + 3 medidores + leitura do IPT
+   ===================================================================== */
+.slide[data-id="capacitacao"]{--ft-c:var(--navy-500);--ft-c2:var(--navy-700);--ft-ct:rgba(42,90,150,.09);--ft-ok:#2ECC71;--ft-okt:#1E8E4F;--ft-am:#F2B51D;--ft-amt:#6B4F00}
+.ft-main{display:flex;flex-direction:column;gap:14px}
+.ft-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.ft-grid{flex:1;min-height:0;display:grid;grid-template-columns:560px minmax(0,1fr);gap:20px}
+.ft-left{display:flex;flex-direction:column;gap:14px;min-height:0}
+@keyframes ftLetter{from{transform:rotate(-25deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes ftIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes ftPop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes ftGrow{from{transform:scaleX(.3)}to{transform:none}}
+/* ---------- o que é ---------- */
+.ft-what{flex:none;padding:15px 20px 16px;border-top:5px solid var(--ft-c);display:flex;flex-direction:column;gap:12px}
+.ft-wh{display:flex;align-items:center;gap:12px}
+.ft-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--ft-c),var(--ft-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .ft-ico{animation:ftLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.ft-wh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ft-wh b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.ft-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:pretty}
+.ft-def b{color:var(--navy-900)}
+.ft-chip{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+.ft-chip b{padding:4px 9px;border-radius:7px;font:800 14px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--ft-c),var(--ft-c2));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.ft-chip span{font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.ft-chip em{font-style:normal;margin-left:auto;font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+/* ---------- como fazer: 4 passos ---------- */
+.ft-how{flex:1;min-height:0;padding:15px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.ft-steps{flex:1;min-height:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.ft-steps li{flex:1;min-height:0;display:flex;align-items:center;gap:14px;padding:0 14px 0 12px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s}
+.ft-steps li:hover{background:#fff;border-color:var(--steel-300)}
+.ft-steps li i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:#fff;background:linear-gradient(150deg,var(--ft-c),var(--ft-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.ft-steps li div{flex:1;min-width:0}
+.ft-steps li b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--navy-900)}
+.ft-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.ft-steps li em{flex:none;font-size:22px;line-height:1;font-style:normal}
+/* ---------- exemplo: o card grande ---------- */
+.ft-ex{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 296px;grid-template-rows:auto minmax(0,1fr) auto;gap:10px 18px;padding:14px 18px 16px;border-top:5px solid var(--ft-c)}
+.ft-exh{grid-column:1/-1;display:flex;align-items:center;gap:16px}
+.ft-exh .ft-lb{color:var(--navy-800);font-weight:600}
+.ft-exh .ft-lb b{color:var(--orange-600);font-weight:600}
+.ft-mat{margin-left:auto;flex:none;font:600 12px var(--fm);letter-spacing:.04em;padding:5px 11px;border-radius:99px;color:var(--ft-c);background:var(--ft-ct);white-space:nowrap}
+/* ---------- o funil: 4 degraus centrados, % entre as etapas ---------- */
+.ft-fun{grid-row:2;grid-column:1;min-height:0;display:flex;flex-direction:column;justify-content:space-between;gap:0;padding:4px 0 0}
+.ft-row{flex:none;display:grid;grid-template-columns:176px minmax(0,1fr);align-items:center;gap:14px;cursor:pointer}
+.ft-row[data-i="0"]{--b1:var(--navy-700);--b2:var(--navy-900)}
+.ft-row[data-i="1"]{--b1:var(--navy-500);--b2:var(--navy-700)}
+.ft-row[data-i="2"]{--b1:var(--steel-400);--b2:var(--steel-600)}
+.ft-row[data-i="3"]{--b1:var(--orange-400);--b2:var(--orange-600)}
+.ft-rl{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ft-rl b{font-size:16px;font-weight:800;line-height:1.2;color:var(--grey-400);transition:color .3s}
+.ft-rl span{font-size:13px;line-height:1.3;color:var(--grey-400);white-space:nowrap;transition:color .3s}
+.ft-rl .ft-det{display:none;color:var(--navy-800);font-weight:600;line-height:1.25}
+.ft-det i{font-style:normal;font-weight:800;color:var(--orange-600)}
+.ft-row.open .ft-sub{display:none}
+.ft-row.open .ft-det{display:block;animation:ftIn .35s var(--ease)}
+.ft-row.on .ft-rl b{color:var(--navy-900)}
+.ft-row.on .ft-rl span{color:var(--grey-500)}
+.ft-row.on.open .ft-rl b{color:var(--orange-600)}
+.ft-ba{display:flex;justify-content:center;min-width:0}
+.ft-bar{position:relative;width:calc(var(--w)*1%);height:54px;border-radius:11px;display:flex;align-items:center;justify-content:flex-end;padding:0 14px;background:var(--off);border:1.5px dashed var(--line-strong);transition:background .45s,border-color .45s,box-shadow .35s;transform-origin:center}
+.ft-row.on .ft-bar{border-color:transparent;background:linear-gradient(150deg,var(--b1),var(--b2));box-shadow:inset 0 -4px 0 rgba(0,0,0,.16),0 8px 18px rgba(11,37,69,.14);animation:ftGrow .7s var(--spring)}
+.ft-row.open .ft-bar{box-shadow:inset 0 -4px 0 rgba(0,0,0,.16),0 0 0 3px rgba(242,107,33,.35),0 10px 22px rgba(11,37,69,.18)}
+.ft-row:hover .ft-bar{border-color:var(--steel-300)}
+.ft-n{font:800 22px var(--fb);letter-spacing:-.02em;color:#fff;line-height:1;opacity:0;transition:opacity .3s}
+.ft-row.on .ft-n{opacity:1}
+.ft-con{flex:none;display:grid;grid-template-columns:176px minmax(0,1fr);gap:14px;height:30px}
+.ft-con>div{position:relative;display:flex;align-items:center;justify-content:center}
+.ft-con>div::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed var(--line-strong);transition:border-color .3s}
+.ft-cp{position:relative;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px 0 7px;border-radius:99px;font-size:13px;font-weight:600;color:var(--grey-400);background:#fff;border:1px solid var(--line);white-space:nowrap;transition:color .3s,background .3s,border-color .3s}
+.ft-cp b{font:800 13.5px var(--fb);color:var(--grey-400);transition:color .3s}
+.ft-con.on .ft-cp{color:var(--ft-okt);background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.35);animation:ftPop .45s var(--spring)}
+.ft-con.on .ft-cp b{color:var(--ft-okt)}
+.ft-con.ko.on .ft-cp{color:var(--orange-600);background:var(--orange-100);border-color:rgba(217,82,26,.3)}
+.ft-con.ko.on .ft-cp b{color:var(--orange-600)}
+.ft-con.on>div::before{border-color:var(--steel-300)}
+/* ---------- 3 medidores ---------- */
+.ft-gs{grid-row:2;grid-column:2;min-height:0;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.ft-g{flex:1;min-height:0;display:grid;grid-template-columns:72px minmax(0,1fr);align-items:center;gap:12px;padding:6px 12px 6px 8px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .35s,border-color .35s,box-shadow .35s}
+.ft-g.on{background:#fff;border-color:var(--steel-300);box-shadow:0 1px 2px rgba(11,37,69,.05)}
+.ft-g[data-s="ok"]{--gc:var(--ft-ok);--gt:var(--ft-okt);--gb:rgba(46,204,113,.14)}
+.ft-g[data-s="am"]{--gc:var(--ft-am);--gt:var(--ft-amt);--gb:rgba(242,181,29,.2)}
+.ft-g[data-s="ko"]{--gc:var(--orange-500);--gt:var(--orange-600);--gb:var(--orange-100)}
+.ft-ring{position:relative;width:72px;height:72px}
+.ft-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ft-ring circle{fill:none;stroke-width:11}
+.ft-ring .bg{stroke:var(--steel-100)}
+.ft-ring .fg{stroke:var(--gc);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1s var(--ease),opacity .3s}
+.ft-g:not(.on) .ft-ring .fg{opacity:0}
+.ft-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 16px var(--fb);letter-spacing:-.02em;color:var(--grey-400);transition:color .3s}
+.ft-g.on .ft-ring b{color:var(--navy-900)}
+.ft-gt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ft-gt b{font-size:15.5px;font-weight:800;line-height:1.2;color:var(--navy-900)}
+.ft-gt span{font-size:13px;line-height:1.3;color:var(--grey-500);white-space:nowrap}
+.ft-tag{display:inline-flex;align-self:flex-start;align-items:center;margin-top:3px;padding:2px 8px;border-radius:99px;font:700 12px var(--fb);font-style:normal;color:var(--gt);background:var(--gb);white-space:nowrap;opacity:0;transform:scale(.7);transform-origin:left center;transition:opacity .35s,transform .45s var(--spring)}
+.ft-g.on .ft-tag{opacity:1;transform:none}
+/* ---------- leitura do IPT ---------- */
+.ft-read{grid-row:3;grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:22px;padding:12px 20px 13px;min-height:92px}
+.ft-ri{display:flex;flex-direction:column;gap:5px;padding-right:22px;border-right:1px solid rgba(255,255,255,.14)}
+.ft-ri .ft-lb{color:var(--orange-200)}
+.ft-rv{display:flex;align-items:center;gap:10px}
+.ft-rv b{font:800 36px/1 var(--fb);letter-spacing:-.03em;color:#fff;min-width:74px}
+.ft-read:not(.on) .ft-rv b{color:var(--steel-300)}
+.ft-sem{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#3D2E00;background:var(--ft-am);white-space:nowrap;opacity:0;transform:scale(.7);transition:opacity .35s,transform .45s var(--spring)}
+.ft-sem::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.ft-read.on .ft-sem{opacity:1;transform:none}
+.ft-rt{min-width:0}
+.ft-wait{font-size:16px;line-height:1.4;color:var(--steel-300)}
+.ft-wait b{color:var(--steel-200)}
+.ft-say{display:none;flex-direction:column;gap:5px}
+.ft-read.on .ft-wait{display:none}
+.ft-read.on .ft-say{display:flex}
+.ft-read.on .ft-say>*{animation:ftIn .5s var(--ease) both}
+.ft-read.on .ft-say>p{animation-delay:.12s}
+.ft-say h3{font-size:19px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:var(--steel-200);text-wrap:pretty}
+.ft-say h3 b{color:#fff}
+.ft-say p{font-size:15.5px;line-height:1.35;color:var(--steel-200)}
+.ft-say p b{color:var(--orange-400)}
+/* ---------- faixa final: próximos 3 · 6 · 8 meses (mesmo padrão dos slides 12–14) ---------- */
+.ft-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.ft-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.ft-chips{display:flex;gap:10px}
+.ft-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.ft-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
+.ft-chips span:nth-child(2) i{background:var(--steel-500)}
+.ft-chips span:nth-child(3) i{background:var(--orange-500)}
+.ft-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
 
 /* ===== 16-fim ===== */
 /* ENCERRAMENTO: usa os estilos .s5 / .s5-fin do slide 07 (Onde usar) */
@@ -2115,8 +2892,8 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 01-agenda ===== -->
 <!-- ===================================================== AGENDA -->
-<section data-id="agenda" class="slide stage cover ag" data-t="Agenda: Mudança, História, Metodologias e PEA" data-rail="Agenda">
-  <template class="info"><h5>Contexto</h5><p>O mapa do dia em <b>quatro capítulos</b>. <b>Mudança</b>: o que acontece no cérebro quando mudamos, um exercício na sala e o que é gestão. <b>História</b>: como a forma de conduzir mudanças evoluiu e o que os números mostram. <b>Metodologias</b>: Kotter, ADKAR, HCMBOK e CMAK, e onde usar cada uma. <b>PEA</b>: prontidão, engajamento e adoção, e como medir a adoção com tarefas simples.</p><p>A ilustração é a linha de transmissão: as torres são os capítulos e a energia que corre nos cabos é a adoção (capítulo 4): só chega ao destino passando por todas.</p><h5>Como usar</h5><ul><li>Passe o mouse num capítulo: a torre dele acende.</li><li>Clique no capítulo (ou num dos temas) para abrir.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>capítulos</span></div><div><b>9</b><span>temas</span></div></div></template>
+<section data-id="agenda" class="slide stage cover ag" data-t="Agenda: Mudança, História, Metodologias, PEA e Na prática" data-rail="Agenda">
+  <template class="info"><h5>Contexto</h5><p>O mapa do dia em <b>cinco capítulos</b>. <b>Mudança</b>: o que acontece no cérebro quando mudamos, um exercício na sala e o que é gestão. <b>História</b>: como a forma de conduzir mudanças evoluiu e o que os números mostram. <b>Metodologias</b>: Kotter, ADKAR, HCMBOK e CMAK, e onde usar cada uma. <b>PEA</b>: prontidão, engajamento e adoção, e como medir cada palavra. <b>Na prática</b>: os indicadores do CMAK por frente, o roadmap de 3, 6 e 8 meses e as quatro frentes da GMO (comunicação, stakeholders, impactos e capacitação).</p><p>A ilustração é a linha de transmissão: as torres são os capítulos e a energia que corre nos cabos é a adoção (capítulo 4): só chega ao destino passando por todas.</p><h5>Como usar</h5><ul><li>Passe o mouse num capítulo: a torre dele acende.</li><li>Clique no capítulo (ou num dos temas) para abrir.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>capítulos</span></div><div><b>15</b><span>temas</span></div></div></template>
   <svg class="ag-art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
   <div class="ag-panel"></div>
   <svg class="ag-cut" viewBox="0 0 1600 900" aria-hidden="true"><line x1="975" y1="0" x2="705" y2="900" class="o"/><line x1="990" y1="0" x2="720" y2="900" class="s"/></svg>
@@ -2128,6 +2905,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
       <li class="ag-it" data-i="1" data-a="left" style="--d:4"><button type="button" class="ag-main" data-go="tempo"><b>2</b><strong>História</strong></button><span class="ag-subs"><button type="button" data-go="tempo">História</button><button type="button" data-go="numeros">Números</button></span></li>
       <li class="ag-it" data-i="2" data-a="left" style="--d:5"><button type="button" class="ag-main" data-go="caixa"><b>3</b><strong>Metodologias</strong></button><span class="ag-subs"><button type="button" data-go="caixa">Ferramentas</button><button type="button" data-go="onde">Onde usar</button></span></li>
       <li class="ag-it" data-i="3" data-a="left" style="--d:6"><button type="button" class="ag-main" data-go="pea"><b>4</b><strong>PEA</strong></button><span class="ag-subs"><button type="button" data-go="pea">Prontidão · Engajamento · Adoção</button><button type="button" data-go="pea-medir">Como medir</button></span></li>
+      <li class="ag-it" data-i="4" data-a="left" style="--d:7"><button type="button" class="ag-main" data-go="cmak"><b>5</b><strong>Na prática</strong></button><span class="ag-subs"><button type="button" data-go="cmak">Indicadores</button><button type="button" data-go="roadmap">Roadmap</button><button type="button" data-go="comunicacao">Comunicação</button><button type="button" data-go="stakeholders">Stakeholders</button><button type="button" data-go="impactos">Impactos</button><button type="button" data-go="capacitacao">Capacitação</button></span></li>
     </ol>
     <div class="ag-hint" data-a="fade" style="--d:8">Clique num capítulo para abrir</div>
   </div>
@@ -2902,22 +3680,561 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 </section>
 
 <!-- ===== 10-cmak ===== -->
-<section data-id="cmak" class="slide" data-t="cmak" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+<!-- ===================================================== 05 · NA PRÁTICA · INDICADORES · CMAK -->
+<section data-id="cmak" class="slide ck" data-t="Indicadores: CMAK, um número por frente" data-rail="Indicadores">
+  <template class="info"><h5>Contexto</h5><p><b>CMAK</b> (Change Management Applicable by KPI) é a prática de medir a GMO com números. Cada frente vira <b>um índice de 0 a 100</b>: 4 ou 5 medidas com peso, uma meta e um semáforo (≥ 75 verde · 50–74 amarelo · &lt; 50 vermelho). O <b>termômetro P·E·A</b> junta tudo: 0,30 × Prontidão + 0,40 × Engajamento + 0,30 × Adoção.</p><p>Os dashboards usam números de <b>um projeto real</b> (corte de junho), arredondados. O índice não dá nota ao projeto: ele mostra <b>onde agir</b>.</p><h5>Como usar</h5><ul><li><b>→</b> vira um card por vez: da frente (o modelo) para o verso (o dashboard real). <b>←</b> desvira.</li><li>Clicar num card também o vira. Na frente, a coluna <b>peso</b> diz quanto cada medida vale no índice; no verso, a barra é o <b>real</b> e o traço branco é a <b>meta</b>. Leia a barra mais baixa de cada dashboard: é o “onde agir”.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>frentes</span></div><div><b>17</b><span>medidas com peso</span></div><div><b>1</b><span>termômetro</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Na prática · Indicadores · CMAK</div><h2 class="h2"><span class="kw" style="--k:1"><span>Medir a mudança</span></span> <span class="kw" style="--k:3"><span class="hl">com um número por frente.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique num card para virar, ou avance com <kbd>→</kbd></span></div>
+    </div>
+    <div class="main ck-main">
+
+      <!-- faixa de contexto: o que é o CMAK · semáforo · termômetro P·E·A -->
+      <div class="ck-band" data-a="up" style="--d:2">
+        <div class="ck-def"><span class="ck-tag">CMAK</span><p><b>Change Management Applicable by KPI.</b> Cada frente da GMO vira um índice de 0 a 100: 4 ou 5 medidas com peso, uma meta, um semáforo.</p></div>
+        <div class="ck-sem"><span class="ck-lb">Semáforo do índice</span><div><span class="g">≥ 75 verde</span><span class="y">50–74 amarelo</span><span class="r">&lt; 50 vermelho</span></div></div>
+        <div class="ck-therm"><span class="ck-lb">Termômetro P·E·A · Prontidão · Engajamento · Adoção</span><div class="ck-f"><i class="p">0,30 × <b title="Prontidão">P</b> 90,3</i><s>+</s><i class="e">0,40 × <b title="Engajamento">E</b> 73,1</i><s>+</s><i class="a">0,30 × <b title="Adoção">A</b> 67,0</i><s>=</s><em><b>76,4</b><u></u>verde</em></div></div>
+      </div>
+
+      <!-- 4 cards frente (modelo) e verso (dashboard real) -->
+      <div class="ck-grid">
+
+        <!-- 1 · Comunicação · IEC -->
+        <div class="ck-slot" data-a="up" style="--d:3">
+          <article class="ck-card" data-k="0" style="--v:70.9">
+            <div class="ck-inner">
+              <div class="ck-face ck-front">
+                <div class="ck-ch"><span class="ck-ico">📣</span><div><span class="ck-lb">Frente 1</span><b>Comunicação</b></div><span class="ck-side">Modelo</span></div>
+                <div class="ck-idx"><div><span class="ck-big">IEC</span><span class="ck-lb">índice · 0 a 100</span></div><div class="ck-meta"><span class="ck-lb">meta</span><b>≥ 80%</b></div></div>
+                <p class="ck-q">“A mensagem chegou e foi entendida?”</p>
+                <div class="ck-kts">
+                  <div class="ck-kth"><span class="ck-lb">Medida</span><span class="ck-lb">Peso</span><span class="ck-lb">Meta</span></div>
+                  <div class="ck-kt" style="--w:26"><b>Alcance</b><span class="ck-w">26%<i></i></span><em>≥ 90%</em></div>
+                  <div class="ck-kt" style="--w:26"><b>Engajamento</b><span class="ck-w">26%<i></i></span><em>≥ 70%</em></div>
+                  <div class="ck-kt" style="--w:33"><b>Clareza da mensagem</b><span class="ck-w">33%<i></i></span><em>≥ 80%</em></div>
+                  <div class="ck-kt" style="--w:15"><b>Feedback</b><span class="ck-w">15%<i></i></span><em>≥ 70% em 48h</em></div>
+                </div>
+                <span class="ck-turn">↻ virar: ver o dashboard</span>
+              </div>
+              <div class="ck-face ck-back">
+                <div class="ck-ch"><span class="ck-ico">📣</span><div><span class="ck-lb">Dashboard · junho</span><b>Comunicação</b></div><span class="ck-side">Real</span></div>
+                <div class="ck-dash"><div class="ck-ring y"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/></svg><b class="ck-n" data-v="70.9">0<small>%</small></b></div><div class="ck-dr"><span class="ck-big2">IEC</span><span class="ck-pill y">amarelo</span><span class="ck-ms">meta ≥ 80% · <b>abaixo da meta</b></span></div></div>
+                <div class="ck-bars">
+                  <span class="ck-lg"><i class="ck-lgs"><b></b><u></u></i>barra = real · traço = meta</span>
+                  <div class="ck-kr ko" style="--v:75.5;--m:90"><span>Alcance <em>538 de 713</em></span><b>75,5%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ok" style="--v:71.1;--m:70"><span>Engajamento <em>meta 70%</em></span><b>71,1%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ko" style="--v:74.6;--m:80"><span>Clareza da mensagem <em>meta 80%</em></span><b>74,6%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ko" style="--v:54.3;--m:70"><span>Feedback <em>165 de 304</em></span><b>54,3%</b><div class="ck-bar"><i></i><u></u></div></div>
+                </div>
+                <div class="ck-act"><span class="ck-lb">Onde agir</span><p><b>Feedback:</b> só 54% de retorno. Responder cada dúvida em 48h.</p></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- 2 · Stakeholders · IES -->
+        <div class="ck-slot" data-a="up" style="--d:4">
+          <article class="ck-card" data-k="1" style="--v:81.8">
+            <div class="ck-inner">
+              <div class="ck-face ck-front">
+                <div class="ck-ch"><span class="ck-ico">🤝</span><div><span class="ck-lb">Frente 2</span><b>Stakeholders</b></div><span class="ck-side">Modelo</span></div>
+                <div class="ck-idx"><div><span class="ck-big">IES</span><span class="ck-lb">índice · 0 a 100</span></div><div class="ck-meta"><span class="ck-lb">meta</span><b>≥ 75%</b></div></div>
+                <p class="ck-q">“As pessoas certas estão com a gente?”</p>
+                <div class="ck-kts">
+                  <div class="ck-kth"><span class="ck-lb">Medida</span><span class="ck-lb">Peso</span><span class="ck-lb">Meta</span></div>
+                  <div class="ck-kt" style="--w:20"><b>Cobertura do mapa</b><span class="ck-w">20%<i></i></span><em>100%</em></div>
+                  <div class="ck-kt" style="--w:15"><b>Perfis atualizados</b><span class="ck-w">15%<i></i></span><em>100% ao mês</em></div>
+                  <div class="ck-kt" style="--w:30"><b>Sponsors e embaixadores</b><span class="ck-w">30%<i></i></span><em>≥ 75%</em></div>
+                  <div class="ck-kt" style="--w:20"><b>Plano para resistentes</b><span class="ck-w">20%<i></i></span><em>100%</em></div>
+                  <div class="ck-kt" style="--w:15"><b>Conversão de resistentes</b><span class="ck-w">15%<i></i></span><em>≥ 50%</em></div>
+                </div>
+                <span class="ck-turn">↻ virar: ver o dashboard</span>
+              </div>
+              <div class="ck-face ck-back">
+                <div class="ck-ch"><span class="ck-ico">🤝</span><div><span class="ck-lb">Dashboard · junho</span><b>Stakeholders</b></div><span class="ck-side">Real</span></div>
+                <div class="ck-dash"><div class="ck-ring g"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/></svg><b class="ck-n" data-v="81.8">0<small>%</small></b></div><div class="ck-dr"><span class="ck-big2">IES</span><span class="ck-pill g">verde</span><span class="ck-ms">meta ≥ 75% · <b>acima da meta</b></span></div></div>
+                <div class="ck-bars">
+                  <span class="ck-lg"><i class="ck-lgs"><b></b><u></u></i>barra = real · traço = meta</span>
+                  <div class="ck-kr ok" style="--v:100;--m:100"><span>Cobertura do mapa <em>25 de 25</em></span><b>100%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ok" style="--v:100;--m:100"><span>Perfis atualizados <em>no mês</em></span><b>100%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ok" style="--v:89.3;--m:75"><span>Sponsors e embaixadores <em>25 de 28</em></span><b>89,3%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ok" style="--v:100;--m:100"><span>Plano para resistentes <em>3 de 3</em></span><b>100%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ko" style="--v:0;--m:50"><span>Conversão de resistentes <em>0 de 3</em></span><b>0%</b><div class="ck-bar"><i></i><u></u></div></div>
+                </div>
+                <div class="ck-act"><span class="ck-lb">Onde agir</span><p><b>Conversão:</b> nenhum resistente virou apoio. 1:1 com cada um.</p></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- 3 · Impactos · ICI -->
+        <div class="ck-slot" data-a="up" style="--d:5">
+          <article class="ck-card" data-k="2" style="--v:49.5">
+            <div class="ck-inner">
+              <div class="ck-face ck-front">
+                <div class="ck-ch"><span class="ck-ico">🧭</span><div><span class="ck-lb">Frente 3</span><b>Impactos</b></div><span class="ck-side">Modelo</span></div>
+                <div class="ck-idx"><div><span class="ck-big">ICI</span><span class="ck-lb">índice · 0 a 100</span></div><div class="ck-meta"><span class="ck-lb">meta</span><b>≥ 70%</b></div></div>
+                <p class="ck-q">“O que muda está sob controle?”</p>
+                <div class="ck-kts">
+                  <div class="ck-kth"><span class="ck-lb">Medida</span><span class="ck-lb">Peso</span><span class="ck-lb">Meta</span></div>
+                  <div class="ck-kt" style="--w:20"><b>Identificação</b><span class="ck-w">20%<i></i></span><em>95% dos críticos</em></div>
+                  <div class="ck-kt" style="--w:20"><b>Priorização</b><span class="ck-w">20%<i></i></span><em>90% classificados</em></div>
+                  <div class="ck-kt" style="--w:30"><b>Execução das mitigações</b><span class="ck-w">30%<i></i></span><em>≥ 95%</em></div>
+                  <div class="ck-kt" style="--w:30"><b>Eficácia</b><span class="ck-w">30%<i></i></span><em>≥ 70%</em></div>
+                  <div class="ck-kt pre" style="--w:0"><b>Novos riscos<small>governança · sem peso</small></b><span class="ck-w">—<i></i></span><em>90% em 48h</em></div>
+                </div>
+                <span class="ck-turn">↻ virar: ver o dashboard</span>
+              </div>
+              <div class="ck-face ck-back">
+                <div class="ck-ch"><span class="ck-ico">🧭</span><div><span class="ck-lb">Dashboard · junho</span><b>Impactos</b></div><span class="ck-side">Real</span></div>
+                <div class="ck-dash"><div class="ck-ring r"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/></svg><b class="ck-n" data-v="49.5">0<small>%</small></b></div><div class="ck-dr"><span class="ck-big2">ICI</span><span class="ck-pill r">vermelho</span><span class="ck-ms">meta ≥ 70% · <b>abaixo da meta</b></span></div></div>
+                <div class="ck-bars">
+                  <span class="ck-lg"><i class="ck-lgs"><b></b><u></u></i>barra = real · traço = meta</span>
+                  <div class="ck-kr ko" style="--v:20;--m:95"><span>Identificação <em>10 de 50</em></span><b>20%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ok" style="--v:100;--m:90"><span>Priorização <em>22 de 22</em></span><b>100%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ko" style="--v:18.2;--m:95"><span>Execução das mitigações <em>4 de 22</em></span><b>18,2%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ko" style="--v:66.7;--m:70"><span>Eficácia <em>2 de 3</em></span><b>66,7%</b><div class="ck-bar"><i></i><u></u></div></div>
+                </div>
+                <div class="ck-act"><span class="ck-lb">Onde agir</span><p><b>Execução:</b> só 4 de 22 mitigações feitas. Uma por semana, com dono e prazo.</p></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- 4 · Capacitação · IPT -->
+        <div class="ck-slot" data-a="up" style="--d:6">
+          <article class="ck-card" data-k="3" style="--v:65">
+            <div class="ck-inner">
+              <div class="ck-face ck-front">
+                <div class="ck-ch"><span class="ck-ico">🎓</span><div><span class="ck-lb">Frente 4</span><b>Capacitação</b></div><span class="ck-side">Modelo</span></div>
+                <div class="ck-idx"><div><span class="ck-big">IPT</span><span class="ck-lb">índice · 0 a 100</span></div><div class="ck-meta"><span class="ck-lb">meta</span><b>≥ 80%</b></div></div>
+                <p class="ck-q">“As pessoas sabem fazer do novo jeito?”</p>
+                <div class="ck-kts">
+                  <div class="ck-kth"><span class="ck-lb">Medida</span><span class="ck-lb">Peso</span><span class="ck-lb">Meta</span></div>
+                  <div class="ck-kt" style="--w:25"><b>Cobertura</b><span class="ck-w">25%<i></i></span><em>≥ 95% treinados</em></div>
+                  <div class="ck-kt" style="--w:35"><b>Retenção</b><span class="ck-w">35%<i></i></span><em>≥ 80% aprovados</em></div>
+                  <div class="ck-kt" style="--w:30"><b>Aplicação prática</b><span class="ck-w">30%<i></i></span><em>≥ 70% em 30 dias</em></div>
+                  <div class="ck-kt" style="--w:10"><b>Satisfação</b><span class="ck-w">10%<i></i></span><em>nota ≥ 4,0</em></div>
+                  <div class="ck-kt pre" style="--w:0"><b>Materiais publicados<small>pré-requisito · sem peso</small></b><span class="ck-w">—<i></i></span><em>100%</em></div>
+                </div>
+                <span class="ck-turn">↻ virar: ver o dashboard</span>
+              </div>
+              <div class="ck-face ck-back">
+                <div class="ck-ch"><span class="ck-ico">🎓</span><div><span class="ck-lb">Dashboard · junho</span><b>Capacitação</b></div><span class="ck-side">Real</span></div>
+                <div class="ck-dash"><div class="ck-ring y"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/></svg><b class="ck-n" data-v="65">0<small>%</small></b></div><div class="ck-dr"><span class="ck-big2">IPT</span><span class="ck-pill y">amarelo</span><span class="ck-ms">meta ≥ 80% · <b>abaixo da meta</b></span></div></div>
+                <div class="ck-bars">
+                  <span class="ck-lg"><i class="ck-lgs"><b></b><u></u></i>barra = real · traço = meta</span>
+                  <div class="ck-kr ko" style="--v:14;--m:95"><span>Cobertura <em>102 de 713</em></span><b>14%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ok" style="--v:85;--m:80"><span>Retenção <em>423 de 500 acertos</em></span><b>85%</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr na" style="--v:0;--m:70"><span>Aplicação prática <em>mede na fase 2</em></span><b>—</b><div class="ck-bar"><i></i><u></u></div></div>
+                  <div class="ck-kr ko" style="--v:77.4;--m:80"><span>Satisfação <em>nota de 0 a 5</em></span><b>3,87</b><div class="ck-bar"><i></i><u></u></div></div>
+                </div>
+                <div class="ck-act"><span class="ck-lb">Onde agir</span><p><b>Cobertura:</b> quem treinou, aprendeu; faltam 611. Treinar a fase 2 na tarefa real.</p></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="ck-foot" data-a="up" style="--d:8"><p><b>O índice não é a nota do projeto:</b> é o mapa de onde agir.</p><span class="ck-lb">Barra mais baixa = próxima ação</span></div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
 
 <!-- ===== 11-roadmap ===== -->
-<section data-id="roadmap" class="slide" data-t="roadmap" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+<!-- ===================================================== 05 · NA PRÁTICA · ROADMAP 3 · 6 · 8 MESES -->
+<section data-id="roadmap" class="slide rm" data-t="Roadmap: a GMO nos próximos 3, 6 e 8 meses" data-rail="Roadmap">
+  <template class="info"><h5>Contexto</h5><p>O projeto tem data para acabar; a mudança, não. O roadmap organiza a GMO em <b>três ondas</b>. <b>Estruturar</b> (até 3 meses): baseline medida e planos prontos em cada frente. <b>Rodar</b> (até 6 meses): campanhas, rede de agentes, mitigações e treinos acontecendo, com o termômetro lido todo mês. <b>Sustentar</b> (até 8 meses): a área assume o ritual, a eficácia é medida e a GMO faz o handover.</p><p>Cada onda termina num <b>checkpoint</b>: o termômetro P·E·A e os quatro índices (IEC, IES, ICI, IPT) dizem onde agir na onda seguinte.</p><h5>Como usar</h5><ul><li><b>→</b> abre uma onda por vez; as ondas futuras ficam esmaecidas. No fim, segue para o próximo slide.</li><li>Clicar no cabeçalho de uma onda também a destaca.</li><li>Leia por linha (uma frente ao longo do tempo) ou por coluna (tudo o que acontece numa onda).</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>ondas</span></div><div><b>4</b><span>frentes</span></div><div><b>1</b><span>ritual mensal</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Na prática · Roadmap · 3, 6 e 8 meses</div><h2 class="h2"><span class="kw" style="--k:1"><span>O projeto acaba.</span></span> <span class="kw" style="--k:3"><span class="hl">A mudança continua.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa onda ou avance com <kbd>→</kbd></span></div>
+    </div>
+    <div class="main rm-main">
+      <div class="rm-grid">
+        <!-- canto -->
+        <div class="rm-corner" data-a="fade" style="--d:2"><b>Frentes da GMO</b><span>↓ o que fazer · quando →</span></div>
+        <!-- cabeçalhos das ondas -->
+        <div class="rm-wv" data-a="up" style="--d:2"><button type="button" class="rm-wave" data-w="0"><span class="rm-num"><small>até</small><i>3</i><small>meses</small></span><span class="rm-wt"><em>Onda 1</em><b>Estruturar</b><span>Baseline medida e planos prontos.</span></span></button></div>
+        <div class="rm-wv" data-a="up" style="--d:3"><button type="button" class="rm-wave" data-w="1"><span class="rm-num"><small>até</small><i>6</i><small>meses</small></span><span class="rm-wt"><em>Onda 2</em><b>Rodar</b><span>Índices subindo todo mês.</span></span></button></div>
+        <div class="rm-wv" data-a="up" style="--d:4"><button type="button" class="rm-wave" data-w="2"><span class="rm-num"><small>até</small><i>8</i><small>meses</small></span><span class="rm-wt"><em>Onda 3</em><b>Sustentar</b><span>Entregar a mudança para o negócio.</span></span></button></div>
+
+        <!-- Comunicação -->
+        <div class="rm-row" data-f="com" data-a="left" style="--d:3"><span class="rm-ico">📣</span><div><b>Comunicação</b><em>índice IEC</em></div></div>
+        <div class="rm-cell" data-w="0" data-f="com" style="--r:0;--d:4" data-a="fade"><ul><li><b>Montar o plano de comunicação:</b> públicos, mensagens-chave, canais e calendário.</li><li><b>Definir o editorial</b> mensal.</li></ul></div>
+        <div class="rm-cell" data-w="1" data-f="com" style="--r:0;--d:4" data-a="fade"><ul><li><b>Lançar uma campanha a cada marco</b> e fazer o pulse de clareza 7 dias depois.</li><li><b>Responder dúvidas em 48h</b> no canal.</li></ul></div>
+        <div class="rm-cell" data-w="2" data-f="com" style="--r:0;--d:4" data-a="fade"><ul><li><b>Transformar o editorial</b> em rotina da área.</li><li><b>Medir o feedback</b> bidirecional.</li></ul></div>
+
+        <!-- Stakeholders -->
+        <div class="rm-row" data-f="stk" data-a="left" style="--d:4"><span class="rm-ico">🤝</span><div><b>Stakeholders</b><em>índice IES</em></div></div>
+        <div class="rm-cell" data-w="0" data-f="stk" style="--r:1;--d:5" data-a="fade"><ul><li><b>Atualizar o mapa</b> influência × interesse.</li><li><b>Fazer o perfil dos críticos</b> e o plano para os resistentes.</li></ul></div>
+        <div class="rm-cell" data-w="1" data-f="stk" style="--r:1;--d:5" data-a="fade"><ul><li><b>Ativar a rede de agentes e embaixadores,</b> com ritual mensal.</li><li><b>Fazer 1:1</b> com os resistentes.</li></ul></div>
+        <div class="rm-cell" data-w="2" data-f="stk" style="--r:1;--d:5" data-a="fade"><ul><li><b>Medir a conversão</b> dos resistentes.</li><li><b>Colocar os sponsors</b> no comitê.</li></ul></div>
+
+        <!-- Impactos -->
+        <div class="rm-row" data-f="imp" data-a="left" style="--d:5"><span class="rm-ico">🧭</span><div><b>Impactos</b><em>índice ICI</em></div></div>
+        <div class="rm-cell" data-w="0" data-f="imp" style="--r:2;--d:6" data-a="fade"><ul><li><b>Fechar a matriz completa e priorizada:</b> Alto, Médio e Baixo.</li><li><b>Dar dono e prazo</b> a cada impacto.</li></ul></div>
+        <div class="rm-cell" data-w="1" data-f="imp" style="--r:2;--d:6" data-a="fade"><ul><li><b>Executar ≥ 95% das mitigações</b> planejadas.</li><li><b>Registrar novos riscos</b> em 48h.</li></ul></div>
+        <div class="rm-cell" data-w="2" data-f="imp" style="--r:2;--d:6" data-a="fade"><ul><li><b>Medir a eficácia das mitigações:</b> severidade antes × depois.</li></ul></div>
+
+        <!-- Capacitação -->
+        <div class="rm-row" data-f="cap" data-a="left" style="--d:6"><span class="rm-ico">🎓</span><div><b>Capacitação</b><em>índice IPT</em></div></div>
+        <div class="rm-cell" data-w="0" data-f="cap" style="--r:3;--d:7" data-a="fade"><ul><li><b>Desenhar as trilhas</b> por perfil.</li><li><b>Montar o repositório:</b> vídeos, e-book e FAQ.</li></ul></div>
+        <div class="rm-cell" data-w="1" data-f="cap" style="--r:3;--d:7" data-a="fade"><ul><li><b>Treinar a fase 2 na tarefa real,</b> com atividade de fixação.</li><li><b>Rodar a operação assistida</b> com key users.</li></ul></div>
+        <div class="rm-cell" data-w="2" data-f="cap" style="--r:3;--d:7" data-a="fade"><ul><li><b>Medir a aplicação prática</b> em 30 dias.</li><li><b>Passar o bastão</b> aos multiplicadores internos.</li></ul></div>
+
+        <!-- Medir · checkpoint -->
+        <div class="rm-row rm-mz" data-f="med" data-a="left" style="--d:7"><span class="rm-ico">🌡️</span><div><b>Medir</b><em>checkpoint</em></div></div>
+        <div class="rm-cell rm-mc" data-w="0" data-f="med" style="--r:4;--d:8" data-a="fade"><ul><li><b>Medir a baseline:</b> termômetro P·E·A e os 4 índices.</li></ul></div>
+        <div class="rm-cell rm-mc" data-w="1" data-f="med" style="--r:4;--d:8" data-a="fade"><ul><li><b>Ler o termômetro todo mês.</b> Índice abaixo da meta vira ação.</li></ul></div>
+        <div class="rm-cell rm-mc" data-w="2" data-f="med" style="--r:4;--d:8" data-a="fade"><ul><li><b>Auditar a sustentação</b> (≥ 85% sustentado) e fazer o handover.</li></ul></div>
+      </div>
+      <div class="rm-rit" data-a="up" style="--d:8">
+        <span class="rm-rl">Ritual de todo mês</span>
+        <div class="rm-chain"><span>🌡️ medir</span><i>→</i><span>👀 ler</span><i>→</i><span>⚡ agir</span><i>→</i><span>📣 comunicar</span></div>
+        <p>Depois do handover, o ritual fica com a área.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
 
 <!-- ===== 12-comunicacao ===== -->
-<section data-id="comunicacao" class="slide" data-t="comunicacao" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+<!-- ===================================================== 05 · NA PRÁTICA · FRENTE 1 · COMUNICAÇÃO -->
+<section data-id="comunicacao" class="slide fc" data-t="Frente 1 · Comunicação: o plano e o plano em movimento" data-rail="Frentes">
+  <template class="info"><h5>Contexto</h5><p>A primeira frente da GMO é a <b>comunicação estratégica</b>: a mensagem certa, para a pessoa certa, pelo canal certo, na hora certa. E conferir se foi entendida. Comunicar não é enviar: o índice <b>IEC</b> (meta ≥ 80%) mede alcance, engajamento, clareza e feedback.</p><p>O plano tem <b>7 itens</b>. E o plano em movimento é um <b>ciclo de 5 fases</b> que roda a cada marco do projeto: montar, validar, lançar, medir e ajustar.</p><h5>Como usar</h5><ul><li><b>→</b> avança uma fase por vez; depois da 5ª, mostra a leitura do ciclo e segue para o próximo slide.</li><li>Os botões no alto do exemplo trocam a fase. Clicar num item do plano marca ✓.</li><li>Nas fases 1 e 2 o card escuro é um <b>critério de saída</b> (pronto para seguir); nas fases 3, 4 e 5 é um <b>indicador do IEC</b>: alcance, clareza e engajamento, feedback.</li></ul><h5>Em números</h5><div class="nums"><div><b>7</b><span>itens do plano</span></div><div><b>5</b><span>fases do ciclo</span></div><div><b>80%</b><span>meta do IEC</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Na prática · Frente 1 · Comunicação</div><h2 class="h2"><span class="kw" style="--k:1"><span>Ninguém adota</span></span> <span class="kw" style="--k:3"><span class="hl">o que não entendeu.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa fase ou num item do plano · avance com <kbd>→</kbd></span></div>
+    </div>
+    <div class="main fc-main">
+      <div class="fc-grid">
+
+        <!-- coluna esquerda: o que é · o que um plano precisa ter -->
+        <div class="fc-left">
+          <article class="card fc-what" data-a="up" style="--d:2">
+            <div class="fc-ch"><span class="fc-ico">📣</span><div><span class="fc-lb">Frente 1 · O que é</span><b>Comunicação Estratégica</b></div></div>
+            <p>Fazer a <b>mensagem certa</b> chegar à <b>pessoa certa</b>, pelo <b>canal certo</b>, na <b>hora certa</b>. E conferir se foi <b>entendida</b>.</p>
+            <div class="fc-chip"><span class="fc-idx">IEC</span><span class="fc-meta">meta ≥ 80%</span><span class="fc-kts"><i>alcance</i><i>engajamento</i><i>clareza</i><i>feedback</i></span></div>
+          </article>
+
+          <article class="card fc-plan" data-a="up" style="--d:3">
+            <div class="fc-plh"><div><span class="fc-lb">O que um plano precisa ter</span><b>7 itens. Falta um, a mensagem não chega.</b></div><div class="fc-plr"><span class="fc-cnt"><b>0</b> / 7</span><em>clique para marcar ✓</em></div></div>
+            <ul class="fc-list">
+              <li data-a="left" style="--d:4"><span class="fc-li">👥</span><div><b>Público</b><span>quem é impactado, por grupo</span></div><i class="fc-ck"></i></li>
+              <li data-a="left" style="--d:5"><span class="fc-li">💬</span><div><b>Mensagem-chave</b><span>o que muda, por quê, o que eu ganho</span></div><i class="fc-ck"></i></li>
+              <li data-a="left" style="--d:6"><span class="fc-li">📡</span><div><b>Canal</b><span>e-mail, Teams, site e o líder direto</span></div><i class="fc-ck"></i></li>
+              <li data-a="left" style="--d:7"><span class="fc-li">📅</span><div><b>Calendário</b><span>frequência e marcos do projeto</span></div><i class="fc-ck"></i></li>
+              <li data-a="left" style="--d:8"><span class="fc-li">🎤</span><div><b>Porta-voz</b><span>quem assina: sponsor, líder, agente</span></div><i class="fc-ck"></i></li>
+              <li data-a="left" style="--d:9"><span class="fc-li">⏱️</span><div><b>Momento</b><span>antes, durante e depois do go-live</span></div><i class="fc-ck"></i></li>
+              <li data-a="left" style="--d:10"><span class="fc-li">📊</span><div><b>Medição</b><span>alcance, abertura, clareza, feedback</span></div><i class="fc-ck"></i></li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- coluna direita: exemplo · o plano em movimento (5 fases + marcos) -->
+        <article class="card fc-ex" data-a="right" style="--d:3">
+          <div class="fc-eh"><div><span class="fc-lb">Exemplo · o plano em movimento</span><b>5 fases que se repetem a cada marco do projeto.</b></div></div>
+          <div class="fc-tabs" role="tablist" aria-label="Fases do ciclo">
+            <button type="button" role="tab" data-i="0"><i>1</i><div><b>Montar</b><span>semanas 1–2</span></div></button>
+            <button type="button" role="tab" data-i="1"><i>2</i><div><b>Validar</b><span>semana 3</span></div></button>
+            <button type="button" role="tab" data-i="2"><i>3</i><div><b>Lançar</b><span>no marco</span></div></button>
+            <button type="button" role="tab" data-i="3"><i>4</i><div><b>Medir</b><span>7 dias depois</span></div></button>
+            <button type="button" role="tab" data-i="4"><i>5</i><div><b>Ajustar</b><span>semana seguinte</span></div></button>
+          </div>
+          <div class="fc-panel" role="tabpanel" aria-live="polite"></div>
+          <div class="fc-tl"><span class="fc-tll">O ciclo roda<br>em cada marco</span>
+            <div class="fc-marks">
+              <div class="fc-mk"><i></i><b>Kick-off</b><span>↻</span></div>
+              <div class="fc-mk"><i></i><b>Demo</b><span>↻</span></div>
+              <div class="fc-mk"><i></i><b>Treinamento</b><span>↻</span></div>
+              <div class="fc-mk"><i></i><b>Go-live</b><span>↻</span></div>
+              <div class="fc-mk"><i></i><b>Sustentação</b><span>↻</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- faixa final: próximos 3 · 6 · 8 meses -->
+      <div class="fc-next" data-a="up" style="--d:7">
+        <span class="fc-nl">Próximos 3 · 6 · 8 meses</span>
+        <div class="fc-chips"><span><i>3</i><em>meses</em>plano de comunicação + editorial mensal</span><span><i>6</i><em>meses</em>pulse a cada campanha + dúvidas respondidas em 48h</span><span><i>8</i><em>meses</em>IEC ≥ 80% como rotina da área</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
 
 <!-- ===== 13-stakeholders ===== -->
-<section data-id="stakeholders" class="slide" data-t="stakeholders" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+<!-- ===================================================== 05 · NA PRÁTICA · FRENTE 2 · STAKEHOLDERS -->
+<section data-id="stakeholders" class="slide fs" data-t="Frente 2 · Stakeholders: pessoa por pessoa" data-rail="Frentes">
+  <template class="info"><h5>Contexto</h5><p>Gestão de stakeholders é conduzir a mudança <b>pessoa por pessoa</b>: saber quem influencia e quem é impactado, entender a postura de cada um (apoiador, neutro, resistente) e agir de forma personalizada. O mapa <b>influência × interesse</b> diz o quanto cuidar de cada pessoa: gerenciar de perto, manter satisfeito, manter informado ou só monitorar.</p><p>O índice <b>IES</b> (meta ≥ 75%) junta cinco medidas: cobertura do mapa, perfis atualizados no mês, presença de sponsors e embaixadores, plano para resistentes e conversão de resistentes. Os 6 papéis do mapa são exemplos genéricos; o antes × depois (40% → 25% receosos) vem das entrevistas de perfil de um projeto real.</p><h5>Como usar</h5><ul><li><b>→</b> percorre as 6 pessoas do mapa, uma por vez: o painel mostra o que cada uma precisa e a ação da GMO. <b>←</b> volta.</li><li>Clicar numa pessoa do mapa também a destaca.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>quadrantes</span></div><div><b>6</b><span>papéis de exemplo</span></div><div><b>75%</b><span>meta do IES</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Na prática · Frente 2 · Gestão de Stakeholders</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudança se conduz</span></span> <span class="kw" style="--k:3"><span class="hl">pessoa por pessoa.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa pessoa do mapa ou avance com <kbd>→</kbd></span></div>
+    </div>
+    <div class="main fs-main">
+      <div class="fs-grid">
+
+        <!-- coluna esquerda: o que é · como fazer -->
+        <div class="fs-left">
+          <article class="card fs-what" data-a="up" style="--d:2">
+            <div class="fs-wh"><span class="fs-ico">🤝</span><div><span class="fs-lb">Frente 2 · O que é</span><b>Gestão de Stakeholders</b></div></div>
+            <p class="fs-def">Saber <b>quem influencia</b> e <b>quem é impactado</b>, entender a <b>postura</b> de cada um e agir de forma <b>personalizada</b>.</p>
+            <div class="fs-chip"><b>IES</b><span>meta ≥ 75%</span><em>cobertura · perfis · sponsors · plano · conversão</em></div>
+          </article>
+          <article class="card fs-how" data-a="up" style="--d:3">
+            <span class="fs-lb">Como fazer · 4 passos</span>
+            <ol class="fs-steps">
+              <li><i>1</i><div><b>Mapear</b><span>Lista completa: áreas, papéis, sponsors.</span></div><em>🗺️</em></li>
+              <li><i>2</i><div><b>Classificar</b><span>Influência × interesse. Postura: apoiador, neutro ou resistente.</span></div><em>🧭</em></li>
+              <li><i>3</i><div><b>Planejar</b><span>Uma ação por pessoa crítica: 1:1, dar um papel, envolver na decisão.</span></div><em>🎯</em></li>
+              <li><i>4</i><div><b>Acompanhar</b><span>Perfil atualizado todo mês. Sponsors presentes nos eventos-chave.</span></div><em>🔁</em></li>
+            </ol>
+          </article>
+        </div>
+
+        <!-- coluna direita: exemplo · o mapa -->
+        <article class="card fs-ex" data-a="up" style="--d:4">
+          <div class="fs-exh"><span class="fs-lb">Exemplo · <b>o mapa</b> influência × interesse</span><div class="fs-pl"><span data-s="a">Apoiador</span><span data-s="n">Neutro</span><span data-s="r">Resistente</span></div></div>
+          <div class="fs-map">
+            <span class="fs-ay">baixa ← <b>Influência</b> → alta</span>
+            <div class="fs-plot">
+              <div class="fs-q" data-q="ms"><span>Manter satisfeito</span></div>
+              <div class="fs-q" data-q="gp"><span>Gerenciar de perto</span></div>
+              <div class="fs-q" data-q="mo"><span>Monitorar</span></div>
+              <div class="fs-q" data-q="mi"><span>Manter informado</span></div>
+              <div class="fs-pw" style="--x:85;--y:82;--d:5" data-a="pop"><button type="button" class="fs-p" data-s="a" title="Diretor patrocinador">D<span>Diretor</span></button></div>
+              <div class="fs-pw" style="--x:60;--y:78;--d:5.6" data-a="pop"><button type="button" class="fs-p" data-s="n" title="Gerente da área impactada">G<span>Gerente</span></button></div>
+              <div class="fs-pw" style="--x:24;--y:58;--d:6.2" data-a="pop"><button type="button" class="fs-p" data-s="r" title="Supervisor da operação">S<span>Supervisor</span></button></div>
+              <div class="fs-pw" style="--x:72;--y:42;--d:6.8" data-a="pop"><button type="button" class="fs-p" data-s="a" title="Key user">K<span>Key user</span></button></div>
+              <div class="fs-pw" style="--x:20;--y:80;--d:7.4" data-a="pop"><button type="button" class="fs-p two" data-s="n" title="Líder de TI">TI<span>Líder de TI</span></button></div>
+              <div class="fs-pw" style="--x:88;--y:20;--d:8" data-a="pop"><button type="button" class="fs-p" data-s="a" title="Analista entusiasta">A<span>Analista</span></button></div>
+            </div>
+            <span class="fs-ax">baixo ← <b>Interesse</b> → alto</span>
+          </div>
+          <div class="fs-side">
+            <div class="card nv fs-panel"></div>
+            <div class="fs-ba">
+              <span class="fs-lb">Antes × depois · entrevistas</span>
+              <div class="fs-bar"><em>Início</em><div class="fs-bt"><i class="r" style="--w:40">40%</i><i class="g" style="--w:60">60%</i></div></div>
+              <div class="fs-bar"><em>Fim da fase 1</em><div class="fs-bt"><i class="r" style="--w:25">25%</i><i class="g" style="--w:75">75%</i></div></div>
+              <p class="fs-ban"><i class="r"></i>receosos <i class="g"></i>engajadores <b>· 15 pontos migraram</b></p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- faixa final: próximos 3 · 6 · 8 meses -->
+      <div class="fs-next" data-a="up" style="--d:8">
+        <span class="fs-nl">Próximos 3 · 6 · 8 meses</span>
+        <div class="fs-chips"><span><i>3</i><em>meses</em>mapa atualizado + plano para cada crítico</span><span><i>6</i><em>meses</em>rede de agentes ativa · 1:1 mensal com resistentes</span><span><i>8</i><em>meses</em>conversão de resistentes ≥ 50%</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
 
 <!-- ===== 14-impactos ===== -->
-<section data-id="impactos" class="slide" data-t="impactos" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+<!-- ===================================================== 05 · NA PRÁTICA · FRENTE 3 · IMPACTOS -->
+<section data-id="impactos" class="slide fi" data-t="Frente 3 · Impactos: todo impacto tem um dono" data-rail="Frentes">
+  <template class="info"><h5>Contexto</h5><p>Impactos organizacionais são <b>o que muda no dia a dia</b> por causa do projeto: processos, sistemas, pessoas e cultura. A frente levanta cada impacto, classifica pela <b>severidade</b> (quantas pessoas × quão profundo), mitiga com <b>dono e prazo</b> e confere se funcionou.</p><p>O índice <b>ICI</b> (meta ≥ 70%) junta quatro medidas: identificação, priorização, execução das mitigações e eficácia. Os números da matriz vêm de um projeto real (corte de junho, arredondados); as três linhas de exemplo são ilustrativas e coerentes com o projeto.</p><h5>Como usar</h5><ul><li><b>→</b> monta a matriz em três visões (categoria, severidade, status) e depois mostra três linhas de exemplo com a leitura do índice real. <b>←</b> volta.</li><li>Clicar numa visão também a revela. Clicar numa linha da matriz a destaca.</li></ul><h5>Em números</h5><div class="nums"><div><b>22</b><span>impactos</span></div><div><b>4</b><span>categorias</span></div><div><b>70%</b><span>meta do ICI</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Na prática · Frente 3 · Impactos Organizacionais</div><h2 class="h2"><span class="kw" style="--k:1"><span>Todo impacto</span></span> <span class="kw" style="--k:3"><span class="hl">precisa de um dono.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Avance com <kbd>→</kbd> para montar a matriz</span></div>
+    </div>
+    <div class="main fi-main">
+      <div class="fi-grid">
+
+        <!-- coluna esquerda: o que é · como fazer -->
+        <div class="fi-left">
+          <article class="card fi-what" data-a="up" style="--d:2">
+            <div class="fi-wh"><span class="fi-ico">🧭</span><div><span class="fi-lb">Frente 3 · O que é</span><b>Impactos Organizacionais</b></div></div>
+            <p class="fi-def">Levantar <b>o que muda</b> em processos, sistemas, pessoas e cultura. Classificar pela <b>severidade</b>. Mitigar com <b>dono e prazo</b>. Conferir se <b>funcionou</b>.</p>
+            <div class="fi-chip"><b>ICI</b><span>meta ≥ 70%</span><em>identificação · priorização · execução · eficácia</em></div>
+          </article>
+          <article class="card fi-how" data-a="up" style="--d:3">
+            <span class="fi-lb">Como fazer · 4 passos</span>
+            <ol class="fi-steps">
+              <li><i>1</i><div><b>Levantar</b><span>Workshop com cada área: “o que muda no seu dia?”</span></div><em>🔍</em></li>
+              <li><i>2</i><div><b>Classificar</b><span>Alto, Médio ou Baixo = quantas pessoas × quão profundo.</span></div><em>🌡️</em></li>
+              <li><i>3</i><div><b>Mitigar</b><span>Ação, dono e prazo: comunicar, treinar, ajustar o processo.</span></div><em>🛠️</em></li>
+              <li><i>4</i><div><b>Verificar</b><span>Severidade antes × depois. Novo risco registrado em 48h.</span></div><em>✅</em></li>
+            </ol>
+          </article>
+        </div>
+
+        <!-- coluna direita: exemplo · a matriz de impactos -->
+        <article class="card fi-ex" data-a="up" style="--d:4">
+          <div class="fi-exh"><span class="fi-lb">Exemplo · <b>a matriz de impactos</b> · projeto real, corte de junho</span><span class="fi-tot"><b>22</b> impactos mapeados</span></div>
+
+          <!-- três visões: categoria · severidade · status -->
+          <div class="fi-views">
+            <div class="fi-v" data-v="0" data-a="up" style="--d:5">
+              <div class="fi-vh"><i>1</i><div><b>Por categoria</b><span>onde a mudança bate</span></div></div>
+              <div class="fi-vb">
+                <ul class="fi-cat">
+                  <li style="--n:12"><em>💻</em><span>Tecnologia</span><div class="fi-bar"><i></i></div><b data-n="12">–</b></li>
+                  <li style="--n:7"><em>⚙️</em><span>Processos</span><div class="fi-bar"><i></i></div><b data-n="7">–</b></li>
+                  <li style="--n:2"><em>🌱</em><span>Cultura</span><div class="fi-bar"><i></i></div><b data-n="2">–</b></li>
+                  <li style="--n:1"><em>👥</em><span>Pessoas</span><div class="fi-bar"><i></i></div><b data-n="1">–</b></li>
+                </ul>
+                <p class="fi-vn">Tecnologia puxa: <b>12 de 22</b>. O sistema muda o jeito de trabalhar.</p>
+              </div>
+            </div>
+            <div class="fi-v" data-v="1" data-a="up" style="--d:6">
+              <div class="fi-vh"><i>2</i><div><b>Por severidade</b><span>quantas pessoas × quão profundo</span></div></div>
+              <div class="fi-vb">
+                <div class="fi-sev">
+                  <div class="fi-sb" data-s="a" style="--n:8"><b data-n="8">–</b><span>Alto</span></div>
+                  <div class="fi-sb" data-s="m" style="--n:11"><b data-n="11">–</b><span>Médio</span></div>
+                  <div class="fi-sb" data-s="b" style="--n:3"><b data-n="3">–</b><span>Baixo</span></div>
+                </div>
+                <p class="fi-vn"><b>8 de 22</b> são altos: a prioridade começa por eles.</p>
+              </div>
+            </div>
+            <div class="fi-v" data-v="2" data-a="up" style="--d:7">
+              <div class="fi-vh"><i>3</i><div><b>Por status</b><span>o que já saiu do papel</span></div></div>
+              <div class="fi-vb">
+                <div class="fi-st"><i class="and" style="--w:13"></i><i class="mit" style="--w:4"></i><i class="pen" style="--w:5"></i></div>
+                <ul class="fi-stl">
+                  <li class="and"><b data-n="13">–</b><span>em andamento</span></li>
+                  <li class="mit"><b data-n="4">–</b><span>mitigados</span></li>
+                  <li class="pen"><b data-n="5">–</b><span>pendentes</span></li>
+                </ul>
+                <p class="fi-vn">Só <b>4 de 22</b> mitigados. Aqui está o problema.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- a matriz, linha a linha: impacto → mitigação → dono → status -->
+          <div class="fi-tab">
+            <div class="fi-th"><span>Impacto</span><span>Classificação</span><span>→ Mitigação</span><span>→ Dono</span><span>→ Status</span></div>
+            <div class="fi-ghost"><div class="fi-sk"><i></i><i></i><i></i><i></i><i></i></div><div class="fi-sk"><i></i><i></i><i></i><i></i><i></i></div><div class="fi-sk"><i></i><i></i><i></i><i></i><i></i></div><span class="fi-gh"><b>4</b>Três linhas de exemplo: impacto → mitigação → dono → status</span></div>
+            <div class="fi-rows">
+              <button type="button" class="fi-row" style="--i:0"><b class="fi-imp">Apontamento de horas sai da planilha e vai para o sistema</b><span class="fi-tags"><i>Processos</i><i class="s a">Alto</i></span><span class="fi-mit">Treino prático + key user na área</span><span class="fi-own">👤 Gerente da área</span><span class="fi-pill and">em andamento</span></button>
+              <button type="button" class="fi-row" style="--i:1"><b class="fi-imp">Aprovações passam a ser no sistema</b><span class="fi-tags"><i>Processos</i><i class="s m">Médio</i></span><span class="fi-mit">Redesenho do fluxo + comunicado do líder</span><span class="fi-own">👤 GMO + TI</span><span class="fi-pill mit">mitigado</span></button>
+              <button type="button" class="fi-row" style="--i:2"><b class="fi-imp">Área nova entra na fase 2 sem histórico</b><span class="fi-tags"><i>Pessoas</i><i class="s a">Alto</i></span><span class="fi-mit">Onboarding dirigido + entrevista de perfil</span><span class="fi-own">👤 GMO + RH</span><span class="fi-pill pen">pendente</span></button>
+            </div>
+          </div>
+
+          <!-- leitura: o índice (modelo) → o índice real (depois do último passo) -->
+          <div class="card nv fi-read"></div>
+        </article>
+      </div>
+
+      <!-- faixa final: próximos 3 · 6 · 8 meses -->
+      <div class="fi-next" data-a="up" style="--d:8">
+        <span class="fi-nl">Próximos 3 · 6 · 8 meses</span>
+        <div class="fi-chips"><span><i>3</i><em>meses</em>matriz completa e priorizada, com dono</span><span><i>6</i><em>meses</em>≥ 95% das mitigações executadas</span><span><i>8</i><em>meses</em>eficácia ≥ 70%: a severidade caiu</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
 
 <!-- ===== 15-capacitacao ===== -->
-<section data-id="capacitacao" class="slide" data-t="capacitacao" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+<!-- ===================================================== 05 · NA PRÁTICA · FRENTE 4 · CAPACITAÇÃO -->
+<section data-id="capacitacao" class="slide ft" data-t="Frente 4 · Capacitação: treinar é fácil, aplicar é difícil" data-rail="Frentes">
+  <template class="info"><h5>Contexto</h5><p>A quarta frente da GMO é a <b>capacitação</b>: preparar as pessoas para fazer o trabalho do novo jeito. Conteúdo por perfil, prática na tarefa real, material à mão e reforço depois. Treinar é a parte fácil. O índice <b>IPT</b> (meta ≥ 80%) mede o que importa: cobertura, retenção do conhecimento, aplicação prática e satisfação.</p><p>O funil é o da <b>fase 1 de um projeto real</b> (corte de junho, números arredondados): 136 convidados, 110 inscritos, 102 presentes e 50 na atividade de fixação. Quem treinou, aprendeu: 85% de acertos. O problema é quem ainda não treinou: só 102 de 713 impactados. A aplicação prática em 30 dias só começa a ser medida na fase 2.</p><h5>Como usar</h5><ul><li><b>→</b> revela o funil degrau a degrau e, no fim, os três medidores e a leitura do IPT. <b>←</b> volta.</li><li>Clicar num degrau mostra o número absoluto e a % em relação aos convidados.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>etapas do funil</span></div><div><b>3</b><span>medidas</span></div><div><b>80%</b><span>meta do IPT</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">05 · Na prática · Frente 4 · Capacitação</div><h2 class="h2"><span class="kw" style="--k:1"><span>Treinar é fácil.</span></span> <span class="kw" style="--k:3"><span class="hl">Difícil é aplicar.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique num degrau ou avance com <kbd>→</kbd></span></div>
+    </div>
+    <div class="main ft-main">
+      <div class="ft-grid">
+
+        <!-- coluna esquerda: o que é · como fazer -->
+        <div class="ft-left">
+          <article class="card ft-what" data-a="up" style="--d:2">
+            <div class="ft-wh"><span class="ft-ico">🎓</span><div><span class="ft-lb">Frente 4 · O que é</span><b>Capacitação</b></div></div>
+            <p class="ft-def">Preparar as pessoas para <b>fazer o trabalho do novo jeito</b>: conteúdo por perfil, <b>prática na tarefa real</b>, material à mão e <b>reforço depois</b>.</p>
+            <div class="ft-chip"><b>IPT</b><span>meta ≥ 80%</span><em>cobertura · retenção · aplicação · satisfação</em></div>
+          </article>
+          <article class="card ft-how" data-a="up" style="--d:3">
+            <span class="ft-lb">Como fazer · 4 passos</span>
+            <ol class="ft-steps">
+              <li><i>1</i><div><b>Trilhas por perfil</b><span>Quem faz o quê no novo jeito. Conteúdo por papel, não genérico.</span></div><em>🗂️</em></li>
+              <li><i>2</i><div><b>Treinar na tarefa real</b><span>Menos slide, mais exercício. Presencial para os críticos.</span></div><em>🛠️</em></li>
+              <li><i>3</i><div><b>Fixar</b><span>Atividade de fixação 7 dias depois. Quiz, FAQ e vídeos curtos.</span></div><em>🔁</em></li>
+              <li><i>4</i><div><b>Medir e reforçar</b><span>Nota ≥ 4 · aprovação ≥ 80% · aplicação em 30 dias ≥ 70%.</span></div><em>📏</em></li>
+            </ol>
+          </article>
+        </div>
+
+        <!-- coluna direita: exemplo · o funil da fase 1 + 3 medidores + leitura -->
+        <article class="card ft-ex" data-a="up" style="--d:4">
+          <div class="ft-exh"><span class="ft-lb">Exemplo · <b>o funil</b> da fase 1 · quem foi convidado, quem chegou ao fim</span><span class="ft-mat">📚 9 vídeos + e-book de 83 páginas</span></div>
+
+          <div class="ft-fun" role="list" aria-label="Funil de treinamento">
+            <div class="ft-row" data-i="0" data-n="136" style="--w:100" role="listitem">
+              <div class="ft-rl"><b>Convidados</b><span class="ft-sub">receberam o convite</span><span class="ft-det"><i>136 pessoas</i><br>ponto de partida do funil</span></div>
+              <div class="ft-ba"><button type="button" class="ft-bar" title="Clique para ver a %"><span class="ft-n">–</span></button></div>
+            </div>
+            <div class="ft-con"><span></span><div><span class="ft-cp"><b>↓ 81%</b>se inscreveram</span></div></div>
+            <div class="ft-row" data-i="1" data-n="110" style="--w:81" role="listitem">
+              <div class="ft-rl"><b>Inscritos</b><span class="ft-sub">se inscreveram na turma</span><span class="ft-det"><i>110 pessoas</i><br>81% dos convidados</span></div>
+              <div class="ft-ba"><button type="button" class="ft-bar" title="Clique para ver a %"><span class="ft-n">–</span></button></div>
+            </div>
+            <div class="ft-con"><span></span><div><span class="ft-cp"><b>↓ 93%</b>apareceram</span></div></div>
+            <div class="ft-row" data-i="2" data-n="102" style="--w:75" role="listitem">
+              <div class="ft-rl"><b>Presentes</b><span class="ft-sub">participaram do treino</span><span class="ft-det"><i>102 pessoas</i><br>75% dos convidados</span></div>
+              <div class="ft-ba"><button type="button" class="ft-bar" title="Clique para ver a %"><span class="ft-n">–</span></button></div>
+            </div>
+            <div class="ft-con ko"><span></span><div><span class="ft-cp"><b>↓ 49%</b>fizeram a atividade</span></div></div>
+            <div class="ft-row" data-i="3" data-n="50" style="--w:37" role="listitem">
+              <div class="ft-rl"><b>Fixação</b><span class="ft-sub">fizeram a atividade</span><span class="ft-det"><i>50 pessoas</i><br>37% dos convidados</span></div>
+              <div class="ft-ba"><button type="button" class="ft-bar" title="Clique para ver a %"><span class="ft-n">–</span></button></div>
+            </div>
+          </div>
+
+          <div class="ft-gs">
+            <div class="ft-g" data-s="ok" data-v="85" data-p="85">
+              <div class="ft-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div>
+              <div class="ft-gt"><b>Conhecimento</b><span>423 de 500 acertos</span><em class="ft-tag">✓ meta 80% · bateu</em></div>
+            </div>
+            <div class="ft-g" data-s="am" data-v="3.87" data-dec="2" data-p="77">
+              <div class="ft-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div>
+              <div class="ft-gt"><b>Nota do treino</b><span>nota média, de 0 a 5</span><em class="ft-tag">≈ meta 4,0 · quase</em></div>
+            </div>
+            <div class="ft-g" data-s="ko" data-v="14" data-p="14">
+              <div class="ft-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div>
+              <div class="ft-gt"><b>Cobertura</b><span>102 de 713 impactados</span><em class="ft-tag">✗ meta 95% · longe</em></div>
+            </div>
+          </div>
+
+          <div class="card nv ft-read">
+            <div class="ft-ri"><span class="ft-lb">Leitura · IPT fase 1</span><div class="ft-rv"><b>–</b><span class="ft-sem">amarelo</span></div></div>
+            <div class="ft-rt">
+              <p class="ft-wait">Avance pelo funil, degrau a degrau. <b>A leitura aparece no fim.</b></p>
+              <div class="ft-say"><h3><b>Quem treinou, aprendeu.</b> O problema é quem ainda não treinou.</h3><p>Onde agir: <b>cobertura da fase 2</b> + <b>aplicação em 30 dias</b>.</p></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- faixa final: próximos 3 · 6 · 8 meses -->
+      <div class="ft-next" data-a="up" style="--d:8">
+        <span class="ft-nl">Próximos 3 · 6 · 8 meses</span>
+        <div class="ft-chips"><span><i>3</i><em>meses</em>trilhas por perfil + repositório de materiais</span><span><i>6</i><em>meses</em>fase 2 treinada na tarefa real + atividade de fixação</span><span><i>8</i><em>meses</em>aplicação prática ≥ 70% em 30 dias</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
 
 <!-- ===== 16-fim ===== -->
 <!-- ===================================================== ENCERRAMENTO -->
@@ -4663,16 +5980,206 @@ DECK.register('pea-medir',{
 })();
 </script>
 <script>/* ===== 10-cmak ===== */
+(()=>{const {$,$$,tone,ding}=DECK, SEC=DECK.el('cmak');
+/* 4 cards frente (modelo) e verso (dashboard real). → vira o próximo; ← desvira o último; clique vira o card. */
+const CARDS=$$('.ck-card',SEC);
+const isF=c=>c.classList.contains('flip');
+const fmt=(v,dec)=>v.toFixed(dec).replace('.',',');
+const zero=n=>{n.innerHTML='0<small>%</small>'};
+function count(el,to){const dec=String(to).includes('.')?1:0,t0=performance.now();
+ const f=t=>{if(!el.closest('.flip'))return;const k=Math.min(1,(t-t0)/600),e=1-Math.pow(1-k,3);el.innerHTML=fmt(to*e,dec)+'<small>%</small>';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+function mark(){let last=-1;CARDS.forEach((c,j)=>{if(isF(c))last=j});CARDS.forEach((c,j)=>c.classList.toggle('on',j===last))}
+function flip(i,on,snd=true){const c=CARDS[i];if(isF(c)===on)return;c.classList.toggle('flip',on);
+ const n=$('.ck-n',c);
+ if(on)setTimeout(()=>count(n,+n.dataset.v),240);
+ else if(SEC.classList.contains('ck-snap'))zero(n);            /* ao entrar: reinicia na hora, sem animação */
+ else setTimeout(()=>{if(!isF(c))zero(n)},400);                /* ao desvirar: só zera depois que o verso saiu de vista */
+ mark();
+ if(snd){if(on){CARDS.every(isF)?ding():tone(460+i*110,.16,'sine',.06,920)}else tone(420,.1,'sine',.04,260)}}
+CARDS.forEach((c,i)=>c.addEventListener('click',()=>flip(i,!isF(c))));
+DECK.register('cmak',{
+ enter(){SEC.classList.add('ck-snap');CARDS.forEach((c,i)=>flip(i,false,false));mark();requestAnimationFrame(()=>requestAnimationFrame(()=>SEC.classList.remove('ck-snap')))},
+ step(d){if(d>0){const i=CARDS.findIndex(c=>!isF(c));if(i<0)return false;flip(i,true);return true}
+  let i=-1;CARDS.forEach((c,j)=>{if(isF(c))i=j});if(i<0)return false;flip(i,false);return true}
+});
+})();
 </script>
 <script>/* ===== 11-roadmap ===== */
+(()=>{const {$,$$,tone,ding}=DECK, SEC=DECK.el('roadmap');
+const WAVES=$$('.rm-wave',SEC), CELLS=$$('.rm-cell',SEC), HINT=$('.hint',SEC), MAX=WAVES.length; /* 3 ondas */
+const H0='Clique numa onda ou avance com <kbd>→</kbd>', H1='Tudo aberto · <kbd>→</kbd> Frente 1 · Comunicação';
+let k=0; /* 0 = nenhuma onda aberta · 1..3 = ondas 1..k abertas, a k em destaque */
+const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
+function show(anim=true){
+ WAVES.forEach((w,i)=>{w.classList.toggle('ghost',i>=k);w.classList.toggle('on',i<k);w.classList.toggle('cur',i===k-1)});
+ CELLS.forEach(c=>{const i=+c.dataset.w;c.classList.toggle('ghost',i>=k);c.classList.toggle('cur',i===k-1);
+  if(i===k-1&&anim)re(c,'in');else if(i>=k)c.classList.remove('in')});
+ if(HINT)HINT.innerHTML=k===MAX?H1:H0;
+ if(anim&&k>0){k===MAX?ding():tone(420+k*110,.14,'sine',.05,900)}}
+WAVES.forEach((w,i)=>w.addEventListener('click',()=>{k=i+1;show()})); /* só show(): o bip já vem dele */
+DECK.register('roadmap',{
+ enter(){k=0;show(false)},
+ step(d){const n=k+d;if(n<0||n>MAX)return false;k=n;show(d>0);return true}
+});
+})();
 </script>
 <script>/* ===== 12-comunicacao ===== */
+(()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('comunicacao');
+/* O plano em movimento: 5 fases que rodam a cada marco do projeto.
+   k = 0..4 fase aberta (a 1 já vem aberta) · k = 5 leitura do ciclo fechado · depois disso o deck troca de slide. */
+const PH=[
+ {n:'Montar',w:'Semanas 1 e 2',
+  do:['<b>Mapear os públicos:</b> quem é impactado, por grupo.','<b>Escrever as mensagens-chave:</b> o que muda, por quê, o que eu ganho.','<b>Escolher canais e calendário:</b> e-mail, Teams, site e o líder direto.'],
+  ent:'Plano de comunicação.',kind:'crit',ind:['100%','cobertura dos públicos'],calc:'<b>públicos mapeados</b> ÷ públicos impactados'},
+ {n:'Validar',w:'Semana 3',
+  do:['<b>Sponsor e líderes validam</b> as mensagens.','<b>Agentes da mudança recebem o speech</b> e tiram dúvidas.','<b>Ajustar siglas e jargão:</b> ninguém fica sem entender.'],
+  ent:'Mensagens aprovadas + playbook dos agentes.',kind:'crit',ind:['100%','mensagens aprovadas antes do marco'],calc:'<b>mensagens aprovadas</b> ÷ mensagens escritas'},
+ {n:'Lançar',w:'No marco: kick-off, demo, treinamento, go-live',
+  do:['<b>O líder direto fala primeiro.</b>','<b>Depois e-mail / News, Teams e site.</b>','<b>Registrar quem recebeu.</b>'],
+  ent:'Campanha no ar + registro de quem recebeu.',kind:'iec',ind:['≥ 90%','alcance'],calc:'<b>quem recebeu</b> ÷ total de impactados'},
+ {n:'Medir',w:'7 dias depois',
+  do:['<b>Pulse de clareza, 3 perguntas:</b> o que muda? por quê? o que muda para mim?','<b>Abertura e visualizações</b> por canal.','<b>Dúvidas registradas.</b>'],
+  ent:'Leitura do pulse: clareza, engajamento e dúvidas.',kind:'iec',ind:['≥ 80% · ≥ 70%','clareza · engajamento'],calc:'clareza: <b>quem entendeu</b> ÷ respondentes<br>engajamento: <b>quem interagiu</b> ÷ alcançados'},
+ {n:'Ajustar',w:'Semana seguinte',
+  do:['<b>Reforçar o que não pegou:</b> FAQ, vídeo curto, fala do líder.','<b>Responder as dúvidas em 48h.</b>','<b>Preparar o próximo marco.</b>'],
+  ent:'FAQ e reforço publicados + próximo marco planejado.',kind:'iec',ind:['≥ 70%','feedback respondido em 48h'],calc:'<b>dúvidas respondidas em 48h</b> ÷ dúvidas registradas'}];
+const MAX=PH.length; /* 5: passo final = leitura do ciclo */
+/* IEC real (corte de junho): valor × meta de cada key target */
+const REAL=[{n:'Alcance',v:75.5,m:90},{n:'Engajamento',v:71.1,m:70},{n:'Clareza',v:74.6,m:80},{n:'Feedback',v:54.3,m:70}];
+const HOJE=0;        /* marco aceso na linha do tempo: Kick-off, onde o ciclo começa */
+const panel=$('.fc-panel',SEC),TABS=$$('.fc-tabs button',SEC),MK=$$('.fc-mk',SEC),TL=$('.fc-tl',SEC),LIS=$$('.fc-list li',SEC),CNT=$('.fc-cnt',SEC);
+let k=0;
+const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
+function render(){
+ if(k<MAX){const p=PH[k];
+  panel.innerHTML=`<div class="fc-ph in"><div class="fc-do"><div class="fc-when"><em>Quando</em><b>${p.w}</b></div><span class="fc-lb">O que fazer</span><ol class="fc-steps">${p.do.map((t,i)=>`<li><i>${i+1}</i><span>${t}</span></li>`).join('')}</ol></div><div class="fc-side"><div class="fc-mini"><span class="fc-lb">📦 Entregável</span><p>${p.ent}</p></div><div class="fc-mini ind"><span class="fc-lb">${p.kind==='iec'?'🎯 Indicador do IEC':'✅ Critério de saída'}</span><p><b>${p.ind[0]}</b>${p.ind[1]}</p><div class="fc-calc"><em>A conta</em><span>${p.calc}</span></div></div></div></div>`}
+ else{
+  panel.innerHTML=`<div class="fc-sum in"><div class="fc-sl"><span class="fc-lb">Leitura · o ciclo fechado</span><h3>Comunicar não é enviar. É conferir se <b>chegou</b>, se foi <b>entendido</b> e se <b>voltou</b>.</h3><div class="fc-chain"><span>1 Montar</span><i>→</i><span>2 Validar</span><i>→</i><span>3 Lançar</span><i>→</i><span>4 Medir</span><i>→</i><span>5 Ajustar</span><i>↻</i></div><p><b>No próximo marco, começa de novo.</b> Um plano, muitas voltas: é assim que o IEC chega a 80%.</p></div><div class="fc-sr"><span class="fc-lb">No projeto real · corte de junho</span>${REAL.map(r=>`<div class="fc-kr ${r.v>=r.m?'ok':'ko'}"><span>${r.n}<em>meta ${r.m}%</em></span><b>${String(r.v).replace('.',',')}%</b><div class="fc-bar"><i style="--v:${r.v}"></i><u style="--m:${r.m}"></u></div></div>`).join('')}<div class="fc-iec"><b>IEC 70,9%</b><span class="y">amarelo</span><em>Onde agir: <b>feedback</b></em></div></div></div>`}
+ TABS.forEach((b,i)=>{b.classList.toggle('on',i===k);b.classList.toggle('done',i<k);b.setAttribute('aria-selected',i===k)});
+ TL.classList.toggle('all',k===MAX);
+ MK.forEach((m,i)=>{const s=$('span',m),lit=k<MAX&&i===HOJE;m.classList.toggle('lit',lit);
+  s.textContent=k===MAX?'↻ 5 fases':lit?`fase ${k+1} · ${PH[k].n}`:'↻';if(lit||k===MAX)re(s,'in')});
+}
+function show(snd=true){render();if(snd){k===MAX?ding():tone(440+k*100,.14,'sine',.05,900)}}
+TABS.forEach((b,i)=>b.addEventListener('click',()=>{k=i;show(false);boing()}));
+/* checklist: clicar marca ✓ · 7/7 toca o ding */
+function tick(li){li.classList.toggle('on');const n=LIS.filter(l=>l.classList.contains('on')).length;$('b',CNT).textContent=n;CNT.classList.toggle('ok',n===LIS.length);n===LIS.length?ding():tone(500+n*70,.1,'sine',.05,980)}
+LIS.forEach(li=>li.addEventListener('click',()=>tick(li)));
+DECK.register('comunicacao',{
+ enter(){k=0;LIS.forEach(l=>l.classList.remove('on'));$('b',CNT).textContent='0';CNT.classList.remove('ok');show(false)},
+ step(d){const n=k+d;if(n<0||n>MAX)return false;k=n;show(d>0);return true}
+});
+})();
 </script>
 <script>/* ===== 13-stakeholders ===== */
+(()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('stakeholders');
+const POST={a:'Apoiador',n:'Neutro',r:'Resistente'};
+const QN={gp:'Gerenciar de perto',ms:'Manter satisfeito',mi:'Manter informado',mo:'Monitorar'};
+/* 6 papéis de exemplo (sem nomes reais): inicial, papel, postura, quadrante, o que precisa, ação da GMO, sinal de que funcionou */
+const P=[
+ {i:'D', r:'Diretor patrocinador',      s:'a',q:'gp',n:'Ver resultado e decidir rápido.',          a:'Termômetro P·E·A no comitê mensal; abre e fecha os eventos-chave.',       ok:'Decide no comitê o que o termômetro apontou, sem a GMO pedir.'},
+ {i:'G', r:'Gerente da área impactada', s:'n',q:'gp',n:'Saber o que muda no time dele, e quando.',  a:'1:1 mensal com o plano da área; valida o calendário de treinos.',         ok:'Time inteiro no treino; ninguém diz “não fui avisado”.'},
+ {i:'S', r:'Supervisor da operação',    s:'r',q:'ms',n:'Previsibilidade e voz. Resistente pesa mais que o quadrante.',                    a:'Tratar como gerenciar de perto: 1:1 quinzenal, envolver no desenho do fluxo, dar o papel de validador.',  ok:'Apresenta o fluxo novo ao time.'},
+ {i:'K', r:'Key user',                  s:'a',q:'mi',n:'Tempo na agenda e reconhecimento.',         a:'Papel oficial de multiplicador; ritual quinzenal com a GMO.',             ok:'Tira as dúvidas dos colegas sem chamar a GMO.'},
+ {i:'TI',r:'Líder de TI',               s:'n',q:'ms',n:'Prazos claros e menos retrabalho.',         a:'Prioriza junto os impactos de TI; comunicado assinado em dupla.', ok:'Prazos dos impactos de TI combinados e cumpridos.'},
+ {i:'A', r:'Analista entusiasta',       s:'a',q:'mi',n:'Um papel para ajudar.',                     a:'Vira agente da mudança na área; conta a história no News.',               ok:'Outros colegas pedem para virar agentes também.'}];
+let k=-1; /* -1 = ninguém em destaque (como ler o mapa) · 0..5 = pessoa */
+const plot=$('.fs-plot',SEC),PW=$$('.fs-pw',SEC),Q=$$('.fs-q',SEC),panel=$('.fs-panel',SEC);
+const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
+/* estado inicial: mini-mapa 2×2 com quem está em cada quadrante */
+const dot=p=>`<i data-s="${p.s}" class="${p.i.length>1?'two':''}">${p.i}</i>`;
+const inQ=q=>{const l=P.filter(p=>p.q===q);return l.length?l.map(dot).join(''):'<em>ninguém hoje</em>'};
+const INTRO=`<span class="fs-lb">Como ler o mapa</span>
+ <b class="fs-pt">O quadrante diz <b>o quanto cuidar</b>. A postura diz <b>como</b>.</b>
+ <div class="fs-qg">
+  <div data-q="ms"><b>Manter satisfeito</b><span>sem surpresas</span><div class="fs-qd">${inQ('ms')}</div></div>
+  <div data-q="gp"><b>Gerenciar de perto</b><span>envolver na decisão</span><div class="fs-qd">${inQ('gp')}</div></div>
+  <div data-q="mo"><b>Monitorar</b><span>olhar de vez em quando</span><div class="fs-qd">${inQ('mo')}</div></div>
+  <div data-q="mi"><b>Manter informado</b><span>comunicar sempre</span><div class="fs-qd">${inQ('mi')}</div></div>
+ </div>
+ <p class="fs-pn"><b>Influência</b> = poder de decidir. <b>Interesse</b> = o quanto é afetado. Avance com <kbd>→</kbd> ou clique numa pessoa.</p>`;
+const person=(p,i)=>`<div class="fs-ph"><i class="fs-pi${p.i.length>1?' two':''}" data-s="${p.s}">${p.i}</i><div><span class="fs-lb">${i+1} de 6 · ${QN[p.q]}</span><b>${p.r}</b></div></div>
+ <div class="fs-tr"><span class="fs-lb">Postura hoje</span><div class="fs-trk">${['r','n','a'].map(s=>`<i data-s="${s}" class="${s===p.s?'on':''}">${POST[s]}</i>`).join('')}</div></div>
+ <div class="fs-pr"><div><span class="fs-lb">O que essa pessoa precisa</span><p>${p.n}</p></div><div class="act"><span class="fs-lb">Ação da GMO</span><p>${p.a}</p></div><div class="ok"><span class="fs-lb">Sinal de que funcionou</span><p>${p.ok}</p></div></div>`;
+function show(snd=true){
+ PW.forEach((w,i)=>w.classList.toggle('on',i===k));plot.classList.toggle('sel',k>=0);
+ Q.forEach(q=>q.classList.toggle('on',k>=0&&q.dataset.q===P[k].q));
+ panel.innerHTML=k<0?INTRO:person(P[k],k);re(panel,'swap');
+ if(snd&&k>=0){k===P.length-1?ding():tone(480+k*70,.14,'sine',.05,900)}}
+PW.forEach((w,i)=>$('.fs-p',w).addEventListener('click',()=>{k=i;show(false);boing()}));
+DECK.register('stakeholders',{
+ enter(){k=-1;show(false)},
+ step(d){const n=k+d;if(n<-1||n>P.length-1)return false;k=n;show(d>0);return true}
+});
+})();
 </script>
 <script>/* ===== 14-impactos ===== */
+(()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('impactos');
+/* A matriz se monta em 4 passos: k = 1 categoria · 2 severidade · 3 status · 4 as três linhas de exemplo + leitura do ICI real.
+   k = 0 (ao entrar): visões esmaecidas e a faixa navy mostra o modelo do índice. Depois do passo 4 o deck troca de slide. */
+const MAX=4;
+let k=0, mode='';
+const V=$$('.fi-v',SEC), TAB=$('.fi-tab',SEC), ROWS=$$('.fi-row',SEC), READ=$('.fi-read',SEC);
+const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
+/* contagem animada (0 → n); dec = casas decimais; sufixo opcional */
+function count(el,to,dec=0,suf=''){const t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/800),e=1-Math.pow(1-p,3);el.textContent=(to*e).toFixed(dec).replace('.',',')+suf;if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+/* faixa navy · modelo: ICI = 4 medidas com peso */
+const MODELO=`<div class="fi-mo"><div class="fi-moh"><span class="fi-lb">O índice desta frente · como se calcula</span><span class="fi-mh">avance com <kbd>→</kbd> até o fim para ver o índice real</span></div>
+ <div class="fi-mor"><b>ICI</b><small>meta ≥ 70%</small><i class="fi-eq">=</i><div class="fi-kt"><b>Identificação</b><span>peso 20%</span></div><i>+</i><div class="fi-kt"><b>Priorização</b><span>peso 20%</span></div><i>+</i><div class="fi-kt"><b>Execução das mitigações</b><span>peso 30%</span></div><i>+</i><div class="fi-kt"><b>Eficácia</b><span>peso 30%</span></div></div></div>`;
+/* faixa navy · real: ICI 49,5% (vermelho) → leitura → onde agir */
+const REAL=`<div class="fi-re"><div class="fi-rh"><div class="fi-ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/></svg></div><div><span class="fi-lb">Leitura · corte de junho</span><b class="big">ICI 49,5%</b><div class="fi-rr"><span class="fi-rp">vermelho</span><small>meta ≥ 70%</small></div></div></div>
+ <div class="fi-rs"><p>Só <b>4 de 22</b> mitigações executadas.</p><span>Execução em <b>18%</b> (peso 30%) puxa o índice para baixo.</span></div>
+ <div class="fi-act"><span class="fi-lb">Onde agir</span><p>Tirar as ações do papel, <b>uma por semana</b>, com dono e prazo.</p></div></div>`;
+function show(snd=true){
+ V.forEach((v,i)=>{const on=i<k,was=v.classList.contains('on');v.classList.toggle('on',on);
+  if(on&&!was)$$('b[data-n]',v).forEach(b=>count(b,+b.dataset.n));
+  if(!on)$$('b[data-n]',v).forEach(b=>b.textContent='–')});
+ TAB.classList.toggle('on',k>=MAX);
+ if(k<MAX){ROWS.forEach(r=>r.classList.remove('on'));TAB.classList.remove('sel')}
+ const m=k>=MAX?'real':'modelo';
+ if(m!==mode){mode=m;READ.innerHTML=m==='real'?REAL:MODELO;re(READ,'swap')}
+ if(snd){k>=MAX?ding():tone(420+k*90,.14,'sine',.05,900)}}
+/* clique numa linha destaca (clicar de novo solta) · clique numa visão revela até ela */
+ROWS.forEach(r=>r.addEventListener('click',()=>{const was=r.classList.contains('on');ROWS.forEach(x=>x.classList.remove('on'));if(!was)r.classList.add('on');TAB.classList.toggle('sel',!was);boing()}));
+V.forEach((v,i)=>v.addEventListener('click',()=>{if(k<i+1){k=i+1;show()}}));
+DECK.register('impactos',{
+ enter(){k=0;mode='';show(false)},
+ step(d){const n=k+d;if(n<0||n>MAX)return false;k=n;show(d>0);return true}
+});
+})();
 </script>
 <script>/* ===== 15-capacitacao ===== */
+(()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('capacitacao');
+/* passos: 0 = nada revelado · 1..4 = degraus do funil · 5 = medidores + leitura do IPT */
+const MAX=5;
+const ROWS=$$('.ft-row',SEC),CONS=$$('.ft-con',SEC),GS=$$('.ft-g',SEC),READ=$('.ft-read',SEC),RV=$('.ft-rv b',SEC);
+let k=0;
+const ease=t=>1-Math.pow(1-t,3);
+/* contador animado; cada elemento guarda o seu token para cancelar uma contagem antiga */
+function count(el,to,fmt){const from=+(el.dataset.v||0);el.dataset.v=to;const t0=performance.now();el._t=t0;
+ const f=t=>{if(el._t!==t0)return;const p=Math.min(1,(t-t0)/850);el.textContent=fmt(from+(to-from)*ease(p));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+function reset(el){el._t=0;el.dataset.v=0;el.textContent='–'}
+function show(prev){
+ ROWS.forEach((r,i)=>{const on=k>=i+1,n=$('.ft-n',r);
+  if(on&&!r.classList.contains('on')){r.classList.add('on');count(n,+r.dataset.n,v=>Math.round(v))}
+  if(!on){r.classList.remove('on','open');reset(n)}});
+ CONS.forEach((c,i)=>c.classList.toggle('on',k>=i+2));
+ const g=k>=MAX;
+ GS.forEach(x=>{const b=$('.ft-ring b',x),fg=$('.ft-ring .fg',x),was=x.classList.contains('on');x.classList.toggle('on',g);
+  if(g&&!was){fg.style.strokeDasharray=`${x.dataset.p} 100`;const dec=+(x.dataset.dec||0);count(b,+x.dataset.v,v=>dec?v.toFixed(dec).replace('.',','):Math.round(v)+'%')}
+  if(!g){fg.style.strokeDasharray='0 100';reset(b)}});
+ READ.classList.toggle('on',g);
+ if(g&&prev<MAX)count(RV,65,v=>Math.round(v)+'%');
+ if(!g)reset(RV)}
+function go(n,snd=true){const prev=k;k=Math.max(0,Math.min(MAX,n));show(prev);
+ if(snd&&k>prev){k===MAX?ding():tone(380+k*90,.14,'sine',.05,760)}}
+/* clique num degrau: revela até ele; se já está aberto, mostra o número absoluto e a % dos convidados */
+ROWS.forEach((r,i)=>r.addEventListener('click',()=>{if(k<i+1){go(i+1)}else{r.classList.toggle('open');boing()}}));
+DECK.register('capacitacao',{
+ enter(){k=0;show(0)},
+ step(d){const n=k+d;if(n<0||n>MAX)return false;go(n,d>0);return true}
+});
+})();
 </script>
 <script>/* ===== 16-fim ===== */
 (()=>{const {$,ding}=DECK, SEC=DECK.el('fim');

@@ -1,0 +1,136 @@
+/* =====================================================================
+   05 · NA PRÁTICA · FRENTE 2 · STAKEHOLDERS  (prefixo fs-, escopo .slide[data-id="stakeholders"])
+   esquerda: o que é + como fazer · direita: mapa influência × interesse + painel da pessoa + antes × depois
+   ===================================================================== */
+.slide[data-id="stakeholders"]{--fs-c:var(--steel-500);--fs-c2:var(--navy-600);--fs-ok:#2ECC71;--fs-okt:#1E8E4F}
+.slide[data-id="stakeholders"] [data-s="a"]{--pc:#2ECC71;--pct:#1E8E4F}
+.slide[data-id="stakeholders"] [data-s="n"]{--pc:var(--steel-400);--pct:var(--steel-600)}
+.slide[data-id="stakeholders"] [data-s="r"]{--pc:var(--orange-500);--pct:var(--orange-600)}
+.fs-main{display:flex;flex-direction:column;gap:14px}
+.fs-lb{font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fs-grid{flex:1;min-height:0;display:grid;grid-template-columns:560px minmax(0,1fr);gap:20px}
+.fs-left{display:flex;flex-direction:column;gap:14px;min-height:0}
+@keyframes fsLetter{from{transform:rotate(-25deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes fsIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ---------- o que é ---------- */
+.fs-what{flex:none;padding:15px 20px 16px;border-top:5px solid var(--fs-c);display:flex;flex-direction:column;gap:12px}
+.fs-wh{display:flex;align-items:center;gap:12px}
+.fs-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.play .fs-ico{animation:fsLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.fs-wh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.fs-wh b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.fs-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:pretty}
+.fs-def b{color:var(--navy-900)}
+.fs-chip{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
+.fs-chip b{padding:4px 9px;border-radius:7px;font:800 14px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.fs-chip span{font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fs-chip em{font-style:normal;margin-left:auto;font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+/* ---------- como fazer: 4 passos ---------- */
+.fs-how{flex:1;min-height:0;padding:15px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.fs-steps{flex:1;min-height:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.fs-steps li{flex:1;min-height:0;display:flex;align-items:center;gap:14px;padding:0 14px 0 12px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s}
+.fs-steps li:hover{background:#fff;border-color:var(--steel-300)}
+.fs-steps li i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:#fff;background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.fs-steps li div{flex:1;min-width:0}
+.fs-steps li b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--navy-900)}
+.fs-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.fs-steps li em{flex:none;font-size:22px;line-height:1;font-style:normal}
+/* ---------- exemplo: o card grande ---------- */
+.fs-ex{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr);gap:10px 18px;padding:14px 18px 16px;border-top:5px solid var(--fs-c)}
+.fs-exh{grid-column:1/-1;display:flex;align-items:center;gap:16px}
+.fs-exh .fs-lb{color:var(--navy-800);font-weight:600}
+.fs-exh .fs-lb b{color:var(--orange-600);font-weight:600}
+.fs-pl{margin-left:auto;display:flex;gap:14px}
+.fs-pl span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fs-pl span::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--pc);box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+/* ---------- o mapa 2×2 ---------- */
+.fs-map{min-height:0;display:grid;grid-template-columns:22px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 22px;gap:4px}
+.fs-ay,.fs-ax{display:flex;align-items:center;justify-content:center;font:500 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.fs-ay{grid-row:1;grid-column:1;writing-mode:vertical-rl;transform:rotate(180deg)}
+.fs-ax{grid-row:2;grid-column:2}
+.fs-ay b,.fs-ax b{font-weight:600;color:var(--navy-800);margin-inline:8px}
+.fs-plot{grid-row:1;grid-column:2;position:relative;min-height:0;border-radius:14px;background:#fff;border:1px solid var(--line-strong);background-image:linear-gradient(rgba(11,37,69,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(11,37,69,.045) 1px,transparent 1px);background-size:40px 40px}
+.fs-plot::before{content:"";position:absolute;left:50%;top:10px;bottom:10px;border-left:2px dashed var(--line-strong);z-index:1;pointer-events:none}
+.fs-plot::after{content:"";position:absolute;top:50%;left:10px;right:10px;border-top:2px dashed var(--line-strong);z-index:1;pointer-events:none}
+.fs-q{position:absolute;width:50%;height:50%;z-index:0;transition:background .45s}
+.fs-q[data-q="ms"]{left:0;top:0;border-radius:13px 0 0 0}
+.fs-q[data-q="gp"]{right:0;top:0;border-radius:0 13px 0 0}
+.fs-q[data-q="mo"]{left:0;bottom:0;border-radius:0 0 0 13px}
+.fs-q[data-q="mi"]{right:0;bottom:0;border-radius:0 0 13px 0}
+.fs-q.on{background:rgba(74,111,165,.13)}
+.fs-q span{position:absolute;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap;transition:color .3s}
+.fs-q.on span{color:var(--steel-600)}
+.fs-q[data-q="ms"] span{top:10px;left:12px}.fs-q[data-q="gp"] span{top:10px;right:12px}
+.fs-q[data-q="mo"] span{bottom:10px;left:12px}.fs-q[data-q="mi"] span{bottom:10px;right:12px}
+/* pessoas: ponto com a inicial do papel, cor da postura */
+.fs-pw{position:absolute;left:calc(var(--x)*1%);bottom:calc(var(--y)*1%);width:0;height:0;z-index:2}
+.fs-pw.on{z-index:4}
+.fs-p{position:absolute;left:-23px;top:-23px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 18px var(--fb);line-height:1;color:#fff;background:var(--pc);border:3px solid #fff;box-shadow:0 4px 12px rgba(11,37,69,.22),inset 0 -3px 0 rgba(0,0,0,.16);transition:transform .45s var(--spring),box-shadow .3s,opacity .3s}
+.fs-p.two{font-size:15px}
+.fs-p:hover{transform:scale(1.1)}
+.fs-p span{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font:700 12.5px var(--fb);line-height:1.2;color:var(--navy-800);white-space:nowrap;background:rgba(255,255,255,.94);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.fs-plot.sel .fs-pw:not(.on) .fs-p{opacity:.5}
+.fs-pw.on .fs-p{transform:scale(1.22);box-shadow:0 0 0 5px rgba(242,107,33,.28),0 12px 26px rgba(11,37,69,.28)}
+.fs-pw.on .fs-p::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--orange-500);animation:fsPulse 1.6s ease-out infinite}
+@keyframes fsPulse{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+/* ---------- lado direito: painel da pessoa + antes × depois ---------- */
+.fs-side{min-height:0;display:flex;flex-direction:column;gap:12px}
+.fs-panel{flex:1;min-height:0;padding:15px 18px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.fs-panel .fs-lb{color:var(--orange-200)}
+.fs-panel.swap>*{animation:fsIn .4s var(--ease) both}
+.fs-panel.swap>*:nth-child(2){animation-delay:.05s}.fs-panel.swap>*:nth-child(3){animation-delay:.1s}.fs-panel.swap>*:nth-child(4){animation-delay:.15s}
+/* estado inicial: como ler o mapa (mini-mapa 2×2 com quem está em cada quadrante) */
+.fs-pt{font-size:18px;font-weight:800;line-height:1.3;letter-spacing:-.01em;color:#fff;text-wrap:balance}
+.fs-pt b{color:var(--orange-400)}
+.fs-qg{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
+.fs-qg>div{min-height:0;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 11px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.fs-qg>div[data-q="gp"]{background:rgba(242,107,33,.14);border-color:rgba(255,138,76,.32)}
+.fs-qg b{font-size:13.5px;font-weight:700;line-height:1.2;color:#fff}
+.fs-qg span{font-size:12.5px;line-height:1.3;color:var(--steel-200)}
+.fs-qd{display:flex;align-items:center;gap:4px;margin-top:5px;min-height:24px}
+.fs-qd i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 12px var(--fb);font-style:normal;line-height:1;color:#fff;background:var(--pc);border:2px solid rgba(255,255,255,.85)}
+.fs-qd i.two{font-size:12px;letter-spacing:-.04em}
+.fs-qd em{font-style:normal;font-size:12px;color:var(--steel-300)}
+.fs-pn{margin-top:auto;font-size:14px;line-height:1.4;color:var(--steel-200)}
+.fs-pn b{color:#fff}
+.fs-pn kbd{color:var(--orange-200);border-color:var(--orange-200)}
+/* pessoa em destaque */
+.fs-ph{display:flex;align-items:center;gap:12px}
+.fs-pi{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 18px var(--fb);font-style:normal;line-height:1;color:#fff;background:var(--pc);border:3px solid rgba(255,255,255,.9);box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
+.fs-pi.two{font-size:15px}
+.fs-ph>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.fs-ph b{font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.15;color:#fff}
+.fs-tr{display:flex;flex-direction:column;gap:6px}
+.fs-trk{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.fs-trk i{height:30px;display:grid;place-items:center;border-radius:8px;font:700 12.5px var(--fb);font-style:normal;color:var(--steel-300);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:background .3s,color .3s}
+.fs-trk i.on{color:#fff;background:var(--pc);border-color:transparent;box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
+.fs-pr{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+.fs-pr div{flex:1;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.fs-pr .ok{background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.35)}
+.fs-pr .ok .fs-lb{color:#7FE3A8}
+.fs-pr .fs-lb{display:block;margin-bottom:4px}
+.fs-pr p{font-size:15.5px;line-height:1.34;color:#fff;text-wrap:pretty}
+.fs-pr .act{background:rgba(242,107,33,.16);border-color:rgba(255,138,76,.35)}
+.fs-pr .act .fs-lb{color:var(--orange-400)}
+/* antes × depois */
+.fs-ba{flex:none;padding:11px 14px 11px;border-radius:12px;background:var(--off);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.fs-bar{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:8px}
+.fs-bar em{font-style:normal;font-size:13px;font-weight:700;color:var(--navy-800);white-space:nowrap}
+.fs-bt{display:flex;height:28px;border-radius:7px;overflow:hidden;background:var(--steel-100)}
+.fs-bt i{flex:none;width:calc(var(--w)*1%);display:grid;place-items:center;font:700 13px var(--fb);font-style:normal;color:#fff;overflow:hidden}
+.fs-bt i.r{background:var(--orange-500)}.fs-bt i.g{background:var(--fs-ok)}
+.play .fs-bt i{animation:fsGrow 1s var(--ease) both;animation-delay:calc(var(--d,8)*90ms + 300ms)}
+@keyframes fsGrow{from{width:0}}
+.fs-ban{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--grey-700);white-space:nowrap}
+.fs-ban i{width:11px;height:11px;border-radius:3px}
+.fs-ban i.r{background:var(--orange-500)}.fs-ban i.g{background:var(--fs-ok)}
+.fs-ban b{color:var(--navy-800)}
+/* ---------- faixa final: próximos 3 · 6 · 8 meses (mesmo padrão das frentes 1 e 3) ---------- */
+.fs-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+.fs-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fs-chips{display:flex;gap:10px}
+.fs-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fs-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
+.fs-chips span:nth-child(2) i{background:var(--steel-500)}
+.fs-chips span:nth-child(3) i{background:var(--orange-500)}
+.fs-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
