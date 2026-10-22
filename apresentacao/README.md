@@ -12,8 +12,8 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 | 02–04 | **Capítulo 1 · Mudança** | Mudança (o cérebro e o cabo de guerra, com a **Anatomia · Córtex**), Exercício (a sala bagunçada) e Gestão (mudar é evento, sustentar é gestão) |
 | 05–06 | **Capítulo 2 · História** | História (da força ao método, sem × com método) e Números (selo 7×, 88% × 13%, com × sem gestão) |
 | 07–08 | **Capítulo 3 · Metodologias** | Ferramentas (a caixa com Kotter, ADKAR, HCMBOK e CMAK) e Onde usar (matriz de cenários) |
-| 09 | **Capítulo 4 · PEA** · o que é | Prontidão, Engajamento e Adoção: as três lentes, onde se encaixam na GMO (preparar · conduzir · sustentar) e as cenas da analogia **Na vida** (o encontro) e **No trabalho** (o sistema novo), com luzes P/E/A e confete na adoção |
-| 10 | **PEA** · como medir | 4 passos, tabela de 8 pessoas × 5 tarefas (uma por letra do ADKAR), cálculo de P, E e A, ponto de barreira e “onde trava” por pessoa; `→` percorre as semanas 1, 3 e 8 |
+| 09 | **Capítulo 4 · PEA** · o que é | Três colunas, uma por palavra: Prontidão (antes), Engajamento (durante) e Adoção (depois), com o que é, o que observamos e uma analogia cada (a viagem, a aula, o celular novo); `→` abre uma palavra por vez; linha do tempo com o go-live |
+| 10 | **PEA** · como medir | Para cada palavra: a pergunta, onde olhamos e a conta (quem cumpre ÷ quem deveria), com um medidor; `→` percorre três momentos de um sistema novo (antes do go-live, semana 2 e semana 8) e a leitura de onde a GMO age |
 | 11 | **Encerramento** | a borboleta da capa, três ideias para levar e a pergunta da Isabella com a Roda |
 
 A trilha de capítulos na barra inferior agrupa os slides em **Agenda · Mudança · História · Metodologias · PEA · Encerramento**.
