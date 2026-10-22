@@ -1,0 +1,22 @@
+/* =====================================================================
+   PRÉVIA · a turma no sofá; → entra na TV e abre a capa  (prefixo pv-)
+   ===================================================================== */
+.slide[data-id="previa"]{background:#04101F}
+.pv-cam{position:absolute;left:0;top:29px;width:1600px;height:842px;transform-origin:0 0;will-change:transform}
+.pv-img{display:block;width:1600px;height:842px;object-fit:cover;animation:pvKen 22s ease-in-out infinite alternate;transform-origin:62% 40%}
+@keyframes pvKen{from{transform:scale(1)}to{transform:scale(1.035)}}
+.pv-tv{position:absolute;left:1196px;top:100px;width:404px;height:340px;border-radius:6px;cursor:zoom-in;background:none}
+.pv-tv:hover{box-shadow:0 0 0 3px rgba(255,138,76,.75),0 0 40px rgba(255,138,76,.45)}
+.pv-bar{position:absolute;left:0;right:0;height:29px;background:#04101F;z-index:2}
+.pv-bar.t{top:0}.pv-bar.b{bottom:0}
+.pv-play{position:absolute;left:1302px;top:478px;z-index:3;display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 16px 0 6px;border-radius:99px;background:var(--navy-800);color:#fff;font:600 13px var(--fb);box-shadow:0 8px 22px rgba(4,16,31,.45);transition:transform .3s var(--spring),background .25s}
+.pv-play span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--orange-500);font-size:10px;padding-left:2px}
+.pv-play:hover{transform:translateY(-2px) scale(1.04);background:var(--navy-700)}
+.play .pv-play span{animation:pvPing 2s ease-out 1.6s infinite}
+@keyframes pvPing{0%{box-shadow:0 0 0 0 rgba(242,107,33,.6)}70%,100%{box-shadow:0 0 0 12px rgba(242,107,33,0)}}
+.pv-tag{position:absolute;left:24px;top:44px;z-index:3;font:500 10px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:#fff;padding:6px 11px;border-radius:99px;background:rgba(4,16,31,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pv-flash{position:absolute;inset:0;z-index:4;background:#0B2545;opacity:0;pointer-events:none}
+.pv.zoom .pv-cam{transition:transform 1.25s cubic-bezier(.7,0,.25,1)}
+.pv.zoom .pv-img{animation:none}
+.pv.zoom .pv-play,.pv.zoom .pv-tag{visibility:hidden}
+.pv.zoom .pv-flash{opacity:1;transition:opacity .35s ease-in 1s}

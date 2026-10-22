@@ -142,6 +142,30 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .bubble.tail-l::after{left:-9px;top:calc(50% - 9px);transform:rotate(135deg)}
 .bubble .who{display:block;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500);margin-bottom:4px}
 
+/* ===== 00-abertura ===== */
+/* =====================================================================
+   PRÉVIA · a turma no sofá; → entra na TV e abre a capa  (prefixo pv-)
+   ===================================================================== */
+.slide[data-id="previa"]{background:#04101F}
+.pv-cam{position:absolute;left:0;top:29px;width:1600px;height:842px;transform-origin:0 0;will-change:transform}
+.pv-img{display:block;width:1600px;height:842px;object-fit:cover;animation:pvKen 22s ease-in-out infinite alternate;transform-origin:62% 40%}
+@keyframes pvKen{from{transform:scale(1)}to{transform:scale(1.035)}}
+.pv-tv{position:absolute;left:1196px;top:100px;width:404px;height:340px;border-radius:6px;cursor:zoom-in;background:none}
+.pv-tv:hover{box-shadow:0 0 0 3px rgba(255,138,76,.75),0 0 40px rgba(255,138,76,.45)}
+.pv-bar{position:absolute;left:0;right:0;height:29px;background:#04101F;z-index:2}
+.pv-bar.t{top:0}.pv-bar.b{bottom:0}
+.pv-play{position:absolute;left:1302px;top:478px;z-index:3;display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 16px 0 6px;border-radius:99px;background:var(--navy-800);color:#fff;font:600 13px var(--fb);box-shadow:0 8px 22px rgba(4,16,31,.45);transition:transform .3s var(--spring),background .25s}
+.pv-play span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--orange-500);font-size:10px;padding-left:2px}
+.pv-play:hover{transform:translateY(-2px) scale(1.04);background:var(--navy-700)}
+.play .pv-play span{animation:pvPing 2s ease-out 1.6s infinite}
+@keyframes pvPing{0%{box-shadow:0 0 0 0 rgba(242,107,33,.6)}70%,100%{box-shadow:0 0 0 12px rgba(242,107,33,0)}}
+.pv-tag{position:absolute;left:24px;top:44px;z-index:3;font:500 10px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:#fff;padding:6px 11px;border-radius:99px;background:rgba(4,16,31,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pv-flash{position:absolute;inset:0;z-index:4;background:#0B2545;opacity:0;pointer-events:none}
+.pv.zoom .pv-cam{transition:transform 1.25s cubic-bezier(.7,0,.25,1)}
+.pv.zoom .pv-img{animation:none}
+.pv.zoom .pv-play,.pv.zoom .pv-tag{visibility:hidden}
+.pv.zoom .pv-flash{opacity:1;transition:opacity .35s ease-in 1s}
+
 /* ===== 00-capa ===== */
 /* =====================================================================
    CAPA · arquitetura AXON: título à esquerda, figura à direita,
@@ -187,61 +211,45 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 /* ===== 01-agenda ===== */
 /* =====================================================================
-   01 · AGENDA  (prefixo ag-, escopo .slide[data-id="agenda"])
+   AGENDA · painel navy com os capítulos + linha de transmissão (prefixo ag-)
    ===================================================================== */
-.slide[data-id="agenda"] .ag-pill{font:500 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);padding:6px 12px;border-radius:99px;background:var(--orange-100)}
-.ag-grid{display:grid;grid-template-columns:830px minmax(0,1fr);gap:22px;min-height:0}
+.slide[data-id="agenda"]{background:#13264f}
+.ag-art{position:absolute;inset:0;width:1600px;height:900px;display:block}
+.ag-panel{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 20% 30%,#1A2F63,transparent 70%),linear-gradient(160deg,#16244F,#0B1838);clip-path:polygon(0 0,975px 0,705px 100%,0 100%)}
+.ag-cut{position:absolute;inset:0;width:1600px;height:900px;pointer-events:none}
+.ag-cut line{stroke-width:2.5}.ag-cut .o{stroke:var(--orange-500)}.ag-cut .s{stroke:#2A3F7A;stroke-width:10}
+.play .ag-cut line{stroke-dasharray:960;stroke-dashoffset:960;animation:agDraw 1.2s var(--ease) .2s forwards}
+@keyframes agDraw{to{stroke-dashoffset:0}}
+.ag-left{position:absolute;left:140px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center}
+.ag-logos{position:absolute;left:0;top:56px;display:flex;align-items:center;gap:16px}
+.ag-logos i{width:1px;height:26px;background:rgba(163,184,214,.3)}
+.ag-h{font-size:64px;font-weight:600;letter-spacing:-.02em;color:var(--steel-300);margin:0 0 34px}
+.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.ag-it{display:flex;flex-direction:column;gap:6px}
+.ag-main{display:flex;align-items:center;gap:34px;background:none;color:#fff;text-align:left;cursor:pointer}
+.ag-main b{width:46px;font-size:64px;line-height:1;font-weight:300;color:var(--orange-400);transition:transform .35s var(--spring),color .25s}
+.ag-main strong{font-size:30px;font-weight:600;letter-spacing:-.01em;transition:color .25s,transform .35s var(--ease)}
+.ag-subs{display:flex;gap:8px;padding-left:80px}
+.ag-subs button{font:500 10.5px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--steel-300);padding:5px 10px;border-radius:99px;border:1px solid rgba(163,184,214,.22);background:rgba(255,255,255,.03);transition:color .2s,border-color .2s,background .2s}
+.ag-subs button:hover{color:#fff;border-color:var(--orange-400);background:rgba(242,107,33,.14)}
+.ag-it.hot .ag-main b{transform:scale(1.12);color:var(--orange-500)}
+.ag-it.hot .ag-main strong{color:var(--orange-200);transform:translateX(4px)}
+.ag-hint{position:absolute;left:24px;bottom:58px;font:500 11px var(--fm);letter-spacing:.2em;text-transform:uppercase;color:#7F8DB4}
 
-/* ---------- a galera ---------- */
-.ag-crew{overflow:hidden;padding:0;background:linear-gradient(180deg,#fff 0%,var(--steel-100) 100%)}
-.ag-cap{position:absolute;left:24px;top:18px;right:24px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;z-index:3}
-.ag-cap b{font-size:15px;font-weight:700;color:var(--navy-800)}
-.ag-cap span{font:500 10px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--grey-500)}
-.ag-blob{position:absolute;border-radius:50%;pointer-events:none}
-.ag-blob.b1{width:520px;height:520px;left:130px;top:40px;background:radial-gradient(circle,rgba(242,107,33,.16),rgba(242,107,33,0) 68%)}
-.ag-blob.b2{width:420px;height:420px;right:-90px;top:-70px;background:radial-gradient(circle,rgba(74,111,165,.22),rgba(74,111,165,0) 70%)}
-.ag-dot{position:absolute;width:12px;height:12px;border-radius:50%;pointer-events:none;animation:agFloat 5s ease-in-out infinite}
-.ag-dot.d1{left:60px;top:150px;background:var(--orange-500)}
-.ag-dot.d2{right:70px;top:120px;background:var(--steel-500);width:16px;height:16px;animation-delay:-1.6s}
-.ag-dot.d3{left:44px;top:330px;background:var(--steel-400);width:9px;height:9px;animation-delay:-3s}
-.ag-dot.d4{right:48px;top:300px;background:var(--orange-400);width:10px;height:10px;animation-delay:-2.2s}
-@keyframes agFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.ag-floor{position:absolute;left:0;right:0;bottom:0;height:92px;background:linear-gradient(180deg,rgba(11,37,69,0),rgba(11,37,69,.07));pointer-events:none}
-.ag-row{position:absolute;left:0;right:0;bottom:16px;display:flex;justify-content:center;align-items:flex-end;padding-left:12px}
-.ag-p{position:relative;display:flex;flex-direction:column;align-items:center;margin-left:-14px;cursor:pointer}
-.ag-img{display:block;height:436px;width:auto;transform-origin:50% 100%;filter:drop-shadow(0 10px 12px rgba(11,37,69,.22));animation:agSway 3.4s ease-in-out infinite;animation-delay:calc(var(--i)*-.7s);-webkit-user-drag:none;user-select:none}
-.ag-p:hover .ag-img{filter:drop-shadow(0 12px 14px rgba(11,37,69,.3)) brightness(1.04)}
-@keyframes agSway{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.4deg)}}
-.play .ag-p{animation:agIn .9s var(--spring) both;animation-delay:calc(var(--i)*130ms + 500ms)}
-@keyframes agIn{from{opacity:0;transform:translateY(90px) scale(.8)}to{opacity:1;transform:none}}
-.slide[data-id="agenda"]:not(.play) .ag-p{opacity:0}
-.ag-say{position:absolute;left:50%;top:-30px;transform:translate(-50%,10px) scale(.7);opacity:0;pointer-events:none;white-space:nowrap;padding:7px 13px;border-radius:14px 14px 14px 4px;background:var(--navy-800);color:#fff;font:600 13px var(--fb);box-shadow:0 6px 16px rgba(11,37,69,.25);transition:opacity .25s,transform .35s var(--spring);z-index:4}
-.ag-say.on{opacity:1;transform:translate(-50%,0) scale(1)}
-.ag-badge{position:relative;display:flex;flex-direction:column;align-items:stretch;width:156px;margin-top:-30px;border-radius:9px;background:#fff;border:1px solid var(--line-strong);box-shadow:0 6px 14px rgba(11,37,69,.16);overflow:hidden;cursor:text;transition:transform .3s var(--spring)}
-.ag-p:hover .ag-badge{transform:translateY(-3px) rotate(-1.5deg)}
-.ag-badge i{font:600 8.5px var(--fm);font-style:normal;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:4px 0;background:var(--orange-500);color:#fff}
-.ag-badge b{display:block;min-height:30px;line-height:30px;padding:0 8px;text-align:center;font:700 15px var(--fb);color:var(--navy-800);outline:none;white-space:nowrap;overflow:hidden}
-.ag-badge b:empty::before{content:attr(data-ph);font-weight:500;font-size:12px;color:var(--grey-400);font-family:var(--fm);letter-spacing:.04em}
-.ag-badge b:focus{background:var(--orange-100)}
-
-/* ---------- o roteiro ---------- */
-.ag-map{position:relative;display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:16px;min-height:0}
-.ag-path{position:absolute;left:29px;top:36px;bottom:36px;width:0;border-left:2px dashed var(--steel-300);pointer-events:none}
-.ag-blk{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);column-gap:16px;row-gap:10px;padding:16px 20px 16px 16px;align-items:stretch;min-height:0}
-.ag-n{grid-row:1/3;align-self:center;position:relative;z-index:2;width:28px;height:28px;border-radius:50%;background:var(--navy-800);color:#fff;font:700 13px var(--fm);display:grid;place-items:center;box-shadow:0 0 0 5px var(--off),0 0 0 6px var(--line-strong)}
-.ag-blk:nth-child(3) .ag-n{background:var(--steel-600)}
-.ag-blk:nth-child(4) .ag-n{background:var(--orange-500)}
-.ag-bh{display:flex;align-items:baseline;gap:10px}
-.ag-bh span{font:500 10px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--orange-600)}
-.ag-bh b{font-size:17px;font-weight:700;color:var(--navy-800)}
-.ag-chips{display:flex;align-items:stretch;gap:8px;min-height:0}
-.ag-chips>i{flex:none;align-self:center;font:600 18px var(--fm);font-style:normal;color:var(--orange-500)}
-.ag-c{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;text-align:left;padding:10px 14px;border-radius:11px;background:var(--off);border:1px solid var(--line);transition:transform .3s var(--spring),border-color .25s,background .25s,box-shadow .25s}
-.ag-c em{font:500 10px var(--fm);font-style:normal;letter-spacing:.14em;color:var(--steel-500)}
-.ag-c b{font-size:17px;font-weight:700;color:var(--navy-800)}
-.ag-c span{font-size:12.5px;line-height:1.35;color:var(--grey-700)}
-.ag-c:hover{transform:translateY(-3px);background:#fff;border-color:var(--orange-400);box-shadow:0 8px 18px rgba(11,37,69,.12)}
-.ag-c:hover em{color:var(--orange-600)}
+/* ---------- ilustração ---------- */
+.ag-art .tw{fill:none;stroke:#E8EEF8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s,filter .35s}
+.ag-art .tw .ins{stroke:var(--orange-400)}
+.ag-art .tw.hot{stroke:#FFD2B8;filter:drop-shadow(0 0 6px rgba(255,138,76,.85))}
+.ag-art .bcn circle{fill:var(--orange-500);stroke:#fff;stroke-width:2}
+.ag-art .bcn text{fill:#fff;font:700 15px var(--fb);text-anchor:middle;dominant-baseline:central}
+.ag-art .bcn .halo{fill:rgba(242,107,33,.35);stroke:none;transform-box:fill-box;transform-origin:center;animation:agHalo 2.4s ease-out infinite}
+.ag-art .tw.hot+.bcn .halo{animation-duration:1s}
+@keyframes agHalo{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+.ag-art .cab{fill:none;stroke:rgba(232,238,248,.55);stroke-width:1.1}
+.ag-art .pulse{fill:#FFB27F;filter:drop-shadow(0 0 5px #FF8A4C)}
+.ag-art .cloud{fill:#fff;opacity:.92;animation:agCloud linear infinite alternate}
+@keyframes agCloud{from{transform:translateX(0)}to{transform:translateX(-60px)}}
+.play .ag-art .tw path{stroke-dasharray:1;stroke-dashoffset:1;animation:agDraw 1.6s var(--ease) forwards;animation-delay:calc(var(--t)*260ms + 500ms)}
 
 /* ===== 01-mudanca ===== */
 /* =====================================================================
@@ -1937,9 +1945,20 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 <body>
 <div id="viewport"><div id="stage">
 
+<!-- ===== 00-abertura ===== -->
+<!-- ===================================================== PRÉVIA (antes da capa) -->
+<section data-id="previa" class="slide stage cover pv" data-t="Prévia: a turma pronta para a sessão" data-rail="Agenda">
+  <template class="info"><h5>Contexto</h5><p>A <b>prévia</b> antes da capa: a turma no sofá, pipoca e café na mão, e a TV já mostrando o treinamento. É o “clima de sessão” para abrir o encontro de forma leve.</p><h5>Como usar</h5><ul><li>Clique na <b>TV</b> ou aperte <kbd>→</kbd>: a câmera entra na tela e o treinamento começa pela capa.</li></ul></template>
+  <div class="pv-cam"><img class="pv-img" src="assets/previa.webp" alt="A turma no sofá, com pipoca e café, assistindo à capa do treinamento na TV"><button type="button" class="pv-tv" aria-label="Entrar na TV e começar"></button></div>
+  <i class="pv-bar t"></i><i class="pv-bar b"></i>
+  <button type="button" class="pv-play" data-a="pop" style="--d:6"><span>▶</span>Começar a sessão</button>
+  <span class="pv-tag" data-a="fade" style="--d:4">Sessão de hoje · Gestão de Mudanças</span>
+  <div class="pv-flash"></div>
+</section>
+
 <!-- ===== 00-capa ===== -->
 <!-- ===================================================== CAPA -->
-<section data-id="capa" class="slide cover" data-t="Capa" data-rail="Capa" data-src="William Bridges, Managing Transitions: Making the Most of Change (1991): a mudança é o evento; a transição é o processo humano. Metamorfose: metáfora ilustrativa.">
+<section data-id="capa" class="slide cover" data-t="Capa" data-rail="Agenda" data-src="William Bridges, Managing Transitions: Making the Most of Change (1991): a mudança é o evento; a transição é o processo humano. Metamorfose: metáfora ilustrativa.">
   <template class="info"><h5>Contexto</h5><p>A <b>metamorfose</b> é a metáfora do treinamento: a <b>lagarta</b> é o estado atual, o <b>casulo</b> é a transição (a parte invisível) e a <b>borboleta</b> é o estado futuro. O <b>voo</b> é a mudança adotada, que ganha vida própria. Depois o ciclo recomeça: mudança é contínua.</p><h5>Como usar</h5><ul><li>A animação roda sozinha, em loop.</li><li><b>✦ Evoluir</b> (canto superior direito) avança um estágio; na borboleta, ela levanta voo.</li><li><kbd>→</kbd> segue para o próximo slide.</li></ul></template>
   <div class="cv-bg"></div>
   <canvas class="cv-cv" width="1600" height="900" aria-hidden="true"></canvas>
@@ -1960,62 +1979,22 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 </section>
 
 <!-- ===== 01-agenda ===== -->
-<!-- ===================================================== 01 · AGENDA -->
-<section data-id="agenda" class="slide ag" data-t="Agenda: a turma e o roteiro de hoje" data-rail="Agenda">
-  <template class="info"><h5>Contexto</h5><p>Antes de começar, <b>a turma</b> e o <b>mapa do dia</b>. O treinamento tem três blocos: primeiro <b>entender a mudança</b> (o que acontece no cérebro, um exercício na sala e o que é gestão), depois <b>ver a evidência</b> (a história e os números) e, por fim, <b>pôr em prática</b> (as ferramentas e onde usar cada uma).</p><h5>Como usar</h5><ul><li>Toque num <b>crachá</b> e escreva o nome de cada pessoa.</li><li>Clique nos personagens: eles reagem.</li><li>Clique num tema do roteiro para ir direto a ele.</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>blocos</span></div><div><b>7</b><span>temas</span></div></div></template>
-  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
-  <div class="body">
-    <div class="hd">
-      <div><div class="eyebrow" data-a="fade">01 · Agenda</div><h2 class="h2"><span class="kw" style="--k:1"><span>A galera está aqui.</span></span> <span class="kw" style="--k:3"><span class="hl">Bora ver o roteiro?</span></span></h2></div>
-      <div class="hd-r" data-a="fade" style="--d:4"><span class="ag-pill">3 blocos · 7 temas</span></div>
-    </div>
-    <div class="main ag-grid">
-      <div class="ag-crew card" data-a="left" style="--d:2">
-        <i class="ag-blob b1"></i><i class="ag-blob b2"></i><i class="ag-dot d1"></i><i class="ag-dot d2"></i><i class="ag-dot d3"></i><i class="ag-dot d4"></i>
-        <div class="ag-cap"><b>A galera de hoje</b><span>toque no crachá e escreva o nome</span></div>
-        <div class="ag-row">
-          <div class="ag-p" style="--i:0"><span class="ag-say"></span><img class="ag-img" src="assets/p1.webp" alt="Participante 1"><label class="ag-badge"><i>Olá, eu sou</i><b contenteditable="true" spellcheck="false" data-ph="seu nome" data-k="0"></b></label></div>
-          <div class="ag-p" style="--i:1"><span class="ag-say"></span><img class="ag-img" src="assets/p2.webp" alt="Participante 2"><label class="ag-badge"><i>Olá, eu sou</i><b contenteditable="true" spellcheck="false" data-ph="seu nome" data-k="1"></b></label></div>
-          <div class="ag-p" style="--i:2"><span class="ag-say"></span><img class="ag-img" src="assets/p3.webp" alt="Participante 3"><label class="ag-badge"><i>Olá, eu sou</i><b contenteditable="true" spellcheck="false" data-ph="seu nome" data-k="2"></b></label></div>
-          <div class="ag-p" style="--i:3"><span class="ag-say"></span><img class="ag-img" src="assets/p4.webp" alt="Participante 4"><label class="ag-badge"><i>Olá, eu sou</i><b contenteditable="true" spellcheck="false" data-ph="seu nome" data-k="3"></b></label></div>
-        </div>
-        <div class="ag-floor"></div>
-      </div>
-      <div class="ag-map">
-        <div class="ag-path"></div>
-        <div class="ag-blk card" data-a="right" style="--d:3">
-          <div class="ag-n">1</div>
-          <div class="ag-bh"><span>Bloco 1</span><b>Entender a mudança</b></div>
-          <div class="ag-chips">
-            <button type="button" class="ag-c" data-go="mudanca"><em>02</em><b>Mudança</b><span>o que acontece no cérebro</span></button>
-            <i>+</i>
-            <button type="button" class="ag-c" data-go="exercicio"><em>03</em><b>Exercício</b><span>a sala bagunçada</span></button>
-            <i>+</i>
-            <button type="button" class="ag-c" data-go="gestao"><em>04</em><b>Gestão</b><span>mudar é evento, sustentar é gestão</span></button>
-          </div>
-        </div>
-        <div class="ag-blk card" data-a="right" style="--d:5">
-          <div class="ag-n">2</div>
-          <div class="ag-bh"><span>Bloco 2</span><b>Ver a evidência</b></div>
-          <div class="ag-chips two">
-            <button type="button" class="ag-c" data-go="tempo"><em>05</em><b>História</b><span>da força ao método</span></button>
-            <i>+</i>
-            <button type="button" class="ag-c" data-go="numeros"><em>06</em><b>Números</b><span>o que a pesquisa mostra</span></button>
-          </div>
-        </div>
-        <div class="ag-blk card" data-a="right" style="--d:7">
-          <div class="ag-n">3</div>
-          <div class="ag-bh"><span>Bloco 3</span><b>Pôr em prática</b></div>
-          <div class="ag-chips two">
-            <button type="button" class="ag-c" data-go="caixa"><em>07</em><b>Ferramentas</b><span>Kotter, ADKAR, HCMBOK e CMAK</span></button>
-            <i>+</i>
-            <button type="button" class="ag-c" data-go="onde"><em>08</em><b>Onde usar</b><span>a abordagem certa para cada desafio</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ===================================================== AGENDA -->
+<section data-id="agenda" class="slide stage cover ag" data-t="Agenda: Mudança, História e Metodologias" data-rail="Agenda">
+  <template class="info"><h5>Contexto</h5><p>O mapa do dia em <b>três capítulos</b>. <b>Mudança</b>: o que acontece no cérebro quando mudamos, um exercício na sala e o que é gestão. <b>História</b>: como a forma de conduzir mudanças evoluiu e o que os números mostram. <b>Metodologias</b>: Kotter, ADKAR, HCMBOK e CMAK, e onde usar cada uma.</p><p>A ilustração é a linha de transmissão: cada torre é um capítulo e a energia só chega ao destino passando por todas.</p><h5>Como usar</h5><ul><li>Passe o mouse num capítulo: a torre dele acende.</li><li>Clique no capítulo (ou num dos temas) para abrir.</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>capítulos</span></div><div><b>7</b><span>temas</span></div></div></template>
+  <svg class="ag-art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <div class="ag-panel"></div>
+  <svg class="ag-cut" viewBox="0 0 1600 900" aria-hidden="true"><line x1="975" y1="0" x2="705" y2="900" class="o"/><line x1="990" y1="0" x2="720" y2="900" class="s"/></svg>
+  <div class="ag-left">
+    <div class="ag-logos" data-a="fade"><span class="am-logo" role="img" aria-label="Alvarez &amp; Marsal"></span><i></i><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div>
+    <h2 class="ag-h" data-a="up" style="--d:1">Agenda</h2>
+    <ol class="ag-list">
+      <li class="ag-it" data-i="0" data-a="left" style="--d:3"><button type="button" class="ag-main" data-go="mudanca"><b>1</b><strong>Mudança</strong></button><span class="ag-subs"><button type="button" data-go="mudanca">Mudança</button><button type="button" data-go="exercicio">Exercício</button><button type="button" data-go="gestao">Gestão</button></span></li>
+      <li class="ag-it" data-i="1" data-a="left" style="--d:4"><button type="button" class="ag-main" data-go="tempo"><b>2</b><strong>História</strong></button><span class="ag-subs"><button type="button" data-go="tempo">História</button><button type="button" data-go="numeros">Números</button></span></li>
+      <li class="ag-it" data-i="2" data-a="left" style="--d:5"><button type="button" class="ag-main" data-go="caixa"><b>3</b><strong>Metodologias</strong></button><span class="ag-subs"><button type="button" data-go="caixa">Ferramentas</button><button type="button" data-go="onde">Onde usar</button></span></li>
+    </ol>
+    <div class="ag-hint" data-a="fade" style="--d:7">Clique num capítulo para abrir</div>
   </div>
-  <footer class="foot"><span class="src"></span></footer>
 </section>
 
 <!-- ===== 01-mudanca ===== -->
@@ -2025,7 +2004,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b><span class="mu-orbit" aria-hidden="true"><span class="mu-fly"><svg class="mu-fw" viewBox="0 0 24 20"><path class="wg wl" d="M12 10C9.6 3.4 5.3 1 2.7 2.5 .2 3.9 .7 8.3 3.4 10.7 1.3 11.7 1.3 15.3 3.6 16.8 6.1 18.3 10 15.9 12 10Z"/><path class="wg wr" d="M12 10C14.4 3.4 18.7 1 21.3 2.5 23.8 3.9 23.3 8.3 20.6 10.7 22.7 11.7 22.7 15.3 20.4 16.8 17.9 18.3 14 15.9 12 10Z"/><path class="bd" d="M12 4.3C12.95 4.3 13.45 5.2 13.4 6.5L12.9 14.6C12.86 15.5 12.5 16 12 16 11.5 16 11.14 15.5 11.1 14.6L10.6 6.5C10.55 5.2 11.05 4.3 12 4.3Z"/><path class="an" d="M11.3 4.6C10.6 3.1 9.4 2.3 8.2 2.1M12.7 4.6C13.4 3.1 14.6 2.3 15.8 2.1"/></svg></span></span></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow" data-a="fade">02 · Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar é um cabo de guerra</span></span> <span class="kw" style="--k:3"><span class="hl">dentro do cérebro.</span></span></h2></div>
+      <div><div class="eyebrow" data-a="fade">01 · Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar é um cabo de guerra</span></span> <span class="kw" style="--k:3"><span class="hl">dentro do cérebro.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Clique numa região do cérebro · ou <kbd>→</kbd></span><button type="button" class="mu-anat-btn" id="muAnatBtn" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V5a2 2 0 0 0-3-1z"/><path d="M15 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1"/></svg><span>Anatomia · Córtex</span></button></div>
     </div>
     <div class="main">
@@ -2203,12 +2182,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 02-exercicio ===== -->
 <!-- ===================================================== 02 · EXERCÍCIO -->
-<section data-id="exercicio" class="slide" data-t="Exercício: a sala bagunçada" data-rail="Exercício" data-src="Kotter &amp; Cohen, The Heart of Change (2002): ver → sentir → mudar, em vez de analisar → pensar → mudar (tradução livre) · Miller &amp; Cohen (2001): córtex pré-frontal, metas e plano · Seeley et al. (2007): rede de saliência (cingulado anterior + ínsula) · Yin &amp; Knowlton (2006): gânglios da base e hábitos · Lally et al. (2010), 96 voluntários: mediana de 66 dias (18 a 254) para um hábito ficar automático, estimada por modelo no subgrupo com bom ajuste · NINDS, Brain Basics. Sequência Ver → Sentir → Decidir → Agir → Repetir: síntese didática do curso. Sala e mapa do cérebro: ilustrativos. · Curiosidade: Skinner (1953), Science and Human Behavior: antecedentes e consequências · Beck &amp; Haigh (2014), Annual Review of Clinical Psychology 10, e Beck Institute: modelo cognitivo · Padesky &amp; Greenberger (2020), Clinician’s Guide to CBT Using Mind Over Mood: as cinco áreas interagem · Bem (1972), Advances in Experimental Social Psychology 6: autopercepção, quando os sinais internos são fracos ou ambíguos. Hipóteses A e B: leitura didática (em Beck, o “dentro” é sobretudo pensamento e crença).">
+<section data-id="exercicio" class="slide" data-t="Exercício: a sala bagunçada" data-rail="Mudança" data-src="Kotter &amp; Cohen, The Heart of Change (2002): ver → sentir → mudar, em vez de analisar → pensar → mudar (tradução livre) · Miller &amp; Cohen (2001): córtex pré-frontal, metas e plano · Seeley et al. (2007): rede de saliência (cingulado anterior + ínsula) · Yin &amp; Knowlton (2006): gânglios da base e hábitos · Lally et al. (2010), 96 voluntários: mediana de 66 dias (18 a 254) para um hábito ficar automático, estimada por modelo no subgrupo com bom ajuste · NINDS, Brain Basics. Sequência Ver → Sentir → Decidir → Agir → Repetir: síntese didática do curso. Sala e mapa do cérebro: ilustrativos. · Curiosidade: Skinner (1953), Science and Human Behavior: antecedentes e consequências · Beck &amp; Haigh (2014), Annual Review of Clinical Psychology 10, e Beck Institute: modelo cognitivo · Padesky &amp; Greenberger (2020), Clinician’s Guide to CBT Using Mind Over Mood: as cinco áreas interagem · Bem (1972), Advances in Experimental Social Psychology 6: autopercepção, quando os sinais internos são fracos ou ambíguos. Hipóteses A e B: leitura didática (em Beck, o “dentro” é sobretudo pensamento e crença).">
   <template class="info"><h5>Contexto</h5><p>Uma sala bagunçada e <b>editável</b> para mostrar que a mudança começa antes da ação: primeiro a gente <b>vê</b>, depois <b>sente</b>, <b>decide</b>, <b>age</b> e <b>repete</b> até virar hábito. No fim, a <b>Curiosidade</b>: a mudança vem de fora para dentro ou de dentro para fora?</p><h5>Como usar</h5><ul><li>Arraste os objetos e gire com a <b>roda do mouse</b> ou <b>duplo clique</b>.</li><li><b>Bagunçar mais</b>, <b>Original</b> e <b>Comparar antes/depois</b> estão sob a cena.</li><li><b>→</b> percorre as etapas e depois abre a Curiosidade; a turma vota com <b>+1</b>.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>etapas do processo</span></div><div><b>2</b><span>hipóteses na Curiosidade</span></div><div><b>66 dias</b><span>mediana para um hábito ficar automático</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow" data-a="fade">03 · Exercício</div><h2 class="h2"><span class="kw" style="--k:1"><span>A sala mudou.</span></span> <span class="kw" style="--k:3"><span class="hl">Mas a mudança começou antes.</span></span></h2></div>
+      <div><div class="eyebrow" data-a="fade">01 · Mudança · Exercício</div><h2 class="h2"><span class="kw" style="--k:1"><span>A sala mudou.</span></span> <span class="kw" style="--k:3"><span class="hl">Mas a mudança começou antes.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4">
         <div class="ex-isa" id="exIsa">
           <div class="ex-isa-b"><span class="who">Isabella pergunta</span><span class="ex-isa-q" id="exIsaQ">Pode bagunçar mais! O que mais incomoda aqui?</span></div>
@@ -2328,12 +2307,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 03-gestao ===== -->
 <!-- ===================================================== 03 · GESTÃO DA MUDANÇA -->
-<section data-id="gestao" class="slide gs" data-t="Gestão da Mudança: mudar é um evento, sustentar é gestão" data-rail="Gestão" data-src="Sheeran, European Review of Social Psychology (2002): 422 estudos, 82.107 pessoas · Lally et al., European Journal of Social Psychology (2010): mediana de 66 dias, de 18 a 254, no subgrupo de 39 pessoas · Strava: Quitter’s Day (meados de janeiro; a data varia por ano) · Kotter, HBR (1995): erros 7 e 8 · Definição adaptada de Prosci (preparar, equipar e apoiar; fase 3: sustentar resultados) · Prosci: fatores humanos do ROI (velocidade de adoção, utilização, proficiência) · Oreg, Vakola &amp; Armenakis, Journal of Applied Behavioral Science (2011): participação e reações à mudança · Etimologia: Dicio (gestão, do latim gestio) · dicionários de latim Lewis &amp; Short e Gaffiot (gerere: levar adiante, conduzir; mutare: alterar, trocar) · Infopédia (mudar, do latim mutare) · Etymonline (gestation, de gestare, frequentativo de gerere) · Curvas da sala e Resultado = Solução × Adoção: ilustrativos.">
-  <template class="info"><h5>Contexto</h5><p>Depois de falar de <b>mudança</b> (02) e de vê-la acontecer na sala (03), entra a <b>gestão</b>: <b>gestão</b> é o <b>como</b> (conduzir, medir, reforçar, sustentar) e <b>mudança</b> é o <b>quê</b>. Mudar é um evento; sustentar é gestão. Sem gestão, a bagunça volta (efeito sanfona); com gestão, o novo vira rotina.</p><h5>Como usar</h5><ul><li><b>→</b> monta em 4 passos: junta as palavras, curva sem gestão, curva com gestão e por que importa.</li><li>Alterne <b>Sem gestão / Com gestão</b> e arraste o controle de adoção.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>passos da montagem</span></div><div><b>Solução × Adoção</b><span>= Resultado</span></div></div></template>
+<section data-id="gestao" class="slide gs" data-t="Gestão da Mudança: mudar é um evento, sustentar é gestão" data-rail="Mudança" data-src="Sheeran, European Review of Social Psychology (2002): 422 estudos, 82.107 pessoas · Lally et al., European Journal of Social Psychology (2010): mediana de 66 dias, de 18 a 254, no subgrupo de 39 pessoas · Strava: Quitter’s Day (meados de janeiro; a data varia por ano) · Kotter, HBR (1995): erros 7 e 8 · Definição adaptada de Prosci (preparar, equipar e apoiar; fase 3: sustentar resultados) · Prosci: fatores humanos do ROI (velocidade de adoção, utilização, proficiência) · Oreg, Vakola &amp; Armenakis, Journal of Applied Behavioral Science (2011): participação e reações à mudança · Etimologia: Dicio (gestão, do latim gestio) · dicionários de latim Lewis &amp; Short e Gaffiot (gerere: levar adiante, conduzir; mutare: alterar, trocar) · Infopédia (mudar, do latim mutare) · Etymonline (gestation, de gestare, frequentativo de gerere) · Curvas da sala e Resultado = Solução × Adoção: ilustrativos.">
+  <template class="info"><h5>Contexto</h5><p>Depois de falar de <b>mudança</b> (no cérebro) e de vê-la acontecer na sala (exercício), entra a <b>gestão</b>: <b>gestão</b> é o <b>como</b> (conduzir, medir, reforçar, sustentar) e <b>mudança</b> é o <b>quê</b>. Mudar é um evento; sustentar é gestão. Sem gestão, a bagunça volta (efeito sanfona); com gestão, o novo vira rotina.</p><h5>Como usar</h5><ul><li><b>→</b> monta em 4 passos: junta as palavras, curva sem gestão, curva com gestão e por que importa.</li><li>Alterne <b>Sem gestão / Com gestão</b> e arraste o controle de adoção.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>passos da montagem</span></div><div><b>Solução × Adoção</b><span>= Resultado</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow" data-a="fade">04 · Gestão da Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar é um evento.</span></span> <span class="kw" style="--k:3"><span class="hl">Sustentar é gestão.</span></span></h2></div>
+      <div><div class="eyebrow" data-a="fade">01 · Mudança · Gestão</div><h2 class="h2"><span class="kw" style="--k:1"><span>Mudar é um evento.</span></span> <span class="kw" style="--k:3"><span class="hl">Sustentar é gestão.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4">
         <div class="gs-steps" aria-label="Etapas deste slide">
           <button type="button" data-s="1"><i></i>A expressão</button>
@@ -2438,7 +2417,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow" data-a="fade">05 · História da mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Da força ao método:</span></span> <span class="kw" style="--k:3"><span class="hl">a evolução da gestão da mudança.</span></span></h2></div>
+      <div><div class="eyebrow" data-a="fade">02 · História</div><h2 class="h2"><span class="kw" style="--k:1"><span>Da força ao método:</span></span> <span class="kw" style="--k:3"><span class="hl">a evolução da gestão da mudança.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4">
         <div class="hx-flt" role="group" aria-label="Destacar marcos">
           <button type="button" data-f="all" class="on">Tudo</button>
@@ -2490,12 +2469,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 05-numeros ===== -->
 <!-- ===================================================== 05 · NÚMEROS -->
-<section data-id="numeros" class="slide n5" data-t="Números: o que a pesquisa mostra" data-rail="Números" data-src="Prosci, Best Practices in Change Management, 12ª ed. (2023), 2.668 respondentes, 38 setores, 101 países: projetos que atingiram ou superaram os objetivos, 88% com gestão da mudança excelente × 13% com gestão ruim (≈7×); excelente × ruim também tem quase 5× mais chance de ficar no prazo ou adiantado e quase 1,5× de ficar no orçamento ou abaixo · PMI, Pulse of the Profession: Enabling Organizational Change Through Strategic Initiatives (2014), mais de 2.500 líderes de projetos: 65% das iniciativas estratégicas atingem a meta original nas organizações eficazes em gestão da mudança × 31% nas menos eficazes · McKinsey, The people power of transformations (2017): 3% de sucesso quando a transformação não engajou gerentes de linha nem a linha de frente × 26% e 28% com cada um desses grupos engajado · BCG, It’s Not a Digital Transformation Without a Digital Culture (2018), cerca de 40 transformações digitais: 90% × 17% com desempenho financeiro forte ou excepcional, com e sem foco em cultura · Balas &amp; Boren, Yearbook of Medical Informatics (2000): ~17 anos da pesquisa à prática clínica, a estimativa mais citada; Morris, Wooding &amp; Grant, J R Soc Med (2011), mostram que o número varia conforme o trecho medido · Banco Central do Brasil (Pix): cadastro de chaves a partir de 5/out/2020, lançamento em 16/nov/2020 · BCG, regra 10-20-70 para IA: 10% algoritmos, 20% tecnologia e dados, 70% pessoas e processos (diretriz de esforço, não resultado medido). Levantamentos autodeclarados, com métricas diferentes: mostram correlação, não causalidade. Multiplicadores ≈2× a ≈9× calculados a partir dos percentuais publicados. Leitura direcional.">
+<section data-id="numeros" class="slide n5" data-t="Números: o que a pesquisa mostra" data-rail="História" data-src="Prosci, Best Practices in Change Management, 12ª ed. (2023), 2.668 respondentes, 38 setores, 101 países: projetos que atingiram ou superaram os objetivos, 88% com gestão da mudança excelente × 13% com gestão ruim (≈7×); excelente × ruim também tem quase 5× mais chance de ficar no prazo ou adiantado e quase 1,5× de ficar no orçamento ou abaixo · PMI, Pulse of the Profession: Enabling Organizational Change Through Strategic Initiatives (2014), mais de 2.500 líderes de projetos: 65% das iniciativas estratégicas atingem a meta original nas organizações eficazes em gestão da mudança × 31% nas menos eficazes · McKinsey, The people power of transformations (2017): 3% de sucesso quando a transformação não engajou gerentes de linha nem a linha de frente × 26% e 28% com cada um desses grupos engajado · BCG, It’s Not a Digital Transformation Without a Digital Culture (2018), cerca de 40 transformações digitais: 90% × 17% com desempenho financeiro forte ou excepcional, com e sem foco em cultura · Balas &amp; Boren, Yearbook of Medical Informatics (2000): ~17 anos da pesquisa à prática clínica, a estimativa mais citada; Morris, Wooding &amp; Grant, J R Soc Med (2011), mostram que o número varia conforme o trecho medido · Banco Central do Brasil (Pix): cadastro de chaves a partir de 5/out/2020, lançamento em 16/nov/2020 · BCG, regra 10-20-70 para IA: 10% algoritmos, 20% tecnologia e dados, 70% pessoas e processos (diretriz de esforço, não resultado medido). Levantamentos autodeclarados, com métricas diferentes: mostram correlação, não causalidade. Multiplicadores ≈2× a ≈9× calculados a partir dos percentuais publicados. Leitura direcional.">
   <template class="info"><h5>Contexto</h5><p>Pesquisas sobre projetos com e sem boa gestão da mudança. O <b>Selo de Adoção</b> resume: com gestão excelente, a chance de atingir os objetivos é muito maior. São estudos com métricas diferentes que apontam na mesma direção: correlação, não garantia.</p><h5>Como usar</h5><ul><li>Clique em <b>Ligar a Gestão da Mudança</b> (ou <b>→</b>) para ver as barras subirem.</li><li>No anel, o arco laranja é o 88% e o azul, o 13%.</li></ul><h5>Em números</h5><div class="nums"><div><b>88%</b><span>com gestão excelente</span></div><div><b>13%</b><span>com gestão ruim</span></div><div><b>≈7×</b><span>mais chance de atingir os objetivos</span></div><div><b>≈5×</b><span>mais chance de ficar no prazo</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow" data-a="fade">06 · O que os números dizem</div><h2 class="h2"><span class="kw" style="--k:1"><span>GMO não é custo.</span></span> <span class="kw" style="--k:3"><span class="hl">É seguro de resultado.</span></span></h2></div>
+      <div><div class="eyebrow" data-a="fade">02 · História · Números</div><h2 class="h2"><span class="kw" style="--k:1"><span>GMO não é custo.</span></span> <span class="kw" style="--k:3"><span class="hl">É seguro de resultado.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Ligue a Gestão da Mudança · ou <kbd>→</kbd></span></div>
     </div>
     <div class="main">
@@ -2568,11 +2547,11 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 06-caixa ===== -->
 <!-- ===================================================== 04 · CAIXA DE FERRAMENTAS -->
-<section data-id="caixa" class="slide stage s4" data-t="Ferramentas: Kotter, ADKAR, HCMBOK e CMAK" data-rail="Ferramentas" data-src="Kotter, “Leading Change: Why Transformation Efforts Fail”, HBR (1995), e livro (1996) · Hiatt, ADKAR (Prosci, 1996; livro 2006) · Gonçalves &amp; Campos, HCMBOK 3ª ed. (HUCMI, 2018) · CMAK: prática de KPIs, sem autor acadêmico.">
+<section data-id="caixa" class="slide stage s4" data-t="Ferramentas: Kotter, ADKAR, HCMBOK e CMAK" data-rail="Metodologias" data-src="Kotter, “Leading Change: Why Transformation Efforts Fail”, HBR (1995), e livro (1996) · Hiatt, ADKAR (Prosci, 1996; livro 2006) · Gonçalves &amp; Campos, HCMBOK 3ª ed. (HUCMI, 2018) · CMAK: prática de KPIs, sem autor acadêmico.">
   <template class="info"><h5>Contexto</h5><p>A caixa de ferramentas com as quatro abordagens: <b>Kotter</b> (organização), <b>ADKAR</b> (pessoa), <b>HCMBOK</b> (projeto) e <b>CMAK</b> (dados). O CMAK é uma prática aplicada de medição, não um modelo acadêmico; o painel é ilustrativo.</p><h5>Como usar</h5><ul><li>Clique na caixa (ou <b>→</b>) para abrir.</li><li>Clique num card para destacá-lo.</li><li>Clique na caixa no canto para recolher tudo.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>abordagens</span></div><div><b>8</b><span>etapas de Kotter</span></div><div><b>5</b><span>elementos do ADKAR</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="hd">
-    <div><div class="eyebrow" data-a="fade">07 · Abordagens de Gestão da Mudança</div><h2 class="h2"><span class="kw" style="--k:1"><span>Quatro ferramentas,</span></span> <span class="kw" style="--k:3"><span class="hl">um só objetivo: adoção.</span></span></h2></div>
+    <div><div class="eyebrow" data-a="fade">03 · Metodologias · Ferramentas</div><h2 class="h2"><span class="kw" style="--k:1"><span>Quatro ferramentas,</span></span> <span class="kw" style="--k:3"><span class="hl">um só objetivo: adoção.</span></span></h2></div>
     <div class="hd-r" data-a="fade" style="--d:4"><span class="hint" id="cxHint">Clique na caixa para abrir · ou <kbd>→</kbd></span></div>
   </div>
   <div class="tk" id="tk">
@@ -2664,12 +2643,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 07-onde ===== -->
 <!-- ===================================================== 07 · ONDE USAR + ENCERRAMENTO -->
-<section data-id="onde" class="slide s5" data-t="Onde usar: qual abordagem para cada desafio" data-rail="Onde usar" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam. · Encerramento: síntese do treinamento (slides 03, 05 e 07); Prosci, Best Practices in Change Management, 12ª ed. (2023): 88% × 13% dos projetos atingem os objetivos com GMO excelente × ruim; metamorfose da capa como metáfora ilustrativa, com base em William Bridges, Managing Transitions (1991).">
+<section data-id="onde" class="slide s5" data-t="Onde usar: qual abordagem para cada desafio" data-rail="Metodologias" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam. · Encerramento: síntese do treinamento (slides 03, 05 e 07); Prosci, Best Practices in Change Management, 12ª ed. (2023): 88% × 13% dos projetos atingem os objetivos com GMO excelente × ruim; metamorfose da capa como metáfora ilustrativa, com base em William Bridges, Managing Transitions (1991).">
   <template class="info"><h5>Contexto</h5><p>Qual abordagem é protagonista em cada tipo de mudança. As abordagens não competem: se combinam. O fim traz o encerramento, de volta à borboleta da capa.</p><h5>Como usar</h5><ul><li>Clique num cenário para ver a receita, ou use <b>→</b> para percorrer os cenários.</li><li>O último <b>→</b> abre o encerramento; <b>←</b> volta à matriz.</li><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul><h5>Em números</h5><div class="nums"><div><b>7</b><span>cenários</span></div><div><b>4</b><span>abordagens</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
-      <div><div class="eyebrow s5-eye" data-a="fade">08 · Onde cada uma brilha</div><h2 class="h2 s5-h2"><span class="kw" style="--k:1"><span>Não existe a melhor.</span></span> <span class="kw" style="--k:3"><span class="hl">Existe a certa para o desafio.</span></span></h2></div>
+      <div><div class="eyebrow s5-eye" data-a="fade">03 · Metodologias · Onde usar</div><h2 class="h2 s5-h2"><span class="kw" style="--k:1"><span>Não existe a melhor.</span></span> <span class="kw" style="--k:3"><span class="hl">Existe a certa para o desafio.</span></span></h2></div>
       <div class="hd-r" data-a="fade" style="--d:4"><span class="hint s5-hint">Clique em um cenário ou avance com <kbd>→</kbd></span></div>
     </div>
     <div class="main">
@@ -2790,8 +2769,8 @@ function go(n){if(typeof n==='string')n=slides.findIndex(s=>s.dataset.id===n);if
 function next(){if(busy)return;if(H(cur).step?.(1))return;go(cur+1)}
 function prev(){if(busy)return;if(H(cur).step?.(-1))return;go(cur-1)}
 /* numeração por capítulo: a capa é 0 (sem número), como nos eyebrows "01 · …" */
-const num=i=>String(i).padStart(2,'0');
-function ui(){$('#cnt').textContent=cur?`${cur} / ${slides.length-1}`:'Capa';$('#bPrev').disabled=cur===0;$('#bNext').disabled=cur===slides.length-1;$$('#idxL .xi').forEach((b,i)=>b.classList.toggle('cur',i===cur));$$('#rail .sg').forEach((b,i)=>{b.classList.toggle('on',i===cur);$('b',b).style.width=i<=cur?'100%':'0'});renderInfo();fitFoot(slides[cur]);if(location.hash!=='#'+slides[cur].dataset.id)history.replaceState(null,'','#'+slides[cur].dataset.id)}
+const num=i=>String(i).padStart(2,'0');let BASE=0; /* índice da capa: a prévia vem antes e não conta */
+function ui(){$('#cnt').textContent=cur>BASE?`${cur-BASE} / ${slides.length-1-BASE}`:(cur<BASE?'Prévia':'Capa');$('#bPrev').disabled=cur===0;$('#bNext').disabled=cur===slides.length-1;$$('#idxL .xi').forEach((b,i)=>b.classList.toggle('cur',i===cur));$$('#rail .sg').forEach(b=>{const a=+b.dataset.i,z=+b.dataset.z;b.classList.toggle('on',cur>=a&&cur<=z);$('b',b).style.width=(cur>z?100:cur<a?0:(cur-a+1)/(z-a+1)*100)+'%'});renderInfo();fitFoot(slides[cur]);if(location.hash!=='#'+slides[cur].dataset.id)history.replaceState(null,'','#'+slides[cur].dataset.id)}
 /* rodapé FONTES: até 2 linhas, cortando sempre entre fontes inteiras; a lista completa fica no painel (I) */
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 function fitFoot(s){const f=$('.foot .src',s),src=s.dataset.src;if(!f||!src||f.dataset.fit==='1'||(f.innerHTML&&!f.dataset.fit))return;
@@ -2832,7 +2811,7 @@ b.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')hide()})})();
 const QS=[
  {c:'ADKAR',q:'O que significa o “D” do ADKAR, e por que ele vem antes do “K”?',a:'<b>Desire · Desejo.</b> Não adianta treinar (Knowledge) quem ainda não quer mudar: o treinamento vira desperdício.'},
  {c:'Kotter',q:'Qual é a primeira das 8 etapas de Kotter?',a:'<b>Criar senso de urgência.</b> Sem um “porquê agora”, a organização não sai do lugar.'},
- {c:'Cérebro',q:'No mapa do slide 02, qual “voz” do cérebro pede a mudança, e qual dá o alarme?',a:'O <b>pré-frontal</b> (atrás da testa) guarda a meta: “Quero mudar!”. A <b>amígdala</b> participa da detecção de ameaça: “Cuidado!”. É uma simplificação: o cérebro trabalha em rede.'},
+ {c:'Cérebro',q:'No mapa do cérebro (capítulo Mudança), qual “voz” do cérebro pede a mudança, e qual dá o alarme?',a:'O <b>pré-frontal</b> (atrás da testa) guarda a meta: “Quero mudar!”. A <b>amígdala</b> participa da detecção de ameaça: “Cuidado!”. É uma simplificação: o cérebro trabalha em rede.'},
  {c:'Números',q:'Com GMO excelente, quantos % dos projetos atingem os objetivos? E com GMO ruim?',a:'<b>88% contra 13%</b> (Prosci, 2023): cerca de 7× mais chance.'},
  {c:'HCMBOK',q:'O que significa HCMBOK e de onde ele vem?',a:'<b>Human Change Management Body of Knowledge</b>, da HUCMI, com origem no Brasil (Vicente Gonçalves e Carla Campos).'},
  {c:'CMAK',q:'Cite 3 indicadores que você mediria numa mudança.',a:'Ex.: <b>alcance e compreensão da comunicação, índice de resistência por área, cobertura de treinamento, proficiência e uso real × meta.</b>'},
@@ -2929,21 +2908,40 @@ addEventListener('keydown',e=>{if(e.target.matches('input,textarea,[contentedita
  else if(k==='s'||k==='S'){muted=!muted;toast(muted?'Som desligado (S)':'Som ligado (S)')}
  else if(k==='b'||k==='B'||k==='.')$('#blackout').classList.add('on');
  else if(k==='Escape'){window.fernHide();togInfo(false);togIdx(false)}
- else if(/^[0-9]$/.test(k)&&+k<slides.length)go(+k)});
+ else if(/^[0-9]$/.test(k)&&+k+BASE<slides.length)go(+k+BASE)});
 $('#blackout').onclick=()=>$('#blackout').classList.remove('on');
 /* links internos (#numeros, #5) também funcionam com a página aberta */
 const fromHash=()=>{let h='';try{h=decodeURIComponent(location.hash.slice(1))}catch(_){}let n=slides.findIndex(s=>s.dataset.id===h);if(n<0&&/^\d+$/.test(h))n=+h;return n>=0&&n<slides.length?n:-1};
 addEventListener('hashchange',()=>{const n=fromHash();if(n>=0)go(n);else history.replaceState(null,'','#'+slides[cur].dataset.id)});
 
 /* ---------- partida: chamada depois que todos os slides registraram seus ganchos ---------- */
-DECK.start=()=>{slides=$$('.slide');
- slides.forEach((s,i)=>{const src=s.dataset.src,f=$('.foot .src',s);if(src&&f&&!f.innerHTML){f.innerHTML='<b>FONTES</b>'+esc(src);f.dataset.fit='0'}const pg=$('.pg',s);if(pg)pg.innerHTML=`<b>${num(i)}</b> / ${num(slides.length-1)}`});
- $('#rail').innerHTML=slides.map((s,i)=>{const n=s.dataset.rail||s.dataset.t;return `<button type="button" class="sg" data-i="${i}" style="--n:${n.length}"><span>${n}</span><i><b></b></i></button>`}).join('');
+DECK.start=()=>{slides=$$('.slide');BASE=Math.max(0,slides.findIndex(s=>s.dataset.id==='capa'));
+ slides.forEach((s,i)=>{const src=s.dataset.src,f=$('.foot .src',s);if(src&&f&&!f.innerHTML){f.innerHTML='<b>FONTES</b>'+esc(src);f.dataset.fit='0'}const pg=$('.pg',s);if(pg)pg.innerHTML=`<b>${num(i-BASE)}</b> / ${num(slides.length-1-BASE)}`});
+ /* trilha por capítulo: slides seguidos com o mesmo data-rail formam um só segmento */
+ const G=[];slides.forEach((s,i)=>{const n=s.dataset.rail||s.dataset.t,l=G[G.length-1];if(l&&l.n===n)l.z=i;else G.push({n,a:i,z:i})});
+ $('#rail').innerHTML=G.map(g=>`<button type="button" class="sg" data-i="${g.a}" data-z="${g.z}" style="--n:${Math.max(g.n.length,(g.z-g.a+1)*4)}"><span>${g.n}</span><i><b></b></i></button>`).join('');
  $('#rail').onclick=e=>{const b=e.target.closest('.sg');if(b)go(+b.dataset.i)};
- $('#idxL').innerHTML=slides.map((s,i)=>`<button type="button" class="xi" data-i="${i}"><b>${i?num(i):''}</b>${s.dataset.t}</button>`).join('');
+ $('#idxL').innerHTML=slides.map((s,i)=>`<button type="button" class="xi" data-i="${i}"><b>${i>BASE?num(i-BASE):''}</b>${s.dataset.t}</button>`).join('');
  let n=fromHash();if(n<0)n=0;
  cur=n;slides[n].classList.add('active');H(n).enter?.({dir:0});ui();requestAnimationFrame(()=>slides[n].classList.add('play'));
  document.fonts?.ready.then(()=>fitFoot(slides[cur]));document.fonts?.addEventListener?.('loadingdone',()=>fitFoot(slides[cur]))};
+})();
+</script>
+<script>/* ===== 00-abertura ===== */
+(()=>{const {$,tone}=DECK, SEC=DECK.el('previa');
+/* centro da tela da TV dentro da imagem (coordenadas do palco, sem as faixas) e zoom que a faz cobrir o palco */
+const CX=1398,CY=270,S=3.9;
+let T=0,zoomed=false;
+function enterTV(){if(zoomed)return;zoomed=true;SEC.classList.add('zoom');
+ $('.pv-cam',SEC).style.transform=`translate(${800-CX*S}px,${450-29-CY*S}px) scale(${S})`;
+ tone(330,.9,'sine',.05,990);T=setTimeout(()=>DECK.go('capa'),1300)}
+$('.pv-tv',SEC).addEventListener('click',enterTV);
+$('.pv-play',SEC).addEventListener('click',enterTV);
+DECK.register('previa',{
+ enter(){clearTimeout(T);zoomed=false;SEC.classList.remove('zoom');$('.pv-cam',SEC).style.transform=''},
+ leave(){clearTimeout(T)},
+ step(d){if(d>0){enterTV();return true}return false}
+});
 })();
 </script>
 <script>/* ===== 00-capa ===== */
@@ -3160,33 +3158,52 @@ DECK.register('capa',{
 })();
 </script>
 <script>/* ===== 01-agenda ===== */
-(()=>{const {$,$$,tone,boing}=DECK, SEC=DECK.el('agenda');
-const KEY='gmo-agenda-nomes';
-const FALAS=[['Presente!','Oi, gente!','Bora mudar?'],['Cheguei!','Já vi esse filme…','Ansiosa pra começar!'],['Estou pronta!','Quem trouxe café?','Vamos nessa!'],['Aqui!','Posso perguntar?','Bora!']];
-let T=[],last=[0,0,0,0];
-const P=$$('.ag-p',SEC);
-const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(_){return[]}};
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify($$('.ag-badge b',SEC).map(b=>b.textContent.trim())))}catch(_){}};
-function say(i,txt){const s=$('.ag-say',P[i]);s.textContent=txt;s.classList.add('on');clearTimeout(s._t);s._t=setTimeout(()=>s.classList.remove('on'),1700)}
-function hop(i,sound=true){const im=$('.ag-img',P[i]);im.animate([{transform:'translateY(0) scale(1,1)'},{transform:'translateY(6px) scale(1.04,.95)',offset:.15},{transform:'translateY(-34px) scale(.97,1.04)',offset:.5},{transform:'translateY(0) scale(1.03,.97)',offset:.82},{transform:'translateY(0) scale(1,1)'}],{duration:620,easing:'ease-out'});
- if(sound)tone(420+i*90,.12,'sine',.05,700)}
-P.forEach((p,i)=>{
- p.addEventListener('click',e=>{if(e.target.closest('.ag-badge'))return;last[i]=(last[i]+1)%3;say(i,FALAS[i][last[i]]);hop(i);boing&&boing()});
-});
-$$('.ag-badge b',SEC).forEach(b=>{
- b.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'){e.preventDefault();b.blur()}});
- b.addEventListener('keyup',e=>e.stopPropagation());
- b.addEventListener('input',()=>{if(b.textContent.length>14)b.textContent=b.textContent.slice(0,14);save()});
- b.addEventListener('paste',e=>{e.preventDefault();const t=(e.clipboardData||window.clipboardData).getData('text').replace(/\s+/g,' ').slice(0,14);document.execCommand('insertText',false,t)});
-});
-$$('.ag-c',SEC).forEach(c=>c.addEventListener('click',()=>{tone(660,.1,'sine',.05,900);DECK.go(c.dataset.go)}));
-DECK.register('agenda',{
- enter(){const n=load();$$('.ag-badge b',SEC).forEach((b,i)=>{b.textContent=n[i]||''});
-  T.forEach(clearTimeout);T=[];
-  P.forEach((p,i)=>{T.push(setTimeout(()=>{say(i,FALAS[i][0]);hop(i,false)},1900+i*420))});
- },
- leave(){T.forEach(clearTimeout);T=[];$$('.ag-say',SEC).forEach(s=>s.classList.remove('on'))}
-});
+(()=>{const {$,$$,tone}=DECK, SEC=DECK.el('agenda'), svg=$('.ag-art',SEC), NS='http://www.w3.org/2000/svg';
+const el=(t,a,p,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;(p||svg).appendChild(e);return e};
+/* ---------- céu, nuvens e morros ---------- */
+const defs=el('defs',{});
+const g1=el('linearGradient',{id:'agSky',x1:0,y1:0,x2:0,y2:1},defs);
+[['0','#1E2D63'],['.55','#3D5F93'],['1','#8FA8D2']].forEach(([o,c])=>el('stop',{offset:o,'stop-color':c},g1));
+el('rect',{x:0,y:0,width:1600,height:900,fill:'url(#agSky)'});
+let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+[[1110,150,1,46],[1340,70,.75,60],[1060,300,.55,38]].forEach(([x,y,s,d])=>{const c=el('g',{class:'cloud',style:`animation-duration:${d}s`});
+ [[0,0,34],[38,-14,40],[80,0,32],[40,10,36]].forEach(([dx,dy,r])=>el('circle',{cx:x+dx*s,cy:y+dy*s,r:r*s},c));el('rect',{x:x-30*s,y:y,width:140*s,height:30*s,rx:15*s},c)});
+const hill=(base,amp,step,fill,bump)=>{let d=`M600 900 L600 ${base}`;for(let x=600;x<=1620;x+=step){const y=base-amp*Math.sin(x/170+base)-rnd()*bump;d+=` Q${x+step/2} ${y-bump*.8} ${x+step} ${y}`}el('path',{d:d+' L1620 900 Z',fill})};
+/* ---------- torres (um capítulo cada) ---------- */
+const ARMS=[[-300,92],[-350,112],[-400,80]];
+const hw=y=>y>=-300?62-48*(y/-300):14-3*((-y-300)/100);
+function tower(cx,base,s,i){const g=el('g',{class:'tw',transform:`translate(${cx} ${base}) scale(${s})`,'stroke-width':(1+.55*s).toFixed(2)});g.style.setProperty('--t',i);
+ const P=d=>el('path',{d,pathLength:1,'vector-effect':'non-scaling-stroke'},g);
+ P('M-62 0 L-14 -300 L-11 -400 L0 -440 L11 -400 L14 -300 L62 0');
+ const L=[0,-48,-92,-132,-168,-200,-228,-254,-278,-300,-325,-350,-375,-400];
+ let d='';for(let k=0;k<L.length-1;k++){const a=L[k],b=L[k+1];d+=`M${-hw(a)} ${a}L${hw(b)} ${b}M${hw(a)} ${a}L${-hw(b)} ${b}M${-hw(b)} ${b}H${hw(b)}`}P(d);
+ d='';ARMS.forEach(([y,l])=>{[-1,1].forEach(sd=>{const w=hw(y);d+=`M${sd*w} ${y}H${sd*l}L${sd*w} ${y-22}`;for(let x=w+18;x<l-6;x+=18)d+=`M${sd*x} ${y}L${sd*(x+9)} ${y-22*(1-(x+9-w)/(l-w))}`})});
+ d+='M-24 -428H24';P(d);
+ const ins=el('g',{class:'ins'},g);ARMS.forEach(([y,l])=>[-1,1].forEach(sd=>{el('path',{d:`M${sd*l} ${y}v26M${sd*l-5} ${y+8}h10M${sd*l-5} ${y+14}h10M${sd*l-5} ${y+20}h10`,pathLength:1,'vector-effect':'non-scaling-stroke'},ins)}));
+ const b=el('g',{class:'bcn'});el('circle',{class:'halo',cx:cx,cy:base-447*s,r:11},b);el('circle',{cx:cx,cy:base-447*s,r:13},b);el('text',{x:cx,y:base-446*s},b,String(i+1));
+ const pts=[];ARMS.forEach(([y,l])=>[-1,1].forEach(sd=>pts.push([cx+sd*l*s,base+(y+26)*s])));pts.push([cx-24*s,base-428*s],[cx+24*s,base-428*s]);
+ return {g,pts}}
+hill(720,10,70,'#5D7CB0',8);
+const TW=[tower(1035,742,.62,0),tower(1240,812,.98,1)];
+hill(800,14,60,'#33508A',14);
+TW.push(tower(1468,940,1.68,2));
+/* morro da frente com copas de árvores */
+(()=>{let d='M600 900 L600 850';for(let x=600;x<1620;x+=26){const r=10+rnd()*16;d+=` a${r} ${r*.9} 0 0 1 26 ${(rnd()-.5)*8}`}el('path',{d:d+' L1620 900 Z',fill:'#1A2C5E'})})();
+/* ---------- cabos e pulsos de energia (do capítulo 1 até o 3) ---------- */
+const cab=el('g',{});const pul=el('g',{});
+const cable=(a,b,id,dur,beg)=>{const mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2+Math.abs(b[0]-a[0])*.1;el('path',{id,d:`M${a[0]} ${a[1]} Q${mx} ${my} ${b[0]} ${b[1]}`,class:'cab'},cab);
+ if(dur){const c=el('circle',{r:3.2,class:'pulse'},pul);const m=el('animateMotion',{dur:dur+'s',repeatCount:'indefinite',begin:beg+'s'},c);el('mpath',{href:'#'+id},m)}};
+let n=0;
+TW[0].pts.forEach((p,k)=>cable([p[0]-260,p[1]-30],p,'agc'+n++,k<6?3.2:0,-k*.4));
+for(let t=0;t<2;t++)TW[t].pts.forEach((p,k)=>cable(p,TW[t+1].pts[k],'agc'+n++,k<6?2.4+t*.5:0,-(k*.37+t)));
+TW[2].pts.forEach((p,k)=>cable(p,[p[0]+420,p[1]+40],'agc'+n++,k<6?2.6:0,-k*.3));
+svg.insertBefore(cab,svg.querySelector('.tw'));
+/* ---------- interação ---------- */
+const hot=i=>{TW.forEach((t,k)=>t.g.classList.toggle('hot',k===i));$$('.ag-it',SEC).forEach((li,k)=>li.classList.toggle('hot',k===i))};
+$$('.ag-it',SEC).forEach((li,i)=>{li.addEventListener('mouseenter',()=>{hot(i);tone(440+i*120,.1,'sine',.04,880)});li.addEventListener('mouseleave',()=>hot(-1));li.addEventListener('focusin',()=>hot(i))});
+TW.forEach((t,i)=>{t.g.style.pointerEvents='stroke';t.g.style.cursor='pointer';t.g.addEventListener('mouseenter',()=>hot(i));t.g.addEventListener('mouseleave',()=>hot(-1));t.g.addEventListener('click',()=>DECK.go($$('.ag-main',SEC)[i].dataset.go))});
+$$('[data-go]',SEC).forEach(b=>b.addEventListener('click',()=>{tone(660,.1,'sine',.05,990);DECK.go(b.dataset.go)}));
+DECK.register('agenda',{enter(){hot(-1)},leave(){hot(-1)}});
 })();
 </script>
 <script>/* ===== 01-mudanca ===== */
