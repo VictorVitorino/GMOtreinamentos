@@ -309,6 +309,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 #idxP .xh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 6px;font:700 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
 #idxP .xi{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;width:calc(100% - 16px);margin:0 8px;text-align:left;border-radius:8px;padding:6px 8px;font:600 12.5px var(--fb);color:var(--navy-800)}
 #idxP .xi b{font:600 10.5px var(--fm);color:var(--grey-400)}
+#idxP .xg{margin:8px 16px 3px;padding-top:8px;border-top:1px solid var(--line);font:700 9.5px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--steel-500)}#idxP .xg:first-child{margin-top:2px;border-top:0;padding-top:0}
 #idxP .xi:hover{background:var(--off)}
 #idxP .xi.cur{background:var(--orange-100)}#idxP .xi.cur b{color:var(--orange-600)}
 /* telas largas (≥ 1800 px): barra inferior um pouco maior, acompanhando o palco ampliado */
@@ -537,7 +538,8 @@ DECK.start=()=>{slides=$$('.slide');BASE=Math.max(0,slides.findIndex(s=>s.datase
  const G=[];slides.forEach((s,i)=>{const n=s.dataset.rail||s.dataset.t,l=G[G.length-1];if(l&&l.n===n)l.z=i;else G.push({n,a:i,z:i})});
  $('#rail').innerHTML=G.map(g=>`<button type="button" class="sg" data-i="${g.a}" data-z="${g.z}" style="--n:${Math.max(g.n.length,(g.z-g.a+1)*4)}"><span>${g.n}</span><i><b></b></i></button>`).join('');
  $('#rail').onclick=e=>{const b=e.target.closest('.sg');if(b)go(+b.dataset.i)};
- $('#idxL').innerHTML=slides.map((s,i)=>`<button type="button" class="xi" data-i="${i}"><b>${i>BASE?num(i-BASE):''}</b>${s.dataset.t}</button>`).join('');
+ /* índice agrupado por sessão (mesmos grupos da trilha) */
+ $('#idxL').innerHTML=G.map(g=>`<div class="xg">${g.n}</div>`+slides.slice(g.a,g.z+1).map((s,k)=>{const i=g.a+k;return `<button type="button" class="xi" data-i="${i}"><b>${i>BASE?num(i-BASE):''}</b>${s.dataset.t}</button>`}).join('')).join('');
  let n=fromHash();if(n<0)n=0;
  cur=n;slides[n].classList.add('active');H(n).enter?.({dir:0});ui();requestAnimationFrame(()=>slides[n].classList.add('play'));
  document.fonts?.ready.then(()=>fitFoot(slides[cur]));document.fonts?.addEventListener?.('loadingdone',()=>fitFoot(slides[cur]))};

@@ -1845,44 +1845,63 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .pm-col[data-k="0"]{--c1:var(--navy-600);--c2:var(--navy-800)}
 .pm-col[data-k="1"]{--c1:var(--steel-500);--c2:var(--navy-600)}
 .pm-col[data-k="2"]{--c1:var(--orange-400);--c2:var(--orange-600)}
-/* ---------- cabeçalho ---------- */
+/* ---------- cabeçalho com o medidor pequeno ---------- */
 .pm-ch{display:flex;align-items:center;gap:14px}
 .pm-l{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font:800 28px var(--fb);color:#fff;background:linear-gradient(150deg,var(--c1),var(--c2));box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
 .play .pm-l{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d)*90ms + 350ms)}
+.pm-ch>div:nth-child(2){flex:1;min-width:0}
 .pm-ch b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--navy-900)}
 .pm-ch em{font:500 10px var(--fm);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-500)}
-/* ---------- medidor ---------- */
-.pm-g{margin-top:auto;flex:1;min-height:0;display:flex;align-items:center;gap:20px;padding:12px 18px;border-radius:14px;background:var(--off);border:1px solid var(--line)}
-.pm-ring{position:relative;width:184px;height:184px;flex:none}
+.pm-g{flex:none}
+.pm-ring{position:relative;width:76px;height:76px}
 .pm-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.pm-ring circle{fill:none;stroke-width:11}
+.pm-ring circle{fill:none;stroke-width:12}
 .pm-ring .bg{stroke:var(--steel-100)}
 .pm-ring .fg{stroke:var(--orange-500);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1s var(--ease),stroke .4s}
 .pm-col.ok .pm-ring .fg{stroke:#2ECC71}
-.pm-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 46px var(--fb);color:var(--navy-900)}
-.pm-st{font-size:21px;line-height:1.35;font-weight:700;color:var(--orange-600);transition:color .3s}
-.pm-col.ok .pm-st{color:#1E8E4F}.pm-col.na .pm-st{color:var(--grey-500);font-weight:500}
+.pm-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 19px var(--fb);color:var(--navy-900)}
+.pm-st{display:block;padding:8px 12px;border-radius:10px;font-size:15px;line-height:1.3;font-weight:700;color:var(--orange-600);background:var(--orange-100);transition:color .3s,background .3s}
+.pm-col.ok .pm-st{color:#1E8E4F;background:rgba(46,204,113,.14)}
+.pm-col.na .pm-st{color:var(--grey-500);font-weight:500;background:var(--off)}
 .pm-col.na .pm-ring b{color:var(--grey-400)}
 .pm-st.in{animation:pmIn .45s var(--ease)}
 @keyframes pmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-/* ---------- pergunta · onde · conta ---------- */
-.pm-how{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:10px;align-items:start;padding-top:12px;border-top:1px dashed var(--line)}
-.pm-how dt{font:500 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500);padding-top:3px;white-space:nowrap}
-.pm-how dd{font-size:15.5px;line-height:1.38;color:var(--grey-700)}
+/* ---------- pergunta · onde · conta (a parte grande) ---------- */
+.pm-how{flex:1;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;row-gap:14px;align-content:start;align-items:start;padding-top:14px;border-top:1px dashed var(--line)}
+.pm-how dt{font:500 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500);padding-top:4px;white-space:nowrap}
+.pm-how dd{font-size:16.5px;line-height:1.42;color:var(--grey-700)}
 .pm-how dd b{color:var(--navy-900)}
-.pm-how dd.pm-f{font:600 13px var(--fm);color:var(--navy-800);padding:5px 10px;border-radius:8px;background:var(--steel-100)}
-.pm-f i{font-style:normal;color:var(--orange-600);padding:0 4px}
+.pm-how dd.pm-f{padding:10px 14px;border-radius:10px;background:var(--steel-100)}
+.pm-f span{display:block;font:600 15px var(--fm);color:var(--navy-800)}
+.pm-f span b{color:var(--orange-600)}
+.pm-f small{display:block;margin-top:5px;font-size:12.5px;color:var(--grey-500)}
 /* ---------- leitura ---------- */
-.pm-read{flex:none;display:grid;grid-template-columns:1.25fr 1.25fr .9fr;gap:24px;margin-top:16px;padding:14px 22px;align-items:start}
+.pm-read{flex:none;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;margin-top:16px;padding:16px 24px;align-items:start}
 .pm-read .label{color:var(--orange-200)}
-.pm-read p{margin-top:5px;font-size:15px;line-height:1.4;color:var(--steel-200)}
-.pm-read p b{color:#fff}
-.pm-rt,.pm-at{color:#fff!important}
-.pm-rt.in,.pm-at.in{animation:pmIn .5s var(--ease)}
-.pm-ra{border-left:1px solid rgba(255,255,255,.12);padding-left:24px}
-.pm-rk{border-left:1px solid rgba(255,255,255,.12);padding-left:24px}
+.pm-says{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:9px}
+.pm-says li{display:flex;align-items:center;gap:12px;font-size:16px;line-height:1.3;color:#fff}
+.pm-says i{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font:800 14px var(--fb);font-style:normal;color:#fff;background:rgba(255,255,255,.14);transition:background .35s}
+.pm-says li.ok i{background:#2ECC71}.pm-says li.ko i{background:var(--orange-500)}.pm-says li.na{color:var(--steel-300)}
+.pm-says li.in{animation:pmIn .5s var(--ease) both}
+.pm-ra{border-left:1px solid rgba(255,255,255,.12);padding-left:28px}
+.pm-at{margin-top:9px;font-size:20px;line-height:1.35;font-weight:700;color:#fff}
+.pm-at b{color:var(--orange-400)}
+.pm-at.in{animation:pmIn .5s var(--ease)}
+.pm-rule{display:block;margin-top:10px;font-size:13px;color:var(--steel-300)}.pm-rule b{color:var(--steel-200)}
 
-/* ===== 10-fim ===== */
+/* ===== 10-cmak ===== */
+
+/* ===== 11-roadmap ===== */
+
+/* ===== 12-comunicacao ===== */
+
+/* ===== 13-stakeholders ===== */
+
+/* ===== 14-impactos ===== */
+
+/* ===== 15-capacitacao ===== */
+
+/* ===== 16-fim ===== */
 /* ENCERRAMENTO: usa os estilos .s5 / .s5-fin do slide 07 (Onde usar) */
 
 /* =====================================================================
@@ -2051,6 +2070,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 #idxP .xh{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 6px;font:700 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600)}
 #idxP .xi{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;width:calc(100% - 16px);margin:0 8px;text-align:left;border-radius:8px;padding:6px 8px;font:600 12.5px var(--fb);color:var(--navy-800)}
 #idxP .xi b{font:600 10.5px var(--fm);color:var(--grey-400)}
+#idxP .xg{margin:8px 16px 3px;padding-top:8px;border-top:1px solid var(--line);font:700 9.5px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--steel-500)}#idxP .xg:first-child{margin-top:2px;border-top:0;padding-top:0}
 #idxP .xi:hover{background:var(--off)}
 #idxP .xi.cur{background:var(--orange-100)}#idxP .xi.cur b{color:var(--orange-600)}
 /* telas largas (≥ 1800 px): barra inferior um pouco maior, acompanhando o palco ampliado */
@@ -2837,7 +2857,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 <!-- ===== 09-pea-medir ===== -->
 <!-- ===================================================== 04 · PEA · COMO MEDIR -->
 <section data-id="pea-medir" class="slide pm" data-t="PEA: como medir cada palavra" data-rail="PEA">
-  <template class="info"><h5>Contexto</h5><p>Cada palavra do PEA vira <b>uma pergunta simples</b>, <b>um lugar onde olhar</b> e <b>uma conta</b>: quem cumpre ÷ quem deveria. <b>Prontidão</b> se pergunta numa pesquisa rápida, antes do go-live. <b>Engajamento</b> se observa na participação, durante. <b>Adoção</b> se lê nos dados do próprio sistema, depois, e por um bom tempo.</p><p>O menor número mostra onde a GMO deve agir. A meta de 70% é só um exemplo: cada projeto define a sua.</p><h5>Como usar</h5><ul><li><b>→</b> percorre três momentos de um sistema novo: antes do go-live, semana 2 e semana 8.</li><li>Os botões no alto trocam o momento.</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>perguntas</span></div><div><b>70%</b><span>meta do exemplo</span></div></div></template>
+  <template class="info"><h5>Contexto</h5><p>Cada palavra do PEA vira <b>uma pergunta simples</b>, <b>um lugar onde olhar</b> e <b>uma conta</b>: quem cumpre ÷ quem deveria. <b>Prontidão</b> se pergunta numa pesquisa rápida, antes do go-live. <b>Engajamento</b> se observa na participação, durante. <b>Adoção</b> se lê nos dados do próprio sistema, depois, e por um bom tempo.</p><p>O menor número mostra onde a GMO deve agir. A meta de 70% é só um exemplo: cada projeto define a sua.</p><h5>Como usar</h5><ul><li><b>→</b> percorre três momentos de um sistema novo: antes do go-live, semana 2 e semana 8.</li><li>Os botões no alto trocam o momento. Os exemplos de conta usam números reais de um projeto; os três momentos são ilustrativos.</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>perguntas</span></div><div><b>70%</b><span>meta do exemplo</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
@@ -2846,46 +2866,60 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
     </div>
     <div class="main pm-cols">
       <article class="pm-col" data-k="0" data-a="up" style="--d:2">
-        <div class="pm-ch"><span class="pm-l">P</span><div><b>Prontidão</b><em>antes do go-live</em></div></div>
+        <div class="pm-ch"><span class="pm-l">P</span><div><b>Prontidão</b><em>antes do go-live</em></div><div class="pm-g"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div></div></div>
+        <span class="pm-st"></span>
         <dl class="pm-how">
-          <dt>A pergunta</dt><dd>“Você sabe <b>por que</b> estamos mudando e se sente <b>preparado</b>?”</dd>
-          <dt>Onde olhamos</dt><dd>Pesquisa rápida (pulse) com o time, antes de começar</dd>
-          <dt>A conta</dt><dd class="pm-f">quem concorda <i>÷</i> quem respondeu</dd>
+          <dt>A pergunta</dt><dd>“As pessoas <b>respondem</b> quando chamamos? Aceitam o convite e <b>aparecem</b>?”</dd>
+          <dt>Onde olhamos</dt><dd>Nos convites que enviamos: agendas, pesquisas, reuniões. Quem aceitou, quem respondeu, quem compareceu. É o primeiro sinal, antes de qualquer treino.</dd>
+          <dt>A conta</dt><dd class="pm-f"><span><b>respostas</b> ÷ <b>convites enviados</b></span><small>Ex.: 136 convites → 102 presentes = 75%</small></dd>
         </dl>
-        <div class="pm-g"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div><span class="pm-st"></span></div>
-
       </article>
       <article class="pm-col" data-k="1" data-a="up" style="--d:3">
-        <div class="pm-ch"><span class="pm-l">E</span><div><b>Engajamento</b><em>durante</em></div></div>
+        <div class="pm-ch"><span class="pm-l">E</span><div><b>Engajamento</b><em>durante</em></div><div class="pm-g"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div></div></div>
+        <span class="pm-st"></span>
         <dl class="pm-how">
-          <dt>A pergunta</dt><dd>“Quem está participando <b>de verdade</b>?”</dd>
-          <dt>Onde olhamos</dt><dd>Treinos práticos, dúvidas enviadas, key users em ação</dd>
-          <dt>A conta</dt><dd class="pm-f">quem participou <i>÷</i> quem deveria</dd>
+          <dt>A pergunta</dt><dd>“De quem entrou, quem <b>participou de verdade</b>?”</dd>
+          <dt>Onde olhamos</dt><dd>Dentro das sessões e das pesquisas: quem pergunta, testa, faz o exercício, responde com opinião. Estar na lista de presença não conta; participar, sim.</dd>
+          <dt>A conta</dt><dd class="pm-f"><span><b>quem participou</b> ÷ <b>quem entrou</b></span><small>Ex.: 102 presentes → 72 fizeram o exercício = 71%</small></dd>
         </dl>
-        <div class="pm-g"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div><span class="pm-st"></span></div>
-
       </article>
       <article class="pm-col" data-k="2" data-a="up" style="--d:4">
-        <div class="pm-ch"><span class="pm-l">A</span><div><b>Adoção</b><em>depois, e por um bom tempo</em></div></div>
+        <div class="pm-ch"><span class="pm-l">A</span><div><b>Adoção</b><em>depois, e por um bom tempo</em></div><div class="pm-g"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div></div></div>
+        <span class="pm-st"></span>
         <dl class="pm-how">
-          <dt>A pergunta</dt><dd>“Quem usa o novo jeito <b>no dia a dia</b>, sem o antigo?”</dd>
-          <dt>Onde olhamos</dt><dd>Dados do próprio sistema: uso real, sem planilha paralela</dd>
-          <dt>A conta</dt><dd class="pm-f">quem usa sozinho <i>÷</i> quem deveria usar</dd>
+          <dt>A pergunta</dt><dd>“De quem <b>deveria</b> usar o novo jeito, quem <b>está usando</b>?”</dd>
+          <dt>Onde olhamos</dt><dd>No próprio sistema ou processo: quem faz a tarefa do novo jeito, sem a planilha antiga, e continua fazendo nas semanas seguintes.</dd>
+          <dt>A conta</dt><dd class="pm-f"><span><b>quem está usando</b> ÷ <b>quem deve usar</b></span><small>Ex.: 713 deveriam usar → 114 ativos = 16%</small></dd>
         </dl>
-        <div class="pm-g"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>–</b></div><span class="pm-st"></span></div>
-
       </article>
     </div>
     <div class="card nv pm-read" data-a="up" style="--d:6">
-      <div class="pm-rl"><span class="label">Leitura do momento</span><p class="pm-rt"></p></div>
-      <div class="pm-ra"><span class="label">Onde a GMO age</span><p class="pm-at"></p></div>
-      <div class="pm-rk"><span class="label">Regra simples</span><p>O <b>menor número</b> mostra onde agir. Meta do exemplo: <b>70%</b>.</p></div>
+      <div class="pm-rl"><span class="label">O que os números dizem</span><ul class="pm-says"><li data-k="0"><i>P</i><span></span></li><li data-k="1"><i>E</i><span></span></li><li data-k="2"><i>A</i><span></span></li></ul></div>
+      <div class="pm-ra"><span class="label">Então, o que a GMO faz agora</span><p class="pm-at"></p><span class="pm-rule">Regra simples: o <b>menor número</b> mostra onde agir. Meta do exemplo: <b>70%</b>.</span></div>
     </div>
   </div>
   <footer class="foot"><span class="src"></span></footer>
 </section>
 
-<!-- ===== 10-fim ===== -->
+<!-- ===== 10-cmak ===== -->
+<section data-id="cmak" class="slide" data-t="cmak" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+
+<!-- ===== 11-roadmap ===== -->
+<section data-id="roadmap" class="slide" data-t="roadmap" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+
+<!-- ===== 12-comunicacao ===== -->
+<section data-id="comunicacao" class="slide" data-t="comunicacao" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+
+<!-- ===== 13-stakeholders ===== -->
+<section data-id="stakeholders" class="slide" data-t="stakeholders" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+
+<!-- ===== 14-impactos ===== -->
+<section data-id="impactos" class="slide" data-t="impactos" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+
+<!-- ===== 15-capacitacao ===== -->
+<section data-id="capacitacao" class="slide" data-t="capacitacao" data-rail="Prática"><header class="top"></header><div class="body"></div><footer class="foot"></footer></section>
+
+<!-- ===== 16-fim ===== -->
 <!-- ===================================================== ENCERRAMENTO -->
 <section data-id="fim" class="slide s5 fin" data-t="Encerramento: três ideias para levar" data-rail="Encerramento">
   <template class="info"><h5>Contexto</h5><p>O encerramento volta à borboleta da capa: o voo é a mudança <b>adotada</b>. Três ideias para levar e a pergunta da Isabella para a turma.</p><h5>Como usar</h5><ul><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul></template>
@@ -3141,7 +3175,8 @@ DECK.start=()=>{slides=$$('.slide');BASE=Math.max(0,slides.findIndex(s=>s.datase
  const G=[];slides.forEach((s,i)=>{const n=s.dataset.rail||s.dataset.t,l=G[G.length-1];if(l&&l.n===n)l.z=i;else G.push({n,a:i,z:i})});
  $('#rail').innerHTML=G.map(g=>`<button type="button" class="sg" data-i="${g.a}" data-z="${g.z}" style="--n:${Math.max(g.n.length,(g.z-g.a+1)*4)}"><span>${g.n}</span><i><b></b></i></button>`).join('');
  $('#rail').onclick=e=>{const b=e.target.closest('.sg');if(b)go(+b.dataset.i)};
- $('#idxL').innerHTML=slides.map((s,i)=>`<button type="button" class="xi" data-i="${i}"><b>${i>BASE?num(i-BASE):''}</b>${s.dataset.t}</button>`).join('');
+ /* índice agrupado por sessão (mesmos grupos da trilha) */
+ $('#idxL').innerHTML=G.map(g=>`<div class="xg">${g.n}</div>`+slides.slice(g.a,g.z+1).map((s,k)=>{const i=g.a+k;return `<button type="button" class="xi" data-i="${i}"><b>${i>BASE?num(i-BASE):''}</b>${s.dataset.t}</button>`}).join('')).join('');
  let n=fromHash();if(n<0)n=0;
  cur=n;slides[n].classList.add('active');H(n).enter?.({dir:0});ui();requestAnimationFrame(()=>slides[n].classList.add('play'));
  document.fonts?.ready.then(()=>fitFoot(slides[cur]));document.fonts?.addEventListener?.('loadingdone',()=>fitFoot(slides[cur]))};
@@ -4599,17 +4634,17 @@ DECK.register('pea',{
 const META=70;
 /* momentos do exemplo (sistema novo): v = [P,E,A] em %, null = ainda não se mede */
 const PRE=[
- {n:'📣 Antes do go-live',v:[58,null,null],st:['Pouca gente entende o porquê','ainda não se mede','ainda não se mede'],
-  r:'Só metade do time sabe por que vamos mudar. Treinar agora seria ensinar a usar algo que ninguém entendeu por que existe.',
-  a:'<b>Prontidão.</b> O líder direto explica o que muda e por quê, antes de qualquer treino.',f:0},
- {n:'💻 Semana 2 · go-live',v:[82,71,38],st:['O porquê pegou','Participaram de verdade','O trabalho continua na planilha'],
-  r:'Entenderam e participaram, mas o sistema está no ar e o trabalho segue na planilha de sempre.',
-  a:'<b>Adoção.</b> Suporte na tarefa real: key users por perto, tira-dúvidas e desligar a planilha paralela.',f:2},
- {n:'🎉 Semana 8',v:[90,78,84],st:['Todo mundo sabe o porquê','Time dentro do jogo','O novo virou o normal'],
-  r:'Os três números passaram da meta. O novo jeito virou o jeito normal de trabalhar.',
-  a:'<b>Manter.</b> Reconhecer quem usa, continuar medindo e cuidar de quem ainda trava.',f:-1}];
+ {n:'📣 Antes do go-live',v:[58,null,null],st:['Pouca gente respondeu ao chamado','ainda não se mede','ainda não se mede'],
+  say:['Só 58% responderam ao convite: metade do time ainda não está disponível para a mudança.','Ainda não dá para medir: ninguém participou de nada.','Ainda não dá para medir: o sistema não está no ar.'],
+  a:'<b>Agir na Prontidão.</b> Antes de treinar, o líder direto explica o que muda e por quê. Reenvia o convite, com nome e prazo.',f:0},
+ {n:'💻 Semana 2 · go-live',v:[82,71,38],st:['O chamado pegou','Participaram de verdade','O trabalho continua na planilha'],
+  say:['82% responderam e apareceram: o time está disponível.','71% participaram de verdade: fizeram o exercício e deram opinião.','Só 38% usam o sistema: a maioria ainda vive na planilha antiga.'],
+  a:'<b>Agir na Adoção.</b> Suporte na tarefa real: key users por perto, tira-dúvidas diário e desligar a planilha paralela.',f:2},
+ {n:'🎉 Semana 8',v:[90,78,84],st:['Todo mundo responde','Time dentro do jogo','O novo virou o normal'],
+  say:['90% respondem e aparecem: convite virou rotina.','78% participam de verdade: perguntam, testam, sugerem.','84% usam o novo jeito, sem planilha: o novo virou o normal.'],
+  a:'<b>Manter.</b> Reconhecer quem usa, continuar medindo todo mês e cuidar de quem ainda trava.',f:-1}];
 let cur=0;
-const pre=$('.pm-pre',SEC),COLS=$$('.pm-col',SEC),rt=$('.pm-rt',SEC),at=$('.pm-at',SEC);
+const pre=$('.pm-pre',SEC),COLS=$$('.pm-col',SEC),SAY=$$('.pm-says li',SEC),at=$('.pm-at',SEC);
 pre.innerHTML=PRE.map((p,i)=>`<button type="button" data-i="${i}">${p.n}</button>`).join('');
 const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
 function count(el,to){const from=+(el.dataset.v||0);el.dataset.v=to;const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/800),e=1-Math.pow(1-k,3);el.textContent=Math.round(from+(to-from)*e)+'%';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
@@ -4618,7 +4653,7 @@ function load(i,snd=true){cur=i;const p=PRE[i];$$('button',pre).forEach((b,k)=>b
   c.classList.toggle('na',v===null);c.classList.toggle('ok',v!==null&&v>=META);c.classList.toggle('focus',k===p.f);
   if(v===null){b.dataset.v=0;b.textContent='–';fg.style.strokeDasharray='0 100'}else{count(b,v);fg.style.strokeDasharray=`${v} 100`}
   st.textContent=p.st[k];re(st,'in')});
- rt.textContent=p.r;re(rt,'in');at.innerHTML=p.a;re(at,'in');
+ SAY.forEach((l,k)=>{const v=p.v[k];l.classList.toggle('na',v===null);l.classList.toggle('ok',v!==null&&v>=META);l.classList.toggle('ko',v!==null&&v<META);$('span',l).textContent=p.say[k];l.style.animationDelay=k*90+'ms';re(l,'in')});at.innerHTML=p.a;re(at,'in');
  if(snd)p.f<0?ding():tone(300+i*120,.15,'sine',.05,700)}
 pre.addEventListener('click',e=>{const b=e.target.closest('button');if(b)load(+b.dataset.i)});
 DECK.register('pea-medir',{
@@ -4627,7 +4662,19 @@ DECK.register('pea-medir',{
 });
 })();
 </script>
-<script>/* ===== 10-fim ===== */
+<script>/* ===== 10-cmak ===== */
+</script>
+<script>/* ===== 11-roadmap ===== */
+</script>
+<script>/* ===== 12-comunicacao ===== */
+</script>
+<script>/* ===== 13-stakeholders ===== */
+</script>
+<script>/* ===== 14-impactos ===== */
+</script>
+<script>/* ===== 15-capacitacao ===== */
+</script>
+<script>/* ===== 16-fim ===== */
 (()=>{const {$,ding}=DECK, SEC=DECK.el('fim');
 $('#s5Wheel',SEC).addEventListener('click',()=>document.getElementById('bWheel')?.click());
 DECK.register('fim',{enter(){setTimeout(ding,500)}});
