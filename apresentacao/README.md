@@ -11,15 +11,18 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 | 01 | **Agenda** · linha de transmissão | painel com os 3 capítulos e, à direita, torres de transmissão (uma por capítulo) com a energia correndo nos cabos; passar o mouse acende a torre, clicar abre o capítulo ou o tema |
 | 02–04 | **Capítulo 1 · Mudança** | Mudança (o cérebro e o cabo de guerra, com a **Anatomia · Córtex**), Exercício (a sala bagunçada) e Gestão (mudar é evento, sustentar é gestão) |
 | 05–06 | **Capítulo 2 · História** | História (da força ao método, sem × com método) e Números (selo 7×, 88% × 13%, com × sem gestão) |
-| 07–08 | **Capítulo 3 · Metodologias** | Ferramentas (a caixa com Kotter, ADKAR, HCMBOK e CMAK) e Onde usar (matriz de cenários e encerramento) |
+| 07–08 | **Capítulo 3 · Metodologias** | Ferramentas (a caixa com Kotter, ADKAR, HCMBOK e CMAK) e Onde usar (matriz de cenários) |
+| 09 | **Capítulo 4 · PEA** · o que é | Prontidão, Engajamento e Adoção: as três lentes, onde se encaixam na GMO (preparar · conduzir · sustentar) e as cenas da analogia **Na vida** (o encontro) e **No trabalho** (o sistema novo), com luzes P/E/A e confete na adoção |
+| 10 | **PEA** · como medir | 4 passos, tabela de 8 pessoas × 5 tarefas (uma por letra do ADKAR), cálculo de P, E e A, ponto de barreira e “onde trava” por pessoa; `→` percorre as semanas 1, 3 e 8 |
+| 11 | **Encerramento** | a borboleta da capa, três ideias para levar e a pergunta da Isabella com a Roda |
 
-A trilha de capítulos na barra inferior agrupa os slides em **Agenda · Mudança · História · Metodologias**.
+A trilha de capítulos na barra inferior agrupa os slides em **Agenda · Mudança · História · Metodologias · PEA · Encerramento**.
 
 ## Teclas
 
 Barra inferior: trilha de capítulos · **Roda** (ícone) · **Sobre este slide** (`I`) · **Voltar** · contador/índice · **Avançar**.
 
-`→` / `Espaço` / `PageDown` avança (passador de slides funciona) · `←` volta · `N` Fernando (a 4ª fala chama a roda) · `F` Felipe · `M` Marcelo · `V` Vitor Bravo · `R` Roda da Mudança (botão "😄 Roda da Alegria" troca para perguntas de quebra-gelo) · `I` sobre este slide · `T` tela cheia · `B` tela preta · `S` som · `0` capa e `1`–`8` vão à página de mesmo número (`Home` volta à prévia) · `Esc` fecha.
+`→` / `Espaço` / `PageDown` avança (passador de slides funciona) · `←` volta · `N` Fernando (a 4ª fala chama a roda) · `F` Felipe · `M` Marcelo · `V` Vitor Bravo · `R` Roda da Mudança (botão "😄 Roda da Alegria" troca para perguntas de quebra-gelo) · `I` sobre este slide · `T` tela cheia · `B` tela preta · `S` som · `0` capa e `1`–`9` vão à página de mesmo número (`Home` volta à prévia) · `Esc` fecha.
 
 ## Estrutura e build
 

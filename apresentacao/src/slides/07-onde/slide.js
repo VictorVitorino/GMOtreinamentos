@@ -1,6 +1,6 @@
-(()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('onde');
+(()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('onde'), FIN=DECK.el('fim');
 /* ---------- 07 · onde usar ----------
-   passos (→): 0 introdução · 1–7 um cenário por vez · 8 encerramento (volta à capa, 3 ideias, Isabella) */
+   passos (→): 0 introdução · 1–7 um cenário por vez (o encerramento virou o slide 'fim') */
 const SC=[
  {t:'Transformação cultural ou nova estratégia',d:'mudar o “jeito de ser” da empresa',h:[3,2,1,2],r:'<b>Kotter</b> na frente: urgência, coalizão e visão puxadas pela liderança. <b>ADKAR</b> leva a visão para cada pessoa. <b>CMAK</b> mede a prontidão cultural a cada onda.'},
  {t:'Implantação de sistema (ERP, CRM, IA)',d:'tecnologia nova no dia a dia',h:[1,3,3,3],r:'<b>ADKAR</b> mostra onde cada grupo trava (ponto de barreira). <b>HCMBOK</b> amarra as ações de GMO ao cronograma. <b>CMAK</b> prova a adoção com uso real do sistema × meta.'},
@@ -10,10 +10,10 @@ const SC=[
  {t:'Reestruturação de áreas',d:'papéis, líderes e times mudam',h:[2,3,1,2],r:'<b>ADKAR</b> cuida da transição de cada pessoa: desejo e reforço são críticos. <b>Kotter</b> garante a mensagem da liderança. <b>CMAK</b> acompanha clima e riscos.'},
  {t:'Programa em ondas, com prestação de contas ao conselho',d:'anos de mudança, várias frentes',h:[2,1,2,3],r:'<b>CMAK</b> é a espinha: metas e indicadores por onda. <b>Kotter</b> sustenta a urgência ao longo dos anos. <b>HCMBOK</b> padroniza a execução em cada projeto.'}
 ];
-const LAST=SC.length+1;
+const LAST=SC.length;
 
 /* ---------- borboleta low-poly (mesmas asas da capa, em SVG) ---------- */
-(()=>{const svg=$('#s5Bfly',SEC);if(!svg)return;let sd=23;
+(()=>{const svg=$('#s5Bfly',FIN);if(!svg)return;let sd=23;
  const rnd=()=>{sd=sd+0x6D2B79F5|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
  const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)),mix=(a,b,k)=>a.map((v,i)=>v+(b[i]-v)*k),lit=(c,f)=>f>=1?mix(c,[255,255,255],Math.min(1,f-1)):c.map(v=>v*f);
  const rgb=c=>'#'+c.map(v=>Math.round(Math.max(0,Math.min(255,v))).toString(16).padStart(2,'0')).join('');
@@ -65,16 +65,15 @@ function pick(i){const r=$$('.hm-row',rows);
 function head(k,instant){clearTimeout(hdT);const H=HD[k];if(h2.dataset.k===String(k))return;h2.dataset.k=k;
  const put=()=>{eye.innerHTML=H.e;h2.innerHTML=H.h;hint.innerHTML=H.n;SEC.classList.remove('swapping')};
  if(instant){put();return}SEC.classList.add('swapping');hdT=setTimeout(put,250)}
-function finale(on,instant){if(SEC.classList.contains('fin')===on)return;SEC.classList.toggle('fin',on);fin.setAttribute('aria-hidden',!on);head(on?1:0,instant);if(on&&!instant)ding()}
+function finale(on,instant){if(!fin)return;if(SEC.classList.contains('fin')===on)return;SEC.classList.toggle('fin',on);fin.setAttribute('aria-hidden',!on);head(on?1:0,instant);if(on&&!instant)ding()}
 
 /* o shell desabilita “Avançar” no último slide; aqui ele segue ativo até o encerramento */
-const sync=()=>{if(DECK.isActive('onde')&&bNext)bNext.disabled=st>=LAST};
+const sync=()=>{};
 function go(n){st=Math.max(0,Math.min(LAST,n));finale(st===LAST);if(st===0)pick(null);else if(st<=SC.length)pick(st-1);sync()}
 function reset(){clearTimeout(hdT);st=0;finale(false,true);SEC.classList.remove('swapping');pick(null);rec.style.height=''}
 
 rows.addEventListener('click',e=>{const r=e.target.closest('.hm-row');if(!r)return;const i=+r.dataset.i;go(r.classList.contains('on')?0:i+1)});
 rows.addEventListener('keydown',e=>{if(e.key==='Enter'){const r=e.target.closest('.hm-row');if(r){e.stopPropagation();const i=+r.dataset.i;go(r.classList.contains('on')?0:i+1)}}});
-$('#s5Wheel',SEC).addEventListener('click',()=>document.getElementById('bWheel')?.click());
 intro();
 DECK.register('onde',{
  enter(){reset();setTimeout(sync,0)},

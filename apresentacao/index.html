@@ -223,8 +223,8 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .ag-left{position:absolute;left:140px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center}
 .ag-logos{position:absolute;left:0;top:56px;display:flex;align-items:center;gap:16px}
 .ag-logos i{width:1px;height:26px;background:rgba(163,184,214,.3)}
-.ag-h{font-size:64px;font-weight:600;letter-spacing:-.02em;color:var(--steel-300);margin:0 0 34px}
-.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.ag-h{font-size:64px;font-weight:600;letter-spacing:-.02em;color:var(--steel-300);margin:40px 0 26px}
+.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
 .ag-it{display:flex;flex-direction:column;gap:6px}
 .ag-main{display:flex;align-items:center;gap:34px;background:none;color:#fff;text-align:left;cursor:pointer}
 .ag-main b{width:46px;font-size:64px;line-height:1;font-weight:300;color:var(--orange-400);transition:transform .35s var(--spring),color .25s}
@@ -250,6 +250,9 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .ag-art .cloud{fill:#fff;opacity:.92;animation:agCloud linear infinite alternate}
 @keyframes agCloud{from{transform:translateX(0)}to{transform:translateX(-60px)}}
 .play .ag-art .tw path{stroke-dasharray:1;stroke-dashoffset:1;animation:agDraw 1.6s var(--ease) forwards;animation-delay:calc(var(--t)*260ms + 500ms)}
+.ag-art .cab{transition:stroke .4s}
+.ag-art.pea .cab{stroke:rgba(255,178,127,.9)}
+.ag-art.pea .pulse{r:5px}
 
 /* ===== 01-mudanca ===== */
 /* =====================================================================
@@ -1770,6 +1773,165 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .fin-wh:hover{border-color:var(--orange-400);color:var(--orange-600);transform:translateY(-1px);box-shadow:0 6px 14px rgba(14,28,57,.14)}
 .fin-wh:hover svg{transform:rotate(120deg)}
 
+/* ===== 08-pea ===== */
+/* =====================================================================
+   04 · PEA · o que é  (prefixo pe-, escopo .slide[data-id="pea"])
+   ===================================================================== */
+.pe-grid{display:grid;grid-template-columns:600px minmax(0,1fr);gap:22px;margin-bottom:54px}
+.pe-left{display:flex;flex-direction:column;gap:12px;min-height:0}
+/* ---------- as três lentes ---------- */
+.pe-lens{position:relative;flex:1;display:grid;grid-template-columns:76px minmax(0,1fr) auto;align-items:center;gap:18px;padding:12px 20px 12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);cursor:pointer;transition:transform .35s var(--spring),box-shadow .3s,border-color .3s}
+.pe-lens:hover,.pe-lens.on{transform:translateX(6px);border-color:var(--orange-400);box-shadow:0 10px 24px rgba(11,37,69,.12)}
+.pe-l{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font:800 38px var(--fb);color:#fff;background:linear-gradient(150deg,var(--navy-600),var(--navy-800));box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
+.pe-lens[data-k="1"] .pe-l{background:linear-gradient(150deg,var(--steel-500),var(--navy-600))}
+.pe-lens[data-k="2"] .pe-l{background:linear-gradient(150deg,var(--orange-400),var(--orange-600))}
+.play .pe-l{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d)*90ms + 350ms)}
+@keyframes peLetter{from{transform:rotate(-25deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+.pe-lens.on .pe-l{animation:peWob .7s var(--spring)}
+@keyframes peWob{30%{transform:rotate(-10deg) scale(1.12)}60%{transform:rotate(6deg)}}
+.pe-tx b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--navy-900)}
+.pe-tx em{font-style:normal;font-size:14px;font-weight:600;color:var(--orange-600)}
+.pe-tx span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700)}
+.pe-when{font:500 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--steel-500);padding:5px 10px;border-radius:99px;background:var(--steel-100)}
+/* ---------- onde se encaixa ---------- */
+.pe-fit{flex:none;padding:14px 20px 16px}
+.pe-fit-h{display:flex;align-items:center;justify-content:space-between}
+.pe-eq{font:600 12.5px var(--fm);color:var(--navy-800)}.pe-eq b{color:var(--orange-600)}
+.pe-track{position:relative;display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px;padding-top:2px}
+.pe-line{position:absolute;left:16.6%;right:16.6%;top:17px;height:3px;border-radius:3px;background:var(--steel-100)}
+.pe-line b{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,var(--navy-700),var(--steel-500),var(--orange-500));transform:scaleX(0);transform-origin:left}
+.play .pe-line b{animation:peGrow 1.6s var(--ease) 1.2s forwards}
+@keyframes peGrow{to{transform:scaleX(1)}}
+.pe-ph{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
+.pe-ph .dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:800 15px var(--fb);color:#fff;background:var(--navy-700);box-shadow:0 0 0 5px #fff;margin-bottom:6px}
+.pe-ph[style*="--x:1"] .dot{background:var(--steel-500)}.pe-ph[style*="--x:2"] .dot{background:var(--orange-500)}
+.play .pe-ph .dot{animation:aPop .6s var(--spring) both;animation-delay:calc(var(--x)*500ms + 1.2s)}
+.pe-ph b{font-size:14px;font-weight:700;color:var(--navy-800)}
+.pe-ph>span:last-child{font-size:12px;color:var(--grey-500)}
+.pe-go{position:absolute;left:58.3%;top:-6px;transform:translateX(-50%);font:600 9px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);background:var(--orange-100);padding:2px 7px;border-radius:99px}
+/* ---------- a história ---------- */
+.pe-story{display:flex;flex-direction:column;padding:18px 24px 18px;overflow:hidden}
+.pe-story::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(420px 260px at 50% 38%,rgba(42,90,150,.55),transparent 70%)}
+.pe-sh{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pe-tg{display:flex;gap:3px;padding:3px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.pe-tg button{height:28px;padding:0 14px;border-radius:99px;font:600 12.5px var(--fb);color:var(--steel-200);transition:background .25s,color .25s}
+.pe-tg button.on{background:#fff;color:var(--navy-800)}
+.pe-ttl{font:500 10.5px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--orange-200)}
+.pe-stage{position:relative;flex:1;min-height:0;display:grid;grid-template-columns:200px minmax(0,1fr);align-items:center;gap:26px;padding:6px 6px 0}
+.pe-emo{display:grid;place-items:center;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(255,255,255,.18),rgba(255,255,255,.04) 70%);border:1px solid rgba(255,255,255,.12)}
+.pe-emo span{font-size:110px;line-height:1;display:block;filter:drop-shadow(0 10px 14px rgba(0,0,0,.3))}
+.pe-emo span.in{animation:peIn .7s var(--spring)}
+@keyframes peIn{0%{transform:scale(.2) rotate(-30deg);opacity:0}100%{transform:none;opacity:1}}
+.pe-emo span.bob{animation:peBob 2.6s ease-in-out infinite}
+@keyframes peBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+.pe-cap .pe-n{font:500 10.5px var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300)}
+.pe-cap p{margin-top:8px;font-size:27px;line-height:1.25;font-weight:700;letter-spacing:-.015em;color:#fff;text-wrap:balance}
+.pe-cap p em{font-style:normal;color:var(--orange-400)}
+.pe-cap.in{animation:peCap .55s var(--ease)}
+@keyframes peCap{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.pe-meter{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.pe-lt{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .35s,border-color .35s}
+.pe-lt i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 14px var(--fb);font-style:normal;color:var(--steel-300);border:2px solid rgba(163,184,214,.35);transition:all .45s var(--spring)}
+.pe-lt span{font-size:13px;font-weight:600;color:var(--steel-300);transition:color .3s}
+.pe-lt.ok{background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.45)}
+.pe-lt.ok i{background:#2ECC71;border-color:#2ECC71;color:#fff;transform:scale(1.12)}
+.pe-lt.ok span{color:#fff}
+.pe-lt.ko{background:rgba(242,107,33,.12);border-color:rgba(255,138,76,.5)}
+.pe-lt.ko i{background:var(--orange-500);border-color:var(--orange-500);color:#fff;animation:peShake .5s}
+.pe-lt.ko span{color:var(--orange-200)}
+@keyframes peShake{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.pe-vd{position:relative;margin-top:12px;display:flex;align-items:baseline;gap:10px;min-height:26px}
+.pe-vd b{font-size:17px;font-weight:800;color:var(--orange-400);white-space:nowrap}
+.pe-vd span{font-size:15px;color:var(--steel-200)}
+.pe-vd.in{animation:peCap .5s var(--ease)}
+.pe-dots{position:relative;display:flex;gap:6px;margin-top:12px}
+.pe-dots button{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.14);transition:background .3s}
+.pe-dots button.on{background:var(--orange-500)}
+.pe-burst{position:absolute;left:100px;top:50%;pointer-events:none}
+.pe-burst i{position:absolute;width:9px;height:9px;border-radius:2px;animation:peConf 1.2s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes peConf{from{transform:translate(0,0) rotate(0);opacity:1}to{transform:translate(var(--tx),var(--ty)) rotate(var(--r));opacity:0}}
+/* ---------- por que importa ---------- */
+.pe-why{position:absolute;left:0;right:0;bottom:16px;height:42px;line-height:42px;padding:0 20px;border-radius:12px;background:var(--orange-100);color:var(--navy-800);font-size:15px}
+.pe-why b{color:var(--orange-600)}.pe-why em{font-style:normal;font-weight:700}
+
+/* ===== 09-pea-medir ===== */
+/* =====================================================================
+   04 · PEA · como medir  (prefixo pm-, escopo .slide[data-id="pea-medir"])
+   ===================================================================== */
+.pm-pre{display:flex;gap:4px;padding:3px;border-radius:99px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05)}
+.pm-pre button{height:28px;padding:0 12px;border-radius:99px;font:600 12px var(--fb);color:var(--grey-700);white-space:nowrap;transition:background .25s,color .25s}
+.pm-pre button:hover{color:var(--orange-600)}
+.pm-pre button.on{background:var(--navy-800);color:#fff}
+.pm-steps{flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:-6px 0 14px}
+.pm-steps div{display:flex;align-items:center;gap:12px;padding:9px 14px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.pm-steps b{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--fm);color:#fff;background:var(--orange-500)}
+.pm-steps span{font-size:13.5px;line-height:1.3;color:var(--grey-700)}
+.pm-steps em{font-style:normal;font-weight:700;color:var(--navy-800)}
+.pm-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:20px}
+/* ---------- tabela ---------- */
+.pm-tb{display:flex;flex-direction:column;padding:12px 18px 12px}
+.pm-row{display:grid;grid-template-columns:128px repeat(5,minmax(0,1fr)) 116px;gap:8px;align-items:center}
+.pm-br{height:22px}
+.pm-br i{font:600 9.5px var(--fm);font-style:normal;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:3px 0;border-radius:6px;color:#fff}
+.pm-br .p{background:var(--navy-700)}.pm-br .e{background:var(--steel-500)}.pm-br .a{background:var(--orange-500)}
+.pm-hh{padding:8px 0 8px;border-bottom:1px solid var(--line);align-items:end}
+.pm-hh div{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.pm-hh em{font:800 15px var(--fb);font-style:normal;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--orange-100);color:var(--orange-600)}
+.pm-hh b{font-size:12px;font-weight:600;line-height:1.25;color:var(--navy-800)}
+.pm-hh .label:last-child{text-align:center}
+.pm-hh>div.bar em{background:var(--orange-500);color:#fff}
+.pm-body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-around}
+.pm-pr{padding:3px 0;border-bottom:1px dashed var(--line)}
+.pm-who{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--navy-800)}
+.pm-who i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--fb);font-style:normal;color:#fff;background:var(--c)}
+.pm-c{justify-self:center;width:34px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:800;color:var(--grey-300);background:var(--off);border:1px solid var(--line);transition:background .3s,color .3s,transform .35s var(--spring),border-color .3s}
+.pm-c:hover{border-color:var(--orange-400);transform:scale(1.08)}
+.pm-c.y{background:#2ECC71;border-color:#2ECC71;color:#fff}
+.pm-c.flip{animation:pmFlip .45s var(--spring)}
+@keyframes pmFlip{0%{transform:rotateY(90deg) scale(.8)}100%{transform:none}}
+.pm-c.bc{box-shadow:0 0 0 2px var(--orange-400)}
+.pm-tr{justify-self:center;font:600 10px var(--fm);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:99px;white-space:nowrap;background:var(--orange-100);color:var(--orange-600);transition:all .3s}
+.pm-tr.ok{background:rgba(46,204,113,.14);color:#1E8E4F}
+.pm-ft{padding-top:10px;border-top:1px solid var(--line)}
+.pm-ft .label{color:var(--navy-800)}
+.pm-pc{display:flex;flex-direction:column;align-items:center;gap:4px}
+.pm-pc b{font:700 13px var(--fm);color:var(--navy-800)}
+.pm-pc i{position:relative;width:80%;height:5px;border-radius:99px;background:var(--steel-100);overflow:hidden}
+.pm-pc i::before{content:"";position:absolute;left:70%;top:0;bottom:0;width:1px;background:var(--navy-800);opacity:.5;z-index:1}
+.pm-pc i s{position:absolute;inset:0;width:var(--w);background:var(--steel-500);border-radius:inherit;transition:width .7s var(--ease),background .3s}
+.pm-pc.low b{color:var(--orange-600)}.pm-pc.low i s{background:var(--orange-500)}
+.pm-pc.bar{background:var(--orange-100);border-radius:8px;padding:3px 0}
+/* ---------- medidores ---------- */
+.pm-r{display:flex;flex-direction:column;gap:14px;min-height:0}
+.pm-ms{flex:1;padding:16px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.pm-big{display:flex;align-items:center;gap:18px}
+.pm-ring{position:relative;width:112px;height:112px;flex:none}
+.pm-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.pm-ring circle{fill:none;stroke-width:11}
+.pm-ring .bg{stroke:rgba(255,255,255,.1)}
+.pm-ring .fg{stroke:var(--orange-500);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1s var(--ease)}
+.pm-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 28px var(--fb);color:#fff}
+.pm-big .label{color:var(--orange-200)}
+.pm-big p{margin-top:6px;font-size:14.5px;line-height:1.4;color:var(--steel-200)}.pm-big p b{color:#fff}
+.pm-bar{display:grid;grid-template-columns:108px minmax(0,1fr) 46px;align-items:center;column-gap:10px;row-gap:2px}
+.pm-bar span{font-size:14px;font-weight:700;color:#fff}
+.pm-bar i{height:9px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.pm-bar i b{display:block;height:100%;width:0;border-radius:inherit;transition:width .9s var(--ease)}
+.pm-bar[data-k="p"] i b{background:var(--steel-300)}.pm-bar[data-k="e"] i b{background:var(--steel-500)}.pm-bar[data-k="a"] i b{background:var(--orange-500)}
+.pm-bar em{font:700 14px var(--fm);font-style:normal;color:#fff;text-align:right}
+.pm-bar small{grid-column:2/4;font-size:11.5px;color:var(--steel-300)}.pm-bar small b{color:var(--steel-200)}
+.pm-bx{flex:none;padding:14px 20px 14px}
+.pm-bh{display:flex;align-items:center;gap:14px;margin-top:10px}
+.pm-bl{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:800 28px var(--fb);color:#fff;background:var(--orange-500)}
+.pm-bl.ok{background:#2ECC71}
+.pm-bl.in{animation:peLetter .7s var(--spring)}
+.pm-bn{display:block;font-size:17px;font-weight:800;color:var(--navy-900)}
+.pm-ba{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;color:var(--grey-700)}
+.pm-nm{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:13px;font-weight:600;color:var(--navy-700)}
+
+/* ===== 10-fim ===== */
+/* ENCERRAMENTO: usa os estilos .s5 / .s5-fin do slide 07 (Onde usar) */
+
 /* =====================================================================
    FERNANDO (tecla N)
    ===================================================================== */
@@ -1980,8 +2142,8 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <!-- ===== 01-agenda ===== -->
 <!-- ===================================================== AGENDA -->
-<section data-id="agenda" class="slide stage cover ag" data-t="Agenda: Mudança, História e Metodologias" data-rail="Agenda">
-  <template class="info"><h5>Contexto</h5><p>O mapa do dia em <b>três capítulos</b>. <b>Mudança</b>: o que acontece no cérebro quando mudamos, um exercício na sala e o que é gestão. <b>História</b>: como a forma de conduzir mudanças evoluiu e o que os números mostram. <b>Metodologias</b>: Kotter, ADKAR, HCMBOK e CMAK, e onde usar cada uma.</p><p>A ilustração é a linha de transmissão: cada torre é um capítulo e a energia só chega ao destino passando por todas.</p><h5>Como usar</h5><ul><li>Passe o mouse num capítulo: a torre dele acende.</li><li>Clique no capítulo (ou num dos temas) para abrir.</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>capítulos</span></div><div><b>7</b><span>temas</span></div></div></template>
+<section data-id="agenda" class="slide stage cover ag" data-t="Agenda: Mudança, História, Metodologias e PEA" data-rail="Agenda">
+  <template class="info"><h5>Contexto</h5><p>O mapa do dia em <b>quatro capítulos</b>. <b>Mudança</b>: o que acontece no cérebro quando mudamos, um exercício na sala e o que é gestão. <b>História</b>: como a forma de conduzir mudanças evoluiu e o que os números mostram. <b>Metodologias</b>: Kotter, ADKAR, HCMBOK e CMAK, e onde usar cada uma. <b>PEA</b>: prontidão, engajamento e adoção, e como medir a adoção com tarefas simples.</p><p>A ilustração é a linha de transmissão: as torres são os capítulos e a energia que corre nos cabos é a adoção (capítulo 4): só chega ao destino passando por todas.</p><h5>Como usar</h5><ul><li>Passe o mouse num capítulo: a torre dele acende.</li><li>Clique no capítulo (ou num dos temas) para abrir.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>capítulos</span></div><div><b>9</b><span>temas</span></div></div></template>
   <svg class="ag-art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
   <div class="ag-panel"></div>
   <svg class="ag-cut" viewBox="0 0 1600 900" aria-hidden="true"><line x1="975" y1="0" x2="705" y2="900" class="o"/><line x1="990" y1="0" x2="720" y2="900" class="s"/></svg>
@@ -1992,8 +2154,9 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
       <li class="ag-it" data-i="0" data-a="left" style="--d:3"><button type="button" class="ag-main" data-go="mudanca"><b>1</b><strong>Mudança</strong></button><span class="ag-subs"><button type="button" data-go="mudanca">Mudança</button><button type="button" data-go="exercicio">Exercício</button><button type="button" data-go="gestao">Gestão</button></span></li>
       <li class="ag-it" data-i="1" data-a="left" style="--d:4"><button type="button" class="ag-main" data-go="tempo"><b>2</b><strong>História</strong></button><span class="ag-subs"><button type="button" data-go="tempo">História</button><button type="button" data-go="numeros">Números</button></span></li>
       <li class="ag-it" data-i="2" data-a="left" style="--d:5"><button type="button" class="ag-main" data-go="caixa"><b>3</b><strong>Metodologias</strong></button><span class="ag-subs"><button type="button" data-go="caixa">Ferramentas</button><button type="button" data-go="onde">Onde usar</button></span></li>
+      <li class="ag-it" data-i="3" data-a="left" style="--d:6"><button type="button" class="ag-main" data-go="pea"><b>4</b><strong>PEA</strong></button><span class="ag-subs"><button type="button" data-go="pea">Prontidão · Engajamento · Adoção</button><button type="button" data-go="pea-medir">Como medir</button></span></li>
     </ol>
-    <div class="ag-hint" data-a="fade" style="--d:7">Clique num capítulo para abrir</div>
+    <div class="ag-hint" data-a="fade" style="--d:8">Clique num capítulo para abrir</div>
   </div>
 </section>
 
@@ -2642,9 +2805,9 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 </section>
 
 <!-- ===== 07-onde ===== -->
-<!-- ===================================================== 07 · ONDE USAR + ENCERRAMENTO -->
-<section data-id="onde" class="slide s5" data-t="Onde usar: qual abordagem para cada desafio" data-rail="Metodologias" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam. · Encerramento: síntese do treinamento (slides 03, 05 e 07); Prosci, Best Practices in Change Management, 12ª ed. (2023): 88% × 13% dos projetos atingem os objetivos com GMO excelente × ruim; metamorfose da capa como metáfora ilustrativa, com base em William Bridges, Managing Transitions (1991).">
-  <template class="info"><h5>Contexto</h5><p>Qual abordagem é protagonista em cada tipo de mudança. As abordagens não competem: se combinam. O fim traz o encerramento, de volta à borboleta da capa.</p><h5>Como usar</h5><ul><li>Clique num cenário para ver a receita, ou use <b>→</b> para percorrer os cenários.</li><li>O último <b>→</b> abre o encerramento; <b>←</b> volta à matriz.</li><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul><h5>Em números</h5><div class="nums"><div><b>7</b><span>cenários</span></div><div><b>4</b><span>abordagens</span></div></div></template>
+<!-- ===================================================== 07 · ONDE USAR -->
+<section data-id="onde" class="slide s5" data-t="Onde usar: qual abordagem para cada desafio" data-rail="Metodologias" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam.">
+  <template class="info"><h5>Contexto</h5><p>Qual abordagem é protagonista em cada tipo de mudança. As abordagens não competem: se combinam.</p><h5>Como usar</h5><ul><li>Clique num cenário para ver a receita, ou use <b>→</b> para percorrer os cenários.</li><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul><h5>Em números</h5><div class="nums"><div><b>7</b><span>cenários</span></div><div><b>4</b><span>abordagens</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
@@ -2675,8 +2838,122 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
         </div>
       </div>
 
-      <!-- encerramento: último passo (→ depois do 7º cenário) -->
-      <div class="s5-fin" id="s5Fin" aria-hidden="true">
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===== 08-pea ===== -->
+<!-- ===================================================== 04 · PEA · O QUE É -->
+<section data-id="pea" class="slide pe" data-t="PEA: Prontidão, Engajamento e Adoção" data-rail="PEA">
+  <template class="info"><h5>Contexto</h5><p><b>PEA</b> é a leitura das pessoas em três momentos da mudança. <b>Prontidão</b>: estão preparadas (sabem por que e querem)? <b>Engajamento</b>: estão participando de verdade? <b>Adoção</b>: usam o novo jeito no dia a dia, sozinhas, e continuam usando?</p><p>Na GMO, a prontidão é lida <b>antes</b> (preparar), o engajamento <b>durante</b> (conduzir) e a adoção <b>depois</b> (sustentar). A entrega do projeto mede a data; o PEA mede as pessoas.</p><h5>Como usar</h5><ul><li><b>→</b> avança as cenas da analogia; depois segue para o próximo slide.</li><li>Troque entre <b>Na vida</b> (o encontro) e <b>No trabalho</b> (o sistema novo).</li><li>Clique numa letra P, E ou A para destacá-la.</li></ul><h5>Em números</h5><div class="nums"><div><b>3</b><span>lentes</span></div><div><b>4</b><span>cenas por analogia</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">04 · PEA · Prontidão, Engajamento e Adoção</div><h2 class="h2"><span class="kw" style="--k:1"><span>Ir não é gostar.</span></span> <span class="kw" style="--k:3"><span class="hl">Gostar não é ficar.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Avance com <kbd>→</kbd> para viver as cenas</span></div>
+    </div>
+    <div class="main pe-grid">
+      <div class="pe-left">
+        <div class="pe-lens" data-k="0" data-a="left" style="--d:2"><div class="pe-l">P</div><div class="pe-tx"><b>Prontidão</b><em>“Estão prontos?”</em><span>Sabem por que a mudança existe e topam ir.</span></div><span class="pe-when">antes</span></div>
+        <div class="pe-lens" data-k="1" data-a="left" style="--d:3"><div class="pe-l">E</div><div class="pe-tx"><b>Engajamento</b><em>“Estão dentro?”</em><span>Participam, perguntam, testam: não só aparecem.</span></div><span class="pe-when">durante</span></div>
+        <div class="pe-lens" data-k="2" data-a="left" style="--d:4"><div class="pe-l">A</div><div class="pe-tx"><b>Adoção</b><em>“Ficaram?”</em><span>Usam o novo jeito sozinhos, e continuam usando.</span></div><span class="pe-when">depois</span></div>
+        <div class="pe-fit card" data-a="up" style="--d:6">
+          <div class="pe-fit-h"><span class="label">Onde se encaixa na GMO</span><span class="pe-eq">Resultado = Solução × <b>Adoção</b></span></div>
+          <div class="pe-track">
+            <i class="pe-line"><b></b></i>
+            <div class="pe-ph" style="--x:0"><span class="dot">P</span><b>Preparar</b><span>diagnóstico e plano</span></div>
+            <div class="pe-ph" style="--x:1"><span class="dot">E</span><b>Conduzir</b><span>comunicar, treinar, apoiar</span></div>
+            <div class="pe-ph" style="--x:2"><span class="dot">A</span><b>Sustentar</b><span>reforçar e medir</span></div>
+            <span class="pe-go">go-live</span>
+          </div>
+        </div>
+      </div>
+      <div class="pe-story card nv" data-a="right" style="--d:3">
+        <div class="pe-sh">
+          <div class="pe-tg" role="tablist"><button type="button" class="on" data-m="0">💘 Na vida</button><button type="button" data-m="1">💻 No trabalho</button></div>
+          <span class="pe-ttl"></span>
+        </div>
+        <div class="pe-stage">
+          <div class="pe-emo"><span></span></div>
+          <div class="pe-cap"><span class="pe-n"></span><p></p></div>
+          <div class="pe-burst"></div>
+        </div>
+        <div class="pe-meter">
+          <div class="pe-lt" data-k="0"><i>P</i><span>Prontidão</span></div>
+          <div class="pe-lt" data-k="1"><i>E</i><span>Engajamento</span></div>
+          <div class="pe-lt" data-k="2"><i>A</i><span>Adoção</span></div>
+        </div>
+        <div class="pe-vd"><b></b><span></span></div>
+        <div class="pe-dots"></div>
+      </div>
+    </div>
+    <div class="pe-why" data-a="up" style="--d:8"><b>Por que importa:</b> o projeto mede a data do go-live; o PEA mede as <em>pessoas</em>. Uma entrega perfeita sem adoção é só um sistema bonito que ninguém usa.</div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===== 09-pea-medir ===== -->
+<!-- ===================================================== 04 · PEA · COMO MEDIR -->
+<section data-id="pea-medir" class="slide pm" data-t="PEA: como aplicar e calcular o nível de adoção" data-rail="PEA">
+  <template class="info"><h5>Contexto</h5><p>Adoção se mede com <b>tarefas simples e observáveis</b>, não com sensação. Escolha poucas tarefas que provam o novo jeito, marque <b>sim ou não</b> por pessoa e calcule três números: <b>Prontidão</b> (sabe por que e quer), <b>Engajamento</b> (participou de verdade) e <b>Adoção</b> (faz sozinho e continua fazendo).</p><p>Cada tarefa corresponde a uma letra do <b>ADKAR</b>. A primeira letra abaixo da meta é o <b>ponto de barreira</b>: é ali que a ação de GMO rende mais. E cada pessoa tem o seu.</p><h5>Como usar</h5><ul><li><b>→</b> percorre três semanas da implantação de um sistema novo.</li><li>Clique nas células para marcar ou desmarcar e veja os números mudarem.</li></ul><h5>Em números</h5><div class="nums"><div><b>5</b><span>tarefas (A·D·K·A·R)</span></div><div><b>70%</b><span>meta usada no exemplo</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">04 · PEA · Como aplicar e medir</div><h2 class="h2"><span class="kw" style="--k:1"><span>Adoção se mede com tarefas,</span></span> <span class="kw" style="--k:3"><span class="hl">não com sensação.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><div class="pm-pre" role="group" aria-label="Exemplos"></div></div>
+    </div>
+    <div class="pm-steps" data-a="up" style="--d:2">
+      <div><b>1</b><span>Escolha <em>3 a 5 tarefas</em> que provam o novo jeito</span></div>
+      <div><b>2</b><span>Marque <em>sim ou não</em> por pessoa, toda semana</span></div>
+      <div><b>3</b><span>Calcule <em>P, E e A</em> (pessoas que cumprem ÷ total)</span></div>
+      <div><b>4</b><span>Ache o <em>ponto de barreira</em> e aja nele</span></div>
+    </div>
+    <div class="main pm-grid">
+      <div class="card pm-tb" data-a="up" style="--d:3">
+        <div class="pm-row pm-br"><span></span><i class="p" style="grid-column:2/4">P · Prontidão</i><i class="e" style="grid-column:4/5">E · Engajamento</i><i class="a" style="grid-column:5/7">A · Adoção</i><span></span></div>
+        <div class="pm-row pm-hh">
+          <span class="label">Pessoa</span>
+          <div><em>A</em><b>Sabe dizer por que vamos mudar</b></div>
+          <div><em>D</em><b>Disse “eu quero” no pulse</b></div>
+          <div><em>K</em><b>Fez o treino com exercício prático</b></div>
+          <div><em>A</em><b>Faz a tarefa-chave sozinho</b></div>
+          <div><em>R</em><b>Ainda usa após 30 dias, sem planilha</b></div>
+          <span class="label">Onde trava</span>
+        </div>
+        <div class="pm-body"></div>
+        <div class="pm-row pm-ft"></div>
+      </div>
+      <div class="pm-r">
+        <div class="card nv pm-ms" data-a="right" style="--d:4">
+          <div class="pm-big"><div class="pm-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bg"/><circle cx="60" cy="60" r="50" class="fg" pathLength="100"/></svg><b>0%</b></div><div><span class="label">Nível de adoção</span><p>quem <b>faz sozinho</b> e <b>continua fazendo</b> ÷ total</p></div></div>
+          <div class="pm-bar" data-k="p"><span>Prontidão</span><i><b></b></i><em>0%</em><small>sabe o porquê <b>e</b> quer ÷ total</small></div>
+          <div class="pm-bar" data-k="e"><span>Engajamento</span><i><b></b></i><em>0%</em><small>participou do treino prático ÷ total</small></div>
+          <div class="pm-bar" data-k="a"><span>Adoção</span><i><b></b></i><em>0%</em><small>habilidade <b>e</b> reforço ÷ total</small></div>
+        </div>
+        <div class="card pm-bx" data-a="right" style="--d:6">
+          <span class="label">Ponto de barreira · ADKAR</span>
+          <div class="pm-bh"><span class="pm-bl"></span><div><b class="pm-bn"></b><span class="pm-ba"></span></div></div>
+          <p class="pm-nm">Por trás de cada % tem um nome: olhe a linha, não só a média.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
+</section>
+
+<!-- ===== 10-fim ===== -->
+<!-- ===================================================== ENCERRAMENTO -->
+<section data-id="fim" class="slide s5 fin" data-t="Encerramento: três ideias para levar" data-rail="Encerramento">
+  <template class="info"><h5>Contexto</h5><p>O encerramento volta à borboleta da capa: o voo é a mudança <b>adotada</b>. Três ideias para levar e a pergunta da Isabella para a turma.</p><h5>Como usar</h5><ul><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">Encerramento · Para levar</div><h2 class="h2"><span class="kw" style="--k:1"><span>A borboleta só voa sozinha</span></span> <span class="kw" style="--k:3"><span class="hl">quando a mudança é adotada.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Fim do treinamento · <kbd>R</kbd> abre a Roda</span></div>
+    </div>
+    <div class="main">
+            <div class="s5-fin" id="s5Fin">
         <div class="card nv fin-fly" data-f>
           <div class="fin-sky"><svg class="bfly" id="s5Bfly" viewBox="-215 -190 430 380" aria-hidden="true"></svg></div>
           <div class="fin-cap"><span class="label">De volta à capa</span><p>A lagarta virou borboleta. O voo é a mudança <b>adotada</b>: ganha vida própria e segue sozinha.</p></div>
@@ -2689,9 +2966,9 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
         </div>
         <div class="fin-ideas">
           <span class="label" data-f>Três ideias para levar</span>
-          <div class="card fin-idea" data-f><span class="n">01</span><div><span class="tg">04 · Gestão</span><b>Mudar é evento; <em>sustentar é gestão.</em></b><span>Sem alguém conduzindo, medindo e reforçando, a bagunça volta.</span></div></div>
-          <div class="card fin-idea" data-f><span class="n">02</span><div><span class="tg">05 · Números</span><b>Resultado = Solução × <em>Adoção.</em></b><span>Com GMO excelente, 88% dos projetos atingem os objetivos; com GMO ruim, 13% (Prosci, 2023).</span></div></div>
-          <div class="card fin-idea" data-f><span class="n">03</span><div><span class="tg">08 · Onde usar</span><b>Não existe a melhor abordagem: <em>existe a combinação certa.</em></b><span>Kotter, ADKAR, HCMBOK e CMAK se somam conforme o desafio.</span></div></div>
+          <div class="card fin-idea" data-f><span class="n">01</span><div><span class="tg">01 · Mudança · Gestão</span><b>Mudar é evento; <em>sustentar é gestão.</em></b><span>Sem alguém conduzindo, medindo e reforçando, a bagunça volta.</span></div></div>
+          <div class="card fin-idea" data-f><span class="n">02</span><div><span class="tg">02 · História · Números</span><b>Resultado = Solução × <em>Adoção.</em></b><span>Com GMO excelente, 88% dos projetos atingem os objetivos; com GMO ruim, 13% (Prosci, 2023).</span></div></div>
+          <div class="card fin-idea" data-f><span class="n">03</span><div><span class="tg">03 · Metodologias</span><b>Não existe a melhor abordagem: <em>existe a combinação certa.</em></b><span>Kotter, ADKAR, HCMBOK e CMAK se somam conforme o desafio.</span></div></div>
         </div>
         <div class="fin-isa" data-f>
           <div class="bubble tail-b"><span class="who">Isabella pergunta</span><p>E você: qual mudança da sua área vai conduzir primeiro? <b>E qual combinação ela pede?</b></p><button type="button" class="fin-wh" id="s5Wheel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 3v6.8M12 14.2V21M3 12h6.8M14.2 12H21M5.6 5.6l4.8 4.8M13.6 13.6l4.8 4.8M18.4 5.6l-4.8 4.8M10.4 13.6l-4.8 4.8"/></svg>Girar a Roda da Mudança <kbd>R</kbd></button></div>
@@ -3199,7 +3476,7 @@ for(let t=0;t<2;t++)TW[t].pts.forEach((p,k)=>cable(p,TW[t+1].pts[k],'agc'+n++,k<
 TW[2].pts.forEach((p,k)=>cable(p,[p[0]+420,p[1]+40],'agc'+n++,k<6?2.6:0,-k*.3));
 svg.insertBefore(cab,svg.querySelector('.tw'));
 /* ---------- interação ---------- */
-const hot=i=>{TW.forEach((t,k)=>t.g.classList.toggle('hot',k===i));$$('.ag-it',SEC).forEach((li,k)=>li.classList.toggle('hot',k===i))};
+const hot=i=>{svg.classList.toggle('pea',i===3);TW.forEach((t,k)=>t.g.classList.toggle('hot',k===i));$$('.ag-it',SEC).forEach((li,k)=>li.classList.toggle('hot',k===i))};
 $$('.ag-it',SEC).forEach((li,i)=>{li.addEventListener('mouseenter',()=>{hot(i);tone(440+i*120,.1,'sine',.04,880)});li.addEventListener('mouseleave',()=>hot(-1));li.addEventListener('focusin',()=>hot(i))});
 TW.forEach((t,i)=>{t.g.style.pointerEvents='stroke';t.g.style.cursor='pointer';t.g.addEventListener('mouseenter',()=>hot(i));t.g.addEventListener('mouseleave',()=>hot(-1));t.g.addEventListener('click',()=>DECK.go($$('.ag-main',SEC)[i].dataset.go))});
 $$('[data-go]',SEC).forEach(b=>b.addEventListener('click',()=>{tone(660,.1,'sine',.05,990);DECK.go(b.dataset.go)}));
@@ -4274,9 +4551,9 @@ DECK.register('caixa',{step:d=>{if(d>0&&!open){doOpen();return true}if(d<0&&open
 })();
 </script>
 <script>/* ===== 07-onde ===== */
-(()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('onde');
+(()=>{const {$,$$,tone,ding,boing,stage}=DECK, SEC=DECK.el('onde'), FIN=DECK.el('fim');
 /* ---------- 07 · onde usar ----------
-   passos (→): 0 introdução · 1–7 um cenário por vez · 8 encerramento (volta à capa, 3 ideias, Isabella) */
+   passos (→): 0 introdução · 1–7 um cenário por vez (o encerramento virou o slide 'fim') */
 const SC=[
  {t:'Transformação cultural ou nova estratégia',d:'mudar o “jeito de ser” da empresa',h:[3,2,1,2],r:'<b>Kotter</b> na frente: urgência, coalizão e visão puxadas pela liderança. <b>ADKAR</b> leva a visão para cada pessoa. <b>CMAK</b> mede a prontidão cultural a cada onda.'},
  {t:'Implantação de sistema (ERP, CRM, IA)',d:'tecnologia nova no dia a dia',h:[1,3,3,3],r:'<b>ADKAR</b> mostra onde cada grupo trava (ponto de barreira). <b>HCMBOK</b> amarra as ações de GMO ao cronograma. <b>CMAK</b> prova a adoção com uso real do sistema × meta.'},
@@ -4286,10 +4563,10 @@ const SC=[
  {t:'Reestruturação de áreas',d:'papéis, líderes e times mudam',h:[2,3,1,2],r:'<b>ADKAR</b> cuida da transição de cada pessoa: desejo e reforço são críticos. <b>Kotter</b> garante a mensagem da liderança. <b>CMAK</b> acompanha clima e riscos.'},
  {t:'Programa em ondas, com prestação de contas ao conselho',d:'anos de mudança, várias frentes',h:[2,1,2,3],r:'<b>CMAK</b> é a espinha: metas e indicadores por onda. <b>Kotter</b> sustenta a urgência ao longo dos anos. <b>HCMBOK</b> padroniza a execução em cada projeto.'}
 ];
-const LAST=SC.length+1;
+const LAST=SC.length;
 
 /* ---------- borboleta low-poly (mesmas asas da capa, em SVG) ---------- */
-(()=>{const svg=$('#s5Bfly',SEC);if(!svg)return;let sd=23;
+(()=>{const svg=$('#s5Bfly',FIN);if(!svg)return;let sd=23;
  const rnd=()=>{sd=sd+0x6D2B79F5|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
  const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)),mix=(a,b,k)=>a.map((v,i)=>v+(b[i]-v)*k),lit=(c,f)=>f>=1?mix(c,[255,255,255],Math.min(1,f-1)):c.map(v=>v*f);
  const rgb=c=>'#'+c.map(v=>Math.round(Math.max(0,Math.min(255,v))).toString(16).padStart(2,'0')).join('');
@@ -4341,16 +4618,15 @@ function pick(i){const r=$$('.hm-row',rows);
 function head(k,instant){clearTimeout(hdT);const H=HD[k];if(h2.dataset.k===String(k))return;h2.dataset.k=k;
  const put=()=>{eye.innerHTML=H.e;h2.innerHTML=H.h;hint.innerHTML=H.n;SEC.classList.remove('swapping')};
  if(instant){put();return}SEC.classList.add('swapping');hdT=setTimeout(put,250)}
-function finale(on,instant){if(SEC.classList.contains('fin')===on)return;SEC.classList.toggle('fin',on);fin.setAttribute('aria-hidden',!on);head(on?1:0,instant);if(on&&!instant)ding()}
+function finale(on,instant){if(!fin)return;if(SEC.classList.contains('fin')===on)return;SEC.classList.toggle('fin',on);fin.setAttribute('aria-hidden',!on);head(on?1:0,instant);if(on&&!instant)ding()}
 
 /* o shell desabilita “Avançar” no último slide; aqui ele segue ativo até o encerramento */
-const sync=()=>{if(DECK.isActive('onde')&&bNext)bNext.disabled=st>=LAST};
+const sync=()=>{};
 function go(n){st=Math.max(0,Math.min(LAST,n));finale(st===LAST);if(st===0)pick(null);else if(st<=SC.length)pick(st-1);sync()}
 function reset(){clearTimeout(hdT);st=0;finale(false,true);SEC.classList.remove('swapping');pick(null);rec.style.height=''}
 
 rows.addEventListener('click',e=>{const r=e.target.closest('.hm-row');if(!r)return;const i=+r.dataset.i;go(r.classList.contains('on')?0:i+1)});
 rows.addEventListener('keydown',e=>{if(e.key==='Enter'){const r=e.target.closest('.hm-row');if(r){e.stopPropagation();const i=+r.dataset.i;go(r.classList.contains('on')?0:i+1)}}});
-$('#s5Wheel',SEC).addEventListener('click',()=>document.getElementById('bWheel')?.click());
 intro();
 DECK.register('onde',{
  enter(){reset();setTimeout(sync,0)},
@@ -4358,6 +4634,102 @@ DECK.register('onde',{
  step(d){const n=st+d;if(n<0||n>LAST)return false;go(n);return true}
 });
 })();
+})();
+</script>
+<script>/* ===== 08-pea ===== */
+(()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('pea');
+/* cenas: e = emoji, t = texto, s = luzes [P,E,A] (1 ok · -1 falhou · 0 ainda não), v = veredito */
+const M=[
+ {ttl:'O encontro',sc:[
+  {e:'💌',t:'Você chamou a pessoa para sair.',s:[0,0,0],v:['Será que rola?','Ainda não dá para saber nada.']},
+  {e:'🚶‍♀️',t:'Ela <em>foi</em> ao encontro.',s:[1,0,0],v:['Bom sinal: prontidão.','Topou ir. Mas ir não é gostar.']},
+  {e:'😒',t:'Foi… de <em>cara fechada</em>, olhando o celular a noite toda.',s:[1,-1,0],v:['Presente, mas não engajada.','Apareceu, mas não está dentro.']},
+  {e:'🥳',t:'Riu, dançou, dividiu a sobremesa… e <em>nunca mais respondeu</em>.',s:[1,1,-1],v:['Engajou, mas não adotou.','Curtiu o momento, não ficou.']},
+  {e:'📞',t:'No dia seguinte, <em>ela liga</em> e já marca o próximo.',s:[1,1,1],v:['Adoção!','Escolhe de novo, sem você empurrar.']}]},
+ {ttl:'O sistema novo',sc:[
+  {e:'🚀',t:'O sistema novo vai entrar no ar.',s:[0,0,0],v:['Será que pega?','Go-live marcado não é adoção garantida.']},
+  {e:'🧑‍💻',t:'Todo mundo <em>foi</em> ao treinamento.',s:[1,0,0],v:['Bom sinal: prontidão.','Sabem que vem aí. Mas presença não é engajamento.']},
+  {e:'😶',t:'Foi… de <em>câmera desligada</em>, respondendo e-mail.',s:[1,-1,0],v:['Presente, mas não engajado.','Lista de presença cheia, cabeça em outro lugar.']},
+  {e:'👏',t:'Amou a demo, aplaudiu… e <em>voltou para a planilha</em> Controle_FINAL_v3.xlsx.',s:[1,1,-1],v:['Engajou, mas não adotou.','O sistema está no ar; o trabalho, na planilha.']},
+  {e:'✅',t:'Lança tudo no sistema, <em>larga a planilha</em> e ensina o colega.',s:[1,1,1],v:['Adoção!','O novo virou o jeito normal.']}]}
+];
+let m=0,k=0;
+const emo=$('.pe-emo span',SEC),cap=$('.pe-cap',SEC),vd=$('.pe-vd',SEC),dots=$('.pe-dots',SEC),LT=$$('.pe-lt',SEC);
+dots.innerHTML=M[0].sc.map((_,i)=>`<button type="button" aria-label="Cena ${i+1}"></button>`).join('');
+const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
+function burst(){const b=$('.pe-burst',SEC);b.innerHTML='';const C=['#F26B21','#FF8A4C','#2ECC71','#A3B8D6','#fff','#FFC7A6'];
+ for(let i=0;i<34;i++){const a=Math.random()*Math.PI*2,d=90+Math.random()*190,x=document.createElement('i');x.style.cssText=`background:${C[i%C.length]};--tx:${Math.cos(a)*d}px;--ty:${Math.sin(a)*d-40}px;--r:${Math.random()*720-360}deg;animation-delay:${Math.random()*.12}s`;b.appendChild(x)}}
+function show(snd=true){const s=M[m].sc[k];$('.pe-ttl',SEC).textContent=M[m].ttl+(k?` · cena ${k} de ${M[m].sc.length-1}`:' · o começo');
+ emo.textContent=s.e;emo.classList.remove('bob');re(emo,'in');clearTimeout(emo._t);emo._t=setTimeout(()=>{emo.classList.remove('in');emo.classList.add('bob')},700);
+ $('.pe-n',cap).textContent=k?'Cena '+k:'Começo';$('p',cap).innerHTML=s.t;re(cap,'in');
+ $('b',vd).textContent=s.v[0];$('span',vd).textContent=s.v[1];re(vd,'in');
+ LT.forEach((l,i)=>{l.classList.toggle('ok',s.s[i]===1);l.classList.toggle('ko',s.s[i]===-1)});
+ $$('button',dots).forEach((b,i)=>b.classList.toggle('on',i<=k));
+ const full=s.s.every(v=>v===1),bad=s.s.includes(-1);
+ if(full){burst();if(snd)ding()}else if(snd){bad?tone(180,.25,'triangle',.06,140):tone(520+k*60,.12,'sine',.05,900)}}
+$$('.pe-tg button',SEC).forEach(b=>b.addEventListener('click',()=>{m=+b.dataset.m;$$('.pe-tg button',SEC).forEach(x=>x.classList.toggle('on',x===b));show()}));
+dots.addEventListener('click',e=>{const b=e.target.closest('button');if(b){k=$$('button',dots).indexOf(b);show()}});
+$$('.pe-lens',SEC).forEach(l=>l.addEventListener('click',()=>{const on=!l.classList.contains('on');$$('.pe-lens',SEC).forEach(x=>x.classList.remove('on'));if(on){l.classList.add('on');boing()}}));
+DECK.register('pea',{
+ enter(){m=0;k=0;$$('.pe-tg button',SEC).forEach((x,i)=>x.classList.toggle('on',i===0));$$('.pe-lens',SEC).forEach(x=>x.classList.remove('on'));show(false)},
+ step(d){const n=k+d;if(n<0||n>=M[m].sc.length){if(d>0&&m===0){m=1;k=0;$$('.pe-tg button',SEC).forEach((x,i)=>x.classList.toggle('on',i===1));show();return true}return false}k=n;show();return true}
+});
+})();
+</script>
+<script>/* ===== 09-pea-medir ===== */
+(()=>{const {$,$$,tone,ding}=DECK, SEC=DECK.el('pea-medir');
+const PEO=[['Ana','#13315C'],['Beto','#2A5A96'],['Caio','#4A6FA5'],['Duda','#D9521A'],['Edu','#1B4479'],['Fabi','#F26B21'],['Gui','#3D5F93'],['Helô','#0B2545']];
+const ADK=[['A','Consciência','Repita o porquê, na voz do líder direto: o que muda e o que acontece se não mudar.'],
+ ['D','Desejo','Mostre o “o que eu ganho com isso”, ouça as resistências e envolva quem influencia o time.'],
+ ['K','Conhecimento','Treino prático, na tarefa real, com exercício: menos slide, mais mão na massa.'],
+ ['A','Habilidade','Suporte no dia a dia: key users por perto, tira-dúvidas e tempo para praticar.'],
+ ['R','Reforço','Reconheça quem usa, desligue a planilha paralela e meça de novo em 30 dias.']];
+const META=.7;
+/* semanas do exemplo (sistema novo): cada pessoa = 5 marcas na ordem A·D·K·A·R */
+const PRE=[
+ {n:'😒 Semana 1 · cara fechada',d:['11000','11100','11000','11000','11000','11100','11000','01000']},
+ {n:'📊 Semana 3 · voltou à planilha',d:['11110','11110','11111','11110','11100','11110','11110','11100']},
+ {n:'🎉 Semana 8 · adotou',d:['11111','11111','11111','11111','11011','11111','11111','10111']}];
+let G=[],cur=0;
+const body=$('.pm-body',SEC),ft=$('.pm-ft',SEC),pre=$('.pm-pre',SEC);
+pre.innerHTML=PRE.map((p,i)=>`<button type="button" data-i="${i}">${p.n}</button>`).join('');
+body.innerHTML=PEO.map(([n,c],r)=>`<div class="pm-row pm-pr"><span class="pm-who"><i style="--c:${c}">${n[0]}</i>${n}</span>${[0,1,2,3,4].map(j=>`<button type="button" class="pm-c" data-r="${r}" data-j="${j}" aria-label="${n}: ${ADK[j][1]}"></button>`).join('')}<span class="pm-tr"></span></div>`).join('');
+ft.innerHTML='<span class="label">% do time</span>'+[0,1,2,3,4].map(()=>'<div class="pm-pc"><b>0%</b><i><s></s></i></div>').join('')+'<span></span>';
+const cells=$$('.pm-c',SEC),trs=$$('.pm-tr',SEC),pcs=$$('.pm-pc',SEC);
+const pct=x=>Math.round(x*100);
+function count(el,to,suf='%'){const from=+(el.dataset.v||0);el.dataset.v=to;const t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/700),e=1-Math.pow(1-k,3);el.textContent=Math.round(from+(to-from)*e)+suf;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+let lastB=-2;
+function calc(){const N=G.length,col=[0,1,2,3,4].map(j=>G.filter(r=>r[j]).length/N);
+ const P=G.filter(r=>r[0]&&r[1]).length/N,E=col[2],A=G.filter(r=>r[3]&&r[4]).length/N;
+ cells.forEach(c=>{const v=G[+c.dataset.r][+c.dataset.j];c.classList.toggle('y',!!v);c.textContent=v?'✓':'·'});
+ trs.forEach((t,r)=>{const b=G[r].indexOf(0);t.classList.toggle('ok',b<0);t.textContent=b<0?'✓ adotou':ADK[b][0]+' · '+ADK[b][1]});
+ const B=col.findIndex(v=>v<META);
+ pcs.forEach((p,j)=>{count($('b',p),pct(col[j]));$('s',p).style.setProperty('--w',pct(col[j])+'%');p.classList.toggle('low',col[j]<META);p.classList.toggle('bar',j===B)});
+ $$('.pm-hh>div',SEC).forEach((h,j)=>h.classList.toggle('bar',j===B));
+ cells.forEach(c=>c.classList.toggle('bc',+c.dataset.j===B&&!G[+c.dataset.r][B]));
+ [['p',P],['e',E],['a',A]].forEach(([k,v])=>{const b=$(`.pm-bar[data-k="${k}"]`,SEC);$('i b',b).style.width=pct(v)+'%';count($('em',b),pct(v))});
+ count($('.pm-ring b',SEC),pct(A));$('.pm-ring .fg',SEC).style.strokeDasharray=`${pct(A)} 100`;
+ const bl=$('.pm-bl',SEC);bl.classList.toggle('ok',B<0);bl.textContent=B<0?'✓':ADK[B][0];
+ $('.pm-bn',SEC).textContent=B<0?'Sem barreira: adoção sustentada':`${ADK[B][0]} · ${ADK[B][1]} (${pct(col[B])}%, meta 70%)`;
+ $('.pm-ba',SEC).textContent=B<0?'Reconheça o time, mantenha a medição e cuide de quem ainda trava.':ADK[B][2];
+ if(B!==lastB){bl.classList.remove('in');void bl.offsetWidth;bl.classList.add('in');lastB=B}
+ return A}
+function load(i,snd=true){cur=i;G=PRE[i].d.map(s=>[...s].map(Number));$$('button',pre).forEach((b,k)=>b.classList.toggle('on',k===i));
+ cells.forEach((c,n)=>{c.classList.remove('flip');void c.offsetWidth;c.style.animationDelay=(n%5)*40+Math.floor(n/5)*30+'ms';c.classList.add('flip')});
+ const A=calc();if(snd)A>=META?ding():tone(300+i*120,.15,'sine',.05,700)}
+pre.addEventListener('click',e=>{const b=e.target.closest('button');if(b)load(+b.dataset.i)});
+body.addEventListener('click',e=>{const c=e.target.closest('.pm-c');if(!c)return;const r=+c.dataset.r,j=+c.dataset.j;G[r][j]=G[r][j]?0:1;$$('button',pre).forEach(b=>b.classList.remove('on'));
+ c.classList.remove('flip');c.style.animationDelay='0ms';void c.offsetWidth;c.classList.add('flip');tone(G[r][j]?700:380,.08,'sine',.05);calc()});
+DECK.register('pea-medir',{
+ enter(){lastB=-2;$$('[data-v]',SEC).forEach(x=>x.dataset.v=0);load(0,false)},
+ step(d){const n=cur+d;if(n<0||n>=PRE.length)return false;load(n);return true}
+});
+})();
+</script>
+<script>/* ===== 10-fim ===== */
+(()=>{const {$,ding}=DECK, SEC=DECK.el('fim');
+$('#s5Wheel',SEC).addEventListener('click',()=>document.getElementById('bWheel')?.click());
+DECK.register('fim',{enter(){setTimeout(ding,500)}});
 })();
 </script>
 <script>DECK.start()</script>

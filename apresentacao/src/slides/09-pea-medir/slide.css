@@ -1,0 +1,73 @@
+/* =====================================================================
+   04 · PEA · como medir  (prefixo pm-, escopo .slide[data-id="pea-medir"])
+   ===================================================================== */
+.pm-pre{display:flex;gap:4px;padding:3px;border-radius:99px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05)}
+.pm-pre button{height:28px;padding:0 12px;border-radius:99px;font:600 12px var(--fb);color:var(--grey-700);white-space:nowrap;transition:background .25s,color .25s}
+.pm-pre button:hover{color:var(--orange-600)}
+.pm-pre button.on{background:var(--navy-800);color:#fff}
+.pm-steps{flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:-6px 0 14px}
+.pm-steps div{display:flex;align-items:center;gap:12px;padding:9px 14px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.pm-steps b{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--fm);color:#fff;background:var(--orange-500)}
+.pm-steps span{font-size:13.5px;line-height:1.3;color:var(--grey-700)}
+.pm-steps em{font-style:normal;font-weight:700;color:var(--navy-800)}
+.pm-grid{display:grid;grid-template-columns:minmax(0,1fr) 470px;gap:20px}
+/* ---------- tabela ---------- */
+.pm-tb{display:flex;flex-direction:column;padding:12px 18px 12px}
+.pm-row{display:grid;grid-template-columns:128px repeat(5,minmax(0,1fr)) 116px;gap:8px;align-items:center}
+.pm-br{height:22px}
+.pm-br i{font:600 9.5px var(--fm);font-style:normal;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:3px 0;border-radius:6px;color:#fff}
+.pm-br .p{background:var(--navy-700)}.pm-br .e{background:var(--steel-500)}.pm-br .a{background:var(--orange-500)}
+.pm-hh{padding:8px 0 8px;border-bottom:1px solid var(--line);align-items:end}
+.pm-hh div{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.pm-hh em{font:800 15px var(--fb);font-style:normal;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--orange-100);color:var(--orange-600)}
+.pm-hh b{font-size:12px;font-weight:600;line-height:1.25;color:var(--navy-800)}
+.pm-hh .label:last-child{text-align:center}
+.pm-hh>div.bar em{background:var(--orange-500);color:#fff}
+.pm-body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-around}
+.pm-pr{padding:3px 0;border-bottom:1px dashed var(--line)}
+.pm-who{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--navy-800)}
+.pm-who i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--fb);font-style:normal;color:#fff;background:var(--c)}
+.pm-c{justify-self:center;width:34px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:800;color:var(--grey-300);background:var(--off);border:1px solid var(--line);transition:background .3s,color .3s,transform .35s var(--spring),border-color .3s}
+.pm-c:hover{border-color:var(--orange-400);transform:scale(1.08)}
+.pm-c.y{background:#2ECC71;border-color:#2ECC71;color:#fff}
+.pm-c.flip{animation:pmFlip .45s var(--spring)}
+@keyframes pmFlip{0%{transform:rotateY(90deg) scale(.8)}100%{transform:none}}
+.pm-c.bc{box-shadow:0 0 0 2px var(--orange-400)}
+.pm-tr{justify-self:center;font:600 10px var(--fm);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:99px;white-space:nowrap;background:var(--orange-100);color:var(--orange-600);transition:all .3s}
+.pm-tr.ok{background:rgba(46,204,113,.14);color:#1E8E4F}
+.pm-ft{padding-top:10px;border-top:1px solid var(--line)}
+.pm-ft .label{color:var(--navy-800)}
+.pm-pc{display:flex;flex-direction:column;align-items:center;gap:4px}
+.pm-pc b{font:700 13px var(--fm);color:var(--navy-800)}
+.pm-pc i{position:relative;width:80%;height:5px;border-radius:99px;background:var(--steel-100);overflow:hidden}
+.pm-pc i::before{content:"";position:absolute;left:70%;top:0;bottom:0;width:1px;background:var(--navy-800);opacity:.5;z-index:1}
+.pm-pc i s{position:absolute;inset:0;width:var(--w);background:var(--steel-500);border-radius:inherit;transition:width .7s var(--ease),background .3s}
+.pm-pc.low b{color:var(--orange-600)}.pm-pc.low i s{background:var(--orange-500)}
+.pm-pc.bar{background:var(--orange-100);border-radius:8px;padding:3px 0}
+/* ---------- medidores ---------- */
+.pm-r{display:flex;flex-direction:column;gap:14px;min-height:0}
+.pm-ms{flex:1;padding:16px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:8px}
+.pm-big{display:flex;align-items:center;gap:18px}
+.pm-ring{position:relative;width:112px;height:112px;flex:none}
+.pm-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.pm-ring circle{fill:none;stroke-width:11}
+.pm-ring .bg{stroke:rgba(255,255,255,.1)}
+.pm-ring .fg{stroke:var(--orange-500);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1s var(--ease)}
+.pm-ring b{position:absolute;inset:0;display:grid;place-items:center;font:800 28px var(--fb);color:#fff}
+.pm-big .label{color:var(--orange-200)}
+.pm-big p{margin-top:6px;font-size:14.5px;line-height:1.4;color:var(--steel-200)}.pm-big p b{color:#fff}
+.pm-bar{display:grid;grid-template-columns:108px minmax(0,1fr) 46px;align-items:center;column-gap:10px;row-gap:2px}
+.pm-bar span{font-size:14px;font-weight:700;color:#fff}
+.pm-bar i{height:9px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.pm-bar i b{display:block;height:100%;width:0;border-radius:inherit;transition:width .9s var(--ease)}
+.pm-bar[data-k="p"] i b{background:var(--steel-300)}.pm-bar[data-k="e"] i b{background:var(--steel-500)}.pm-bar[data-k="a"] i b{background:var(--orange-500)}
+.pm-bar em{font:700 14px var(--fm);font-style:normal;color:#fff;text-align:right}
+.pm-bar small{grid-column:2/4;font-size:11.5px;color:var(--steel-300)}.pm-bar small b{color:var(--steel-200)}
+.pm-bx{flex:none;padding:14px 20px 14px}
+.pm-bh{display:flex;align-items:center;gap:14px;margin-top:10px}
+.pm-bl{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:800 28px var(--fb);color:#fff;background:var(--orange-500)}
+.pm-bl.ok{background:#2ECC71}
+.pm-bl.in{animation:peLetter .7s var(--spring)}
+.pm-bn{display:block;font-size:17px;font-weight:800;color:var(--navy-900)}
+.pm-ba{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;color:var(--grey-700)}
+.pm-nm{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:13px;font-weight:600;color:var(--navy-700)}

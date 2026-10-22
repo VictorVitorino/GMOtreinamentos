@@ -39,7 +39,7 @@ for(let t=0;t<2;t++)TW[t].pts.forEach((p,k)=>cable(p,TW[t+1].pts[k],'agc'+n++,k<
 TW[2].pts.forEach((p,k)=>cable(p,[p[0]+420,p[1]+40],'agc'+n++,k<6?2.6:0,-k*.3));
 svg.insertBefore(cab,svg.querySelector('.tw'));
 /* ---------- interação ---------- */
-const hot=i=>{TW.forEach((t,k)=>t.g.classList.toggle('hot',k===i));$$('.ag-it',SEC).forEach((li,k)=>li.classList.toggle('hot',k===i))};
+const hot=i=>{svg.classList.toggle('pea',i===3);TW.forEach((t,k)=>t.g.classList.toggle('hot',k===i));$$('.ag-it',SEC).forEach((li,k)=>li.classList.toggle('hot',k===i))};
 $$('.ag-it',SEC).forEach((li,i)=>{li.addEventListener('mouseenter',()=>{hot(i);tone(440+i*120,.1,'sine',.04,880)});li.addEventListener('mouseleave',()=>hot(-1));li.addEventListener('focusin',()=>hot(i))});
 TW.forEach((t,i)=>{t.g.style.pointerEvents='stroke';t.g.style.cursor='pointer';t.g.addEventListener('mouseenter',()=>hot(i));t.g.addEventListener('mouseleave',()=>hot(-1));t.g.addEventListener('click',()=>DECK.go($$('.ag-main',SEC)[i].dataset.go))});
 $$('[data-go]',SEC).forEach(b=>b.addEventListener('click',()=>{tone(660,.1,'sine',.05,990);DECK.go(b.dataset.go)}));

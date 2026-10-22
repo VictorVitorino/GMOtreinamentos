@@ -11,8 +11,8 @@
 .ag-left{position:absolute;left:140px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center}
 .ag-logos{position:absolute;left:0;top:56px;display:flex;align-items:center;gap:16px}
 .ag-logos i{width:1px;height:26px;background:rgba(163,184,214,.3)}
-.ag-h{font-size:64px;font-weight:600;letter-spacing:-.02em;color:var(--steel-300);margin:0 0 34px}
-.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.ag-h{font-size:64px;font-weight:600;letter-spacing:-.02em;color:var(--steel-300);margin:40px 0 26px}
+.ag-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
 .ag-it{display:flex;flex-direction:column;gap:6px}
 .ag-main{display:flex;align-items:center;gap:34px;background:none;color:#fff;text-align:left;cursor:pointer}
 .ag-main b{width:46px;font-size:64px;line-height:1;font-weight:300;color:var(--orange-400);transition:transform .35s var(--spring),color .25s}
@@ -38,3 +38,6 @@
 .ag-art .cloud{fill:#fff;opacity:.92;animation:agCloud linear infinite alternate}
 @keyframes agCloud{from{transform:translateX(0)}to{transform:translateX(-60px)}}
 .play .ag-art .tw path{stroke-dasharray:1;stroke-dashoffset:1;animation:agDraw 1.6s var(--ease) forwards;animation-delay:calc(var(--t)*260ms + 500ms)}
+.ag-art .cab{transition:stroke .4s}
+.ag-art.pea .cab{stroke:rgba(255,178,127,.9)}
+.ag-art.pea .pulse{r:5px}
