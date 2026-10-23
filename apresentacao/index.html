@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-#fern .fig img[alt="Felipe"]{width:78%;margin-left:auto}
 /* =====================================================================
    TREINAMENTO · GESTÃO DE MUDANÇAS
    Alvarez & Marsal · Digital & Technology Services
@@ -244,6 +243,33 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .slide[data-id="capa"] .cv-st:not(.on):hover{color:#fff}
 .slide[data-id="capa"] .cv-go{margin-left:6px;height:30px;min-width:112px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;border-radius:99px;border:1px solid rgba(255,138,76,.65);background:linear-gradient(150deg,rgba(242,107,33,.34),rgba(217,82,26,.2));color:#FFE6D8;font:700 12.5px var(--fb);letter-spacing:.01em;white-space:nowrap;box-shadow:0 0 14px rgba(242,107,33,.28);transition:background .2s,box-shadow .2s,color .2s}
 .slide[data-id="capa"] .cv-go:hover{background:linear-gradient(150deg,var(--orange-500),var(--orange-600));color:#fff;box-shadow:0 0 22px rgba(242,107,33,.55)}
+
+/* ===== 00-regras ===== */
+/* =====================================================================
+   Boas práticas da sessão (prefixo rg-, escopo .slide[data-id="regras"])
+   ===================================================================== */
+.rg-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;min-height:0;padding-bottom:6px}
+.rg-c{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:20px;padding:84px 28px 30px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.06),0 6px 18px rgba(11,37,69,.08);cursor:pointer;transition:transform .45s var(--spring),box-shadow .35s,border-color .35s,opacity .4s}
+.rg-c[data-k="0"]{--c1:var(--navy-600);--c2:var(--navy-800)}
+.rg-c[data-k="1"]{--c1:var(--steel-500);--c2:var(--navy-600)}
+.rg-c[data-k="2"]{--c1:var(--orange-400);--c2:var(--orange-600)}
+.rg-c[data-k="3"]{--c1:var(--navy-500);--c2:var(--navy-700)}
+.rg-c::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;border-radius:20px 20px 0 0;background:linear-gradient(90deg,var(--c1),var(--c2))}
+.rg-c.hide{opacity:.18;transform:translateY(14px)}
+.rg-c.cur{transform:translateY(-8px);border-color:var(--orange-400);box-shadow:0 22px 44px rgba(11,37,69,.18)}
+.rg-n{position:absolute;right:22px;top:22px;font:800 80px/1 var(--fb);letter-spacing:-.04em;color:var(--steel-100)}
+.rg-e{width:156px;height:156px;border-radius:40px;display:grid;place-items:center;font-size:92px;line-height:1;background:linear-gradient(150deg,var(--c1),var(--c2));box-shadow:inset 0 -5px 0 rgba(0,0,0,.18);margin-top:8px}
+.rg-c.cur .rg-e{animation:rgWob .8s var(--spring)}
+@keyframes rgWob{30%{transform:rotate(-9deg) scale(1.1)}60%{transform:rotate(6deg)}}
+.rg-c h3{font-size:32px;line-height:1.1;font-weight:800;letter-spacing:-.03em;color:var(--navy-900)}
+.rg-c p{font-size:22px;line-height:1.45;color:var(--grey-700)}
+.rg-c p b{color:var(--navy-900)}
+.rg-em{display:flex;gap:10px;margin-top:2px}
+.rg-em button{width:72px;height:72px;border-radius:20px;font-size:40px;line-height:1;background:var(--off);border:1px solid var(--line);transition:transform .3s var(--spring),background .25s}
+.rg-em button:hover{transform:translateY(-4px) scale(1.08);background:var(--orange-100)}
+.rg-say{min-height:60px;font-size:22px;line-height:1.25;font-weight:800;color:var(--orange-600)}
+.rg-say.in{animation:rgIn .45s var(--ease)}
+@keyframes rgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* ===== 01-agenda ===== */
 /* =====================================================================
@@ -2973,7 +2999,18 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 @keyframes wave{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}
 
 /* =====================================================================
-   RODA DA MUDANÇA (tecla R)
+   ROGERINHO (tecla R): atravessa a tela a cavalo
+   ===================================================================== */
+#rog{position:absolute;left:0;bottom:46px;width:430px;z-index:90;pointer-events:none;transform:translateX(-120%)}
+#rog img{width:100%;display:block;filter:drop-shadow(0 18px 22px rgba(4,16,31,.4));transform-origin:50% 90%}
+#rog.go{animation:rogRun 6.2s linear forwards}
+#rog.go img{animation:rogTrot .46s ease-in-out infinite}
+@keyframes rogRun{from{transform:translateX(-120%)}to{transform:translateX(1700px)}}
+@keyframes rogTrot{0%,100%{transform:translateY(0) rotate(-2.5deg)}50%{transform:translateY(-22px) rotate(2.5deg)}}
+#rog b{position:absolute;left:62%;top:-26px;background:#fff;color:var(--navy-900);font:800 22px var(--fb);padding:8px 16px;border-radius:18px 18px 18px 4px;box-shadow:0 10px 24px rgba(4,16,31,.3);white-space:nowrap}
+
+/* =====================================================================
+   RODA DA MUDANÇA (tecla W)
    ===================================================================== */
 #wheel{position:absolute;inset:0;z-index:85;display:none;background:radial-gradient(900px 600px at 30% 50%,rgba(27,68,121,.6),transparent 70%),rgba(4,16,31,.95);color:#fff}
 #wheel.on{display:block;animation:aF .35s var(--ease)}
@@ -3151,6 +3188,44 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
     <button type="button" class="cv-go">✦ Evoluir</button>
   </div>
   <span class="cv-tag" data-a="fade" style="--d:9">Edição 2026</span>
+</section>
+
+<!-- ===== 00-regras ===== -->
+<!-- ===================================================== BOAS PRÁTICAS DA AGENDA -->
+<section data-id="regras" class="slide rg" data-t="Boas práticas da sessão" data-rail="Agenda">
+  <template class="info"><h5>Contexto</h5><p>Quatro combinados para a sessão render e ficar leve: câmera ligada, pelo menos uma interação de cada pessoa, uma dinâmica surpresa em que <b>quem quer participar se habilita</b> (ninguém é escolhido) e um emoji para dizer que dá para continuar.</p><h5>Como usar</h5><ul><li><b>→</b> revela um combinado por vez; depois segue para a Agenda.</li><li>Clique num combinado para destacá-lo. No último, clique nos emojis para testar.</li></ul><h5>Em números</h5><div class="nums"><div><b>4</b><span>combinados</span></div><div><b>1</b><span>interação por pessoa, no mínimo</span></div></div></template>
+  <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
+  <div class="body">
+    <div class="hd">
+      <div><div class="eyebrow" data-a="fade">Combinados · Boas práticas</div><h2 class="h2"><span class="kw" style="--k:1"><span>Quatro combinados</span></span> <span class="kw" style="--k:3"><span class="hl">para aproveitarmos juntos.</span></span></h2></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Avance com <kbd>→</kbd> para ver um por vez</span></div>
+    </div>
+    <div class="main rg-grid">
+      <article class="rg-c" data-k="0" data-a="up" style="--d:2">
+        <span class="rg-n">1</span><div class="rg-e">📷</div>
+        <h3>Câmera ligada</h3>
+        <p>Todo mundo de câmera ligada. Eu vejo você, você me vê, e a conversa fica viva.</p>
+      </article>
+      <article class="rg-c" data-k="1" data-a="up" style="--d:3">
+        <span class="rg-n">2</span><div class="rg-e">🙋</div>
+        <h3>Pelo menos uma interação</h3>
+        <p>Todo mundo participa. Pergunta, comentário ou reação: <b>ao menos uma vez</b> cada pessoa.</p>
+      </article>
+      <article class="rg-c" data-k="2" data-a="up" style="--d:4">
+        <span class="rg-n">3</span><div class="rg-e">🎲</div>
+        <h3>Dinâmica surpresa</h3>
+        <p>Pode surgir a qualquer momento. Quem quiser participar <b>se habilita</b>: eu não escolho ninguém.</p>
+      </article>
+      <article class="rg-c" data-k="3" data-a="up" style="--d:5">
+        <span class="rg-n">4</span><div class="rg-e">👍</div>
+        <h3>Emoji para continuar</h3>
+        <p>Use um emoji para dizer que dá para seguir. Experimente:</p>
+        <div class="rg-em"><button type="button" data-t="Pode seguir!">👍</button><button type="button" data-t="Espera um pouco!">✋</button><button type="button" data-t="Não entendi, explica de novo!">🤔</button></div>
+        <div class="rg-say"></div>
+      </article>
+    </div>
+  </div>
+  <footer class="foot"><span class="src"></span></footer>
 </section>
 
 <!-- ===== 01-agenda ===== -->
@@ -3819,7 +3894,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 <!-- ===== 07-onde ===== -->
 <!-- ===================================================== 07 · ONDE USAR -->
 <section data-id="onde" class="slide s5" data-t="Onde usar cada uma" data-rail="Metodologias" data-src="Matriz de aplicabilidade: curadoria do treinamento com base no foco de cada abordagem (Kotter: organização/liderança; ADKAR: indivíduo; HCMBOK: projeto; CMAK: medição). Não é ranking científico: as abordagens se combinam.">
-  <template class="info"><h5>Contexto</h5><p>Qual abordagem é protagonista em cada tipo de mudança. As abordagens não competem: se combinam.</p><h5>Como usar</h5><ul><li>Clique num cenário para ver a receita, ou use <b>→</b> para percorrer os cenários.</li><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul><h5>Em números</h5><div class="nums"><div><b>7</b><span>cenários</span></div><div><b>4</b><span>abordagens</span></div></div></template>
+  <template class="info"><h5>Contexto</h5><p>Qual abordagem é protagonista em cada tipo de mudança. As abordagens não competem: se combinam.</p><h5>Como usar</h5><ul><li>Clique num cenário para ver a receita, ou use <b>→</b> para percorrer os cenários.</li><li><b>Girar a Roda da Mudança</b> (ou <kbd>W</kbd>) abre a rodada relâmpago.</li></ul><h5>Em números</h5><div class="nums"><div><b>7</b><span>cenários</span></div><div><b>4</b><span>abordagens</span></div></div></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
@@ -4605,12 +4680,12 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 <!-- ===== 16-fim ===== -->
 <!-- ===================================================== ENCERRAMENTO -->
 <section data-id="fim" class="slide s5 fin" data-t="Três ideias para levar" data-rail="Encerramento">
-  <template class="info"><h5>Contexto</h5><p>O encerramento volta à borboleta da capa: o voo é a mudança <b>adotada</b>. Três ideias para levar e a pergunta da Isabella para a turma.</p><h5>Como usar</h5><ul><li><b>Girar a Roda da Mudança</b> (ou <kbd>R</kbd>) abre a rodada relâmpago.</li></ul></template>
+  <template class="info"><h5>Contexto</h5><p>O encerramento volta à borboleta da capa: o voo é a mudança <b>adotada</b>. Três ideias para levar e a pergunta da Isabella para a turma.</p><h5>Como usar</h5><ul><li><b>Girar a Roda da Mudança</b> (ou <kbd>W</kbd>) abre a rodada relâmpago.</li></ul></template>
   <header class="top"><div class="brand"><span class="am-logo"></span><span class="brand-div"></span><img class="dts-logo" src="assets/logo-dts.png" alt="DTS"></div><div class="top-title"><span>Treinamento</span><b>Gestão de Mudanças</b></div><div class="top-right"><span class="pg"></span></div></header>
   <div class="body">
     <div class="hd">
       <div><div class="eyebrow" data-a="fade">Encerramento · Para levar</div><h2 class="h2"><span class="kw" style="--k:1"><span>A borboleta só voa sozinha</span></span> <span class="kw" style="--k:3"><span class="hl">quando a mudança é adotada.</span></span></h2></div>
-      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Fim do treinamento · <kbd>R</kbd> abre a Roda</span></div>
+      <div class="hd-r" data-a="fade" style="--d:4"><span class="hint">Fim do treinamento · <kbd>W</kbd> abre a Roda</span></div>
     </div>
     <div class="main">
             <div class="s5-fin" id="s5Fin">
@@ -4631,7 +4706,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
           <div class="card fin-idea" data-f><span class="n">03</span><div><span class="tg">03 · Metodologias</span><b>Não existe a melhor abordagem: <em>existe a combinação certa.</em></b><span>Kotter, ADKAR, HCMBOK e CMAK se somam conforme o desafio.</span></div></div>
         </div>
         <div class="fin-isa" data-f>
-          <div class="bubble tail-b"><span class="who">Isabella pergunta</span><p>E você: qual mudança da sua área vai conduzir primeiro? <b>E qual combinação ela pede?</b></p><button type="button" class="fin-wh" id="s5Wheel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 3v6.8M12 14.2V21M3 12h6.8M14.2 12H21M5.6 5.6l4.8 4.8M13.6 13.6l4.8 4.8M18.4 5.6l-4.8 4.8M10.4 13.6l-4.8 4.8"/></svg>Girar a Roda da Mudança <kbd>R</kbd></button></div>
+          <div class="bubble tail-b"><span class="who">Isabella pergunta</span><p>E você: qual mudança da sua área vai conduzir primeiro? <b>E qual combinação ela pede?</b></p><button type="button" class="fin-wh" id="s5Wheel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 3v6.8M12 14.2V21M3 12h6.8M14.2 12H21M5.6 5.6l4.8 4.8M13.6 13.6l4.8 4.8M18.4 5.6l-4.8 4.8M10.4 13.6l-4.8 4.8"/></svg>Girar a Roda da Mudança <kbd>W</kbd></button></div>
           <div class="char"><div class="idle"><img src="assets/isabella.webp" alt="Isabella"></div><i class="floor"></i></div>
         </div>
       </div>
@@ -4641,9 +4716,10 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 </section>
 
 <!-- ===================================================== FERNANDO -->
-<div id="cast-srcs" hidden><img class="cast-src" data-k="n" src="assets/fernando_peek.webp" alt="" hidden><img class="cast-src" data-k="f" src="assets/felipe_peek.webp" alt="" hidden><img class="cast-src" data-k="m" src="assets/marcelo_peek.webp" alt="" hidden><img class="cast-src" data-k="v" src="assets/vitor_peek.webp" alt="" hidden></div>
+<div id="cast-srcs" hidden><img class="cast-src" data-k="f" src="assets/fernando_peek.webp" alt="" hidden><img class="cast-src" data-k="m" src="assets/marcelo_peek.webp" alt="" hidden><img class="cast-src" data-k="v" src="assets/vitor_peek.webp" alt="" hidden></div>
+<div id="rog" aria-hidden="true"><b>Iiirra! 🐴</b><img src="assets/rogerinho.webp" alt="Rogerinho"></div>
 <div id="fern" class="p-right" aria-live="polite">
-  <div class="fig"><img src="assets/fernando_peek.webp" alt="Fernando"></div>
+  <div class="fig"><img src="assets/fernando_peek.webp" alt="Felipe"></div>
   <div class="fb" id="fernB"></div>
 </div>
 
@@ -4666,7 +4742,7 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 
 <nav id="rail" aria-label="Capítulos"></nav>
 <div id="controls">
-  <button type="button" class="wh" id="bWheel" title="Roda da Mudança (R)" aria-label="Roda da Mudança"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 3v6.8M12 14.2V21M3 12h6.8M14.2 12H21M5.6 5.6l4.8 4.8M13.6 13.6l4.8 4.8M18.4 5.6l-4.8 4.8M10.4 13.6l-4.8 4.8"/></svg></button>
+  <button type="button" class="wh" id="bWheel" title="Roda da Mudança (W)" aria-label="Roda da Mudança"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 3v6.8M12 14.2V21M3 12h6.8M14.2 12H21M5.6 5.6l4.8 4.8M13.6 13.6l4.8 4.8M18.4 5.6l-4.8 4.8M10.4 13.6l-4.8 4.8"/></svg></button>
   <button type="button" class="g" id="bInfo" title="Sobre este slide (I)" aria-expanded="false"><span class="ii">i</span><span class="lb">Sobre este slide</span></button>
   <span class="sep"></span>
   <button type="button" class="g" id="bPrev" title="Voltar (←)"><span class="ar">←</span><span class="lb">Voltar</span></button>
@@ -4726,25 +4802,23 @@ window.DECK={$,$$,stage,tone,boing,ding,go,next,prev,
 /* ---------- ELENCO: um personagem por tecla (edite aqui) ---------- */
 const POS=['p-right','p-bottom','p-left','p-top'];
 const CAST={
- n:{nome:'Fernando',img:'assets/fernando_peek.webp',falas:[
-  {t:'Tá prestando atenção? <span class="wave">👀</span>'},{t:'Tá entendendo? 🤔'},{t:'Posso seguir? 👍'},
+ f:{nome:'Felipe',img:'assets/fernando_peek.webp',falas:[
+  {t:'Tá prestando atenção? <span class="wave">👀</span>'},{t:'Alguma dúvida até aqui? 🙋'},{t:'Tá fazendo sentido pra vocês? 🤔'},
   {t:'Hora de participar! ⚡<br>Rodada relâmpago: vamos girar a Roda da Mudança!',btn:1}]},
- f:{nome:'Felipe',img:'assets/felipe_peek.webp',falas:[
-  {t:'Alguma dúvida até aqui? 🙋'},{t:'Tá fazendo sentido pra vocês? 🤔'},{t:'Bora para o próximo? 🚀'}]},
  m:{nome:'Marcelo',img:'assets/marcelo_peek.webp',falas:[
   {t:'Posso seguir? 👍'},{t:'Gente, isso é importante! ☝️'},{t:'Anotaram essa? ✍️'}]},
  v:{nome:'Vitor Bravo',img:'assets/vitor_peek.webp',falas:[
   {t:'Pow, bixo… bora prestar atenção! 😤'},{t:'Ô, meu irmão! Tá todo mundo acordado aí? 😒'},{t:'Caraca, assim não dá, hein! 🙄'}]}
 };
-(()=>{const f=$('#fern'),b=$('#fernB'),img=$('img',f);let who='n',k={},timer=null,pend=null,visible=false;
+(()=>{const f=$('#fern'),b=$('#fernB'),img=$('img',f);let who='f',k={},timer=null,pend=null,visible=false;
 function hide(){f.classList.remove('on');visible=false;clearTimeout(timer);clearTimeout(pend)}
 function showF(key){clearTimeout(timer);clearTimeout(pend);const C=CAST[key],i=(k[key]||0)%C.falas.length;k[key]=i+1;const F=C.falas[i],pos=POS[i%POS.length];
- const doShow=()=>{clearTimeout(timer);img.src=($('.cast-src[data-k="'+key+'"]')||{}).src||C.img;img.alt=C.nome;f.className=pos;b.innerHTML=`<small>${C.nome}</small>${F.t}${F.btn?'<br><button type="button" id="fGo">🎡 Girar a roda <kbd>R</kbd></button>':''}`;void f.offsetWidth;f.classList.add('on');visible=true;boing();const g=$('#fGo');if(g)g.onclick=()=>{hide();openWheel()};if(!F.btn)timer=setTimeout(hide,6500)};
+ const doShow=()=>{clearTimeout(timer);img.src=($('.cast-src[data-k="'+key+'"]')||{}).src||C.img;img.alt=C.nome;f.className=pos;b.innerHTML=`<small>${C.nome}</small>${F.t}${F.btn?'<br><button type="button" id="fGo">🎡 Girar a roda <kbd>W</kbd></button>':''}`;void f.offsetWidth;f.classList.add('on');visible=true;boing();const g=$('#fGo');if(g)g.onclick=()=>{hide();openWheel()};if(!F.btn)timer=setTimeout(hide,6500)};
  if(visible){f.classList.remove('on');pend=setTimeout(doShow,380)}else doShow()}
-window.cast=key=>showF(key);window.fernando=()=>showF('n');window.fernHide=hide;window.fernVisible=()=>visible;
+window.cast=key=>showF(key);window.fernando=()=>showF('f');window.fernHide=hide;window.fernVisible=()=>visible;
 b.addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')hide()})})();
 
-/* ---------- RODA DA MUDANÇA (R) ---------- */
+/* ---------- RODA DA MUDANÇA (W) ---------- */
 const QS=[
  {c:'ADKAR',q:'O que significa o “D” do ADKAR, e por que ele vem antes do “K”?',a:'<b>Desire · Desejo.</b> Não adianta treinar (Knowledge) quem ainda não quer mudar: o treinamento vira desperdício.'},
  {c:'Kotter',q:'Qual é a primeira das 8 etapas de Kotter?',a:'<b>Criar senso de urgência.</b> Sem um “porquê agora”, a organização não sai do lugar.'},
@@ -4821,6 +4895,10 @@ addEventListener('pointerdown',e=>{if(idxP.classList.contains('on')&&!e.target.c
 addEventListener('click',e=>{if(!e.detail)return;const b=e.target.closest?.('button,[role=button],[tabindex="0"]');if(b)setTimeout(()=>{if(document.activeElement===b)b.blur()})},true);
 
 /* ---------- controles ---------- */
+/* Rogerinho (R): passa a cavalo na frente da tela */
+(()=>{const r=$('#rog');let t=null,clop=null;
+window.rogerinho=()=>{if(r.classList.contains('go'))return;window.fernHide&&window.fernHide();r.classList.remove('go');void r.offsetWidth;r.classList.add('go');let n=0;clearInterval(clop);clop=setInterval(()=>{tone(n++%2?180:140,.07,'triangle',.05,100)},230);clearTimeout(t);t=setTimeout(()=>{r.classList.remove('go');clearInterval(clop)},6300)}})();
+
 const fs=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};
 document.addEventListener('fullscreenchange',fit);
 $('#bNext').onclick=next;$('#bPrev').onclick=prev;$('#bWheel').onclick=()=>openWheel();
@@ -4829,7 +4907,7 @@ addEventListener('keydown',e=>{if(e.target.matches('input,textarea,[contentedita
  if(e.ctrlKey||e.metaKey||e.altKey)return;
  if(k==='F5'){e.preventDefault();if(!document.fullscreenElement)fs();return}
  if($('#blackout').classList.contains('on')){$('#blackout').classList.remove('on');e.preventDefault();return}
- if(wheelOn()){if(k==='Escape'||k==='r'||k==='R')closeWheel();
+ if(wheelOn()){if(k==='Escape'||k==='w'||k==='W')closeWheel();
   else if(k===' '||k==='Enter'||k==='PageDown'||k==='ArrowRight'){if(e.target.closest&&e.target.closest('button')&&(k===' '||k==='Enter'))return;e.preventDefault();wheelSpin(1)}
   else if(k==='PageUp'||k==='ArrowLeft'||k==='Backspace'){e.preventDefault();wheelSpin(-1)}
   else if(k==='b'||k==='B'||k==='.')$('#blackout').classList.add('on');
@@ -4838,7 +4916,8 @@ addEventListener('keydown',e=>{if(e.target.matches('input,textarea,[contentedita
  if(k==='ArrowRight'||k==='PageDown'||k===' '||k==='Enter'){if(e.target.closest&&e.target.closest('button')&&(k===' '||k==='Enter'))return;e.preventDefault();next()}
  else if(k==='ArrowLeft'||k==='PageUp'||k==='Backspace'){e.preventDefault();prev()}
  else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);
- else if(k==='r'||k==='R')openWheel();
+ else if(k==='w'||k==='W')openWheel();
+ else if(k==='r'||k==='R')window.rogerinho();
  else if(k==='i'||k==='I')togInfo();
  else if(k==='t'||k==='T')fs();
  else if(CAST[k.toLowerCase()])window.cast(k.toLowerCase());
@@ -5092,6 +5171,20 @@ let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(r
 DECK.register('capa',{
  enter(){D.length=0;stg=4;shape='scat';prev='scat';OX.fill(0);OY.fill(0);WA.fill(0);setStage(0);sT0=T-.3;start()},
  leave(){D.length=0;mx=my=-999}
+});
+})();
+</script>
+<script>/* ===== 00-regras ===== */
+(()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('regras');
+const C=$$('.rg-c',SEC),SAY=$('.rg-say',SEC);
+let k=0; /* 0 = todos visíveis (entrada) · 1..4 = combinados abertos até o k */
+function show(snd=true){C.forEach((c,i)=>{c.classList.toggle('hide',i>=k&&k>0);c.classList.toggle('cur',i===k-1)});
+ if(snd&&k>0){k===4?ding():tone(480+k*90,.14,'sine',.05,900)}}
+C.forEach((c,i)=>c.addEventListener('click',()=>{k=i+1;show();boing()}));
+$$('.rg-em button',SEC).forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();SAY.textContent=b.textContent+' '+b.dataset.t;SAY.classList.remove('in');void SAY.offsetWidth;SAY.classList.add('in');tone(700,.1,'sine',.05,1000)}));
+DECK.register('regras',{
+ enter(){k=0;SAY.textContent='';show(false)},
+ step(d){const n=k+d;if(n<0||n>4)return false;k=n;show();return true}
 });
 })();
 </script>

@@ -1,0 +1,25 @@
+/* =====================================================================
+   Boas práticas da sessão (prefixo rg-, escopo .slide[data-id="regras"])
+   ===================================================================== */
+.rg-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;min-height:0;padding-bottom:6px}
+.rg-c{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:20px;padding:84px 28px 30px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.06),0 6px 18px rgba(11,37,69,.08);cursor:pointer;transition:transform .45s var(--spring),box-shadow .35s,border-color .35s,opacity .4s}
+.rg-c[data-k="0"]{--c1:var(--navy-600);--c2:var(--navy-800)}
+.rg-c[data-k="1"]{--c1:var(--steel-500);--c2:var(--navy-600)}
+.rg-c[data-k="2"]{--c1:var(--orange-400);--c2:var(--orange-600)}
+.rg-c[data-k="3"]{--c1:var(--navy-500);--c2:var(--navy-700)}
+.rg-c::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;border-radius:20px 20px 0 0;background:linear-gradient(90deg,var(--c1),var(--c2))}
+.rg-c.hide{opacity:.18;transform:translateY(14px)}
+.rg-c.cur{transform:translateY(-8px);border-color:var(--orange-400);box-shadow:0 22px 44px rgba(11,37,69,.18)}
+.rg-n{position:absolute;right:22px;top:22px;font:800 80px/1 var(--fb);letter-spacing:-.04em;color:var(--steel-100)}
+.rg-e{width:156px;height:156px;border-radius:40px;display:grid;place-items:center;font-size:92px;line-height:1;background:linear-gradient(150deg,var(--c1),var(--c2));box-shadow:inset 0 -5px 0 rgba(0,0,0,.18);margin-top:8px}
+.rg-c.cur .rg-e{animation:rgWob .8s var(--spring)}
+@keyframes rgWob{30%{transform:rotate(-9deg) scale(1.1)}60%{transform:rotate(6deg)}}
+.rg-c h3{font-size:32px;line-height:1.1;font-weight:800;letter-spacing:-.03em;color:var(--navy-900)}
+.rg-c p{font-size:22px;line-height:1.45;color:var(--grey-700)}
+.rg-c p b{color:var(--navy-900)}
+.rg-em{display:flex;gap:10px;margin-top:2px}
+.rg-em button{width:72px;height:72px;border-radius:20px;font-size:40px;line-height:1;background:var(--off);border:1px solid var(--line);transition:transform .3s var(--spring),background .25s}
+.rg-em button:hover{transform:translateY(-4px) scale(1.08);background:var(--orange-100)}
+.rg-say{min-height:60px;font-size:22px;line-height:1.25;font-weight:800;color:var(--orange-600)}
+.rg-say.in{animation:rgIn .45s var(--ease)}
+@keyframes rgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
