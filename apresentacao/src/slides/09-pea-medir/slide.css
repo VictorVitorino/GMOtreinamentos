@@ -19,7 +19,7 @@
 .pm-ch b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--navy-900)}
 .pm-ch em{font:500 10px var(--fm);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-500)}
 .pm-g{flex:none;display:flex;flex-direction:column;align-items:center;gap:3px}
-.pm-meta{font:500 10px var(--fm);letter-spacing:.08em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.pm-meta{font:500 11px var(--fm);letter-spacing:.02em;color:var(--grey-500);white-space:nowrap}
 .pm-ring .mk{stroke:var(--navy-800);stroke-width:3;stroke-linecap:round}
 .pm-ring{position:relative;width:76px;height:76px}
 .pm-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
@@ -36,7 +36,7 @@
 @keyframes pmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 /* ---------- pergunta · onde · conta (a parte grande) ---------- */
 .pm-how{flex:1;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;row-gap:14px;align-content:start;align-items:start;padding-top:14px;border-top:1px dashed var(--line)}
-.pm-how dt{font:500 10px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500);padding-top:4px;white-space:nowrap}
+.pm-how dt{font:500 11px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-500);padding-top:4px;white-space:nowrap}
 .pm-how dd{font-size:16.5px;line-height:1.42;color:var(--grey-700)}
 .pm-how dd b{color:var(--navy-900)}
 .pm-how dd.pm-f{padding:10px 14px;border-radius:10px;background:var(--steel-100)}
@@ -56,3 +56,5 @@
 .pm-at b{color:var(--orange-400)}
 .pm-at.in{animation:pmIn .5s var(--ease)}
 .pm-rule{display:block;margin-top:10px;font-size:13px;color:var(--steel-300)}.pm-rule b{color:var(--steel-200)}
+
+.pm-ex.in{animation:pmIn .45s var(--ease)}

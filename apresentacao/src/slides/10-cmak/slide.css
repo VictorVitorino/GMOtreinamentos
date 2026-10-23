@@ -28,16 +28,22 @@
 /* ---------- grade dos 4 cards ---------- */
 .ck-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .ck-slot{position:relative;min-height:0}
-.ck-card{position:absolute;inset:0;perspective:1900px;cursor:pointer}
+.ck-card{position:absolute;inset:0;cursor:pointer}
 .ck-card[data-k="0"]{--c:var(--navy-700);--c2:var(--navy-900);--ct:rgba(19,49,92,.08)}
 .ck-card[data-k="1"]{--c:var(--steel-500);--c2:var(--navy-600);--ct:rgba(74,111,165,.12)}
 .ck-card[data-k="2"]{--c:var(--orange-500);--c2:var(--orange-600);--ct:var(--orange-100)}
 .ck-card[data-k="3"]{--c:var(--navy-500);--c2:var(--navy-700);--ct:rgba(42,90,150,.10)}
-.ck-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .75s var(--ease)}
-.ck-snap .ck-inner{transition:none}
-.ck-card.flip .ck-inner{transform:rotateY(180deg)}
-.ck-face{position:absolute;inset:0;display:flex;flex-direction:column;gap:9px;padding:12px 16px 10px;border-radius:16px;border:1px solid var(--line);border-top:5px solid var(--c);background:#fff;box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:box-shadow .35s}
-.ck-back{transform:rotateY(180deg);background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);border-top-color:var(--c);color:#fff;box-shadow:0 18px 40px rgba(11,37,69,.22)}
+.ck-inner{position:absolute;inset:0}
+/* virada 2D: o card achata até a metade, troca de face e abre de novo; em repouso, sem transform (texto nítido) */
+.ck-inner.turn{animation:ckTurn .56s cubic-bezier(.65,0,.35,1)}
+@keyframes ckTurn{0%{transform:none}50%{transform:scaleX(.02)}100%{transform:none}}
+.ck-face{transition:opacity 0s linear .28s,visibility 0s linear .28s}
+.ck-snap .ck-face{transition:none}
+.ck-back{opacity:0;visibility:hidden}
+.ck-card.flip .ck-back{opacity:1;visibility:visible}
+.ck-card.flip .ck-front{opacity:0;visibility:hidden}
+.ck-face{position:absolute;inset:0;display:flex;flex-direction:column;gap:9px;padding:12px 16px 10px;border-radius:16px;border:1px solid var(--line);border-top:5px solid var(--c);background:#fff;box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);transition:box-shadow .35s,opacity 0s linear .28s,visibility 0s linear .28s}
+.ck-back{background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);border-top-color:var(--c);color:#fff;box-shadow:0 18px 40px rgba(11,37,69,.22)}
 .ck-card:hover .ck-face{box-shadow:0 14px 30px rgba(11,37,69,.16)}
 .ck-card.on .ck-face{box-shadow:0 0 0 2px var(--orange-400),0 18px 40px rgba(11,37,69,.22)}
 /* ---------- cabeçalho de cada face ---------- */
@@ -46,7 +52,8 @@
 .play .ck-ico{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d,3)*90ms + 350ms)}
 .ck-ch>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .ck-ch .ck-lb{letter-spacing:.05em;overflow:hidden;text-overflow:ellipsis}
-.ck-ch b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
+.ck-ch b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900);white-space:nowrap}
+.ck-card[data-k="1"] .ck-ch b{font-size:16.5px}
 .ck-back .ck-ch b{color:#fff}
 .ck-back .ck-lb{color:var(--steel-300)}
 .ck-side{flex:none;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:99px;color:var(--c);background:var(--ct)}

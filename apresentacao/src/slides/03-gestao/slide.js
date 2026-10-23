@@ -45,7 +45,7 @@ function build(){const W=plot.clientWidth,H=plot.clientHeight;if(!W||!H)return;
  const l6=el('g',{class:'gs-an gs-l66'},svg),x66=X(66);el('line',{x1:x66,x2:x66,y1:Y(96)+6,y2:Yb},l6);
  el('text',{class:'b',x:x66-8,y:Yb-34,'text-anchor':'end'},l6,'66 dias');
  el('text',{x:x66-8,y:Yb-20,'text-anchor':'end'},l6,'mediana para um hábito novo');
- el('text',{x:x66-8,y:Yb-7,'text-anchor':'end'},l6,'virar automático · Lally et al. (2010)');
+ el('text',{x:x66-8,y:Yb-7,'text-anchor':'end'},l6,'virar automático');
  /* o evento: dia 1, sala arrumada */
  const s0=el('g',{class:'gs-st'},svg);
  /* curvas */

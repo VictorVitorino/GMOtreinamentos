@@ -12,7 +12,7 @@ const MSG_OFF='Com gestão da mudança fraca ou ausente, os estudos ficam <em>en
 const MSG_ON='Com a mudança gerida, todas sobem: <em>de ≈2× a ≈9× mais chance</em>. Métricas diferentes, mesma direção.';
 const chart=q('.n5-chart'),box=q('.n5-bars'),tg=q('.n5-tg'),ring=q('.n5-ring'),seal=q('.n5-seal'),rv=q('.n5-rv'),msg=q('.n5-cf .msg'),hint=q('.hd-r .hint');
 const HINT_OFF=hint.innerHTML,HINT_ON='Próximo: a caixa de ferramentas · <kbd>→</kbd>';
-box.innerHTML=BARS.map(r=>`<div class="n5-row"><div class="nm"><b>${r.nm}</b><span>${r.src}<br>${r.cmp}</span></div><div class="trk"><i class="base" data-w="${r.a}"></i><i class="boost" style="left:${r.a}%;--bw:${r.b-r.a}%"></i><span class="gap" style="left:${(r.a+r.b)/2}%">+${r.b-r.a} p.p. · ≈${Math.round(r.b/r.a)}×</span></div><div class="val"><b data-v0="${r.a}" data-v1="${r.b}">${r.a}%</b><small data-l0="${r.la}" data-l1="${r.lb}">${r.la}</small></div></div>`).join('');
+box.innerHTML=BARS.map(r=>`<div class="n5-row"><div class="nm"><b>${r.nm}</b><span>${r.cmp}</span></div><div class="trk"><i class="base" data-w="${r.a}"></i><i class="boost" style="left:${r.a}%;--bw:${r.b-r.a}%"></i><span class="gap" style="left:${(r.a+r.b)/2}%">+${r.b-r.a} p.p. · ≈${Math.round(r.b/r.a)}×</span></div><div class="val"><b data-v0="${r.a}" data-v1="${r.b}">${r.a}%</b><small data-l0="${r.la}" data-l1="${r.lb}">${r.la}</small></div></div>`).join('');
 const fmtX=v=>(v===1?'1':(Math.round(v*10)/10).toString().replace('.',','))+'×';
 let on=false,timers=[],raf=new Set();
 const later=(fn,ms)=>timers.push(setTimeout(fn,ms));

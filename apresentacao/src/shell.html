@@ -99,16 +99,16 @@ img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
 /* ---------- tipografia ---------- */
 .hd{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:40px;margin-bottom:20px;flex:none}
 .hd-r{display:flex;flex-direction:column;align-items:flex-end;gap:10px;padding-bottom:4px}
-.eyebrow{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-600);margin-bottom:10px;white-space:nowrap}
+.eyebrow{font-family:var(--fm);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-600);margin-bottom:10px;white-space:nowrap}
 .stage .eyebrow{color:var(--orange-400)}
 .h2{font-weight:800;font-size:40px;line-height:1.08;letter-spacing:-.03em;color:var(--navy-900);white-space:nowrap}
 .stage .h2{color:#fff}
 .lead{font-size:15px;line-height:1.5;color:var(--grey-700);max-width:470px;text-align:right}
 .lead b{color:var(--navy-800)}
 .stage .lead{color:var(--steel-200)}.stage .lead b{color:#fff}
-.label{font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
+.label{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
 .stage .label{color:var(--steel-300)}
-.hint{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10.5px;letter-spacing:.08em;color:var(--grey-500);white-space:nowrap}
+.hint{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11.5px;letter-spacing:.08em;color:var(--grey-500);white-space:nowrap}
 .hint::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange-500);box-shadow:0 0 0 4px rgba(242,107,33,.18)}
 .stage .hint{color:var(--steel-300)}
 kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;border:1px solid currentColor;opacity:.9}
@@ -143,12 +143,18 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .bubble .who{display:block;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey-500);margin-bottom:4px}
 
 
+/* ---------- pílula "hoje" do índice nas frentes ---------- */
+.hj{margin-left:auto;font:700 13px var(--fb);font-style:normal;padding:5px 11px;border-radius:99px;white-space:nowrap}
+.hj.ok{background:rgba(46,204,113,.16);color:#1E8E4F}.hj.am{background:#FFF3C4;color:#8A6100}.hj.ko{background:var(--orange-100);color:var(--orange-600)}
 /* ---------- virar a página: o plano escrito (frentes do capítulo 5) ---------- */
-.pgwrap{flex:1;min-height:0;position:relative;perspective:2600px}
-.pg3d{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.65,0,.35,1)}
-.pl-open .pg3d{transform:rotateY(180deg)}
-.pgface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;min-height:0}
-.pgface.back{transform:rotateY(180deg)}
+/* sem 3D: em repouso nenhuma face tem transform, então o texto é desenhado na escala final (nítido) */
+.pgwrap{flex:1;min-height:0;position:relative}
+.pg3d{position:absolute;inset:0}
+.pgface{position:absolute;inset:0;display:flex;flex-direction:column;min-height:0;transition:opacity .32s var(--ease),transform .42s var(--ease),visibility 0s linear .42s}
+.pgface.back{opacity:0;visibility:hidden;transform:translateY(18px)}
+.pl-open .pgface.front{opacity:0;visibility:hidden;transform:translateY(-18px)}
+.slide:not(.pl-open) .pgface.front,.pl-open .pgface.back{transition:opacity .4s var(--ease) .12s,transform .5s var(--ease) .12s,visibility 0s linear 0s}
+.pl-open .pgface.back{opacity:1;visibility:visible;transform:none}
 .pgbtn{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 12px;border-radius:99px;background:var(--navy-800);color:#fff;font:600 12.5px var(--fb);white-space:nowrap;box-shadow:0 6px 16px rgba(11,37,69,.18);transition:background .25s,transform .3s var(--spring)}
 .pgbtn:hover{background:var(--orange-600);transform:translateY(-1px)}
 .pgbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -458,12 +464,12 @@ const QS=[
  {c:'ADKAR',q:'O que significa o “D” do ADKAR, e por que ele vem antes do “K”?',a:'<b>Desire · Desejo.</b> Não adianta treinar (Knowledge) quem ainda não quer mudar: o treinamento vira desperdício.'},
  {c:'Kotter',q:'Qual é a primeira das 8 etapas de Kotter?',a:'<b>Criar senso de urgência.</b> Sem um “porquê agora”, a organização não sai do lugar.'},
  {c:'Cérebro',q:'No mapa do cérebro (capítulo Mudança), qual “voz” do cérebro pede a mudança, e qual dá o alarme?',a:'O <b>pré-frontal</b> (atrás da testa) guarda a meta: “Quero mudar!”. A <b>amígdala</b> participa da detecção de ameaça: “Cuidado!”. É uma simplificação: o cérebro trabalha em rede.'},
- {c:'Números',q:'Com GMO excelente, quantos % dos projetos atingem os objetivos? E com GMO ruim?',a:'<b>88% contra 13%</b> (Prosci, 2023): cerca de 7× mais chance.'},
- {c:'HCMBOK',q:'O que significa HCMBOK e de onde ele vem?',a:'<b>Human Change Management Body of Knowledge</b>, da HUCMI, com origem no Brasil (Vicente Gonçalves e Carla Campos).'},
+ {c:'Números',q:'Com GMO excelente, quantos % dos projetos atingem os objetivos? E com GMO ruim?',a:'<b>88% contra 13%</b>: cerca de 7× mais chance.'},
+ {c:'HCMBOK',q:'O que significa HCMBOK e de onde ele vem?',a:'<b>Human Change Management Body of Knowledge</b>, da HUCMI, com origem no Brasil.'},
  {c:'CMAK',q:'Cite 3 indicadores que você mediria numa mudança.',a:'Ex.: <b>alcance e compreensão da comunicação, índice de resistência por área, cobertura de treinamento, proficiência e uso real × meta.</b>'},
- {c:'Psicologia',q:'Como se chama a distância entre o que a gente quer fazer e o que a gente faz?',a:'<b>Lacuna intenção–comportamento.</b> A intenção explica só cerca de 28% da variação do comportamento (Sheeran, 2002).'},
+ {c:'Psicologia',q:'Como se chama a distância entre o que a gente quer fazer e o que a gente faz?',a:'<b>Lacuna intenção–comportamento.</b> A intenção explica só cerca de 28% da variação do comportamento.'},
  {c:'Desafio',q:'Todos de pé! Cruzem os braços. Agora cruzem ao contrário. O que vocês sentiram?',a:'Estranheza, desconforto, vontade de voltar. <b>Isso é mudança:</b> o jeito novo não é pior, só não é automático (ainda).'},
- {c:'Hábito',q:'Quanto tempo um hábito novo levou, tipicamente (mediana), para ficar automático no estudo de Lally (2010)?',a:'<b>Mediana de 66 dias</b> (de 18 a 254), e não os famosos 21 dias. Por isso mudar exige sustentar.'},
+ {c:'Hábito',q:'Quanto tempo um hábito novo levou, tipicamente (mediana), para ficar automático segundo a pesquisa?',a:'<b>Mediana de 66 dias</b> (de 18 a 254), e não os famosos 21 dias. Por isso mudar exige sustentar.'},
  {c:'Vacina',q:'Em 1904 a vacinação virou revolta. Em 1980 virou sucesso. O que mudou?',a:'<b>O jeito de conduzir.</b> Em 1904, imposição pela força: a obrigatoriedade caiu em 16 dias. Em 1980, mobilização e comunicação nos Dias Nacionais de Vacinação: os casos de pólio caíram cerca de 90% em um ano.'},
 ];
 const FUN=[
