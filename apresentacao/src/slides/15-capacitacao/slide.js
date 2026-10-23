@@ -1,10 +1,11 @@
 (()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('capacitacao');
 /* passos da frente: 0 = nada revelado · 1..4 = degraus do funil · 5 = medidores (hoje × meta) + leitura do IPT.
-   Depois do 5, um → a mais vira a página (.pl-open: o Plano de Capacitação escrito) · mais um → e o deck troca de slide.
+   Depois do 5, um → a mais vira a página (.pl-open: o Plano de Capacitação da FE) · mais um → e o deck troca de slide.
    ← com o plano aberto fecha o plano; com o plano fechado volta os passos. enter() sempre reinicia: plano fechado, k = 0. */
 const MAX=5;
 const ROWS=$$('.ft-row',SEC),CONS=$$('.ft-con',SEC),GSW=$('.ft-gs',SEC),GS=$$('.ft-g',SEC),READ=$('.ft-read',SEC),RV=$('.ft-rn b',SEC),
-      BTN=$('.pgbtn.flip',SEC),BTNT=$('span',BTN),BACK=$('.pgbtn.back',SEC);
+      BTN=$('.pgbtn.flip',SEC),BTNT=$('span',BTN),BACK=$('.pgbtn.back',SEC),HINT=$('.hint',SEC),HINT0=HINT.innerHTML,
+      HINT1='<kbd>←</kbd> volta ao slide · <kbd>→</kbd> próximo slide';
 let k=0, open=false;
 const ease=t=>1-Math.pow(1-t,3);
 /* contador animado; cada elemento guarda o seu token para cancelar uma contagem antiga */
@@ -28,8 +29,8 @@ function go(n,snd=true){const prev=k;k=Math.max(0,Math.min(MAX,n));show(prev);
  if(snd&&k>prev){k===MAX?ding():tone(380+k*90,.14,'sine',.05,760)}}
 /* clique num degrau: revela até ele; se já está aberto, mostra o número absoluto e a % dos convidados */
 ROWS.forEach((r,i)=>r.addEventListener('click',()=>{if(k<i+1){go(i+1)}else{r.classList.toggle('open');boing()}}));
-/* virar a página: o Plano de Capacitação escrito (classe global .pl-open) · botão do cabeçalho e "Voltar" do documento */
-function flip(on,snd=true){open=on;SEC.classList.toggle('pl-open',on);BTN.setAttribute('aria-pressed',on);BTNT.textContent=on?'Voltar ao slide':'Virar a página · ver o plano';
+/* virar a página: o Plano de Capacitação da FE (classe global .pl-open) · botão do cabeçalho e "Voltar" do documento · hint troca com o plano aberto */
+function flip(on,snd=true){open=on;SEC.classList.toggle('pl-open',on);BTN.setAttribute('aria-pressed',on);BTNT.textContent=on?'Voltar ao slide':'Virar a página · ver o plano';HINT.innerHTML=on?HINT1:HINT0;
  if(snd){on?tone(520,.12,'sine',.05,760):tone(380,.1,'sine',.04)}}
 BTN.addEventListener('click',()=>flip(!open));
 BACK.addEventListener('click',()=>flip(false));

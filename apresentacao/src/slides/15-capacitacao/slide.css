@@ -1,7 +1,9 @@
 /* =====================================================================
    05 · NA PRÁTICA · FRENTE 4 · CAPACITAÇÃO  (prefixo ft-, escopo .slide[data-id="capacitacao"])
    frente da página: esquerda = o que é + como fazer · direita = funil da fase 1 + 3 medidores (hoje × meta) + leitura do IPT
-   verso da página (.pl-open, classes globais .pgwrap/.pldoc/.pltab): o Plano de Capacitação escrito, 6 públicos × 8 decisões
+   (o funil e os medidores são um exemplo de outro projeto)
+   verso da página (.pl-open, classes globais .pgwrap/.pldoc/.pltab): o Plano de Capacitação da FE, 6 públicos × 7 decisões
+   a virada é 2D (shell): nada de 3D e nenhum bloco de texto fica com transform em repouso (texto nítido)
    ===================================================================== */
 .slide[data-id="capacitacao"]{--ft-c:var(--navy-500);--ft-c2:var(--navy-700);--ft-ct:rgba(42,90,150,.09);--ft-ok:#2ECC71;--ft-okt:#1E8E4F;--ft-am:#F2B51D;--ft-amt:#6B4F00}
 .ft-main{display:flex;flex-direction:column;gap:14px}
@@ -16,15 +18,15 @@
 .ft-what{flex:none;padding:15px 20px 16px;border-top:5px solid var(--ft-c);display:flex;flex-direction:column;gap:12px}
 .ft-wh{display:flex;align-items:center;gap:12px}
 .ft-ico{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--ft-c),var(--ft-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
-.play .ft-ico{animation:ftLetter .9s var(--spring) both;animation-delay:calc(var(--d,2)*90ms + 350ms)}
+.play .ft-ico{animation:ftLetter .9s var(--spring) backwards;animation-delay:calc(var(--d,2)*90ms + 350ms)}
 .ft-wh>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
 .ft-wh b{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
-.ft-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:pretty}
+.ft-def{font-size:17px;line-height:1.42;color:var(--grey-700);text-wrap:balance}
 .ft-def b{color:var(--navy-900)}
 .ft-chip{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 6px;border-radius:10px;background:var(--off);border:1px solid var(--line)}
 .ft-chip b{padding:4px 9px;border-radius:7px;font:800 14px var(--fb);letter-spacing:.04em;color:#fff;background:linear-gradient(150deg,var(--ft-c),var(--ft-c2));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
 .ft-chip span{font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap}
-.ft-chip em{font-style:normal;margin-left:auto;font-size:12.5px;color:var(--grey-500);white-space:nowrap}
+.ft-chip .hj{font-weight:600;color:var(--grey-600);background:#fff;border:1px solid var(--line)}
 /* ---------- como fazer: 4 passos ---------- */
 .ft-how{flex:1;min-height:0;padding:15px 20px 16px;display:flex;flex-direction:column;gap:10px}
 .ft-steps{flex:1;min-height:0;list-style:none;display:flex;flex-direction:column;gap:8px}
@@ -33,7 +35,7 @@
 .ft-steps li i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:#fff;background:linear-gradient(150deg,var(--ft-c),var(--ft-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
 .ft-steps li div{flex:1;min-width:0}
 .ft-steps li b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--navy-900)}
-.ft-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:pretty}
+.ft-steps li span{display:block;margin-top:3px;font-size:14px;line-height:1.35;color:var(--grey-700);text-wrap:balance}
 .ft-steps li em{flex:none;font-size:22px;line-height:1;font-style:normal}
 /* ---------- exemplo: o card grande ---------- */
 .ft-ex{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 318px;grid-template-rows:auto minmax(0,1fr) auto;gap:10px 18px;padding:14px 18px 16px;border-top:5px solid var(--ft-c)}
@@ -68,9 +70,9 @@
 .ft-con{flex:none;display:grid;grid-template-columns:176px minmax(0,1fr);gap:14px;height:30px}
 .ft-con>div{position:relative;display:flex;align-items:center;justify-content:center}
 .ft-con>div::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed var(--line-strong);transition:border-color .3s}
-.ft-cp{position:relative;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px 0 7px;border-radius:99px;font-size:13px;font-weight:600;color:var(--grey-400);background:#fff;border:1px solid var(--line);white-space:nowrap;transition:color .3s,background .3s,border-color .3s}
+.ft-cp{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px 0 7px;border-radius:99px;font-size:13px;font-weight:600;color:var(--grey-400);background:#fff;border:1px solid var(--line);white-space:nowrap;transition:color .3s,background .3s,border-color .3s}
 .ft-cp b{font:800 13.5px var(--fb);color:var(--grey-400);transition:color .3s}
-.ft-con.on .ft-cp{color:var(--ft-okt);background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.35);animation:ftPop .45s var(--spring)}
+.ft-con.on .ft-cp{color:var(--ft-okt);background:#E6F9EE;border-color:rgba(46,204,113,.35);animation:ftPop .45s var(--spring)}
 .ft-con.on .ft-cp b{color:var(--ft-okt)}
 .ft-con.ko.on .ft-cp{color:var(--orange-600);background:var(--orange-100);border-color:rgba(217,82,26,.3)}
 .ft-con.ko.on .ft-cp b{color:var(--orange-600)}
@@ -88,7 +90,7 @@
 .ft-ring .bg{stroke:var(--steel-100)}
 .ft-ring .fg{stroke:var(--gc);stroke-linecap:round;stroke-dasharray:0 100;transition:stroke-dasharray 1s var(--ease),opacity .3s}
 .ft-g:not(.on) .ft-ring .fg{opacity:0}
-.ft-ring .mk{stroke:var(--navy-900);stroke-width:3.5;stroke-linecap:round;opacity:.85}
+.ft-ring .mk{stroke:var(--navy-900);stroke-width:4;stroke-linecap:round;opacity:.85}
 .ft-rc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
 .ft-rc b{font:800 16px var(--fb);letter-spacing:-.02em;color:var(--grey-400);transition:color .3s}
 .ft-rc em{margin-top:3px;font:500 12px var(--fm);font-style:normal;letter-spacing:.04em;text-transform:uppercase;color:var(--grey-400);transition:color .3s}
@@ -126,7 +128,7 @@
 .ft-say{display:none;flex-direction:column;gap:5px}
 .ft-read.on .ft-wait{display:none}
 .ft-read.on .ft-say{display:flex}
-.ft-read.on .ft-say>*{animation:ftIn .5s var(--ease) both}
+.ft-read.on .ft-say>*{animation:ftIn .5s var(--ease) backwards}
 .ft-read.on .ft-say>p{animation-delay:.12s}
 .ft-say h3{font-size:18px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:var(--steel-200);text-wrap:pretty}
 .ft-say h3 b{color:#fff}
@@ -149,10 +151,19 @@
 .ft-fm{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
 .ft-fm small{font-size:12.5px;line-height:1.25;color:var(--grey-500);padding-left:2px}
 .ft-cg{font:600 13.5px var(--fm);letter-spacing:.02em;color:var(--navy-800)}
-.ft-dt{display:flex}
-/* ---------- faixa final: próximos 3 · 6 · 8 meses (mesmo padrão dos slides 12–14) ---------- */
+.ft-dt{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.slide[data-id="capacitacao"] .pltab .plr .ft-dt .tag{font-size:13.5px;font-weight:700}
+.ft-dt small,.ft-cg small{display:block;font:500 12.5px/1.25 var(--fb);letter-spacing:0;color:var(--grey-500);white-space:nowrap}
+.ft-tn{font-weight:700}
+.ft-doc .plf{gap:10px}
+.ft-dl{flex:none;font:600 12.5px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.ft-dv{display:flex;gap:6px;flex-wrap:nowrap}
+.ft-dv span{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:99px;font-size:13.5px;font-weight:700;color:var(--navy-800);background:var(--orange-100);white-space:nowrap}
+.ft-fn{margin-left:auto;white-space:nowrap}
+.ft-doc .plf .pgbtn{margin-left:4px}
+/* ---------- faixa final: plano da FE · 3 · 6 · 8 meses (mesmo padrão dos slides 12–14) ---------- */
 .ft-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
-.ft-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.ft-nl{font:600 12px/1.35 var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
 .ft-chips{display:flex;gap:10px}
 .ft-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
 .ft-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}

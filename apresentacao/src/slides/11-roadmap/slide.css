@@ -1,7 +1,16 @@
 /* =====================================================================
-   05 · NA PRÁTICA · ROADMAP 3·6·8 meses  (prefixo rm-, escopo .slide[data-id="roadmap"])
+   05 · NA PRÁTICA · PLANO DE GMO DA FE · 3·6·8 meses  (prefixo rm-, escopo .slide[data-id="roadmap"])
    3 ondas (colunas) × 4 frentes + Medir (linhas). → abre uma onda por vez.
+   Nitidez: nada de transform/filter em repouso nos blocos de texto (só durante a entrada).
    ===================================================================== */
+/* Nitidez em repouso: a entrada global usa fill-mode "both", que deixa a animação aplicada depois do fim
+   (transform/opacity em camada composta → texto sem ClearType no Windows, com cara de "opaco").
+   Aqui a entrada usa "backwards" e o estado final vira a base: terminada a animação, nada fica composto. */
+.slide[data-id="roadmap"].play [data-a]{animation-fill-mode:backwards;opacity:1}
+.slide[data-id="roadmap"].play .kw>span{animation-name:rmKw;animation-fill-mode:backwards;transform:none}
+.slide[data-id="roadmap"].play .hl::after{animation-name:rmUl;animation-fill-mode:backwards;transform:none}
+@keyframes rmKw{from{transform:translateY(110%)}to{transform:none}}
+@keyframes rmUl{from{transform:scaleX(0)}to{transform:none}}
 .rm-main{display:flex;flex-direction:column;gap:12px}
 .rm-grid{flex:1;min-height:0;display:grid;grid-template-columns:184px repeat(3,minmax(0,1fr));grid-template-rows:auto repeat(4,minmax(0,1fr)) auto;gap:10px 14px}
 /* ---------- canto ---------- */
@@ -11,14 +20,14 @@
 /* ---------- cabeçalho de cada onda (botão) ----------
    .rm-wv (wrapper) carrega a animação de entrada; assim .ghost/.cur no botão não são sobrescritos pelo fill-mode */
 .rm-wv{display:grid;min-width:0}
-.rm-wave{position:relative;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:14px;padding:10px 16px 10px 10px;border-radius:14px;text-align:left;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);transition:box-shadow .35s,border-color .35s,opacity .35s,transform .4s var(--spring)}
+.rm-wave{position:relative;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:14px;padding:10px 16px 10px 10px;border-radius:14px;text-align:left;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.06),0 4px 12px rgba(11,37,69,.06);transition:box-shadow .35s,border-color .35s,opacity .35s,top .4s var(--spring);top:0}
 .rm-wave:hover{border-color:var(--steel-300)}
 .rm-wave:not([data-w="2"])::after{content:"";position:absolute;right:-11px;top:50%;width:9px;height:9px;border-top:2px solid var(--grey-300);border-right:2px solid var(--grey-300);transform:translateY(-50%) rotate(45deg);pointer-events:none}
 /* badge "até · 3 · meses": prazo grande com unidade (só o dígito <i> tem a entrada; o wob fica no badge) */
 .rm-num{width:66px;height:66px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--grey-500);background:var(--surface-3);box-shadow:inset 0 -4px 0 rgba(0,0,0,.08);transition:background .4s,color .4s}
 .rm-num i{display:block;font:800 27px/1 var(--fb);font-style:normal;letter-spacing:-.02em}
 .rm-num small{display:block;font:500 12px/1 var(--fm);letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.play .rm-num i{animation:peLetter .9s var(--spring) both;animation-delay:calc(var(--d)*90ms + 350ms)}
+.play .rm-num i{animation:peLetter .9s var(--spring) backwards;animation-delay:calc(var(--d)*90ms + 350ms)}
 .rm-wt{display:flex;flex-direction:column;gap:2px;min-width:0}
 .rm-wt em{font:500 12px var(--fm);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-500);white-space:nowrap}
 .rm-wt b{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--navy-900)}
@@ -26,7 +35,7 @@
 /* estados: ghost (futura) · on (aberta) · cur (em destaque) */
 .rm-wave.ghost{opacity:.62;background:rgba(255,255,255,.55);border-style:dashed;border-color:var(--line-strong);box-shadow:none}
 .rm-wave.on .rm-num{background:linear-gradient(150deg,var(--navy-600),var(--navy-800));color:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.18)}
-.rm-wave.cur{border-color:var(--orange-400);box-shadow:0 0 0 2px var(--orange-500),0 14px 30px rgba(11,37,69,.14);transform:translateY(-3px)}
+.rm-wave.cur{border-color:var(--orange-400);box-shadow:0 0 0 2px var(--orange-500),0 14px 30px rgba(11,37,69,.14);top:-3px}
 .rm-wave.cur .rm-num{background:linear-gradient(150deg,var(--orange-400),var(--orange-600));animation:rmWob .7s var(--spring)}
 .rm-wave.cur .rm-wt em{color:var(--orange-600)}
 @keyframes rmWob{30%{transform:rotate(-8deg) scale(1.12)}60%{transform:rotate(5deg)}}
@@ -58,12 +67,14 @@
 .rm-cell.rm-mc.ghost li{color:var(--navy-800)}.rm-cell.rm-mc.ghost li b{color:var(--navy-900)}
 .rm-cell.cur{border-color:var(--orange-400);box-shadow:0 8px 20px rgba(11,37,69,.10)}
 .rm-cell.rm-mc.cur{border-color:var(--orange-400);box-shadow:0 0 0 1px var(--orange-400),0 8px 20px rgba(11,37,69,.18)}
-.rm-cell.in ul{animation:rmIn .5s var(--ease) both;animation-delay:calc(var(--r)*70ms)}
+.rm-cell.in ul{animation:rmIn .5s var(--ease) backwards;animation-delay:calc(var(--r)*70ms)}
 @keyframes rmIn{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
-/* ---------- faixa final: o ritual ---------- */
-.rm-rit{flex:none;display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:22px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
+/* meta do índice dentro da célula (coluna Sustentar) */
+.rm-goal{display:inline-block;margin-left:4px;padding:1px 8px;border-radius:99px;font:700 13px/1.45 var(--fb);font-style:normal;letter-spacing:0;color:var(--navy-800);background:var(--steel-100);white-space:nowrap;vertical-align:1px}
+/* ---------- faixa final: quem faz ---------- */
+.rm-who{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:18px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
 .rm-rl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
-.rm-chain{display:flex;align-items:center;gap:8px}
-.rm-chain span{display:inline-flex;align-items:center;height:30px;padding:0 13px;border-radius:99px;background:#fff;font-size:14px;font-weight:700;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
-.rm-chain i{font-style:normal;font-weight:700;color:var(--orange-500)}
-.rm-rit p{font-size:14px;color:var(--navy-800);text-align:right;white-space:nowrap}
+.rm-chips{display:flex;align-items:center;gap:10px;min-width:0}
+.rm-chips span{flex:1 1 auto;justify-content:center;display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px 0 9px;border-radius:99px;background:#fff;font-size:14px;color:var(--grey-700);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.rm-chips i{font-style:normal;font-size:15px;line-height:1}
+.rm-chips b{font-weight:800;color:var(--navy-900)}

@@ -20,6 +20,7 @@
 .fc-chip{display:flex;align-items:center;gap:10px;padding:7px 10px 7px 8px;border-radius:10px;background:var(--ct)}
 .fc-idx{font:800 14px/1 var(--fb);letter-spacing:.04em;color:#fff;padding:6px 9px;border-radius:7px;background:linear-gradient(150deg,var(--navy-600),var(--navy-800));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
 .fc-meta{font-size:14px;font-weight:800;color:var(--navy-900);white-space:nowrap}
+.fc-chip .hj{font-weight:600;color:var(--grey-600);background:#fff;border:1px solid var(--line)}
 .fc-kts{margin-left:auto;display:flex;gap:5px}
 .fc-kts i{font:500 12px var(--fm);font-style:normal;letter-spacing:.03em;color:var(--navy-800);padding:3px 7px;border-radius:99px;background:#fff;border:1px solid var(--line);white-space:nowrap}
 /* ---------- o que um plano precisa ter: checklist clicável ---------- */
@@ -41,11 +42,11 @@
 .fc-list li>div{display:flex;flex-direction:column;gap:1px;min-width:0}
 .fc-list li b{font-size:15px;font-weight:800;line-height:1.2;color:var(--navy-900);transition:color .3s}
 .fc-list li>div span{font-size:13px;line-height:1.25;color:var(--grey-500);white-space:nowrap}
-.fc-ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--line-strong);display:grid;place-items:center;background:#fff;transition:background .3s,border-color .3s,transform .4s var(--spring)}
+.fc-ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--line-strong);display:grid;place-items:center;background:#fff;transition:background .3s,border-color .3s,box-shadow .3s}
 .fc-ck::after{content:"✓";font:800 13px/1 var(--fb);color:#fff;transform:scale(0);transition:transform .35s var(--spring)}
 .fc-list li.on{background:rgba(46,204,113,.09)}
 .fc-list li.on .fc-li{background:rgba(46,204,113,.16)}
-.fc-list li.on .fc-ck{background:var(--fc-g);border-color:var(--fc-g);transform:scale(1.1)}
+.fc-list li.on .fc-ck{background:var(--fc-g);border-color:var(--fc-g);box-shadow:0 0 0 3px rgba(46,204,113,.22)}
 .fc-list li.on .fc-ck::after{transform:none}
 .fc-list li.on b{color:var(--fc-gt)}
 /* ---------- exemplo: o plano em movimento ---------- */
@@ -55,7 +56,7 @@
 .fc-eh b{font-size:17px;font-weight:800;letter-spacing:-.01em;color:var(--navy-900);white-space:nowrap}
 /* botões de fase */
 .fc-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.fc-tabs button{position:relative;display:flex;align-items:center;gap:9px;padding:7px 10px 7px 7px;border-radius:12px;text-align:left;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s,box-shadow .3s,transform .4s var(--spring)}
+.fc-tabs button{position:relative;top:0;display:flex;align-items:center;gap:9px;padding:7px 10px 7px 7px;border-radius:12px;text-align:left;background:var(--off);border:1px solid var(--line);transition:background .3s,border-color .3s,box-shadow .3s,top .4s var(--spring)}
 .fc-tabs button:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:9px;height:2px;background:var(--line-strong);pointer-events:none}
 .fc-tabs button i{flex:none;width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font:800 15px var(--fb);font-style:normal;color:var(--grey-500);background:#fff;border:1px solid var(--line);transition:background .3s,color .3s,border-color .3s}
 .fc-tabs button div{display:flex;flex-direction:column;gap:1px;min-width:0}
@@ -65,7 +66,7 @@
 .fc-tabs button.done i{font-size:0;color:#fff;background:var(--fc-g);border-color:var(--fc-g)}
 .fc-tabs button.done i::after{content:"✓";font:800 15px/1 var(--fb)}
 .fc-tabs button.done b{color:var(--fc-gt)}
-.fc-tabs button.on{background:linear-gradient(150deg,var(--c),var(--c2));border-color:var(--c);box-shadow:0 10px 22px rgba(11,37,69,.2);transform:translateY(-2px)}
+.fc-tabs button.on{background:linear-gradient(150deg,var(--c),var(--c2));border-color:var(--c);box-shadow:0 10px 22px rgba(11,37,69,.2);top:-2px}
 .fc-tabs button.on i{color:var(--c);background:#fff;border-color:#fff;animation:fcWob .6s var(--spring)}
 @keyframes fcWob{30%{transform:rotate(-8deg) scale(1.12)}60%{transform:rotate(5deg)}}
 .fc-tabs button.on b{color:#fff}.fc-tabs button.on span{color:var(--steel-200)}
@@ -118,8 +119,8 @@
 .fc-kr.ok .fc-bar i{background:var(--fc-g)}
 @keyframes fcBar{to{transform:none}}
 .fc-bar u{position:absolute;top:-4px;bottom:-4px;left:calc(var(--m)*1% - 1.5px);width:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(7,26,51,.55);text-decoration:none}
-.fc-bar u s{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:3px;font:700 12.5px/1 var(--fb);letter-spacing:0;text-decoration:none;color:#fff;white-space:nowrap}
-.fc-bar u.edge s{left:auto;right:-1px;transform:none}
+.fc-bar u s{position:absolute;top:100%;left:-46px;right:-46px;text-align:center;margin-top:3px;font:700 12.5px/1 var(--fb);letter-spacing:0;text-decoration:none;color:#fff;white-space:nowrap}
+.fc-bar u.edge s{left:auto;right:-1px;text-align:right}
 .fc-leg{font:500 12px var(--fm);letter-spacing:.04em;color:var(--steel-300);white-space:nowrap}
 .fc-leg::before{content:"";display:inline-block;width:14px;height:6px;border-radius:99px;background:var(--orange-400);margin-right:6px;vertical-align:middle}
 .fc-mini.ind .fc-leg{margin-top:-4px}
@@ -153,9 +154,12 @@
 /* mini linha do tempo dos marcos */
 .fc-tl{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px;padding:8px 16px 7px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .4s}
 .fc-tll{font:500 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;line-height:1.35;color:var(--grey-500);white-space:nowrap}
-.fc-marks{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-.fc-marks::before{content:"";position:absolute;left:10%;right:10%;top:8px;height:2px;background:var(--line-strong)}
-.fc-mk{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.fc-marks{position:relative;display:grid;grid-template-columns:repeat(5,auto)}
+.fc-mk{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:0 6px}
+.fc-mk::before,.fc-mk::after{content:"";position:absolute;top:8px;height:2px;background:var(--line-strong)}
+.fc-mk::before{left:0;right:50%}.fc-mk::after{left:50%;right:0}
+.fc-mk:first-child::before,.fc-mk:last-child::after{display:none}
+.fc-mk i{position:relative;z-index:1}
 .fc-mk i{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--steel-300);transition:background .35s,border-color .35s,box-shadow .35s}
 .fc-mk b{font-size:13.5px;font-weight:700;color:var(--navy-800);white-space:nowrap;transition:color .3s}
 .fc-mk span{display:inline-flex;align-items:center;min-height:20px;padding:0 8px;border-radius:99px;font:500 12px var(--fm);color:var(--grey-400);white-space:nowrap;transition:background .3s,color .3s}
@@ -172,7 +176,7 @@
 .fc-tl.all .fc-mk span{color:#fff;font-weight:600;background:var(--c)}
 /* ---------- faixa final: próximos 3 · 6 · 8 meses ---------- */
 .fc-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
-.fc-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fc-nl{font:600 12px/1.35 var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
 .fc-chips{display:flex;gap:10px}
 .fc-chips span{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 5px;border-radius:99px;background:#fff;font-size:14px;font-weight:600;color:var(--navy-800);white-space:nowrap;box-shadow:0 1px 2px rgba(11,37,69,.08)}
 .fc-chips i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:800 13px var(--fb);font-style:normal;color:#fff;background:var(--navy-700)}
@@ -194,3 +198,9 @@
 .fc-doc .fc-q{display:block;padding-left:10px;border-left:3px solid var(--orange-200);color:var(--navy-800);font-weight:500;text-wrap:pretty}
 .fc-doc .fc-tags{display:flex;flex-wrap:wrap;align-items:center}
 .fc-doc .fc-m b{color:var(--orange-600);font-weight:800;white-space:nowrap}
+.fc-doc .plf{gap:10px}
+.fc-doc .fc-dl{flex:none;font:600 12.5px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
+.fc-doc .fc-dv{display:flex;gap:6px;flex-wrap:nowrap}
+.fc-doc .fc-dv span{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:99px;font-size:13.5px;font-weight:700;color:var(--navy-800);background:var(--orange-100);white-space:nowrap}
+.fc-doc .fc-fn{margin-left:auto;white-space:nowrap}
+.fc-doc .plf .pgbtn{margin-left:4px}

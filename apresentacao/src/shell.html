@@ -45,7 +45,8 @@ img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
 
 /* ---------- coreografia de entrada ---------- */
 [data-a]{opacity:0}
-.play [data-a]{animation:.8s var(--ease) both;animation-delay:calc(var(--d,0)*90ms + 140ms)}
+/* fill-mode backwards + estado final como base: depois da entrada, nada fica "animado" em repouso (o texto não vai para camada composta e fica nítido) */
+.play [data-a]{opacity:1;animation:.8s var(--ease) backwards;animation-delay:calc(var(--d,0)*90ms + 140ms)}
 .play [data-a=up]{animation-name:aUp}.play [data-a=fade]{animation-name:aF}.play [data-a=zoom]{animation-name:aZ}
 .play [data-a=left]{animation-name:aL}.play [data-a=right]{animation-name:aR}.play [data-a=blur]{animation-name:aBl}
 .play [data-a=pop]{animation-name:aPop;animation-timing-function:var(--spring)}
@@ -58,13 +59,13 @@ img{display:block;max-width:none;user-select:none;-webkit-user-drag:none}
 @keyframes aPop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
 .kw{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .02em .12em;margin-bottom:-.12em}
 .kw>span{display:inline-block;transform:translateY(110%)}
-.play .kw>span{animation:kUp .8s var(--ease) both;animation-delay:calc(var(--k,0)*70ms + 200ms)}
-@keyframes kUp{to{transform:none}}
+.play .kw>span{transform:none;animation:kUp .8s var(--ease) backwards;animation-delay:calc(var(--k,0)*70ms + 200ms)}
+@keyframes kUp{from{transform:translateY(110%)}to{transform:none}}
 .hl{position:relative;color:var(--orange-500);white-space:nowrap}
 .stage .hl{color:var(--orange-400)}
 .hl::after{content:"";position:absolute;left:0;right:0;bottom:-.04em;height:.09em;border-radius:2px;background:currentColor;transform:scaleX(0);transform-origin:left}
-.play .hl::after{animation:ul .7s var(--ease) forwards;animation-delay:1.05s}
-@keyframes ul{to{transform:scaleX(1)}}
+.play .hl::after{transform:none;animation:ul .7s var(--ease) backwards;animation-delay:1.05s}
+@keyframes ul{from{transform:scaleX(0)}to{transform:none}}
 
 /* ---------- chrome: topo, corpo, rodapé ---------- */
 .top{position:absolute;left:0;right:0;top:0;height:66px;display:flex;align-items:center;gap:18px;padding:0 40px;z-index:6;border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}

@@ -15,14 +15,19 @@ Apresentação interativa em HTML/CSS/JS (sem dependências), no padrão visual 
 | 09 | **Capítulo 4 · PEA** · o que é | Três colunas, uma por palavra: Prontidão (antes), Engajamento (durante) e Adoção (depois), com o que é, o que observamos e uma analogia cada (a viagem, a aula, o celular novo); `→` abre uma palavra por vez; linha do tempo com o go-live |
 | 10 | **PEA** · como medir | Para cada palavra: a pergunta, onde olhamos e a conta (quem cumpre ÷ quem deveria), com um medidor; `→` percorre três momentos de um sistema novo (antes do go-live, semana 2 e semana 8) e a leitura de onde a GMO age |
 | 11 | **Capítulo 5 · Na prática** · Indicadores (CMAK) | CMAK = Change Management Applicable by KPI: termômetro P·E·A e quatro cards frente e verso, um por frente (Comunicação · IEC, Stakeholders · IES, Impactos · ICI, Capacitação · IPT); a frente mostra o modelo (medidas, pesos e metas) e o verso um dashboard com números reais de um projeto; `→` vira um card por vez |
-| 12 | **Roadmap** · 3, 6 e 8 meses | três ondas (Estruturar · Rodar · Sustentar) × quatro frentes + a linha "Medir"; `→` revela uma onda por vez; ritual mensal medir → ler → agir → comunicar |
+| 12 | **Plano de GMO da FE** · 3, 6 e 8 meses | a FE (gerência executiva do ONS) e as gerências FEG, FEL, FEN e FER assumem a GMO: três ondas (Estruturar · Rodar · Sustentar) × quatro frentes + "Medir"; faixa "Quem faz" (FE, gerências, comunidades, squads); `→` revela uma onda por vez |
 | 13 | **Frente 1 · Comunicação** | o que é, o que um plano precisa ter (checklist) e o exemplo: o plano em movimento, com botões de fase (Montar · Validar · Lançar · Medir · Ajustar) que se repetem a cada marco do projeto; faixa com os próximos 3 · 6 · 8 meses |
-| 14 | **Frente 2 · Stakeholders** | o que é, como fazer em 4 passos e o exemplo: mapa influência × interesse com papéis genéricos; `→` percorre as pessoas e mostra postura, necessidade e ação da GMO; antes × depois do perfil dos stakeholders |
+| 14 | **Frente 2 · Cultura e Stakeholders** | o que é, como fazer em 4 passos e o exemplo: mapa influência × interesse com papéis genéricos; `→` percorre as pessoas e mostra postura, necessidade e ação da GMO; antes × depois do perfil dos stakeholders |
 | 15 | **Frente 3 · Impactos** | o que é, como fazer e o exemplo: matriz real de 22 impactos (categoria, severidade, status) e a tabela impacto → mitigação → dono → status |
 | 16 | **Frente 4 · Capacitação** | o que é, como fazer e o exemplo: funil real (136 convidados → 110 inscritos → 102 presentes → 50 na fixação), conhecimento 85%, nota 3,87, cobertura 14% |
 | 17 | **Encerramento** | a borboleta da capa, três ideias para levar e a pergunta da Isabella com a Roda |
 
-A trilha de capítulos na barra inferior agrupa os slides em **Agenda · Mudança · História · Metodologias · PEA · Indicadores · Roadmap · Frentes · Encerramento**. O índice (clique no contador) usa os mesmos grupos.
+A trilha de capítulos na barra inferior agrupa os slides em **Agenda · Mudança · História · Metodologias · PEA · Na prática · Encerramento**. O índice (clique no contador) usa os mesmos grupos.
+
+### Capítulo 5 · o que tem em cada frente
+Cada slide de frente (13–16) tem: **o que é**, **como fazer**, um **exemplo** interativo (números de outro projeto, marcados como exemplo) e a faixa **Plano da FE · 3 · 6 · 8 meses**. O botão **Virar a página** (ou um `→` depois do último passo) mostra o **plano escrito da FE**: Plano de Comunicação, Mapa de Stakeholders (mapa de adoção, com os papéis Champion · Engajador · Neutro · Resistente aberto · Boicotador velado), Matriz de Impactos e Plano de Capacitação. `←` ou **Voltar** desvira.
+
+As viradas (páginas e cards do CMAK) são 2D e as entradas usam `animation-fill-mode: backwards`: em repouso nada fica com transform, para o texto ficar nítido com o palco escalado. Não use `perspective`, `preserve-3d`, `backface-visibility` nem `will-change` em blocos de texto.
 
 ## Teclas
 

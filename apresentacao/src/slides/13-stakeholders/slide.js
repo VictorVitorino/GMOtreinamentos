@@ -1,26 +1,30 @@
 (()=>{const {$,$$,tone,ding,boing}=DECK, SEC=DECK.el('stakeholders');
-/* Passos de →: -1 (como ler o mapa) → pessoas 0..5 (6 passos) → página virada com o mapa escrito (7º passo) → mais um → sai do slide.
+/* Passos de →: -1 (como ler o mapa) → pessoas 0..5 (6 passos) → página virada com o mapa escrito da FE (7º passo) → mais um → sai do slide.
    ← com o mapa escrito aberto fecha o mapa; com ele fechado volta as pessoas. */
-const POST={a:'Apoiador',n:'Neutro',r:'Resistente'};
+/* 5 papéis (cor no mapa: Champion/Engajador verde · Neutro steel · Resistente/Boicotador laranja) */
+const ROLE={ch:'Champion',en:'Engajador',ne:'Neutro',ra:'Resistente aberto',bv:'Boicotador velado'};
+const RS={ch:'a',en:'a',ne:'n',ra:'r',bv:'r'};
 const QN={gp:'Gerenciar de perto',ms:'Manter satisfeito',mi:'Manter informado',mo:'Monitorar'};
-/* 6 papéis de exemplo (sem nomes reais), os mesmos da tabela do verso: inicial, papel, postura, quadrante,
-   o que precisa, ação da GMO, postura-alvo, dono, quando, sinal de que funcionou */
+/* 6 papéis genéricos da FE (sem nomes), os mesmos da tabela do verso: inicial, papel, papel hoje (h) e alvo (t), quadrante,
+   o que precisa, ação da GMO, dono (od = forma curta no painel), quando, sinal de que funcionou */
 const P=[
- {i:'D', r:'Diretor patrocinador',      s:'a',q:'gp',n:'Ver resultado e decidir rápido.',                                      a:'Abre e fecha os eventos-chave; termômetro P·E·A no comitê mensal.',                     t:'Embaixador',       o:'Líder do projeto',w:'Mensal',    ok:'Decide no comitê o que o termômetro apontou, sem a GMO pedir.'},
- {i:'G', r:'Gerente da área impactada', s:'n',q:'gp',n:'O que muda no time dele, e quando.',                                    a:'Mostrar o ganho da área com dados; envolver no desenho do fluxo.', t:'Apoiador',  o:'GMO + sponsor',   w:'Quinzenal', ok:'Time inteiro no treino; ninguém diz “não fui avisado”.'},
- {i:'S', r:'Supervisor da operação',    s:'r',q:'ms',n:'Previsibilidade e voz. Resistente pesa mais que o quadrante.',          a:'Tratar como gerenciar de perto: 1:1 quinzenal, envolver no desenho do fluxo, papel de validador.', t:'Neutro', o:'GMO',          w:'Quinzenal', ok:'Apresenta o fluxo novo ao time.'},
- {i:'K', r:'Key user',                  s:'a',q:'mi',n:'Tempo na agenda e reconhecimento.',                                     a:'Treinar primeiro; dar o palco no treino da área; papel de multiplicador.',       t:'Multiplicador',    o:'Capacitação',     w:'Por treino',ok:'Tira as dúvidas dos colegas sem chamar a GMO.'},
- {i:'TI',r:'Líder de TI',               s:'n',q:'ms',n:'Prazos claros e menos retrabalho.',                                     a:'Alinhar roadmap técnico e suporte; dúvidas de TI respondidas em 48h.',  t:'Apoiador',         o:'GMO + TI',        w:'Mensal',    ok:'Prazos dos impactos de TI combinados e cumpridos.'},
- {i:'A', r:'Analista entusiasta',       s:'a',q:'mi',n:'Um papel para ajudar.',                                                 a:'Convidar para a rede de agentes da mudança; dar voz nas News.',                           t:'Agente da mudança',o:'GMO',             w:'Mensal',    ok:'Outros colegas pedem para virar agentes também.'}];
+ {i:'FE',r:'Gerente executivo da FE',  h:'ch',t:'ch',q:'gp',n:'Ver a GMO rodando nas 4 gerências, com números.',                          a:'Patrocinar e cobrar os índices no comitê mensal.', o:'Donos de GMO',       w:'Mensal',     ok:'Cobra no comitê o índice abaixo da meta, sem ninguém pedir.'},
+ {i:'G', r:'Gerente de gerência',      h:'ne',t:'en',q:'gp',n:'Saber o que cabe à gerência dele e quanto tempo custa.',   a:'Indicar o dono de GMO da gerência; combinar as metas das 4 frentes.',      o:'FE',                 w:'Mensal',     ok:'Plano de GMO da gerência entregue e revisto todo mês.'},
+ {i:'C', r:'Líder de comunidade',      h:'en',t:'ch',q:'mi',n:'Espaço e ferramentas para a comunidade ter cara própria.',                  a:'Lançar a identidade, a intranet e o onboarding da comunidade.',            o:'Dono de GMO',        w:'Meses 1 a 3',ok:'Intranet no ar; quem chega passa pelo onboarding da comunidade.'},
+ {i:'E', r:'Especialista técnico sênior',h:'bv',t:'ne',q:'ms',n:'Ser ouvido. Boicotador velado pesa mais que o quadrante: cuidar de perto.',a:'1:1 para ouvir a crítica; dar um papel no fórum técnico.',              o:'Gerente da gerência',w:'Quinzenal',  ok:'Leva a crítica ao fórum técnico em vez de travar nos bastidores.'},
+ {i:'AC',r:'Representante do negócio', h:'ne',t:'en',q:'gp',n:'Saber o que muda para a área cliente, quando e a quem procurar.',           a:'Ponto focal e conversa mensal; comunicado antes de cada entrega.',         o:'Dono de GMO',        w:'Mensal',     ok:'Procura o ponto focal antes de escalar um problema.'},
+ {i:'N', r:'Novo integrante',          h:'en',t:'en',q:'mi',n:'Entender a matriz: com quem atua na vertical e na horizontal.',             a:'Onboarding de cultura do modelo matricial na primeira semana.',            o:'Dono de GMO',        w:'Na chegada', ok:'No 1º mês, sabe a quem recorrer na gerência e na comunidade.'}];
+P.forEach(p=>p.s=RS[p.h]);
 let k=-1, open=false; /* k: -1 = ninguém em destaque (como ler o mapa) · 0..5 = pessoa · open = mapa escrito aberto */
 const plot=$('.fs-plot',SEC),PW=$$('.fs-pw',SEC),Q=$$('.fs-q',SEC),panel=$('.fs-panel',SEC),
-      BTN=$('.pgbtn.flip',SEC),BTNT=$('span',BTN),BACK=$('.pgbtn.back',SEC);
+      BTN=$('.pgbtn.flip',SEC),BTNT=$('span',BTN),BACK=$('.pgbtn.back',SEC),HINT=$('.hint',SEC),HINT0=HINT.innerHTML,
+      HINT1='<kbd>←</kbd> volta ao slide · <kbd>→</kbd> próximo slide';
 const re=(el,c)=>{el.classList.remove(c);void el.offsetWidth;el.classList.add(c)};
 /* estado inicial: mini-mapa 2×2 com quem está em cada quadrante */
 const dot=p=>`<i data-s="${p.s}" class="${p.i.length>1?'two':''}">${p.i}</i>`;
 const inQ=q=>{const l=P.filter(p=>p.q===q);return l.length?l.map(dot).join(''):'<em>ninguém hoje</em>'};
 const INTRO=`<span class="fs-lb">Como ler o mapa</span>
- <b class="fs-pt">O quadrante diz <b>o quanto cuidar</b>. A postura diz <b>como</b>.</b>
+ <b class="fs-pt">O quadrante diz <b>o quanto cuidar</b>. O papel diz <b>como</b>.</b>
  <div class="fs-qg">
   <div data-q="ms"><b>Manter satisfeito</b><span>sem surpresas</span><div class="fs-qd">${inQ('ms')}</div></div>
   <div data-q="gp"><b>Gerenciar de perto</b><span>envolver na decisão</span><div class="fs-qd">${inQ('gp')}</div></div>
@@ -28,17 +32,18 @@ const INTRO=`<span class="fs-lb">Como ler o mapa</span>
   <div data-q="mi"><b>Manter informado</b><span>comunicar sempre</span><div class="fs-qd">${inQ('mi')}</div></div>
  </div>
  <p class="fs-pn"><b>Influência</b> = poder de decidir. <b>Interesse</b> = o quanto é afetado. Avance com <kbd>→</kbd> ou clique numa pessoa.</p>`;
+const ARW='<svg class="fs-arw" viewBox="0 0 24 24"><path d="M4 12h15M14 6l6 6-6 6"/></svg>';
 const person=(p,i)=>`<div class="fs-ph"><i class="fs-pi${p.i.length>1?' two':''}" data-s="${p.s}">${p.i}</i><div><span class="fs-lb">${i+1} de 6 · ${QN[p.q]}</span><b>${p.r}</b></div></div>
- <div class="fs-tr"><div class="fs-trh"><span class="fs-lb">Postura hoje</span><span class="fs-tg">alvo → <b>${p.t}</b></span></div><div class="fs-trk">${['r','n','a'].map(s=>`<i data-s="${s}" class="${s===p.s?'on':''}">${POST[s]}</i>`).join('')}</div></div>
- <div class="fs-pr"><div><span class="fs-lb">O que essa pessoa precisa</span><p>${p.n}</p></div><div class="act"><div class="fs-alh"><span class="fs-lb">Ação</span><em>dono: <b>${p.o}</b> · ${p.w.toLowerCase()}</em></div><p>${p.a}</p></div><div class="ok"><span class="fs-lb">Sinal de que funcionou</span><p>${p.ok}</p></div></div>`;
+ <div class="fs-tr"><span class="fs-lb">Papel hoje → alvo</span><div class="fs-rr"><span class="fs-rc" data-s="${p.s}">${ROLE[p.h]}</span>${ARW}${p.h===p.t?'<em>manter o papel</em>':`<span class="fs-rc to">${ROLE[p.t]}</span>`}</div></div>
+ <div class="fs-pr"><div><span class="fs-lb">O que essa pessoa precisa</span><p>${p.n}</p></div><div class="act"><div class="fs-alh"><span class="fs-lb">Ação</span><em>dono: <b>${p.od||p.o}</b> · ${p.w.toLowerCase()}</em></div><p>${p.a}</p></div><div class="ok"><span class="fs-lb">Sinal de que funcionou</span><p>${p.ok}</p></div></div>`;
 function show(snd=true){
  PW.forEach((w,i)=>w.classList.toggle('on',i===k));plot.classList.toggle('sel',k>=0);
  Q.forEach(q=>q.classList.toggle('on',k>=0&&q.dataset.q===P[k].q));
  panel.innerHTML=k<0?INTRO:person(P[k],k);re(panel,'swap');
  if(snd&&k>=0){k===P.length-1?ding():tone(480+k*70,.14,'sine',.05,900)}}
 PW.forEach((w,i)=>$('.fs-p',w).addEventListener('click',()=>{k=i;show(false);boing()}));
-/* virar a página: mapa escrito (classe global .pl-open) · botão do cabeçalho e "Voltar" do documento */
-function flip(on,snd=true){open=on;SEC.classList.toggle('pl-open',on);BTN.setAttribute('aria-pressed',on);BTNT.textContent=on?'Voltar ao slide':'Virar a página · ver o mapa';
+/* virar a página: mapa escrito da FE (classe global .pl-open) · botão do cabeçalho e "Voltar" do documento · hint troca com o plano aberto */
+function flip(on,snd=true){open=on;SEC.classList.toggle('pl-open',on);BTN.setAttribute('aria-pressed',on);BTNT.textContent=on?'Voltar ao slide':'Virar a página · ver o mapa';HINT.innerHTML=on?HINT1:HINT0;
  if(snd){on?tone(520,.12,'sine',.05,760):tone(380,.1,'sine',.04)}}
 BTN.addEventListener('click',()=>flip(!open));
 BACK.addEventListener('click',()=>flip(false));
