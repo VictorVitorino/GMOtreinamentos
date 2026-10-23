@@ -18,7 +18,7 @@
 .fc-what p{font-size:16.5px;line-height:1.4;color:var(--grey-700);text-wrap:pretty}
 .fc-what p b{color:var(--navy-900)}
 .fc-chip{display:flex;align-items:center;gap:10px;padding:7px 10px 7px 8px;border-radius:10px;background:var(--ct)}
-.fc-idx{font:800 18px/1 var(--fb);letter-spacing:-.02em;color:var(--c);padding:5px 8px;border-radius:7px;background:#fff;box-shadow:0 1px 2px rgba(11,37,69,.08)}
+.fc-idx{font:800 14px/1 var(--fb);letter-spacing:.04em;color:#fff;padding:6px 9px;border-radius:7px;background:linear-gradient(150deg,var(--navy-600),var(--navy-800));box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
 .fc-meta{font-size:14px;font-weight:800;color:var(--navy-900);white-space:nowrap}
 .fc-kts{margin-left:auto;display:flex;gap:5px}
 .fc-kts i{font:500 12px var(--fm);font-style:normal;letter-spacing:.03em;color:var(--navy-800);padding:3px 7px;border-radius:99px;background:#fff;border:1px solid var(--line);white-space:nowrap}

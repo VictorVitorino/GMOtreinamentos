@@ -18,7 +18,7 @@ const MODELO=`<div class="fi-mo"><div class="fi-moh"><span class="fi-lb">O índi
  <div class="fi-mor"><b>ICI</b><small>meta ≥ 70%</small><i class="fi-eq">=</i>${KT.map((t,i)=>`${i?'<i>+</i>':''}<div class="fi-kt"><b>${t.n}</b><span>peso ${t.p}%</span><em>meta ≥ ${t.m}%</em></div>`).join('')}</div></div>`;
 /* faixa navy · real · linha 1: anel (marca da meta em 70) + ICI 49,5% hoje + semáforo · onde agir · legenda · linha 2: 4 medidas "hoje × meta" */
 const bul=t=>{const ok=t.v>=t.m;return `<div class="fi-kr ${ok?'ok':'ko'}"><div class="fi-kh"><span>${t.s||t.n}</span><b><em>hoje</em>${fmt(t.v)}%</b></div><div class="fi-bul"><i style="--v:${t.v}"></i><u style="--m:${t.m}"${t.m>=85?' class="edge"':t.m<80?' class="rt"':''}><s>meta ${t.m}%</s></u></div><small>${ok?'✓ bateu a meta':'faltam '+fmt(t.m-t.v)+' pts'}</small></div>`};
-const REAL=`<div class="fi-re"><div class="fi-r1"><div class="fi-ring"><svg viewBox="0 0 120 120"><g transform="rotate(-90 60 60)"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/><line x1="98" y1="60" x2="131" y2="60" transform="rotate(252 60 60)"/></g><text x="47" y="63">70</text></svg></div>
+const REAL=`<div class="fi-re"><div class="fi-r1"><div class="fi-ring"><svg viewBox="0 0 120 120"><g transform="rotate(-90 60 60)"><circle class="bg" cx="60" cy="60" r="50"/><circle class="fg" cx="60" cy="60" r="50" pathLength="100"/><line x1="98" y1="60" x2="131" y2="60" transform="rotate(252 60 60)"/></g><text x="60" y="64" text-anchor="middle" font-size="26" font-weight="800">49,5</text><text x="60" y="84" text-anchor="middle" font-size="12" letter-spacing="1.5">HOJE</text></svg></div>
  <div class="fi-idx"><div class="fi-rr"><b class="big"><em>hoje · jun</em>ICI 49,5%</b><span class="fi-rp">vermelho</span></div><small>meta ≥ 70% · faltam <b>20,5 pts</b></small></div>
  <div class="fi-act"><p><span class="fi-lb">Onde agir ·</span>Só <b>4 de 22</b> mitigações saíram do papel. Fazer <b>uma por semana</b>, com dono e prazo.</p></div>
  <div class="fi-leg"><span><i class="b"></i>barra = hoje</span><span><i class="t"></i>traço = meta</span></div></div>
@@ -40,7 +40,7 @@ function clearDoc(){DROWS.forEach(x=>x.classList.remove('on'));PLT.classList.rem
 DROWS.forEach(r=>r.addEventListener('click',()=>{const was=r.classList.contains('on');clearDoc();if(!was){r.classList.add('on');PLT.classList.add('sel')}boing()}));
 /* virar a página: a Matriz de Impactos escrita (classe global .pl-open) · botão do cabeçalho e "Voltar" do documento */
 function flip(on,snd=true){open=on;SEC.classList.toggle('pl-open',on);BTN.setAttribute('aria-pressed',on);BTNT.textContent=on?'Voltar ao slide':'Virar a página · ver a matriz';
- HINT.innerHTML=on?'Clique numa linha destaca · <kbd>←</kbd> volta ao slide · <kbd>→</kbd> próximo slide':HINT0;
+ HINT.innerHTML=on?'Clique numa linha para destacar · <kbd>←</kbd> volta ao slide · <kbd>→</kbd> próximo slide':HINT0;
  if(snd){on?tone(520,.12,'sine',.05,760):tone(380,.1,'sine',.04)}}
 BTN.addEventListener('click',()=>flip(!open));
 BACK.addEventListener('click',()=>flip(false));
