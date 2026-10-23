@@ -177,6 +177,10 @@ kbd{font-family:var(--fm);font-size:.92em;padding:1px 6px;border-radius:5px;bord
 .pldoc .plf{flex:none;display:flex;align-items:center;gap:14px;padding:9px 22px;border-top:1px solid var(--line);font-size:13px;color:var(--grey-500)}
 .pldoc .plf .pgbtn{margin-left:auto}
 
+/* ênfase ao avançar: a coluna "o que é / como fazer" esmaece e o exemplo ganha a cena (frentes do capítulo 5) */
+.slide[data-id="comunicacao"] .fc-left,.slide[data-id="stakeholders"] .fs-left,.slide[data-id="impactos"] .fi-left,.slide[data-id="capacitacao"] .ft-left{transition:opacity .5s var(--ease)}
+.slide[data-stp]:not([data-stp="0"])[data-id="comunicacao"] .fc-left,.slide[data-stp]:not([data-stp="0"])[data-id="stakeholders"] .fs-left,.slide[data-stp]:not([data-stp="0"])[data-id="impactos"] .fi-left,.slide[data-stp]:not([data-stp="0"])[data-id="capacitacao"] .ft-left{opacity:.3}
+.slide[data-stp]:not([data-stp="0"]) .fc-left:hover,.slide[data-stp]:not([data-stp="0"]) .fs-left:hover,.slide[data-stp]:not([data-stp="0"]) .fi-left:hover,.slide[data-stp]:not([data-stp="0"]) .ft-left:hover{opacity:1}
 /*@SLIDE_CSS@*/
 /* =====================================================================
    FERNANDO (tecla N)
@@ -443,7 +447,13 @@ function fitFoot(s){const f=$('.foot .src',s),src=s.dataset.src;if(!f||!src||f.d
  f.dataset.fit=document.fonts&&document.fonts.status==='loading'?'0':'1'}
 
 window.DECK={$,$$,stage,tone,boing,ding,go,next,prev,
- register(id,h){hooks[id]=Object.assign(hooks[id]||{},h)},
+ register(id,h){
+  /* conta os passos consumidos (data-stp no <section>): o CSS usa para dar ênfase ao que está sendo apresentado */
+  const sec=document.querySelector('.slide[data-id="'+id+'"]');
+  if(h.step){const st=h.step,en=h.enter;let n=0;
+   h=Object.assign({},h,{step(d){const r=st(d);if(r&&sec){n=Math.max(0,n+d);sec.dataset.stp=n}return r},
+    enter(...a){n=0;if(sec)sec.dataset.stp=0;return en&&en(...a)}})}
+  hooks[id]=Object.assign(hooks[id]||{},h)},
  el:id=>document.querySelector(`.slide[data-id="${id}"]`),
  get cur(){return slides[cur]?.dataset.id},
  isActive:id=>slides[cur]?.dataset.id===id,

@@ -140,3 +140,7 @@
 .ck-foot p{font-size:15.5px;color:var(--navy-800);white-space:nowrap}
 .ck-foot p b{color:var(--orange-600)}
 .ck-foot .ck-lb{color:var(--orange-600)}
+
+/* ênfase: com algum card virado, os que não estão em foco esmaecem */
+.ck-grid.has-on .ck-card{transition:opacity .45s var(--ease)}
+.ck-grid.has-on .ck-card:not(.on){opacity:.42}
