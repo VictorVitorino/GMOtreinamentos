@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roteiro · Treinamento de Gestão de Mudanças</title>
+<style>
+:root{--navy-950:#04101F;--navy-900:#071A33;--navy-800:#0B2545;--navy-700:#13315C;--navy-600:#1B4479;--steel-500:#4A6FA5;--steel-300:#A3B8D6;--steel-100:#E4EBF5;--orange-600:#D9521A;--orange-500:#F26B21;--orange-400:#FF8A4C;--orange-100:#FDE8DC;--off:#F6F8FB;--line:#E2E7EF;--ink:#0B2545;--ink2:#3E4C5E;--ink3:#6B7A90;--bg:#F6F8FB;--card:#fff;--side:#fff;--cue-bg:#FFF4EC;--cue-bd:#F9C8A8;--fs:27px}
+:root[data-theme=dark]{--bg:#06101F;--card:#0C1D36;--side:#0A172B;--ink:#EAF0F8;--ink2:#B9C7DB;--ink3:#7F90A8;--line:#1B2E4A;--steel-100:#16294A;--cue-bg:#2A1B12;--cue-bd:#7A4220;--off:#0C1D36}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+/* barra superior */
+.bar{position:fixed;z-index:20;left:0;right:0;top:0;height:68px;display:flex;align-items:center;gap:14px;padding:0 20px;background:var(--navy-800);color:#fff;box-shadow:0 6px 24px rgba(4,16,31,.35)}
+.bar h1{font-size:15px;font-weight:700;letter-spacing:-.01em;margin:0;line-height:1.15}.bar h1 small{display:block;font:500 10px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-300);margin-bottom:2px}
+.bar .now{flex:1;min-width:0;margin-left:10px;font-size:13px;color:var(--steel-300);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bar .now b{color:#fff}
+.clock{display:flex;align-items:center;gap:10px;padding:6px 12px;border-radius:12px;background:rgba(255,255,255,.08)}
+.clock .t{font:700 20px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.02em;min-width:76px}
+.clock small{display:block;font:500 10px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;color:var(--steel-300);text-transform:uppercase}
+.clock .pace{font-weight:700;font-size:12px}.pace.ok{color:#5BE58F}.pace.late{color:var(--orange-400)}.pace.early{color:#8FC2FF}
+.btn{height:34px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-size:12.5px;font-weight:600;transition:background .2s}
+.btn:hover{background:rgba(255,255,255,.18)}.btn.on{background:var(--orange-500);border-color:var(--orange-500)}
+.grp{display:flex;gap:6px}
+/* navegação lateral */
+nav{position:fixed;z-index:10;left:0;top:68px;bottom:0;width:318px;overflow:auto;background:var(--side);border-right:1px solid var(--line);padding:14px 10px 40px}
+.nv-ato{margin:14px 8px 6px;font:700 10px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-600)}.nv-ato small{display:block;margin-top:2px;font:600 11px Inter,sans-serif;letter-spacing:0;text-transform:none;color:var(--ink3)}
+.nv{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;padding:7px 8px;border-radius:9px;text-decoration:none;color:var(--ink2);font-size:12.5px;line-height:1.25;transition:background .2s}
+.nv b{font:700 12px "JetBrains Mono",ui-monospace,monospace;color:var(--steel-500);text-align:center}.nv i{font:600 11px "JetBrains Mono",ui-monospace,monospace;font-style:normal;color:var(--ink3)}
+.nv:hover{background:var(--steel-100)}.nv.cur{background:var(--orange-100);color:#0B2545}.nv.cur b{color:var(--orange-600)}
+:root[data-theme=dark] .nv.cur{background:#3A2314;color:#fff}
+.nv.done{opacity:.5}.nv.res b{color:var(--orange-500)}
+.nv .act{display:block;font:600 10.5px "JetBrains Mono",monospace;color:var(--orange-600)}
+/* texto */
+main{margin-left:318px;padding:96px 40px 40vh}
+.col{max-width:900px;margin:0 auto}
+.ato{margin:70px 0 26px;padding:22px 26px;border-radius:18px;background:linear-gradient(135deg,var(--navy-700),var(--navy-900));color:#fff}.ato:first-child{margin-top:0}
+.ato span{font:600 11px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-400)}.ato h2{margin:6px 0 0;font-size:28px;letter-spacing:-.02em}
+.sec{margin:0 0 34px;padding:26px 30px 30px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05),0 8px 24px rgba(11,37,69,.06)}
+.sec.res{background:repeating-linear-gradient(135deg,var(--card),var(--card) 14px,var(--off) 14px,var(--off) 28px);border-style:dashed}
+.sh{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:2px solid var(--line);margin-bottom:6px}
+.sh .tg{padding:5px 12px;border-radius:99px;background:var(--orange-500);color:#fff;font:700 12px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;margin-top:6px}
+.sh h3{flex:1;min-width:260px;margin:0;font-size:29px;line-height:1.15;letter-spacing:-.025em}
+.sh .tm{text-align:right}.sh .tm b{display:block;font:700 15px "JetBrains Mono",ui-monospace,monospace;color:var(--steel-500)}.sh .tm em{font-style:normal;font-size:12.5px;color:var(--ink3)}
+.sub{margin:30px 0 4px;font:700 11px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-600)}
+.lab{margin:20px 0 0;font:700 11px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-500)}
+.it{margin:14px 0;padding:10px 16px 10px 20px;border-radius:12px;border-left:5px solid transparent;transition:opacity .25s,background .25s,border-color .25s;cursor:pointer}
+.say{font-size:var(--fs);line-height:1.55;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+.say strong{font-weight:800;color:var(--orange-600)}:root[data-theme=dark] .say strong{color:var(--orange-400)}
+.say em{font-style:italic;color:var(--steel-500)}
+.cue{font-size:calc(var(--fs) * .62);line-height:1.45;background:var(--cue-bg);border:1.5px solid var(--cue-bd);border-left:5px solid var(--orange-500);color:var(--ink2)}
+.cue .cl{display:inline-block;margin-right:10px;padding:2px 9px;border-radius:7px;background:var(--orange-500);color:#fff;font:700 .62em "JetBrains Mono",ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;vertical-align:.12em}
+.cue strong{color:var(--ink)}
+.pause{display:inline-block;font-size:calc(var(--fs) * .6);font-style:italic;color:var(--ink3);background:var(--steel-100);border-radius:99px;padding:5px 16px}.pause em{font-style:italic}
+.note{font-size:calc(var(--fs) * .6);line-height:1.5;color:var(--ink3);border-left-color:var(--line)}
+/* leitura guiada: item atual */
+body.guide .it{opacity:.38}body.guide .it.on{opacity:1}
+.it.on{background:rgba(242,107,33,.08);border-left-color:var(--orange-500)}.cue.on{background:var(--cue-bg)}
+body.nocue .cue,body.nocue .note{display:none}
+.hintbar{position:fixed;z-index:15;right:18px;bottom:16px;padding:9px 14px;border-radius:12px;background:rgba(7,26,51,.92);color:#cfdaec;font-size:12px;line-height:1.5;backdrop-filter:blur(6px);box-shadow:0 10px 28px rgba(4,16,31,.35)}
+.hintbar kbd{font:600 11px "JetBrains Mono",ui-monospace,monospace;padding:1px 6px;border-radius:5px;border:1px solid #4A6FA5;color:#fff;margin:0 2px}
+@media (max-width:1000px){nav{display:none}main{margin-left:0;padding:90px 16px 40vh}.bar .now{display:none}}
+@media print{.bar,nav,.hintbar{display:none}main{margin:0;padding:0}.sec{break-inside:avoid-page;box-shadow:none}.ato{background:#eee;color:#000}body.guide .it{opacity:1}}
+</style>
+</head>
+<body class="guide">
+<div class="bar">
+  <h1><small>Roteiro de apresentação</small>Gestão de Mudanças</h1>
+  <div class="now" id="now"><b>Pronto.</b> Aperte <b>espaço</b> ou clique num trecho para começar.</div>
+  <div class="clock"><div><small>Tempo total</small><span class="t" id="tot">00:00:00</span></div><div><small>Neste slide</small><span class="t" id="sec" style="font-size:16px">00:00</span></div><div class="pace" id="pace"></div></div>
+  <div class="grp"><button class="btn" id="bClock" title="Iniciar / pausar o relógio (S)">▶ Iniciar</button><button class="btn" id="bReset" title="Zerar o relógio">↺</button></div>
+  <div class="grp"><button class="btn" id="bMinus" title="Diminuir letra (−)">A−</button><button class="btn" id="bPlus" title="Aumentar letra (+)">A+</button><button class="btn on" id="bGuide" title="Leitura guiada: destaca o trecho atual (G)">Guiada</button><button class="btn" id="bCue" title="Esconder dicas de tela (D)">Dicas</button><button class="btn" id="bTheme" title="Tema claro/escuro (T)">◐</button></div>
+</div>
+<nav id="nav"><!--NAV--></nav>
+<main><div class="col"><!--MAIN--></div></main>
+<div class="hintbar"><kbd>espaço</kbd><kbd>↓</kbd> próximo · <kbd>↑</kbd> anterior · <kbd>N</kbd>/<kbd>P</kbd> slide · <kbd>+</kbd><kbd>−</kbd> letra · <kbd>T</kbd> tema · <kbd>S</kbd> relógio</div>
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={get(k,d){try{const v=localStorage.getItem('rot_'+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem('rot_'+k,JSON.stringify(v))}catch(e){}}};
+const root=document.documentElement,body=document.body;
+let fs=store.get('fs',27),theme=store.get('theme','light'),guide=store.get('guide',true),cue=store.get('cue',true);
+const apply=()=>{root.style.setProperty('--fs',fs+'px');root.dataset.theme=theme;body.classList.toggle('guide',guide);body.classList.toggle('nocue',!cue);$('#bGuide').classList.toggle('on',guide);$('#bCue').classList.toggle('on',cue)};
+apply();
+const items=$$('.it'),secs=$$('.sec'),navs=$$('.nv');
+let idx=-1,curSec=null,running=false,t0=0,acc=0,secT0=0,secAcc=0;
+const secStart=new Map(),secActual={};
+secs.forEach(s=>{const m=$('.tm b',s).textContent.match(/(\d\d):(\d\d)/);secStart.set(s.id,m?(+m[1]*60+ +m[2])*60:0)});
+const fmt=(s,h)=>{s=Math.max(0,Math.floor(s));const H=Math.floor(s/3600),M=Math.floor(s%3600/60),S=s%60;const p=n=>String(n).padStart(2,'0');return h?`${p(H)}:${p(M)}:${p(S)}`:`${p(Math.floor(s/60))}:${p(S)}`};
+const elapsed=()=>acc+(running?(performance.now()-t0)/1000:0);
+const secElapsed=()=>secAcc+(running?(performance.now()-secT0)/1000:0);
+function setSec(s){
+  if(curSec===s)return;
+  if(curSec){secActual[curSec.id]=secElapsed()}
+  curSec=s;secAcc=0;secT0=performance.now();
+  navs.forEach(n=>{const on=n.dataset.s===s.id;n.classList.toggle('cur',on);if(on)n.scrollIntoView({block:'nearest'})});
+  let past=true;navs.forEach(n=>{if(n.dataset.s===s.id)past=false;n.classList.toggle('done',past)});
+  $('#now').innerHTML='<b>'+s.dataset.title.replace(/</g,'&lt;')+'</b> · previsto '+s.dataset.dur+' min';
+}
+function go(i,center=true){
+  if(!items.length)return;i=Math.max(0,Math.min(items.length-1,i));
+  if(idx>=0)items[idx].classList.remove('on');
+  idx=i;const el=items[idx];el.classList.add('on');
+  setSec(el.closest('.sec'));
+  if(center)el.scrollIntoView({block:'center',behavior:'smooth'});
+  if(!running&&acc===0)startClock();
+}
+function secJump(d){
+  const i=secs.indexOf(curSec);const n=Math.max(0,Math.min(secs.length-1,(i<0?0:i)+d));
+  const first=$('.it',secs[n]);if(first)go(items.indexOf(first));else secs[n].scrollIntoView({block:'start'});
+}
+items.forEach((el,i)=>el.addEventListener('click',()=>go(i,false)));
+navs.forEach(n=>n.addEventListener('click',e=>{e.preventDefault();const s=document.getElementById(n.dataset.s);const first=$('.it',s);if(first)go(items.indexOf(first),false);s.scrollIntoView({block:'start',behavior:'smooth'})}));
+/* relógio */
+function startClock(){if(running)return;running=true;t0=performance.now();secT0=performance.now();$('#bClock').textContent='⏸ Pausar';$('#bClock').classList.add('on')}
+function pauseClock(){if(!running)return;acc=elapsed();secAcc=secElapsed();running=false;$('#bClock').textContent='▶ Retomar';$('#bClock').classList.remove('on')}
+$('#bClock').onclick=()=>running?pauseClock():startClock();
+$('#bReset').onclick=()=>{running=false;acc=0;secAcc=0;$('#bClock').textContent='▶ Iniciar';$('#bClock').classList.remove('on');Object.keys(secActual).forEach(k=>delete secActual[k]);navs.forEach(n=>n.classList.remove('done'));$('#pace').textContent=''};
+setInterval(()=>{
+  $('#tot').textContent=fmt(elapsed(),true);$('#sec').textContent=fmt(secElapsed());
+  const pe=$('#pace');if(curSec&&(running||acc>0)){
+    const plan=secStart.get(curSec.id)||0,real=elapsed();
+    /* ritmo: tempo decorrido (somente o que foi apresentado) contra o início previsto do slide atual */
+    const d=Math.round((real-plan)/60);
+    if(Math.abs(d)<=1){pe.textContent='no ritmo';pe.className='pace ok'}
+    else if(d>0){pe.textContent='+'+d+' min atrasado';pe.className='pace late'}
+    else{pe.textContent=Math.abs(d)+' min adiantado';pe.className='pace early'}
+  }
+},500);
+/* botões */
+const setFs=v=>{fs=Math.max(16,Math.min(60,v));store.set('fs',fs);apply()};
+$('#bPlus').onclick=()=>setFs(fs+2);$('#bMinus').onclick=()=>setFs(fs-2);
+$('#bTheme').onclick=()=>{theme=theme==='dark'?'light':'dark';store.set('theme',theme);apply()};
+$('#bGuide').onclick=()=>{guide=!guide;store.set('guide',guide);apply()};
+$('#bCue').onclick=()=>{cue=!cue;store.set('cue',cue);apply()};
+/* teclado */
+addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey)return;const k=e.key;
+  if(k===' '||k==='ArrowDown'||k==='PageDown'||k==='ArrowRight'||k==='j'||k==='J'){e.preventDefault();go(idx+1)}
+  else if(k==='ArrowUp'||k==='PageUp'||k==='ArrowLeft'||k==='k'||k==='K'){e.preventDefault();go(idx-1)}
+  else if(k==='n'||k==='N'){e.preventDefault();secJump(1)}
+  else if(k==='p'||k==='P'){e.preventDefault();secJump(-1)}
+  else if(k==='+'||k==='='){setFs(fs+2)}else if(k==='-'||k==='_'){setFs(fs-2)}
+  else if(k==='t'||k==='T')$('#bTheme').click();
+  else if(k==='g'||k==='G')$('#bGuide').click();
+  else if(k==='d'||k==='D')$('#bCue').click();
+  else if(k==='s'||k==='S')$('#bClock').click();
+  else if(k==='Home'){e.preventDefault();go(0)}else if(k==='End'){e.preventDefault();go(items.length-1)}
+});
+/* ao rolar com o mouse, o slide atual acompanha */
+const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting&&idx<0){navs.forEach(n=>n.classList.toggle('cur',n.dataset.s===en.target.id))}})},{rootMargin:'-30% 0px -60% 0px'});
+secs.forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>

@@ -56,3 +56,6 @@ python3 build.py --out teste.html   # só um arquivo único, para pré-visualiza
 `assets/isabella.webp` **não é versionado** (ver `.gitignore`) até haver autorização de publicação; o arquivo em `dist/` embute todas as imagens.
 
 Fontes e referências **não aparecem na tela** (nem no rodapé, nem no painel **Sobre este slide**). Os números do capítulo 5 vêm da planilha de KPIs do projeto (corte de junho), arredondados.
+
+## Roteiro de apresentação
+`roteiro/roteiro.md` é o texto-fonte (fala, dicas de tela, tempos). `python3 roteiro/build_roteiro.py` gera `dist/Roteiro_Apresentacao.html` (arquivo único, offline): leitura guiada (destaca o trecho atual), dicas de tela em caixas laranja, índice por slide com tempos, relógio com ritmo previsto × real e tema claro/escuro. Teclas: `espaço`/`↓` próximo trecho, `↑` anterior, `N`/`P` slide seguinte/anterior, `+`/`−` tamanho da letra, `T` tema, `G` leitura guiada, `D` esconder dicas, `S` relógio.
