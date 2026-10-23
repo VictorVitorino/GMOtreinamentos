@@ -1,6 +1,7 @@
 /* =====================================================================
    05 · NA PRÁTICA · FRENTE 2 · STAKEHOLDERS  (prefixo fs-, escopo .slide[data-id="stakeholders"])
-   esquerda: o que é + como fazer · direita: mapa influência × interesse + painel da pessoa + antes × depois
+   frente da página: esquerda o que é + como fazer · direita mapa influência × interesse + painel da pessoa + antes × depois
+   verso da página (.pl-open, classes globais .pgwrap/.pldoc/.pltab): Mapa de Stakeholders escrito · mapa de adoção, as mesmas 6 pessoas
    ===================================================================== */
 .slide[data-id="stakeholders"]{--fs-c:var(--steel-500);--fs-c2:var(--navy-600);--fs-ok:#2ECC71;--fs-okt:#1E8E4F}
 .slide[data-id="stakeholders"] [data-s="a"]{--pc:#2ECC71;--pct:#1E8E4F}
@@ -75,7 +76,7 @@
 @keyframes fsPulse{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
 /* ---------- lado direito: painel da pessoa + antes × depois ---------- */
 .fs-side{min-height:0;display:flex;flex-direction:column;gap:12px}
-.fs-panel{flex:1;min-height:0;padding:15px 18px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.fs-panel{flex:1;min-height:0;padding:15px 18px 15px;display:flex;flex-direction:column;gap:9px;overflow:hidden}
 .fs-panel .fs-lb{color:var(--orange-200)}
 .fs-panel.swap>*{animation:fsIn .4s var(--ease) both}
 .fs-panel.swap>*:nth-child(2){animation-delay:.05s}.fs-panel.swap>*:nth-child(3){animation-delay:.1s}.fs-panel.swap>*:nth-child(4){animation-delay:.15s}
@@ -101,30 +102,43 @@
 .fs-ph>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
 .fs-ph b{font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.15;color:#fff}
 .fs-tr{display:flex;flex-direction:column;gap:6px}
+.fs-trh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.fs-tg{font-size:12.5px;color:var(--steel-200);white-space:nowrap}
+.fs-tg b{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)}
 .fs-trk{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
 .fs-trk i{height:30px;display:grid;place-items:center;border-radius:8px;font:700 12.5px var(--fb);font-style:normal;color:var(--steel-300);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:background .3s,color .3s}
 .fs-trk i.on{color:#fff;background:var(--pc);border-color:transparent;box-shadow:inset 0 -3px 0 rgba(0,0,0,.16)}
 .fs-pr{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
-.fs-pr div{flex:1;padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.fs-pr div{flex:1;padding:6px 12px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
 .fs-pr .ok{background:rgba(46,204,113,.12);border-color:rgba(46,204,113,.35)}
-.fs-pr .ok .fs-lb{color:#7FE3A8}
+.fs-pr .ok .fs-lb{color:var(--fs-ok)}
 .fs-pr .fs-lb{display:block;margin-bottom:4px}
-.fs-pr p{font-size:15.5px;line-height:1.34;color:#fff;text-wrap:pretty}
+.fs-pr p{font-size:15px;line-height:1.32;color:#fff;text-wrap:pretty}
 .fs-pr .act{background:rgba(242,107,33,.16);border-color:rgba(255,138,76,.35)}
 .fs-pr .act .fs-lb{color:var(--orange-400)}
+.fs-alh{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.fs-alh .fs-lb{margin-bottom:0}
+.fs-pr .act em{font-style:normal;font-size:12.5px;color:var(--orange-200);white-space:nowrap}
+.fs-pr .act em b{color:#fff}
 /* antes × depois */
-.fs-ba{flex:none;padding:11px 14px 11px;border-radius:12px;background:var(--off);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.fs-ba{flex:none;padding:10px 14px 10px;border-radius:12px;background:var(--off);border:1px solid var(--line);display:flex;flex-direction:column;gap:7px}
+.fs-bah{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.fs-bau{font-size:12.5px;color:var(--grey-500);white-space:nowrap}
 .fs-bar{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:8px}
 .fs-bar em{font-style:normal;font-size:13px;font-weight:700;color:var(--navy-800);white-space:nowrap}
-.fs-bt{display:flex;height:28px;border-radius:7px;overflow:hidden;background:var(--steel-100)}
+.fs-bt{position:relative;display:flex;height:28px;border-radius:7px;overflow:hidden;background:var(--steel-100)}
+/* entrada: uma cobertura que encolhe da direita (só transform: não força layout durante a animação do título) */
+.fs-bt::after{content:"";position:absolute;inset:0;background:var(--steel-100);transform-origin:right center;transform:scaleX(0);pointer-events:none}
+.play .fs-bt::after{animation:fsReveal 1s var(--ease) both;animation-delay:calc(var(--d,8)*90ms + 300ms)}
+@keyframes fsReveal{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 .fs-bt i{flex:none;width:calc(var(--w)*1%);display:grid;place-items:center;font:700 13px var(--fb);font-style:normal;color:#fff;overflow:hidden}
+.fs-bt i b{font-weight:800;white-space:nowrap}
 .fs-bt i.r{background:var(--orange-500)}.fs-bt i.g{background:var(--fs-ok)}
-.play .fs-bt i{animation:fsGrow 1s var(--ease) both;animation-delay:calc(var(--d,8)*90ms + 300ms)}
-@keyframes fsGrow{from{width:0}}
-.fs-ban{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--grey-700);white-space:nowrap}
+.fs-ban{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--grey-700);white-space:nowrap}
+.fs-ban span{display:inline-flex;align-items:center;gap:5px}
 .fs-ban i{width:11px;height:11px;border-radius:3px}
 .fs-ban i.r{background:var(--orange-500)}.fs-ban i.g{background:var(--fs-ok)}
-.fs-ban b{color:var(--navy-800)}
+.fs-ban b{margin-left:auto;color:var(--navy-800)}
 /* ---------- faixa final: próximos 3 · 6 · 8 meses (mesmo padrão das frentes 1 e 3) ---------- */
 .fs-next{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:9px 20px;border-radius:12px;background:var(--orange-100)}
 .fs-nl{font:500 12px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-600);white-space:nowrap}
@@ -134,3 +148,29 @@
 .fs-chips span:nth-child(2) i{background:var(--steel-500)}
 .fs-chips span:nth-child(3) i{background:var(--orange-500)}
 .fs-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
+
+/* ---------- verso da página: Mapa de Stakeholders escrito · mapa de adoção (classes globais .pldoc/.pltab; aqui só leitura ≥ 12,5px e os pontos) ---------- */
+.slide[data-id="stakeholders"] .pldoc .plh{padding:11px 22px}
+.slide[data-id="stakeholders"] .pldoc .plh .plic{background:linear-gradient(150deg,var(--fs-c),var(--fs-c2));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.slide[data-id="stakeholders"] .pldoc .plh h3 small{font-size:12.5px;letter-spacing:.1em}
+.slide[data-id="stakeholders"] .pldoc .plh .plchips span{font-size:12.5px;padding:5px 11px}
+.slide[data-id="stakeholders"] .pltab .plr{font-size:14px;line-height:1.3;padding:5px 12px}
+.slide[data-id="stakeholders"] .pltab .plr.hd{font-size:12.5px;letter-spacing:.1em;padding:9px 12px 7px}
+.slide[data-id="stakeholders"] .pltab .plr .tag{font-size:12.5px;padding:3px 9px;margin:1px 0}
+.slide[data-id="stakeholders"] .pldoc .plf{font-size:13.5px;gap:18px}
+.slide[data-id="stakeholders"] .pldoc .plf b{color:var(--navy-800)}
+/* 1ª coluna: ponto com a inicial (mesma cor da postura do mapa) + papel + quadrante */
+.fs-doc .plr>b{display:flex;align-items:center;gap:10px;font-size:14.5px;line-height:1.2;min-width:0}
+.fs-doc .plr>b>span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fs-doc .plr>b small{font:500 12.5px var(--fm);letter-spacing:.02em;color:var(--grey-500);white-space:nowrap}
+.fs-di{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 13.5px var(--fb);font-style:normal;line-height:1;color:#fff;background:var(--pc);border:2px solid #fff;box-shadow:0 2px 6px rgba(11,37,69,.18),inset 0 -2px 0 rgba(0,0,0,.16)}
+.fs-di.two{font-size:12.5px;letter-spacing:-.04em}
+/* influência / interesse: 3 pontos (nível) + palavra */
+.fs-lv{display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+.fs-lv i{width:9px;height:9px;border-radius:50%;background:var(--steel-100);border:1px solid var(--steel-200)}
+.fs-lv[data-l="1"] i:nth-child(-n+1),.fs-lv[data-l="2"] i:nth-child(-n+2),.fs-lv[data-l="3"] i:nth-child(-n+3){background:var(--fs-c);border-color:var(--fs-c)}
+.fs-lv em{margin-left:5px;font-style:normal;font-size:14px;font-weight:700;color:var(--navy-900)}
+/* legenda das posturas no rodapé do documento */
+.fs-dl{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--navy-800);white-space:nowrap}
+.fs-dl i{width:11px;height:11px;border-radius:50%;background:var(--pc);margin-left:6px}
+.fs-dl i:first-child{margin-left:0}

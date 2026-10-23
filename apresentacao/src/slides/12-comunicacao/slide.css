@@ -1,6 +1,7 @@
 /* =====================================================================
    05 · NA PRÁTICA · FRENTE 1 · COMUNICAÇÃO  (prefixo fc-, escopo .slide[data-id="comunicacao"])
-   O que é · o que um plano precisa ter (checklist) · o plano em movimento (5 fases + marcos)
+   Frente da página: o que é · o que um plano precisa ter (checklist) · o plano em movimento (5 fases + marcos)
+   Verso da página (.pl-open): o Plano de Comunicação escrito, 6 públicos × 7 decisões (classes globais .pldoc/.pltab)
    ===================================================================== */
 .slide[data-id="comunicacao"]{--c:var(--navy-700);--c2:var(--navy-900);--ct:rgba(19,49,92,.08);--fc-g:#2ECC71;--fc-gt:#1E8E4F}
 .fc-main{display:flex;flex-direction:column;gap:12px}
@@ -70,7 +71,7 @@
 .fc-tabs button.on b{color:#fff}.fc-tabs button.on span{color:var(--steel-200)}
 /* painel da fase: quando · o que fazer · entregável · indicador */
 .fc-panel{flex:1;min-height:0;position:relative}
-.fc-ph{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px}
+.fc-ph{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 318px;gap:14px}
 .fc-ph.in>*{animation:fcIn .45s var(--ease) both}
 .fc-ph.in>:nth-child(2){animation-delay:.08s}
 @keyframes fcIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -83,46 +84,72 @@
 .fc-steps li i{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:800 14px var(--fb);font-style:normal;color:var(--c);background:#fff;border:2px solid var(--c)}
 .fc-steps li b{color:var(--navy-900)}
 .fc-side{display:flex;flex-direction:column;gap:10px;min-height:0}
-.fc-mini{flex:1 1 0;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:12px 16px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05)}
+.fc-mini{flex:none;display:flex;flex-direction:column;gap:6px;padding:11px 16px 12px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,37,69,.05)}
 .fc-mini p{font-size:15.5px;line-height:1.35;font-weight:600;color:var(--navy-900);text-wrap:pretty}
-.fc-mini.ind{flex:1.7 1 0;justify-content:center;gap:9px;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);box-shadow:0 12px 28px rgba(11,37,69,.2)}
+/* card navy: critério de saída (fases 1–2) ou indicador do IEC hoje × meta (fases 3–5) */
+.fc-mini.ind{flex:1 1 0;min-height:0;gap:10px;padding:13px 16px 14px;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);border-color:var(--navy-800);box-shadow:0 12px 28px rgba(11,37,69,.2)}
 .fc-mini.ind .fc-lb{color:var(--orange-200)}
-.fc-mini.ind p{color:var(--steel-200);font-weight:600}
-.fc-mini.ind p b{display:block;margin-bottom:4px;font:800 30px/1.1 var(--fb);letter-spacing:-.02em;color:var(--orange-400)}
-.fc-calc{margin-top:4px;display:flex;flex-direction:column;gap:4px;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.fc-mini.ind p{color:var(--steel-200);font-size:15px;font-weight:600}
+.fc-mini.ind p b{color:#fff}
+.fc-cr{display:flex;align-items:center;gap:10px}
+.fc-cr b{font:800 36px/1 var(--fb);letter-spacing:-.03em;color:var(--orange-400)}
+.fc-mt{flex:none;font:700 12px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:#3D2E00;background:var(--orange-200);padding:4px 9px;border-radius:99px}
+.fc-calc{margin-top:auto;display:flex;flex-direction:column;gap:4px;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
 .fc-calc em{font-style:normal;font:600 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-200)}
 .fc-calc span{font-size:13.5px;line-height:1.35;font-weight:500;color:var(--steel-200);text-wrap:pretty}
 .fc-calc span b{color:#fff}
+/* ---- gráfico "hoje × meta" (bullet): trilho cinza · preenchimento = hoje · traço branco = meta, com etiqueta ---- */
+.fc-kr{display:flex;flex-direction:column;gap:6px}
+.fc-kh{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.fc-kh span{font-size:15px;font-weight:700;color:#fff;white-space:nowrap}
+.fc-kh span small{font:600 12.5px var(--fm);color:var(--orange-200);margin-left:8px}
+.fc-kr.ok .fc-kh span small{color:var(--fc-g)}
+.fc-kh b{font:800 18px/1 var(--fb);letter-spacing:-.02em;color:var(--orange-400);white-space:nowrap}
+.fc-kh b em{font:600 12px var(--fm);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-300);margin-right:6px}
+.fc-kr.ok .fc-kh b{color:var(--fc-g)}
+.fc-st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.fc-st div{display:flex;flex-direction:column;gap:3px;padding:7px 9px 6px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)}
+.fc-st em{font-style:normal;font:600 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--steel-300);white-space:nowrap}
+.fc-st b{font:800 17px/1.1 var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.fc-st div.now b{color:var(--orange-400)}.fc-st div.gap b{color:var(--orange-200)}
+.fc-kr.ok .fc-st div.now b,.fc-kr.ok .fc-st div.gap b{color:var(--fc-g)}
+.fc-bar{position:relative;height:10px;border-radius:99px;background:rgba(255,255,255,.14);margin-bottom:18px}
+.fc-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--v)*1%);border-radius:99px;background:var(--orange-400);transform:scaleX(0);transform-origin:left;animation:fcBar .6s var(--ease) .15s forwards}
+.fc-kr.ok .fc-bar i{background:var(--fc-g)}
+@keyframes fcBar{to{transform:none}}
+.fc-bar u{position:absolute;top:-4px;bottom:-4px;left:calc(var(--m)*1% - 1.5px);width:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(7,26,51,.55);text-decoration:none}
+.fc-bar u s{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:3px;font:700 12.5px/1 var(--fb);letter-spacing:0;text-decoration:none;color:#fff;white-space:nowrap}
+.fc-bar u.edge s{left:auto;right:-1px;transform:none}
+.fc-leg{font:500 12px var(--fm);letter-spacing:.04em;color:var(--steel-300);white-space:nowrap}
+.fc-leg::before{content:"";display:inline-block;width:14px;height:6px;border-radius:99px;background:var(--orange-400);margin-right:6px;vertical-align:middle}
+.fc-mini.ind .fc-leg{margin-top:-4px}
 /* leitura do ciclo fechado (último passo): frase + ciclo à esquerda · dashboard real do IEC à direita */
-.fc-sum{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 336px;align-items:center;gap:24px;padding:18px 22px;border-radius:14px;color:#fff;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);box-shadow:0 18px 40px rgba(11,37,69,.22)}
+.fc-sum{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) 362px;align-items:center;gap:20px;padding:16px 22px;border-radius:14px;color:#fff;background:linear-gradient(155deg,#16396B 0%,#0B2545 55%,#071A33 100%);box-shadow:0 18px 40px rgba(11,37,69,.22)}
 .fc-sum.in>*{animation:fcIn .5s var(--ease) both}
 .fc-sum.in>:nth-child(2){animation-delay:.12s}
 .fc-sl{display:flex;flex-direction:column;gap:13px;min-width:0}
 .fc-sl .fc-lb,.fc-sr .fc-lb{color:var(--orange-200)}
 .fc-sl h3{font-size:26px;line-height:1.22;font-weight:800;letter-spacing:-.02em;color:#fff;text-wrap:balance}
 .fc-sl h3 b{color:var(--orange-400)}
-.fc-chain{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.fc-chain span{display:inline-flex;align-items:center;height:30px;padding:0 9px;border-radius:99px;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);white-space:nowrap}
-.fc-chain i{font-style:normal;font-weight:800;font-size:15px;color:var(--orange-400)}
+.fc-chain{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.fc-chain span{display:inline-flex;align-items:center;height:28px;padding:0 7px;border-radius:99px;font-size:12px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);white-space:nowrap}
+.fc-chain i{font-style:normal;font-weight:800;font-size:14px;color:var(--orange-400)}
 .fc-sl p{font-size:15.5px;line-height:1.4;color:var(--steel-200);text-wrap:pretty}
 .fc-sl p b{color:#fff}
-.fc-sr{display:flex;flex-direction:column;gap:9px;padding-left:24px;border-left:1px solid rgba(255,255,255,.12)}
-.fc-kr{display:grid;grid-template-columns:minmax(0,1fr) auto;row-gap:4px;column-gap:10px;align-items:baseline}
-.fc-kr span{font-size:14px;font-weight:600;color:var(--steel-200);white-space:nowrap}
-.fc-kr span em{font-style:normal;font:500 12px var(--fm);color:var(--steel-300);margin-left:5px}
-.fc-kr b{font:700 14px var(--fm);color:#fff}
-.fc-kr.ok b{color:var(--fc-g)}.fc-kr.ko b{color:var(--orange-400)}
-.fc-bar{grid-column:1/-1;position:relative;height:8px;border-radius:99px;background:rgba(255,255,255,.12)}
-.fc-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--v)*1%);border-radius:99px;background:var(--orange-400);transform:scaleX(0);transform-origin:left;animation:fcBar .9s var(--ease) .35s forwards}
-.fc-kr.ok .fc-bar i{background:var(--fc-g)}
-@keyframes fcBar{to{transform:none}}
-.fc-bar u{position:absolute;top:-3px;bottom:-3px;left:calc(var(--m)*1% - 2px);width:3px;border-radius:2px;background:#fff;box-shadow:0 0 0 1px rgba(7,26,51,.6)}
-.fc-iec{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:2px;padding:8px 12px;border-radius:10px;background:rgba(242,107,33,.16);border-left:3px solid var(--orange-400)}
-.fc-iec b{font:800 18px var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.fc-sr{display:flex;flex-direction:column;gap:7px;padding-left:18px;border-left:1px solid rgba(255,255,255,.12)}
+.fc-sr .fc-kr{gap:4px}
+.fc-mini.ind .fc-kr.cmp{gap:5px}
+.fc-mini.ind .fc-kr.cmp .fc-bar{margin-bottom:18px}
+.fc-sr .fc-bar{margin-bottom:18px}
+.fc-sr .fc-leg{margin-top:-2px;margin-bottom:2px}
+.fc-iec{display:grid;grid-template-columns:auto auto;align-items:center;justify-content:space-between;gap:3px 10px;margin-top:2px;padding:8px 12px;border-radius:10px;background:rgba(242,107,33,.16);border-left:3px solid var(--orange-400)}
+.fc-iec b{font:800 19px var(--fb);letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.fc-iec b em{font:600 12px var(--fm);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-200);margin-right:6px}
 .fc-iec .y{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#3D2E00;background:#F2B51D;white-space:nowrap}
 .fc-iec .y::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
-.fc-iec em{flex-basis:100%;font-style:normal;font-size:13.5px;color:var(--steel-200);white-space:nowrap}
-.fc-iec em b{font:800 13.5px var(--fb);color:var(--orange-400)}
+.fc-iec .y,.fc-iec .ag{justify-self:end}
+.fc-iec>span:not(.y){font-size:13px;color:var(--steel-200);white-space:nowrap}
+.fc-iec>span:not(.y) b{font:800 13px var(--fb);color:var(--orange-400)}
 /* mini linha do tempo dos marcos */
 .fc-tl{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:16px;padding:8px 16px 7px;border-radius:12px;background:var(--off);border:1px solid var(--line);transition:background .4s}
 .fc-tll{font:500 12px var(--fm);letter-spacing:.1em;text-transform:uppercase;line-height:1.35;color:var(--grey-500);white-space:nowrap}
@@ -152,3 +179,18 @@
 .fc-chips span:nth-child(2) i{background:var(--steel-500)}
 .fc-chips span:nth-child(3) i{background:var(--orange-500)}
 .fc-chips em{font-style:normal;font:500 12px var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--grey-500);margin-right:2px}
+/* ---------- verso da página: Plano de Comunicação escrito (classes globais .pldoc/.pltab; aqui só ajustes de leitura ≥ 12,5px) ---------- */
+.slide[data-id="comunicacao"] .pldoc .plh{padding:11px 22px}
+.slide[data-id="comunicacao"] .pldoc .plh .plic{background:linear-gradient(150deg,var(--c),var(--c2))}
+.slide[data-id="comunicacao"] .pldoc .plh h3 small{font-size:12.5px;letter-spacing:.1em}
+.slide[data-id="comunicacao"] .pldoc .plh .plchips span{font-size:12.5px;padding:5px 11px}
+.slide[data-id="comunicacao"] .pltab .plr{font-size:14.5px;line-height:1.32;padding:5px 12px}
+.slide[data-id="comunicacao"] .pltab .plr.hd{font-size:12.5px;letter-spacing:.1em;padding:9px 12px 7px}
+.slide[data-id="comunicacao"] .pltab .plr .tag{font-size:12.5px;padding:3px 9px;margin:2px 4px 2px 0}
+.slide[data-id="comunicacao"] .pldoc .plf{font-size:13.5px}
+.slide[data-id="comunicacao"] .pldoc .plf b{color:var(--navy-800)}
+.fc-doc .plr>b{font-size:15px;line-height:1.25}
+.fc-doc .plr>b small{display:block;margin-top:3px;font:500 12.5px var(--fm);letter-spacing:.02em;color:var(--grey-500)}
+.fc-doc .fc-q{display:block;padding-left:10px;border-left:3px solid var(--orange-200);color:var(--navy-800);font-weight:500;text-wrap:pretty}
+.fc-doc .fc-tags{display:flex;flex-wrap:wrap;align-items:center}
+.fc-doc .fc-m b{color:var(--orange-600);font-weight:800;white-space:nowrap}

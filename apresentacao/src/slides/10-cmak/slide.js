@@ -1,11 +1,12 @@
 (()=>{const {$,$$,tone,ding}=DECK, SEC=DECK.el('cmak');
-/* 4 cards frente (modelo) e verso (dashboard real). → vira o próximo; ← desvira o último; clique vira o card. */
+/* 4 cards: frente = MODELO (o que medimos) · verso = HOJE (como estamos).
+   → vira o próximo card; ← desvira o último virado; clique vira/desvira o card. Após os 4, → devolve false (troca de slide). */
 const CARDS=$$('.ck-card',SEC);
 const isF=c=>c.classList.contains('flip');
 const fmt=(v,dec)=>v.toFixed(dec).replace('.',',');
-const zero=n=>{n.innerHTML='0<small>%</small>'};
-function count(el,to){const dec=String(to).includes('.')?1:0,t0=performance.now();
- const f=t=>{if(!el.closest('.flip'))return;const k=Math.min(1,(t-t0)/600),e=1-Math.pow(1-k,3);el.innerHTML=fmt(to*e,dec)+'<small>%</small>';if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+const zero=n=>{n.textContent='0'};
+function count(el,to){const dec=1,t0=performance.now();
+ const f=t=>{if(!el.closest('.flip'))return;const k=Math.min(1,(t-t0)/600),e=1-Math.pow(1-k,3);el.textContent=fmt(to*e,dec);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
 function mark(){let last=-1;CARDS.forEach((c,j)=>{if(isF(c))last=j});CARDS.forEach((c,j)=>c.classList.toggle('on',j===last))}
 function flip(i,on,snd=true){const c=CARDS[i];if(isF(c)===on)return;c.classList.toggle('flip',on);
  const n=$('.ck-n',c);
