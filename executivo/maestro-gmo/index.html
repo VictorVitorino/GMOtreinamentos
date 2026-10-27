@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maestro · Gestão da Mudança</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   Página executiva · Gestão da Mudança · Projeto Maestro (ONS)
+   Só o que foi feito, em grandes números: Assessment · Comunicação ·
+   Adoção ao modelo. Identidade Maestro: oliva #4C641D · lima #D3CE22 ·
+   grafite #54575C. Palco 1600×900 escalado para a janela; em repouso
+   nada de texto fica com transform (texto nítido no palco escalado).
+   Abrir com #export: palco 1:1 e sem animação (PNG/PDF).
+   ===================================================================== */
+:root{
+ --ol:#4C641D;--ol-d:#3A4E14;--ol-dd:#26340B;--ol-l:#E8EEDA;
+ --li:#D3CE22;--li-d:#B3AE12;--li-ll:#FAF9E6;
+ --gr:#54575C;--gr-l:#8D9096;--gr-ll:#EEEFF0;
+ --bg:#F5F5EC;--card:#fff;--line:#E3E3D3;--line2:#D2D2BF;
+ --ink:#1D2210;--ink2:#474C38;--ink3:#767B66;
+ --fb:'Inter',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+ --fm:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+ --ease:cubic-bezier(.22,.61,.36,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#E9E9DD;overflow:hidden;font-family:var(--fb);color:var(--ink);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:center;background:var(--bg);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(38,52,11,.18)}
+
+/* ---------- cabeçalho ---------- */
+.hdr{position:absolute;left:44px;right:44px;top:28px;height:62px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:30px}
+.hdr .mlogo{height:34px;width:auto;display:block}
+.hdr .ttl{min-width:0;border-left:2px solid var(--line2);padding-left:28px}
+.hdr .eb{font:600 12px var(--fm);letter-spacing:.18em;text-transform:uppercase;color:var(--ol)}
+.hdr h1{margin-top:6px;font-size:36px;line-height:1.05;font-weight:800;letter-spacing:-.035em;white-space:nowrap}
+.hdr h1 em{font-style:normal;color:var(--ol);background:linear-gradient(transparent 72%,var(--li) 72%,var(--li) 90%,transparent 90%)}
+.hdr .right{display:flex;align-items:center;gap:24px}
+.medal{display:flex;align-items:center;gap:12px;padding:7px 18px 7px 7px;border-radius:99px;background:var(--ol-dd);color:#fff;box-shadow:0 10px 24px rgba(38,52,11,.22)}
+.medal .cup{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#F4F07A,var(--li) 55%,var(--li-d));box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.medal .cup svg{width:23px;height:23px;fill:var(--ol-dd)}
+.medal b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.medal span{display:block;font:500 11px var(--fm);letter-spacing:.06em;color:var(--li)}
+.hdr .ons{height:40px;width:auto;display:block}
+
+/* ---------- três colunas ---------- */
+.cols{position:absolute;left:44px;right:44px;top:118px;bottom:46px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.col{position:relative;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:20px;padding:26px 24px 22px;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:0 1px 2px rgba(38,52,11,.05),0 10px 26px rgba(38,52,11,.07);overflow:hidden}
+.col::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--c)}
+.c1{--c:var(--ol);--cs:var(--ol-l);--ct:var(--ol)}
+.c2{--c:var(--li);--cs:var(--li-ll);--ct:var(--ol-dd)}
+.c3{--c:var(--gr);--cs:var(--gr-ll);--ct:var(--gr)}
+.ch{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:14px}
+.ch .num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font:800 23px var(--fb);color:#fff;background:var(--c)}
+.c2 .ch .num{color:var(--ol-dd)}
+.ch small{display:block;font:600 11px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.ch h2{margin-top:3px;font-size:26px;line-height:1.05;font-weight:800;letter-spacing:-.03em}
+.ch .more{width:32px;height:32px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;color:var(--ink2);transition:background .2s,border-color .2s}
+.ch .more svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.ch .more:hover{border-color:var(--ol);background:var(--ol-l)}
+/* número principal */
+.hero{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:0;text-align:left}
+.hero .ub{display:flex;flex-direction:column;gap:8px}
+.hero .big{display:flex;align-items:baseline;gap:14px}
+.hero .big b{font-size:112px;line-height:.86;font-weight:900;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+.hero .big b small{margin-right:2px;font-size:64px;font-weight:800;letter-spacing:-.03em}
+.hero .big>span{font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--ct)}
+.hero .p{display:block;margin-top:10px;font-size:14.5px;line-height:1.4;color:var(--ink2)}
+.units{display:flex;flex-wrap:wrap;gap:4px}
+.units i{width:10px;height:10px;border-radius:50%;background:var(--u)}
+.units.dots{max-width:416px}
+.units.sq{gap:5px}
+.units.sq i{width:22px;height:22px;border-radius:6px}
+.lgd{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12.5px;font-weight:600;color:var(--ink3)}
+.lgd i{display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:3px;vertical-align:-1px}
+.lgd b{color:var(--ink)}
+/* números de apoio */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.t{display:flex;flex-direction:column;align-items:flex-start;gap:3px;height:144px;padding:14px 18px;border-radius:16px;background:var(--cs);border:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+button.t:hover{border-color:var(--c);box-shadow:0 8px 20px rgba(38,52,11,.1)}
+.t b{font-size:48px;line-height:.95;font-weight:900;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.t b small{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.t strong{margin-top:6px;display:flex;align-items:center;gap:7px;font-size:15.5px;font-weight:800;line-height:1.15}
+.t strong i{flex:none;width:10px;height:10px;border-radius:3px}
+.t>span{font-size:12.5px;line-height:1.35;color:var(--ink2)}
+.t .up{font-weight:800;color:var(--ol)}
+.film{display:flex;gap:3px;width:100%;margin-top:auto;padding-top:4px}
+.film i{flex:1;height:12px;border-radius:3px;background:var(--li)}
+.film i.tm{background:var(--ol)}
+/* nota de rodapé da coluna */
+.note{display:flex;align-items:center;gap:12px;height:58px;padding:10px 16px;border-radius:14px;border:1.5px dashed var(--line2);font-size:13.5px;line-height:1.35;color:var(--ink2)}
+.note svg{flex:none;width:22px;height:22px;fill:none;stroke:var(--ct);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.note b{color:var(--ink)}
+.foot{position:absolute;left:44px;right:44px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:20px;font:500 11px var(--fm);color:var(--ink3)}
+.foot img{height:12px;width:auto;filter:brightness(0);opacity:.5}
+.exp .hint{visibility:hidden}
+
+/* ---------- entrada (fill-mode backwards: nada fica aplicado em repouso) ---------- */
+.play [data-a]{animation:aUp .7s var(--ease) backwards;animation-delay:calc(var(--d,0)*90ms + 120ms)}
+@keyframes aUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.play .units i,.play .film i{animation:aPop .45s var(--spring) backwards;animation-delay:calc(var(--i,0)*22ms + 700ms)}
+@keyframes aPop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+
+/* ---------- gaveta com as listas ---------- */
+#dr{position:absolute;inset:0;z-index:50;display:none;background:rgba(29,34,16,.42)}
+#dr.on{display:block}
+#dr .pn{position:absolute;right:0;top:0;bottom:0;width:560px;padding:28px 32px;background:#fff;box-shadow:-20px 0 50px rgba(29,34,16,.25);overflow:auto;animation:aIn .35s var(--ease)}
+@keyframes aIn{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+#dr h3{padding-right:40px;font-size:26px;letter-spacing:-.02em}
+#dr .x{position:absolute;right:20px;top:18px;width:36px;height:36px;border-radius:50%;font-size:22px;text-align:center;color:var(--ink3)}
+#dr .x:hover{background:var(--bg)}
+#dr h4{margin:20px 0 8px;font:600 11px var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--ol)}
+#dr ol{padding-left:20px;display:flex;flex-direction:column;gap:5px}
+#dr li{font-size:14px;line-height:1.4;color:var(--ink2)}
+#dr p{margin-top:8px;font-size:14px;line-height:1.45;color:var(--ink2)}
+@media print{html,body{background:#fff;overflow:visible}#stage{position:static;transform:none!important;box-shadow:none;border-radius:0}#dr{display:none!important}.hint{visibility:hidden}@page{size:1600px 900px;margin:0}}
+</style>
+</head>
+<body>
+<div id="stage">
+  <header class="hdr" data-a style="--d:0">
+    <img class="mlogo" src="assets/maestro.svg" alt="Maestro">
+    <div class="ttl">
+      <div class="eb">Projeto Maestro · ONS · out/25 → out/26</div>
+      <h1>Gestão da Mudança em <em>grandes números</em></h1>
+    </div>
+    <div class="right">
+      <div class="medal"><span class="cup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V17h3v2H8v-2h3v-2.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V5h3V3zm0 4H6v1a2 2 0 0 0 1.4 1.9A5 5 0 0 1 7 8V7zm10 0v1c0 .7-.1 1.3-.4 1.9A2 2 0 0 0 18 8V7h-1z"/></svg></span><div><b>1º lugar · DPL</b><span>Somos ONS D+ 2026</span></div></div>
+      <img class="ons" src="assets/ons.png" alt="ONS">
+    </div>
+  </header>
+
+  <main class="cols">
+    <!-- 1 · Assessment -->
+    <article class="col c1" data-a style="--d:1">
+      <div class="ch"><span class="num">1</span><div><small>Afinar · ouvir antes de mudar</small><h2>Assessment</h2></div><button class="more" type="button" data-dr="entrevistas" title="Ver detalhe" aria-label="Ver detalhe do assessment"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button></div>
+      <button class="hero" type="button" data-dr="entrevistas">
+        <span><span class="big"><b><small>+</small><span class="cnt" data-to="60">60</span></b><span>entrevistas</span></span>
+        <span class="p">Todas as diretorias do ONS, associações, conselheiros e agentes do setor (CCEE, EPE, ANEEL e MME).</span></span>
+        <span class="ub"><span class="units dots" id="u1" role="img" aria-label="40 entrevistas internas e 20 com setor e conselho"></span>
+        <span class="lgd"><span><i style="background:var(--ol)"></i><b>40</b> gestores do ONS</span><span><i style="background:var(--li-d)"></i><b>20</b> setor e conselho</span></span></span>
+      </button>
+      <div class="tiles">
+        <button class="t" type="button" data-dr="pesquisas"><b class="cnt" data-to="490">490</b><strong>respostas</strong><span>2 pesquisas de prontidão: 328 + 162</span></button>
+        <button class="t" type="button" data-dr="pesquisas"><b class="cnt" data-to="4.17" data-dec="2">4,17</b><strong>índice de prontidão</strong><span><span class="up">▲ +0,23</span> sobre 3,94 em 2025</span></button>
+        <button class="t" type="button" data-dr="entrevistas"><b><span class="cnt" data-to="85">85</span><small>%</small></b><strong>lideranças favoráveis</strong><span>22 das 26 lideranças entrevistadas</span></button>
+        <button class="t" type="button" data-dr="entrevistas"><b class="cnt" data-to="39">39</b><strong>lideranças mapeadas</strong><span>mapa de stakeholders de todas as diretorias</span></button>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.8 3.1-6 6.5-6s6 2.2 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.4c1.9.8 3 2.7 3.3 5.6"/></svg><span><b>Diagnóstico ADKAR</b> individual dos 5 líderes da nova FE</span></div>
+    </article>
+
+    <!-- 2 · Comunicação -->
+    <article class="col c2" data-a style="--d:2">
+      <div class="ch"><span class="num">2</span><div><small>Ecoar · a mensagem em todo o ONS</small><h2>Comunicação</h2></div><button class="more" type="button" data-dr="comunicados" title="Ver detalhe" aria-label="Ver detalhe da comunicação"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button></div>
+      <button class="hero" type="button" data-dr="comunicados">
+        <span><span class="big"><b class="cnt" data-to="16">16</b><span>comunicados</span></span>
+        <span class="p">Peças oficiais do projeto, em 4 frentes:</span></span>
+        <span class="ub"><span class="units sq" id="u2" role="img" aria-label="2 boletins, 4 convites, 4 de conteúdo do modelo e 6 de engajamento"></span>
+        <span class="lgd"><span><i style="background:var(--ol-dd)"></i><b>2</b> boletins</span><span><i style="background:var(--ol)"></i><b>4</b> convites</span><span><i style="background:var(--li-d)"></i><b>4</b> conteúdo do modelo</span><span><i style="background:var(--li)"></i><b>6</b> engajamento</span></span></span>
+      </button>
+      <div class="tiles">
+        <button class="t" type="button" data-dr="videos"><b class="cnt" data-to="12">12</b><strong>vídeos</strong><span>7 Fala, Maestro + 5 temáticos</span><span class="film" id="film" aria-hidden="true"></span></button>
+        <button class="t" type="button" data-dr="comunicados"><b class="cnt" data-to="29">29</b><strong>edições de boletim</strong><span>24 semanais para a DPL e 5 mensais para todo o ONS</span></button>
+        <button class="t" type="button" data-dr="comunicados"><b class="cnt" data-to="20">20</b><strong>vozes do Maestro</strong><span>depoimentos de líderes e técnicos nos boletins</span></button>
+        <button class="t" type="button" data-dr="comunicados"><b class="cnt" data-to="1">1</b><strong>game do Maestro</strong><span>gamificação do projeto</span></button>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M7 3v3M11 3v3"/></svg><span><b>Café com a Liderança</b> toda sexta e <b>Rede de Influenciadores</b> em 4 diretorias</span></div>
+    </article>
+
+    <!-- 3 · Adoção ao modelo -->
+    <article class="col c3" data-a style="--d:3">
+      <div class="ch"><span class="num">3</span><div><small>Reger · modelar e apresentar</small><h2>Adoção ao modelo</h2></div><button class="more" type="button" data-dr="encontros" title="Ver detalhe" aria-label="Ver detalhe da adoção ao modelo"><svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button></div>
+      <button class="hero" type="button" data-dr="encontros">
+        <span><span class="big"><b class="cnt" data-to="31">31</b><span>encontros</span></span>
+        <span class="p">Reuniões para modelar e apresentar o modelo da FE.</span></span>
+        <span class="ub"><span class="units sq" id="u3" role="img" aria-label="16 apresentações, 7 workshops e 8 treinamentos"></span></span>
+      </button>
+      <div class="tiles">
+        <button class="t" type="button" data-dr="encontros"><b class="cnt" data-to="16">16</b><strong><i style="background:var(--gr)"></i>apresentações</strong><span>modelo, comunidades, ritos e papéis</span></button>
+        <button class="t" type="button" data-dr="encontros"><b class="cnt" data-to="7">7</b><strong><i style="background:var(--ol)"></i>workshops</strong><span>Gerências Técnicas e FEG</span></button>
+        <button class="t" type="button" data-dr="encontros"><b class="cnt" data-to="8">8</b><strong><i style="background:var(--li-d)"></i>treinamentos</strong><span>modelo matricial, projetos, arquitetura, IA e GMO</span></button>
+        <div class="t"><b class="cnt" data-to="4">4</b><strong>gerências no ar</strong><span>FE em operação desde 01/07: FEG, FEL, FEN e FER</span></div>
+      </div>
+      <div class="note"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8-4.3-4.1 5.9-.9z"/></svg><span><b>Workshop das Gerências</b> (04–05/08): +20 participantes, 7h e engajamento muito alto</span></div>
+    </article>
+  </main>
+
+  <div class="foot"><span>Projeto Maestro · ONS · Gestão da Mudança · posição em 27/10/2026</span><span class="hint">clique em um número para ver a lista</span><img src="assets/am.png" alt="A&amp;M"></div>
+
+  <div id="dr" aria-hidden="true"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="drt"><button class="x" type="button" aria-label="Fechar">×</button><div id="drc"></div></div></div>
+</div>
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const stage=$('#stage'),EXP=location.hash==='#export';
+function fit(){if(EXP){stage.classList.add('exp');stage.style.cssText+=';left:0;top:0;transform:none;border-radius:0;box-shadow:none';return}
+ const sc=Math.min((innerWidth-24)/1600,(innerHeight-24)/900);stage.style.transform=`translate(-50%,-50%) scale(${sc})`}
+addEventListener('resize',fit);fit();
+/* unidades: cada ponto ou quadrado é uma entrevista, um comunicado ou um encontro */
+const U={u1:[[40,'var(--ol)'],[20,'var(--li-d)']],u2:[[2,'var(--ol-dd)'],[4,'var(--ol)'],[4,'var(--li-d)'],[6,'var(--li)']],u3:[[16,'var(--gr)'],[7,'var(--ol)'],[8,'var(--li-d)']]};
+for(const [id,parts] of Object.entries(U)){let k=0;$('#'+id).innerHTML=parts.map(([n,c])=>Array.from({length:n},()=>`<i style="--u:${c};--i:${k++}"></i>`).join('')).join('')}
+$('#film').innerHTML=Array.from({length:12},(_,i)=>`<i class="${i<7?'':'tm'}" style="--i:${i+20}"></i>`).join('');
+/* contagem dos números */
+if(!EXP)$$('.cnt').forEach(el=>{const to=+el.dataset.to,dec=+(el.dataset.dec||0),t0=performance.now()+450;
+ const fmt=v=>v.toFixed(dec).replace('.',',');el.textContent=fmt(0);
+ const f=t=>{const k=Math.max(0,Math.min(1,(t-t0)/1200)),e=1-Math.pow(1-k,3);el.textContent=fmt(to*e);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+/* gaveta com as listas */
+const D={
+ entrevistas:{t:'Assessment · quem ouvimos',b:`<h4>Entrevistas</h4><p><b>+40</b> com gerentes executivos e gerentes de todas as diretorias e <b>+20</b> com associações, conselheiros do ONS e agentes setoriais (CCEE, EPE, ANEEL e MME).</p><h4>Mapa de stakeholders</h4><p><b>39 lideranças mapeadas</b> (DPL 14 · DOP 10 · DTA 8 · DAC 6 · 1 sem diretoria) e <b>26 entrevistadas</b> entre 15 e 27/10/2025.</p><p>Postura das 26: <b>22 favoráveis</b> · 3 neutras · 1 resistente.</p><h4>Diagnóstico ADKAR · 5 líderes da FE</h4><ol><li><b>Consciência</b>: todos entendem o contexto e a motivação da transformação.</li><li><b>Desejo</b>: 4 de 5 favoráveis; 1 adesão condicionada ao escopo do papel.</li><li><b>Conhecimento</b>: lacunas de clareza: líder técnico × gestor, papel da gerência, avaliação na matriz e interfaces FE × DTA.</li><li><b>Habilidade</b>: ponto de atenção, com times ainda em formação e pouco preparo de gestão para parte dos líderes.</li><li><b>Reforço</b>: pedem treinamento de liderança, onboarding, comunicação e patrocínio.</li></ol>`},
+ pesquisas:{t:'Pesquisas de prontidão',b:`<h4>Pesquisa 1 · início do projeto (2025)</h4><p><b>328 respondentes</b>: DPL 168 · DTA 100 · DOP 60.</p><h4>Pesquisa 2 · Operação Assistida (2026)</h4><p><b>162 respondentes</b>: DPL 127 · DTA 35.</p><h4>Índice geral de prontidão</h4><p><b>3,94 → 4,17</b> (+0,23), com evolução nas quatro dimensões.</p>`},
+ comunicados:{t:'Comunicação',b:`<h4>Boletins · 2</h4><ol><li>Comunicado Semanal: 24 edições para a DPL</li><li>Comunicado Mensal: 5 edições para todo o ONS</li></ol><h4>Convites e encontros · 4</h4><ol><li>Encontro Maestro · DPL</li><li>Convite · reunião Gestores + Influenciadores</li><li>Convite · reunião DPL · Gestores</li><li>Divulgação do Café com a Liderança</li></ol><h4>Conteúdo do modelo · 4</h4><ol><li>Papéis e Responsabilidades</li><li>Comunicado das Fases do Projeto</li><li>Direcionadores Estratégicos</li><li>Q&amp;A do Maestro</li></ol><h4>Engajamento e marca · 6</h4><ol><li>Divulgação do Game Maestro</li><li>Divulgação Copa ONS</li><li>Divulgação dos Influenciadores</li><li>Material de Divulgação 1 e 2</li><li>Fundo de Tela Maestro</li><li>Recap · Página Interativa Maestro</li></ol><h4>Canais</h4><p>Café com a Liderança (depois Bate-papo dos Maestros) toda sexta, 9h · Rede de Influenciadores na DPL, DTA, DOP e DAC · página oficial no Sou+ · vídeo na tela de entrada do ONS.</p><h4>20 Vozes do Maestro</h4><p>Depoimentos assinados nos boletins: 5 lideranças e 15 profissionais do time técnico.</p>`},
+ videos:{t:'Vídeos',b:`<h4>Série Fala, Maestro · 7</h4><p>7 episódios.</p><h4>Vídeos temáticos · 5</h4><ol><li>Projeto Maestro (institucional, enviado a todo o ONS e exibido na tela de entrada)</li><li>Modelo Matricial</li><li>Papéis e Responsabilidades</li><li>Gerências</li><li>Onboarding Maestro</li></ol>`},
+ encontros:{t:'Adoção ao modelo · 31 encontros',b:`<h4>16 apresentações-chave</h4><ol><li>Webinar · Modelo de Operação com as áreas clientes</li><li>Modelo de operação da FE aos gerentes das áreas clientes</li><li>Conversa sobre a estrutura definida e o modelo de operação</li><li>FEL · Comunidade de Entrega · Regime Permanente e Transitórios Eletromecânicos</li><li>FEL · Comunidade de Entrega · Transitórios Eletromagnéticos</li><li>FER · Comunidade de Entrega · Carga, RED e Geração Renovável Variável</li><li>FER · Comunidade de Entrega · Recursos Hidrológicos</li><li>FEN · Comunidade de Entrega · Planejamento e Programação Energética</li><li>Aderência a ritos e fóruns · Comunidade RMS</li><li>Aderência a ritos e fóruns · Geração Renovável e Carga</li><li>Aderência a ritos e fóruns · Recursos Hidrológicos</li><li>Aderência a ritos e fóruns · Fórum de Líderes (1)</li><li>Aderência a ritos e fóruns · Fórum de Líderes (2)</li><li>Aderência aos Papéis e Responsabilidades das Comunidades</li><li>Papéis, responsabilidades e atuação de cada perfil (1)</li><li>Papéis, responsabilidades e atuação de cada perfil (2)</li></ol><h4>7 workshops</h4><ol><li>Modelo de Atuação das Gerências Técnicas · sessão 1 (presencial)</li><li>Modelo de Atuação das Gerências Técnicas · sessão 2 (presencial)</li><li>FEG · Fóruns, Processos e Rotinas Operacionais · sessão 1</li><li>FEG · Fóruns, Processos e Rotinas Operacionais · sessão 2</li><li>FEG · Time de Governança e Portfólio (presencial)</li><li>FEG · Comunidades Técnicas · sessão 3 (save the date)</li><li>FEG · Captação Orçamentária · sessão 3</li></ol><p>As 2 sessões das Gerências Técnicas foram o Workshop das Gerências e Comunidades (04–05/08): +20 participantes, 7h de interação, 4 dinâmicas, engajamento muito alto.</p><h4>8 treinamentos</h4><ol><li>Modelo de Operação Matricial, Papéis e Responsabilidades</li><li>Metodologias de Gestão de Projetos</li><li>Arquitetura de Modelos Eletroenergéticos · sessão 1</li><li>Arquitetura de Modelos Eletroenergéticos · sessão 2</li><li>Plataformização, Escalabilidade e Performance das Ferramentas</li><li>Fundamentos de IA</li><li>Desenvolvimento Integrado com IA</li><li>Gestão de Mudanças (save the date)</li></ol>`}
+};
+const dr=$('#dr'),drc=$('#drc');let back=null;
+const open=(k,from)=>{const d=D[k];if(!d)return;back=from;drc.innerHTML=`<h3 id="drt">${d.t}</h3>${d.b}`;dr.classList.add('on');dr.setAttribute('aria-hidden','false');$('#dr .x').focus()};
+const close=()=>{if(!dr.classList.contains('on'))return;dr.classList.remove('on');dr.setAttribute('aria-hidden','true');back&&back.focus()};
+$$('[data-dr]').forEach(b=>b.addEventListener('click',()=>open(b.dataset.dr,b)));
+$('#dr .x').onclick=close;dr.addEventListener('click',e=>{if(e.target===dr)close()});
+addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+if(!EXP)requestAnimationFrame(()=>stage.classList.add('play'));
+})();
+</script>
+</body>
+</html>
