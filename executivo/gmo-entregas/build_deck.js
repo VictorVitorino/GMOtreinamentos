@@ -68,7 +68,7 @@ const FRENTES = [
   { n: '02', t: 'Identidade visual', b: ['Marca e assinatura com o ONS', 'Paleta e grafismos próprios', 'Padrão de boletins e peças'] },
   { n: '03', t: 'Comunicação', b: ['16 comunicados', '29 edições de boletim', '12 vídeos e 1 game'] },
   { n: '04', t: 'Stakeholders', b: ['39 lideranças mapeadas', '26 entrevistas individuais', 'Influenciadores em 4 diretorias'] },
-  { n: '05', t: 'Impactos', b: ['Todas as gerências do ONS', 'Stakeholders externos', 'Processos e demandas realocados'] },
+  { n: '05', t: 'Impactos', b: ['42 impactos mapeados', '44 ações de mitigação', '25% das ações concluídas'] },
   { n: '06', t: 'Guia de bolso', b: ['Temas do modelo em um só lugar', 'Linguagem simples', 'Apoio à clareza de papéis'] },
 ];
 const NUMEROS = [['+60', 'entrevistas'], ['490', 'respostas de prontidão'], ['16', 'comunicados'], ['12', 'vídeos'], ['31', 'encontros com o modelo'], ['4,17', 'índice de prontidão']];
@@ -319,26 +319,44 @@ async function build() {
   });
 
   /* ------------------------------------------------------------ 7 · impactos */
+  // fonte: Projeto_Maestro_Gestão_dos_Impactos_v3 (revisão de 18/08/2026, na Operação Assistida)
   await frente({
-    title: 'Mapeamento de impactos', sub: 'O que muda, área a área, com a nova estrutura',
-    entrega: 'Mapeamento dos impactos organizacionais da mudança',
-    desc: 'Identificou, gerência a gerência, o que muda com a criação da FE, incluindo os stakeholders externos, durante o desenho do novo modelo de operação.',
-    comp: ['Todas as gerências do ONS no escopo', 'Stakeholders externos incluídos', 'Desdobramento em realocação de processos e demandas'],
-    res: 'Impactos mapeados entre fevereiro e março de 2026, antes da divulgação da nova gerência, em 15 e 16 de abril.',
+    title: 'Gestão dos impactos', sub: 'Matriz revisada na Operação Assistida, com plano de mitigação para cada impacto',
+    entrega: 'Matriz de impactos e plano de mitigação',
+    desc: 'Na Operação Assistida, a matriz foi revisada e cada impacto ganhou ação de mitigação, responsável e status, acompanhados pela Gestão da Mudança.',
+    comp: ['42 impactos por diretoria, tipo e criticidade', '44 ações de mitigação, 21 lideradas pela Gestão da Mudança', '37 dos 42 impactos já com ação definida'],
+    res: '25% das ações de mitigação concluídas (11 de 44) na revisão de 18/08/2026. Nos 16 impactos de criticidade alta ou muito alta, 6 das 16 ações já estão concluídas.',
   }, async () => {
-    const B = [[Fi.FiGrid, 'Gerências do ONS', 'Todas as gerências no escopo do mapeamento.', 'fev–mar/26'],
-      [Fi.FiGlobe, 'Stakeholders externos', 'Considerados junto às áreas internas.', 'mar/26'],
-      [Fi.FiShuffle, 'Desdobramentos', 'Processos realocados fora da FE e demandas direcionadas às Comunidades.', 'ago/26']];
-    const W = (866 - 2 * 20) / 3;
-    for (const [i, [Ic, t, d, q]] of B.entries()) {
-      const x = 672 + i * (W + 20), k = `Impactos · bloco ${i + 1}`;
-      R(`${k} · cartão`, RR, { x, y: 206, w: W, h: 444, r: 16, fill: C.box });
-      R(`${k} · ícone · fundo`, OV, { x: x + 28, y: 234, w: 64, h: 64, fill: C.white });
-      IMG(`${k} · ícone`, await icon(Ic, C.circle), { x: x + 44, y: 250, w: 32, h: 32, alt: t });
-      T(`${k} · título`, t, { x: x + 28, y: 322, w: W - 56, h: 76, size: 18, bold: true, color: C.ink });
-      T(`${k} · texto`, d, { x: x + 28, y: 408, w: W - 56, h: 150, size: 15, color: C.body, ls: 1.05 });
-      T(`${k} · período`, q, { x: x + 28, y: 596, w: W - 56, h: 28, size: 14, bold: true, color: C.orange });
-    }
+    label('Impactos · rótulo', 'Indicador de tratamento dos impactos', { x: 672, y: 204, w: 560 });
+    T('Impactos · revisão', 'Revisão de 18/08/2026', { x: 1238, y: 204, w: 300, h: 24, size: 13, bold: true, color: C.orange, align: 'right' });
+    [['42', 'impactos mapeados'], ['16', 'de criticidade alta ou muito alta'], ['44', 'ações de mitigação'], ['25%', 'das ações concluídas']].forEach(([n, l], i) => {
+      const w = 866 / 4, x = 672 + i * w;
+      T(`Impactos · kpi ${i + 1} · valor`, n, { x, y: 236, w: w - 16, h: 60, size: 30, bold: true, color: i === 3 ? C.orange : C.navy });
+      T(`Impactos · kpi ${i + 1} · rótulo`, l, { x, y: 296, w: w - 20, h: 26, size: 13, color: C.body });
+    });
+    // status das 44 ações
+    const ST = [['Concluída', 11, C.circle], ['Parcial', 1, C.steel], ['Em andamento', 16, C.orange2], ['Planejada', 16, C.line]];
+    let bx = 672; const BW = 866;
+    ST.forEach(([n, q, cor], i) => { const w = BW * q / 44; R(`Impactos · status ${n}`, RECT, { x: bx, y: 364, w, h: 26, fill: cor }); bx += w; });
+    let lx = 672;
+    ST.forEach(([n, q, cor], i) => {
+      R(`Impactos · legenda ${n} · cor`, RECT, { x: lx, y: 404, w: 12, h: 12, fill: cor });
+      const t = `${n} ${q}`; T(`Impactos · legenda ${n}`, [{ text: n + ' ', options: {} }, { text: String(q), options: { bold: true } }], { x: lx + 18, y: 398, w: Math.ceil(wpx(t, 13, true)) + 8, h: 24, size: 13, color: C.ink });
+      lx += 26 + wpx(t, 13, true) + 22;
+    });
+    // mapa de calor: diretoria × criticidade
+    const DIR = ['DPL', 'DTA', 'DAC', 'DOP', 'DGL', 'Todo o ONS'], CR = ['Baixo', 'Moderado', 'Alto', 'Muito alto'];
+    const H = { DPL: [2, 7, 11, 1], DTA: [4, 3, 2, 0], DAC: [2, 1, 2, 0], DOP: [0, 4, 0, 0], DGL: [2, 0, 0, 0], 'Todo o ONS': [0, 1, 0, 0] };
+    const hx = 790, hy = 478, cw = (1538 - hx) / 4, ch = 28;
+    CR.forEach((c, j) => T(`Impactos · mapa · coluna ${c}`, c, { x: hx + j * cw, y: hy - 30, w: cw, h: 24, size: 12, bold: true, color: C.label, align: 'center' }));
+    const tint = n => n === 0 ? C.card : n <= 2 ? 'DCE7F1' : n <= 4 ? 'AFC6DD' : n <= 7 ? '5E8AB3' : C.circle;
+    DIR.forEach((d, i) => {
+      T(`Impactos · mapa · ${d}`, d, { x: 672, y: hy + i * ch, w: 108, h: ch, size: 12.5, color: C.body, align: 'right', valign: 'middle' });
+      H[d].forEach((n, j) => {
+        R(`Impactos · mapa · ${d} · ${CR[j]}`, RECT, { x: hx + j * cw, y: hy + i * ch, w: cw, h: ch, fill: tint(n), line: C.white, lw: 2 });
+        if (n) T(`Impactos · mapa · ${d} · ${CR[j]} · valor`, String(n), { x: hx + j * cw, y: hy + i * ch, w: cw, h: ch, size: 12.5, bold: true, color: n > 4 ? C.white : C.ink, align: 'center', valign: 'middle' });
+      });
+    });
   });
 
   /* -------------------------------------------------------- 8 · guia de bolso */
