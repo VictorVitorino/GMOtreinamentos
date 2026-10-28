@@ -267,13 +267,13 @@ async function build() {
 
   /* --------------------------------------------------------- 5 · comunicação */
   await frente({
-    title: 'Comunicação', sub: 'A mensagem do Maestro em todo o ONS, com ritmo constante e vozes próprias',
-    entrega: 'Plano de comunicação do Projeto Maestro',
-    desc: 'Levou a mensagem do projeto a todo o ONS de nov/25 a out/26: boletins semanais para a DPL e mensais para toda a empresa, vídeos, convites e canais de diálogo com a liderança.',
-    comp: ['Boletins: 24 semanais e 5 mensais', 'Vídeos: 7 episódios do Fala, Maestro e 5 temáticos', 'Diálogo: Café com a Liderança e Rede de Influenciadores'],
-    nums: [['16', 'comunicados'], ['29', 'edições de boletim'], ['12', 'vídeos'], ['20', 'vozes do Maestro'], ['1', 'game']],
+    title: 'Comunicação na Operação Assistida', sub: 'Boletins e canais que levaram o novo modelo às equipes, de 15/07 a 31/10/26',
+    entrega: 'Plano de comunicação da Operação Assistida',
+    desc: 'Manteve a cadência de boletins e abriu novos canais para apoiar a apropriação do modelo pelas equipes da FE e das áreas clientes.',
+    comp: ['Boletins: 7 semanais e 1 mensal', 'Vozes do Maestro: depoimentos de especialistas', 'Game e Guia de Bolso para o dia a dia do modelo'],
+    nums: [['8', 'edições de boletim'], ['2', 'vozes do Maestro'], ['1', 'game de aprendizagem'], ['1', 'Guia de Bolso']],
   }, async () => {
-    const items = [['semanal-24.png', 'Boletim semanal', 'nov/25'], ['mensal-5.png', 'Boletim mensal', 'dez/25'], ['semanal-07.png', 'Boletim semanal', 'jul/26'], ['mensal-1.png', 'Boletim mensal', 'set/26']];
+    const items = [['semanal-07.png', 'Boletim semanal', 'jul/26'], ['semanal-04.png', 'Boletim semanal', 'ago/26'], ['mensal-1.png', 'Boletim mensal', 'set/26'], ['semanal-02.png', 'Boletim semanal', 'out/26']];
     const G = 18, W = Math.floor((866 - 4 * G) / 5), H = Math.round(W * BR), cap = 212 + H + 14;
     for (const [i, [f, t, q]] of items.entries()) {
       const x = 672 + i * (W + G);
@@ -286,7 +286,7 @@ async function build() {
     IMG('Comunicação · game · ícone', await icon(Fa.FaGamepad, C.li), { x: gx + W / 2 - 34, y: 212 + H / 2 - 76, w: 68, h: 68, alt: 'Game' });
     T('Comunicação · game · texto', [{ text: 'Gamificação', options: { bold: true, breakLine: true } }, { text: 'do projeto', options: {} }],
       { x: gx + 10, y: 212 + H / 2 + 8, w: W - 20, h: 60, size: 15, color: C.white, align: 'center' });
-    T('Comunicação · game · legenda', [{ text: 'Game do Maestro', options: { bold: true, breakLine: true } }, { text: 'engajamento', options: { color: C.steel } }],
+    T('Comunicação · game · legenda', [{ text: 'Game do Maestro', options: { bold: true, breakLine: true } }, { text: 'set/26', options: { color: C.steel } }],
       { x: gx, y: cap, w: W, h: 50, size: 12.5, color: C.ink, align: 'center' });
   });
 
