@@ -66,12 +66,12 @@ const needH = (name, content, o) => {
 const FRENTES = [
   { n: '01', t: 'Plano de GMO', b: ['Diagnóstico de prontidão', 'Ações em cada fase do projeto', 'Medição da adoção ao modelo'] },
   { n: '02', t: 'Identidade visual', b: ['Marca e assinatura com o ONS', 'Paleta e grafismos próprios', 'Padrão de boletins e peças'] },
-  { n: '03', t: 'Comunicação', b: ['16 comunicados', '29 edições de boletim', '12 vídeos e 1 game'] },
-  { n: '04', t: 'Stakeholders', b: ['39 lideranças mapeadas', '26 entrevistas individuais', 'Influenciadores em 4 diretorias'] },
+  { n: '03', t: 'Comunicação', b: ['8 edições de boletim', '2 vozes do Maestro', '1 game de aprendizagem'] },
+  { n: '04', t: 'Stakeholders', b: ['ADKAR dos líderes da FE', 'Nova Rede de Influenciadores', 'Webinars com as áreas clientes'] },
   { n: '05', t: 'Impactos', b: ['42 impactos revisados', '44 ações de mitigação', '16 impactos críticos tratados'] },
   { n: '06', t: 'Guia de bolso', b: ['Temas do modelo em um só lugar', 'Linguagem simples', 'Apoio à clareza de papéis'] },
 ];
-const NUMEROS = [['+60', 'entrevistas'], ['490', 'respostas de prontidão'], ['16', 'comunicados'], ['12', 'vídeos'], ['31', 'encontros com o modelo'], ['4,17', 'índice de prontidão']];
+const NUMEROS = [['162', 'respostas na 2ª pesquisa'], ['4,17', 'índice de prontidão'], ['8', 'edições de boletim'], ['42', 'impactos revisados'], ['44', 'ações de mitigação'], ['8', 'cursos na trilha de capacitação']];
 
 async function build() {
   const pres = new pptxgen();
@@ -106,6 +106,19 @@ async function build() {
           fontFace: FONT, fontSize: 28, color: C.navy }, text: '' } },
       { placeholder: { options: { name: 'sub', type: 'body', x: X(62), y: X(106), w: X(1476), h: X(36), margin: 0, valign: 'top', align: 'left',
           fontFace: FONT, fontSize: 17, color: C.steel }, text: '' } },
+    ],
+    slideNumber: { x: X(1478), y: X(858), w: X(60), h: X(22), fontFace: FONT, fontSize: 9, color: C.page, align: 'right' },
+  });
+  pres.defineSlideMaster({
+    title: 'CONTEUDO_2L', background: { color: C.white },
+    objects: [
+      { text: brand(C.brand) },
+      { rect: { x: X(62), y: X(24), w: X(270), h: X(34), fill: { color: 'FBE6D2' }, rectRadius: X(17) } },
+      { text: { text: '•  GESTÃO DE MUDANÇAS', options: { x: X(80), y: X(24), w: X(250), h: X(34), margin: 0, valign: 'middle', fontFace: FONT, fontSize: 11, bold: true, color: C.orange, charSpacing: 1.5 } } },
+      { placeholder: { options: { name: 'title', type: 'title', x: X(62), y: X(72), w: X(1476), h: X(116), margin: 0, valign: 'top', align: 'left',
+          fontFace: FONT, fontSize: 30, color: C.navy }, text: '' } },
+      { placeholder: { options: { name: 'sub', type: 'body', x: X(62), y: X(198), w: X(1476), h: X(62), margin: 0, valign: 'top', align: 'left',
+          fontFace: FONT, fontSize: 16, color: C.label }, text: '' } },
     ],
     slideNumber: { x: X(1478), y: X(858), w: X(60), h: X(22), fontFace: FONT, fontSize: 9, color: C.page, align: 'right' },
   });
@@ -183,33 +196,33 @@ async function build() {
   });
   T('Capa · data', 'Outubro de 2026', { x: 1238, y: 806, w: 300, h: 28, size: 14, color: C.pale, align: 'right' });
 
-  /* --------------------------------------------------------- 2 · visão geral */
+  /* --------------------------------------------------------- 2 · visão geral (Operação Assistida) */
   pres.addSection({ title: 'Visão geral' });
-  newSlide('CONTEUDO', 'Visão geral', 'Visão geral');
-  s.addText('Seis frentes de Gestão da Mudança, do plano à adoção do novo modelo', { placeholder: 'title' });
-  s.addText('O que a frente de GMO entregou no Projeto Maestro, de out/2025 a out/2026', { placeholder: 'sub' });
-  const CW = (1476 - 5 * 16) / 6;
+  newSlide('CONTEUDO_2L', 'Visão geral', 'Visão geral');
+  s.addText('Seis frentes de Gestão de Mudanças, apoiando e capacitando o Maestro para a adoção ao novo modelo operacional', { placeholder: 'title' });
+  s.addText('Gestão de Mudanças apoia a transição do estado atual para o estado futuro, uma disciplina que contempla Prontidão, Engajamento e Adoção ao modelo proposto.', { placeholder: 'sub' });
+  const CW = (1476 - 5 * 16) / 6, CY = 282;
   FRENTES.forEach((f, i) => {
     const x = 62 + i * (CW + 16), k = `Frente ${f.n}`;
-    R(`${k} · cartão`, RECT, { x, y: 196, w: CW, h: 448, fill: C.card, line: C.line });
-    R(`${k} · topo`, RECT, { x, y: 196, w: CW, h: 7, fill: C.orange2 });
-    T(`${k} · título`, f.t.toUpperCase(), { x: x + 12, y: 216, w: CW - 24, h: 60, size: 15, bold: true, color: C.orange2, align: 'center', valign: 'middle' });
-    R(`${k} · círculo`, OV, { x: x + CW / 2 - 27, y: 288, w: 54, h: 54, line: C.circle, lw: 2 });
-    T(`${k} · número`, f.n, { x: x + CW / 2 - 27, y: 288, w: 54, h: 54, size: 15, bold: true, color: C.circle, align: 'center', valign: 'middle' });
+    R(`${k} · cartão`, RECT, { x, y: CY, w: CW, h: 380, fill: C.card, line: C.line });
+    R(`${k} · topo`, RECT, { x, y: CY, w: CW, h: 7, fill: C.orange2 });
+    T(`${k} · título`, f.t.toUpperCase(), { x: x + 12, y: CY + 18, w: CW - 24, h: 58, size: 15, bold: true, color: C.orange2, align: 'center', valign: 'middle' });
+    R(`${k} · círculo`, OV, { x: x + CW / 2 - 27, y: CY + 84, w: 54, h: 54, line: C.circle, lw: 2 });
+    T(`${k} · número`, f.n, { x: x + CW / 2 - 27, y: CY + 84, w: 54, h: 54, size: 15, bold: true, color: C.circle, align: 'center', valign: 'middle' });
     f.b.forEach((t, j) => {
-      const y = 372 + j * 88;
-      T(`${k} · item ${j + 1}`, [{ text: t, options: { bullet: { indent: 14 } } }], { x: x + 16, y, w: CW - 30, h: 68, size: 14.5, color: C.ink, valign: 'middle' });
-      if (j < f.b.length - 1) R(`${k} · divisória ${j + 1}`, LINE, { x: x + 16, y: y + 78, w: CW - 32, h: 0, line: C.sep, lw: 0.75 });
+      const y = CY + 150 + j * 76;
+      T(`${k} · item ${j + 1}`, [{ text: t, options: { bullet: { indent: 14 } } }], { x: x + 16, y, w: CW - 30, h: 64, size: 14.5, color: C.ink, valign: 'middle' });
+      if (j < f.b.length - 1) R(`${k} · divisória ${j + 1}`, LINE, { x: x + 16, y: y + 69, w: CW - 32, h: 0, line: C.sep, lw: 0.75 });
     });
   });
-  R('Números · caixa', RECT, { x: 62, y: 672, w: 1476, h: 162, fill: 'F7FAFC', line: C.line });
-  R('Números · divisória', LINE, { x: 456, y: 672, w: 0, h: 162, line: C.line, lw: 0.75 });
-  T('Números · título', 'A GMO em números', { x: 88, y: 694, w: 344, h: 36, size: 18, bold: true, color: C.ink });
-  T('Números · texto', 'Assessment, comunicação e adoção ao modelo, de outubro de 2025 a outubro de 2026.', { x: 88, y: 734, w: 344, h: 84, size: 14, color: C.body });
+  R('Números · caixa', RECT, { x: 62, y: 682, w: 1476, h: 156, fill: 'F7FAFC', line: C.line });
+  R('Números · divisória', LINE, { x: 456, y: 682, w: 0, h: 156, line: C.line, lw: 0.75 });
+  T('Números · título', 'A Operação Assistida em números', { x: 88, y: 698, w: 344, h: 72, size: 18, bold: true, color: C.ink });
+  T('Números · texto', 'De 15/07 a 31/10/2026.', { x: 88, y: 774, w: 344, h: 30, size: 14, color: C.body });
   NUMEROS.forEach(([n, l], i) => {
     const w = (1538 - 486) / 6, x = 486 + i * w;
-    T(`Números · ${i + 1} · valor`, n, { x, y: 692, w: w - 10, h: 68, size: 34, bold: true, color: C.navy });
-    T(`Números · ${i + 1} · rótulo`, l, { x, y: 764, w: w - 16, h: 56, size: 14, color: C.body });
+    T(`Números · ${i + 1} · valor`, n, { x, y: 700, w: w - 10, h: 68, size: 34, bold: true, color: C.navy });
+    T(`Números · ${i + 1} · rótulo`, l, { x, y: 772, w: w - 16, h: 56, size: 14, color: C.body });
   });
 
   /* -------------------------------------------------------- 3 · plano de GMO */
