@@ -68,7 +68,7 @@ const FRENTES = [
   { n: '02', t: 'Identidade visual', b: ['Marca e assinatura com o ONS', 'Paleta e grafismos próprios', 'Padrão de boletins e peças'] },
   { n: '03', t: 'Comunicação', b: ['16 comunicados', '29 edições de boletim', '12 vídeos e 1 game'] },
   { n: '04', t: 'Stakeholders', b: ['39 lideranças mapeadas', '26 entrevistas individuais', 'Influenciadores em 4 diretorias'] },
-  { n: '05', t: 'Impactos', b: ['42 impactos mapeados', '44 ações de mitigação', '25% das ações concluídas'] },
+  { n: '05', t: 'Impactos', b: ['42 impactos revisados', '44 ações de mitigação', '16 impactos críticos tratados'] },
   { n: '06', t: 'Guia de bolso', b: ['Temas do modelo em um só lugar', 'Linguagem simples', 'Apoio à clareza de papéis'] },
 ];
 const NUMEROS = [['+60', 'entrevistas'], ['490', 'respostas de prontidão'], ['16', 'comunicados'], ['12', 'vídeos'], ['31', 'encontros com o modelo'], ['4,17', 'índice de prontidão']];
@@ -321,37 +321,37 @@ async function build() {
   /* ------------------------------------------------------------ 7 · impactos */
   // fonte: Projeto_Maestro_Gestão_dos_Impactos_v3 (revisão de 18/08/2026, na Operação Assistida)
   await frente({
-    title: 'Gestão dos impactos', sub: 'Matriz revisada na Operação Assistida, com plano de mitigação para cada impacto',
-    entrega: 'Matriz de impactos e plano de mitigação',
-    desc: 'Na Operação Assistida, a matriz foi revisada e cada impacto ganhou ação de mitigação, responsável e status, acompanhados pela Gestão da Mudança.',
-    comp: ['42 impactos por diretoria, tipo e criticidade', '44 ações de mitigação, 21 lideradas pela Gestão da Mudança', '37 dos 42 impactos já com ação definida'],
-    res: '25% das ações de mitigação concluídas (11 de 44) na revisão de 18/08/2026. Nos 16 impactos de criticidade alta ou muito alta, 6 das 16 ações já estão concluídas.',
+    title: 'Gestão dos impactos', sub: 'Matriz revisada na Operação Assistida, com plano de mitigação e responsáveis',
+    entrega: 'Revisão da matriz de impactos e plano de mitigação',
+    desc: 'Na Operação Assistida, a matriz de impactos foi revisada e os impactos ganharam ações de mitigação com responsável, acompanhadas pela Gestão da Mudança.',
+    comp: ['42 impactos revisados por diretoria, tipo e criticidade', '44 ações de mitigação com responsável definido', '21 ações lideradas pela Gestão da Mudança'],
+    res: 'Matriz revisada em 18/08/2026: 16 impactos de criticidade alta ou muito alta, 12 deles na DPL, tratados com treinamento, alocação de atividades e revisão de processos.',
   }, async () => {
-    label('Impactos · rótulo', 'Indicador de tratamento dos impactos', { x: 672, y: 204, w: 560 });
-    T('Impactos · revisão', 'Revisão de 18/08/2026', { x: 1238, y: 204, w: 300, h: 24, size: 13, bold: true, color: C.orange, align: 'right' });
-    [['42', 'impactos mapeados'], ['16', 'de criticidade alta ou muito alta'], ['44', 'ações de mitigação'], ['25%', 'das ações concluídas']].forEach(([n, l], i) => {
+    label('Impactos · rótulo', 'Revisão da Operação Assistida', { x: 672, y: 204, w: 560 });
+    T('Impactos · revisão', '18/08/2026', { x: 1238, y: 204, w: 300, h: 24, size: 13, bold: true, color: C.orange, align: 'right' });
+    [['42', 'impactos revisados'], ['16', 'de criticidade alta ou muito alta'], ['44', 'ações de mitigação'], ['21', 'lideradas pela Gestão da Mudança']].forEach(([n, l], i) => {
       const w = 866 / 4, x = 672 + i * w;
-      T(`Impactos · kpi ${i + 1} · valor`, n, { x, y: 236, w: w - 16, h: 60, size: 30, bold: true, color: i === 3 ? C.orange : C.navy });
+      T(`Impactos · kpi ${i + 1} · valor`, n, { x, y: 236, w: w - 16, h: 60, size: 30, bold: true, color: C.navy });
       T(`Impactos · kpi ${i + 1} · rótulo`, l, { x, y: 296, w: w - 20, h: 26, size: 13, color: C.body });
     });
-    // status das 44 ações
-    const ST = [['Concluída', 11, C.circle], ['Parcial', 1, C.steel], ['Em andamento', 16, C.orange2], ['Planejada', 16, C.line]];
-    let bx = 672; const BW = 866;
-    ST.forEach(([n, q, cor], i) => { const w = BW * q / 44; R(`Impactos · status ${n}`, RECT, { x: bx, y: 364, w, h: 26, fill: cor }); bx += w; });
-    let lx = 672;
-    ST.forEach(([n, q, cor], i) => {
-      R(`Impactos · legenda ${n} · cor`, RECT, { x: lx, y: 404, w: 12, h: 12, fill: cor });
-      const t = `${n} ${q}`; T(`Impactos · legenda ${n}`, [{ text: n + ' ', options: {} }, { text: String(q), options: { bold: true } }], { x: lx + 18, y: 398, w: Math.ceil(wpx(t, 13, true)) + 8, h: 24, size: 13, color: C.ink });
-      lx += 26 + wpx(t, 13, true) + 22;
+    // tipos de mitigação (44 ações)
+    const TM = [['Treinamento', 12], ['Alocação de atividades', 11], ['Revisão de processos', 10], ['Comunicação', 5], ['Contratação', 2], ['Redefinição de papéis', 2], ['Infraestrutura', 2]];
+    label('Impactos · tipos · rótulo', 'Ações por tipo de mitigação', { x: 672, y: 372, w: 400 });
+    TM.forEach(([n, q], i) => {
+      const y = 404 + i * 34;
+      T(`Impactos · tipo ${i + 1}`, n, { x: 672, y, w: 204, h: 26, size: 12.5, color: C.ink, valign: 'middle' });
+      R(`Impactos · tipo ${i + 1} · barra`, RECT, { x: 884, y: y + 5, w: 140 * q / 12, h: 16, fill: C.circle });
+      T(`Impactos · tipo ${i + 1} · valor`, String(q), { x: 884 + 140 * q / 12 + 8, y, w: 30, h: 26, size: 12.5, bold: true, color: C.ink, valign: 'middle' });
     });
     // mapa de calor: diretoria × criticidade
-    const DIR = ['DPL', 'DTA', 'DAC', 'DOP', 'DGL', 'Todo o ONS'], CR = ['Baixo', 'Moderado', 'Alto', 'Muito alto'];
-    const H = { DPL: [2, 7, 11, 1], DTA: [4, 3, 2, 0], DAC: [2, 1, 2, 0], DOP: [0, 4, 0, 0], DGL: [2, 0, 0, 0], 'Todo o ONS': [0, 1, 0, 0] };
-    const hx = 790, hy = 478, cw = (1538 - hx) / 4, ch = 28;
-    CR.forEach((c, j) => T(`Impactos · mapa · coluna ${c}`, c, { x: hx + j * cw, y: hy - 30, w: cw, h: 24, size: 12, bold: true, color: C.label, align: 'center' }));
+    const DIR = ['DPL', 'DTA', 'DAC', 'DOP', 'DGL', 'Todos'], CR = ['Baixo', 'Moderado', 'Alto', 'Muito alto'];
+    const H = { DPL: [2, 7, 11, 1], DTA: [4, 3, 2, 0], DAC: [2, 1, 2, 0], DOP: [0, 4, 0, 0], DGL: [2, 0, 0, 0], Todos: [0, 1, 0, 0] };
+    const hx = 1166, cw = (1538 - hx) / 4, ch = 34, hy = 432;
+    label('Impactos · mapa · rótulo', 'Impactos por criticidade', { x: 1086, y: 372, w: 452 });
+    CR.forEach((c, j) => T(`Impactos · mapa · coluna ${c}`, c, { x: hx + j * cw, y: hy - 26, w: cw, h: 22, size: 11, bold: true, color: C.label, align: 'center' }));
     const tint = n => n === 0 ? C.card : n <= 2 ? 'DCE7F1' : n <= 4 ? 'AFC6DD' : n <= 7 ? '5E8AB3' : C.circle;
     DIR.forEach((d, i) => {
-      T(`Impactos · mapa · ${d}`, d, { x: 672, y: hy + i * ch, w: 108, h: ch, size: 12.5, color: C.body, align: 'right', valign: 'middle' });
+      T(`Impactos · mapa · ${d}`, d, { x: 1086, y: hy + i * ch, w: 74, h: ch, size: 12, color: C.body, align: 'right', valign: 'middle' });
       H[d].forEach((n, j) => {
         R(`Impactos · mapa · ${d} · ${CR[j]}`, RECT, { x: hx + j * cw, y: hy + i * ch, w: cw, h: ch, fill: tint(n), line: C.white, lw: 2 });
         if (n) T(`Impactos · mapa · ${d} · ${CR[j]} · valor`, String(n), { x: hx + j * cw, y: hy + i * ch, w: cw, h: ch, size: 12.5, bold: true, color: n > 4 ? C.white : C.ink, align: 'center', valign: 'middle' });
