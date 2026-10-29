@@ -1,4 +1,4 @@
-"""Avaliação de Desempenho: 2 slides executivos para o Gerente Executivo, no template A&M do deck original.
+"""Avaliação de Desempenho: 3 slides executivos (contexto + 2 para o Gerente Executivo), no template A&M do deck original.
 
 Uso: python3 build_slides.py <Avaliacao_de_Desempenho.pptx> [saida.pptx]
 
@@ -189,6 +189,106 @@ X0, X1, YB = 36, 922, 486  # margens do conteúdo no layout (iguais às dos slid
 def cols(n, gap):
     w = (X1 - X0 - gap * (n - 1)) / n
     return [(X0 + i * (w + gap), w) for i in range(n)]
+
+
+# ---------------------------------------------------------------- slide 0: contexto
+# Só conteúdo do deck original: objetivo (slide 3), modelo atual do ONS (5), premissas de readequação (7)
+# e ajustes essenciais (10)
+CICLO_ATUAL = [
+    ('Início do ciclo', 'Elaboração de metas', '2 a 4 metas ao ano. Gerente imediato e executivo aprovam.'),
+    ('Meio do ciclo', 'Repactuação das metas', 'Ajustes e revisões, se necessário. Gerente imediato e executivo aprovam.'),
+    ('Final do ciclo', 'Autoavaliação, avaliação final e feedback formal', 'Conduzidos pelo superior imediato.'),
+]
+READEQUACAO = [
+    ('Modelo matricial', 'Profissionais respondem a dois vetores: o Líder de Comunidade (entrega) e o Gerente Funcional '
+     '(desenvolvimento técnico e carreira), além de profissionais alocados entre diretorias.',
+     'A avaliação precisa capturar ambas as dimensões.'),
+    ('Papéis híbridos', 'POs, Líderes de Comunidade, Modeleiros e Desenvolvedores podem operar em squads multidisciplinares.',
+     'A avaliação individual deve considerar a contribuição coletiva ao squad.'),
+    ('Ciclo de inovação', 'Parte do trabalho é de exploração (Comunidades Técnicas, horizonte 2-3), com entregas de mais longo '
+     'prazo e incerteza inerente incompatível com metas puramente quantitativas de curto prazo.', None),
+    ('Orientação ao usuário', 'É necessário avaliar as squads sob a ótica do usuário.',
+     'Entender se há pleno atendimento das expectativas tanto em qualidade, tempo de resposta e suporte.'),
+    ('Diversidade de perfis', 'O DQQ inclui 14 perfis distintos (de Secretaria a Arquiteto e Especialista I), cada um com '
+     'dinâmicas de trabalho e expectativas de entrega muito diferentes.', None),
+]
+AJUSTES = ['Adequação das competências ao contexto do modelo matricial',
+           'Definição de ao menos uma meta voltada à contribuição coletiva para a comunidade',
+           'Estruturação de formulário de percepção da área cliente sobre a atuação da equipe, com aplicação via Forms']
+
+
+def slide_contexto(prs, layout, ref):
+    S = Slide(prs, layout, ref,
+              'Avaliação de Desempenho: modelo atual do ONS e premissas da readequação',
+              'Proposta de modelo de avaliação de desempenho para o novo contexto organizacional. Parte do modelo atual '
+              'do ONS (ciclo anual, pilares de resultados e de desenvolvimento) e das cinco premissas que exigem a '
+              'readequação ao modelo matricial, resultando em três ajustes essenciais.')
+    S.text(X0, 68, X1 - X0, [P('Apresenta uma proposta de modelo de avaliação de desempenho para o novo contexto organizacional, '
+                              'definindo possíveis indicadores, critérios e dimensões para mensuração dos resultados das '
+                              'equipes e do modelo.', 11, False, TXT, lh=13.5)])
+    yp, pad = 106, 14
+    # esquerda: modelo atual
+    x, w = X0, 330
+    card = (x, yp, w, YB - yp)
+    S.box(*card, fill=WHITE, line=LINE, shadow=True)
+    S.box(x, yp, w, 3, fill=GREYBLUE)
+    ix, iw = x + pad, w - 2 * pad
+    S.text(ix, yp + 14, iw, [P('MODELO ATUAL DO ONS', 7.5, True, STEEL, lh=9.5, spc=1.2),
+                             P('Ciclo anual de avaliação', 15, True, NAVY, lh=18, sb=3)], inside=card)
+    S.box(ix, yp + 52, iw, 0.75, fill=LINE)
+    cy = yp + 66
+    tx, wt = ix + 30, iw - 30
+    pil = [('PILAR DE RESULTADOS', 'Atingimento das metas estabelecidas', 'Média de 1 a 5', NAVY),
+           ('PILAR DE DESENVOLVIMENTO', 'Cesta de competências, definida de acordo com a necessidade da área',
+            'Menos hábil, Hábil, Referência. Não entra na média', STEEL)]
+    pw = (iw - 8) / 2
+    pp = lambda k, a, b: [P(k, 7, True, MINT, lh=9, spc=0.6), P(a, 10, True, WHITE, lh=12, sb=4), P(b, 9, False, WHITE, lh=11, sb=4)]
+    hp = max(paras_h(pp(k, a, b), pw - 20) for k, a, b, _ in pil) + 20
+    ypil = YB - pad - hp
+    etapa = lambda k, a, b: [P(k.upper(), 7, True, STEEL, lh=9, spc=0.8), P(a, 11, True, NAVY, lh=13, sb=1.5),
+                             P(b, 9.5, False, TXT, lh=11.5, sb=1.5)]
+    he = [paras_h(etapa(*e), wt) for e in CICLO_ATUAL]
+    gape = (ypil - 26 - cy - sum(he)) / (len(he) - 1)
+    for n, (k, a, b) in enumerate(CICLO_ATUAL, start=1):
+        s = S.box(ix, cy + 1, 20, 20, fill=GREYBLUE)
+        S.shape_text(s, ix, cy + 1, 20, 20, [P(str(n), 11, True, WHITE, lh=13, align='c')], ins=(0, 0, 0, 0))
+        cy += S.text(tx, cy, wt, etapa(k, a, b), inside=card) + gape
+    if gape < 10:
+        WARN.append(f'contexto: etapas apertadas ({gape:.0f})')
+    cy = ypil
+    S.box(ix, cy - 13, iw, 0.75, fill=LINE)
+    for j, (k, a, b, cor) in enumerate(pil):
+        bx = ix + j * (pw + 8)
+        S.box(bx, cy, pw, hp, fill=cor)
+        S.text(bx + 10, cy + 10, pw - 20, pp(k, a, b), inside=card)
+    # direita: premissas de readequação + ajustes
+    rx = x + w + 12
+    rw = X1 - rx
+    S.text(rx, yp + 2, rw, [P('PREMISSAS DE READEQUAÇÃO', 7.5, True, STEEL, lh=9.5, spc=1.2),
+                            P('O que a avaliação precisa capturar no novo modelo', 15, True, NAVY, lh=18, sb=3)])
+    gy, gap = yp + 44, 8
+    cw = (rw - gap) / 2
+    ch = (YB - gy - 2 * gap) / 3
+    cells = [(c, False) for c in READEQUACAO] + [(None, True)]
+    for i, (c, final) in enumerate(cells):
+        cx, cyy = rx + (i % 2) * (cw + gap), gy + (i // 2) * (ch + gap)
+        cell = (cx, cyy, cw, ch)
+        if final:
+            S.box(*cell, fill=NAVY)
+            paras = [P('O QUE MUDA', 7, True, MINT, lh=9, spc=1), P('Ajustes essenciais para o novo modelo', 11, True, WHITE, lh=13, sb=2)]
+            for n, a in enumerate(AJUSTES, start=1):
+                paras.append(P(runs=[(f'{n}  ', True, MINT), (a, False, WHITE)], size=9, lh=11, sb=3))
+        else:
+            t, a, b = c
+            S.box(*cell, fill=WHITE, line=LINE, shadow=True)
+            S.box(cx, cyy, 3, ch, fill=MINT)
+            paras = [P(t, 11, True, NAVY, lh=13), P(a, 9.5, False, TXT, lh=11.5, sb=3)]
+            if b:
+                paras.append(P(b, 9.5, True, SLATE, lh=11.5, sb=3))
+        S.text(cx + 13, cyy + 9, cw - 24, paras, inside=cell)
+        if paras_h(paras, cw - 24) > ch - 16:
+            WARN.append(f'contexto: célula {i + 1} estoura')
+    S.check('slide contexto')
 
 
 # ---------------------------------------------------------------- slide 1: roadmap
@@ -434,6 +534,7 @@ def main():
     ref = next(s for s in prs.slides if s.slide_layout is layout and
                any(sh.name == 'Espaço Reservado para Conteúdo 2' for sh in s.shapes))
     n_orig = len(prs.slides)
+    slide_contexto(prs, layout, ref)
     slide_roadmap(prs, layout, ref)
     slide_considerar(prs, layout, ref)
     prune(prs, layout, n_orig)
