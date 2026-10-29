@@ -19,9 +19,7 @@ from pptx.enum.text import MSO_AUTO_SIZE, PP_ALIGN
 from pptx.oxml.ns import qn
 from pptx.util import Emu, Pt
 
-SRC = sys.argv[1]
-OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), 'dist', 'Avaliacao_Desempenho_Roadmap_GE.pptx')
+DIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dist')
 LAYOUT = '11_Texto 1 Coluna Diagonal Branco'
 
 # Paleta do tema do deck (theme2) + verde-menta e cinzas usados nos slides originais
@@ -69,14 +67,18 @@ def E(pt):
     return Emu(int(round(pt * 12700)))
 
 
-def P(text=None, size=10, bold=False, color=TXT, lh=None, sb=0, align='l', spc=0, italic=False, runs=None):
+def P(text=None, size=10, bold=False, color=TXT, lh=None, sb=0, align='l', spc=0, italic=False, runs=None, bullet=None):
+    """Parágrafo; `bullet` é a cor do marcador quadrado (recuo deslocado de BULLET_IND pt)."""
     return dict(runs=runs or [(text, bold, color)], size=size, lh=lh or round(size * 1.2, 2),
-                sb=sb, align=align, spc=spc, italic=italic)
+                sb=sb, align=align, spc=spc, italic=italic, bullet=bullet)
+
+
+BULLET_IND = 11
 
 
 def paras_h(paras, w):
-    return sum(nlines(p['runs'], p['size'], w, p['spc']) * p['lh'] + (p['sb'] if i else 0)
-               for i, p in enumerate(paras))
+    return sum(nlines(p['runs'], p['size'], w - (BULLET_IND if p.get('bullet') else 0), p['spc']) * p['lh']
+               + (p['sb'] if i else 0) for i, p in enumerate(paras))
 
 
 def _fill_tf(tf, paras, anchor, ins=(0, 0, 0, 0)):
@@ -92,6 +94,15 @@ def _fill_tf(tf, paras, anchor, ins=(0, 0, 0, 0)):
         para.line_spacing = Pt(p['lh'])
         para.space_before = Pt(p['sb'] if i else 0)
         para.space_after = Pt(0)
+        if p.get('bullet'):
+            pPr = para._p.get_or_add_pPr()
+            pPr.set('marL', str(int(E(BULLET_IND))))
+            pPr.set('indent', str(-int(E(BULLET_IND))))
+            for tag, attrs in (('a:buClr', None), ('a:buSzPct', {'val': '60000'}),
+                               ('a:buFont', {'typeface': 'Arial'}), ('a:buChar', {'char': '\u25a0'})):
+                el = etree.SubElement(pPr, qn(tag), attrs or {})
+                if tag == 'a:buClr':
+                    etree.SubElement(el, qn('a:srgbClr'), {'val': p['bullet']})
         for t, b, c in p['runs']:
             r = para.add_run()
             r.text = t
@@ -118,8 +129,10 @@ class Slide:
         t.text_frame.text = title
         for r in t.text_frame.paragraphs[0].runs:
             r._r.get_or_add_rPr().set('lang', 'pt-BR')
-        if nlines([(title, False, '')], 22, 886, cond=1.0) > 2:  # título em Arial Nova Light, sem condensar
+        nt = nlines([(title, False, '')], 22, 886, cond=1.0)  # título em Arial Nova Light, sem condensar
+        if nt > 2:
             WARN.append(f'título com mais de 2 linhas: {title}')
+        self.texts.append((f'título: {title[:30]}', 37, 37, 886, nt * 26.4, None))
         # barra de navegação do topo (aba "Avaliação de desempenho" ativa) e número do slide
         tree = self.sl.shapes._spTree
         for sh in ref.shapes:
@@ -528,21 +541,23 @@ def prune(prs, layout, n_orig):
             keep.slide_layouts.remove(lay)
 
 
-def main():
-    prs = Presentation(SRC)
+def build(src, out, slides):
+    """Gera `out` com os slides de `slides` (funções prs, layout, ref) no template do deck `src`."""
+    prs = Presentation(src)
     layout = next(l for m in prs.slide_masters for l in m.slide_layouts if l.name == LAYOUT)
     ref = next(s for s in prs.slides if s.slide_layout is layout and
                any(sh.name == 'Espaço Reservado para Conteúdo 2' for sh in s.shapes))
     n_orig = len(prs.slides)
-    slide_contexto(prs, layout, ref)
-    slide_roadmap(prs, layout, ref)
-    slide_considerar(prs, layout, ref)
+    for fn in slides:
+        fn(prs, layout, ref)
     prune(prs, layout, n_orig)
-    os.makedirs(os.path.dirname(os.path.abspath(OUT)), exist_ok=True)
-    prs.save(OUT)
+    os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+    prs.save(out)
     for w in WARN:
         print('ATENÇÃO:', w)
-    print('ok', OUT)
+    print('ok', out)
 
 
-main()
+if __name__ == '__main__':
+    build(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else os.path.join(DIST, 'Avaliacao_Desempenho_Roadmap_GE.pptx'),
+          [slide_contexto, slide_roadmap, slide_considerar])
