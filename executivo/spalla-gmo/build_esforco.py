@@ -82,23 +82,40 @@ def entrada(c, fmt=None):
 # (ID, linha na aba 2 ou None, mês início, mês fim, h fixas, h/área, h/público, h/marco, h/semana, origem do período)
 # Meses: 1 = out/26 ... 6 = mar/27. Horas: estimativa de referência para calibrar com a GP.
 LINHAS = [
-    ('GMO-00', None, 1, 6, 0, 0, 0, 0, 4, 'Esforço de gestão do próprio plano, ao longo de todo o período'),
-    ('GMO-01', 7, 1, 2, 16, 6, 0, 4, 0, 'Aba 1, frente 1: out–nov/2026'),
-    ('GMO-02', 8, 1, 1, 12, 2, 1, 0, 0, 'Aba 2: antes do plano de comunicação'),
-    ('GMO-03', 9, 1, 5, 24, 0, 2, 8, 0, 'Aba 1, frentes 5 e 6: out/2026–mar/2027 (linha de base e reavaliação)'),
-    ('GMO-04', 10, 1, 2, 8, 3, 0, 0, 1, 'Aba 1, frente 2: out–nov/2026'),
-    ('GMO-05', 11, 2, 4, 16, 6, 0, 0, 0, 'Aba 2: antes da entrada em vigor (estimado nov–jan)'),
-    ('GMO-06', 12, 1, 4, 6, 1, 0, 3, 0, 'Aba 1, frente 4: out/2026–jan/2027'),
-    ('GMO-07', 13, 1, 3, 8, 0, 0, 4, 1, 'Aba 1, frente 3: out–dez/2026'),
-    ('GMO-08', 14, 1, 6, 24, 0, 2, 0, 4, 'Aba 2: pré-transição, transição e estabilização'),
-    ('GMO-09', 15, 1, 4, 12, 3, 0, 4, 0, 'Aba 2: antes de comunicações e marcos críticos'),
-    ('GMO-10', 16, 2, 6, 8, 0, 0, 0, 3, 'Aba 1, frente 6: nov/2026–mar/2027'),
-    ('GMO-11', 17, 2, 4, 24, 2, 3, 0, 1, 'Aba 2: planejamento antes da entrada em vigor (estimado nov–jan)'),
-    ('GMO-12', 18, 1, 2, 12, 0, 0, 0, 0, 'Aba 1, frente 5: out–nov/2026'),
-    ('GMO-13', 19, 2, 3, 12, 0, 0, 0, 3, 'Aba 1, frente 7: nov–dez/2026'),
-    ('GMO-14', 20, 1, 6, 20, 0, 0, 6, 1, 'Aba 2: linha de base, transição e estabilização'),
-    ('GMO-15', 21, 1, 6, 16, 0, 0, 10, 2, 'Aba 2: antes de cada marco da transição'),
-    ('GMO-16', 22, 6, 6, 16, 2, 0, 0, 0, 'Aba 1, frente 8: mar/2027'),
+    ('GMO-00', None, 1, 6, 0, 0, 0, 0, 2, 'Esforço de gestão do próprio plano, ao longo de todo o período',
+     'Status semanal, preparação e participação nos fóruns do projeto: ~2h por semana'),
+    ('GMO-01', 7, 1, 2, 8, 3, 0, 2, 0, 'Aba 1, frente 1: out–nov/2026',
+     'Modelo da matriz (8h); por área, 1h de conversa + 1h de consolidação + 1h de validação; 2h de atualização por marco'),
+    ('GMO-02', 8, 1, 1, 6, 1, 0.5, 0, 0, 'Aba 2: antes do plano de comunicação',
+     'Estrutura do mapa (6h); 1h por área para indicar públicos; 30 min por público para segmentar e definir abordagem'),
+    ('GMO-03', 9, 1, 5, 12, 0, 0.5, 4, 0, 'Aba 1, frentes 5 e 6: out/2026–mar/2027 (linha de base e reavaliação)',
+     'Instrumento de prontidão (12h); 30 min por público para recorte; 4h por marco para aplicar e consolidar o pulso'),
+    ('GMO-04', 10, 1, 2, 4, 1, 0, 0, 0.5, 'Aba 1, frente 2: out–nov/2026',
+     'Quadro de pendências (4h); 1h por área para impactos e orientação; 30 min por semana de acompanhamento'),
+    ('GMO-05', 11, 2, 4, 8, 2, 0, 0, 0, 'Aba 2: antes da entrada em vigor (estimado nov–jan)',
+     'Guia de papéis a partir do desenho A&M (8h); 2h por área para traduzir e validar com o gestor'),
+    ('GMO-06', 12, 1, 4, 4, 0.5, 0, 1, 0, 'Aba 1, frente 4: out/2026–jan/2027',
+     'Planilha de cobertura (4h); 30 min por área para coletar ausências; 1h de revisão antes de cada marco'),
+    ('GMO-07', 13, 1, 3, 4, 0, 0, 2, 0.5, 'Aba 1, frente 3: out–dez/2026',
+     'TI executa; a GP só acompanha: checklist (4h), 2h por marco e 30 min por semana de follow-up'),
+    ('GMO-08', 14, 1, 6, 12, 0, 1, 0, 2, 'Aba 2: pré-transição, transição e estabilização',
+     'Plano de comunicação (12h); 1h por público para adaptar mensagem e canal; ~2h por semana de produção e disparo'),
+    ('GMO-09', 15, 1, 4, 6, 1, 0, 2, 0, 'Aba 2: antes de comunicações e marcos críticos',
+     'Kit de mensagens para líderes (6h); 1h por área de alinhamento; 2h por marco de mobilização'),
+    ('GMO-10', 16, 2, 6, 4, 0, 0, 0, 1.5, 'Aba 1, frente 6: nov/2026–mar/2027',
+     'Canal e FAQ (4h); ~1h30 por semana para registrar, responder e encaminhar dúvidas'),
+    ('GMO-11', 17, 2, 4, 12, 1, 1.5, 0, 0.5, 'Aba 2: planejamento antes da entrada em vigor (estimado nov–jan)',
+     'Matriz público x conteúdo (12h); 1h por área de levantamento; 1h30 por público para trilha e agenda; 30 min por semana de presença'),
+    ('GMO-12', 18, 1, 2, 6, 0, 0, 0, 0, 'Aba 1, frente 5: out–nov/2026',
+     'Alinhar calendário e emitir parecer sobre a pesquisa existente (6h)'),
+    ('GMO-13', 19, 2, 3, 6, 0, 0, 0, 1.5, 'Aba 1, frente 7: nov–dez/2026',
+     'Backlog priorizado (6h); ~1h30 por semana para cobrar donos e atualizar status'),
+    ('GMO-14', 20, 1, 6, 10, 0, 0, 3, 0.5, 'Aba 2: linha de base, transição e estabilização',
+     'Painel e regras de cálculo (10h); 3h por marco de medição; 30 min por semana de atualização'),
+    ('GMO-15', 21, 1, 6, 8, 0, 0, 6, 1, 'Aba 2: antes de cada marco da transição',
+     'Roteiro integrado (8h); 6h por marco para go/no-go e handover; 1h por semana de integração das frentes'),
+    ('GMO-16', 22, 6, 6, 8, 1, 0, 0, 0, 'Aba 1, frente 8: mar/2027',
+     'Relatório de fechamento (8h); 1h por área para transferir pendências à rotina'),
 ]
 CATS = ['Coordenação do plano', 'Diagnóstico e impactos', 'Pessoas e estrutura', 'Tecnologia e processos',
         'Comunicação e engajamento', 'Capacitação', 'Clima e percepção', 'Gestão de riscos e ações',
@@ -116,10 +133,10 @@ def build_regua(wb):
     ws = wb.create_sheet(REGUA)
     ws.sheet_view.showGridLines = False
     ws.sheet_view.zoomScale = 85
-    for col, w in zip('ABCDEFGHIJKLMNOPQR', [10, 24, 34, 8, 8, 8, 9, 9, 9, 9, 9, 12, 13, 11, 9, 46, 12, 9]):
+    for col, w in zip('ABCDEFGHIJKLMNOPQRS', [10, 24, 34, 8, 8, 8, 9, 9, 9, 9, 9, 12, 13, 11, 9, 34, 12, 9, 58]):
         ws.column_dimensions[col].width = w
-    band(ws, 'A1:R1', 'PROJETO SPALLA | RÉGUA DE ESFORÇO GMO — COMO AS HORAS SÃO CALCULADAS', 18, NAVY, height=39)
-    band(ws, 'A2:R2', 'Estimativa de referência para dimensionar o esforço de GMO antes de conhecer o número real de áreas. '
+    band(ws, 'A1:S1', 'PROJETO SPALLA | RÉGUA DE ESFORÇO GMO — COMO AS HORAS SÃO CALCULADAS', 18, NAVY, height=39)
+    band(ws, 'A2:S2', 'Estimativa de referência para dimensionar o esforço de GMO antes de conhecer o número real de áreas. '
          'Células amarelas com número azul são premissas e podem ser alteradas; o resto é cálculo. '
          'O painel (aba anterior) lê tudo daqui.', 10, PALE, '203849', bold=False, height=35)
 
@@ -133,7 +150,7 @@ def build_regua(wb):
     ]
     for i, t in enumerate(regras):
         r = 5 + i
-        ws.merge_cells(f'A{r}:R{r}')
+        ws.merge_cells(f'A{r}:S{r}')
         put(ws, f'A{r}', t, 10.5, color='203849')
         ws.row_dimensions[r].height = 30
 
@@ -142,9 +159,9 @@ def build_regua(wb):
         ('Meses do período (out/2026 a mar/2027, abas 1 e 2)', 'MESES', 6, '0'),
         ('Dias úteis por mês', 'DIAS_MES', 21, '0'),
         ('Semanas por mês', 'SEM_MES', '=52/12', '0.00'),
-        ('Produtividade: parte do dia que vira entrega', 'PROD', 0.85, '0%'),
-        ('Horas por dia, GMO full-time', 'H_FULL', 8, '0'),
-        ('Horas por dia, GMO part-time', 'H_PART', 4, '0'),
+        ('Produtividade: parte das horas do dia que vira entrega', 'PROD', 1, '0%'),
+        ('Horas efetivas por dia, GMO full-time', 'H_FULL', 6, '0'),
+        ('Horas efetivas por dia, GMO part-time', 'H_PART', 3, '0'),
     ]
     for i, (lbl, nm, v, fmt) in enumerate(prem):
         r = 10 + i
@@ -158,8 +175,7 @@ def build_regua(wb):
             entrada(c, fmt)
         ws.merge_cells(f'D{r}:E{r}')
         name(wb, nm, f"{QR}!$D${r}")
-    ws['D13'].comment = Comment('Premissa de referência: 85% do dia em entregas do plano. Ajuste se a pessoa '
-                                'de GMO tiver outras atribuições na rotina.', 'A&M')
+    ws['D13'].comment = Comment('100% porque as 6h por dia já são tempo efetivo de trabalho. Reduza se houver perdas.', 'A&M')
     # lido do painel
     for i, (lbl, nm, ref) in enumerate([('Dedicação escolhida no painel', 'CENARIO', f"={QP}!$D$5"),
                                         ('Porte escolhido no painel', 'PORTE', f"={QP}!$D$6"),
@@ -178,7 +194,7 @@ def build_regua(wb):
         put(ws, f'{c_}10', t, 10, True, WHITE, NAVY, h='center')
     put(ws, 'O10', 'Usado', 10, True, WHITE, TEAL, h='center')
     put(ws, 'P10', 'Por que pesa no esforço', 10, True, WHITE, NAVY)
-    ws.merge_cells('P10:R10')
+    ws.merge_cells('P10:S10')
     ws['N10'].comment = Comment('Quando souber o número real, digite aqui: ele passa a valer no lugar do porte escolhido.', 'A&M')
     for i, (lbl, nm, p, m, g, why) in enumerate(DIRECIONADORES):
         r = 11 + i
@@ -191,17 +207,17 @@ def build_regua(wb):
         put(ws, f'O{r}', f'=IF(N{r}<>"",N{r},INDEX(K{r}:M{r},MATCH(PORTE,$K$10:$M$10,0)))', 11, True, NAVY, PALE, 'center',
             fmt='0', border=BOX)
         name(wb, nm, f"{QR}!$O${r}")
-        ws.merge_cells(f'P{r}:R{r}')
+        ws.merge_cells(f'P{r}:S{r}')
         put(ws, f'P{r}', why, 10, color='404040', border=LINE_B)
     put(ws, 'G14', 'Valor real em branco = vale o porte escolhido no painel.', 9, italic=True, color=GREY)
-    ws.merge_cells('G14:R14')
+    ws.merge_cells('G14:S14')
 
     # tabela por entregável
-    band(ws, 'A20:R20', '3. ESFORÇO POR ENTREGÁVEL (entregáveis da aba 2; horas de referência, calibrar com a GP)', 11, TEAL, height=22)
+    band(ws, 'A20:S20', '3. ESFORÇO POR ENTREGÁVEL (entregáveis da aba 2; horas de referência, calibrar com a GP)', 11, TEAL, height=22)
     heads = ['ID', 'Categoria', 'Entregável de GMO', 'Mês início', 'Mês fim', 'Meses ativos', 'Horas fixas',
              'Horas por área', 'Horas por público', 'Horas por marco', 'Horas por semana', 'Horas do produto',
-             'Horas de acompanhamento', 'TOTAL (h)', 'Dias de 8h', 'De onde vem o período', 'Impacto (prioridade, aba 2)',
-             'Peso do impacto']
+             'Horas de acompanhamento', 'TOTAL (h)', 'Dias de trabalho', 'De onde vem o período', 'Impacto (prioridade, aba 2)',
+             'Peso do impacto', 'Racional da estimativa (por que essas horas)']
     notas = {
         'G': 'Montar o produto uma vez: desenho, modelo, primeira versão e validação.',
         'H': 'Multiplica pelo nº de áreas: levantamento, conversa com gestor e validação por área.',
@@ -221,7 +237,7 @@ def build_regua(wb):
             ws[f'{col}21'].comment = Comment(notas[col], 'A&M')
     ws.row_dimensions[21].height = 42
     first = 22
-    for k, (gid, row2, ini, fim, hf, ha, hp, hm, hs, origem) in enumerate(LINHAS):
+    for k, (gid, row2, ini, fim, hf, ha, hp, hm, hs, origem, racional) in enumerate(LINHAS):
         r = first + k
         put(ws, f'A{r}', gid, 10, True, TEAL, border=BOX)
         if row2:
@@ -237,7 +253,7 @@ def build_regua(wb):
         put(ws, f'L{r}', f'=G{r}+H{r}*N_AREAS+I{r}*N_PUBLICOS+J{r}*N_MARCOS', 10, h='center', fmt='#,##0', border=BOX)
         put(ws, f'M{r}', f'=K{r}*F{r}*SEM_MES', 10, h='center', fmt='#,##0', border=BOX)
         put(ws, f'N{r}', f'=L{r}+M{r}', 10.5, True, NAVY, PALE, 'center', fmt='#,##0', border=BOX)
-        put(ws, f'O{r}', f'=N{r}/8', 10, h='center', fmt='0.0', border=BOX)
+        put(ws, f'O{r}', f'=N{r}/H_FULL', 10, h='center', fmt='0.0', border=BOX)
         put(ws, f'P{r}', origem, 9, color='404040', border=BOX)
         if row2:
             put(ws, f'Q{r}', f"='{P2}'!I{row2}", 10, color=LINK_FONT, h='center', border=BOX)
@@ -245,7 +261,8 @@ def build_regua(wb):
             ws[f'Q{r}'].value = 'Média'
             entrada(ws[f'Q{r}'])
         put(ws, f'R{r}', f'=IF(Q{r}="Alta",3,IF(Q{r}="Média",2,1))', 10, h='center', fmt='0', border=BOX)
-        ws.row_dimensions[r].height = 30
+        put(ws, f'S{r}', racional, 9, color='404040', border=BOX)
+        ws.row_dimensions[r].height = 36
     last = first + len(LINHAS) - 1
     tot = last + 1
     put(ws, f'A{tot}', 'TOTAL', 11, True, WHITE, NAVY)
@@ -253,7 +270,7 @@ def build_regua(wb):
     for col in 'LMNO':
         put(ws, f'{col}{tot}', f'=SUM({col}{first}:{col}{last})', 11, True, WHITE, NAVY, 'center',
             fmt='0.0' if col == 'O' else '#,##0')
-    for col in 'PQR':
+    for col in 'PQRS':
         put(ws, f'{col}{tot}', '', bg=NAVY)
     name(wb, 'ESFORCO_TOTAL', f"{QR}!$N${tot}")
     ws.row_dimensions[tot].height = 24
@@ -262,7 +279,7 @@ def build_regua(wb):
 
     # resumo por categoria
     r0 = tot + 3
-    band(ws, f'A{r0}:R{r0}', '4. RESUMO POR CATEGORIA', 11, TEAL, height=22)
+    band(ws, f'A{r0}:S{r0}', '4. RESUMO POR CATEGORIA', 11, TEAL, height=22)
     for col, t in zip('BCDE', ['Categoria', '', 'Horas', '% do total']):
         put(ws, f'{col}{r0 + 1}', t, 10, True, WHITE, NAVY, h='center')
     ws.merge_cells(f'B{r0 + 1}:C{r0 + 1}')
@@ -283,7 +300,7 @@ def build_regua(wb):
 
     # capacidade
     r1 = rc + 3
-    band(ws, f'A{r1}:R{r1}', '5. CAPACIDADE DO TIME DE GMO', 11, TEAL, height=22)
+    band(ws, f'A{r1}:S{r1}', '5. CAPACIDADE DO TIME DE GMO', 11, TEAL, height=22)
     cap = [
         ('Horas por dia no regime escolhido', 'H_DIA', '=IF(CENARIO="Full-time",H_FULL,H_PART)', '0'),
         ('Capacidade de 1 pessoa por mês (h)', 'CAP_PESSOA_MES', '=H_DIA*DIAS_MES*PROD', '#,##0'),
@@ -341,13 +358,13 @@ def build_painel(wb, tot, ws_r, first, last):
     for dv, ref in ((dv1, 'D5'), (dv2, 'D6'), (dv3, 'D7')):
         dv.add(ref)
         ws.add_data_validation(dv)
-    ws['D5'].comment = Comment('Clique e escolha: Full-time (8h/dia) ou Part-time (4h/dia).', 'A&M')
+    ws['D5'].comment = Comment('Clique e escolha: Full-time (6h efetivas/dia) ou Part-time (3h/dia). As horas ficam na aba Régua.', 'A&M')
     ws['D6'].comment = Comment('Enquanto não se sabe o nº real de áreas, escolha o porte. O nº real pode ser digitado '
                                'na aba Régua de Esforço, coluna "Valor real".', 'A&M')
 
     band(ws, 'B9:K9', '2. RESULTADO DO CENÁRIO', 11, TEAL, height=22)
     tiles = [
-        ('ESFORÇO PREVISTO', '=ESFORCO_TOTAL', '#,##0" h"', '=ROUND(ESFORCO_TOTAL/8,0)&" dias de trabalho de 8h"'),
+        ('ESFORÇO PREVISTO', '=ESFORCO_TOTAL', '#,##0" h"', '=ROUND(ESFORCO_TOTAL/H_FULL,0)&" dias de trabalho de "&H_FULL&"h"'),
         ('CAPACIDADE DO TIME', '=CAP_TIME', '#,##0" h"', '=PESSOAS&" pessoa(s) × "&H_DIA&"h/dia × "&MESES&" meses"'),
         ('COBERTURA', '=COBERTURA', '0%', '=IF(COBERTURA>=1,"Suficiente",IF(COBERTURA>=0.7,"Apertado","Insuficiente"))'),
         ('FTE NECESSÁRIOS', '=FTE', '0.0', '="pessoas 100% dedicadas por "&MESES&" meses"'),
@@ -414,7 +431,7 @@ def build_painel(wb, tot, ws_r, first, last):
     band(ws, 'B24:K24', '4. ONDE ESTÁ O ESFORÇO (horas por categoria de entregável)', 11, TEAL, height=22)
     ws.merge_cells('B25:E25')
     put(ws, 'B25', 'Categoria', 10, True, WHITE, NAVY)
-    for c0, t in (('F', 'Horas'), ('G', '% do total'), ('H', 'Dias de 8h')):
+    for c0, t in (('F', 'Horas'), ('G', '% do total'), ('H', 'Dias de trabalho')):
         put(ws, f'{c0}25', t, 10, True, WHITE, NAVY, 'center')
     cat0 = tot + 5  # primeira linha do resumo por categoria na régua
     for i, cat in enumerate(CATS):
@@ -424,7 +441,7 @@ def build_painel(wb, tot, ws_r, first, last):
         put(ws, f'B{r}', f'={QR}!B{rr}', 10.5, color=LINK_FONT, border=LINE_B)
         put(ws, f'F{r}', f'={QR}!D{rr}', 11, True, NAVY, h='center', fmt='#,##0', border=LINE_B)
         put(ws, f'G{r}', f'={QR}!E{rr}', 10.5, h='center', fmt='0%', border=LINE_B)
-        put(ws, f'H{r}', f'=F{r}/8', 10.5, h='center', fmt='0', border=LINE_B)
+        put(ws, f'H{r}', f'=F{r}/H_FULL', 10.5, h='center', fmt='0', border=LINE_B)
     rt = 26 + len(CATS)
     ws.merge_cells(f'B{rt}:E{rt}')
     put(ws, f'B{rt}', 'TOTAL', 11, True, WHITE, NAVY)
