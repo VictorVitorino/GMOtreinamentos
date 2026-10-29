@@ -192,65 +192,60 @@ def cols(n, gap):
 
 
 # ---------------------------------------------------------------- slide 1: roadmap
+# Só conteúdo do deck original: fluxo do ciclo (slide 8), fases (11), pilar de resultados (13),
+# formulário da área cliente (15) e a coluna do Gerente Executivo na matriz RACI (17)
 ETAPAS = [
-    ('1 · ANTES DO CICLO', 'Preparar a base', [
-        ('Capacitar a liderança', 'Gerentes e Líderes de Comunidade aptos a aplicar as novas regras do modelo'),
-        ('Comunicar os papéis', 'Gerente imediato, Líder de Comunidade e avaliado, conforme a matriz RACI'),
-        ('Oracle HCM como ferramenta única', 'Metas, acompanhamento e feedbacks registrados no mesmo sistema'),
-    ], ('Lidera', 'a preparação da área')),
-    ('2 · INÍCIO DO CICLO', 'Pactuar as metas', [
-        ('Compor as metas na regra 70/30', '1 a 3 metas individuais (70%) e 1 meta de contribuição à Comunidade (30%), além das 3 metas comuns ONS'),
-        ('Alinhar antes de formalizar', 'Gerente imediato e Líder de Comunidade acordam prioridades e evitam conflitos no modelo matricial'),
-        ('Desdobrar as metas da FE', 'Portfólio estratégico, orçamento e independência tecnológica orientam as metas dos gerentes'),
-    ], ('Consultado', 'nas metas das equipes; aprova as dos gerentes que avalia')),
-    ('3 · MEIO DO CICLO', 'Repactuar as metas', [
-        ('Revisar quando o contexto mudar', 'Mudanças de backlog, realocações entre squads e evolução dos modelos'),
-        ('Ouvir o Líder de Comunidade', 'Ele pode propor ajustes às metas ao longo do ciclo'),
-        ('Registrar cada ajuste', 'Repactuações formalizadas no Oracle HCM'),
-    ], ('Consultado', 'nas repactuações de metas')),
-    ('4 · FINAL DO CICLO', 'Avaliar e calibrar', [
-        ('Avaliar com dois olhares', 'Autoavaliação e avaliação do gerente imediato, com input estruturado do Líder de Comunidade'),
-        ('Conduzir a calibração', 'Gerentes calibram as notas com input dos Líderes antes da aprovação final'),
-        ('Fechar com feedback formal', 'Devolutiva individual, incluindo as competências: Menos hábil, Hábil ou Referência'),
-    ], ('Aprova', 'a calibração e a avaliação final')),
-    ('5 · CICLOS SEGUINTES', 'Medir e evoluir', [
-        ('Medir a maturidade', '% de metas formalizadas no prazo e % de feedbacks registrados nos primeiros ciclos'),
-        ('Ouvir a área cliente', 'Formulário de percepção (qualidade, tempo, suporte e valor) e NPS por Comunidade de Entrega'),
-        ('Calibrar entre Comunidades', 'Fóruns cruzados entre gerentes para dar consistência às notas'),
-    ], ('Patrocina', 'a evolução do modelo para a Fase 2')),
+    ('INÍCIO DO CICLO', 'Elaboração de metas', [
+        ('Metas individuais (70%)', '1 a 3 metas por ciclo, aprovadas pelo Gerente Imediato'),
+        ('Meta de contribuição à Comunidade (30%)', '1 meta coletiva por ciclo, definida junto com o Líder de Comunidade'),
+        ('3 metas comuns ONS', 'Definidas institucionalmente, aplicáveis a todo o ONS'),
+    ], ('Consultado (C)', 'na elaboração das metas para o ciclo')),
+    ('MEIO DO CICLO', 'Repactuação das metas', [
+        ('Repactuação', 'Considerando mudanças de backlog, realocações entre squads e evolução dos modelos'),
+        ('Ajustes', 'O Líder de Comunidade pode propor ajustes'),
+    ], ('Consultado (C)', 'na repactuação das metas')),
+    ('FINAL DO CICLO', 'Avaliação final', [
+        ('Autoavaliação', 'Responsabilidade do avaliado'),
+        ('Avaliação de desenvolvimento e de resultados', 'Pelo Gerente, com input do Líder de Comunidade (escala de 1 a 5)'),
+        ('Calibração, avaliação final e feedback formal', 'Conduzidos pelo Gerente, com o Líder de Comunidade consultado'),
+    ], ('Aprovador (A)', 'da calibração e avaliação final')),
+    ('CICLOS SEGUINTES', 'Evolução', [
+        ('Formulário de percepção da área cliente', 'Qualidade, tempo de resposta, suporte e valor percebido, em escala de 1 a 5'),
+        ('NPS por Comunidade de Entrega', 'Indicador agregado de satisfação da comunidade ao longo do tempo'),
+        ('Calibragem cruzada entre Comunidades', 'Fóruns entre gerentes para garantir consistência das notas no modelo matricial'),
+    ], ('Informado (I)', 'no feedback do representante do negócio (formulário)')),
 ]
 
 
 def slide_roadmap(prs, layout, ref):
     S = Slide(prs, layout, ref,
-              'Roadmap de implantação: o que o Gerente Executivo deve garantir em cada etapa do ciclo de avaliação',
-              'Roadmap em cinco etapas. As etapas 1 a 4 (Fase 1) já valem para o próximo ciclo; a etapa 5 (Fase 2) '
-              'entra nos ciclos seguintes, quando o modelo estiver maduro. A faixa "Papel do GE" mostra onde o Gerente '
-              'Executivo lidera, é consultado ou aprova: o ponto de maior responsabilidade é a calibração e a avaliação final.')
-    C = cols(5, 8)
+              'Roadmap de implantação: as etapas do ciclo de avaliação e o papel do Gerente Executivo em cada uma',
+              'Fase 1 (início, meio e final do ciclo) já no próximo ciclo de avaliação; Fase 2 em ciclos seguintes. '
+              'A faixa inferior traz a coluna do Gerente Executivo na matriz RACI.')
+    C = cols(4, 8)
     # fases
     yl = 103
-    f1 = (C[0][0], C[3][0] + C[3][1] - C[0][0])
-    for (x, w), label, cor in ((f1, 'FASE 1  ·  JÁ NO PRÓXIMO CICLO', GREYBLUE), (C[4], 'FASE 2  ·  CICLOS SEGUINTES', MINT)):
+    f1 = (C[0][0], C[2][0] + C[2][1] - C[0][0])
+    for (x, w), label, cor in ((f1, 'FASE 1  ·  JÁ NO PRÓXIMO CICLO', GREYBLUE), (C[3], 'FASE 2  ·  EVOLUÇÃO EM CICLOS SEGUINTES', MINT)):
         S.text(x, yl, w, [P(label, 8, True, NAVY, lh=10, spc=1)])
         S.box(x, yl + 13, w, 2.5, fill=cor)
     # etapas (chevrons)
     yc, hc, adj = 124, 46, 0.26
     dep = hc * adj
     for i, ((x, w), (k, nome, _, _)) in enumerate(zip(C, ETAPAS)):
-        fase2 = i == 4
+        fase2 = i == 3
         s = S.box(x, yc, w, hc, fill=MINT if fase2 else NAVY, prst=MSO_SHAPE.PENTAGON if i == 0 else MSO_SHAPE.CHEVRON, adj=adj)
         S.shape_text(s, x, yc, w, hc, [
-            P(k, 7.5, True, SLATE if fase2 else MINT, lh=9.5, spc=0.8),
+            P(f'{i + 1} · {k}', 7.5, True, SLATE if fase2 else MINT, lh=9.5, spc=0.8),
             P(nome, 12, True, NAVY if fase2 else WHITE, lh=14, sb=1.5),
         ], ins=(10 if i == 0 else dep + 7, 0, dep + 3, 0))
     # cartões: medir tudo antes de desenhar, para alinhar a faixa "Papel do GE"
     ycard, pad = 178, 11
     iw = C[0][1] - 2 * pad
-    hd = lambda t: P(t, 12, True, NAVY, lh=14)
+    hd = lambda t: P(t, 11.5, True, NAVY, lh=13.5)
     ds = lambda t: P(t, 10, False, TXT, lh=12)
-    corpo = [sum(paras_h([hd(a)], iw) + 2.5 + paras_h([ds(b)], iw) for a, b in it) + 2 * 17 for _, _, it, _ in ETAPAS]
-    rod = lambda papel: [P('PAPEL DO GE', 7, True, STEEL, lh=9, spc=1), P(papel[0], 13, True, NAVY, lh=15, sb=2),
+    corpo = [sum(paras_h([hd(a)], iw) + 2.5 + paras_h([ds(b)], iw) for a, b in it) + (len(it) - 1) * 17 for _, _, it, _ in ETAPAS]
+    rod = lambda papel: [P('PAPEL DO GE (RACI)', 7, True, STEEL, lh=9, spc=1), P(papel[0], 13, True, NAVY, lh=15, sb=2),
                          P(papel[1], 9, False, TXT, lh=11, sb=1)]
     hrod = max(paras_h(rod(e[3]), iw) for e in ETAPAS) + 2 * 9
     yrod = YB - hrod
@@ -266,11 +261,11 @@ def slide_roadmap(prs, layout, ref):
             if j < len(itens) - 1:
                 S.box(x + pad, cy + 8, iw, 0.75, fill=LINE)
                 cy += 17
-        aprova = papel[0] == 'Aprova'
+        aprova = papel[0].startswith('Aprovador')
         S.box(x + 0.5, yrod, w - 1, hrod - 0.5, fill=NAVY if aprova else TINT)
         r = rod(papel)
         if aprova:
-            r[0]['runs'] = [('PAPEL DO GE', True, MINT)]
+            r[0]['runs'] = [('PAPEL DO GE (RACI)', True, MINT)]
             r[1]['runs'] = [(papel[0], True, WHITE)]
             r[2]['runs'] = [(papel[1], False, WHITE)]
         S.text(x + pad, yrod + 9, iw, r, inside=card)
@@ -286,11 +281,13 @@ CADEIA = [
     ('Profissionais DPL (PO, modeleiros, desenvolvedores)', 'Gerente de Ferramentas, com input do Líder de Comunidade de Entrega', False),
     ('Profissionais DTA alocados na FE', 'Gerente imediato da DTA, com input obrigatório do Líder de Comunidade DPL', False),
 ]
-DECISOES = [
-    ('Formato da meta de contribuição', None, 'Meta adicional do indivíduo ou incorporada às metas comuns ONS, com o formulário da área cliente integrando essas metas'),
-    ('Competências eletivas por área', None, 'Quais eletivas da cesta cada área adota, de acordo com a sua necessidade'),
-    ('Instância de divergências', None, 'Quem arbitra quando a avaliação do gerente imediato e o input do Líder de Comunidade não convergem'),
-    ('Regras do formulário da área cliente', 'FASE 2', 'Prazo de aplicação ao fim de cada ciclo e amostragem quando o squad atende vários clientes'),
+PREMISSAS = [  # premissas de implementação (slide 13)
+    ('Capacitar a liderança', 'Para garantir o cumprimento das metas conforme as regras estabelecidas'),
+    ('Formalizar e comunicar papéis', 'Gerente imediato, líder de comunidade e avaliado'),
+    ('Oracle HCM como ferramenta única', 'Formalização de metas, acompanhamento e registro de feedbacks'),
+    ('Alinhamento prévio', 'Entre Gerente Imediato e Líder de Comunidade antes da formalização das metas'),
+    ('Governança de divergências', 'Instância de resolução entre a avaliação do Gerente Imediato e o input do Líder de Comunidade'),
+    ('Monitorar a aderência', 'Nos primeiros ciclos: % de metas formalizadas no prazo e % de feedbacks registrados'),
 ]
 
 
@@ -308,16 +305,15 @@ def chips(S, x, y, w, items, fill, line, cor, size=8.5, h=15, gap=4, card=None):
 
 def slide_considerar(prs, layout, ref):
     S = Slide(prs, layout, ref,
-              'O que o Gerente Executivo deve considerar: como a nota se compõe, quem avalia quem e as decisões a tomar antes do ciclo',
-              'Três blocos para o Gerente Executivo dominar antes de aplicar o modelo: a composição da nota (70/30 e as '
-              '3 metas comuns ONS; competências fora da média), a cadeia de avaliação na FE e as decisões que precisam '
-              'estar fechadas antes do primeiro ciclo.')
+              'O que o Gerente Executivo deve considerar: composição da nota, quem avalia quem e premissas de implementação',
+              'Pilar de resultados e de desenvolvimento, avaliadores por papel na FE e premissas de implementação, '
+              'conforme a proposta A&M.')
     C = cols(3, 10)
     yp, ym = 106, 444
     pad = 14
     painéis = [('REGRAS DO MODELO', 'Como a nota se compõe', STEEL),
                ('CADEIA DE AVALIAÇÃO', 'Quem avalia quem na FE', NAVY),
-               ('DEFINIR ANTES DE APLICAR', 'Decisões do Gerente Executivo', MINT)]
+               ('PROPOSTA A&M', 'Premissas de implementação', MINT)]
     for (x, w), (k, t, cor) in zip(C, painéis):
         card = (x, yp, w, ym - yp)
         S.box(*card, fill=WHITE, line=LINE, shadow=True)
@@ -343,7 +339,7 @@ def slide_considerar(prs, layout, ref):
     cy += 30
     for f, ln, a, b in ((NAVY, None, 'Metas individuais', ' · 1 a 3 por ciclo, aprovadas pelo gerente'),
                         (MINT, None, 'Contribuição à Comunidade', ' · 1 meta coletiva, com o Líder'),
-                        (WHITE, GREYBLUE, '+ 3 metas comuns ONS', ' · institucionais, para todos')):
+                        (WHITE, GREYBLUE, '+ 3 metas comuns ONS', ' · aplicáveis a todo o ONS')):
         S.box(ix, cy + 2.5, 7, 7, fill=f, line=ln, lw=0.75)
         cy += S.text(ix + 13, cy, iw - 13, [P(runs=[(a, True, NAVY), (b, False, TXT)], size=9.5, lh=12)], inside=card) + 6
     cy += 7
@@ -388,31 +384,28 @@ def slide_considerar(prs, layout, ref):
     if cy > ym - 10:
         WARN.append(f'painel 2 estoura ({cy:.0f} > {ym - 10})')
 
-    # painel 3: decisões
+    # painel 3: premissas de implementação
     (x, w), iw = C[2], C[2][1] - 2 * pad
-    card, ix, cy = (x, yp, w, ym - yp), x + pad, yp + 66
-    tx, wt = ix + 30, iw - 30
-    alt = [paras_h([P(a, 11, True, NAVY, lh=13)], wt - (44 if tag else 0)) + 2 + paras_h([P(b, 10, False, TXT, lh=12)], wt) + 2
-           for a, tag, b in DECISOES]
-    gap = min(30, max(14, (ym - 14 - cy - sum(alt)) / (len(alt) - 1)))
-    for n, (a, tag, b) in enumerate(DECISOES, start=1):
-        s = S.box(ix, cy, 20, 20, fill=MINT if tag else NAVY)
-        S.shape_text(s, ix, cy, 20, 20, [P(str(n), 11, True, NAVY if tag else WHITE, lh=13, align='c')], ins=(0, 0, 0, 0))
-        ha = S.text(tx, cy + 2, wt - (44 if tag else 0), [P(a, 11, True, NAVY, lh=13)], inside=card)
-        if tag:
-            t = S.box(ix + iw - 38, cy + 3, 38, 12, fill=MINT)
-            S.shape_text(t, 0, 0, 38, 12, [P(tag, 6.5, True, NAVY, spc=0.8, align='c')], ins=(0, 0, 0, 0))
-        hb = S.text(tx, cy + 2 + ha + 2, wt, [P(b, 10, False, TXT, lh=12)], inside=card)
-        cy += 2 + ha + 2 + hb + gap
+    card, ix, cy = (x, yp, w, ym - yp), x + pad, yp + 64
+    tx, wt = ix + 28, iw - 28
+    alt = [paras_h([P(a, 10.5, True, NAVY, lh=12.5)], wt) + 1.5 + paras_h([P(b, 9.5, False, TXT, lh=11.5)], wt) for a, b in PREMISSAS]
+    gap = min(16, max(7, (ym - 12 - cy - sum(alt)) / (len(alt) - 1)))
+    for n, (a, b) in enumerate(PREMISSAS, start=1):
+        s = S.box(ix, cy + 1, 18, 18, fill=NAVY)
+        S.shape_text(s, ix, cy + 1, 18, 18, [P(str(n), 10, True, WHITE, lh=12, align='c')], ins=(0, 0, 0, 0))
+        ha = S.text(tx, cy, wt, [P(a, 10.5, True, NAVY, lh=12.5)], inside=card)
+        hb = S.text(tx, cy + ha + 1.5, wt, [P(b, 9.5, False, TXT, lh=11.5)], inside=card)
+        cy += ha + 1.5 + hb + gap
     if cy - gap > ym - 10:
         WARN.append(f'painel 3 estoura ({cy - gap:.0f} > {ym - 10})')
 
     # mensagem-chave
     s = S.box(X0, ym + 8, X1 - X0, YB - ym - 8, fill=NAVY)
     S.shape_text(s, X0, ym + 8, X1 - X0, YB - ym - 8, [P(runs=[
-        ('Duplo papel do GE:  ', True, MINT),
-        ('avalia diretamente os gerentes da FE e aprova a calibração final da área. '
-         'A consistência do modelo começa pelas metas que ele mesmo pactua.', False, WHITE)], size=11, lh=13)],
+        ('Sugestão A&M:  ', True, MINT),
+        ('a meta de contribuição pode ser (i) meta adicional do indivíduo, voltada à Comunidade de Entrega, ou '
+         '(ii) incorporada às metas comuns ONS, com o formulário de feedback da área cliente integrando essas metas.',
+         False, WHITE)], size=10.5, lh=12.5)],
         ins=(16, 0, 16, 0))
     S.check('slide 2')
 
