@@ -77,6 +77,17 @@
   .logo-am{font-family:var(--sans);font-weight:800;letter-spacing:.055em;line-height:1;white-space:nowrap}
   .logo-am b{color:var(--acc2);font-weight:800}
   .bmeta{position:absolute;top:-3px;bottom:-3px;width:3px;border-radius:2px;background:#13315C;opacity:.5}
+  .wnum{position:absolute;right:64px;top:10px;font-weight:800;font-size:560px;line-height:1;color:rgba(163,184,214,.07);z-index:2}
+  /* a3 — timeline metrô */
+  .stn{position:absolute;width:72px;height:72px;border-radius:50%;background:#fff;border:4px solid var(--ink2);z-index:6;
+    display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:22px;color:var(--ink);
+    box-shadow:0 8px 20px rgba(11,37,69,.12)}
+  .phcard{position:absolute;width:264px;z-index:5;background:#fff;border:1.5px solid var(--linel);border-radius:18px;
+    box-shadow:0 12px 30px rgba(11,37,69,.09);padding:18px 22px}
+  .phcard .pk{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.18em}
+  .phcard h4{font-size:20px;font-weight:800;color:var(--ink);line-height:1.22;margin:6px 0}
+  .phcard p{font-size:14.5px;color:var(--mut);line-height:1.35}
+  .stub{position:absolute;width:2px;background:#CBD4E1;z-index:4;transform-origin:50% 0}
 
   /* ---------- cold open / cartões de ato ---------- */
   .navycard{position:absolute;inset:0;background:linear-gradient(135deg,#0B2545 0%,#13315C 70%,#1B4479 100%);z-index:20;overflow:hidden}
@@ -255,34 +266,66 @@
     <div class="navycard willchange" id="i0-card">
       <div class="grid"></div>
       <canvas class="pcanvas" id="pc-i0" width="1920" height="1080"></canvas>
-      <div class="ghost willchange" id="i0-g1" style="position:absolute;left:0;top:270px;font-size:200px">ONBOARDING&nbsp;&nbsp;ONBOARDING</div>
-      <div class="abs" style="left:150px;top:520px">
-        <div class="actbar willchange" id="i0-bar"></div>
-        <div class="willchange" id="i0-t" style="margin-top:32px;display:flex;align-items:baseline;gap:36px">
-          <span class="logo-t" style="font-size:116px;color:#fff">TOTVS</span>
-          <span style="font-family:var(--mono);font-weight:700;font-size:56px;color:var(--acc2)">×</span>
-          <span class="logo-am" style="font-size:54px;color:#fff">ALVAREZ <b>&amp;</b> MARSAL</span>
-        </div>
-        <div class="hs willchange" id="i0-s" style="font-family:var(--mono);font-size:19px;letter-spacing:.26em;color:#A3B8D6;margin-top:24px">IMPLANTAÇÃO ERP · TRANSFORMAÇÃO · PESSOAS</div>
+      <div class="abs" style="left:0;right:0;top:272px;text-align:center;z-index:3">
+        <span class="chip willchange" id="i0c-chip" style="background:rgba(255,255,255,.06);border-color:rgba(163,184,214,.35);color:#D7E1EF;box-shadow:none"><span class="cdot"></span>ONBOARDING · IMPLANTAÇÃO ERP</span>
       </div>
+      <div class="abs" style="left:0;right:0;top:362px;text-align:center;z-index:3">
+        <span class="rvl"><span class="rvl-in" id="i0c-t1"><span class="logo-t" style="font-size:148px;color:#fff">TOTVS</span></span></span>
+      </div>
+      <div class="abs willchange" id="i0c-x" style="left:0;right:0;top:556px;text-align:center;z-index:3">
+        <span style="display:inline-block;vertical-align:middle;width:110px;height:2px;background:rgba(163,184,214,.4)"></span>
+        <span style="display:inline-block;vertical-align:middle;margin:0 26px;font-family:var(--mono);font-weight:700;font-size:44px;color:var(--acc2)">×</span>
+        <span style="display:inline-block;vertical-align:middle;width:110px;height:2px;background:rgba(163,184,214,.4)"></span>
+      </div>
+      <div class="abs" style="left:0;right:0;top:618px;text-align:center;z-index:3">
+        <span class="rvl"><span class="rvl-in" id="i0c-t2"><span class="logo-am" style="font-size:64px;color:#fff">ALVAREZ <b>&amp;</b> MARSAL</span></span></span>
+      </div>
+      <div class="abs" style="left:0;right:0;top:748px;text-align:center;z-index:3">
+        <div class="actbar willchange" id="i0-bar" style="display:inline-block;transform-origin:center"></div>
+      </div>
+      <div class="abs willchange" id="i0-s" style="left:0;right:0;top:800px;text-align:center;z-index:3;font-family:var(--mono);font-weight:600;font-size:19px;letter-spacing:.26em;color:#A3B8D6">IMPLANTAÇÃO ERP · TRANSFORMAÇÃO · PESSOAS</div>
     </div>
   </section>
 
   <!-- ============ CARTÕES DE ATO ============ -->
   <section class="scene" id="x1"><div class="navycard" id="x1-c"><div class="grid"></div><canvas class="pcanvas" id="pc-x1" width="1920" height="1080"></canvas>
-    <div class="actnum willchange" id="x1-n" style="position:absolute;left:150px;top:220px">01</div>
-    <div class="abs" style="left:156px;top:580px"><div class="actbar willchange" id="x1-b"></div>
-      <div class="acttitle willchange" id="x1-t" style="margin-top:28px">A Metodologia <b style="color:var(--acc2)">A&amp;M</b></div></div>
+    <div class="wnum willchange" id="x1-w">01</div>
+    <div class="abs" style="left:0;right:0;top:356px;text-align:center;z-index:3">
+      <span class="chip willchange" id="x1-k" style="background:rgba(255,255,255,.06);border-color:rgba(163,184,214,.35);color:#D7E1EF;box-shadow:none"><span class="cdot"></span>ATO 01</span>
+    </div>
+    <div class="abs" style="left:0;right:0;top:442px;text-align:center;z-index:3">
+      <span class="rvl"><span class="rvl-in" id="x1-t"><span class="acttitle" style="font-size:96px">A Metodologia <b style="color:var(--acc2)">A&amp;M</b></span></span></span>
+    </div>
+    <div class="abs" style="left:0;right:0;top:596px;text-align:center;z-index:3">
+      <div class="actbar willchange" id="x1-b" style="display:inline-block;width:180px;transform-origin:center"></div>
+    </div>
+    <div class="abs willchange" id="x1-s" style="left:0;right:0;top:644px;text-align:center;z-index:3;font-family:var(--mono);font-weight:600;font-size:18px;letter-spacing:.22em;color:#A3B8D6">PMO + GMO = TMO · 6 FASES · STATUS SEMANAL · RISCOS</div>
   </div></section>
   <section class="scene" id="x2"><div class="navycard" id="x2-c"><div class="grid"></div><canvas class="pcanvas" id="pc-x2" width="1920" height="1080"></canvas>
-    <div class="actnum willchange" id="x2-n" style="position:absolute;left:150px;top:220px">02</div>
-    <div class="abs" style="left:156px;top:580px"><div class="actbar willchange" id="x2-b"></div>
-      <div class="acttitle willchange" id="x2-t" style="margin-top:28px">O Framework <b style="color:var(--acc2)">A&amp;M × TOTVS</b></div></div>
+    <div class="wnum willchange" id="x2-w">02</div>
+    <div class="abs" style="left:0;right:0;top:356px;text-align:center;z-index:3">
+      <span class="chip willchange" id="x2-k" style="background:rgba(255,255,255,.06);border-color:rgba(163,184,214,.35);color:#D7E1EF;box-shadow:none"><span class="cdot"></span>ATO 02</span>
+    </div>
+    <div class="abs" style="left:0;right:0;top:450px;text-align:center;z-index:3">
+      <span class="rvl"><span class="rvl-in" id="x2-t"><span class="acttitle" style="font-size:84px">O Framework <b style="color:var(--acc2)">A&amp;M × TOTVS</b></span></span></span>
+    </div>
+    <div class="abs" style="left:0;right:0;top:592px;text-align:center;z-index:3">
+      <div class="actbar willchange" id="x2-b" style="display:inline-block;width:180px;transform-origin:center"></div>
+    </div>
+    <div class="abs willchange" id="x2-s" style="left:0;right:0;top:640px;text-align:center;z-index:3;font-family:var(--mono);font-weight:600;font-size:18px;letter-spacing:.22em;color:#A3B8D6">UM TIME · COMO ENTREGAMOS · MIT · FLUIG · INTEGRAÇÕES · GAPS</div>
   </div></section>
   <section class="scene" id="x3"><div class="navycard" id="x3-c"><div class="grid"></div><canvas class="pcanvas" id="pc-x3" width="1920" height="1080"></canvas>
-    <div class="actnum willchange" id="x3-n" style="position:absolute;left:150px;top:220px">03</div>
-    <div class="abs" style="left:156px;top:580px"><div class="actbar willchange" id="x3-b"></div>
-      <div class="acttitle willchange" id="x3-t" style="margin-top:28px">O seu <b style="color:var(--acc2)">papel</b></div></div>
+    <div class="wnum willchange" id="x3-w">03</div>
+    <div class="abs" style="left:0;right:0;top:356px;text-align:center;z-index:3">
+      <span class="chip willchange" id="x3-k" style="background:rgba(255,255,255,.06);border-color:rgba(163,184,214,.35);color:#D7E1EF;box-shadow:none"><span class="cdot"></span>ATO 03</span>
+    </div>
+    <div class="abs" style="left:0;right:0;top:442px;text-align:center;z-index:3">
+      <span class="rvl"><span class="rvl-in" id="x3-t"><span class="acttitle" style="font-size:96px">O seu <b style="color:var(--acc2)">papel</b></span></span></span>
+    </div>
+    <div class="abs" style="left:0;right:0;top:596px;text-align:center;z-index:3">
+      <div class="actbar willchange" id="x3-b" style="display:inline-block;width:180px;transform-origin:center"></div>
+    </div>
+    <div class="abs willchange" id="x3-s" style="left:0;right:0;top:644px;text-align:center;z-index:3;font-family:var(--mono);font-weight:600;font-size:18px;letter-spacing:.22em;color:#A3B8D6">CERIMÔNIAS · TRANSPARÊNCIA · ESCALADA SEM MEDO</div>
   </div></section>
 
   <!-- ============ A1 POR QUE MÉTODO ============ -->
@@ -351,10 +394,14 @@
       <span class="rvl"><span class="rvl-in" id="a3-r1"><h1 class="big" style="font-size:62px">Seis fases, <span class="u">um ciclo completo<i id="a3-u"></i></span></h1></span></span>
       <div class="willchange" id="a3-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>PMO + GMO EM TODAS AS FASES</span></div>
     </div>
-    <div id="a3-blt" class="willchange"></div>
-    <div class="ribbon willchange" id="a3-rb1" style="top:800px;background:linear-gradient(90deg,#0B2545,#13315C)">
+    <svg class="abs" width="1920" height="1080" style="left:0;top:0;z-index:3">
+      <line id="a3-track" x1="220" y1="580" x2="220" y2="580" stroke="#DFE5ED" stroke-width="4" stroke-linecap="round"/>
+      <line id="a3-prog" x1="220" y1="580" x2="220" y2="580" stroke="#13315C" stroke-width="4" stroke-linecap="round"/>
+      <circle id="a3-token" r="7" cx="220" cy="580" fill="#F26B21" opacity="0"/>
+    </svg>
+    <div class="ribbon willchange" id="a3-rb1" style="top:862px;height:50px;border-radius:999px;font-size:15.5px;background:linear-gradient(90deg,#0B2545,#13315C)">
       <span style="color:#FF8A4C">PMO · RECORRENTE</span> GOVERNANÇA E REPORTE EXECUTIVO · RISCOS E DECISÕES · CONTROLE DE ESCOPO</div>
-    <div class="ribbon willchange" id="a3-rb2" style="top:872px;background:linear-gradient(90deg,#4A6FA5,#5E6E86)">
+    <div class="ribbon willchange" id="a3-rb2" style="top:926px;height:50px;border-radius:999px;font-size:15.5px;background:linear-gradient(90deg,#4A6FA5,#5E6E86)">
       <span style="color:#FFD9BC">GMO · RECORRENTE</span> COMUNICAÇÃO DIRECIONADA · INDICADORES eNPS E ADKAR · PLANOS CORRETIVOS</div>
   </section>
 
@@ -722,20 +769,23 @@ particles('pc-c1',KW('c1','bem-vindo a bordo',0.1),SC.c1.b,36,4);
 
 /* ================= I0 COLD OPEN ================= */
 (()=>{const {a,n,b}=SC.i0;
-  hide('i0-chip','i0-sub','i0-hl','i0-hr','i0-x','i0-bar','i0-t','i0-s');
+  hide('i0-chip','i0-sub','i0-hl','i0-hr','i0-x','i0-bar','i0-s','i0c-chip','i0c-x');
   pushIn('i0',a);
   blobs('i0-blob1','i0-blob2',a,b);
-  fx(a,0.6,'out',p=>{$('i0-bar').style.opacity=1;$('i0-bar').style.transform=`scaleX(${p})`;});
-  tw('i0-t',a+0.35,0.7,'out5',{y:[46,0],o:[0,1]});
-  tw('i0-s',a+0.7,0.6,'out',{y:[24,0],o:[0,1]});
-  lp(a,a+4.9,t=>{$('i0-g1').style.transform=`translateX(${-180-(t-a)*46}px)`;$('i0-g1').style.opacity=.5;});
+  tw('i0c-chip',a+0.25,0.55,'back',{y:[-34,0],o:[0,1]});
+  reveal('i0c-t1',a+0.5,0.9);
+  fx(a+1.05,0.55,'back',p=>{$('i0c-x').style.opacity=p;$('i0c-x').style.transform=`scale(${0.6+p*0.4}) rotate(${(1-p)*90}deg)`;});
+  reveal('i0c-t2',a+1.3,0.9);
+  fx(a+1.85,0.55,'out',p=>{$('i0-bar').style.opacity=1;$('i0-bar').style.transform=`scaleX(${p})`;});
+  tw('i0-s',a+2.15,0.6,'out',{y:[22,0],o:[0,1]});
   tw('i0-card',a+4.2,0.8,'in2',{y:[0,-1130]});
   reveal('i0-w1',a+4.7);reveal('i0-w2',a+4.95);
   underline('i0-u',a+5.6);
   tw('i0-chip',a+4.5,0.7,'back',{y:[-40,0],o:[0,1]});
   tw('i0-sub',a+5.9,0.7,'out',{y:[24,0],o:[0,1]});
-  /* split exatamente em "lado a lado" */
+  /* split exatamente em "lado a lado" — chrome some durante a tela dividida */
   const sp=KW('i0','lado a lado',0.35);
+  window.I0SP=sp;
   tw('i0-hl',sp,0.85,'out5',{x:[-980,0],o:[0,1]});
   tw('i0-hr',sp,0.85,'out5',{x:[980,0],o:[0,1]});
   fx(sp+0.7,0.55,'back',p=>{$('i0-x').style.opacity=p;$('i0-x').style.transform=`translate(-50%,-50%) scale(${p}) rotate(${(1-p)*120}deg)`;});
@@ -751,11 +801,20 @@ particles('pc-c1',KW('c1','bem-vindo a bordo',0.1),SC.c1.b,36,4);
 /* ================= CARTÕES DE ATO ================= */
 function actCard(id){const {a,b}=SC[id];
   const c=$(id+'-c');
-  tw(c,a,0.55,'out5',{x:[1960,0]});
-  fx(a+0.25,0.5,'out',p=>{$(id+'-n').style.opacity=p;$(id+'-n').style.transform=`translateX(${(1-p)*120}px)`;});
-  fx(a+0.3,0.5,'out',p=>{$(id+'-b').style.transform=`scaleX(${p})`;});
-  tw(id+'-t',a+0.4,0.6,'out5',{y:[50,0],o:[0,1]});
-  tw(c,b-0.6,0.6,'in2',{x:[0,-1960]});
+  hide(id+'-k',id+'-s',id+'-b',id+'-w');
+  fx(a,0.35,'out',p=>{c.style.opacity=p;});
+  fx(a,1.2,'out',p=>{c.style.transformOrigin='50% 45%';c.style.transform=`scale(${1.035-0.035*p})`;});
+  fx(a+0.12,0.7,'out',p=>{const w=$(id+'-w');w.style.opacity=p;w.style.transform=`translateY(${(1-p)*46}px)`;});
+  tw(id+'-k',a+0.18,0.5,'back',{y:[-28,0],o:[0,1]});
+  reveal(id+'-t',a+0.38,0.8);
+  fx(a+0.85,0.5,'out',p=>{$(id+'-b').style.opacity=1;$(id+'-b').style.transform=`scaleX(${p})`;});
+  tw(id+'-s',a+1.05,0.5,'out',{y:[18,0],o:[0,1]});
+  const e=b-0.55;
+  fx(e,0.55,'in2',p=>{
+    $(id+'-t').style.transform=`translateY(${-p*118}%)`;
+    $(id+'-k').style.opacity=1-p;$(id+'-s').style.opacity=1-p;
+    $(id+'-b').style.opacity=1-p;$(id+'-w').style.opacity=1-p;
+    c.style.opacity=1-p;});
 }
 actCard('x1');actCard('x2');actCard('x3');
 
@@ -851,32 +910,52 @@ actCard('x1');actCard('x2');actCard('x3');
     ['05','Cutover e Prontidão','Plano de virada · Go / No-go','#4A6FA5','Cutover e Prontidão'],
     ['06','Estabilização e Op. Assistida','Operação assistida · Lições aprendidas','#5E6E86','E Estabilização'],
   ];
+  /* timeline "metrô": estações numeradas + cards alternados, no ritmo da fala */
+  const X=[220,516,812,1108,1404,1700];
   PH.forEach((p,i)=>{
-    const d=document.createElement('div');d.className='chev willchange';d.id='ch'+i;
-    d.style.left=(136+i*278)+'px';d.style.top='470px';d.style.background=`linear-gradient(135deg,${p[3]},${p[3]}E6)`;
-    d.innerHTML=`<div class="cn">FASE ${p[0]}</div><div class="ct">${p[1]}</div>`;
-    ST.appendChild(d);hide(d);
+    const up=i%2===0;
+    const nd=document.createElement('div');nd.className='stn willchange';nd.id='st'+i;
+    nd.style.left=(X[i]-36)+'px';nd.style.top='544px';nd.style.borderColor=p[3];nd.textContent=p[0];
+    ST.appendChild(nd);hide(nd);
+    const cd=document.createElement('div');cd.className='phcard willchange';cd.id='pcd'+i;
+    cd.style.left=(X[i]-132)+'px';cd.style.top=up?'362px':'646px';
+    cd.innerHTML=`<div class="pk" style="color:${p[3]}">FASE ${p[0]}</div><h4>${p[1]}</h4><p>${p[2]}</p>`;
+    ST.appendChild(cd);hide(cd);
+    const sb=document.createElement('div');sb.className='stub';sb.id='sb'+i;
+    sb.style.left=(X[i]-1)+'px';sb.style.top=up?'518px':'616px';sb.style.height='26px';
+    ST.appendChild(sb);hide(sb);
   });
-  hide('a3-hc','a3-blt','a3-rb1','a3-rb2');
+  hide('a3-hc','a3-rb1','a3-rb2');
   pushIn('a3',a);
   reveal('a3-r1',a+0.3);underline('a3-u',a+1.0);
   tw('a3-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
+  fx(a+1.15,0.7,'out',p=>{$('a3-track').setAttribute('x2',(220+1480*p).toFixed(1));});
+  const cue=PH.map(p=>K(p[4],0.25));
   PH.forEach((p,i)=>{
-    const c=K(p[4],0.25);
-    tw('ch'+i,c,0.7,'out5',{x:[1800-(136+i*278),0],o:[0,1]});
-    fx(c+0.55,0.4,'out',q=>{$('ch'+i).style.transform=`scale(${1+(1-q)*0.06})`;});
-    fx(c+0.5,0.4,'out',q=>{const bl=$('a3-blt');bl.style.opacity=q;
-      bl.innerHTML=`<b>FASE ${p[0]}</b> — ${p[2]}`;});
-    if(i<5)fx(K(PH[i+1][4],0.25)-0.25,0.22,'in2',q=>{$('a3-blt').style.opacity=1-q;});
-    lp(c+0.95,b-0.9,t=>{$('ch'+i).style.transform=`translateY(${Math.sin(t*1.6+i*0.9)*4}px)`;});
+    const c=cue[i];
+    if(i>0)fx(c-0.32,0.32,'inout',q=>{const x=X[i-1]+(X[i]-X[i-1])*q;
+      $('a3-prog').setAttribute('x2',x.toFixed(1));$('a3-token').setAttribute('cx',x.toFixed(1));
+      $('a3-token').style.opacity=Math.sin(q*Math.PI).toFixed(3);});
+    fx(c,0.5,'back',q=>{const nd2=$('st'+i);nd2.style.opacity=Math.min(1,q*2);nd2.style.transform=`scale(${(0.5+0.5*q).toFixed(3)})`;});
+    rippleAt('a3',X[i],580,c+0.28,110);
+    fx(c+0.1,0.35,'out',q=>{const s=$('sb'+i);s.style.opacity=q;s.style.transform=`scaleY(${q.toFixed(3)})`;});
+    fx(c+0.16,0.55,'out',q=>{const cd2=$('pcd'+i);cd2.style.opacity=Math.min(1,q*2);
+      cd2.style.transform=`perspective(900px) rotateX(${((i%2?-1:1)*(1-q)*14).toFixed(2)}deg) translateY(${((i%2?1:-1)*(1-q)*16).toFixed(1)}px)`;});
+    const until=i<5?cue[i+1]:K('E o tempo todo',0.35);
+    lp(c+0.55,until,t=>{const g=0.5+Math.sin(t*4)*0.5;
+      $('st'+i).style.boxShadow=`0 8px 20px rgba(11,37,69,.12), 0 0 0 ${(4+g*5).toFixed(1)}px rgba(242,107,33,${(0.22+g*0.18).toFixed(2)})`;});
+    fx(until,0.35,'out',q=>{$('st'+i).style.boxShadow=`0 8px 20px rgba(11,37,69,.12), 0 0 0 ${((1-q)*6).toFixed(1)}px rgba(242,107,33,${((1-q)*0.3).toFixed(2)})`;});
   });
   tw('a3-rb1',K('E o tempo todo',0.2),0.65,'out5',{x:[-1700,0],o:[0,1]});
   tw('a3-rb2',K('comunicação dirigida',0.3),0.65,'out5',{x:[1700,0],o:[0,1]});
   const e=b-0.78;
-  fx(e,0.72,'in2',p=>{PH.forEach((_,i)=>{$('ch'+i).style.transform=`translateX(${-p*1900}px)`;$('ch'+i).style.opacity=1-p;});
+  fx(e,0.72,'in2',p=>{PH.forEach((_,i)=>{
+      $('st'+i).style.transform=`translateY(${-p*760}px)`;$('st'+i).style.opacity=1-p;
+      $('pcd'+i).style.transform=`translateY(${-p*(820+i*40)}px)`;$('pcd'+i).style.opacity=1-p;
+      $('sb'+i).style.opacity=0;});
+    ['a3-track','a3-prog','a3-token'].forEach(id2=>{$(id2).style.opacity=1-p;});
     $('a3-rb1').style.transform=`translateX(${-p*1800}px)`;$('a3-rb1').style.opacity=1-p;
     $('a3-rb2').style.transform=`translateX(${p*1800}px)`;$('a3-rb2').style.opacity=1-p;
-    $('a3-blt').style.opacity=0;
     $('a3-r1').style.transform=`translateY(${-p*118}%)`;});
   tw('a3-hc',e,0.5,'in2',{o:[1,0]});
 })();
@@ -1231,7 +1310,7 @@ window.seek=function(t){
   t=clamp(t,0,window.TOTAL);
   let cur=SCENES[0];
   for(const s of SCENES){const on=t>=s.a-0.02&&t<s.b+0.02;$(s.id).style.display=on?'block':'none';if(t>=s.a&&t<s.b)cur=s;}
-  const dark=DARK[cur.id]||(cur.id==='i0'&&t<SC.i0.a+4.6);
+  const dark=DARK[cur.id]||(cur.id==='i0'&&(t<SC.i0.a+4.6||t>=(window.I0SP||1e9)-0.05));
   $('kicker').style.display=(dark||!KICK[cur.id])?'none':'flex';
   $('footer').style.display=(dark||cur.id==='c1')?'none':'flex';
   $('chapters').style.display=dark?'none':'flex';

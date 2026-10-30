@@ -23,7 +23,8 @@ const dings = existsSync(A + 'ding.mp3')
 
 const inputs = ['-stream_loop', String(Math.ceil(T / 28) - 1), '-i', 'bed.mp3'];
 narr.forEach(nn => inputs.push('-i', nn.file));
-inputs.push('-i', 'whoosh.mp3');
+const wfile = existsSync(A + 'swoosh.mp3') ? 'swoosh.mp3' : 'whoosh.mp3'; // swoosh suave v5.1
+inputs.push('-i', wfile);
 const wIdx = narr.length + 1;
 let cIdx = -1, dIdx = -1;
 if (clicks.length) { inputs.push('-i', 'click.mp3'); cIdx = wIdx + 1; }
@@ -32,7 +33,7 @@ if (dings.length) { inputs.push('-i', 'ding.mp3'); dIdx = cIdx > 0 ? cIdx + 1 : 
 let fc = `[0:a]atrim=0:${T},volume=0.13,afade=t=in:st=0:d=2,afade=t=out:st=${(T - 4.5).toFixed(2)}:d=4.5[bed];\n`;
 const mix = ['[bed]'];
 narr.forEach((nn, i) => { fc += `[${i + 1}:a]adelay=${nn.at}|${nn.at}[n${i}];\n`; mix.push(`[n${i}]`); });
-fc += `[${wIdx}:a]volume=0.22,asplit=${cuts.length}${cuts.map((_, i) => `[wa${i}]`).join('')};\n`;
+fc += `[${wIdx}:a]volume=0.16,asplit=${cuts.length}${cuts.map((_, i) => `[wa${i}]`).join('')};\n`;
 cuts.forEach((c, i) => { fc += `[wa${i}]adelay=${c}|${c}[w${i}];\n`; mix.push(`[w${i}]`); });
 if (clicks.length) {
   fc += `[${cIdx}:a]volume=0.34,asplit=${clicks.length}${clicks.map((_, i) => `[ca${i}]`).join('')};\n`;
