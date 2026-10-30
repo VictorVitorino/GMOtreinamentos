@@ -255,10 +255,16 @@
     <div class="halfp willchange" id="i0-hl" style="left:0;background:linear-gradient(160deg,#0B2545,#13315C)">
       <div class="hs">TECNOLOGIA</div><div class="ht logo-t" style="font-size:96px">TOTVS</div>
       <div class="hs" style="letter-spacing:.14em;opacity:.6">ERP · PLATAFORMA · AMS</div>
+      <div class="abs willchange" id="i0-mt" style="left:0;right:0;bottom:-6px;text-align:center;transform-origin:50% 100%">
+        <img src="assets/mascote-totvs.png" style="height:400px;display:inline-block;filter:drop-shadow(0 18px 32px rgba(0,0,0,.38))">
+      </div>
     </div>
     <div class="halfp willchange" id="i0-hr" style="right:0;background:linear-gradient(200deg,#5E6E86,#4A5A72)">
       <div class="hs">MÉTODO E GOVERNANÇA</div><div class="ht logo-am" style="font-size:56px">ALVAREZ <b>&amp;</b> MARSAL</div>
       <div class="hs" style="letter-spacing:.14em;opacity:.6">TMO · PMO + GMO</div>
+      <div class="abs willchange" id="i0-ma" style="left:0;right:0;bottom:-6px;text-align:center;transform-origin:50% 100%">
+        <img src="assets/mascote-am.png" style="height:430px;display:inline-block;filter:drop-shadow(0 18px 32px rgba(0,0,0,.30))">
+      </div>
     </div>
     <div class="abs willchange" id="i0-x" style="left:50%;top:50%;z-index:9;transform:translate(-50%,-50%)">
       <div style="width:120px;height:120px;border-radius:50%;background:#fff;box-shadow:0 20px 50px rgba(11,37,69,.3);display:flex;align-items:center;justify-content:center;font-size:54px;font-weight:800;color:var(--acc)">×</div>
@@ -790,6 +796,13 @@ particles('pc-c1',KW('c1','bem-vindo a bordo',0.1),SC.c1.b,36,4);
   /* split exatamente em "lado a lado" — chrome some durante a tela dividida */
   const sp=KW('i0','lado a lado',0.35);
   window.I0SP=sp;
+  /* mascotes: só nesta cena — cada um quica de baixo na sua metade e flutua */
+  hide('i0-mt','i0-ma');
+  tw('i0-mt',sp+0.75,0.7,'back',{y:[440,0],o:[0,1]});
+  tw('i0-ma',sp+0.95,0.7,'back',{y:[440,0],o:[0,1]});
+  lp(sp+1.75,b-0.9,t=>{
+    $('i0-mt').style.transform=`translateY(${(Math.sin(t*1.7)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1)*1.1).toFixed(2)}deg)`;
+    $('i0-ma').style.transform=`translateY(${(Math.sin(t*1.7+1.4)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1+0.9)*-1.1).toFixed(2)}deg)`;});
   /* wipe opaco: as metades cobrem o título ao entrar (sem fantasma) */
   tw('i0-hl',sp,0.85,'out5',{x:[-980,0],o:[1,1]});
   tw('i0-hr',sp,0.85,'out5',{x:[980,0],o:[1,1]});
