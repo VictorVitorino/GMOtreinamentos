@@ -8,29 +8,42 @@
   :root{
     --bg:#F6F8FB; --ink:#0B2545; --ink2:#13315C; --mut:#6B7A90;
     --line:#CBD4E1; --linel:#E2E7EF; --acc:#F26B21; --acc2:#FF8A4C; --accd:#D9521A;
-    --blue:#4A6FA5; --bluel:#A3B8D6; --bluexl:#E4EBF5; --card:#FFFFFF;
+    --blue:#4A6FA5; --bluel:#A3B8D6; --bluexl:#E4EBF5; --card:#FFFFFF; --red:#C2362B;
     --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{background:#0B2545}
   #stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-family:var(--sans);color:var(--ink)}
-  #stage::before{content:"";position:absolute;inset:0;z-index:0;
-    background-image:radial-gradient(rgba(11,37,69,.055) 1.4px, transparent 1.4px);
+  #wash{position:absolute;inset:-10%;z-index:0;opacity:.8;
+    background:
+      radial-gradient(42% 46% at 18% 22%, rgba(163,184,214,.22), transparent 70%),
+      radial-gradient(38% 42% at 84% 76%, rgba(255,138,76,.10), transparent 70%),
+      radial-gradient(46% 50% at 78% 16%, rgba(74,111,165,.14), transparent 70%)}
+  #stage::before{content:"";position:absolute;inset:0;z-index:1;
+    background-image:radial-gradient(rgba(11,37,69,.05) 1.4px, transparent 1.4px);
     background-size:34px 34px;background-position:7px 9px}
   #stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
-    background:radial-gradient(130% 120% at 50% 42%, transparent 62%, rgba(11,37,69,.07) 100%)}
+    background:radial-gradient(130% 120% at 50% 42%, transparent 62%, rgba(11,37,69,.08) 100%)}
   .abs{position:absolute}
 
-  /* ---------- chrome ---------- */
+  /* ---------- floating elements (lúdico, sutil) ---------- */
+  #flo{position:absolute;inset:0;z-index:2;pointer-events:none}
+  #flo i{position:absolute;display:block;border-radius:4px;opacity:.16}
+  #flo i.c{border-radius:50%}
+  #flo i.r{background:transparent!important;border:2.5px solid var(--bluel);border-radius:50%;opacity:.3}
+
+  /* ---------- chrome (vidro) ---------- */
   #kicker{position:absolute;top:54px;left:72px;z-index:30;display:flex;align-items:center;gap:14px;
-    background:rgba(255,255,255,.92);border:1.5px solid var(--linel);border-radius:999px;
-    padding:13px 26px 13px 20px;box-shadow:0 4px 18px rgba(11,37,69,.06)}
-  #kicker .dot{width:12px;height:12px;border-radius:50%;background:var(--acc)}
+    background:rgba(255,255,255,.66);backdrop-filter:blur(9px);border:1.5px solid rgba(226,231,239,.9);border-radius:999px;
+    padding:13px 26px 13px 20px;box-shadow:0 4px 18px rgba(11,37,69,.07)}
+  #kicker .dot{width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(242,107,33,.5)}
   #kicker .txt{font-family:var(--mono);font-weight:600;font-size:19px;letter-spacing:.2em;color:var(--ink)}
-  #chapters{position:absolute;top:58px;right:76px;z-index:30;display:flex;gap:20px}
-  #chapters .ch{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  #chapters{position:absolute;top:50px;right:76px;z-index:30;display:flex;gap:20px;
+    background:rgba(255,255,255,.6);backdrop-filter:blur(9px);border:1.5px solid rgba(226,231,239,.85);
+    border-radius:18px;padding:12px 18px}
+  #chapters .ch{display:flex;flex-direction:column;gap:7px;align-items:flex-start}
   #chapters .n{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.08em;color:#9AA7B8}
-  #chapters .bar{width:52px;height:4px;border-radius:2px;background:#D8DFE9;overflow:hidden}
+  #chapters .bar{width:50px;height:4px;border-radius:2px;background:#D8DFE9;overflow:hidden}
   #chapters .bar i{display:block;width:100%;height:100%;background:var(--acc);transform:scaleX(0);transform-origin:left}
   #chapters .ch.done .n{color:var(--ink2)} #chapters .ch.done .bar i{transform:scaleX(1);background:var(--ink2)}
   #chapters .ch.on .n{color:var(--ink);font-weight:700}
@@ -45,7 +58,9 @@
   h1.big{font-size:70px;line-height:1.14;font-weight:800;letter-spacing:-.015em;color:var(--ink)}
   h1.big .u{position:relative;display:inline-block}
   h1.big .u i{position:absolute;left:0;bottom:4px;width:100%;height:9px;border-radius:5px;background:var(--acc);
-    transform:scaleX(0);transform-origin:left;z-index:-1}
+    transform:scaleX(0);transform-origin:left;z-index:-1;overflow:hidden}
+  h1.big .u i::after{content:"";position:absolute;inset:0;transform:translateX(-130%);
+    background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.75) 50%,transparent 80%)}
   .rvl{display:block;overflow:hidden}
   .rvl-in{display:block;transform:translateY(112%)}
   .sub{font-size:26px;color:var(--mut);font-weight:450;line-height:1.5}
@@ -54,8 +69,12 @@
     letter-spacing:.14em;color:var(--ink2);box-shadow:0 4px 16px rgba(11,37,69,.07);white-space:nowrap}
   .chip .cdot{width:10px;height:10px;border-radius:50%;background:var(--acc)}
   .card{background:var(--card);border:1.5px solid var(--linel);border-radius:22px;
-    box-shadow:0 18px 44px rgba(11,37,69,.10);overflow:hidden}
+    box-shadow:0 18px 44px rgba(11,37,69,.10);overflow:hidden;position:relative}
   .card .ctop{height:7px;background:var(--acc)}
+  .swp{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:inherit;z-index:9}
+  .swp i{position:absolute;top:-30%;bottom:-30%;width:34%;transform:translateX(-220%) rotate(14deg);
+    background:linear-gradient(100deg,transparent 12%,rgba(255,255,255,.6) 50%,transparent 88%)}
+  .ripple{position:absolute;border:3px solid var(--acc);border-radius:50%;pointer-events:none;opacity:0}
   svg .st{stroke:var(--ink2);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
   svg .sa{stroke:var(--acc);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .tagline{position:absolute;font-family:var(--mono);font-weight:600;font-size:20px;letter-spacing:.16em;color:#56687F}
@@ -72,15 +91,24 @@
     border-radius:14px;padding:13px 26px;font-weight:700;font-size:24px;letter-spacing:.06em;
     box-shadow:0 12px 28px rgba(11,37,69,.28)}
   .plate small{font-weight:500;font-size:15px;color:var(--bluel);letter-spacing:.14em}
+  .heropanel{position:absolute;left:400px;top:168px;width:1120px;height:452px;
+    border-radius:34px;background:rgba(255,255,255,.42);backdrop-filter:blur(10px);
+    border:1.5px solid rgba(255,255,255,.75);box-shadow:0 24px 60px rgba(11,37,69,.14);overflow:hidden}
+  .blob{position:absolute;opacity:.5;filter:blur(2px)}
+  .spark6{position:absolute;width:0;height:0;pointer-events:none}
+  .spark6 i{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--acc2);opacity:0}
 
   /* S2 */
   .icochip{position:absolute;display:flex;align-items:center;gap:16px;background:var(--card);
     border:2px solid var(--line);border-radius:18px;padding:16px 28px;font-weight:700;font-size:26px;
-    color:var(--ink2);box-shadow:0 12px 30px rgba(11,37,69,.10);z-index:3}
+    color:var(--ink2);box-shadow:0 12px 30px rgba(11,37,69,.10);z-index:6}
   .icochip svg{width:42px;height:42px}
+  .sat{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--bluel);opacity:.85;z-index:4}
+  #s2-spot{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;
+    background:radial-gradient(42% 30% at 50% 74%, transparent 55%, rgba(11,37,69,.10) 100%)}
 
   /* S3 pilares */
-  .pillar{position:absolute;width:530px;height:242px}
+  .pillar{position:absolute;width:530px;height:242px;z-index:6}
   .pillar .inner{width:100%;height:100%;padding:28px 34px 24px}
   .pillar .tag{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.2em;color:var(--acc)}
   .pillar h3{font-size:28px;font-weight:800;color:var(--ink);margin:10px 0 8px;padding-right:96px}
@@ -90,41 +118,47 @@
   .pillar .ic svg{width:38px;height:38px}
 
   /* S4 venn */
-  .vcirc{position:absolute;border-radius:50%}
-  .vlab{position:absolute;text-align:center;color:#fff}
+  .vcirc{position:absolute}
+  .vlab{position:absolute;text-align:center;color:#fff;z-index:6}
   .vlab .t{font-size:34px;font-weight:800;letter-spacing:.01em}
   .vlab .s{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.16em;margin-top:6px;opacity:.85}
-  .vitem{position:absolute;display:flex;align-items:center;gap:12px;color:#fff;font-size:19px;font-weight:550;width:300px;white-space:nowrap}
+  .vitem{position:absolute;display:flex;align-items:center;gap:12px;color:#fff;font-size:19px;font-weight:550;width:300px;white-space:nowrap;z-index:6}
   .vitem svg{flex:0 0 22px;width:22px;height:22px}
-  .vcard{position:absolute;width:372px}
+  .vcard{position:absolute;width:372px;z-index:8;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);
+    border:1.5px solid rgba(255,255,255,.9);border-radius:22px;box-shadow:0 18px 44px rgba(11,37,69,.16);overflow:hidden}
+  .vcard .ctop{height:7px;background:var(--acc)}
   .vcard .hd{font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.2em;color:var(--acc);padding:24px 30px 4px}
   .vcard .row{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:600;color:var(--ink2);padding:9px 30px}
   .vcard .row svg{flex:0 0 20px;width:20px;height:20px}
-  .vcard .row.mit{background:#FDE8DC;border-radius:12px;margin:2px 14px;padding:9px 16px}
+  .vcard .row.mit{background:#FDE8DC;border-radius:12px;margin:2px 14px;padding:9px 16px;position:relative}
+  .odot{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;opacity:.75;z-index:7;box-shadow:0 0 10px rgba(255,255,255,.8)}
 
   /* S5 MIT */
-  .mitc{position:absolute;width:330px;height:300px}
+  .mitc{position:absolute;width:330px;height:300px;z-index:6}
   .mitc .inner{width:100%;height:100%;padding:26px 30px;text-align:center}
   .mitc .tag{font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.18em;color:var(--mut)}
   .mitc h3{font-size:24px;font-weight:800;color:var(--ink);margin:8px 0 2px;min-height:62px}
   .mitc .vz{height:150px;display:flex;align-items:center;justify-content:center}
   .stamp{position:absolute;border:4px solid var(--accd);color:var(--accd);border-radius:12px;
-    font-family:var(--mono);font-weight:700;font-size:19px;letter-spacing:.12em;padding:8px 16px;background:rgba(255,255,255,.88)}
+    font-family:var(--mono);font-weight:700;font-size:19px;letter-spacing:.12em;padding:8px 16px;background:rgba(255,255,255,.88);z-index:5}
+  .trail{position:absolute;width:0;height:0}
+  .trail i{position:absolute;border-radius:50%;background:var(--acc);opacity:0}
 
   /* S6 frentes */
-  .fcard{position:absolute;width:472px;height:520px}
+  .fcard{position:absolute;width:472px;height:520px;z-index:6}
   .fcard .inner{width:100%;height:100%;padding:36px 38px 30px}
   .fcard h3{font-size:34px;font-weight:800;color:var(--ink);margin:18px 0 6px}
   .fcard .tag{font-family:var(--mono);font-size:16px;font-weight:600;letter-spacing:.18em;color:var(--acc)}
   .fcard p{font-size:21px;line-height:1.5;color:var(--mut);font-weight:450}
   .fcard .viz{margin-top:26px;height:190px;position:relative}
+  .fkpi{position:absolute;left:38px;bottom:26px;font-family:var(--mono);font-size:15px;letter-spacing:.14em;color:var(--acc);font-weight:700}
 
-  /* S7 timeline */
+  /* S7 roadmap */
   #tl-cam{position:absolute;inset:0}
   .mile{position:absolute;width:0;height:0}
   .mile .ring{position:absolute;left:-46px;top:-46px;width:92px;height:92px;border-radius:50%;
     background:var(--card);border:3.5px solid var(--ink2);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 10px 26px rgba(11,37,69,.14)}
+    box-shadow:0 10px 26px rgba(11,37,69,.14);z-index:6}
   .mile .ring svg{width:46px;height:46px}
   .mile .lbl{position:absolute;left:-170px;width:340px;text-align:center;font-weight:800;font-size:25px;color:var(--ink)}
   .mile .idx{position:absolute;left:-170px;width:340px;text-align:center;font-family:var(--mono);font-size:16px;font-weight:600;letter-spacing:.2em;color:var(--mut)}
@@ -132,9 +166,9 @@
   .mile .wk{position:absolute;left:-100px;width:200px;text-align:center;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.18em;color:#9AA7B8}
   .herepin{position:absolute;left:-158px;top:-128px;width:316px;text-align:center;background:var(--acc);color:#fff;
     font-family:var(--mono);font-weight:700;font-size:16px;letter-spacing:.12em;padding:11px 0;border-radius:12px;
-    box-shadow:0 12px 28px rgba(242,107,33,.35)}
+    box-shadow:0 12px 28px rgba(242,107,33,.35);z-index:7}
   .herepin::after{content:"";position:absolute;left:50%;bottom:-9px;margin-left:-9px;border:9px solid transparent;border-top-color:var(--acc);border-bottom:0}
-  .fkpi{position:absolute;left:38px;bottom:26px;font-family:var(--mono);font-size:15px;letter-spacing:.14em;color:var(--acc);font-weight:700}
+  .phband{position:absolute;height:16px;border-radius:8px;opacity:.5}
 
   /* S8 report */
   #report{position:absolute;left:150px;top:162px;width:1620px;height:688px}
@@ -142,45 +176,52 @@
   #report .rhead .t{font-weight:800;font-size:33px;color:var(--ink)}
   #report .body{display:flex;padding:24px 48px 0;gap:54px}
   .kpis{display:flex;gap:22px;padding:22px 48px 2px}
-  .kpi{flex:1;background:#F6F8FB;border:1.5px solid var(--linel);border-radius:16px;padding:16px 22px}
+  .kpi{flex:1;background:#F6F8FB;border:1.5px solid var(--linel);border-radius:16px;padding:16px 22px;position:relative;overflow:hidden}
+  .kpi .flash{position:absolute;inset:0;background:rgba(242,107,33,.14);opacity:0}
   .kpi .kv{font-size:14.5px}
-  .kpi .kn{font-size:40px;font-weight:800;color:var(--ink);line-height:1.15;letter-spacing:-.01em}
+  .kpi .kn{font-size:40px;font-weight:800;color:var(--ink);line-height:1.15;letter-spacing:-.01em;position:relative}
   .kpi .kn small{font-size:22px;color:var(--mut);font-weight:650}
   .donutwrap{width:300px;text-align:center}
   .kv{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:.2em;color:var(--mut)}
   .rcol{flex:1}
   .rsec{margin-bottom:22px}
   .rsec .kv{display:block;margin-bottom:12px}
-  .brow{display:flex;align-items:center;gap:14px;margin-bottom:13px}
-  .brow .bl{width:150px;font-size:18px;font-weight:600;color:var(--ink2)}
-  .brow .btrack{flex:1;height:14px;border-radius:7px;background:#E4EBF5;overflow:hidden}
-  .brow .bfill{display:block;height:100%;border-radius:7px;background:#4A6FA5;transform:scaleX(0);transform-origin:left}
-  .brow .bv{width:52px;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--mut);text-align:right}
   .ritem{display:flex;align-items:center;gap:16px;font-size:23px;font-weight:550;color:var(--ink2);margin-bottom:12px}
   .ritem .box{width:30px;height:30px;border-radius:8px;border:2.5px solid var(--line);display:flex;align-items:center;justify-content:center;background:#fff;flex:0 0 30px}
   .ritem .box svg{width:18px;height:18px}
   .farol{display:inline-flex;align-items:center;gap:12px;border-radius:999px;padding:10px 22px;font-size:19px;font-weight:650;border:2px solid}
   .farol .fd{width:14px;height:14px;border-radius:50%}
+  .brow{display:flex;align-items:center;gap:14px;margin-bottom:13px}
+  .brow .bl{width:150px;font-size:18px;font-weight:600;color:var(--ink2)}
+  .brow .btrack{flex:1;height:14px;border-radius:7px;background:#E4EBF5;overflow:hidden;position:relative}
+  .brow .bfill{display:block;height:100%;border-radius:7px;background:#4A6FA5;transform:scaleX(0);transform-origin:left}
+  .brow .bshine{position:absolute;top:0;bottom:0;width:36px;transform:translateX(-60px);
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent)}
+  .brow .bv{width:52px;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--mut);text-align:right}
 
   /* S9 matrix */
   .cell{position:absolute;width:150px;height:116px;border-radius:14px}
   .axis{position:absolute;font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:.22em;color:var(--mut)}
   .rdot{position:absolute;width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;
     display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;font-size:19px;
-    box-shadow:0 10px 24px rgba(11,37,69,.3);border:3px solid #fff}
-  .beacon{position:absolute;border-radius:50%;border:3px solid var(--acc)}
+    box-shadow:0 10px 24px rgba(11,37,69,.3);border:3px solid #fff;z-index:6}
+  .beacon{position:absolute;border-radius:50%;border:3px solid var(--acc);z-index:5}
 
   /* S10 */
   .bigchip{display:flex;align-items:center;gap:20px;background:var(--card);border:2px solid var(--line);
     border-radius:20px;padding:24px 42px;font-weight:800;font-size:33px;color:var(--ink);
     box-shadow:0 16px 40px rgba(11,37,69,.12)}
   .bigchip .num{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--acc);letter-spacing:.1em}
+  #confetti{position:absolute;inset:0;z-index:12;pointer-events:none}
+  #confetti i{position:absolute;width:12px;height:12px;opacity:0}
 </style>
 </head>
 <body>
 <div id="stage">
+  <div id="wash"></div>
+  <div id="flo"></div>
 
-  <div id="kicker"><span class="dot"></span><span class="txt" id="kicker-txt">01 · BOAS-VINDAS</span></div>
+  <div id="kicker"><span class="dot" id="kdot"></span><span class="txt" id="kicker-txt">01 · BOAS-VINDAS</span></div>
   <div id="chapters"></div>
   <div id="footer">
     <span id="footnote"></span>
@@ -190,33 +231,42 @@
   <!-- ============ S1 BOAS-VINDAS ============ -->
   <section class="scene" id="s1">
     <div class="studio" id="s1bg"></div>
+    <div class="heropanel willchange" id="s1-panel">
+      <div class="blob" id="s1-blob1" style="left:-70px;top:-90px;width:300px;height:300px;background:#DCE8F7"></div>
+      <div class="blob" id="s1-blob2" style="right:-80px;bottom:-110px;width:340px;height:340px;background:#FDE8DC"></div>
+    </div>
     <div class="mas willchange" id="mTot1" data-mascot="totvs" style="left:170px;bottom:150px;width:430px"></div>
     <div class="mas willchange" id="mAm1" data-mascot="am" style="right:190px;bottom:146px;width:390px"></div>
+    <div class="spark6" id="sp-tot" style="left:385px;bottom:420px"></div>
+    <div class="spark6" id="sp-am" style="right:385px;bottom:430px"></div>
     <div class="plate willchange" id="p-totvs" style="left:255px;bottom:102px">TOTVS <small>TECNOLOGIA</small></div>
     <div class="plate willchange" id="p-am" style="right:245px;bottom:102px">ALVAREZ &amp; MARSAL <small>MÉTODO</small></div>
-    <div class="abs" style="left:0;right:0;top:200px;text-align:center">
+    <div class="abs" style="left:0;right:0;top:214px;text-align:center;z-index:6">
       <span class="chip willchange" id="s1-chip" style="display:inline-flex"><span class="cdot"></span>ONBOARDING · IMPLANTAÇÃO ERP</span>
     </div>
-    <div class="abs" id="s1-title" style="left:0;right:0;top:282px;text-align:center">
-      <span class="rvl"><span class="rvl-in" id="s1-r1"><h1 class="big" style="font-size:94px">Metodologia <span class="u">TOTVS<i id="s1-u"></i></span></h1></span></span>
-      <span class="rvl"><span class="rvl-in" id="s1-r2"><h1 class="big" style="font-size:54px;margin-top:14px;color:var(--ink2)">em parceria com a <b style="color:var(--acc)">A&amp;M</b></h1></span></span>
+    <div class="abs" id="s1-title" style="left:0;right:0;top:296px;text-align:center;z-index:6">
+      <h1 class="big" style="font-size:94px">
+        <span class="rvl" style="display:inline-block;vertical-align:bottom"><span class="rvl-in" id="s1-w1">Metodologia&nbsp;</span></span><span class="rvl" style="display:inline-block;vertical-align:bottom"><span class="rvl-in" id="s1-w2"><span class="u">TOTVS<i id="s1-u"></i></span></span></span>
+      </h1>
+      <span class="rvl"><span class="rvl-in" id="s1-w3"><h1 class="big" style="font-size:54px;margin-top:14px;color:var(--ink2)">em parceria com a <b style="color:var(--acc)">A&amp;M</b></h1></span></span>
     </div>
-    <div class="abs willchange" id="s1-sub" style="left:0;right:0;top:560px;text-align:center">
+    <div class="abs willchange" id="s1-sub" style="left:0;right:0;top:548px;text-align:center;z-index:6">
       <span class="tagline" style="position:static">SEU PONTO DE PARTIDA NO PROJETO</span>
     </div>
   </section>
 
   <!-- ============ S2 POR QUE MÉTODO ============ -->
   <section class="scene" id="s2">
-    <div class="abs" id="s2-h" style="left:150px;top:160px;width:1280px">
+    <div class="abs" id="s2-h" style="left:150px;top:160px;width:1280px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s2-r1"><h1 class="big">Implantar um ERP não é</h1></span></span>
       <span class="rvl"><span class="rvl-in" id="s2-r2"><h1 class="big">só <span class="u">trocar de sistema<i id="s2-u"></i></span>.</h1></span></span>
     </div>
-    <svg class="abs" id="s2-chaos" width="1920" height="1080" style="left:0;top:0">
-      <path id="s2-ca" class="st" style="stroke:var(--bluel);stroke-dasharray:9 10" d="M420 560 C 520 430, 650 420, 790 585"/>
-      <path id="s2-cb" class="st" style="stroke:var(--bluel);stroke-dasharray:9 10" d="M1080 590 C 1150 460, 1280 430, 1400 540"/>
-      <path id="s2-cc" class="st" style="stroke:var(--bluel);stroke-dasharray:9 10" d="M560 640 C 760 770, 1180 780, 1460 600"/>
+    <svg class="abs" id="s2-net" width="1920" height="1080" style="left:0;top:0;z-index:3">
+      <path id="s2-la" fill="none" stroke="#A3B8D6" stroke-width="2.6" stroke-dasharray="9 10" stroke-linecap="round"/>
+      <path id="s2-lb" fill="none" stroke="#A3B8D6" stroke-width="2.6" stroke-dasharray="9 10" stroke-linecap="round"/>
+      <path id="s2-lc" fill="none" stroke="#C9D6E8" stroke-width="2.4" stroke-dasharray="7 9" stroke-linecap="round"/>
     </svg>
+    <div id="s2-spot"></div>
     <div class="icochip willchange" id="s2-c1" style="left:270px;top:500px">
       <svg viewBox="0 0 48 48"><rect class="st" x="6" y="8" width="15" height="12" rx="3"/><rect class="st" x="27" y="28" width="15" height="12" rx="3"/><path class="sa" d="M13.5 20v8c0 6 4 6 8 6h5"/></svg>
       PROCESSOS
@@ -229,20 +279,21 @@
       <svg viewBox="0 0 48 48"><circle class="st" cx="17" cy="16" r="7"/><path class="st" d="M4 42c0-8 6-13 13-13s13 5 13 13"/><circle class="st" cx="35" cy="18" r="5.5"/><path class="st" d="M32 27c6 0 12 4 12 12"/></svg>
       PESSOAS
     </div>
-    <svg class="abs" width="1920" height="1080" style="left:0;top:0">
+    <svg class="abs" width="1920" height="1080" style="left:0;top:0;z-index:4">
       <path id="s2-path" d="M190 785 H 1730" stroke="#0B2545" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path id="s2-flow" d="M190 785 H 1730" stroke="#F26B21" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="4 30" opacity="0"/>
       <path id="s2-arrow" d="M1700 765 L1736 785 L1700 805" stroke="#F26B21" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div class="tagline willchange" id="s2-t1" style="left:272px;top:886px">SEM MÉTODO · CADA FRENTE PARA UM LADO</div>
     <div class="tagline willchange" id="s2-t2" style="left:272px;top:646px;color:var(--acc)">COM MÉTODO · UM CAMINHO SÓ</div>
-    <div class="abs" style="left:0;right:0;top:880px;text-align:center">
+    <div class="abs" style="left:0;right:0;top:880px;text-align:center;z-index:6">
       <span class="chip willchange" id="s2-pill" style="display:inline-flex;font-size:21px;padding:16px 34px"><span class="cdot"></span>METODOLOGIA TOTVS&nbsp;&nbsp;+&nbsp;&nbsp;GOVERNANÇA TMO · A&amp;M</span>
     </div>
   </section>
 
   <!-- ============ S3 METODOLOGIA A&M · TMO ============ -->
   <section class="scene" id="s3">
-    <div class="abs" id="s3-h" style="left:150px;top:150px">
+    <div class="abs" id="s3-h" style="left:150px;top:150px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s3-r1"><h1 class="big" style="font-size:62px">Metodologia <span class="u">A&amp;M<i id="s3-u"></i></span></h1></span></span>
       <div class="willchange" id="s3-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>TMO · PMO + GMO · ESCRITÓRIO DE TRANSFORMAÇÃO</span></div>
     </div>
@@ -251,97 +302,102 @@
       <div class="ctop" style="margin:-28px -34px 22px"></div>
       <span class="tag">PILAR 01 · PMO</span><h3>Governança e Gestão Integrada</h3>
       <p id="s3-p1t">Ritos, planos e decisões do projeto em um só lugar.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M8 42h32M10 42V20M19 42V20M29 42V20M38 42V20M6 20h36L24 7Z"/></svg></span>
-    </div></div>
+      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M8 42h32M6 20h36L24 7Z"/><path class="st" id="s3-i1a" d="M10 42V20M19 42V20M29 42V20M38 42V20"/></svg></span>
+    </div><div class="swp"><i id="s3-sw1"></i></div></div>
     <div class="pillar card willchange" id="s3-p2" style="left:1230px;top:352px"><div class="inner">
       <div class="ctop" style="margin:-28px -34px 22px"></div>
       <span class="tag">PILAR 02 · GMO</span><h3>Mudança e Adoção</h3>
       <p id="s3-p2t">Pessoas preparadas e engajadas na nova rotina.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><circle class="st" cx="16" cy="15" r="7"/><path class="st" d="M4 40c0-8 5-13 12-13s12 5 12 13"/><path class="sa" d="M33 14l3.5 3.5L44 10"/><path class="st" d="M34 27c6 0 10 4 10 13"/></svg></span>
-    </div></div>
+      <span class="ic"><svg viewBox="0 0 48 48"><circle class="st" cx="16" cy="15" r="7"/><path class="st" d="M4 40c0-8 5-13 12-13s12 5 12 13"/><path class="sa" id="s3-i2a" d="M33 14l3.5 3.5L44 10" stroke-dasharray="18" stroke-dashoffset="18"/><path class="st" d="M34 27c6 0 10 4 10 13"/></svg></span>
+    </div><div class="swp"><i id="s3-sw2"></i></div></div>
     <div class="pillar card willchange" id="s3-p3" style="left:640px;top:636px"><div class="inner">
       <div class="ctop" style="margin:-28px -34px 22px"></div>
       <span class="tag">PILAR 03 · VALOR</span><h3>Valor, Riscos e Qualidade</h3>
       <p id="s3-p3t">Resultado protegido em todas as fases do projeto.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M24 5l15 6v11c0 10-6 17-15 21-9-4-15-11-15-21V11Z"/><path class="sa" d="M17 23l5 5 9-10"/></svg></span>
-    </div></div>
+      <span class="ic" style="position:absolute" id="s3-i3w"><svg viewBox="0 0 48 48"><path class="st" d="M24 5l15 6v11c0 10-6 17-15 21-9-4-15-11-15-21V11Z"/><path class="sa" id="s3-i3a" d="M17 23l5 5 9-10" stroke-dasharray="22" stroke-dashoffset="22"/></svg></span>
+    </div><div class="swp"><i id="s3-sw3"></i></div></div>
     <div class="pillar card willchange" id="s3-p4" style="left:1230px;top:636px"><div class="inner">
       <div class="ctop" style="margin:-28px -34px 22px"></div>
       <span class="tag">PILAR 04 · ACELERADORES</span><h3>IA e Automação</h3>
       <p id="s3-p4t">Velocidade e produtividade com inteligência.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M20 4 8 26h10l-2 18 14-24H19Z"/><circle class="st" cx="38" cy="12" r="5"/></svg></span>
-    </div></div>
-    <div class="abs willchange" id="s3-tag" style="left:640px;top:930px">
+      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" id="s3-i4a" d="M20 4 8 26h10l-2 18 14-24H19Z"/><circle class="sa" id="s3-i4b" cx="38" cy="12" r="5" stroke-dasharray="32" stroke-dashoffset="32"/></svg></span>
+    </div><div class="swp"><i id="s3-sw4"></i></div></div>
+    <div class="abs willchange" id="s3-tag" style="left:640px;top:930px;z-index:6">
       <span class="chip" style="font-size:19px"><span class="cdot"></span>METODOLOGIAS · PROCESSOS · MELHORES PRÁTICAS</span>
     </div>
   </section>
 
   <!-- ============ S4 FRAMEWORK ============ -->
   <section class="scene" id="s4">
-    <div class="abs" id="s4-h" style="left:150px;top:140px">
+    <div class="abs" id="s4-h" style="left:150px;top:140px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s4-r1"><h1 class="big" style="font-size:58px">O <span class="u">framework<i id="s4-u"></i></span> da parceria</h1></span></span>
     </div>
-    <div class="vcirc willchange" id="s4-ca" style="left:450px;top:320px;width:580px;height:580px;background:#13315C"></div>
-    <div class="vcirc willchange" id="s4-cb" style="left:890px;top:320px;width:580px;height:580px;background:#5E6E86"></div>
+    <div class="vcirc willchange" id="s4-ca" style="left:450px;top:320px;width:580px;height:580px;background:#13315C;z-index:4"></div>
+    <div class="vcirc willchange" id="s4-cb" style="left:890px;top:320px;width:580px;height:580px;background:#5E6E86;z-index:3"></div>
+    <div class="odot" id="s4-o1"></div><div class="odot" id="s4-o2"></div><div class="odot" id="s4-o3"></div>
     <div class="vlab willchange" id="s4-la" style="left:540px;top:352px;width:400px">
       <div class="t">A&amp;M</div><div class="s">GESTÃO DE TRANSFORMAÇÃO · TMO</div>
     </div>
     <div class="vlab willchange" id="s4-lb" style="left:980px;top:352px;width:400px">
       <div class="t">TOTVS</div><div class="s">GESTÃO TÉCNICA · FUNCIONAL · AMS</div>
     </div>
-    <div class="vcard card willchange" id="s4-cc" style="left:774px;top:430px">
+    <div class="vcard willchange" id="s4-cc" style="left:774px;top:430px">
       <div class="ctop"></div><div class="hd">ATUAÇÃO CONJUNTA</div>
-      <div class="row willchange" id="s4-j1"><svg viewBox="0 0 20 20"><path class="sa" stroke-width="3" d="M3 10l5 5 9-10"/></svg>Planejamento e priorização</div>
-      <div class="row mit willchange" id="s4-j2"><svg viewBox="0 0 20 20"><path class="sa" stroke-width="3" d="M3 10l5 5 9-10"/></svg>Refinamento de processos (MIT)</div>
-      <div class="row willchange" id="s4-j3"><svg viewBox="0 0 20 20"><path class="sa" stroke-width="3" d="M3 10l5 5 9-10"/></svg>Testes integrados e aceites</div>
-      <div class="row willchange" id="s4-j4"><svg viewBox="0 0 20 20"><path class="sa" stroke-width="3" d="M3 10l5 5 9-10"/></svg>Preparação para cutover</div>
-      <div class="row willchange" id="s4-j5" style="padding-bottom:24px"><svg viewBox="0 0 20 20"><path class="sa" stroke-width="3" d="M3 10l5 5 9-10"/></svg>Estabilização e ondas futuras</div>
+      <div class="row willchange" id="s4-j1"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk1" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Planejamento e priorização</div>
+      <div class="row mit willchange" id="s4-j2"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk2" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Refinamento de processos (MIT)</div>
+      <div class="row willchange" id="s4-j3"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk3" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Testes integrados e aceites</div>
+      <div class="row willchange" id="s4-j4"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk4" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Preparação para cutover</div>
+      <div class="row willchange" id="s4-j5" style="padding-bottom:24px"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk5" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Estabilização e ondas futuras</div>
+      <div class="swp"><i id="s4-sw"></i></div>
     </div>
     <div class="mas willchange" id="mAm4" data-mascot="am" style="left:116px;bottom:140px;width:270px"></div>
     <div class="mas willchange" id="mTot4" data-mascot="totvs" style="right:116px;bottom:146px;width:290px"></div>
-    <div class="abs willchange" id="s4-tag" style="left:0;right:0;top:924px;text-align:center">
+    <div class="abs willchange" id="s4-tag" style="left:0;right:0;top:924px;text-align:center;z-index:6">
       <span class="chip" style="font-size:19px"><span class="cdot"></span>UM TIME&nbsp;&nbsp;·&nbsp;&nbsp;METODOLOGIAS INTEGRADAS&nbsp;&nbsp;·&nbsp;&nbsp;VALOR SUSTENTÁVEL</span>
     </div>
   </section>
 
   <!-- ============ S5 MIT ============ -->
   <section class="scene" id="s5">
-    <div class="abs" id="s5-h" style="left:150px;top:150px">
+    <div class="abs" id="s5-h" style="left:150px;top:150px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s5-r1"><h1 class="big" style="font-size:62px">O que é um <span class="u">MIT<i id="s5-u"></i></span>?</h1></span></span>
       <div class="willchange" id="s5-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>MIT · MODELO DE IMPLEMENTAÇÃO TOTVS</span></div>
     </div>
-    <svg class="abs" width="1920" height="1080" style="left:0;top:0">
+    <svg class="abs" width="1920" height="1080" style="left:0;top:0;z-index:3">
       <path id="s5-f1" class="st" style="stroke-width:4" d="M496 580 H 600"/>
       <path id="s5-f2" class="st" style="stroke-width:4" d="M932 580 H 1036"/>
       <path id="s5-f3" class="st" style="stroke-width:4" d="M1368 580 H 1472"/>
+      <circle id="s5-tk2" cx="496" cy="580" r="5" fill="#FF8A4C" opacity="0"/>
+      <circle id="s5-tk1" cx="496" cy="580" r="6" fill="#F26B21" opacity="0"/>
       <circle id="s5-tok" cx="496" cy="580" r="7" fill="#F26B21"/>
     </svg>
     <div class="mitc card willchange" id="s5-m1" style="left:166px;top:430px"><div class="inner">
       <span class="tag">ETAPA 1</span><h3>Processo do negócio</h3>
       <div class="vz"><svg viewBox="0 0 110 90" style="width:110px"><rect class="st" x="8" y="8" width="38" height="26" rx="6"/><rect class="st" x="64" y="56" width="38" height="26" rx="6"/><path class="sa" d="M27 34v18c0 8 6 17 20 17h17"/></svg></div>
-    </div></div>
+    </div><div class="swp"><i id="s5-sw1"></i></div></div>
     <div class="mitc card willchange" id="s5-m2" style="left:602px;top:430px"><div class="inner" style="position:relative">
       <div class="ctop" style="margin:-26px -30px 18px"></div>
       <span class="tag" style="color:var(--acc)">ETAPA 2 · O DOCUMENTO</span><h3>MIT — desenho do processo</h3>
-      <div class="vz"><svg viewBox="0 0 110 100" style="width:96px"><path class="st" d="M22 8h46l20 20v64H22Z"/><path class="st" d="M68 8v20h20"/><path class="st" d="M34 44h42M34 56h42M34 68h28"/><text x="34" y="30" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#F26B21">MIT</text></svg></div>
+      <div class="vz"><svg viewBox="0 0 110 100" style="width:96px"><path class="st" d="M22 8h46l20 20v64H22Z"/><path class="st" d="M68 8v20h20"/><path class="st" id="s5-dl1" d="M34 44h42" stroke-dasharray="42" stroke-dashoffset="42"/><path class="st" id="s5-dl2" d="M34 56h42" stroke-dasharray="42" stroke-dashoffset="42"/><path class="st" id="s5-dl3" d="M34 68h28" stroke-dasharray="28" stroke-dashoffset="28"/><text x="34" y="30" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#F26B21">MIT</text></svg></div>
       <div class="stamp willchange" id="s5-stamp" style="left:118px;top:196px;transform:rotate(-10deg)">VALIDADO</div>
-    </div></div>
+      <div class="ripple" id="s5-rip" style="left:150px;top:210px;width:60px;height:60px"></div>
+    </div><div class="swp"><i id="s5-sw2"></i></div></div>
     <div class="mitc card willchange" id="s5-m3" style="left:1038px;top:430px"><div class="inner">
       <span class="tag">ETAPA 3</span><h3>Validação · key users</h3>
-      <div class="vz"><svg viewBox="0 0 110 90" style="width:104px"><circle class="st" cx="34" cy="28" r="12"/><path class="st" d="M12 76c0-14 9-22 22-22s22 8 22 22"/><path class="sa" stroke-width="4" d="M72 40l10 10 18-20"/></svg></div>
-    </div></div>
+      <div class="vz"><svg viewBox="0 0 110 90" style="width:104px"><circle class="st" cx="34" cy="28" r="12"/><path class="st" d="M12 76c0-14 9-22 22-22s22 8 22 22"/><path class="sa" id="s5-vk" stroke-width="4" d="M72 40l10 10 18-20" stroke-dasharray="42" stroke-dashoffset="42"/></svg></div>
+    </div><div class="swp"><i id="s5-sw3"></i></div></div>
     <div class="mitc card willchange" id="s5-m4" style="left:1474px;top:430px"><div class="inner">
       <span class="tag">ETAPA 4</span><h3>Construção no sistema</h3>
-      <div class="vz"><svg viewBox="0 0 110 90" style="width:86px"><path class="st" d="M83 30a17 17 0 0 1-22 16L38 69a8 8 0 0 1-11-11l23-23a17 17 0 0 1 21-21l-8 9 8 8 9-8a17 17 0 0 1 3 7Z"/></svg></div>
-    </div></div>
-    <div class="abs willchange" id="s5-tag" style="left:0;right:0;top:872px;text-align:center">
+      <div class="vz"><svg viewBox="0 0 110 90" style="width:86px"><path class="st" id="s5-gear" d="M83 30a17 17 0 0 1-22 16L38 69a8 8 0 0 1-11-11l23-23a17 17 0 0 1 21-21l-8 9 8 8 9-8a17 17 0 0 1 3 7Z"/></svg></div>
+    </div><div class="swp"><i id="s5-sw4"></i></div></div>
+    <div class="abs willchange" id="s5-tag" style="left:0;right:0;top:872px;text-align:center;z-index:6">
       <span class="tagline" style="position:static">NADA VAI PARA O SISTEMA SEM MIT VALIDADO — REFINAMENTO É COMPROMISSO POR ESCRITO</span>
     </div>
   </section>
 
   <!-- ============ S6 FRENTES ============ -->
   <section class="scene" id="s6">
-    <div class="abs" id="s6-h" style="left:150px;top:150px;width:1500px">
+    <div class="abs" id="s6-h" style="left:150px;top:150px;width:1500px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s6-r1"><h1 class="big" style="font-size:62px">Três frentes no <span class="u">dia a dia<i id="s6-u"></i></span></h1></span></span>
     </div>
     <div class="fcard willchange" id="s6-f1" style="left:160px;top:330px">
@@ -355,10 +411,12 @@
             <path id="s6-l1" class="st" d="M78 95 H156"/><path id="s6-l2" class="st" d="M240 95 H298"/>
             <circle id="s6-tok" cx="78" cy="95" r="6.5" fill="#F26B21"/>
             <path id="s6-chk1" class="sa" stroke-width="4" d="M318 97 l8 8 l16 -16" stroke-dasharray="40" stroke-dashoffset="40"/>
+            <circle id="s6-grip" cx="330" cy="95" r="10" fill="none" stroke="#F26B21" stroke-width="3" opacity="0"/>
           </svg>
         </div>
-        <div class="fkpi willchange" id="s6-x1">12 FLUXOS PRIORIZADOS</div>
+        <div class="fkpi willchange" id="s6-x1"><b id="s6-n1">0</b> FLUXOS PRIORIZADOS</div>
       </div>
+      <div class="swp"><i id="s6-sw1"></i></div>
     </div>
     <div class="fcard willchange" id="s6-f2" style="left:724px;top:330px">
       <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
@@ -369,13 +427,15 @@
             <rect class="st" x="18" y="58" width="118" height="74" rx="12"/><text x="77" y="102" text-anchor="middle" font-family="JetBrains Mono" font-size="19" font-weight="700" fill="#13315C">ERP</text>
             <rect class="st" x="260" y="58" width="118" height="74" rx="12"/><text x="319" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="700" fill="#13315C">SISTEMAS</text>
             <text x="319" y="116" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="700" fill="#13315C">LEGADOS</text>
-            <path id="s6-int" class="st" style="stroke:#4A6FA5" d="M136 95 H260"/>
+            <path id="s6-int" d="M136 95 H260" stroke="#4A6FA5" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path id="s6-intf" d="M136 95 H260" stroke="#F26B21" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-dasharray="4 18" opacity="0"/>
             <circle id="s6-d1" cx="136" cy="88" r="6.5" fill="#F26B21"/>
             <circle id="s6-d2" cx="260" cy="102" r="6.5" fill="#4A6FA5"/>
           </svg>
         </div>
-        <div class="fkpi willchange" id="s6-x2">8 INTERFACES MAPEADAS</div>
+        <div class="fkpi willchange" id="s6-x2"><b id="s6-n2">0</b> INTERFACES MAPEADAS</div>
       </div>
+      <div class="swp"><i id="s6-sw2"></i></div>
     </div>
     <div class="fcard willchange" id="s6-f3" style="left:1288px;top:330px">
       <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
@@ -386,17 +446,18 @@
           <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g2" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Analisar &amp; decidir</div>
           <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g3" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Plano de ação</div>
         </div>
-        <div class="fkpi willchange" id="s6-x3">5 GAPS EM ANÁLISE</div>
+        <div class="fkpi willchange" id="s6-x3"><b id="s6-n3">0</b> GAPS EM ANÁLISE</div>
       </div>
+      <div class="swp"><i id="s6-sw3"></i></div>
     </div>
-    <div class="abs willchange" id="s6-tag" style="left:0;right:0;top:930px;text-align:center">
+    <div class="abs willchange" id="s6-tag" style="left:0;right:0;top:930px;text-align:center;z-index:6">
       <span class="tagline" style="position:static">NADA FICA NO AR — TUDO TEM DONO E PRAZO</span>
     </div>
   </section>
 
-  <!-- ============ S7 FASES ============ -->
+  <!-- ============ S7 ROADMAP ============ -->
   <section class="scene" id="s7">
-    <div class="abs" id="s7-h" style="left:150px;top:160px">
+    <div class="abs" id="s7-h" style="left:150px;top:160px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s7-r1"><h1 class="big" style="font-size:62px">A <span class="u">jornada<i id="s7-u"></i></span> da implantação</h1></span></span>
       <div class="willchange" id="s7-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>ERP TOTVS · FASE 1 · ROADMAP 16 SEMANAS</span></div>
     </div>
@@ -405,6 +466,7 @@
         <path id="tl-base" d="M150 660 H 2740" stroke="#CBD4E1" stroke-width="5" fill="none" stroke-linecap="round"/>
         <path id="tl-prog" d="M150 660 H 2740" stroke="#F26B21" stroke-width="6" fill="none" stroke-linecap="round"/>
       </svg>
+      <!-- milestones + faixa de fases injetados -->
     </div>
   </section>
 
@@ -417,10 +479,10 @@
         <span class="chip" style="box-shadow:none"><span class="cdot"></span>TODA SEXTA · 1 PÁGINA</span>
       </div>
       <div class="kpis">
-        <div class="kpi willchange" id="s8-kpi1"><span class="kv">AVANÇO FÍSICO</span><div class="kn" id="s8-kn1">0%</div></div>
-        <div class="kpi willchange" id="s8-kpi2"><span class="kv">ENTREGAS</span><div class="kn" id="s8-kn2">0<small>/16</small></div></div>
-        <div class="kpi willchange" id="s8-kpi3"><span class="kv">SEMANA</span><div class="kn" id="s8-kn3">0<small>/16</small></div></div>
-        <div class="kpi willchange" id="s8-kpi4"><span class="kv">RISCOS ATIVOS</span><div class="kn" id="s8-kn4" style="color:var(--accd)">0</div></div>
+        <div class="kpi willchange" id="s8-kpi1"><i class="flash" id="s8-fl1"></i><span class="kv">AVANÇO FÍSICO</span><div class="kn" id="s8-kn1">0%</div></div>
+        <div class="kpi willchange" id="s8-kpi2"><i class="flash" id="s8-fl2"></i><span class="kv">ENTREGAS</span><div class="kn" id="s8-kn2">0<small>/16</small></div></div>
+        <div class="kpi willchange" id="s8-kpi3"><i class="flash" id="s8-fl3"></i><span class="kv">SEMANA</span><div class="kn" id="s8-kn3">0<small>/16</small></div></div>
+        <div class="kpi willchange" id="s8-kpi4"><i class="flash" id="s8-fl4"></i><span class="kv">RISCOS ATIVOS</span><div class="kn" id="s8-kn4" style="color:var(--red)">0</div></div>
       </div>
       <div class="body">
         <div class="donutwrap">
@@ -429,6 +491,7 @@
             <circle cx="126" cy="126" r="103" fill="none" stroke="#E4EBF5" stroke-width="24"/>
             <circle id="s8-donut" cx="126" cy="126" r="103" fill="none" stroke="#F26B21" stroke-width="24"
               stroke-linecap="round" transform="rotate(-90 126 126)" stroke-dasharray="647" stroke-dashoffset="647"/>
+            <circle id="s8-dtip" cx="126" cy="23" r="9" fill="#F26B21" opacity="0"/>
             <text id="s8-pct" x="126" y="142" text-anchor="middle" font-family="Inter" font-weight="800" font-size="52" fill="#0B2545">0%</text>
           </svg>
         </div>
@@ -451,10 +514,10 @@
         <div class="rcol">
           <div class="rsec">
             <span class="kv">AVANÇO POR FRENTE</span>
-            <div class="brow"><span class="bl">Financeiro</span><span class="btrack"><i class="bfill" id="s8-b1"></i></span><span class="bv" id="s8-bv1">0%</span></div>
-            <div class="brow"><span class="bl">Suprimentos</span><span class="btrack"><i class="bfill" id="s8-b2"></i></span><span class="bv" id="s8-bv2">0%</span></div>
-            <div class="brow"><span class="bl">Fiscal</span><span class="btrack"><i class="bfill" id="s8-b3"></i></span><span class="bv" id="s8-bv3">0%</span></div>
-            <div class="brow"><span class="bl">Integrações</span><span class="btrack"><i class="bfill" id="s8-b4" style="background:var(--acc)"></i></span><span class="bv" id="s8-bv4">0%</span></div>
+            <div class="brow"><span class="bl">Financeiro</span><span class="btrack"><i class="bfill" id="s8-b1"></i><i class="bshine" id="s8-s1"></i></span><span class="bv" id="s8-bv1">0%</span></div>
+            <div class="brow"><span class="bl">Suprimentos</span><span class="btrack"><i class="bfill" id="s8-b2"></i><i class="bshine" id="s8-s2"></i></span><span class="bv" id="s8-bv2">0%</span></div>
+            <div class="brow"><span class="bl">Fiscal</span><span class="btrack"><i class="bfill" id="s8-b3"></i><i class="bshine" id="s8-s3"></i></span><span class="bv" id="s8-bv3">0%</span></div>
+            <div class="brow"><span class="bl">Integrações</span><span class="btrack"><i class="bfill" id="s8-b4" style="background:var(--acc)"></i><i class="bshine" id="s8-s4"></i></span><span class="bv" id="s8-bv4">0%</span></div>
           </div>
           <div class="rsec">
             <span class="kv">PRÓXIMOS PASSOS</span>
@@ -463,15 +526,16 @@
           </div>
         </div>
       </div>
+      <div class="swp"><i id="s8-sw"></i></div>
     </div>
-    <div class="abs willchange" id="s8-tag" style="left:0;right:0;top:948px;text-align:center">
+    <div class="abs willchange" id="s8-tag" style="left:0;right:0;top:948px;text-align:center;z-index:6">
       <span class="tagline" style="position:static">BOA E MÁ NOTÍCIA VIAJAM NA MESMA VELOCIDADE</span>
     </div>
   </section>
 
   <!-- ============ S9 RISCOS ============ -->
   <section class="scene" id="s9">
-    <div class="abs" id="s9-h" style="left:150px;top:150px;width:1100px">
+    <div class="abs" id="s9-h" style="left:150px;top:150px;width:1100px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s9-r1"><h1 class="big" style="font-size:62px">Riscos sob <span class="u">controle<i id="s9-u"></i></span></h1></span></span>
       <p class="sub willchange" id="s9-sub" style="margin-top:16px;width:1020px;font-size:25px">Com dono, plano de mitigação e prazo — e o crítico sobe ao comitê.</p>
     </div>
@@ -481,11 +545,11 @@
       <div class="axis" style="left:-8px;top:514px;font-size:13.5px;color:#9AA7B8">BAIXO</div>
       <div class="axis" style="left:592px;top:552px;font-size:13.5px;color:#9AA7B8">ALTO</div>
     </div>
-    <div class="abs willchange" id="s9-kpis" style="left:1035px;top:344px;display:flex;gap:16px">
+    <div class="abs willchange" id="s9-kpis" style="left:1035px;top:344px;display:flex;gap:16px;z-index:6">
       <span class="chip" style="font-size:17px;padding:10px 20px"><span class="cdot" style="background:var(--ink2)"></span>3 RISCOS ATIVOS</span>
       <span class="chip" style="font-size:17px;padding:10px 20px;border-color:var(--acc);color:var(--accd)"><span class="cdot"></span>1 CRÍTICO ESCALADO</span>
     </div>
-    <div class="card willchange" id="s9-card" style="position:absolute;left:1035px;top:420px;width:710px">
+    <div class="card willchange" id="s9-card" style="position:absolute;left:1035px;top:420px;width:710px;z-index:6">
       <div class="ctop"></div>
       <div style="padding:34px 42px">
         <span style="font-family:var(--mono);font-size:16px;font-weight:600;letter-spacing:.18em;color:var(--acc)">RISCO CRÍTICO · ESCALADO AO COMITÊ</span>
@@ -494,8 +558,9 @@
         <div class="ritem"><span class="box"><svg viewBox="0 0 18 18"><path id="s9-k2" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span><b style="font-family:var(--mono);font-size:17px;letter-spacing:.1em;color:var(--mut);width:140px">MITIGAÇÃO</b>Plano B com carga manual assistida</div>
         <div class="ritem"><span class="box"><svg viewBox="0 0 18 18"><path id="s9-k3" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span><b style="font-family:var(--mono);font-size:17px;letter-spacing:.1em;color:var(--mut);width:140px">PRAZO</b>Revisão no comitê de sexta</div>
       </div>
+      <div class="swp"><i id="s9-sw"></i></div>
     </div>
-    <div class="abs willchange" id="s9-tag" style="left:1035px;top:800px">
+    <div class="abs willchange" id="s9-tag" style="left:1035px;top:800px;z-index:6">
       <span class="chip" style="font-size:20px"><span class="cdot"></span>ANTECIPAR — NÃO APAGAR INCÊNDIO</span>
     </div>
   </section>
@@ -505,20 +570,21 @@
     <div class="studio"></div>
     <div class="mas willchange" id="mTot10" data-mascot="totvs" style="left:330px;bottom:120px;width:340px"></div>
     <div class="mas willchange" id="mAm10" data-mascot="am" style="left:1280px;bottom:118px;width:310px"></div>
-    <svg class="abs willchange" id="s10-spark" width="160" height="160" style="left:880px;top:618px;opacity:0">
+    <svg class="abs willchange" id="s10-spark" width="160" height="160" style="left:880px;top:618px;opacity:0;z-index:12">
       <g id="s10-sparkg">
         <path d="M80 10 L92 62 L146 60 L100 90 L120 142 L80 110 L40 142 L60 90 L14 60 L68 62 Z" fill="none" stroke="#F26B21" stroke-width="7" stroke-linejoin="round"/>
       </g>
     </svg>
-    <div class="abs" id="s10-h" style="left:0;right:0;top:176px;text-align:center">
+    <div id="confetti"></div>
+    <div class="abs" id="s10-h" style="left:0;right:0;top:176px;text-align:center;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s10-r1"><h1 class="big" style="font-size:56px">O seu papel nessa história</h1></span></span>
     </div>
-    <div class="abs" style="left:50%;top:306px;transform:translateX(-50%)">
+    <div class="abs" style="left:50%;top:306px;transform:translateX(-50%);z-index:6">
       <div class="bigchip willchange" id="s10-c1" style="margin-bottom:22px"><span class="num">01</span>Participe das cerimônias</div>
       <div class="bigchip willchange" id="s10-c2" style="margin-bottom:22px"><span class="num">02</span>Reporte com transparência</div>
       <div class="bigchip willchange" id="s10-c3"><span class="num">03</span>Escale cedo — sem medo</div>
     </div>
-    <div class="abs willchange" id="s10-end" style="left:0;right:0;top:320px;text-align:center">
+    <div class="abs willchange" id="s10-end" style="left:0;right:0;top:320px;text-align:center;z-index:6">
       <div class="tagline" style="position:static">MÉTODO · GOVERNANÇA · PESSOAS</div>
       <h1 class="big" style="font-size:100px;margin-top:24px">Bem-vindo <span class="u">a bordo<i id="s10-u"></i></span>.</h1>
       <div style="margin-top:30px"><span class="chip" style="font-size:21px;padding:16px 34px"><span class="cdot"></span>METODOLOGIA TOTVS&nbsp;&nbsp;·&nbsp;&nbsp;PARCERIA A&amp;M</span></div>
@@ -534,7 +600,8 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const lerp=(a,b,p)=>a+(b-a)*p;
 const EASE={lin:p=>p,out:p=>1-Math.pow(1-p,3),out5:p=>1-Math.pow(1-p,5),
   inout:p=>p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,
-  back:p=>{const c=1.70158*1.25;return 1+(c+1)*Math.pow(p-1,3)+c*Math.pow(p-1,2)},in2:p=>p*p};
+  back:p=>{const c=1.70158*1.25;return 1+(c+1)*Math.pow(p-1,3)+c*Math.pow(p-1,2)},in2:p=>p*p,
+  bounce:p=>{const n1=7.5625,d1=2.75;if(p<1/d1)return n1*p*p;if(p<2/d1)return n1*(p-=1.5/d1)*p+.75;if(p<2.5/d1)return n1*(p-=2.25/d1)*p+.9375;return n1*(p-=2.625/d1)*p+.984375}};
 const anims=[],loops=[];
 function tw(el,t0,dur,ease,props){
   if(typeof el==='string')el=$(el);
@@ -554,14 +621,30 @@ function draw(id,t0,dur,ease){
   el.style.strokeDasharray=L;el.style.strokeDashoffset=L;
   anims.push({t0,t1:t0+dur,fn:p=>{el.style.strokeDashoffset=L*(1-EASE[ease](p));}});
 }
-function checkmark(id,t0,dur=0.45){anims.push({t0,t1:t0+dur,fn:p=>{$(id).style.strokeDashoffset=(1-EASE.out(p))*24;}});}
+function checkmark(id,t0,dur=0.45,len=24){anims.push({t0,t1:t0+dur,fn:p=>{$(id).style.strokeDashoffset=(1-EASE.out(p))*len;}});}
 function hide(...els){els.forEach(e=>{(typeof e==='string'?$(e):e).style.opacity=0;});}
-/* masked text reveal (AE-style) */
 function reveal(id,t0,dur=0.85){fx(t0,dur,'out5',p=>{$(id).style.transform=`translateY(${(1-p)*112}%)`;});}
-/* gentle camera settle on each scene start */
 function pushIn(sec,a){fx(a,1.4,'out',p=>{$(sec).style.transform=`scale(${1.016-0.016*p})`;});}
+/* varredura de luz (glow/light sweep) */
+function sweep(id,t0,dur=0.9){fx(t0,dur,'inout',p=>{$(id).style.transform=`translateX(${-220+p*560}%) rotate(14deg)`;});}
+/* sublinhado com shimmer */
+function underline(id,t0){fx(t0,0.55,'out',p=>{$(id).style.transform=`scaleX(${p})`;});
+  fx(t0+0.6,0.7,'inout',p=>{const a=$(id).querySelector?null:null;});
+  anims.push({t0:t0+0.6,t1:t0+1.3,fn:p=>{const el=$(id);const af=el;af.style.setProperty('--x','');
+    el.style.setProperty('overflow','hidden');
+    el.firstElementChild||el.insertAdjacentHTML('beforeend','<s style="position:absolute;inset:0;transform:translateX(-130%);background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.75) 50%,transparent 80%)"></s>');
+    el.lastElementChild.style.transform=`translateX(${-130+EASE.inout(p)*300}%)`;}});}
+/* anel ripple */
+let ripSeq=0;
+function rippleAt(scene,x,y,t0,size=120,color='var(--acc)'){
+  const d=document.createElement('div');d.className='ripple';d.id='rp'+(ripSeq++);
+  d.style.left=(x-size/2)+'px';d.style.top=(y-size/2)+'px';d.style.width=size+'px';d.style.height=size+'px';
+  d.style.borderColor=color;$(scene).appendChild(d);
+  anims.push({t0,t1:t0+0.7,fn:p=>{const e=EASE.out(p);d.style.opacity=(1-p)*0.8;d.style.transform=`scale(${0.3+e*1.1})`;}});
+  return d;
+}
 
-/* ================= mascots (imagens originais) ================= */
+/* ================= mascotes (imagens originais) ================= */
 document.querySelectorAll('[data-mascot]').forEach(d=>{
   d.innerHTML=`<div class="msh" id="${d.id}-sh"></div><img id="${d.id}-bob" src="assets/mascote-${d.dataset.mascot}.png" alt="">`;
 });
@@ -571,33 +654,72 @@ function mBob(id,t0,t1,amp,sp,ph){lp(t0,t1,t=>{
   $(id+'-sh').style.transform=`scaleX(${1-y/90})`;$(id+'-sh').style.opacity=1-Math.max(0,y)/40;});}
 function mLean(id,deg,dx,t0,dur=0.6){fx(t0,dur,'back',p=>{$(id).style.transform=`translate(${dx*p}px,0) rotate(${deg*p}deg)`;});}
 function mHop(id,t0,h=46){fx(t0,0.55,'lin',p=>{
-  const y=-Math.abs(Math.sin(p*Math.PI))*h;
-  $(id+'-bob').style.transform=`translateY(${y}px)`;
+  const y=-Math.abs(Math.sin(p*Math.PI))*h, sq=1-Math.abs(Math.sin(p*Math.PI))*0.04;
+  $(id+'-bob').style.transform=`translateY(${y}px) scaleY(${2-sq})`;
   $(id+'-sh').style.transform=`scaleX(${1+y/160})`;$(id+'-sh').style.opacity=1+y/90;});}
 function hopIn(id,t0,fromX,dur=1.0){fx(t0,dur,'lin',p=>{
   const e=EASE.out(p),x=fromX*(1-e),y=-Math.abs(Math.sin(p*Math.PI*2.2))*(1-p)*70;
   $(id).style.transform=`translate(${x}px,${y}px)`;$(id).style.opacity=Math.min(1,p*4);});}
+
+/* corrige scaleY exagerado no hop */
+function mHop2(id,t0,h=46){fx(t0,0.55,'lin',p=>{
+  const k=Math.abs(Math.sin(p*Math.PI));
+  $(id+'-bob').style.transform=`translateY(${-k*h}px) scaleY(${1+k*0.03})`;
+  $(id+'-sh').style.transform=`scaleX(${1-k*h/160})`;$(id+'-sh').style.opacity=1-k*0.5;});}
+
+/* ================= floating elements (todas as cenas internas) ================= */
+const FLO=[['c','#4A6FA5',10,180,300],['','#A3B8D6',12,520,840],['c','#F26B21',8,1240,210],
+  ['r','',22,1660,420],['','#C9D6E8',14,300,760],['c','#6E8FBF',9,1500,880],
+  ['','#FDE8DC',13,980,160],['c','#A3B8D6',11,1800,640],['r','',18,760,920],['c','#C9D6E8',8,70,560]];
+const floBox=$('flo');
+FLO.forEach(([cls,col,sz,x,y],k)=>{
+  const i=document.createElement('i');i.className=cls;i.id='flo'+k;
+  i.style.width=sz+'px';i.style.height=sz+'px';i.style.left=x+'px';i.style.top=y+'px';
+  if(col)i.style.background=col;floBox.appendChild(i);
+});
+lp(0,10000,t=>{FLO.forEach((f,k)=>{
+  const el=$('flo'+k);
+  el.style.transform=`translate(${Math.sin(t*0.35+k*1.7)*16}px,${Math.cos(t*0.28+k*2.3)*20 - (t*3+k*37)%140 + 70}px) rotate(${Math.sin(t*0.3+k)*14}deg)`;});});
 
 /* ================= anchors ================= */
 const SC={};SCENES.forEach(s=>SC[s.id]=s);
 const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9'],['s10','s10']]
   .map(([x,y])=>[SC[x].a,SC[y].b]);
 
+/* kicker dot pulsa a cada troca de cena */
+SCENES.forEach(s=>{fx(s.a+0.1,0.8,'out',p=>{$('kdot').style.boxShadow=`0 0 0 ${p*9}px rgba(242,107,33,${(1-p)*0.45})`;});});
+
 /* ================= S1 ================= */
 (()=>{const {a,n,b}=SC.s1;
-  hide('mTot1','mAm1','p-totvs','p-am','s1-chip','s1-sub');pushIn('s1',a);
+  hide('mTot1','mAm1','p-totvs','p-am','s1-chip','s1-sub','s1-panel');pushIn('s1',a);
   tw('s1bg',a,b-a,'lin',{s:[1.045,1.0]});
-  tw('s1-chip',a+0.4,0.7,'out',{y:[-40,0],o:[0,1]});
-  reveal('s1-r1',a+0.8);reveal('s1-r2',a+1.0);
-  fx(a+1.7,0.6,'out',p=>{$('s1-u').style.transform=`scaleX(${p})`;});
+  tw('s1-panel',a+0.25,0.9,'out5',{y:[70,0],o:[0,1]});
+  lp(a+0.3,b,t=>{ /* blobs orgânicos morfando */
+    const m=(f,ph)=>38+Math.sin(t*f+ph)*14;
+    $('s1-blob1').style.borderRadius=`${m(0.7,0)}% ${100-m(0.6,1)}% ${m(0.8,2)}% ${100-m(0.5,3)}% / ${m(0.6,4)}% ${m(0.7,5)}% ${100-m(0.6,6)}% ${m(0.8,1)}%`;
+    $('s1-blob2').style.borderRadius=`${m(0.5,2)}% ${100-m(0.7,0)}% ${m(0.6,4)}% ${100-m(0.8,2)}% / ${100-m(0.6,3)}% ${m(0.5,1)}% ${m(0.7,5)}% ${m(0.6,0)}%`;
+    $('s1-blob1').style.transform=`translate(${Math.sin(t*0.4)*12}px,${Math.cos(t*0.33)*10}px)`;
+    $('s1-blob2').style.transform=`translate(${Math.cos(t*0.37)*14}px,${Math.sin(t*0.3)*12}px)`;});
+  tw('s1-chip',a+0.5,0.7,'back',{y:[-40,0],o:[0,1]});
+  rippleAt('s1',960,242,a+0.95,150);
+  reveal('s1-w1',a+0.85);reveal('s1-w2',a+1.0);reveal('s1-w3',a+1.25);
+  underline('s1-u',a+1.8);
   tw('s1-sub',a+2.2,0.7,'out',{y:[24,0],o:[0,1]});
   hopIn('mTot1',a+2.6,-620);hopIn('mAm1',a+3.1,620);
+  /* sparkles ao pousar */
+  ['sp-tot','sp-am'].forEach((sp,si)=>{
+    const box=$(sp);for(let k=0;k<6;k++){const i=document.createElement('i');i.id=sp+'-'+k;box.appendChild(i);}
+    const t0=a+2.6+si*0.5+0.75;
+    fx(t0,0.7,'out',p=>{for(let k=0;k<6;k++){const el=$(sp+'-'+k),an=k/6*Math.PI*2;
+      el.style.opacity=(1-p)*0.9;el.style.transform=`translate(${Math.cos(an)*p*74}px,${Math.sin(an)*p*60}px) scale(${1-p*0.5})`;}});
+  });
   tw('p-totvs',a+3.7,0.5,'back',{y:[36,0],o:[0,1]});
   tw('p-am',a+4.2,0.5,'back',{y:[36,0],o:[0,1]});
   mBob('mTot1',a+3.7,b,6,2.1,0);mBob('mAm1',a+4.2,b,6,1.9,1.1);
-  mHop('mTot1',n+12.6);mHop('mAm1',n+12.85);
+  mHop2('mTot1',n+12.6);mHop2('mAm1',n+12.85);
   const e=b-0.75;
-  fx(e,0.72,'in2',p=>{['s1-r1','s1-r2'].forEach(i=>{$(i).style.transform=`translateY(${-p*118}%)`;});});
+  fx(e,0.72,'in2',p=>{['s1-w1','s1-w2','s1-w3'].forEach(i=>{$(i).style.transform=`translateY(${-p*118}%)`;});
+    $('s1-panel').style.opacity=1-p;$('s1-panel').style.transform=`translateY(${-p*90}px)`;});
   tw('s1-chip',e,0.6,'in2',{y:[0,-160],o:[1,0]});
   tw('s1-sub',e-0.05,0.5,'in2',{o:[1,0]});
   tw('mTot1',e+0.05,0.7,'in2',{x:[0,-640],o:[1,0]});
@@ -607,24 +729,40 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
 
 /* ================= S2 ================= */
 (()=>{const {a,n,b}=SC.s2;
-  hide('s2-c1','s2-c2','s2-c3','s2-t1','s2-t2','s2-pill','s2-chaos');pushIn('s2',a);
+  hide('s2-c1','s2-c2','s2-c3','s2-t1','s2-t2','s2-pill','s2-net');
+  pushIn('s2',a);
   $('s2-arrow').style.opacity=0;
+  /* satélites do caos */
+  const SAT=[[0,'#A3B8D6'],[1,'#6E8FBF'],[2,'#FF8A4C'],[3,'#C9D6E8'],[4,'#4A6FA5'],[5,'#A3B8D6']];
+  SAT.forEach(([k,c])=>{const d=document.createElement('div');d.className='sat';d.id='sat'+k;d.style.background=c;$('s2').appendChild(d);hide(d);});
   reveal('s2-r1',a+0.35);reveal('s2-r2',a+0.5);
-  fx(a+1.3,0.55,'out',p=>{$('s2-u').style.transform=`scaleX(${p})`;});
+  underline('s2-u',a+1.3);
   tw('s2-c1',n+2.6,0.6,'back',{y:[70,0],o:[0,1]});
   tw('s2-c2',n+3.4,0.6,'back',{y:[70,0],o:[0,1]});
   tw('s2-c3',n+4.2,0.6,'back',{y:[70,0],o:[0,1]});
-  tw('s2-chaos',n+5.0,0.6,'out',{o:[0,.9]});
+  tw('s2-net',n+4.8,0.6,'out',{o:[0,.95]});
+  SAT.forEach(([k])=>tw('sat'+k,n+4.9+k*0.12,0.4,'out',{o:[0,.85]}));
+  /* rede viva: chips jitter + links recalculados + satélites orbitando caóticos */
+  const C=[[270,500,180,61],[830,556,172,61],[1390,490,158,61]]; /* x,y,w/2 aprox,h/2 */
   lp(n+2.6,n+12.85,t=>{
     const j=(f,ph)=>Math.sin(t*f+ph);
-    $('s2-c1').style.transform=`translate(${j(3.1,0)*7}px,${j(2.3,1)*9}px) rotate(${j(1.7,2)*2.4}deg)`;
-    $('s2-c2').style.transform=`translate(${j(2.7,2)*8}px,${j(3.3,0)*8}px) rotate(${j(2.1,1)*-2.2}deg)`;
-    $('s2-c3').style.transform=`translate(${j(3.4,1)*7}px,${j(2.1,2)*9}px) rotate(${j(1.9,0)*2.6}deg)`;
-    const d=-t*26;['s2-ca','s2-cb','s2-cc'].forEach(i=>$(i).style.strokeDashoffset=d);
+    const off=[[j(3.1,0)*7,j(2.3,1)*9,j(1.7,2)*2.4],[j(2.7,2)*8,j(3.3,0)*8,j(2.1,1)*-2.2],[j(3.4,1)*7,j(2.1,2)*9,j(1.9,0)*2.6]];
+    ['s2-c1','s2-c2','s2-c3'].forEach((id,k)=>{$(id).style.transform=`translate(${off[k][0]}px,${off[k][1]}px) rotate(${off[k][2]}deg)`;});
+    const ctr=C.map((c,k)=>[c[0]+c[2]+off[k][0], c[1]+c[3]+off[k][1]]);
+    const wob=(ph)=>j(0.9,ph)*120;
+    $('s2-la').setAttribute('d',`M${ctr[0][0]} ${ctr[0][1]} Q ${(ctr[0][0]+ctr[1][0])/2+wob(1)} ${(ctr[0][1]+ctr[1][1])/2-140-wob(2)*0.4} ${ctr[1][0]} ${ctr[1][1]}`);
+    $('s2-lb').setAttribute('d',`M${ctr[1][0]} ${ctr[1][1]} Q ${(ctr[1][0]+ctr[2][0])/2-wob(3)} ${(ctr[1][1]+ctr[2][1])/2-150+wob(0)*0.4} ${ctr[2][0]} ${ctr[2][1]}`);
+    $('s2-lc').setAttribute('d',`M${ctr[0][0]} ${ctr[0][1]+30} Q ${(ctr[0][0]+ctr[2][0])/2+wob(2)*0.6} ${820+wob(1)*0.3} ${ctr[2][0]} ${ctr[2][1]+30}`);
+    ['s2-la','s2-lb','s2-lc'].forEach(i=>$(i).style.strokeDashoffset=-t*26);
+    SAT.forEach(([k])=>{const base=ctr[k%3];const an=t*(0.9+k*0.23)+k*2.1;
+      $('sat'+k).style.left=(base[0]+Math.cos(an)*(95+k*14))+'px';
+      $('sat'+k).style.top=(base[1]+Math.sin(an)*(62+k*9))+'px';});
   });
   tw('s2-t1',n+4.6,0.5,'out',{o:[0,1]});
   tw('s2-t1',n+12.0,0.5,'in2',{o:[1,0]});
-  tw('s2-chaos',n+12.0,0.6,'in2',{o:[.9,0]});
+  tw('s2-net',n+12.0,0.6,'in2',{o:[.95,0]});
+  SAT.forEach(([k])=>tw('sat'+k,n+12.0,0.5,'in2',{o:[.85,0]}));
+  fx(n+12.2,0.6,'out',p=>{$('s2-spot').style.opacity=p;});
   draw('s2-path',n+12.9,1.2,'inout');
   fx(n+13.0,1.1,'inout',p=>{
     $('s2-c1').style.top=lerp(500,742,p)+'px';$('s2-c2').style.top=lerp(556,742,p)+'px';$('s2-c3').style.top=lerp(490,742,p)+'px';
@@ -633,32 +771,48 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
     const bc=p>0.85?'#F26B21':'';
     $('s2-c1').style.borderColor=bc;$('s2-c2').style.borderColor=bc;$('s2-c3').style.borderColor=bc;
   });
+  rippleAt('s2',475,785,n+14.15,110);rippleAt('s2',930,785,n+14.3,110);rippleAt('s2',1398,785,n+14.45,110);
   tw('s2-arrow',n+14.0,0.4,'out',{o:[0,1]});
+  lp(n+14.1,b-0.9,t=>{$('s2-flow').style.opacity=.9;$('s2-flow').style.strokeDashoffset=-t*46;});
   tw('s2-t2',n+14.3,0.5,'out',{o:[0,1]});
   tw('s2-pill',n+16.6,0.7,'back',{y:[46,0],o:[0,1]});
   const e=b-0.75;
-  fx(e,0.7,'in2',p=>{['s2-r1','s2-r2'].forEach(i=>{$(i).style.transform=`translate(${-p*480}px,${-p*0}px)`;$(i).parentElement.style.opacity=1-p;});});
+  fx(e,0.7,'in2',p=>{['s2-r1','s2-r2'].forEach(i=>{$(i).style.transform=`translate(${-p*480}px,0)`;$(i).parentElement.style.opacity=1-p;});});
   fx(e,0.7,'in2',p=>{['s2-c1','s2-c2','s2-c3'].forEach((i,k)=>{$(i).style.transform=`translate(${-p*(620+k*120)}px,0)`;$(i).style.opacity=1-p;});
-    $('s2-path').style.opacity=1-p;$('s2-arrow').style.opacity=1-p;});
+    $('s2-path').style.opacity=1-p;$('s2-arrow').style.opacity=1-p;$('s2-flow').style.opacity=(1-p)*.9;$('s2-spot').style.opacity=1-p;});
   tw('s2-t2',e,0.5,'in2',{o:[1,0]});
   tw('s2-pill',e,0.6,'in2',{y:[0,120],o:[1,0]});
 })();
 
-/* ================= S3 TMO ================= */
+/* ================= S3 TMO · deck de cards ================= */
 (()=>{const {a,n,b,nd}=SC.s3;const f=x=>n+x*nd;
-  hide('mAm3','s3-p1','s3-p2','s3-p3','s3-p4','s3-tag','s3-hc','s3-p1t','s3-p2t','s3-p3t','s3-p4t');pushIn('s3',a);
-  reveal('s3-r1',a+0.3);
-  fx(a+1.0,0.5,'out',p=>{$('s3-u').style.transform=`scaleX(${p})`;});
+  hide('mAm3','s3-p1','s3-p2','s3-p3','s3-p4','s3-tag','s3-hc','s3-p1t','s3-p2t','s3-p3t','s3-p4t');
+  pushIn('s3',a);
+  reveal('s3-r1',a+0.3);underline('s3-u',a+1.0);
   tw('s3-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
   hopIn('mAm3',a+0.8,-560);
   mBob('mAm3',a+1.9,b,5,1.9,0);
   mLean('mAm3',4,24,f(0.24));
+  /* cards saem de um deck central (card stack) */
+  const DECK=[[640,352],[1230,352],[640,636],[1230,636]];
   const cues=[0.30,0.46,0.62,0.785];
   ['s3-p1','s3-p2','s3-p3','s3-p4'].forEach((id,k)=>{
-    tw(id,f(cues[k]),0.7,'back',{y:[90,0],x:[60,0],r:[3,0],o:[0,1]});
-    tw(id+'t',f(cues[k])+0.22,0.45,'out',{y:[14,0],o:[0,1]});
-    lp(f(cues[k])+0.8,b-0.9,t=>{$(id).style.transform=`translateY(${Math.sin((t+k*1.3)*1.5)*4}px)`;});
+    const [gx,gy]=DECK[k];
+    const dx=1000-gx, dy=560-gy; /* ponto do deck ~(1000,560) */
+    fx(f(cues[k]),0.85,'lin',p=>{const e=EASE.out5(p);
+      $(id).style.opacity=Math.min(1,p*5);
+      $(id).style.transform=`translate(${dx*(1-e)}px,${dy*(1-e)}px) rotate(${(k%2?7:-7)*(1-e)}deg) scale(${0.72+e*0.28})`;});
+    sweep('s3-sw'+(k+1),f(cues[k])+0.8);
+    tw(id+'t',f(cues[k])+0.25,0.45,'out',{y:[14,0],o:[0,1]});
+    lp(f(cues[k])+1.0,b-0.9,t=>{$(id).style.transform=`translateY(${Math.sin((t+k*1.3)*1.5)*4}px) rotate(${Math.sin((t+k)*0.9)*0.4}deg)`;});
   });
+  /* icon motion por pilar */
+  draw('s3-i1a',f(0.30)+0.5,0.7,'out');                       /* colunas do prédio sobem */
+  checkmark('s3-i2a',f(0.46)+0.55,0.45,18);                    /* check pessoas */
+  checkmark('s3-i3a',f(0.62)+0.55,0.45,22);                    /* check escudo */
+  lp(f(0.62)+1.0,b-1.0,t=>{const k=1+Math.sin(t*2.4)*0.05;$('s3-i3w').style.transform=`scale(${k})`;});
+  fx(f(0.785)+0.5,0.5,'out',p=>{$('s3-i4a').style.stroke=p>0.5?'#F26B21':'#13315C';}); /* raio pisca */
+  checkmark('s3-i4b',f(0.785)+0.6,0.5,32);
   tw('s3-tag',f(0.94),0.6,'out',{y:[26,0],o:[0,1]});
   const e=b-0.75;
   fx(e,0.72,'in2',p=>{['s3-p1','s3-p2','s3-p3','s3-p4'].forEach((i,k)=>{
@@ -669,39 +823,55 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
   tw('s3-tag',e,0.5,'in2',{o:[1,0]});
 })();
 
-/* ================= S4 FRAMEWORK ================= */
+/* ================= S4 FRAMEWORK · blobs → círculos ================= */
 (()=>{const {a,n,b,nd}=SC.s4;const f=x=>n+x*nd;
   const ST=$('s4');
   const mkitem=(id,x,y,txt)=>{const d=document.createElement('div');d.className='vitem willchange';d.id=id;
     d.style.left=x+'px';d.style.top=y+'px';
-    d.innerHTML=`<svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>${txt}`;
+    d.innerHTML=`<svg viewBox="0 0 22 22"><path id="${id}k" d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26"/></svg>${txt}`;
     ST.appendChild(d);return d;};
   const L=[['Governança e gestão (PMO)',508],['Mudança e adoção (GMO)',572],['Valor, riscos e qualidade',636],['Aceleradores e IA',700]]
     .map(([t,y],i)=>mkitem('s4-a'+i,476,y,t));
   const R=[['Configuração da solução',508],['Desenvolvimento e custom.',572],['Testes e documentação',636],['Suporte e operação · AMS',700]]
     .map(([t,y],i)=>mkitem('s4-b'+i,1156,y,t));
-  hide('s4-ca','s4-cb','s4-la','s4-lb','s4-cc','mAm4','mTot4','s4-tag',...L,...R);pushIn('s4',a);
+  hide('s4-ca','s4-cb','s4-la','s4-lb','s4-cc','mAm4','mTot4','s4-tag','s4-o1','s4-o2','s4-o3',...L,...R);
   ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach(i=>hide(i));
-  reveal('s4-r1',a+0.3);
-  fx(a+1.0,0.5,'out',p=>{$('s4-u').style.transform=`scaleX(${p})`;});
-  tw('s4-ca',a+0.8,0.8,'back',{s:[.5,1],o:[0,.97]});
-  tw('s4-cb',a+1.1,0.8,'back',{s:[.5,1],o:[0,.97]});
-  tw('s4-la',a+1.5,0.5,'out',{y:[20,0],o:[0,1]});
-  tw('s4-lb',a+1.7,0.5,'out',{y:[20,0],o:[0,1]});
+  pushIn('s4',a);
+  reveal('s4-r1',a+0.3);underline('s4-u',a+1.0);
+  /* blobs que viram círculos (morphing shapes) */
+  const morph=(id,t0)=>{
+    tw(id,t0,0.8,'back',{s:[.5,1],o:[0,.97]});
+    fx(t0,1.6,'out',p=>{const w=(ph)=>50-(1-p)*(14*Math.sin(p*9+ph));
+      $(id).style.borderRadius=`${w(0)}% ${w(2)}% ${w(4)}% ${w(1)}% / ${w(3)}% ${w(5)}% ${w(2.5)}% ${w(1.5)}%`;});
+  };
+  morph('s4-ca',a+0.8);morph('s4-cb',a+1.1);
+  tw('s4-la',a+1.6,0.5,'out',{y:[20,0],o:[0,1]});
+  tw('s4-lb',a+1.8,0.5,'out',{y:[20,0],o:[0,1]});
+  /* pontos orbitando os círculos */
+  tw('s4-o1',a+2.2,0.4,'out',{o:[0,.75]});tw('s4-o2',a+2.3,0.4,'out',{o:[0,.75]});tw('s4-o3',a+2.4,0.4,'out',{o:[0,.75]});
+  lp(a+2.2,b-0.9,t=>{
+    const orb=(id,cx,cy,r,sp,ph)=>{$(id).style.left=(cx+Math.cos(t*sp+ph)*r-5)+'px';$(id).style.top=(cy+Math.sin(t*sp+ph)*r*0.99-5)+'px';};
+    orb('s4-o1',740,610,296,0.55,0);orb('s4-o2',1180,610,296,-0.47,2.1);orb('s4-o3',740,610,296,0.55,Math.PI);
+  });
   hopIn('mAm4',a+1.6,-420);hopIn('mTot4',a+1.9,420);
   mBob('mAm4',a+2.7,b,4,1.8,0);mBob('mTot4',a+3.0,b,4,2.0,0.9);
-  R.forEach((d,i)=>tw(d,f(0.12+i*0.055),0.5,'out',{x:[40,0],o:[0,1]}));
+  R.forEach((d,i)=>{tw(d,f(0.12+i*0.055),0.5,'out',{x:[40,0],o:[0,1]});checkmark('s4-b'+i+'k',f(0.12+i*0.055)+0.25,0.4,26);});
   mLean('mTot4',-4,-20,f(0.10));
-  L.forEach((d,i)=>tw(d,f(0.44+i*0.035),0.5,'out',{x:[-40,0],o:[0,1]}));
+  L.forEach((d,i)=>{tw(d,f(0.44+i*0.035),0.5,'out',{x:[-40,0],o:[0,1]});checkmark('s4-a'+i+'k',f(0.44+i*0.035)+0.25,0.4,26);});
   mLean('mAm4',4,20,f(0.42));
   tw('s4-cc',f(0.555),0.8,'back',{y:[120,0],s:[.85,1],o:[0,1]});
-  ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach((id,k)=>tw(id,f(0.60+k*0.05),0.45,'out',{x:[-26,0],o:[0,1]}));
+  sweep('s4-sw',f(0.555)+0.85);
+  ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach((id,k)=>{
+    tw(id,f(0.60+k*0.05),0.45,'out',{x:[-26,0],o:[0,1]});
+    checkmark('s4-jk'+(k+1),f(0.60+k*0.05)+0.2,0.4,26);});
   fx(f(0.64),0.5,'out',p=>{$('s4-j2').style.boxShadow=`0 0 0 ${3*p}px rgba(242,107,33,${.35*p})`;});
+  lp(f(0.70),b-1.0,t=>{const k=.35+Math.sin(t*2.2)*.18;$('s4-j2').style.boxShadow=`0 0 0 3px rgba(242,107,33,${k})`;});
   tw('s4-tag',f(0.92),0.6,'back',{y:[30,0],o:[0,1]});
   const e=b-0.78;
   fx(e,0.74,'in2',p=>{
     ['s4-ca','s4-la'].forEach(i=>{$(i).style.transform=`translateX(${-p*900}px)`;$(i).style.opacity=1-p;});
     ['s4-cb','s4-lb'].forEach(i=>{$(i).style.transform=`translateX(${p*900}px)`;$(i).style.opacity=1-p;});
+    ['s4-o1','s4-o2','s4-o3'].forEach(i=>$(i).style.opacity=0);
     L.forEach(d=>{d.style.transform=`translateX(${-p*900}px)`;d.style.opacity=1-p;});
     R.forEach(d=>{d.style.transform=`translateX(${p*900}px)`;d.style.opacity=1-p;});
     $('s4-cc').style.transform=`translateY(${-p*760}px)`;$('s4-cc').style.opacity=1-p;
@@ -711,31 +881,43 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
   tw('s4-tag',e,0.5,'in2',{o:[1,0]});
 })();
 
-/* ================= S5 MIT ================= */
+/* ================= S5 MIT · esteira ================= */
 (()=>{const {a,n,b,nd}=SC.s5;const f=x=>n+x*nd;
-  hide('s5-m1','s5-m2','s5-m3','s5-m4','s5-tag','s5-stamp','s5-hc');pushIn('s5',a);
+  hide('s5-m1','s5-m2','s5-m3','s5-m4','s5-tag','s5-stamp','s5-hc');
+  pushIn('s5',a);
   $('s5-tok').style.opacity=0;
-  reveal('s5-r1',a+0.3);
-  fx(a+1.0,0.5,'out',p=>{$('s5-u').style.transform=`scaleX(${p})`;});
+  reveal('s5-r1',a+0.3);underline('s5-u',a+1.0);
   tw('s5-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
   const cues=[0.08,0.24,0.52,0.80];
   ['s5-m1','s5-m2','s5-m3','s5-m4'].forEach((id,k)=>{
     tw(id,f(cues[k]),0.7,'back',{y:[110,0],o:[0,1]});
+    sweep('s5-sw'+(k+1),f(cues[k])+0.7);
+    lp(f(cues[k])+1.0,b-0.9,t=>{ /* leve tilt 3D (hologram) */
+      $(id).style.transform=`perspective(1100px) rotateY(${Math.sin(t*1.1+k*1.6)*2.2}deg) translateY(${Math.sin(t*1.4+k)*3}px)`;});
   });
   draw('s5-f1',f(0.18),0.4,'out');draw('s5-f2',f(0.46),0.4,'out');draw('s5-f3',f(0.74),0.4,'out');
+  /* linhas do documento desenham */
+  checkmark('s5-dl1',f(0.30),0.35,42);checkmark('s5-dl2',f(0.36),0.35,42);checkmark('s5-dl3',f(0.42),0.3,28);
+  checkmark('s5-vk',f(0.60),0.45,42);
+  /* token com rastro */
   lp(f(0.32),b-0.9,t=>{
     const seg=Math.floor(((t-n)*0.5)%3),cc=(((t-n)*0.5)%3)-seg;
     const xs=[[496,600],[932,1036],[1368,1472]][seg];
-    $('s5-tok').setAttribute('cx',lerp(xs[0],xs[1],cc));
-    $('s5-tok').style.opacity=cc<0.06||cc>0.94?0:1;
+    const x=lerp(xs[0],xs[1],cc), vis=(cc<0.06||cc>0.94)?0:1;
+    $('s5-tok').setAttribute('cx',x);$('s5-tok').style.opacity=vis;
+    $('s5-tk1').setAttribute('cx',Math.max(xs[0],x-14));$('s5-tk1').style.opacity=vis*0.5;
+    $('s5-tk2').setAttribute('cx',Math.max(xs[0],x-26));$('s5-tk2').style.opacity=vis*0.25;
   });
+  /* carimbo com ripple + mini salto do card */
   fx(f(0.66),0.5,'back',p=>{const s=$('s5-stamp');s.style.opacity=p;
     s.style.transform=`rotate(${-10+(1-p)*18}deg) scale(${1.6-0.6*p})`;});
+  fx(f(0.66)+0.28,0.5,'out',p=>{const r=$('s5-rip');r.style.opacity=(1-p)*0.8;r.style.transform=`scale(${0.4+p*1.6})`;});
   tw('s5-tag',f(0.90),0.6,'out',{y:[24,0],o:[0,1]});
   const e=b-0.75;
   fx(e,0.72,'in2',p=>{['s5-m1','s5-m2','s5-m3','s5-m4'].forEach((i,k)=>{
     $(i).style.transform=`translateY(${-p*(700+k*120)}px) rotate(${-p*4}deg)`;$(i).style.opacity=1-p;});
-    ['s5-f1','s5-f2','s5-f3'].forEach(i=>$(i).style.opacity=1-p);$('s5-tok').style.opacity=0;
+    ['s5-f1','s5-f2','s5-f3'].forEach(i=>$(i).style.opacity=1-p);
+    $('s5-tok').style.opacity=0;$('s5-tk1').style.opacity=0;$('s5-tk2').style.opacity=0;
     $('s5-r1').style.transform=`translateY(${-p*118}%)`;});
   tw('s5-hc',e,0.5,'in2',{o:[1,0]});
   tw('s5-tag',e,0.5,'in2',{o:[1,0]});
@@ -743,32 +925,34 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
 
 /* ================= S6 FRENTES ================= */
 (()=>{const {a,n,b}=SC.s6;
-  hide('s6-f1','s6-f2','s6-f3','s6-tag','s6-x1','s6-x2','s6-x3');pushIn('s6',a);
-  tw('s6-x1',n+5.2,0.5,'out',{y:[14,0],o:[0,1]});
-  tw('s6-x2',n+10.1,0.5,'out',{y:[14,0],o:[0,1]});
-  tw('s6-x3',n+15.6,0.5,'out',{y:[14,0],o:[0,1]});
-  reveal('s6-r1',a+0.3);
-  fx(a+1.1,0.5,'out',p=>{$('s6-u').style.transform=`scaleX(${p})`;});
+  hide('s6-f1','s6-f2','s6-f3','s6-tag','s6-x1','s6-x2','s6-x3');
+  pushIn('s6',a);
+  reveal('s6-r1',a+0.3);underline('s6-u',a+1.1);
   tw('s6-f1',n+2.3,0.85,'back',{y:[560,0],x:[180,0],r:[6,0],o:[0,1]});
   tw('s6-f2',n+7.2,0.85,'back',{y:[560,0],x:[120,0],r:[5,0],o:[0,1]});
   tw('s6-f3',n+12.2,0.85,'back',{y:[560,0],x:[60,0],r:[4,0],o:[0,1]});
+  sweep('s6-sw1',n+3.2);sweep('s6-sw2',n+8.1);sweep('s6-sw3',n+13.1);
   draw('s6-l1',n+3.3,0.5,'out');draw('s6-l2',n+3.9,0.5,'out');
-  lp(n+3.3,b-0.9,t=>{ /* token percorre as duas conexões, pulando a caixa */
+  lp(n+3.3,b-0.9,t=>{
     const c=(t-n-3.3)%2.4/2.4;
     const x=c<0.5?lerp(78,156,c/0.5):lerp(240,298,(c-0.5)/0.5);
     $('s6-tok').setAttribute('cx',x);
     $('s6-tok').style.opacity=(c<0.04||c>0.94||(c>0.46&&c<0.54))?0:1;
   });
-  checkmark('s6-chk1',n+4.6,0.4);
+  checkmark('s6-chk1',n+4.6,0.4,40);
+  fx(n+4.6,0.6,'out',p=>{$('s6-grip').style.opacity=(1-p)*0.9;$('s6-grip').setAttribute('r',10+p*22);});
   draw('s6-int',n+8.3,0.5,'out');
-  lp(n+8.4,b-0.9,t=>{
-    const c=(t-n-8.4)%1.8/1.8;
-    $('s6-d1').setAttribute('cx',136+c*124);$('s6-d2').setAttribute('cx',260-c*124);
-  });
+  lp(n+8.5,b-0.9,t=>{$('s6-intf').style.opacity=.95;$('s6-intf').style.strokeDashoffset=-t*30;
+    const c=(t-n-8.5)%1.8/1.8;
+    $('s6-d1').setAttribute('cx',136+c*124);$('s6-d2').setAttribute('cx',260-c*124);});
   checkmark('s6-g1',n+13.3);checkmark('s6-g2',n+14.1);checkmark('s6-g3',n+14.9);
+  /* KPIs contando */
+  const cnt=(id,v,t0)=>{tw('s6-x'+id,t0,0.5,'out',{y:[14,0],o:[0,1]});
+    fx(t0+0.1,0.9,'out',p=>{$('s6-n'+id).textContent=Math.round(v*p);});};
+  cnt(1,12,n+5.2);cnt(2,8,n+10.1);cnt(3,5,n+15.6);
   tw('s6-tag',n+17.6,0.6,'out',{y:[26,0],o:[0,1]});
-  lp(n+3.2,b-0.9,t=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
-    if(t>n+2.3+k*4.9+0.9)$(i).style.transform=`translateY(${Math.sin((t+k)*1.5)*5}px)`;});});
+  lp(n+3.4,b-0.9,t=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
+    if(t>n+2.3+k*4.9+0.95)$(i).style.transform=`perspective(1200px) rotateY(${Math.sin(t*0.9+k*2)*1.6}deg) translateY(${Math.sin((t+k)*1.5)*5}px)`;});});
   const e=b-0.75;
   fx(e,0.72,'in2',p=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
     $(i).style.transform=`translate(0px,${-p*(760+k*140)}px) rotate(${-p*5}deg)`;$(i).style.opacity=1-p;});
@@ -776,7 +960,7 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
   tw('s6-tag',e,0.5,'in2',{o:[1,0]});
 })();
 
-/* ================= S7 FASES ================= */
+/* ================= S7 ROADMAP ================= */
 const MILES=[
   {t:'Planejamento',d:'Escopo, cronograma e papéis',icon:'<rect class="st" x="8" y="6" width="30" height="36" rx="5"/><path class="st" d="M16 16h14M16 24h14M16 32h8"/><path class="sa" d="M30 31l4 4 7-7"/>'},
   {t:'Desenho da Solução',d:'Processos do negócio no sistema',icon:'<path class="st" d="M8 38V10a2 2 0 0 1 2-2h22l8 8v22a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path class="st" d="M32 8v8h8"/><path class="sa" d="M15 30l6-6 5 4 7-9"/>'},
@@ -790,6 +974,11 @@ const MILES=[
   const cam=$('tl-cam');
   const cues=[3.0,7.2,12.0,15.6,19.6,23.6,27.1].map(c=>n+c);
   const WKS=['SEM 1–2','SEM 3–6','SEM 7–10','SEM 11–13','SEM 14–15','SEM 16','SEM 17+'];
+  /* faixa de fases (gantt sutil) sob a linha */
+  const PH=['#DCE6F3','#C9D6E8','#A3B8D6','#FDE8DC','#C9D6E8','#FFC79E','#DCE6F3'];
+  PH.forEach((c,i)=>{const d=document.createElement('div');d.className='phband';d.id='ph'+i;
+    d.style.left=(150+i*372+(i?0:0))+'px';d.style.width='362px';d.style.top='700px';d.style.background=c;
+    cam.appendChild(d);hide(d);});
   MILES.forEach((m,i)=>{
     const x=240+i*372, up=i%2===0;
     const el=document.createElement('div');el.className='mile';el.id='mi'+i;
@@ -802,16 +991,20 @@ const MILES=[
       ${i===3?'<div class="herepin willchange" id="s7-pin">VOCÊ ESTÁ AQUI · SEM 11–13</div>':''}`;
     cam.appendChild(el);
   });
-  hide('s7-hc');for(let i=0;i<7;i++)hide('mi'+i);pushIn('s7',a);
-  reveal('s7-r1',a+0.3);
-  fx(a+1.1,0.5,'out',p=>{$('s7-u').style.transform=`scaleX(${p})`;});
+  hide('s7-hc','s7-pin');for(let i=0;i<7;i++)hide('mi'+i);
+  pushIn('s7',a);
+  reveal('s7-r1',a+0.3);underline('s7-u',a+1.1);
   tw('s7-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
   draw('tl-base',a+0.8,1.4,'inout');
   const P=$('tl-prog'),Lp=P.getTotalLength();P.style.strokeDasharray=Lp;P.style.strokeDashoffset=Lp;
-  hide('s7-pin');
   cues.forEach((c,i)=>{
     tw('mi'+i,c,0.65,'back',{s:[0.2,1],o:[0,1]});
     fx(c+0.1,0.4,'out',p=>{$('mi'+i+'r').style.borderColor=p>0?'#F26B21':'#13315C';$('mi'+i+'r').style.boxShadow=`0 10px 26px rgba(242,107,33,${.18*p})`;});
+    /* ripple no marco + faixa de fase cresce */
+    const rp=rippleAt('s7',0,0,c+0.1,120);
+    cam.appendChild(rp);rp.style.left=(240+i*372-60)+'px';rp.style.top=(660-60)+'px';
+    tw('ph'+i,c+0.15,0.6,'out',{o:[0,.5]});
+    fx(c+0.15,0.7,'out',p=>{$('ph'+i).style.transform=`scaleX(${p})`;$('ph'+i).style.transformOrigin='left';});
     const x0=i===0?0:(240+(i-1)*372-150),x1=240+i*372-150;
     anims.push({t0:i===0?a+2.2:cues[i-1]+0.4,t1:c+0.15,fn:p=>{P.style.strokeDashoffset=Lp-(x0+(x1-x0)*EASE.inout(p))/2590*Lp;}});
   });
@@ -827,25 +1020,31 @@ const MILES=[
 
 /* ================= S8 STATUS ================= */
 (()=>{const {a,n,b}=SC.s8;
-  hide('report','s8-tag','s8-fv','s8-fa','s8-fr','s8-p1','s8-p2','s8-kpi1','s8-kpi2','s8-kpi3','s8-kpi4');pushIn('s8',a);
+  hide('report','s8-tag','s8-fv','s8-fa','s8-fr','s8-p1','s8-p2','s8-kpi1','s8-kpi2','s8-kpi3','s8-kpi4');
+  pushIn('s8',a);
   tw('report',a+0.4,0.95,'out5',{y:[840,0],o:[0,1]});
-  /* KPIs */
+  sweep('s8-sw',a+1.35,1.1);
   ['s8-kpi1','s8-kpi2','s8-kpi3','s8-kpi4'].forEach((id,k)=>tw(id,n+3.6+k*0.22,0.55,'back',{y:[34,0],o:[0,1]}));
   fx(n+4.2,1.6,'inout',p=>{
     $('s8-kn2').innerHTML=Math.round(12*p)+'<small>/16</small>';
     $('s8-kn3').innerHTML=Math.round(9*p)+'<small>/16</small>';
     $('s8-kn4').textContent=Math.round(3*p);
   });
-  /* donut + KPI avanço sincronizados */
+  /* data highlight: flash nos KPIs ao fechar a contagem */
+  [1,2,3,4].forEach((i,k)=>fx(n+5.7+k*0.12,0.7,'out',p=>{$('s8-fl'+i).style.opacity=Math.sin(p*Math.PI)*0.9;}));
   fx(n+5.6,1.8,'inout',p=>{
     const v=Math.round(72*p);$('s8-pct').textContent=v+'%';$('s8-kn1').textContent=v+'%';
     $('s8-donut').style.strokeDashoffset=647*(1-0.72*p);
+    const an=(-90+360*0.72*p)*Math.PI/180;
+    $('s8-dtip').setAttribute('cx',126+103*Math.cos(an));$('s8-dtip').setAttribute('cy',126+103*Math.sin(an));
+    $('s8-dtip').style.opacity=p>0.05?1:0;
   });
+  lp(n+7.5,b-0.9,t=>{const k=1+Math.sin(t*3.2)*0.25;$('s8-dtip').setAttribute('r',8*k);});
   checkmark('s8-k1',n+8.3);checkmark('s8-k2',n+9.0);checkmark('s8-k3',n+9.7);
-  /* barras por frente */
   const BARS=[[1,85],[2,70],[3,55],[4,40]];
   BARS.forEach(([i,v],k)=>{fx(n+10.4+k*0.3,0.9,'out',p=>{
-    $('s8-b'+i).style.transform=`scaleX(${v/100*p})`;$('s8-bv'+i).textContent=Math.round(v*p)+'%';});});
+    $('s8-b'+i).style.transform=`scaleX(${v/100*p})`;$('s8-bv'+i).textContent=Math.round(v*p)+'%';});
+    fx(n+11.4+k*0.3,0.7,'inout',p=>{$('s8-s'+i).style.transform=`translateX(${-60+p*720}px)`;$('s8-s'+i).style.opacity=(1-p)*0.9;});});
   tw('s8-p1',n+12.2,0.5,'out',{x:[-40,0],o:[0,1]});
   tw('s8-p2',n+12.8,0.5,'out',{x:[-40,0],o:[0,1]});
   tw('s8-fv',n+13.6,0.5,'back',{s:[.4,1],o:[0,1]});
@@ -862,12 +1061,14 @@ const MILES=[
 (()=>{const {a,n,b}=SC.s9;
   const mx=$('s9-mx');
   const risk=(r,c)=>{const lv=r+c;return lv<=2?'#E4EBF5':lv===3?'#DCE6F3':lv===4?'#FDE8DC':lv===5?'#FFC79E':'#FF9A5C';};
+  const cells=[];
   for(let r=0;r<4;r++)for(let c=0;c<4;c++){
     const d=document.createElement('div');d.className='cell';d.id=`cx${r}${c}`;
     d.style.left=(c*162)+'px';d.style.top=((3-r)*128)+'px';d.style.background=risk(r,c);
-    mx.appendChild(d);hide(d);
+    mx.appendChild(d);hide(d);cells.push([r,c]);
   }
-  hide('s9-card','s9-tag','s9-sub','s9-kpis');pushIn('s9',a);
+  hide('s9-card','s9-tag','s9-sub','s9-kpis');
+  pushIn('s9',a);
   tw('s9-kpis',n+8.4,0.55,'back',{y:[24,0],o:[0,1]});
   ['0','1','2'].forEach(k=>{
     const d=document.createElement('div');d.className='rdot willchange';d.id='rk'+k;
@@ -879,13 +1080,22 @@ const MILES=[
   const bc=document.createElement('div');bc.className='beacon';bc.id='bk';
   bc.style.left='520px';bc.style.top='40px';bc.style.width='56px';bc.style.height='56px';
   mx.appendChild(bc);hide(bc);
-  reveal('s9-r1',a+0.3);
-  fx(a+1.0,0.5,'out',p=>{$('s9-u').style.transform=`scaleX(${p})`;});
+  reveal('s9-r1',a+0.3);underline('s9-u',a+1.0);
   tw('s9-sub',a+1.1,0.6,'out',{y:[18,0],o:[0,1]});
   for(let r=0;r<4;r++)for(let c=0;c<4;c++)tw(`cx${r}${c}`,n+2.2+(r+c)*0.17,0.45,'out',{s:[.6,1],o:[0,1]});
-  tw('rk0',n+5.6,0.55,'back',{s:[.2,1],o:[0,1]});
-  tw('rk1',n+6.3,0.55,'back',{s:[.2,1],o:[0,1]});
-  tw('rk2',n+7.0,0.55,'back',{s:[.2,1],o:[0,1]});
+  /* onda de brilho diagonal após montar (heatmap animation) */
+  fx(n+4.0,1.3,'inout',p=>{for(const[r,c]of cells){
+    const ph=clamp(p*2-( (r+c)/6 )*1.0,0,1), gl=Math.sin(clamp(ph,0,1)*Math.PI);
+    $(`cx${r}${c}`).style.filter=`brightness(${1+gl*0.09})`;}});
+  /* dots caem com bounce + ripple */
+  const drop=(id,t0,x,y)=>{
+    fx(t0,0.65,'lin',p=>{const e=EASE.bounce(p);
+      $(id).style.opacity=Math.min(1,p*4);
+      $(id).style.transform=`translateY(${-(1-e)*140}px) scale(${0.6+Math.min(1,p*2)*0.4})`;});
+    const rp=rippleAt('s9',0,0,t0+0.5,90);
+    mx.appendChild(rp);rp.style.left=(x-17)+'px';rp.style.top=(y-17)+'px';
+  };
+  drop('rk0',n+5.6,128,300);drop('rk1',n+6.3,300,172);drop('rk2',n+7.0,520,40);
   lp(n+7.8,b-0.8,t=>{
     const c=(t-n-7.8)%1.5/1.5;
     bc.style.opacity=(1-c)*0.85;
@@ -893,6 +1103,7 @@ const MILES=[
   });
   fx(n+7.8,0.3,'out',p=>{$('rk2').style.background='#C2362B';});
   tw('s9-card',n+9.2,0.8,'back',{x:[520,0],o:[0,1]});
+  sweep('s9-sw',n+10.05);
   checkmark('s9-k1',n+11.6);checkmark('s9-k2',n+13.1);checkmark('s9-k3',n+14.6);
   tw('s9-tag',n+17.3,0.6,'back',{y:[36,0],o:[0,1]});
   const e=b-0.75;
@@ -906,7 +1117,8 @@ const MILES=[
 
 /* ================= S10 FECHAMENTO ================= */
 (()=>{const {a,n,b}=SC.s10;
-  hide('mTot10','mAm10','s10-c1','s10-c2','s10-c3','s10-end','s10-spark');pushIn('s10',a);
+  hide('mTot10','mAm10','s10-c1','s10-c2','s10-c3','s10-end','s10-spark');
+  pushIn('s10',a);
   hopIn('mTot10',a+0.5,-760);hopIn('mAm10',a+0.8,760);
   mBob('mTot10',a+1.7,n+9.9,5,2.0,0);mBob('mAm10',a+1.9,n+9.9,5,1.8,0.8);
   reveal('s10-r1',a+0.4);
@@ -917,19 +1129,28 @@ const MILES=[
   fx(sw,0.5,'in2',p=>{$('s10-r1').style.transform=`translateY(${-p*118}%)`;});
   fx(sw,0.55,'in2',p=>{['s10-c1','s10-c2','s10-c3'].forEach((i,k)=>{$(i).style.transform=`translateY(${-p*(420+k*60)}px)`;$(i).style.opacity=1-p;});});
   tw('s10-end',sw+0.55,0.85,'out5',{y:[70,0],o:[0,1]});
-  fx(sw+1.5,0.6,'out',p=>{$('s10-u').style.transform=`scaleX(${p})`;});
-  /* aproximação + pulo duplo + estrela em "juntas" */
+  underline('s10-u',sw+1.5);
   const hf=n+15.1;
   tw('mTot10',sw,1.0,'inout',{x:[0,300]});
   tw('mAm10',sw,1.0,'inout',{x:[0,-300]});
   mBob('mTot10',sw+1.0,hf-0.5,5,2.0,0);mBob('mAm10',sw+1.0,hf-0.5,5,1.8,0.8);
-  mHop('mTot10',hf-0.15,52);mHop('mAm10',hf-0.1,52);
+  mHop2('mTot10',hf-0.15,52);mHop2('mAm10',hf-0.1,52);
   fx(hf,1.1,'lin',p=>{const s=$('s10-spark');
     s.style.opacity=Math.sin(p*Math.PI);
     $('s10-sparkg').style.transform=`scale(${0.45+EASE.out(p)*0.75}) rotate(${EASE.out(p)*46}deg)`;
     $('s10-sparkg').style.transformOrigin='80px 80px';});
+  /* confete (particle system) */
+  const CONF=['#F26B21','#FF8A4C','#4A6FA5','#A3B8D6','#13315C','#FDE8DC'];
+  const cbox=$('confetti');
+  for(let k=0;k<16;k++){const i=document.createElement('i');i.id='cf'+k;
+    i.style.background=CONF[k%CONF.length];i.style.borderRadius=k%3?'3px':'50%';cbox.appendChild(i);}
+  fx(hf+0.05,1.5,'lin',p=>{for(let k=0;k<16;k++){
+    const an=(k/16)*Math.PI*2+0.4, sp=210+(k%5)*48, e=EASE.out(p);
+    const x=960+Math.cos(an)*sp*e, y=690+Math.sin(an)*sp*e*0.8+p*p*300;
+    const el=$('cf'+k);el.style.left=x+'px';el.style.top=y+'px';
+    el.style.opacity=p<0.08?p*9:(1-p);el.style.transform=`rotate(${p*(k%2?420:-380)}deg)`;}});
   mBob('mTot10',hf+0.6,b,6,2.2,0);mBob('mAm10',hf+0.65,b,6,2.0,0.9);
-  mHop('mTot10',b-2.4,40);mHop('mAm10',b-2.2,40);
+  mHop2('mTot10',b-2.4,40);mHop2('mAm10',b-2.2,40);
 })();
 
 /* ================= chrome + seek ================= */
@@ -938,16 +1159,18 @@ const KICK={s1:'01 · BOAS-VINDAS',s2:'02 · POR QUE MÉTODO',s3:'03 · METODOLO
   s7:'05 · A JORNADA · FASES',s8:'06 · GOVERNANÇA · STATUS',s9:'06 · GOVERNANÇA · RISCOS',s10:'07 · SEU PAPEL'};
 const FNOTE={s1:'',s2:'',s3:'TMO — Transformation Management Office (PMO + GMO)',
   s4:'Framework A&M × TOTVS — visão integrada',s5:'MIT — documento oficial da Metodologia de Implantação TOTVS',
-  s6:'Fluig · Integrações · GAPs e Melhorias',s7:'Fases da Metodologia TOTVS de Implantação — Fase 1',
+  s6:'Fluig · Integrações · GAPs e Melhorias — valores ilustrativos',s7:'Fases da Metodologia TOTVS de Implantação — semanas ilustrativas',
   s8:'Valores ilustrativos — o modelo real é o do seu projeto',s9:'Matriz ilustrativa — probabilidade × impacto',s10:''};
 const chBox=$('chapters');
 CHW.forEach((w,i)=>{const d=document.createElement('div');d.className='ch';d.id='ch'+(i+1);
   d.innerHTML=`<span class="n">0${i+1}</span><span class="bar"><i></i></span>`;chBox.appendChild(d);});
 anims.sort((x,y)=>x.t0-y.t0);
+const STUDIO={s1:1,s10:1};
 window.seek=function(t){
   t=clamp(t,0,window.TOTAL);
   let cur=SCENES[0];
   for(const s of SCENES){const on=t>=s.a-0.02&&t<s.b+0.02;$(s.id).style.display=on?'block':'none';if(t>=s.a&&t<s.b)cur=s;}
+  $('flo').style.display=STUDIO[cur.id]?'none':'block';
   $('kicker-txt').textContent=KICK[cur.id];
   $('footnote').textContent=FNOTE[cur.id];
   CHW.forEach((w,i)=>{const el=$('ch'+(i+1));el.classList.toggle('on',t>=w[0]&&t<w[1]);el.classList.toggle('done',t>=w[1]);
