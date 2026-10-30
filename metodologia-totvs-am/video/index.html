@@ -505,7 +505,7 @@
     <div class="studio"></div>
     <div class="mas willchange" id="mTot10" data-mascot="totvs" style="left:330px;bottom:120px;width:340px"></div>
     <div class="mas willchange" id="mAm10" data-mascot="am" style="left:1280px;bottom:118px;width:310px"></div>
-    <svg class="abs willchange" id="s10-spark" width="160" height="160" style="left:890px;top:470px;opacity:0">
+    <svg class="abs willchange" id="s10-spark" width="160" height="160" style="left:880px;top:618px;opacity:0">
       <g id="s10-sparkg">
         <path d="M80 10 L92 62 L146 60 L100 90 L120 142 L80 110 L40 142 L60 90 L14 60 L68 62 Z" fill="none" stroke="#F26B21" stroke-width="7" stroke-linejoin="round"/>
       </g>
@@ -924,9 +924,9 @@ const MILES=[
   tw('mAm10',sw,1.0,'inout',{x:[0,-300]});
   mBob('mTot10',sw+1.0,hf-0.5,5,2.0,0);mBob('mAm10',sw+1.0,hf-0.5,5,1.8,0.8);
   mHop('mTot10',hf-0.15,52);mHop('mAm10',hf-0.1,52);
-  fx(hf,0.9,'out',p=>{const s=$('s10-spark');
-    s.style.opacity=p<0.75?Math.min(1,p*5)*(1-p/0.78):0;
-    $('s10-sparkg').style.transform=`scale(${0.3+p*0.9}) rotate(${p*40}deg)`;
+  fx(hf,1.1,'lin',p=>{const s=$('s10-spark');
+    s.style.opacity=Math.sin(p*Math.PI);
+    $('s10-sparkg').style.transform=`scale(${0.45+EASE.out(p)*0.75}) rotate(${EASE.out(p)*46}deg)`;
     $('s10-sparkg').style.transformOrigin='80px 80px';});
   mBob('mTot10',hf+0.6,b,6,2.2,0);mBob('mAm10',hf+0.65,b,6,2.0,0.9);
   mHop('mTot10',b-2.4,40);mHop('mAm10',b-2.2,40);
