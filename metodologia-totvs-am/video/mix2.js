@@ -6,7 +6,8 @@ const { existsSync } = require('fs');
 const { SCENES, TOTAL } = require('./timings.js');
 
 const T = Math.round(TOTAL * 100) / 100;
-const narr = SCENES.map((s, i) => ({ file: `n${String(i + 1).padStart(2, '0')}.mp3`, at: Math.round(s.n * 1000) }))
+const narr = SCENES.filter(s => s.file)
+  .map(s => ({ file: s.file + '.mp3', at: Math.round(s.n * 1000) }))
   .filter(nn => {
     const ok = existsSync(__dirname + '/audio/' + nn.file);
     if (!ok) console.warn('AVISO: sem narração', nn.file, '— cena fica só com trilha');

@@ -9,6 +9,7 @@
     --bg:#F6F8FB; --ink:#0B2545; --ink2:#13315C; --mut:#6B7A90;
     --line:#CBD4E1; --linel:#E2E7EF; --acc:#F26B21; --acc2:#FF8A4C; --accd:#D9521A;
     --blue:#4A6FA5; --bluel:#A3B8D6; --bluexl:#E4EBF5; --card:#FFFFFF; --red:#C2362B;
+    --steel:#5E6E86;
     --sans:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono',monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -26,24 +27,23 @@
     background:radial-gradient(130% 120% at 50% 42%, transparent 62%, rgba(11,37,69,.08) 100%)}
   .abs{position:absolute}
 
-  /* ---------- floating elements (lúdico, sutil) ---------- */
   #flo{position:absolute;inset:0;z-index:2;pointer-events:none}
   #flo i{position:absolute;display:block;border-radius:4px;opacity:.16}
   #flo i.c{border-radius:50%}
   #flo i.r{background:transparent!important;border:2.5px solid var(--bluel);border-radius:50%;opacity:.3}
 
-  /* ---------- chrome (vidro) ---------- */
+  /* ---------- chrome ---------- */
   #kicker{position:absolute;top:54px;left:72px;z-index:30;display:flex;align-items:center;gap:14px;
     background:rgba(255,255,255,.66);backdrop-filter:blur(9px);border:1.5px solid rgba(226,231,239,.9);border-radius:999px;
     padding:13px 26px 13px 20px;box-shadow:0 4px 18px rgba(11,37,69,.07)}
-  #kicker .dot{width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(242,107,33,.5)}
+  #kicker .dot{width:12px;height:12px;border-radius:50%;background:var(--acc)}
   #kicker .txt{font-family:var(--mono);font-weight:600;font-size:19px;letter-spacing:.2em;color:var(--ink)}
-  #chapters{position:absolute;top:50px;right:76px;z-index:30;display:flex;gap:20px;
+  #chapters{position:absolute;top:50px;right:76px;z-index:30;display:flex;gap:22px;
     background:rgba(255,255,255,.6);backdrop-filter:blur(9px);border:1.5px solid rgba(226,231,239,.85);
-    border-radius:18px;padding:12px 18px}
+    border-radius:18px;padding:12px 20px}
   #chapters .ch{display:flex;flex-direction:column;gap:7px;align-items:flex-start}
-  #chapters .n{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.08em;color:#9AA7B8}
-  #chapters .bar{width:50px;height:4px;border-radius:2px;background:#D8DFE9;overflow:hidden}
+  #chapters .n{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.1em;color:#9AA7B8}
+  #chapters .bar{width:84px;height:4px;border-radius:2px;background:#D8DFE9;overflow:hidden}
   #chapters .bar i{display:block;width:100%;height:100%;background:var(--acc);transform:scaleX(0);transform-origin:left}
   #chapters .ch.done .n{color:var(--ink2)} #chapters .ch.done .bar i{transform:scaleX(1);background:var(--ink2)}
   #chapters .ch.on .n{color:var(--ink);font-weight:700}
@@ -59,8 +59,6 @@
   h1.big .u{position:relative;display:inline-block}
   h1.big .u i{position:absolute;left:0;bottom:4px;width:100%;height:9px;border-radius:5px;background:var(--acc);
     transform:scaleX(0);transform-origin:left;z-index:-1;overflow:hidden}
-  h1.big .u i::after{content:"";position:absolute;inset:0;transform:translateX(-130%);
-    background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.75) 50%,transparent 80%)}
   .rvl{display:block;overflow:hidden}
   .rvl-in{display:block;transform:translateY(112%)}
   .sub{font-size:26px;color:var(--mut);font-weight:450;line-height:1.5}
@@ -78,49 +76,61 @@
   svg .st{stroke:var(--ink2);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
   svg .sa{stroke:var(--acc);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .tagline{position:absolute;font-family:var(--mono);font-weight:600;font-size:20px;letter-spacing:.16em;color:#56687F}
-  .mas{position:absolute}
-  .mas img{width:100%;display:block;position:relative;z-index:2}
-  .mas .msh{position:absolute;z-index:1;left:12%;right:12%;bottom:-10px;height:20px;border-radius:50%;
-    background:radial-gradient(50% 50% at 50% 50%, rgba(11,37,69,.26), rgba(11,37,69,0) 70%)}
   .willchange{will-change:transform,opacity}
 
-  /* S1/S10 estúdio */
-  .studio{position:absolute;inset:0;background:url('assets/bg-estudio.webp') center/cover}
-  .studio::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(246,248,251,.20),rgba(246,248,251,.04) 40%,rgba(224,233,245,.28))}
-  .plate{position:absolute;display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;
-    border-radius:14px;padding:13px 26px;font-weight:700;font-size:24px;letter-spacing:.06em;
-    box-shadow:0 12px 28px rgba(11,37,69,.28)}
-  .plate small{font-weight:500;font-size:15px;color:var(--bluel);letter-spacing:.14em}
-  .heropanel{position:absolute;left:400px;top:168px;width:1120px;height:452px;
-    border-radius:34px;background:rgba(255,255,255,.42);backdrop-filter:blur(10px);
-    border:1.5px solid rgba(255,255,255,.75);box-shadow:0 24px 60px rgba(11,37,69,.14);overflow:hidden}
+  /* ---------- cold open / cartões de ato ---------- */
+  .navycard{position:absolute;inset:0;background:linear-gradient(135deg,#0B2545 0%,#13315C 70%,#1B4479 100%);z-index:20;overflow:hidden}
+  .navycard .grid{position:absolute;inset:0;opacity:.25;
+    background-image:radial-gradient(rgba(163,184,214,.35) 1.4px, transparent 1.4px);background-size:38px 38px}
+  .ghost{font-family:var(--mono);font-weight:700;color:transparent;-webkit-text-stroke:2px rgba(163,184,214,.4);letter-spacing:.1em;white-space:nowrap}
+  .actnum{font-family:var(--mono);font-weight:700;font-size:300px;color:transparent;-webkit-text-stroke:3px rgba(255,138,76,.55);line-height:1}
+  .acttitle{font-size:84px;font-weight:800;color:#fff;letter-spacing:-.01em;line-height:1.08}
+  .actbar{height:10px;width:220px;border-radius:6px;background:var(--acc);transform-origin:left}
   .blob{position:absolute;opacity:.5;filter:blur(2px)}
-  .spark6{position:absolute;width:0;height:0;pointer-events:none}
-  .spark6 i{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--acc2);opacity:0}
 
-  /* S2 */
+  /* i0 split */
+  .halfp{position:absolute;top:0;bottom:0;width:50%;z-index:8;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
+  .halfp .ht{font-size:64px;font-weight:800;color:#fff;letter-spacing:-.01em}
+  .halfp .hs{font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:.22em;color:rgba(255,255,255,.75)}
+
+  /* a1 tipografia cinética */
+  .kword{position:absolute;font-weight:800;font-size:150px;letter-spacing:-.02em;white-space:nowrap;line-height:1}
+  .kword.outline{color:transparent;-webkit-text-stroke:3px var(--bluel)}
+  .kword.solid{color:var(--ink)}
   .icochip{position:absolute;display:flex;align-items:center;gap:16px;background:var(--card);
     border:2px solid var(--line);border-radius:18px;padding:16px 28px;font-weight:700;font-size:26px;
     color:var(--ink2);box-shadow:0 12px 30px rgba(11,37,69,.10);z-index:6}
   .icochip svg{width:42px;height:42px}
-  .sat{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--bluel);opacity:.85;z-index:4}
-  #s2-spot{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;
-    background:radial-gradient(42% 30% at 50% 74%, transparent 55%, rgba(11,37,69,.10) 100%)}
 
-  /* S3 pilares */
-  .pillar{position:absolute;width:530px;height:242px;z-index:6}
-  .pillar .inner{width:100%;height:100%;padding:28px 34px 24px}
-  .pillar .tag{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.2em;color:var(--acc)}
-  .pillar h3{font-size:28px;font-weight:800;color:var(--ink);margin:10px 0 8px;padding-right:96px}
-  .pillar p{font-size:20px;line-height:1.45;color:var(--mut);font-weight:450}
-  .pillar .ic{position:absolute;right:30px;top:26px;width:64px;height:64px;border-radius:18px;
-    background:var(--bluexl);display:flex;align-items:center;justify-content:center}
-  .pillar .ic svg{width:38px;height:38px}
+  /* a2 PMO/GMO → TMO */
+  .dpanel{position:absolute;top:330px;height:452px;width:560px;border-radius:26px;z-index:5;overflow:hidden;
+    box-shadow:0 24px 60px rgba(11,37,69,.22);padding:40px 48px;color:#fff}
+  .dpanel .pt{font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.22em;opacity:.8}
+  .dpanel h3{font-size:44px;font-weight:800;margin:10px 0 24px}
+  .dpanel .pi{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:550;margin-bottom:16px}
+  .dpanel .pi svg{flex:0 0 22px;width:22px;height:22px}
+  #tmoBadge{position:absolute;left:810px;top:450px;width:300px;height:300px;border-radius:50%;z-index:9;
+    background:#fff;border:10px solid var(--acc);box-shadow:0 26px 70px rgba(242,107,33,.35);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+  #tmoBadge .t1{font-size:84px;font-weight:800;color:var(--ink);line-height:1}
+  #tmoBadge .t2{font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.2em;color:var(--acc)}
+  .apill{position:absolute;z-index:6}
 
-  /* S4 venn */
+  /* a3 chevrons */
+  .chev{position:absolute;width:300px;height:116px;z-index:5;
+    clip-path:polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 30px 50%);
+    display:flex;flex-direction:column;justify-content:center;padding:0 30px 0 52px;color:#fff}
+  .chev .cn{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.18em;opacity:.8}
+  .chev .ct{font-size:21.5px;font-weight:800;line-height:1.2;margin-top:4px}
+  .ribbon{position:absolute;left:150px;right:150px;height:54px;border-radius:12px;z-index:4;color:#fff;
+    display:flex;align-items:center;gap:16px;padding:0 28px;font-family:var(--mono);font-size:16.5px;font-weight:600;letter-spacing:.12em}
+  #a3-blt{position:absolute;left:0;right:0;top:688px;text-align:center;z-index:6;font-size:27px;font-weight:600;color:var(--ink2)}
+  #a3-blt b{color:var(--acc)}
+
+  /* b1 venn + grid */
   .vcirc{position:absolute}
   .vlab{position:absolute;text-align:center;color:#fff;z-index:6}
-  .vlab .t{font-size:34px;font-weight:800;letter-spacing:.01em}
+  .vlab .t{font-size:34px;font-weight:800}
   .vlab .s{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.16em;margin-top:6px;opacity:.85}
   .vitem{position:absolute;display:flex;align-items:center;gap:12px;color:#fff;font-size:19px;font-weight:550;width:300px;white-space:nowrap;z-index:6}
   .vitem svg{flex:0 0 22px;width:22px;height:22px}
@@ -132,8 +142,14 @@
   .vcard .row svg{flex:0 0 20px;width:20px;height:20px}
   .vcard .row.mit{background:#FDE8DC;border-radius:12px;margin:2px 14px;padding:9px 16px;position:relative}
   .odot{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;opacity:.75;z-index:7;box-shadow:0 0 10px rgba(255,255,255,.8)}
+  .gtile{position:absolute;width:520px;height:150px;z-index:6}
+  .gtile .inner{display:flex;align-items:center;gap:24px;padding:28px 32px}
+  .gtile .gi{width:72px;height:72px;border-radius:20px;background:var(--bluexl);display:flex;align-items:center;justify-content:center;flex:0 0 72px}
+  .gtile .gi svg{width:42px;height:42px}
+  .gtile h4{font-size:25px;font-weight:800;color:var(--ink)}
+  .gtile p{font-size:18px;color:var(--mut);margin-top:4px;line-height:1.3}
 
-  /* S5 MIT */
+  /* b2 MIT */
   .mitc{position:absolute;width:330px;height:300px;z-index:6}
   .mitc .inner{width:100%;height:100%;padding:26px 30px;text-align:center}
   .mitc .tag{font-family:var(--mono);font-size:14.5px;font-weight:700;letter-spacing:.18em;color:var(--mut)}
@@ -141,10 +157,8 @@
   .mitc .vz{height:150px;display:flex;align-items:center;justify-content:center}
   .stamp{position:absolute;border:4px solid var(--accd);color:var(--accd);border-radius:12px;
     font-family:var(--mono);font-weight:700;font-size:19px;letter-spacing:.12em;padding:8px 16px;background:rgba(255,255,255,.88);z-index:5}
-  .trail{position:absolute;width:0;height:0}
-  .trail i{position:absolute;border-radius:50%;background:var(--acc);opacity:0}
 
-  /* S6 frentes */
+  /* b3 frentes */
   .fcard{position:absolute;width:472px;height:520px;z-index:6}
   .fcard .inner{width:100%;height:100%;padding:36px 38px 30px}
   .fcard h3{font-size:34px;font-weight:800;color:var(--ink);margin:18px 0 6px}
@@ -153,24 +167,7 @@
   .fcard .viz{margin-top:26px;height:190px;position:relative}
   .fkpi{position:absolute;left:38px;bottom:26px;font-family:var(--mono);font-size:15px;letter-spacing:.14em;color:var(--acc);font-weight:700}
 
-  /* S7 roadmap */
-  #tl-cam{position:absolute;inset:0}
-  .mile{position:absolute;width:0;height:0}
-  .mile .ring{position:absolute;left:-46px;top:-46px;width:92px;height:92px;border-radius:50%;
-    background:var(--card);border:3.5px solid var(--ink2);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 10px 26px rgba(11,37,69,.14);z-index:6}
-  .mile .ring svg{width:46px;height:46px}
-  .mile .lbl{position:absolute;left:-170px;width:340px;text-align:center;font-weight:800;font-size:25px;color:var(--ink)}
-  .mile .idx{position:absolute;left:-170px;width:340px;text-align:center;font-family:var(--mono);font-size:16px;font-weight:600;letter-spacing:.2em;color:var(--mut)}
-  .mile .desc{position:absolute;left:-180px;width:360px;text-align:center;font-size:19px;line-height:1.35;color:var(--mut);font-weight:500}
-  .mile .wk{position:absolute;left:-100px;width:200px;text-align:center;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:.18em;color:#9AA7B8}
-  .herepin{position:absolute;left:-158px;top:-128px;width:316px;text-align:center;background:var(--acc);color:#fff;
-    font-family:var(--mono);font-weight:700;font-size:16px;letter-spacing:.12em;padding:11px 0;border-radius:12px;
-    box-shadow:0 12px 28px rgba(242,107,33,.35);z-index:7}
-  .herepin::after{content:"";position:absolute;left:50%;bottom:-9px;margin-left:-9px;border:9px solid transparent;border-top-color:var(--acc);border-bottom:0}
-  .phband{position:absolute;height:16px;border-radius:8px;opacity:.5}
-
-  /* S8 report */
+  /* a4 report */
   #report{position:absolute;left:150px;top:162px;width:1620px;height:688px}
   #report .rhead{display:flex;justify-content:space-between;align-items:center;padding:26px 48px;border-bottom:1.5px solid var(--linel)}
   #report .rhead .t{font-weight:800;font-size:33px;color:var(--ink)}
@@ -179,7 +176,7 @@
   .kpi{flex:1;background:#F6F8FB;border:1.5px solid var(--linel);border-radius:16px;padding:16px 22px;position:relative;overflow:hidden}
   .kpi .flash{position:absolute;inset:0;background:rgba(242,107,33,.14);opacity:0}
   .kpi .kv{font-size:14.5px}
-  .kpi .kn{font-size:40px;font-weight:800;color:var(--ink);line-height:1.15;letter-spacing:-.01em;position:relative}
+  .kpi .kn{font-size:40px;font-weight:800;color:var(--ink);line-height:1.15;position:relative}
   .kpi .kn small{font-size:22px;color:var(--mut);font-weight:650}
   .donutwrap{width:300px;text-align:center}
   .kv{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:.2em;color:var(--mut)}
@@ -199,7 +196,7 @@
     background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent)}
   .brow .bv{width:52px;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--mut);text-align:right}
 
-  /* S9 matrix */
+  /* a5 matrix */
   .cell{position:absolute;width:150px;height:116px;border-radius:14px}
   .axis{position:absolute;font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:.22em;color:var(--mut)}
   .rdot{position:absolute;width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;
@@ -207,13 +204,18 @@
     box-shadow:0 10px 24px rgba(11,37,69,.3);border:3px solid #fff;z-index:6}
   .beacon{position:absolute;border-radius:50%;border:3px solid var(--acc);z-index:5}
 
-  /* S10 */
+  /* c1 */
   .bigchip{display:flex;align-items:center;gap:20px;background:var(--card);border:2px solid var(--line);
     border-radius:20px;padding:24px 42px;font-weight:800;font-size:33px;color:var(--ink);
     box-shadow:0 16px 40px rgba(11,37,69,.12)}
   .bigchip .num{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--acc);letter-spacing:.1em}
   #confetti{position:absolute;inset:0;z-index:12;pointer-events:none}
   #confetti i{position:absolute;width:12px;height:12px;opacity:0}
+  #c1-band{position:absolute;left:0;right:0;bottom:0;height:300px;z-index:11;
+    background:linear-gradient(135deg,#0B2545,#13315C);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px}
+  #c1-band .b1{font-size:52px;font-weight:800;color:#fff}
+  #c1-band .b1 b{color:var(--acc2)}
+  #c1-band .b2{font-family:var(--mono);font-size:18px;font-weight:600;letter-spacing:.24em;color:var(--bluel)}
 </style>
 </head>
 <body>
@@ -221,257 +223,143 @@
   <div id="wash"></div>
   <div id="flo"></div>
 
-  <div id="kicker"><span class="dot" id="kdot"></span><span class="txt" id="kicker-txt">01 · BOAS-VINDAS</span></div>
+  <div id="kicker"><span class="dot" id="kdot"></span><span class="txt" id="kicker-txt">ONBOARDING</span></div>
   <div id="chapters"></div>
   <div id="footer">
     <span id="footnote"></span>
     <span id="brand">METODOLOGIA TOTVS <b>·</b> PARCERIA A&amp;M <b>·</b> TMO</span>
   </div>
 
-  <!-- ============ S1 BOAS-VINDAS ============ -->
-  <section class="scene" id="s1">
-    <div class="studio" id="s1bg"></div>
-    <div class="heropanel willchange" id="s1-panel">
-      <div class="blob" id="s1-blob1" style="left:-70px;top:-90px;width:300px;height:300px;background:#DCE8F7"></div>
-      <div class="blob" id="s1-blob2" style="right:-80px;bottom:-110px;width:340px;height:340px;background:#FDE8DC"></div>
+  <!-- ============ I0 COLD OPEN ============ -->
+  <section class="scene" id="i0">
+    <div class="blob" id="i0-blob1" style="left:60px;top:620px;width:340px;height:340px;background:#DCE8F7;z-index:3"></div>
+    <div class="blob" id="i0-blob2" style="right:80px;top:140px;width:380px;height:380px;background:#FDE8DC;z-index:3"></div>
+    <div class="abs" style="left:0;right:0;top:300px;text-align:center;z-index:6">
+      <span class="chip willchange" id="i0-chip" style="display:inline-flex"><span class="cdot"></span>ONBOARDING · IMPLANTAÇÃO ERP</span>
     </div>
-    <div class="mas willchange" id="mTot1" data-mascot="totvs" style="left:170px;bottom:150px;width:430px"></div>
-    <div class="mas willchange" id="mAm1" data-mascot="am" style="right:190px;bottom:146px;width:390px"></div>
-    <div class="spark6" id="sp-tot" style="left:385px;bottom:420px"></div>
-    <div class="spark6" id="sp-am" style="right:385px;bottom:430px"></div>
-    <div class="plate willchange" id="p-totvs" style="left:255px;bottom:102px">TOTVS <small>TECNOLOGIA</small></div>
-    <div class="plate willchange" id="p-am" style="right:245px;bottom:102px">ALVAREZ &amp; MARSAL <small>MÉTODO</small></div>
-    <div class="abs" style="left:0;right:0;top:214px;text-align:center;z-index:6">
-      <span class="chip willchange" id="s1-chip" style="display:inline-flex"><span class="cdot"></span>ONBOARDING · IMPLANTAÇÃO ERP</span>
+    <div class="abs" id="i0-title" style="left:0;right:0;top:386px;text-align:center;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="i0-w1"><h1 class="big" style="font-size:104px">Metodologia <span class="u">TOTVS<i id="i0-u"></i></span></h1></span></span>
+      <span class="rvl"><span class="rvl-in" id="i0-w2"><h1 class="big" style="font-size:56px;margin-top:16px;color:var(--ink2)">em parceria com a <b style="color:var(--acc)">A&amp;M</b></h1></span></span>
     </div>
-    <div class="abs" id="s1-title" style="left:0;right:0;top:296px;text-align:center;z-index:6">
-      <h1 class="big" style="font-size:94px">
-        <span class="rvl" style="display:inline-block;vertical-align:bottom"><span class="rvl-in" id="s1-w1">Metodologia&nbsp;</span></span><span class="rvl" style="display:inline-block;vertical-align:bottom"><span class="rvl-in" id="s1-w2"><span class="u">TOTVS<i id="s1-u"></i></span></span></span>
-      </h1>
-      <span class="rvl"><span class="rvl-in" id="s1-w3"><h1 class="big" style="font-size:54px;margin-top:14px;color:var(--ink2)">em parceria com a <b style="color:var(--acc)">A&amp;M</b></h1></span></span>
-    </div>
-    <div class="abs willchange" id="s1-sub" style="left:0;right:0;top:548px;text-align:center;z-index:6">
+    <div class="abs willchange" id="i0-sub" style="left:0;right:0;top:664px;text-align:center;z-index:6">
       <span class="tagline" style="position:static">SEU PONTO DE PARTIDA NO PROJETO</span>
+    </div>
+    <!-- split tecnologia × método -->
+    <div class="halfp willchange" id="i0-hl" style="left:0;background:linear-gradient(160deg,#0B2545,#13315C)">
+      <div class="hs">TECNOLOGIA</div><div class="ht">TOTVS</div>
+      <div class="hs" style="letter-spacing:.14em;opacity:.6">ERP · PLATAFORMA · AMS</div>
+    </div>
+    <div class="halfp willchange" id="i0-hr" style="right:0;background:linear-gradient(200deg,#5E6E86,#4A5A72)">
+      <div class="hs">MÉTODO E GOVERNANÇA</div><div class="ht">ALVAREZ &amp; MARSAL</div>
+      <div class="hs" style="letter-spacing:.14em;opacity:.6">TMO · PMO + GMO</div>
+    </div>
+    <div class="abs willchange" id="i0-x" style="left:50%;top:50%;z-index:9;transform:translate(-50%,-50%)">
+      <div style="width:120px;height:120px;border-radius:50%;background:#fff;box-shadow:0 20px 50px rgba(11,37,69,.3);display:flex;align-items:center;justify-content:center;font-size:54px;font-weight:800;color:var(--acc)">×</div>
+    </div>
+    <!-- navy intro card -->
+    <div class="navycard willchange" id="i0-card">
+      <div class="grid"></div>
+      <div class="ghost willchange" id="i0-g1" style="position:absolute;left:0;top:300px;font-size:200px">ONBOARDING&nbsp;&nbsp;ONBOARDING</div>
+      <div class="abs" style="left:150px;top:560px">
+        <div class="actbar willchange" id="i0-bar"></div>
+        <div class="acttitle willchange" id="i0-t" style="font-size:64px;margin-top:26px">TOTVS <b style="color:var(--acc2)">×</b> ALVAREZ &amp; MARSAL</div>
+        <div class="hs willchange" id="i0-s" style="font-family:var(--mono);font-size:19px;letter-spacing:.26em;color:#A3B8D6;margin-top:18px">IMPLANTAÇÃO ERP · TRANSFORMAÇÃO · PESSOAS</div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ S2 POR QUE MÉTODO ============ -->
-  <section class="scene" id="s2">
-    <div class="abs" id="s2-h" style="left:150px;top:160px;width:1280px;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s2-r1"><h1 class="big">Implantar um ERP não é</h1></span></span>
-      <span class="rvl"><span class="rvl-in" id="s2-r2"><h1 class="big">só <span class="u">trocar de sistema<i id="s2-u"></i></span>.</h1></span></span>
+  <!-- ============ CARTÕES DE ATO ============ -->
+  <section class="scene" id="x1"><div class="navycard" id="x1-c"><div class="grid"></div>
+    <div class="actnum willchange" id="x1-n" style="position:absolute;left:150px;top:220px">01</div>
+    <div class="abs" style="left:156px;top:580px"><div class="actbar willchange" id="x1-b"></div>
+      <div class="acttitle willchange" id="x1-t" style="margin-top:28px">A Metodologia <b style="color:var(--acc2)">A&amp;M</b></div></div>
+  </div></section>
+  <section class="scene" id="x2"><div class="navycard" id="x2-c"><div class="grid"></div>
+    <div class="actnum willchange" id="x2-n" style="position:absolute;left:150px;top:220px">02</div>
+    <div class="abs" style="left:156px;top:580px"><div class="actbar willchange" id="x2-b"></div>
+      <div class="acttitle willchange" id="x2-t" style="margin-top:28px">O Framework <b style="color:var(--acc2)">A&amp;M × TOTVS</b></div></div>
+  </div></section>
+  <section class="scene" id="x3"><div class="navycard" id="x3-c"><div class="grid"></div>
+    <div class="actnum willchange" id="x3-n" style="position:absolute;left:150px;top:220px">03</div>
+    <div class="abs" style="left:156px;top:580px"><div class="actbar willchange" id="x3-b"></div>
+      <div class="acttitle willchange" id="x3-t" style="margin-top:28px">O seu <b style="color:var(--acc2)">papel</b></div></div>
+  </div></section>
+
+  <!-- ============ A1 POR QUE MÉTODO ============ -->
+  <section class="scene" id="a1">
+    <div class="abs" id="a1-h" style="left:150px;top:150px;width:1400px;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="a1-r1"><h1 class="big">Implantar um ERP não é</h1></span></span>
+      <span class="rvl"><span class="rvl-in" id="a1-r2"><h1 class="big">só <span class="u">trocar de sistema<i id="a1-u"></i></span>.</h1></span></span>
     </div>
-    <svg class="abs" id="s2-net" width="1920" height="1080" style="left:0;top:0;z-index:3">
-      <path id="s2-la" fill="none" stroke="#A3B8D6" stroke-width="2.6" stroke-dasharray="9 10" stroke-linecap="round"/>
-      <path id="s2-lb" fill="none" stroke="#A3B8D6" stroke-width="2.6" stroke-dasharray="9 10" stroke-linecap="round"/>
-      <path id="s2-lc" fill="none" stroke="#C9D6E8" stroke-width="2.4" stroke-dasharray="7 9" stroke-linecap="round"/>
-    </svg>
-    <div id="s2-spot"></div>
-    <div class="icochip willchange" id="s2-c1" style="left:270px;top:500px">
+    <div class="kword outline willchange" id="a1-k1" style="top:420px">PROCESSOS — PROCESSOS — PROCESSOS</div>
+    <div class="kword solid willchange" id="a1-k2" style="top:580px">SISTEMAS — SISTEMAS — SISTEMAS —</div>
+    <div class="kword outline willchange" id="a1-k3" style="top:740px">PESSOAS — PESSOAS — PESSOAS — PE</div>
+    <div class="tagline willchange" id="a1-t1" style="left:272px;top:930px">SEM MÉTODO · CADA FRENTE PARA UM LADO</div>
+    <div class="icochip willchange" id="a1-c1" style="left:330px;top:742px">
       <svg viewBox="0 0 48 48"><rect class="st" x="6" y="8" width="15" height="12" rx="3"/><rect class="st" x="27" y="28" width="15" height="12" rx="3"/><path class="sa" d="M13.5 20v8c0 6 4 6 8 6h5"/></svg>
       PROCESSOS
     </div>
-    <div class="icochip willchange" id="s2-c2" style="left:830px;top:556px">
+    <div class="icochip willchange" id="a1-c2" style="left:800px;top:742px">
       <svg viewBox="0 0 48 48"><path class="st" d="M24 6 42 15 24 24 6 15Z"/><path class="st" d="M6 24l18 9 18-9"/><path class="st" d="M6 33l18 9 18-9"/></svg>
       SISTEMAS
     </div>
-    <div class="icochip willchange" id="s2-c3" style="left:1390px;top:490px">
+    <div class="icochip willchange" id="a1-c3" style="left:1270px;top:742px">
       <svg viewBox="0 0 48 48"><circle class="st" cx="17" cy="16" r="7"/><path class="st" d="M4 42c0-8 6-13 13-13s13 5 13 13"/><circle class="st" cx="35" cy="18" r="5.5"/><path class="st" d="M32 27c6 0 12 4 12 12"/></svg>
       PESSOAS
     </div>
     <svg class="abs" width="1920" height="1080" style="left:0;top:0;z-index:4">
-      <path id="s2-path" d="M190 785 H 1730" stroke="#0B2545" stroke-width="5" fill="none" stroke-linecap="round"/>
-      <path id="s2-flow" d="M190 785 H 1730" stroke="#F26B21" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="4 30" opacity="0"/>
-      <path id="s2-arrow" d="M1700 765 L1736 785 L1700 805" stroke="#F26B21" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="a1-path" d="M190 785 H 1730" stroke="#0B2545" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path id="a1-flow" d="M190 785 H 1730" stroke="#F26B21" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="4 30" opacity="0"/>
+      <path id="a1-arrow" d="M1700 765 L1736 785 L1700 805" stroke="#F26B21" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <div class="tagline willchange" id="s2-t1" style="left:272px;top:886px">SEM MÉTODO · CADA FRENTE PARA UM LADO</div>
-    <div class="tagline willchange" id="s2-t2" style="left:272px;top:646px;color:var(--acc)">COM MÉTODO · UM CAMINHO SÓ</div>
+    <div class="tagline willchange" id="a1-t2" style="left:272px;top:646px;color:var(--acc)">COM MÉTODO · UM CAMINHO SÓ</div>
     <div class="abs" style="left:0;right:0;top:880px;text-align:center;z-index:6">
-      <span class="chip willchange" id="s2-pill" style="display:inline-flex;font-size:21px;padding:16px 34px"><span class="cdot"></span>METODOLOGIA TOTVS&nbsp;&nbsp;+&nbsp;&nbsp;GOVERNANÇA TMO · A&amp;M</span>
+      <span class="chip willchange" id="a1-pill" style="display:inline-flex;font-size:21px;padding:16px 34px"><span class="cdot"></span>METODOLOGIA TOTVS&nbsp;&nbsp;+&nbsp;&nbsp;GOVERNANÇA TMO · A&amp;M</span>
     </div>
   </section>
 
-  <!-- ============ S3 METODOLOGIA A&M · TMO ============ -->
-  <section class="scene" id="s3">
-    <div class="abs" id="s3-h" style="left:150px;top:150px;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s3-r1"><h1 class="big" style="font-size:62px">Metodologia <span class="u">A&amp;M<i id="s3-u"></i></span></h1></span></span>
-      <div class="willchange" id="s3-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>TMO · PMO + GMO · ESCRITÓRIO DE TRANSFORMAÇÃO</span></div>
+  <!-- ============ A2 PMO + GMO = TMO ============ -->
+  <section class="scene" id="a2">
+    <div class="abs" id="a2-h" style="left:150px;top:150px;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="a2-r1"><h1 class="big" style="font-size:62px">Duas disciplinas, <span class="u">um escritório<i id="a2-u"></i></span></h1></span></span>
     </div>
-    <div class="mas willchange" id="mAm3" data-mascot="am" style="left:150px;bottom:120px;width:380px"></div>
-    <div class="pillar card willchange" id="s3-p1" style="left:640px;top:352px"><div class="inner">
-      <div class="ctop" style="margin:-28px -34px 22px"></div>
-      <span class="tag">PILAR 01 · PMO</span><h3>Governança e Gestão Integrada</h3>
-      <p id="s3-p1t">Ritos, planos e decisões do projeto em um só lugar.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M8 42h32M6 20h36L24 7Z"/><path class="st" id="s3-i1a" d="M10 42V20M19 42V20M29 42V20M38 42V20"/></svg></span>
-    </div><div class="swp"><i id="s3-sw1"></i></div></div>
-    <div class="pillar card willchange" id="s3-p2" style="left:1230px;top:352px"><div class="inner">
-      <div class="ctop" style="margin:-28px -34px 22px"></div>
-      <span class="tag">PILAR 02 · GMO</span><h3>Mudança e Adoção</h3>
-      <p id="s3-p2t">Pessoas preparadas e engajadas na nova rotina.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><circle class="st" cx="16" cy="15" r="7"/><path class="st" d="M4 40c0-8 5-13 12-13s12 5 12 13"/><path class="sa" id="s3-i2a" d="M33 14l3.5 3.5L44 10" stroke-dasharray="18" stroke-dashoffset="18"/><path class="st" d="M34 27c6 0 10 4 10 13"/></svg></span>
-    </div><div class="swp"><i id="s3-sw2"></i></div></div>
-    <div class="pillar card willchange" id="s3-p3" style="left:640px;top:636px"><div class="inner">
-      <div class="ctop" style="margin:-28px -34px 22px"></div>
-      <span class="tag">PILAR 03 · VALOR</span><h3>Valor, Riscos e Qualidade</h3>
-      <p id="s3-p3t">Resultado protegido em todas as fases do projeto.</p>
-      <span class="ic" style="position:absolute" id="s3-i3w"><svg viewBox="0 0 48 48"><path class="st" d="M24 5l15 6v11c0 10-6 17-15 21-9-4-15-11-15-21V11Z"/><path class="sa" id="s3-i3a" d="M17 23l5 5 9-10" stroke-dasharray="22" stroke-dashoffset="22"/></svg></span>
-    </div><div class="swp"><i id="s3-sw3"></i></div></div>
-    <div class="pillar card willchange" id="s3-p4" style="left:1230px;top:636px"><div class="inner">
-      <div class="ctop" style="margin:-28px -34px 22px"></div>
-      <span class="tag">PILAR 04 · ACELERADORES</span><h3>IA e Automação</h3>
-      <p id="s3-p4t">Velocidade e produtividade com inteligência.</p>
-      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" id="s3-i4a" d="M20 4 8 26h10l-2 18 14-24H19Z"/><circle class="sa" id="s3-i4b" cx="38" cy="12" r="5" stroke-dasharray="32" stroke-dashoffset="32"/></svg></span>
-    </div><div class="swp"><i id="s3-sw4"></i></div></div>
-    <div class="abs willchange" id="s3-tag" style="left:640px;top:930px;z-index:6">
-      <span class="chip" style="font-size:19px"><span class="cdot"></span>METODOLOGIAS · PROCESSOS · MELHORES PRÁTICAS</span>
+    <div class="dpanel willchange" id="a2-pmo" style="left:150px;background:linear-gradient(150deg,#13315C,#0B2545)">
+      <div class="pt">PMO · DISCIPLINA DE GESTÃO</div><h3>Projeto sob controle</h3>
+      <div class="pi willchange" id="a2-l1"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-lk1"/></svg>Planejamento integrado</div>
+      <div class="pi willchange" id="a2-l2"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-lk2"/></svg>Governança e ritos</div>
+      <div class="pi willchange" id="a2-l3"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-lk3"/></svg>Gestão de riscos</div>
+      <div class="pi willchange" id="a2-l4"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-lk4"/></svg>Controle de entregas</div>
     </div>
+    <div class="dpanel willchange" id="a2-gmo" style="right:150px;background:linear-gradient(210deg,#5E6E86,#46556C)">
+      <div class="pt">GMO · PESSOAS E MUDANÇA</div><h3>Gente preparada</h3>
+      <div class="pi willchange" id="a2-r1i"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-rk1"/></svg>Comunicação dirigida</div>
+      <div class="pi willchange" id="a2-r2i"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-rk2"/></svg>Engajamento das áreas</div>
+      <div class="pi willchange" id="a2-r3i"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-rk3"/></svg>Capacitação</div>
+      <div class="pi willchange" id="a2-r4i"><svg viewBox="0 0 22 22"><path d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26" id="a2-rk4"/></svg>Adoção medida · ADKAR</div>
+    </div>
+    <div id="tmoBadge" class="willchange"><div class="t1">TMO</div><div class="t2">PMO + GMO</div></div>
+    <div class="apill willchange" id="a2-p1" style="left:208px;top:906px"><span class="chip" style="font-size:17px;padding:10px 20px"><span class="cdot"></span>CONSOLIDAÇÃO DE DADOS</span></div>
+    <div class="apill willchange" id="a2-p2" style="left:620px;top:906px"><span class="chip" style="font-size:17px;padding:10px 20px"><span class="cdot"></span>DIAGNÓSTICO INICIAL</span></div>
+    <div class="apill willchange" id="a2-p3" style="left:985px;top:906px"><span class="chip" style="font-size:17px;padding:10px 20px"><span class="cdot"></span>COMUNICAÇÃO EXECUTIVA</span></div>
+    <div class="apill willchange" id="a2-p4" style="left:1400px;top:906px"><span class="chip" style="font-size:17px;padding:10px 20px"><span class="cdot"></span>GESTÃO DE PROJETOS</span></div>
   </section>
 
-  <!-- ============ S4 FRAMEWORK ============ -->
-  <section class="scene" id="s4">
-    <div class="abs" id="s4-h" style="left:150px;top:140px;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s4-r1"><h1 class="big" style="font-size:58px">O <span class="u">framework<i id="s4-u"></i></span> da parceria</h1></span></span>
+  <!-- ============ A3 AS 6 FASES ============ -->
+  <section class="scene" id="a3">
+    <div class="abs" id="a3-h" style="left:150px;top:150px;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="a3-r1"><h1 class="big" style="font-size:62px">Seis fases, <span class="u">um ciclo completo<i id="a3-u"></i></span></h1></span></span>
+      <div class="willchange" id="a3-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>PMO + GMO EM TODAS AS FASES</span></div>
     </div>
-    <div class="vcirc willchange" id="s4-ca" style="left:450px;top:320px;width:580px;height:580px;background:#13315C;z-index:4"></div>
-    <div class="vcirc willchange" id="s4-cb" style="left:890px;top:320px;width:580px;height:580px;background:#5E6E86;z-index:3"></div>
-    <div class="odot" id="s4-o1"></div><div class="odot" id="s4-o2"></div><div class="odot" id="s4-o3"></div>
-    <div class="vlab willchange" id="s4-la" style="left:540px;top:352px;width:400px">
-      <div class="t">A&amp;M</div><div class="s">GESTÃO DE TRANSFORMAÇÃO · TMO</div>
-    </div>
-    <div class="vlab willchange" id="s4-lb" style="left:980px;top:352px;width:400px">
-      <div class="t">TOTVS</div><div class="s">GESTÃO TÉCNICA · FUNCIONAL · AMS</div>
-    </div>
-    <div class="vcard willchange" id="s4-cc" style="left:774px;top:430px">
-      <div class="ctop"></div><div class="hd">ATUAÇÃO CONJUNTA</div>
-      <div class="row willchange" id="s4-j1"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk1" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Planejamento e priorização</div>
-      <div class="row mit willchange" id="s4-j2"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk2" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Refinamento de processos (MIT)</div>
-      <div class="row willchange" id="s4-j3"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk3" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Testes integrados e aceites</div>
-      <div class="row willchange" id="s4-j4"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk4" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Preparação para cutover</div>
-      <div class="row willchange" id="s4-j5" style="padding-bottom:24px"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk5" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Estabilização e ondas futuras</div>
-      <div class="swp"><i id="s4-sw"></i></div>
-    </div>
-    <div class="mas willchange" id="mAm4" data-mascot="am" style="left:116px;bottom:140px;width:270px"></div>
-    <div class="mas willchange" id="mTot4" data-mascot="totvs" style="right:116px;bottom:146px;width:290px"></div>
-    <div class="abs willchange" id="s4-tag" style="left:0;right:0;top:924px;text-align:center;z-index:6">
-      <span class="chip" style="font-size:19px"><span class="cdot"></span>UM TIME&nbsp;&nbsp;·&nbsp;&nbsp;METODOLOGIAS INTEGRADAS&nbsp;&nbsp;·&nbsp;&nbsp;VALOR SUSTENTÁVEL</span>
-    </div>
+    <!-- chevrons + bullets injetados -->
+    <div id="a3-blt" class="willchange"></div>
+    <div class="ribbon willchange" id="a3-rb1" style="top:800px;background:linear-gradient(90deg,#0B2545,#13315C)">
+      <span style="color:#FF8A4C">PMO · RECORRENTE</span> GOVERNANÇA E REPORTE EXECUTIVO · RISCOS E DECISÕES · CONTROLE DE ESCOPO</div>
+    <div class="ribbon willchange" id="a3-rb2" style="top:872px;background:linear-gradient(90deg,#4A6FA5,#5E6E86)">
+      <span style="color:#FFD9BC">GMO · RECORRENTE</span> COMUNICAÇÃO DIRECIONADA · INDICADORES eNPS E ADKAR · PLANOS CORRETIVOS</div>
   </section>
 
-  <!-- ============ S5 MIT ============ -->
-  <section class="scene" id="s5">
-    <div class="abs" id="s5-h" style="left:150px;top:150px;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s5-r1"><h1 class="big" style="font-size:62px">O que é um <span class="u">MIT<i id="s5-u"></i></span>?</h1></span></span>
-      <div class="willchange" id="s5-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>MIT · MODELO DE IMPLEMENTAÇÃO TOTVS</span></div>
-    </div>
-    <svg class="abs" width="1920" height="1080" style="left:0;top:0;z-index:3">
-      <path id="s5-f1" class="st" style="stroke-width:4" d="M496 580 H 600"/>
-      <path id="s5-f2" class="st" style="stroke-width:4" d="M932 580 H 1036"/>
-      <path id="s5-f3" class="st" style="stroke-width:4" d="M1368 580 H 1472"/>
-      <circle id="s5-tk2" cx="496" cy="580" r="5" fill="#FF8A4C" opacity="0"/>
-      <circle id="s5-tk1" cx="496" cy="580" r="6" fill="#F26B21" opacity="0"/>
-      <circle id="s5-tok" cx="496" cy="580" r="7" fill="#F26B21"/>
-    </svg>
-    <div class="mitc card willchange" id="s5-m1" style="left:166px;top:430px"><div class="inner">
-      <span class="tag">ETAPA 1</span><h3>Processo do negócio</h3>
-      <div class="vz"><svg viewBox="0 0 110 90" style="width:110px"><rect class="st" x="8" y="8" width="38" height="26" rx="6"/><rect class="st" x="64" y="56" width="38" height="26" rx="6"/><path class="sa" d="M27 34v18c0 8 6 17 20 17h17"/></svg></div>
-    </div><div class="swp"><i id="s5-sw1"></i></div></div>
-    <div class="mitc card willchange" id="s5-m2" style="left:602px;top:430px"><div class="inner" style="position:relative">
-      <div class="ctop" style="margin:-26px -30px 18px"></div>
-      <span class="tag" style="color:var(--acc)">ETAPA 2 · O DOCUMENTO</span><h3>MIT — desenho do processo</h3>
-      <div class="vz"><svg viewBox="0 0 110 100" style="width:96px"><path class="st" d="M22 8h46l20 20v64H22Z"/><path class="st" d="M68 8v20h20"/><path class="st" id="s5-dl1" d="M34 44h42" stroke-dasharray="42" stroke-dashoffset="42"/><path class="st" id="s5-dl2" d="M34 56h42" stroke-dasharray="42" stroke-dashoffset="42"/><path class="st" id="s5-dl3" d="M34 68h28" stroke-dasharray="28" stroke-dashoffset="28"/><text x="34" y="30" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#F26B21">MIT</text></svg></div>
-      <div class="stamp willchange" id="s5-stamp" style="left:118px;top:196px;transform:rotate(-10deg)">VALIDADO</div>
-      <div class="ripple" id="s5-rip" style="left:150px;top:210px;width:60px;height:60px"></div>
-    </div><div class="swp"><i id="s5-sw2"></i></div></div>
-    <div class="mitc card willchange" id="s5-m3" style="left:1038px;top:430px"><div class="inner">
-      <span class="tag">ETAPA 3</span><h3>Validação · key users</h3>
-      <div class="vz"><svg viewBox="0 0 110 90" style="width:104px"><circle class="st" cx="34" cy="28" r="12"/><path class="st" d="M12 76c0-14 9-22 22-22s22 8 22 22"/><path class="sa" id="s5-vk" stroke-width="4" d="M72 40l10 10 18-20" stroke-dasharray="42" stroke-dashoffset="42"/></svg></div>
-    </div><div class="swp"><i id="s5-sw3"></i></div></div>
-    <div class="mitc card willchange" id="s5-m4" style="left:1474px;top:430px"><div class="inner">
-      <span class="tag">ETAPA 4</span><h3>Construção no sistema</h3>
-      <div class="vz"><svg viewBox="0 0 110 90" style="width:86px"><path class="st" id="s5-gear" d="M83 30a17 17 0 0 1-22 16L38 69a8 8 0 0 1-11-11l23-23a17 17 0 0 1 21-21l-8 9 8 8 9-8a17 17 0 0 1 3 7Z"/></svg></div>
-    </div><div class="swp"><i id="s5-sw4"></i></div></div>
-    <div class="abs willchange" id="s5-tag" style="left:0;right:0;top:872px;text-align:center;z-index:6">
-      <span class="tagline" style="position:static">NADA VAI PARA O SISTEMA SEM MIT VALIDADO — REFINAMENTO É COMPROMISSO POR ESCRITO</span>
-    </div>
-  </section>
-
-  <!-- ============ S6 FRENTES ============ -->
-  <section class="scene" id="s6">
-    <div class="abs" id="s6-h" style="left:150px;top:150px;width:1500px;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s6-r1"><h1 class="big" style="font-size:62px">Três frentes no <span class="u">dia a dia<i id="s6-u"></i></span></h1></span></span>
-    </div>
-    <div class="fcard willchange" id="s6-f1" style="left:160px;top:330px">
-      <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
-        <span class="tag">FRENTE 01</span><h3>Refinamento Fluig</h3>
-        <p>Fluxos, aprovações e workflows desenhados com as áreas.</p>
-        <div class="viz">
-          <svg width="396" height="190" viewBox="0 0 396 190">
-            <circle class="st" cx="52" cy="95" r="26"/><rect class="st" x="156" y="69" width="84" height="52" rx="10"/>
-            <path class="st" d="M330 65 L362 95 L330 125 L298 95 Z"/>
-            <path id="s6-l1" class="st" d="M78 95 H156"/><path id="s6-l2" class="st" d="M240 95 H298"/>
-            <circle id="s6-tok" cx="78" cy="95" r="6.5" fill="#F26B21"/>
-            <path id="s6-chk1" class="sa" stroke-width="4" d="M318 97 l8 8 l16 -16" stroke-dasharray="40" stroke-dashoffset="40"/>
-            <circle id="s6-grip" cx="330" cy="95" r="10" fill="none" stroke="#F26B21" stroke-width="3" opacity="0"/>
-          </svg>
-        </div>
-        <div class="fkpi willchange" id="s6-x1"><b id="s6-n1">0</b> FLUXOS PRIORIZADOS</div>
-      </div>
-      <div class="swp"><i id="s6-sw1"></i></div>
-    </div>
-    <div class="fcard willchange" id="s6-f2" style="left:724px;top:330px">
-      <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
-        <span class="tag">FRENTE 02</span><h3>Integrações</h3>
-        <p>Sistemas conversando entre si, de ponta a ponta.</p>
-        <div class="viz">
-          <svg width="396" height="190" viewBox="0 0 396 190">
-            <rect class="st" x="18" y="58" width="118" height="74" rx="12"/><text x="77" y="102" text-anchor="middle" font-family="JetBrains Mono" font-size="19" font-weight="700" fill="#13315C">ERP</text>
-            <rect class="st" x="260" y="58" width="118" height="74" rx="12"/><text x="319" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="700" fill="#13315C">SISTEMAS</text>
-            <text x="319" y="116" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="700" fill="#13315C">LEGADOS</text>
-            <path id="s6-int" d="M136 95 H260" stroke="#4A6FA5" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-            <path id="s6-intf" d="M136 95 H260" stroke="#F26B21" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-dasharray="4 18" opacity="0"/>
-            <circle id="s6-d1" cx="136" cy="88" r="6.5" fill="#F26B21"/>
-            <circle id="s6-d2" cx="260" cy="102" r="6.5" fill="#4A6FA5"/>
-          </svg>
-        </div>
-        <div class="fkpi willchange" id="s6-x2"><b id="s6-n2">0</b> INTERFACES MAPEADAS</div>
-      </div>
-      <div class="swp"><i id="s6-sw2"></i></div>
-    </div>
-    <div class="fcard willchange" id="s6-f3" style="left:1288px;top:330px">
-      <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
-        <span class="tag">FRENTE 03</span><h3>GAPs &amp; Melhorias</h3>
-        <p>O que o padrão não cobre vira análise, decisão e ação.</p>
-        <div class="viz" style="padding-top:6px">
-          <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g1" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Mapear o GAP</div>
-          <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g2" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Analisar &amp; decidir</div>
-          <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g3" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Plano de ação</div>
-        </div>
-        <div class="fkpi willchange" id="s6-x3"><b id="s6-n3">0</b> GAPS EM ANÁLISE</div>
-      </div>
-      <div class="swp"><i id="s6-sw3"></i></div>
-    </div>
-    <div class="abs willchange" id="s6-tag" style="left:0;right:0;top:930px;text-align:center;z-index:6">
-      <span class="tagline" style="position:static">NADA FICA NO AR — TUDO TEM DONO E PRAZO</span>
-    </div>
-  </section>
-
-  <!-- ============ S7 ROADMAP ============ -->
-  <section class="scene" id="s7">
-    <div class="abs" id="s7-h" style="left:150px;top:160px;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s7-r1"><h1 class="big" style="font-size:62px">A <span class="u">jornada<i id="s7-u"></i></span> da implantação</h1></span></span>
-      <div class="willchange" id="s7-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>ERP TOTVS · FASE 1 · ROADMAP 16 SEMANAS</span></div>
-    </div>
-    <div id="tl-cam" class="willchange">
-      <svg class="abs" width="2900" height="1080" style="left:0;top:0">
-        <path id="tl-base" d="M150 660 H 2740" stroke="#CBD4E1" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <path id="tl-prog" d="M150 660 H 2740" stroke="#F26B21" stroke-width="6" fill="none" stroke-linecap="round"/>
-      </svg>
-      <!-- milestones + faixa de fases injetados -->
-    </div>
-  </section>
-
-  <!-- ============ S8 STATUS ============ -->
-  <section class="scene" id="s8">
+  <!-- ============ A4 STATUS ============ -->
+  <section class="scene" id="a4">
     <div class="card willchange" id="report">
       <div class="ctop"></div>
       <div class="rhead">
@@ -533,8 +421,8 @@
     </div>
   </section>
 
-  <!-- ============ S9 RISCOS ============ -->
-  <section class="scene" id="s9">
+  <!-- ============ A5 RISCOS ============ -->
+  <section class="scene" id="a5">
     <div class="abs" id="s9-h" style="left:150px;top:150px;width:1100px;z-index:6">
       <span class="rvl"><span class="rvl-in" id="s9-r1"><h1 class="big" style="font-size:62px">Riscos sob <span class="u">controle<i id="s9-u"></i></span></h1></span></span>
       <p class="sub willchange" id="s9-sub" style="margin-top:16px;width:1020px;font-size:25px">Com dono, plano de mitigação e prazo — e o crítico sobe ao comitê.</p>
@@ -565,29 +453,156 @@
     </div>
   </section>
 
-  <!-- ============ S10 FECHAMENTO ============ -->
-  <section class="scene" id="s10">
-    <div class="studio"></div>
-    <div class="mas willchange" id="mTot10" data-mascot="totvs" style="left:330px;bottom:120px;width:340px"></div>
-    <div class="mas willchange" id="mAm10" data-mascot="am" style="left:1280px;bottom:118px;width:310px"></div>
-    <svg class="abs willchange" id="s10-spark" width="160" height="160" style="left:880px;top:618px;opacity:0;z-index:12">
-      <g id="s10-sparkg">
-        <path d="M80 10 L92 62 L146 60 L100 90 L120 142 L80 110 L40 142 L60 90 L14 60 L68 62 Z" fill="none" stroke="#F26B21" stroke-width="7" stroke-linejoin="round"/>
-      </g>
+  <!-- ============ B1 FRAMEWORK ============ -->
+  <section class="scene" id="b1">
+    <div class="abs" id="s4-h" style="left:150px;top:140px;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="s4-r1"><h1 class="big" style="font-size:58px">O <span class="u">framework<i id="s4-u"></i></span> da parceria</h1></span></span>
+    </div>
+    <div class="vcirc willchange" id="s4-ca" style="left:450px;top:320px;width:580px;height:580px;background:#13315C;z-index:4"></div>
+    <div class="vcirc willchange" id="s4-cb" style="left:890px;top:320px;width:580px;height:580px;background:#5E6E86;z-index:3"></div>
+    <div class="odot" id="s4-o1"></div><div class="odot" id="s4-o2"></div><div class="odot" id="s4-o3"></div>
+    <div class="vlab willchange" id="s4-la" style="left:540px;top:352px;width:400px">
+      <div class="t">A&amp;M</div><div class="s">GESTÃO DE TRANSFORMAÇÃO · TMO</div>
+    </div>
+    <div class="vlab willchange" id="s4-lb" style="left:980px;top:352px;width:400px">
+      <div class="t">TOTVS</div><div class="s">GESTÃO TÉCNICA · FUNCIONAL · AMS</div>
+    </div>
+    <div class="vcard willchange" id="s4-cc" style="left:774px;top:430px">
+      <div class="ctop"></div><div class="hd">ATUAÇÃO CONJUNTA</div>
+      <div class="row willchange" id="s4-j1"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk1" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Planejamento e priorização</div>
+      <div class="row mit willchange" id="s4-j2"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk2" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Refinamento de processos (MIT)</div>
+      <div class="row willchange" id="s4-j3"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk3" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Testes integrados e aceites</div>
+      <div class="row willchange" id="s4-j4"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk4" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Preparação para cutover</div>
+      <div class="row willchange" id="s4-j5" style="padding-bottom:24px"><svg viewBox="0 0 20 20"><path class="sa" id="s4-jk5" stroke-width="3" d="M3 10l5 5 9-10" stroke-dasharray="26" stroke-dashoffset="26"/></svg>Estabilização e ondas futuras</div>
+      <div class="swp"><i id="s4-sw"></i></div>
+    </div>
+    <!-- beat 2: como entregamos (tiles injetados) -->
+    <div class="abs willchange" id="b1-gh" style="left:150px;top:300px;z-index:6;opacity:0">
+      <span class="kv" style="font-size:20px;letter-spacing:.24em;color:var(--acc)">COMO ENTREGAMOS RESULTADOS</span>
+    </div>
+    <div class="abs willchange" id="s4-tag" style="left:0;right:0;top:924px;text-align:center;z-index:6">
+      <span class="chip" style="font-size:19px"><span class="cdot"></span>NOSSO COMPROMISSO · UM TIME&nbsp;&nbsp;·&nbsp;&nbsp;METODOLOGIAS INTEGRADAS&nbsp;&nbsp;·&nbsp;&nbsp;VALOR SUSTENTÁVEL</span>
+    </div>
+  </section>
+
+  <!-- ============ B2 MIT ============ -->
+  <section class="scene" id="b2">
+    <div class="abs" id="s5-h" style="left:150px;top:150px;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="s5-r1"><h1 class="big" style="font-size:62px">O que é um <span class="u">MIT<i id="s5-u"></i></span>?</h1></span></span>
+      <div class="willchange" id="s5-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>MIT · MODELO DE IMPLEMENTAÇÃO TOTVS</span></div>
+    </div>
+    <svg class="abs" width="1920" height="1080" style="left:0;top:0;z-index:3">
+      <path id="s5-f1" class="st" style="stroke-width:4" d="M496 580 H 600"/>
+      <path id="s5-f2" class="st" style="stroke-width:4" d="M932 580 H 1036"/>
+      <path id="s5-f3" class="st" style="stroke-width:4" d="M1368 580 H 1472"/>
+      <circle id="s5-tk2" cx="496" cy="580" r="5" fill="#FF8A4C" opacity="0"/>
+      <circle id="s5-tk1" cx="496" cy="580" r="6" fill="#F26B21" opacity="0"/>
+      <circle id="s5-tok" cx="496" cy="580" r="7" fill="#F26B21"/>
     </svg>
-    <div id="confetti"></div>
-    <div class="abs" id="s10-h" style="left:0;right:0;top:176px;text-align:center;z-index:6">
-      <span class="rvl"><span class="rvl-in" id="s10-r1"><h1 class="big" style="font-size:56px">O seu papel nessa história</h1></span></span>
+    <div class="mitc card willchange" id="s5-m1" style="left:166px;top:430px"><div class="inner">
+      <span class="tag">ETAPA 1</span><h3>Processo do negócio</h3>
+      <div class="vz"><svg viewBox="0 0 110 90" style="width:110px"><rect class="st" x="8" y="8" width="38" height="26" rx="6"/><rect class="st" x="64" y="56" width="38" height="26" rx="6"/><path class="sa" d="M27 34v18c0 8 6 17 20 17h17"/></svg></div>
+    </div><div class="swp"><i id="s5-sw1"></i></div></div>
+    <div class="mitc card willchange" id="s5-m2" style="left:602px;top:430px"><div class="inner" style="position:relative">
+      <div class="ctop" style="margin:-26px -30px 18px"></div>
+      <span class="tag" style="color:var(--acc)">ETAPA 2 · O DOCUMENTO</span><h3>MIT — desenho do processo</h3>
+      <div class="vz"><svg viewBox="0 0 110 100" style="width:96px"><path class="st" d="M22 8h46l20 20v64H22Z"/><path class="st" d="M68 8v20h20"/><path class="st" id="s5-dl1" d="M34 44h42" stroke-dasharray="42" stroke-dashoffset="42"/><path class="st" id="s5-dl2" d="M34 56h42" stroke-dasharray="42" stroke-dashoffset="42"/><path class="st" id="s5-dl3" d="M34 68h28" stroke-dasharray="28" stroke-dashoffset="28"/><text x="34" y="30" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#F26B21">MIT</text></svg></div>
+      <div class="stamp willchange" id="s5-stamp" style="left:118px;top:196px;transform:rotate(-10deg)">VALIDADO</div>
+      <div class="ripple" id="s5-rip" style="left:150px;top:210px;width:60px;height:60px"></div>
+    </div><div class="swp"><i id="s5-sw2"></i></div></div>
+    <div class="mitc card willchange" id="s5-m3" style="left:1038px;top:430px"><div class="inner">
+      <span class="tag">ETAPA 3</span><h3>Validação · key users</h3>
+      <div class="vz"><svg viewBox="0 0 110 90" style="width:104px"><circle class="st" cx="34" cy="28" r="12"/><path class="st" d="M12 76c0-14 9-22 22-22s22 8 22 22"/><path class="sa" id="s5-vk" stroke-width="4" d="M72 40l10 10 18-20" stroke-dasharray="42" stroke-dashoffset="42"/></svg></div>
+    </div><div class="swp"><i id="s5-sw3"></i></div></div>
+    <div class="mitc card willchange" id="s5-m4" style="left:1474px;top:430px"><div class="inner">
+      <span class="tag">ETAPA 4</span><h3>Construção no sistema</h3>
+      <div class="vz"><svg viewBox="0 0 110 90" style="width:86px"><path class="st" d="M83 30a17 17 0 0 1-22 16L38 69a8 8 0 0 1-11-11l23-23a17 17 0 0 1 21-21l-8 9 8 8 9-8a17 17 0 0 1 3 7Z"/></svg></div>
+    </div><div class="swp"><i id="s5-sw4"></i></div></div>
+    <div class="abs willchange" id="s5-tag" style="left:0;right:0;top:872px;text-align:center;z-index:6">
+      <span class="tagline" style="position:static">NADA VAI PARA O SISTEMA SEM MIT VALIDADO — REFINAMENTO É COMPROMISSO POR ESCRITO</span>
     </div>
-    <div class="abs" style="left:50%;top:306px;transform:translateX(-50%);z-index:6">
-      <div class="bigchip willchange" id="s10-c1" style="margin-bottom:22px"><span class="num">01</span>Participe das cerimônias</div>
-      <div class="bigchip willchange" id="s10-c2" style="margin-bottom:22px"><span class="num">02</span>Reporte com transparência</div>
-      <div class="bigchip willchange" id="s10-c3"><span class="num">03</span>Escale cedo — sem medo</div>
+  </section>
+
+  <!-- ============ B3 FRENTES ============ -->
+  <section class="scene" id="b3">
+    <div class="abs" id="s6-h" style="left:150px;top:150px;width:1500px;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="s6-r1"><h1 class="big" style="font-size:62px">Três frentes no <span class="u">dia a dia<i id="s6-u"></i></span></h1></span></span>
     </div>
-    <div class="abs willchange" id="s10-end" style="left:0;right:0;top:320px;text-align:center;z-index:6">
+    <div class="fcard willchange" id="s6-f1" style="left:160px;top:330px">
+      <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
+        <span class="tag">FRENTE 01</span><h3>Refinamento Fluig</h3>
+        <p>Fluxos, aprovações e workflows desenhados com as áreas.</p>
+        <div class="viz">
+          <svg width="396" height="190" viewBox="0 0 396 190">
+            <circle class="st" cx="52" cy="95" r="26"/><rect class="st" x="156" y="69" width="84" height="52" rx="10"/>
+            <path class="st" d="M330 65 L362 95 L330 125 L298 95 Z"/>
+            <path id="s6-l1" class="st" d="M78 95 H156"/><path id="s6-l2" class="st" d="M240 95 H298"/>
+            <circle id="s6-tok" cx="78" cy="95" r="6.5" fill="#F26B21"/>
+            <path id="s6-chk1" class="sa" stroke-width="4" d="M318 97 l8 8 l16 -16" stroke-dasharray="40" stroke-dashoffset="40"/>
+            <circle id="s6-grip" cx="330" cy="95" r="10" fill="none" stroke="#F26B21" stroke-width="3" opacity="0"/>
+          </svg>
+        </div>
+        <div class="fkpi willchange" id="s6-x1"><b id="s6-n1">0</b> FLUXOS PRIORIZADOS</div>
+      </div>
+      <div class="swp"><i id="s6-sw1"></i></div>
+    </div>
+    <div class="fcard willchange" id="s6-f2" style="left:724px;top:330px">
+      <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
+        <span class="tag">FRENTE 02</span><h3>Integrações</h3>
+        <p>Sistemas conversando entre si, de ponta a ponta.</p>
+        <div class="viz">
+          <svg width="396" height="190" viewBox="0 0 396 190">
+            <rect class="st" x="18" y="58" width="118" height="74" rx="12"/><text x="77" y="102" text-anchor="middle" font-family="JetBrains Mono" font-size="19" font-weight="700" fill="#13315C">ERP</text>
+            <rect class="st" x="260" y="58" width="118" height="74" rx="12"/><text x="319" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="700" fill="#13315C">SISTEMAS</text>
+            <text x="319" y="116" text-anchor="middle" font-family="JetBrains Mono" font-size="15" font-weight="700" fill="#13315C">LEGADOS</text>
+            <path id="s6-int" d="M136 95 H260" stroke="#4A6FA5" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path id="s6-intf" d="M136 95 H260" stroke="#F26B21" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-dasharray="4 18" opacity="0"/>
+            <circle id="s6-d1" cx="136" cy="88" r="6.5" fill="#F26B21"/>
+            <circle id="s6-d2" cx="260" cy="102" r="6.5" fill="#4A6FA5"/>
+          </svg>
+        </div>
+        <div class="fkpi willchange" id="s6-x2"><b id="s6-n2">0</b> INTERFACES MAPEADAS</div>
+      </div>
+      <div class="swp"><i id="s6-sw2"></i></div>
+    </div>
+    <div class="fcard willchange" id="s6-f3" style="left:1288px;top:330px">
+      <div class="card inner"><div class="ctop" style="margin:-36px -38px 28px"></div>
+        <span class="tag">FRENTE 03</span><h3>GAPs &amp; Melhorias</h3>
+        <p>O que o padrão não cobre vira análise, decisão e ação.</p>
+        <div class="viz" style="padding-top:6px">
+          <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g1" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Mapear o GAP</div>
+          <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g2" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Analisar &amp; decidir</div>
+          <div class="ritem" style="font-size:20px"><span class="box"><svg viewBox="0 0 18 18"><path id="s6-g3" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>Plano de ação</div>
+        </div>
+        <div class="fkpi willchange" id="s6-x3"><b id="s6-n3">0</b> GAPS EM ANÁLISE</div>
+      </div>
+      <div class="swp"><i id="s6-sw3"></i></div>
+    </div>
+    <div class="abs willchange" id="s6-tag" style="left:0;right:0;top:930px;text-align:center;z-index:6">
+      <span class="tagline" style="position:static">NADA FICA NO AR — TUDO TEM DONO E PRAZO</span>
+    </div>
+  </section>
+
+  <!-- ============ C1 SEU PAPEL ============ -->
+  <section class="scene" id="c1">
+    <div class="blob" id="c1-blob1" style="left:90px;top:160px;width:320px;height:320px;background:#DCE8F7;z-index:3"></div>
+    <div class="blob" id="c1-blob2" style="right:100px;bottom:200px;width:360px;height:360px;background:#FDE8DC;z-index:3"></div>
+    <div class="abs" id="c1-h" style="left:0;right:0;top:186px;text-align:center;z-index:6">
+      <span class="rvl"><span class="rvl-in" id="c1-r1"><h1 class="big" style="font-size:58px">O seu papel nessa história</h1></span></span>
+    </div>
+    <div class="abs" style="left:50%;top:330px;transform:translateX(-50%);z-index:6">
+      <div class="bigchip willchange" id="c1-c1" style="margin-bottom:24px"><span class="num">01</span>Participe das cerimônias</div>
+      <div class="bigchip willchange" id="c1-c2" style="margin-bottom:24px"><span class="num">02</span>Reporte com transparência</div>
+      <div class="bigchip willchange" id="c1-c3"><span class="num">03</span>Escale cedo — sem medo</div>
+    </div>
+    <div class="abs willchange" id="c1-end" style="left:0;right:0;top:300px;text-align:center;z-index:6">
       <div class="tagline" style="position:static">MÉTODO · GOVERNANÇA · PESSOAS</div>
-      <h1 class="big" style="font-size:100px;margin-top:24px">Bem-vindo <span class="u">a bordo<i id="s10-u"></i></span>.</h1>
-      <div style="margin-top:30px"><span class="chip" style="font-size:21px;padding:16px 34px"><span class="cdot"></span>METODOLOGIA TOTVS&nbsp;&nbsp;·&nbsp;&nbsp;PARCERIA A&amp;M</span></div>
+      <h1 class="big" style="font-size:108px;margin-top:28px">Bem-vindo <span class="u">a bordo<i id="c1-u"></i></span>.</h1>
+    </div>
+    <div id="confetti"></div>
+    <div id="c1-band" class="willchange">
+      <div class="b1">METODOLOGIA TOTVS <b>×</b> A&amp;M</div>
+      <div class="b2">TMO · TRANSFORMATION MANAGEMENT OFFICE</div>
     </div>
   </section>
 </div>
@@ -625,16 +640,11 @@ function checkmark(id,t0,dur=0.45,len=24){anims.push({t0,t1:t0+dur,fn:p=>{$(id).
 function hide(...els){els.forEach(e=>{(typeof e==='string'?$(e):e).style.opacity=0;});}
 function reveal(id,t0,dur=0.85){fx(t0,dur,'out5',p=>{$(id).style.transform=`translateY(${(1-p)*112}%)`;});}
 function pushIn(sec,a){fx(a,1.4,'out',p=>{$(sec).style.transform=`scale(${1.016-0.016*p})`;});}
-/* varredura de luz (glow/light sweep) */
 function sweep(id,t0,dur=0.9){fx(t0,dur,'inout',p=>{$(id).style.transform=`translateX(${-220+p*560}%) rotate(14deg)`;});}
-/* sublinhado com shimmer */
 function underline(id,t0){fx(t0,0.55,'out',p=>{$(id).style.transform=`scaleX(${p})`;});
-  fx(t0+0.6,0.7,'inout',p=>{const a=$(id).querySelector?null:null;});
-  anims.push({t0:t0+0.6,t1:t0+1.3,fn:p=>{const el=$(id);const af=el;af.style.setProperty('--x','');
-    el.style.setProperty('overflow','hidden');
+  anims.push({t0:t0+0.6,t1:t0+1.3,fn:p=>{const el=$(id);
     el.firstElementChild||el.insertAdjacentHTML('beforeend','<s style="position:absolute;inset:0;transform:translateX(-130%);background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.75) 50%,transparent 80%)"></s>');
     el.lastElementChild.style.transform=`translateX(${-130+EASE.inout(p)*300}%)`;}});}
-/* anel ripple */
 let ripSeq=0;
 function rippleAt(scene,x,y,t0,size=120,color='var(--acc)'){
   const d=document.createElement('div');d.className='ripple';d.id='rp'+(ripSeq++);
@@ -643,31 +653,14 @@ function rippleAt(scene,x,y,t0,size=120,color='var(--acc)'){
   anims.push({t0,t1:t0+0.7,fn:p=>{const e=EASE.out(p);d.style.opacity=(1-p)*0.8;d.style.transform=`scale(${0.3+e*1.1})`;}});
   return d;
 }
+function blobs(id1,id2,t0,t1){lp(t0,t1,t=>{
+  const m=(f,ph)=>38+Math.sin(t*f+ph)*14;
+  $(id1).style.borderRadius=`${m(0.7,0)}% ${100-m(0.6,1)}% ${m(0.8,2)}% ${100-m(0.5,3)}% / ${m(0.6,4)}% ${m(0.7,5)}% ${100-m(0.6,6)}% ${m(0.8,1)}%`;
+  $(id2).style.borderRadius=`${m(0.5,2)}% ${100-m(0.7,0)}% ${m(0.6,4)}% ${100-m(0.8,2)}% / ${100-m(0.6,3)}% ${m(0.5,1)}% ${m(0.7,5)}% ${m(0.6,0)}%`;
+  $(id1).style.transform=`translate(${Math.sin(t*0.4)*12}px,${Math.cos(t*0.33)*10}px)`;
+  $(id2).style.transform=`translate(${Math.cos(t*0.37)*14}px,${Math.sin(t*0.3)*12}px)`;});}
 
-/* ================= mascotes (imagens originais) ================= */
-document.querySelectorAll('[data-mascot]').forEach(d=>{
-  d.innerHTML=`<div class="msh" id="${d.id}-sh"></div><img id="${d.id}-bob" src="assets/mascote-${d.dataset.mascot}.png" alt="">`;
-});
-function mBob(id,t0,t1,amp,sp,ph){lp(t0,t1,t=>{
-  const y=Math.sin((t+ph)*sp)*amp;
-  $(id+'-bob').style.transform=`translateY(${y}px) rotate(${Math.sin((t+ph)*sp*0.65)*1.1}deg)`;
-  $(id+'-sh').style.transform=`scaleX(${1-y/90})`;$(id+'-sh').style.opacity=1-Math.max(0,y)/40;});}
-function mLean(id,deg,dx,t0,dur=0.6){fx(t0,dur,'back',p=>{$(id).style.transform=`translate(${dx*p}px,0) rotate(${deg*p}deg)`;});}
-function mHop(id,t0,h=46){fx(t0,0.55,'lin',p=>{
-  const y=-Math.abs(Math.sin(p*Math.PI))*h, sq=1-Math.abs(Math.sin(p*Math.PI))*0.04;
-  $(id+'-bob').style.transform=`translateY(${y}px) scaleY(${2-sq})`;
-  $(id+'-sh').style.transform=`scaleX(${1+y/160})`;$(id+'-sh').style.opacity=1+y/90;});}
-function hopIn(id,t0,fromX,dur=1.0){fx(t0,dur,'lin',p=>{
-  const e=EASE.out(p),x=fromX*(1-e),y=-Math.abs(Math.sin(p*Math.PI*2.2))*(1-p)*70;
-  $(id).style.transform=`translate(${x}px,${y}px)`;$(id).style.opacity=Math.min(1,p*4);});}
-
-/* corrige scaleY exagerado no hop */
-function mHop2(id,t0,h=46){fx(t0,0.55,'lin',p=>{
-  const k=Math.abs(Math.sin(p*Math.PI));
-  $(id+'-bob').style.transform=`translateY(${-k*h}px) scaleY(${1+k*0.03})`;
-  $(id+'-sh').style.transform=`scaleX(${1-k*h/160})`;$(id+'-sh').style.opacity=1-k*0.5;});}
-
-/* ================= floating elements (todas as cenas internas) ================= */
+/* ================= floating elements ================= */
 const FLO=[['c','#4A6FA5',10,180,300],['','#A3B8D6',12,520,840],['c','#F26B21',8,1240,210],
   ['r','',22,1660,420],['','#C9D6E8',14,300,760],['c','#6E8FBF',9,1500,880],
   ['','#FDE8DC',13,980,160],['c','#A3B8D6',11,1800,640],['r','',18,760,920],['c','#C9D6E8',8,70,560]];
@@ -683,345 +676,172 @@ lp(0,10000,t=>{FLO.forEach((f,k)=>{
 
 /* ================= anchors ================= */
 const SC={};SCENES.forEach(s=>SC[s.id]=s);
-const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9'],['s10','s10']]
-  .map(([x,y])=>[SC[x].a,SC[y].b]);
-
-/* kicker dot pulsa a cada troca de cena */
+const CHW=[[SC.i0.a,SC.a5.b],[SC.x2.a,SC.b3.b],[SC.x3.a,SC.c1.b]];
 SCENES.forEach(s=>{fx(s.a+0.1,0.8,'out',p=>{$('kdot').style.boxShadow=`0 0 0 ${p*9}px rgba(242,107,33,${(1-p)*0.45})`;});});
 
-/* ================= S1 ================= */
-(()=>{const {a,n,b}=SC.s1;
-  hide('mTot1','mAm1','p-totvs','p-am','s1-chip','s1-sub','s1-panel');pushIn('s1',a);
-  tw('s1bg',a,b-a,'lin',{s:[1.045,1.0]});
-  tw('s1-panel',a+0.25,0.9,'out5',{y:[70,0],o:[0,1]});
-  lp(a+0.3,b,t=>{ /* blobs orgânicos morfando */
-    const m=(f,ph)=>38+Math.sin(t*f+ph)*14;
-    $('s1-blob1').style.borderRadius=`${m(0.7,0)}% ${100-m(0.6,1)}% ${m(0.8,2)}% ${100-m(0.5,3)}% / ${m(0.6,4)}% ${m(0.7,5)}% ${100-m(0.6,6)}% ${m(0.8,1)}%`;
-    $('s1-blob2').style.borderRadius=`${m(0.5,2)}% ${100-m(0.7,0)}% ${m(0.6,4)}% ${100-m(0.8,2)}% / ${100-m(0.6,3)}% ${m(0.5,1)}% ${m(0.7,5)}% ${m(0.6,0)}%`;
-    $('s1-blob1').style.transform=`translate(${Math.sin(t*0.4)*12}px,${Math.cos(t*0.33)*10}px)`;
-    $('s1-blob2').style.transform=`translate(${Math.cos(t*0.37)*14}px,${Math.sin(t*0.3)*12}px)`;});
-  tw('s1-chip',a+0.5,0.7,'back',{y:[-40,0],o:[0,1]});
-  rippleAt('s1',960,242,a+0.95,150);
-  reveal('s1-w1',a+0.85);reveal('s1-w2',a+1.0);reveal('s1-w3',a+1.25);
-  underline('s1-u',a+1.8);
-  tw('s1-sub',a+2.2,0.7,'out',{y:[24,0],o:[0,1]});
-  hopIn('mTot1',a+2.6,-620);hopIn('mAm1',a+3.1,620);
-  /* sparkles ao pousar */
-  ['sp-tot','sp-am'].forEach((sp,si)=>{
-    const box=$(sp);for(let k=0;k<6;k++){const i=document.createElement('i');i.id=sp+'-'+k;box.appendChild(i);}
-    const t0=a+2.6+si*0.5+0.75;
-    fx(t0,0.7,'out',p=>{for(let k=0;k<6;k++){const el=$(sp+'-'+k),an=k/6*Math.PI*2;
-      el.style.opacity=(1-p)*0.9;el.style.transform=`translate(${Math.cos(an)*p*74}px,${Math.sin(an)*p*60}px) scale(${1-p*0.5})`;}});
-  });
-  tw('p-totvs',a+3.7,0.5,'back',{y:[36,0],o:[0,1]});
-  tw('p-am',a+4.2,0.5,'back',{y:[36,0],o:[0,1]});
-  mBob('mTot1',a+3.7,b,6,2.1,0);mBob('mAm1',a+4.2,b,6,1.9,1.1);
-  mHop2('mTot1',n+12.6);mHop2('mAm1',n+12.85);
-  const e=b-0.75;
-  fx(e,0.72,'in2',p=>{['s1-w1','s1-w2','s1-w3'].forEach(i=>{$(i).style.transform=`translateY(${-p*118}%)`;});
-    $('s1-panel').style.opacity=1-p;$('s1-panel').style.transform=`translateY(${-p*90}px)`;});
-  tw('s1-chip',e,0.6,'in2',{y:[0,-160],o:[1,0]});
-  tw('s1-sub',e-0.05,0.5,'in2',{o:[1,0]});
-  tw('mTot1',e+0.05,0.7,'in2',{x:[0,-640],o:[1,0]});
-  tw('mAm1',e+0.05,0.7,'in2',{x:[0,640],o:[1,0]});
-  tw('p-totvs',e,0.5,'in2',{o:[1,0]});tw('p-am',e,0.5,'in2',{o:[1,0]});
+/* ================= I0 COLD OPEN ================= */
+(()=>{const {a,n,b}=SC.i0;
+  hide('i0-chip','i0-sub','i0-hl','i0-hr','i0-x','i0-bar','i0-t','i0-s');
+  pushIn('i0',a);
+  blobs('i0-blob1','i0-blob2',a,b);
+  /* cartão navy de abertura */
+  fx(a,0.6,'out',p=>{$('i0-bar').style.opacity=1;$('i0-bar').style.transform=`scaleX(${p})`;});
+  tw('i0-t',a+0.35,0.7,'out5',{y:[46,0],o:[0,1]});
+  tw('i0-s',a+0.7,0.6,'out',{y:[24,0],o:[0,1]});
+  lp(a,a+4.9,t=>{$('i0-g1').style.transform=`translateX(${-180-(t-a)*46}px)`;$('i0-g1').style.opacity=.5;});
+  tw('i0-card',a+4.2,0.8,'in2',{y:[0,-1130]});
+  /* título na luz */
+  reveal('i0-w1',a+4.7);reveal('i0-w2',a+4.95);
+  underline('i0-u',a+5.6);
+  tw('i0-chip',a+4.5,0.7,'back',{y:[-40,0],o:[0,1]});
+  tw('i0-sub',a+5.9,0.7,'out',{y:[24,0],o:[0,1]});
+  /* split tecnologia × método em "lado a lado" */
+  const sp=n+8.3;
+  tw('i0-hl',sp,0.85,'out5',{x:[-980,0],o:[0,1]});
+  tw('i0-hr',sp,0.85,'out5',{x:[980,0],o:[0,1]});
+  fx(sp+0.7,0.55,'back',p=>{$('i0-x').style.opacity=p;$('i0-x').style.transform=`translate(-50%,-50%) scale(${p}) rotate(${(1-p)*120}deg)`;});
+  rippleAt('i0',960,540,sp+1.15,170);
+  /* painéis saem no fim */
+  const e=b-0.8;
+  tw('i0-hl',e,0.7,'in2',{x:[0,-980]});
+  tw('i0-hr',e,0.7,'in2',{x:[0,980]});
+  tw('i0-x',e-0.05,0.4,'in2',{o:[1,0]});
+  fx(e,0.7,'in2',p=>{['i0-w1','i0-w2'].forEach(i=>$(i).style.transform=`translateY(${-p*118}%)`);
+    $('i0-chip').style.opacity=1-p;$('i0-sub').style.opacity=1-p;});
 })();
 
-/* ================= S2 ================= */
-(()=>{const {a,n,b}=SC.s2;
-  hide('s2-c1','s2-c2','s2-c3','s2-t1','s2-t2','s2-pill','s2-net');
-  pushIn('s2',a);
-  $('s2-arrow').style.opacity=0;
-  /* satélites do caos */
-  const SAT=[[0,'#A3B8D6'],[1,'#6E8FBF'],[2,'#FF8A4C'],[3,'#C9D6E8'],[4,'#4A6FA5'],[5,'#A3B8D6']];
-  SAT.forEach(([k,c])=>{const d=document.createElement('div');d.className='sat';d.id='sat'+k;d.style.background=c;$('s2').appendChild(d);hide(d);});
-  reveal('s2-r1',a+0.35);reveal('s2-r2',a+0.5);
-  underline('s2-u',a+1.3);
-  tw('s2-c1',n+2.6,0.6,'back',{y:[70,0],o:[0,1]});
-  tw('s2-c2',n+3.4,0.6,'back',{y:[70,0],o:[0,1]});
-  tw('s2-c3',n+4.2,0.6,'back',{y:[70,0],o:[0,1]});
-  tw('s2-net',n+4.8,0.6,'out',{o:[0,.95]});
-  SAT.forEach(([k])=>tw('sat'+k,n+4.9+k*0.12,0.4,'out',{o:[0,.85]}));
-  /* rede viva: chips jitter + links recalculados + satélites orbitando caóticos */
-  const C=[[270,500,180,61],[830,556,172,61],[1390,490,158,61]]; /* x,y,w/2 aprox,h/2 */
-  lp(n+2.6,n+12.85,t=>{
-    const j=(f,ph)=>Math.sin(t*f+ph);
-    const off=[[j(3.1,0)*7,j(2.3,1)*9,j(1.7,2)*2.4],[j(2.7,2)*8,j(3.3,0)*8,j(2.1,1)*-2.2],[j(3.4,1)*7,j(2.1,2)*9,j(1.9,0)*2.6]];
-    ['s2-c1','s2-c2','s2-c3'].forEach((id,k)=>{$(id).style.transform=`translate(${off[k][0]}px,${off[k][1]}px) rotate(${off[k][2]}deg)`;});
-    const ctr=C.map((c,k)=>[c[0]+c[2]+off[k][0], c[1]+c[3]+off[k][1]]);
-    const wob=(ph)=>j(0.9,ph)*120;
-    $('s2-la').setAttribute('d',`M${ctr[0][0]} ${ctr[0][1]} Q ${(ctr[0][0]+ctr[1][0])/2+wob(1)} ${(ctr[0][1]+ctr[1][1])/2-140-wob(2)*0.4} ${ctr[1][0]} ${ctr[1][1]}`);
-    $('s2-lb').setAttribute('d',`M${ctr[1][0]} ${ctr[1][1]} Q ${(ctr[1][0]+ctr[2][0])/2-wob(3)} ${(ctr[1][1]+ctr[2][1])/2-150+wob(0)*0.4} ${ctr[2][0]} ${ctr[2][1]}`);
-    $('s2-lc').setAttribute('d',`M${ctr[0][0]} ${ctr[0][1]+30} Q ${(ctr[0][0]+ctr[2][0])/2+wob(2)*0.6} ${820+wob(1)*0.3} ${ctr[2][0]} ${ctr[2][1]+30}`);
-    ['s2-la','s2-lb','s2-lc'].forEach(i=>$(i).style.strokeDashoffset=-t*26);
-    SAT.forEach(([k])=>{const base=ctr[k%3];const an=t*(0.9+k*0.23)+k*2.1;
-      $('sat'+k).style.left=(base[0]+Math.cos(an)*(95+k*14))+'px';
-      $('sat'+k).style.top=(base[1]+Math.sin(an)*(62+k*9))+'px';});
+/* ================= CARTÕES DE ATO ================= */
+function actCard(id){const {a,b}=SC[id];
+  const c=$(id+'-c');
+  tw(c,a,0.55,'out5',{x:[1960,0]});
+  fx(a+0.25,0.5,'out',p=>{$(id+'-n').style.opacity=p;$(id+'-n').style.transform=`translateX(${(1-p)*120}px)`;});
+  fx(a+0.3,0.5,'out',p=>{$(id+'-b').style.transform=`scaleX(${p})`;});
+  tw(id+'-t',a+0.4,0.6,'out5',{y:[50,0],o:[0,1]});
+  tw(c,b-0.6,0.6,'in2',{x:[0,-1960]});
+}
+actCard('x1');actCard('x2');actCard('x3');
+
+/* ================= A1 POR QUE MÉTODO ================= */
+(()=>{const {a,n,b}=SC.a1;
+  hide('a1-c1','a1-c2','a1-c3','a1-t1','a1-t2','a1-pill','a1-k1','a1-k2','a1-k3');
+  pushIn('a1',a);
+  $('a1-arrow').style.opacity=0;
+  reveal('a1-r1',a+0.35);reveal('a1-r2',a+0.5);
+  underline('a1-u',a+1.3);
+  /* tipografia cinética em 3 faixas */
+  tw('a1-k1',n+2.3,0.7,'out',{o:[0,1]});
+  tw('a1-k2',n+2.9,0.7,'out',{o:[0,1]});
+  tw('a1-k3',n+3.5,0.7,'out',{o:[0,1]});
+  lp(n+2.3,n+12.6,t=>{
+    const d=t-n;
+    $('a1-k1').style.left=(-460+d*44)+'px';
+    $('a1-k2').style.left=(120-d*40)+'px';
+    $('a1-k3').style.left=(-680+d*52)+'px';
   });
-  tw('s2-t1',n+4.6,0.5,'out',{o:[0,1]});
-  tw('s2-t1',n+12.0,0.5,'in2',{o:[1,0]});
-  tw('s2-net',n+12.0,0.6,'in2',{o:[.95,0]});
-  SAT.forEach(([k])=>tw('sat'+k,n+12.0,0.5,'in2',{o:[.85,0]}));
-  fx(n+12.2,0.6,'out',p=>{$('s2-spot').style.opacity=p;});
-  draw('s2-path',n+12.9,1.2,'inout');
-  fx(n+13.0,1.1,'inout',p=>{
-    $('s2-c1').style.top=lerp(500,742,p)+'px';$('s2-c2').style.top=lerp(556,742,p)+'px';$('s2-c3').style.top=lerp(490,742,p)+'px';
-    $('s2-c1').style.left=lerp(270,330,p)+'px';$('s2-c2').style.left=lerp(830,800,p)+'px';$('s2-c3').style.left=lerp(1390,1270,p)+'px';
-    $('s2-c1').style.transform='';$('s2-c2').style.transform='';$('s2-c3').style.transform='';
-    const bc=p>0.85?'#F26B21':'';
-    $('s2-c1').style.borderColor=bc;$('s2-c2').style.borderColor=bc;$('s2-c3').style.borderColor=bc;
-  });
-  rippleAt('s2',475,785,n+14.15,110);rippleAt('s2',930,785,n+14.3,110);rippleAt('s2',1398,785,n+14.45,110);
-  tw('s2-arrow',n+14.0,0.4,'out',{o:[0,1]});
-  lp(n+14.1,b-0.9,t=>{$('s2-flow').style.opacity=.9;$('s2-flow').style.strokeDashoffset=-t*46;});
-  tw('s2-t2',n+14.3,0.5,'out',{o:[0,1]});
-  tw('s2-pill',n+16.6,0.7,'back',{y:[46,0],o:[0,1]});
+  tw('a1-t1',n+4.6,0.5,'out',{o:[0,1]});
+  tw('a1-t1',n+11.9,0.5,'in2',{o:[1,0]});
+  /* convergência: faixas saem, linha + chips entram */
+  fx(n+12.3,0.75,'in2',p=>{
+    $('a1-k1').style.opacity=1-p;$('a1-k2').style.opacity=1-p;$('a1-k3').style.opacity=1-p;
+    $('a1-k1').style.transform=`translateY(${p*120}px) scale(${1-p*0.3})`;
+    $('a1-k2').style.transform=`translateY(${-p*40}px) scale(${1-p*0.3})`;
+    $('a1-k3').style.transform=`translateY(${-p*160}px) scale(${1-p*0.3})`;});
+  draw('a1-path',n+12.9,1.2,'inout');
+  tw('a1-c1',n+13.3,0.6,'back',{y:[90,0],o:[0,1]});
+  tw('a1-c2',n+13.5,0.6,'back',{y:[90,0],o:[0,1]});
+  tw('a1-c3',n+13.7,0.6,'back',{y:[90,0],o:[0,1]});
+  rippleAt('a1',475,785,n+14.15,110);rippleAt('a1',930,785,n+14.3,110);rippleAt('a1',1398,785,n+14.45,110);
+  tw('a1-arrow',n+14.1,0.4,'out',{o:[0,1]});
+  lp(n+14.2,b-0.9,t=>{$('a1-flow').style.opacity=.9;$('a1-flow').style.strokeDashoffset=-t*46;});
+  tw('a1-t2',n+14.4,0.5,'out',{o:[0,1]});
+  tw('a1-pill',n+16.6,0.7,'back',{y:[46,0],o:[0,1]});
   const e=b-0.75;
-  fx(e,0.7,'in2',p=>{['s2-r1','s2-r2'].forEach(i=>{$(i).style.transform=`translate(${-p*480}px,0)`;$(i).parentElement.style.opacity=1-p;});});
-  fx(e,0.7,'in2',p=>{['s2-c1','s2-c2','s2-c3'].forEach((i,k)=>{$(i).style.transform=`translate(${-p*(620+k*120)}px,0)`;$(i).style.opacity=1-p;});
-    $('s2-path').style.opacity=1-p;$('s2-arrow').style.opacity=1-p;$('s2-flow').style.opacity=(1-p)*.9;$('s2-spot').style.opacity=1-p;});
-  tw('s2-t2',e,0.5,'in2',{o:[1,0]});
-  tw('s2-pill',e,0.6,'in2',{y:[0,120],o:[1,0]});
+  fx(e,0.7,'in2',p=>{['a1-r1','a1-r2'].forEach(i=>{$(i).style.transform=`translate(${-p*480}px,0)`;$(i).parentElement.style.opacity=1-p;});
+    ['a1-c1','a1-c2','a1-c3'].forEach((i,k)=>{$(i).style.transform=`translate(${-p*(620+k*120)}px,0)`;$(i).style.opacity=1-p;});
+    $('a1-path').style.opacity=1-p;$('a1-arrow').style.opacity=1-p;$('a1-flow').style.opacity=(1-p)*.9;});
+  tw('a1-t2',e,0.5,'in2',{o:[1,0]});
+  tw('a1-pill',e,0.6,'in2',{y:[0,120],o:[1,0]});
 })();
 
-/* ================= S3 TMO · deck de cards ================= */
-(()=>{const {a,n,b,nd}=SC.s3;const f=x=>n+x*nd;
-  hide('mAm3','s3-p1','s3-p2','s3-p3','s3-p4','s3-tag','s3-hc','s3-p1t','s3-p2t','s3-p3t','s3-p4t');
-  pushIn('s3',a);
-  reveal('s3-r1',a+0.3);underline('s3-u',a+1.0);
-  tw('s3-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
-  hopIn('mAm3',a+0.8,-560);
-  mBob('mAm3',a+1.9,b,5,1.9,0);
-  mLean('mAm3',4,24,f(0.24));
-  /* cards saem de um deck central (card stack) */
-  const DECK=[[640,352],[1230,352],[640,636],[1230,636]];
-  const cues=[0.30,0.46,0.62,0.785];
-  ['s3-p1','s3-p2','s3-p3','s3-p4'].forEach((id,k)=>{
-    const [gx,gy]=DECK[k];
-    const dx=1000-gx, dy=560-gy; /* ponto do deck ~(1000,560) */
-    fx(f(cues[k]),0.85,'lin',p=>{const e=EASE.out5(p);
-      $(id).style.opacity=Math.min(1,p*5);
-      $(id).style.transform=`translate(${dx*(1-e)}px,${dy*(1-e)}px) rotate(${(k%2?7:-7)*(1-e)}deg) scale(${0.72+e*0.28})`;});
-    sweep('s3-sw'+(k+1),f(cues[k])+0.8);
-    tw(id+'t',f(cues[k])+0.25,0.45,'out',{y:[14,0],o:[0,1]});
-    lp(f(cues[k])+1.0,b-0.9,t=>{$(id).style.transform=`translateY(${Math.sin((t+k*1.3)*1.5)*4}px) rotate(${Math.sin((t+k)*0.9)*0.4}deg)`;});
-  });
-  /* icon motion por pilar */
-  draw('s3-i1a',f(0.30)+0.5,0.7,'out');                       /* colunas do prédio sobem */
-  checkmark('s3-i2a',f(0.46)+0.55,0.45,18);                    /* check pessoas */
-  checkmark('s3-i3a',f(0.62)+0.55,0.45,22);                    /* check escudo */
-  lp(f(0.62)+1.0,b-1.0,t=>{const k=1+Math.sin(t*2.4)*0.05;$('s3-i3w').style.transform=`scale(${k})`;});
-  fx(f(0.785)+0.5,0.5,'out',p=>{$('s3-i4a').style.stroke=p>0.5?'#F26B21':'#13315C';}); /* raio pisca */
-  checkmark('s3-i4b',f(0.785)+0.6,0.5,32);
-  tw('s3-tag',f(0.94),0.6,'out',{y:[26,0],o:[0,1]});
-  const e=b-0.75;
-  fx(e,0.72,'in2',p=>{['s3-p1','s3-p2','s3-p3','s3-p4'].forEach((i,k)=>{
-    $(i).style.transform=`translate(${p*(640+k*110)}px,0) rotate(${p*4}deg)`;$(i).style.opacity=1-p;});
-    $('s3-r1').style.transform=`translateY(${-p*118}%)`;});
-  tw('s3-hc',e,0.5,'in2',{o:[1,0]});
-  tw('mAm3',e,0.65,'in2',{x:[0,-560],o:[1,0]});
-  tw('s3-tag',e,0.5,'in2',{o:[1,0]});
-})();
-
-/* ================= S4 FRAMEWORK · blobs → círculos ================= */
-(()=>{const {a,n,b,nd}=SC.s4;const f=x=>n+x*nd;
-  const ST=$('s4');
-  const mkitem=(id,x,y,txt)=>{const d=document.createElement('div');d.className='vitem willchange';d.id=id;
-    d.style.left=x+'px';d.style.top=y+'px';
-    d.innerHTML=`<svg viewBox="0 0 22 22"><path id="${id}k" d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26"/></svg>${txt}`;
-    ST.appendChild(d);return d;};
-  const L=[['Governança e gestão (PMO)',508],['Mudança e adoção (GMO)',572],['Valor, riscos e qualidade',636],['Aceleradores e IA',700]]
-    .map(([t,y],i)=>mkitem('s4-a'+i,476,y,t));
-  const R=[['Configuração da solução',508],['Desenvolvimento e custom.',572],['Testes e documentação',636],['Suporte e operação · AMS',700]]
-    .map(([t,y],i)=>mkitem('s4-b'+i,1156,y,t));
-  hide('s4-ca','s4-cb','s4-la','s4-lb','s4-cc','mAm4','mTot4','s4-tag','s4-o1','s4-o2','s4-o3',...L,...R);
-  ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach(i=>hide(i));
-  pushIn('s4',a);
-  reveal('s4-r1',a+0.3);underline('s4-u',a+1.0);
-  /* blobs que viram círculos (morphing shapes) */
-  const morph=(id,t0)=>{
-    tw(id,t0,0.8,'back',{s:[.5,1],o:[0,.97]});
-    fx(t0,1.6,'out',p=>{const w=(ph)=>50-(1-p)*(14*Math.sin(p*9+ph));
-      $(id).style.borderRadius=`${w(0)}% ${w(2)}% ${w(4)}% ${w(1)}% / ${w(3)}% ${w(5)}% ${w(2.5)}% ${w(1.5)}%`;});
-  };
-  morph('s4-ca',a+0.8);morph('s4-cb',a+1.1);
-  tw('s4-la',a+1.6,0.5,'out',{y:[20,0],o:[0,1]});
-  tw('s4-lb',a+1.8,0.5,'out',{y:[20,0],o:[0,1]});
-  /* pontos orbitando os círculos */
-  tw('s4-o1',a+2.2,0.4,'out',{o:[0,.75]});tw('s4-o2',a+2.3,0.4,'out',{o:[0,.75]});tw('s4-o3',a+2.4,0.4,'out',{o:[0,.75]});
-  lp(a+2.2,b-0.9,t=>{
-    const orb=(id,cx,cy,r,sp,ph)=>{$(id).style.left=(cx+Math.cos(t*sp+ph)*r-5)+'px';$(id).style.top=(cy+Math.sin(t*sp+ph)*r*0.99-5)+'px';};
-    orb('s4-o1',740,610,296,0.55,0);orb('s4-o2',1180,610,296,-0.47,2.1);orb('s4-o3',740,610,296,0.55,Math.PI);
-  });
-  hopIn('mAm4',a+1.6,-420);hopIn('mTot4',a+1.9,420);
-  mBob('mAm4',a+2.7,b,4,1.8,0);mBob('mTot4',a+3.0,b,4,2.0,0.9);
-  R.forEach((d,i)=>{tw(d,f(0.12+i*0.055),0.5,'out',{x:[40,0],o:[0,1]});checkmark('s4-b'+i+'k',f(0.12+i*0.055)+0.25,0.4,26);});
-  mLean('mTot4',-4,-20,f(0.10));
-  L.forEach((d,i)=>{tw(d,f(0.44+i*0.035),0.5,'out',{x:[-40,0],o:[0,1]});checkmark('s4-a'+i+'k',f(0.44+i*0.035)+0.25,0.4,26);});
-  mLean('mAm4',4,20,f(0.42));
-  tw('s4-cc',f(0.555),0.8,'back',{y:[120,0],s:[.85,1],o:[0,1]});
-  sweep('s4-sw',f(0.555)+0.85);
-  ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach((id,k)=>{
-    tw(id,f(0.60+k*0.05),0.45,'out',{x:[-26,0],o:[0,1]});
-    checkmark('s4-jk'+(k+1),f(0.60+k*0.05)+0.2,0.4,26);});
-  fx(f(0.64),0.5,'out',p=>{$('s4-j2').style.boxShadow=`0 0 0 ${3*p}px rgba(242,107,33,${.35*p})`;});
-  lp(f(0.70),b-1.0,t=>{const k=.35+Math.sin(t*2.2)*.18;$('s4-j2').style.boxShadow=`0 0 0 3px rgba(242,107,33,${k})`;});
-  tw('s4-tag',f(0.92),0.6,'back',{y:[30,0],o:[0,1]});
+/* ================= A2 PMO + GMO = TMO ================= */
+(()=>{const {a,n,b,nd}=SC.a2;const f=x=>n+x*nd;
+  hide('a2-pmo','a2-gmo','tmoBadge','a2-p1','a2-p2','a2-p3','a2-p4',
+    'a2-l1','a2-l2','a2-l3','a2-l4','a2-r1i','a2-r2i','a2-r3i','a2-r4i');
+  pushIn('a2',a);
+  reveal('a2-r1',a+0.3);underline('a2-u',a+1.0);
+  tw('a2-pmo',f(0.06),0.8,'out5',{x:[-760,0],o:[0,1]});
+  tw('a2-gmo',f(0.30),0.8,'out5',{x:[760,0],o:[0,1]});
+  ['a2-l1','a2-l2','a2-l3','a2-l4'].forEach((id,k)=>{
+    tw(id,f(0.12)+k*0.55,0.45,'out',{x:[-30,0],o:[0,1]});
+    checkmark('a2-lk'+(k+1),f(0.12)+k*0.55+0.2,0.4,26);});
+  ['a2-r1i','a2-r2i','a2-r3i','a2-r4i'].forEach((id,k)=>{
+    tw(id,f(0.36)+k*0.5,0.45,'out',{x:[30,0],o:[0,1]});
+    checkmark('a2-rk'+(k+1),f(0.36)+k*0.5+0.2,0.4,26);});
+  /* painéis apertam, TMO carimba no centro */
+  const sq=f(0.60);
+  fx(sq,0.8,'inout',p=>{
+    $('a2-pmo').style.transform=`translateX(${p*120}px) scale(${1-p*0.06})`;
+    $('a2-gmo').style.transform=`translateX(${-p*120}px) scale(${1-p*0.06})`;});
+  fx(sq+0.5,0.6,'back',p=>{$('tmoBadge').style.opacity=p;$('tmoBadge').style.transform=`scale(${p}) rotate(${(1-p)*-16}deg)`;});
+  rippleAt('a2',960,600,sq+1.0,220);
+  lp(sq+1.2,b-0.9,t=>{$('tmoBadge').style.transform=`scale(${1+Math.sin(t*2.2)*0.015}) rotate(0deg)`;});
+  ['a2-p1','a2-p2','a2-p3','a2-p4'].forEach((id,k)=>tw(id,f(0.76)+k*0.14,0.5,'back',{y:[40,0],o:[0,1]}));
   const e=b-0.78;
-  fx(e,0.74,'in2',p=>{
-    ['s4-ca','s4-la'].forEach(i=>{$(i).style.transform=`translateX(${-p*900}px)`;$(i).style.opacity=1-p;});
-    ['s4-cb','s4-lb'].forEach(i=>{$(i).style.transform=`translateX(${p*900}px)`;$(i).style.opacity=1-p;});
-    ['s4-o1','s4-o2','s4-o3'].forEach(i=>$(i).style.opacity=0);
-    L.forEach(d=>{d.style.transform=`translateX(${-p*900}px)`;d.style.opacity=1-p;});
-    R.forEach(d=>{d.style.transform=`translateX(${p*900}px)`;d.style.opacity=1-p;});
-    $('s4-cc').style.transform=`translateY(${-p*760}px)`;$('s4-cc').style.opacity=1-p;
-    $('s4-r1').style.transform=`translateY(${-p*118}%)`;});
-  tw('mAm4',e,0.6,'in2',{x:[0,-460],o:[1,0]});
-  tw('mTot4',e,0.6,'in2',{x:[0,460],o:[1,0]});
-  tw('s4-tag',e,0.5,'in2',{o:[1,0]});
+  fx(e,0.72,'in2',p=>{
+    $('a2-pmo').style.transform=`translateX(${120-p*1000}px)`;$('a2-pmo').style.opacity=1-p;
+    $('a2-gmo').style.transform=`translateX(${-120+p*1000}px)`;$('a2-gmo').style.opacity=1-p;
+    $('tmoBadge').style.transform=`translateY(${-p*700}px)`;$('tmoBadge').style.opacity=1-p;
+    $('a2-r1').style.transform=`translateY(${-p*118}%)`;
+    ['a2-p1','a2-p2','a2-p3','a2-p4'].forEach(i=>{$(i).style.opacity=1-p;});});
 })();
 
-/* ================= S5 MIT · esteira ================= */
-(()=>{const {a,n,b,nd}=SC.s5;const f=x=>n+x*nd;
-  hide('s5-m1','s5-m2','s5-m3','s5-m4','s5-tag','s5-stamp','s5-hc');
-  pushIn('s5',a);
-  $('s5-tok').style.opacity=0;
-  reveal('s5-r1',a+0.3);underline('s5-u',a+1.0);
-  tw('s5-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
-  const cues=[0.08,0.24,0.52,0.80];
-  ['s5-m1','s5-m2','s5-m3','s5-m4'].forEach((id,k)=>{
-    tw(id,f(cues[k]),0.7,'back',{y:[110,0],o:[0,1]});
-    sweep('s5-sw'+(k+1),f(cues[k])+0.7);
-    lp(f(cues[k])+1.0,b-0.9,t=>{ /* leve tilt 3D (hologram) */
-      $(id).style.transform=`perspective(1100px) rotateY(${Math.sin(t*1.1+k*1.6)*2.2}deg) translateY(${Math.sin(t*1.4+k)*3}px)`;});
+/* ================= A3 AS 6 FASES ================= */
+(()=>{const {a,n,b,nd}=SC.a3;const f=x=>n+x*nd;
+  const ST=$('a3');
+  const PH=[
+    ['01','Planejamento e Mobilização','Governança e papéis · Plano integrado','#0B2545'],
+    ['02','Desenho e Preparação','Escopo e impactos · Capacitação planejada','#13315C'],
+    ['03','Desenvolvimento e Configuração','Backlog e dependências · Qualidade','#1B4479'],
+    ['04','Testes e Validações','Gestão de defeitos · Critérios de aceite','#2A5A96'],
+    ['05','Cutover e Prontidão','Plano de virada · Go / No-go','#4A6FA5'],
+    ['06','Estabilização e Op. Assistida','Operação assistida · Lições aprendidas','#5E6E86'],
+  ];
+  PH.forEach((p,i)=>{
+    const d=document.createElement('div');d.className='chev willchange';d.id='ch'+i;
+    d.style.left=(136+i*278)+'px';d.style.top='470px';d.style.background=`linear-gradient(135deg,${p[3]},${p[3]}E6)`;
+    d.innerHTML=`<div class="cn">FASE ${p[0]}</div><div class="ct">${p[1]}</div>`;
+    ST.appendChild(d);hide(d);
   });
-  draw('s5-f1',f(0.18),0.4,'out');draw('s5-f2',f(0.46),0.4,'out');draw('s5-f3',f(0.74),0.4,'out');
-  /* linhas do documento desenham */
-  checkmark('s5-dl1',f(0.30),0.35,42);checkmark('s5-dl2',f(0.36),0.35,42);checkmark('s5-dl3',f(0.42),0.3,28);
-  checkmark('s5-vk',f(0.60),0.45,42);
-  /* token com rastro */
-  lp(f(0.32),b-0.9,t=>{
-    const seg=Math.floor(((t-n)*0.5)%3),cc=(((t-n)*0.5)%3)-seg;
-    const xs=[[496,600],[932,1036],[1368,1472]][seg];
-    const x=lerp(xs[0],xs[1],cc), vis=(cc<0.06||cc>0.94)?0:1;
-    $('s5-tok').setAttribute('cx',x);$('s5-tok').style.opacity=vis;
-    $('s5-tk1').setAttribute('cx',Math.max(xs[0],x-14));$('s5-tk1').style.opacity=vis*0.5;
-    $('s5-tk2').setAttribute('cx',Math.max(xs[0],x-26));$('s5-tk2').style.opacity=vis*0.25;
+  hide('a3-hc','a3-blt','a3-rb1','a3-rb2');
+  pushIn('a3',a);
+  reveal('a3-r1',a+0.3);underline('a3-u',a+1.0);
+  tw('a3-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
+  const cues=[0.07,0.20,0.345,0.49,0.63,0.77];
+  PH.forEach((p,i)=>{
+    const c=f(cues[i]);
+    tw('ch'+i,c,0.7,'out5',{x:[1800-(136+i*278),0],o:[0,1]});
+    fx(c+0.55,0.4,'out',q=>{$('ch'+i).style.transform=`scale(${1+(1-q)*0.06})`;});
+    /* bullets da fase ativa */
+    fx(c+0.5,0.4,'out',q=>{const bl=$('a3-blt');bl.style.opacity=q;
+      bl.innerHTML=`<b>FASE ${p[0]}</b> — ${p[2]}`;});
+    if(i<5)fx(f(cues[i+1])-0.25,0.22,'in2',q=>{$('a3-blt').style.opacity=1-q;});
+    lp(c+0.95,b-0.9,t=>{$('ch'+i).style.transform=`translateY(${Math.sin(t*1.6+i*0.9)*4}px)`;});
   });
-  /* carimbo com ripple + mini salto do card */
-  fx(f(0.66),0.5,'back',p=>{const s=$('s5-stamp');s.style.opacity=p;
-    s.style.transform=`rotate(${-10+(1-p)*18}deg) scale(${1.6-0.6*p})`;});
-  fx(f(0.66)+0.28,0.5,'out',p=>{const r=$('s5-rip');r.style.opacity=(1-p)*0.8;r.style.transform=`scale(${0.4+p*1.6})`;});
-  tw('s5-tag',f(0.90),0.6,'out',{y:[24,0],o:[0,1]});
-  const e=b-0.75;
-  fx(e,0.72,'in2',p=>{['s5-m1','s5-m2','s5-m3','s5-m4'].forEach((i,k)=>{
-    $(i).style.transform=`translateY(${-p*(700+k*120)}px) rotate(${-p*4}deg)`;$(i).style.opacity=1-p;});
-    ['s5-f1','s5-f2','s5-f3'].forEach(i=>$(i).style.opacity=1-p);
-    $('s5-tok').style.opacity=0;$('s5-tk1').style.opacity=0;$('s5-tk2').style.opacity=0;
-    $('s5-r1').style.transform=`translateY(${-p*118}%)`;});
-  tw('s5-hc',e,0.5,'in2',{o:[1,0]});
-  tw('s5-tag',e,0.5,'in2',{o:[1,0]});
+  tw('a3-rb1',f(0.875),0.65,'out5',{x:[-1700,0],o:[0,1]});
+  tw('a3-rb2',f(0.92),0.65,'out5',{x:[1700,0],o:[0,1]});
+  const e=b-0.78;
+  fx(e,0.72,'in2',p=>{PH.forEach((_,i)=>{$('ch'+i).style.transform=`translateX(${-p*1900}px)`;$('ch'+i).style.opacity=1-p;});
+    $('a3-rb1').style.transform=`translateX(${-p*1800}px)`;$('a3-rb1').style.opacity=1-p;
+    $('a3-rb2').style.transform=`translateX(${p*1800}px)`;$('a3-rb2').style.opacity=1-p;
+    $('a3-blt').style.opacity=0;
+    $('a3-r1').style.transform=`translateY(${-p*118}%)`;});
+  tw('a3-hc',e,0.5,'in2',{o:[1,0]});
 })();
 
-/* ================= S6 FRENTES ================= */
-(()=>{const {a,n,b}=SC.s6;
-  hide('s6-f1','s6-f2','s6-f3','s6-tag','s6-x1','s6-x2','s6-x3');
-  pushIn('s6',a);
-  reveal('s6-r1',a+0.3);underline('s6-u',a+1.1);
-  tw('s6-f1',n+2.3,0.85,'back',{y:[560,0],x:[180,0],r:[6,0],o:[0,1]});
-  tw('s6-f2',n+7.2,0.85,'back',{y:[560,0],x:[120,0],r:[5,0],o:[0,1]});
-  tw('s6-f3',n+12.2,0.85,'back',{y:[560,0],x:[60,0],r:[4,0],o:[0,1]});
-  sweep('s6-sw1',n+3.2);sweep('s6-sw2',n+8.1);sweep('s6-sw3',n+13.1);
-  draw('s6-l1',n+3.3,0.5,'out');draw('s6-l2',n+3.9,0.5,'out');
-  lp(n+3.3,b-0.9,t=>{
-    const c=(t-n-3.3)%2.4/2.4;
-    const x=c<0.5?lerp(78,156,c/0.5):lerp(240,298,(c-0.5)/0.5);
-    $('s6-tok').setAttribute('cx',x);
-    $('s6-tok').style.opacity=(c<0.04||c>0.94||(c>0.46&&c<0.54))?0:1;
-  });
-  checkmark('s6-chk1',n+4.6,0.4,40);
-  fx(n+4.6,0.6,'out',p=>{$('s6-grip').style.opacity=(1-p)*0.9;$('s6-grip').setAttribute('r',10+p*22);});
-  draw('s6-int',n+8.3,0.5,'out');
-  lp(n+8.5,b-0.9,t=>{$('s6-intf').style.opacity=.95;$('s6-intf').style.strokeDashoffset=-t*30;
-    const c=(t-n-8.5)%1.8/1.8;
-    $('s6-d1').setAttribute('cx',136+c*124);$('s6-d2').setAttribute('cx',260-c*124);});
-  checkmark('s6-g1',n+13.3);checkmark('s6-g2',n+14.1);checkmark('s6-g3',n+14.9);
-  /* KPIs contando */
-  const cnt=(id,v,t0)=>{tw('s6-x'+id,t0,0.5,'out',{y:[14,0],o:[0,1]});
-    fx(t0+0.1,0.9,'out',p=>{$('s6-n'+id).textContent=Math.round(v*p);});};
-  cnt(1,12,n+5.2);cnt(2,8,n+10.1);cnt(3,5,n+15.6);
-  tw('s6-tag',n+17.6,0.6,'out',{y:[26,0],o:[0,1]});
-  lp(n+3.4,b-0.9,t=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
-    if(t>n+2.3+k*4.9+0.95)$(i).style.transform=`perspective(1200px) rotateY(${Math.sin(t*0.9+k*2)*1.6}deg) translateY(${Math.sin((t+k)*1.5)*5}px)`;});});
-  const e=b-0.75;
-  fx(e,0.72,'in2',p=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
-    $(i).style.transform=`translate(0px,${-p*(760+k*140)}px) rotate(${-p*5}deg)`;$(i).style.opacity=1-p;});
-    $('s6-r1').style.transform=`translateY(${-p*118}%)`;});
-  tw('s6-tag',e,0.5,'in2',{o:[1,0]});
-})();
-
-/* ================= S7 ROADMAP ================= */
-const MILES=[
-  {t:'Planejamento',d:'Escopo, cronograma e papéis',icon:'<rect class="st" x="8" y="6" width="30" height="36" rx="5"/><path class="st" d="M16 16h14M16 24h14M16 32h8"/><path class="sa" d="M30 31l4 4 7-7"/>'},
-  {t:'Desenho da Solução',d:'Processos do negócio no sistema',icon:'<path class="st" d="M8 38V10a2 2 0 0 1 2-2h22l8 8v22a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2Z"/><path class="st" d="M32 8v8h8"/><path class="sa" d="M15 30l6-6 5 4 7-9"/>'},
-  {t:'Construção',d:'Configuração e desenvolvimento',icon:'<path class="st" d="M39 15a9 9 0 0 1-12 8.5L15 36a4.2 4.2 0 0 1-6-6l12.5-12A9 9 0 0 1 30 6l-4 5 4 4 5-4a9 9 0 0 1 4 4Z"/>'},
-  {t:'Testes Integrados',d:'Validação de ponta a ponta',icon:'<path class="st" d="M19 6v12L8 36a4 4 0 0 0 3.5 6h25A4 4 0 0 0 40 36L29 18V6"/><path class="st" d="M15 6h18"/><path class="sa" d="M14 32h20"/>'},
-  {t:'Capacitação',d:'Usuários prontos para a rotina',icon:'<path class="st" d="M24 8 4 18l20 10 20-10Z"/><path class="st" d="M12 23v10c0 4 24 4 24 0V23"/><path class="sa" d="M44 18v12"/>'},
-  {t:'Virada · Go-live',d:'O sistema entra em produção',icon:'<path class="st" d="M24 4c6 4 9 11 9 18l-4 5h-10l-4-5c0-7 3-14 9-18Z"/><circle class="st" cx="24" cy="17" r="4"/><path class="sa" d="M19 32l-5 10M29 32l5 10M24 33v9"/>'},
-  {t:'Suporte Assistido',d:'Estabilização da operação',icon:'<path class="st" d="M8 28v-4a16 16 0 0 1 32 0v4"/><rect class="st" x="4" y="26" width="9" height="12" rx="4"/><rect class="st" x="35" y="26" width="9" height="12" rx="4"/><path class="sa" d="M40 38c0 4-6 6-12 6"/>'}
-];
-(()=>{const {a,n,b}=SC.s7;
-  const cam=$('tl-cam');
-  const cues=[3.0,7.2,12.0,15.6,19.6,23.6,27.1].map(c=>n+c);
-  const WKS=['SEM 1–2','SEM 3–6','SEM 7–10','SEM 11–13','SEM 14–15','SEM 16','SEM 17+'];
-  /* faixa de fases (gantt sutil) sob a linha */
-  const PH=['#DCE6F3','#C9D6E8','#A3B8D6','#FDE8DC','#C9D6E8','#FFC79E','#DCE6F3'];
-  PH.forEach((c,i)=>{const d=document.createElement('div');d.className='phband';d.id='ph'+i;
-    d.style.left=(150+i*372+(i?0:0))+'px';d.style.width='362px';d.style.top='700px';d.style.background=c;
-    cam.appendChild(d);hide(d);});
-  MILES.forEach((m,i)=>{
-    const x=240+i*372, up=i%2===0;
-    const el=document.createElement('div');el.className='mile';el.id='mi'+i;
-    el.style.left=x+'px';el.style.top='660px';
-    el.innerHTML=`<div class="ring" id="mi${i}r"><svg viewBox="0 0 48 48">${m.icon}</svg></div>
-      <div class="idx" style="top:${up?-182:66}px">ETAPA 0${i+1}</div>
-      <div class="lbl" style="top:${up?-152:96}px">${m.t}</div>
-      <div class="desc" style="top:${up?-114:134}px">${m.d}</div>
-      ${i===3?'':`<div class="wk" style="top:${up?62:-88}px">${WKS[i]}</div>`}
-      ${i===3?'<div class="herepin willchange" id="s7-pin">VOCÊ ESTÁ AQUI · SEM 11–13</div>':''}`;
-    cam.appendChild(el);
-  });
-  hide('s7-hc','s7-pin');for(let i=0;i<7;i++)hide('mi'+i);
-  pushIn('s7',a);
-  reveal('s7-r1',a+0.3);underline('s7-u',a+1.1);
-  tw('s7-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
-  draw('tl-base',a+0.8,1.4,'inout');
-  const P=$('tl-prog'),Lp=P.getTotalLength();P.style.strokeDasharray=Lp;P.style.strokeDashoffset=Lp;
-  cues.forEach((c,i)=>{
-    tw('mi'+i,c,0.65,'back',{s:[0.2,1],o:[0,1]});
-    fx(c+0.1,0.4,'out',p=>{$('mi'+i+'r').style.borderColor=p>0?'#F26B21':'#13315C';$('mi'+i+'r').style.boxShadow=`0 10px 26px rgba(242,107,33,${.18*p})`;});
-    /* ripple no marco + faixa de fase cresce */
-    const rp=rippleAt('s7',0,0,c+0.1,120);
-    cam.appendChild(rp);rp.style.left=(240+i*372-60)+'px';rp.style.top=(660-60)+'px';
-    tw('ph'+i,c+0.15,0.6,'out',{o:[0,.5]});
-    fx(c+0.15,0.7,'out',p=>{$('ph'+i).style.transform=`scaleX(${p})`;$('ph'+i).style.transformOrigin='left';});
-    const x0=i===0?0:(240+(i-1)*372-150),x1=240+i*372-150;
-    anims.push({t0:i===0?a+2.2:cues[i-1]+0.4,t1:c+0.15,fn:p=>{P.style.strokeDashoffset=Lp-(x0+(x1-x0)*EASE.inout(p))/2590*Lp;}});
-  });
-  tw('s7-pin',cues[3]+0.55,0.6,'back',{y:[-30,0],o:[0,1]});
-  lp(cues[3]+1.2,b-0.9,t=>{$('s7-pin').style.transform=`translateY(${Math.sin(t*2.6)*5}px)`;});
-  fx(n+9.5,18.2,'inout',p=>{cam.style.transform=`translateX(${-p*760}px)`;
-    $('s7-h').style.transform=`translateX(${-p*44}px)`;});
-  const e=b-0.75;
-  fx(e,0.72,'in2',p=>{cam.style.transform=`translateX(${-760-p*900}px)`;cam.style.opacity=1-p;
-    $('s7-r1').style.transform=`translateY(${-p*118}%)`;});
-  tw('s7-hc',e,0.5,'in2',{o:[1,0]});
-})();
-
-/* ================= S8 STATUS ================= */
-(()=>{const {a,n,b}=SC.s8;
+/* ================= A4 STATUS ================= */
+(()=>{const {a,n,b}=SC.a4;
   hide('report','s8-tag','s8-fv','s8-fa','s8-fr','s8-p1','s8-p2','s8-kpi1','s8-kpi2','s8-kpi3','s8-kpi4');
-  pushIn('s8',a);
+  pushIn('a4',a);
   tw('report',a+0.4,0.95,'out5',{y:[840,0],o:[0,1]});
   sweep('s8-sw',a+1.35,1.1);
   ['s8-kpi1','s8-kpi2','s8-kpi3','s8-kpi4'].forEach((id,k)=>tw(id,n+3.6+k*0.22,0.55,'back',{y:[34,0],o:[0,1]}));
@@ -1030,7 +850,6 @@ const MILES=[
     $('s8-kn3').innerHTML=Math.round(9*p)+'<small>/16</small>';
     $('s8-kn4').textContent=Math.round(3*p);
   });
-  /* data highlight: flash nos KPIs ao fechar a contagem */
   [1,2,3,4].forEach((i,k)=>fx(n+5.7+k*0.12,0.7,'out',p=>{$('s8-fl'+i).style.opacity=Math.sin(p*Math.PI)*0.9;}));
   fx(n+5.6,1.8,'inout',p=>{
     const v=Math.round(72*p);$('s8-pct').textContent=v+'%';$('s8-kn1').textContent=v+'%';
@@ -1057,8 +876,8 @@ const MILES=[
   tw('s8-tag',e,0.5,'in2',{o:[1,0]});
 })();
 
-/* ================= S9 RISCOS ================= */
-(()=>{const {a,n,b}=SC.s9;
+/* ================= A5 RISCOS ================= */
+(()=>{const {a,n,b}=SC.a5;
   const mx=$('s9-mx');
   const risk=(r,c)=>{const lv=r+c;return lv<=2?'#E4EBF5':lv===3?'#DCE6F3':lv===4?'#FDE8DC':lv===5?'#FFC79E':'#FF9A5C';};
   const cells=[];
@@ -1068,7 +887,7 @@ const MILES=[
     mx.appendChild(d);hide(d);cells.push([r,c]);
   }
   hide('s9-card','s9-tag','s9-sub','s9-kpis');
-  pushIn('s9',a);
+  pushIn('a5',a);
   tw('s9-kpis',n+8.4,0.55,'back',{y:[24,0],o:[0,1]});
   ['0','1','2'].forEach(k=>{
     const d=document.createElement('div');d.className='rdot willchange';d.id='rk'+k;
@@ -1083,16 +902,14 @@ const MILES=[
   reveal('s9-r1',a+0.3);underline('s9-u',a+1.0);
   tw('s9-sub',a+1.1,0.6,'out',{y:[18,0],o:[0,1]});
   for(let r=0;r<4;r++)for(let c=0;c<4;c++)tw(`cx${r}${c}`,n+2.2+(r+c)*0.17,0.45,'out',{s:[.6,1],o:[0,1]});
-  /* onda de brilho diagonal após montar (heatmap animation) */
   fx(n+4.0,1.3,'inout',p=>{for(const[r,c]of cells){
-    const ph=clamp(p*2-( (r+c)/6 )*1.0,0,1), gl=Math.sin(clamp(ph,0,1)*Math.PI);
+    const ph=clamp(p*2-((r+c)/6)*1.0,0,1), gl=Math.sin(clamp(ph,0,1)*Math.PI);
     $(`cx${r}${c}`).style.filter=`brightness(${1+gl*0.09})`;}});
-  /* dots caem com bounce + ripple */
   const drop=(id,t0,x,y)=>{
     fx(t0,0.65,'lin',p=>{const e=EASE.bounce(p);
       $(id).style.opacity=Math.min(1,p*4);
       $(id).style.transform=`translateY(${-(1-e)*140}px) scale(${0.6+Math.min(1,p*2)*0.4})`;});
-    const rp=rippleAt('s9',0,0,t0+0.5,90);
+    const rp=rippleAt('a5',0,0,t0+0.5,90);
     mx.appendChild(rp);rp.style.left=(x-17)+'px';rp.style.top=(y-17)+'px';
   };
   drop('rk0',n+5.6,128,300);drop('rk1',n+6.3,300,172);drop('rk2',n+7.0,520,40);
@@ -1115,65 +932,218 @@ const MILES=[
   tw('s9-tag',e,0.5,'in2',{o:[1,0]});
 })();
 
-/* ================= S10 FECHAMENTO ================= */
-(()=>{const {a,n,b}=SC.s10;
-  hide('mTot10','mAm10','s10-c1','s10-c2','s10-c3','s10-end','s10-spark');
-  pushIn('s10',a);
-  hopIn('mTot10',a+0.5,-760);hopIn('mAm10',a+0.8,760);
-  mBob('mTot10',a+1.7,n+9.9,5,2.0,0);mBob('mAm10',a+1.9,n+9.9,5,1.8,0.8);
-  reveal('s10-r1',a+0.4);
-  tw('s10-c1',n+2.2,0.6,'back',{x:[-90,0],o:[0,1]});
-  tw('s10-c2',n+4.6,0.6,'back',{x:[-90,0],o:[0,1]});
-  tw('s10-c3',n+7.0,0.6,'back',{x:[-90,0],o:[0,1]});
+/* ================= B1 FRAMEWORK + COMO ENTREGAMOS ================= */
+(()=>{const {a,n,b,nd}=SC.b1;const f=x=>n+x*nd;
+  const ST=$('b1');
+  const mkitem=(id,x,y,txt)=>{const d=document.createElement('div');d.className='vitem willchange';d.id=id;
+    d.style.left=x+'px';d.style.top=y+'px';
+    d.innerHTML=`<svg viewBox="0 0 22 22"><path id="${id}k" d="M3 11l5 5 10-11" stroke="#FF8A4C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="26" stroke-dashoffset="26"/></svg>${txt}`;
+    ST.appendChild(d);return d;};
+  const L=[['Governança e gestão (PMO)',508],['Mudança e adoção (GMO)',572],['Valor, riscos e qualidade',636],['Aceleradores e IA',700]]
+    .map(([t,y],i)=>mkitem('s4-a'+i,476,y,t));
+  const R=[['Configuração da solução',508],['Desenvolvimento e custom.',572],['Testes e documentação',636],['Suporte e operação · AMS',700]]
+    .map(([t,y],i)=>mkitem('s4-b'+i,1156,y,t));
+  /* tiles COMO ENTREGAMOS */
+  const G=[
+    ['Foco no Resultado','Entrega orientada a valor e objetivos.','<circle class="st" cx="24" cy="24" r="16"/><circle class="st" cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="3" fill="#F26B21"/>'],
+    ['Risco Controlado','Governança e visibilidade em todas as fases.','<path class="st" d="M24 5l15 6v11c0 10-6 17-15 21-9-4-15-11-15-21V11Z"/><path class="sa" d="M17 23l5 5 9-10"/>'],
+    ['Adoção Sustentável','Mudança gerida para uso efetivo.','<circle class="st" cx="17" cy="16" r="7"/><path class="st" d="M4 42c0-8 5-13 13-13s13 5 13 13"/><path class="sa" d="M33 14l3.5 3.5L44 10"/>'],
+    ['Eficiência e Qualidade','Metodologia e automação para produtividade.','<path class="st" d="M10 38l8-10 7 6 11-16"/><path class="sa" d="M30 16h8v8"/>'],
+    ['Evolução Contínua','Lições aprendidas em todos os projetos.','<path class="st" d="M38 24a14 14 0 1 1-4-10"/><path class="sa" d="M38 8v8h-8"/>'],
+    ['Consultoria Funcional','Oportunidades de melhoria de processos.','<rect class="st" x="8" y="8" width="32" height="32" rx="6"/><path class="st" d="M16 30v-6M24 30V18M32 30v-10"/>'],
+  ];
+  G.forEach((g,i)=>{
+    const d=document.createElement('div');d.className='gtile card willchange';d.id='gt'+i;
+    d.style.left=(150+(i%3)*560)+'px';d.style.top=(386+Math.floor(i/3)*186)+'px';
+    d.innerHTML=`<div class="inner"><span class="gi"><svg viewBox="0 0 48 48">${g[2]}</svg></span><div><h4>${g[0]}</h4><p>${g[1]}</p></div></div>`;
+    ST.appendChild(d);hide(d);
+  });
+  hide('s4-ca','s4-cb','s4-la','s4-lb','s4-cc','s4-tag','s4-o1','s4-o2','s4-o3','b1-gh',...L,...R);
+  ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach(i=>hide(i));
+  pushIn('b1',a);
+  reveal('s4-r1',a+0.3);underline('s4-u',a+1.0);
+  const morph=(id,t0)=>{
+    tw(id,t0,0.8,'back',{s:[.5,1],o:[0,.97]});
+    fx(t0,1.6,'out',p=>{const w=(ph)=>50-(1-p)*(14*Math.sin(p*9+ph));
+      $(id).style.borderRadius=`${w(0)}% ${w(2)}% ${w(4)}% ${w(1)}% / ${w(3)}% ${w(5)}% ${w(2.5)}% ${w(1.5)}%`;});
+  };
+  morph('s4-ca',a+0.8);morph('s4-cb',a+1.1);
+  tw('s4-la',a+1.6,0.5,'out',{y:[20,0],o:[0,1]});
+  tw('s4-lb',a+1.8,0.5,'out',{y:[20,0],o:[0,1]});
+  tw('s4-o1',a+2.2,0.4,'out',{o:[0,.75]});tw('s4-o2',a+2.3,0.4,'out',{o:[0,.75]});tw('s4-o3',a+2.4,0.4,'out',{o:[0,.75]});
+  const SQ=f(0.58); /* início do beat 2 */
+  lp(a+2.2,SQ,t=>{
+    const orb=(id,cx,cy,r,sp,ph)=>{$(id).style.left=(cx+Math.cos(t*sp+ph)*r-5)+'px';$(id).style.top=(cy+Math.sin(t*sp+ph)*r*0.99-5)+'px';};
+    orb('s4-o1',740,610,296,0.55,0);orb('s4-o2',1180,610,296,-0.47,2.1);orb('s4-o3',740,610,296,0.55,Math.PI);
+  });
+  R.forEach((d,i)=>{tw(d,f(0.10+i*0.05),0.5,'out',{x:[40,0],o:[0,1]});checkmark('s4-b'+i+'k',f(0.10+i*0.05)+0.22,0.4,26);});
+  L.forEach((d,i)=>{tw(d,f(0.30+i*0.035),0.5,'out',{x:[-40,0],o:[0,1]});checkmark('s4-a'+i+'k',f(0.30+i*0.035)+0.22,0.4,26);});
+  tw('s4-cc',f(0.40),0.8,'back',{y:[120,0],s:[.85,1],o:[0,1]});
+  sweep('s4-sw',f(0.40)+0.85);
+  ['s4-j1','s4-j2','s4-j3','s4-j4','s4-j5'].forEach((id,k)=>{
+    tw(id,f(0.44+k*0.028),0.45,'out',{x:[-26,0],o:[0,1]});
+    checkmark('s4-jk'+(k+1),f(0.44+k*0.028)+0.2,0.4,26);});
+  fx(f(0.47),0.5,'out',p=>{$('s4-j2').style.boxShadow=`0 0 0 ${3*p}px rgba(242,107,33,${.35*p})`;});
+  /* beat 2: venn sai de cena, grade entra */
+  fx(SQ,0.75,'in2',p=>{
+    ['s4-ca','s4-la','s4-cb','s4-lb','s4-cc'].forEach(i=>{$(i).style.opacity=Math.max(0,.97-p*1.2);});
+    $('s4-ca').style.transform=`translateY(${-p*520}px) scale(${1-p*0.2})`;
+    $('s4-cb').style.transform=`translateY(${-p*560}px) scale(${1-p*0.2})`;
+    $('s4-la').style.transform=`translateY(${-p*520}px)`;$('s4-lb').style.transform=`translateY(${-p*560}px)`;
+    $('s4-cc').style.transform=`translateY(${-p*640}px) scale(${1-p*0.15})`;
+    ['s4-o1','s4-o2','s4-o3'].forEach(i=>$(i).style.opacity=0);
+    L.forEach(d=>{d.style.opacity=Math.max(0,1-p*1.4);d.style.transform=`translateY(${-p*420}px)`;});
+    R.forEach(d=>{d.style.opacity=Math.max(0,1-p*1.4);d.style.transform=`translateY(${-p*460}px)`;});
+  });
+  tw('b1-gh',SQ+0.55,0.5,'out',{y:[20,0],o:[0,1]});
+  G.forEach((_,i)=>{tw('gt'+i,SQ+0.65+i*0.12,0.6,'back',{y:[70,0],o:[0,1]});sweep2('gt'+i,SQ+0.65+i*0.12+0.55);});
+  function sweep2(id,t0){const card=$(id);
+    const sw=document.createElement('div');sw.className='swp';sw.innerHTML='<i></i>';card.appendChild(sw);
+    const bar=sw.firstElementChild;
+    fx(t0,0.8,'inout',p=>{bar.style.transform=`translateX(${-220+p*560}%) rotate(14deg)`;});}
+  tw('s4-tag',f(0.90),0.6,'back',{y:[30,0],o:[0,1]});
+  const e=b-0.78;
+  fx(e,0.72,'in2',p=>{G.forEach((_,i)=>{$('gt'+i).style.transform=`translateY(${-p*(620+i*60)}px)`;$('gt'+i).style.opacity=1-p;});
+    $('b1-gh').style.opacity=1-p;
+    $('s4-r1').style.transform=`translateY(${-p*118}%)`;});
+  tw('s4-tag',e,0.5,'in2',{o:[1,0]});
+})();
+
+/* ================= B2 MIT ================= */
+(()=>{const {a,n,b,nd}=SC.b2;const f=x=>n+x*nd;
+  hide('s5-m1','s5-m2','s5-m3','s5-m4','s5-tag','s5-stamp','s5-hc');
+  pushIn('b2',a);
+  $('s5-tok').style.opacity=0;
+  reveal('s5-r1',a+0.3);underline('s5-u',a+1.0);
+  tw('s5-hc',a+1.2,0.6,'out',{y:[22,0],o:[0,1]});
+  const cues=[0.08,0.24,0.52,0.80];
+  ['s5-m1','s5-m2','s5-m3','s5-m4'].forEach((id,k)=>{
+    tw(id,f(cues[k]),0.7,'back',{y:[110,0],o:[0,1]});
+    sweep('s5-sw'+(k+1),f(cues[k])+0.7);
+    lp(f(cues[k])+1.0,b-0.9,t=>{
+      $(id).style.transform=`perspective(1100px) rotateY(${Math.sin(t*1.1+k*1.6)*2.2}deg) translateY(${Math.sin(t*1.4+k)*3}px)`;});
+  });
+  draw('s5-f1',f(0.18),0.4,'out');draw('s5-f2',f(0.46),0.4,'out');draw('s5-f3',f(0.74),0.4,'out');
+  checkmark('s5-dl1',f(0.30),0.35,42);checkmark('s5-dl2',f(0.36),0.35,42);checkmark('s5-dl3',f(0.42),0.3,28);
+  checkmark('s5-vk',f(0.60),0.45,42);
+  lp(f(0.32),b-0.9,t=>{
+    const seg=Math.floor(((t-n)*0.5)%3),cc=(((t-n)*0.5)%3)-seg;
+    const xs=[[496,600],[932,1036],[1368,1472]][seg];
+    const x=lerp(xs[0],xs[1],cc), vis=(cc<0.06||cc>0.94)?0:1;
+    $('s5-tok').setAttribute('cx',x);$('s5-tok').style.opacity=vis;
+    $('s5-tk1').setAttribute('cx',Math.max(xs[0],x-14));$('s5-tk1').style.opacity=vis*0.5;
+    $('s5-tk2').setAttribute('cx',Math.max(xs[0],x-26));$('s5-tk2').style.opacity=vis*0.25;
+  });
+  fx(f(0.66),0.5,'back',p=>{const s=$('s5-stamp');s.style.opacity=p;
+    s.style.transform=`rotate(${-10+(1-p)*18}deg) scale(${1.6-0.6*p})`;});
+  fx(f(0.66)+0.28,0.5,'out',p=>{const r=$('s5-rip');r.style.opacity=(1-p)*0.8;r.style.transform=`scale(${0.4+p*1.6})`;});
+  tw('s5-tag',f(0.90),0.6,'out',{y:[24,0],o:[0,1]});
+  const e=b-0.75;
+  fx(e,0.72,'in2',p=>{['s5-m1','s5-m2','s5-m3','s5-m4'].forEach((i,k)=>{
+    $(i).style.transform=`translateY(${-p*(700+k*120)}px) rotate(${-p*4}deg)`;$(i).style.opacity=1-p;});
+    ['s5-f1','s5-f2','s5-f3'].forEach(i=>$(i).style.opacity=1-p);
+    $('s5-tok').style.opacity=0;$('s5-tk1').style.opacity=0;$('s5-tk2').style.opacity=0;
+    $('s5-r1').style.transform=`translateY(${-p*118}%)`;});
+  tw('s5-hc',e,0.5,'in2',{o:[1,0]});
+  tw('s5-tag',e,0.5,'in2',{o:[1,0]});
+})();
+
+/* ================= B3 FRENTES ================= */
+(()=>{const {a,n,b}=SC.b3;
+  hide('s6-f1','s6-f2','s6-f3','s6-tag','s6-x1','s6-x2','s6-x3');
+  pushIn('b3',a);
+  reveal('s6-r1',a+0.3);underline('s6-u',a+1.1);
+  tw('s6-f1',n+2.3,0.85,'back',{y:[560,0],x:[180,0],r:[6,0],o:[0,1]});
+  tw('s6-f2',n+7.2,0.85,'back',{y:[560,0],x:[120,0],r:[5,0],o:[0,1]});
+  tw('s6-f3',n+12.2,0.85,'back',{y:[560,0],x:[60,0],r:[4,0],o:[0,1]});
+  sweep('s6-sw1',n+3.2);sweep('s6-sw2',n+8.1);sweep('s6-sw3',n+13.1);
+  draw('s6-l1',n+3.3,0.5,'out');draw('s6-l2',n+3.9,0.5,'out');
+  lp(n+3.3,b-0.9,t=>{
+    const c=(t-n-3.3)%2.4/2.4;
+    const x=c<0.5?lerp(78,156,c/0.5):lerp(240,298,(c-0.5)/0.5);
+    $('s6-tok').setAttribute('cx',x);
+    $('s6-tok').style.opacity=(c<0.04||c>0.94||(c>0.46&&c<0.54))?0:1;
+  });
+  checkmark('s6-chk1',n+4.6,0.4,40);
+  fx(n+4.6,0.6,'out',p=>{$('s6-grip').style.opacity=(1-p)*0.9;$('s6-grip').setAttribute('r',10+p*22);});
+  draw('s6-int',n+8.3,0.5,'out');
+  lp(n+8.5,b-0.9,t=>{$('s6-intf').style.opacity=.95;$('s6-intf').style.strokeDashoffset=-t*30;
+    const c=(t-n-8.5)%1.8/1.8;
+    $('s6-d1').setAttribute('cx',136+c*124);$('s6-d2').setAttribute('cx',260-c*124);});
+  checkmark('s6-g1',n+13.3);checkmark('s6-g2',n+14.1);checkmark('s6-g3',n+14.9);
+  const cnt=(id,v,t0)=>{tw('s6-x'+id,t0,0.5,'out',{y:[14,0],o:[0,1]});
+    fx(t0+0.1,0.9,'out',p=>{$('s6-n'+id).textContent=Math.round(v*p);});};
+  cnt(1,12,n+5.2);cnt(2,8,n+10.1);cnt(3,5,n+15.6);
+  tw('s6-tag',n+17.6,0.6,'out',{y:[26,0],o:[0,1]});
+  lp(n+3.4,b-0.9,t=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
+    if(t>n+2.3+k*4.9+0.95)$(i).style.transform=`perspective(1200px) rotateY(${Math.sin(t*0.9+k*2)*1.6}deg) translateY(${Math.sin((t+k)*1.5)*5}px)`;});});
+  const e=b-0.75;
+  fx(e,0.72,'in2',p=>{['s6-f1','s6-f2','s6-f3'].forEach((i,k)=>{
+    $(i).style.transform=`translate(0px,${-p*(760+k*140)}px) rotate(${-p*5}deg)`;$(i).style.opacity=1-p;});
+    $('s6-r1').style.transform=`translateY(${-p*118}%)`;});
+  tw('s6-tag',e,0.5,'in2',{o:[1,0]});
+})();
+
+/* ================= C1 SEU PAPEL ================= */
+(()=>{const {a,n,b}=SC.c1;
+  hide('c1-c1','c1-c2','c1-c3','c1-end','c1-band');
+  pushIn('c1',a);
+  blobs('c1-blob1','c1-blob2',a,b);
+  reveal('c1-r1',a+0.4);
+  tw('c1-c1',n+2.2,0.6,'back',{x:[-90,0],o:[0,1]});
+  rippleAt('c1',620,392,n+2.75,90);
+  tw('c1-c2',n+4.6,0.6,'back',{x:[-90,0],o:[0,1]});
+  rippleAt('c1',620,480,n+5.15,90);
+  tw('c1-c3',n+7.0,0.6,'back',{x:[-90,0],o:[0,1]});
+  rippleAt('c1',620,568,n+7.55,90);
   const sw=n+10.4;
-  fx(sw,0.5,'in2',p=>{$('s10-r1').style.transform=`translateY(${-p*118}%)`;});
-  fx(sw,0.55,'in2',p=>{['s10-c1','s10-c2','s10-c3'].forEach((i,k)=>{$(i).style.transform=`translateY(${-p*(420+k*60)}px)`;$(i).style.opacity=1-p;});});
-  tw('s10-end',sw+0.55,0.85,'out5',{y:[70,0],o:[0,1]});
-  underline('s10-u',sw+1.5);
+  fx(sw,0.5,'in2',p=>{$('c1-r1').style.transform=`translateY(${-p*118}%)`;});
+  fx(sw,0.55,'in2',p=>{['c1-c1','c1-c2','c1-c3'].forEach((i,k)=>{$(i).style.transform=`translateY(${-p*(420+k*60)}px)`;$(i).style.opacity=1-p;});});
+  tw('c1-end',sw+0.55,0.85,'out5',{y:[70,0],o:[0,1]});
+  underline('c1-u',sw+1.5);
+  /* confete em "juntas" */
   const hf=n+15.1;
-  tw('mTot10',sw,1.0,'inout',{x:[0,300]});
-  tw('mAm10',sw,1.0,'inout',{x:[0,-300]});
-  mBob('mTot10',sw+1.0,hf-0.5,5,2.0,0);mBob('mAm10',sw+1.0,hf-0.5,5,1.8,0.8);
-  mHop2('mTot10',hf-0.15,52);mHop2('mAm10',hf-0.1,52);
-  fx(hf,1.1,'lin',p=>{const s=$('s10-spark');
-    s.style.opacity=Math.sin(p*Math.PI);
-    $('s10-sparkg').style.transform=`scale(${0.45+EASE.out(p)*0.75}) rotate(${EASE.out(p)*46}deg)`;
-    $('s10-sparkg').style.transformOrigin='80px 80px';});
-  /* confete (particle system) */
   const CONF=['#F26B21','#FF8A4C','#4A6FA5','#A3B8D6','#13315C','#FDE8DC'];
   const cbox=$('confetti');
-  for(let k=0;k<16;k++){const i=document.createElement('i');i.id='cf'+k;
+  for(let k=0;k<18;k++){const i=document.createElement('i');i.id='cf'+k;
     i.style.background=CONF[k%CONF.length];i.style.borderRadius=k%3?'3px':'50%';cbox.appendChild(i);}
-  fx(hf+0.05,1.5,'lin',p=>{for(let k=0;k<16;k++){
-    const an=(k/16)*Math.PI*2+0.4, sp=210+(k%5)*48, e=EASE.out(p);
-    const x=960+Math.cos(an)*sp*e, y=690+Math.sin(an)*sp*e*0.8+p*p*300;
+  fx(hf,1.6,'lin',p=>{for(let k=0;k<18;k++){
+    const an=(k/18)*Math.PI*2+0.4, sp=240+(k%5)*52, e=EASE.out(p);
+    const x=960+Math.cos(an)*sp*e, y=470+Math.sin(an)*sp*e*0.8+p*p*330;
     const el=$('cf'+k);el.style.left=x+'px';el.style.top=y+'px';
     el.style.opacity=p<0.08?p*9:(1-p);el.style.transform=`rotate(${p*(k%2?420:-380)}deg)`;}});
-  mBob('mTot10',hf+0.6,b,6,2.2,0);mBob('mAm10',hf+0.65,b,6,2.0,0.9);
-  mHop2('mTot10',b-2.4,40);mHop2('mAm10',b-2.2,40);
+  /* faixa de marca final */
+  tw('c1-band',n+16.2,0.8,'out5',{y:[320,0],o:[0,1]});
 })();
 
 /* ================= chrome + seek ================= */
-const KICK={s1:'01 · BOAS-VINDAS',s2:'02 · POR QUE MÉTODO',s3:'03 · METODOLOGIA A&M · TMO',
-  s4:'04 · FRAMEWORK A&M × TOTVS',s5:'04 · FRAMEWORK · MIT',s6:'05 · FRENTES DO DIA A DIA',
-  s7:'05 · A JORNADA · FASES',s8:'06 · GOVERNANÇA · STATUS',s9:'06 · GOVERNANÇA · RISCOS',s10:'07 · SEU PAPEL'};
-const FNOTE={s1:'',s2:'',s3:'TMO — Transformation Management Office (PMO + GMO)',
-  s4:'Framework A&M × TOTVS — visão integrada',s5:'MIT — documento oficial da Metodologia de Implantação TOTVS',
-  s6:'Fluig · Integrações · GAPs e Melhorias — valores ilustrativos',s7:'Fases da Metodologia TOTVS de Implantação — semanas ilustrativas',
-  s8:'Valores ilustrativos — o modelo real é o do seu projeto',s9:'Matriz ilustrativa — probabilidade × impacto',s10:''};
+const KICK={i0:'ONBOARDING',x1:'',x2:'',x3:'',
+  a1:'ATO 1 · POR QUE MÉTODO',a2:'ATO 1 · PMO + GMO = TMO',a3:'ATO 1 · AS 6 FASES',
+  a4:'ATO 1 · STATUS SEMANAL',a5:'ATO 1 · RISCOS',
+  b1:'ATO 2 · FRAMEWORK A&M × TOTVS',b2:'ATO 2 · O MIT',b3:'ATO 2 · FRENTES',
+  c1:'ATO 3 · SEU PAPEL'};
+const FNOTE={i0:'',x1:'',x2:'',x3:'',a1:'',a2:'TMO — Transformation Management Office',
+  a3:'Metodologia A&M — PMO e GMO ao longo do ciclo de vida',
+  a4:'Valores ilustrativos — o modelo real é o do seu projeto',a5:'Matriz ilustrativa — probabilidade × impacto',
+  b1:'Framework A&M × TOTVS — visão integrada',b2:'MIT — documento oficial da Metodologia de Implantação TOTVS',
+  b3:'Fluig · Integrações · GAPs — valores ilustrativos',c1:''};
 const chBox=$('chapters');
-CHW.forEach((w,i)=>{const d=document.createElement('div');d.className='ch';d.id='ch'+(i+1);
-  d.innerHTML=`<span class="n">0${i+1}</span><span class="bar"><i></i></span>`;chBox.appendChild(d);});
+['ATO 1','ATO 2','ATO 3'].forEach((t,i)=>{const d=document.createElement('div');d.className='ch';d.id='chb'+(i+1);
+  d.innerHTML=`<span class="n">${t}</span><span class="bar"><i></i></span>`;chBox.appendChild(d);});
 anims.sort((x,y)=>x.t0-y.t0);
-const STUDIO={s1:1,s10:1};
+const DARK={x1:1,x2:1,x3:1};
 window.seek=function(t){
   t=clamp(t,0,window.TOTAL);
   let cur=SCENES[0];
   for(const s of SCENES){const on=t>=s.a-0.02&&t<s.b+0.02;$(s.id).style.display=on?'block':'none';if(t>=s.a&&t<s.b)cur=s;}
-  $('flo').style.display=STUDIO[cur.id]?'none':'block';
-  $('kicker-txt').textContent=KICK[cur.id];
-  $('footnote').textContent=FNOTE[cur.id];
-  CHW.forEach((w,i)=>{const el=$('ch'+(i+1));el.classList.toggle('on',t>=w[0]&&t<w[1]);el.classList.toggle('done',t>=w[1]);
+  const dark=DARK[cur.id]||(cur.id==='i0'&&t<SC.i0.a+4.6);
+  $('flo').style.display=dark?'none':'block';
+  $('kicker').style.display=(dark||!KICK[cur.id])?'none':'flex';
+  $('footer').style.display=(dark||cur.id==='c1')?'none':'flex';
+  $('chapters').style.display=dark?'none':'flex';
+  $('kicker-txt').textContent=KICK[cur.id]||'';
+  $('footnote').textContent=FNOTE[cur.id]||'';
+  CHW.forEach((w,i)=>{const el=$('chb'+(i+1));el.classList.toggle('on',t>=w[0]&&t<w[1]);el.classList.toggle('done',t>=w[1]);
     el.querySelector('.bar i').style.transform=`scaleX(${clamp((t-w[0])/(w[1]-w[0]),0,1)})`;});
   for(const an of anims){if(t<an.t0)continue;an.fn(clamp((t-an.t0)/(an.t1-an.t0),0,1));}
   for(const l of loops){if(t>=l.t0&&t<=l.t1)l.fn(t);}
