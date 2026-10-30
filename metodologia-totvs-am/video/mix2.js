@@ -2,10 +2,16 @@
 // das cenas, whoosh em cada transição e bed ambiente em loop.
 // Uso: node mix2.js
 const { execFileSync } = require('child_process');
+const { existsSync } = require('fs');
 const { SCENES, TOTAL } = require('./timings.js');
 
 const T = Math.round(TOTAL * 100) / 100;
-const narr = SCENES.map((s, i) => ({ file: `n${String(i + 1).padStart(2, '0')}.mp3`, at: Math.round(s.n * 1000) }));
+const narr = SCENES.map((s, i) => ({ file: `n${String(i + 1).padStart(2, '0')}.mp3`, at: Math.round(s.n * 1000) }))
+  .filter(nn => {
+    const ok = existsSync(__dirname + '/audio/' + nn.file);
+    if (!ok) console.warn('AVISO: sem narração', nn.file, '— cena fica só com trilha');
+    return ok;
+  });
 const cuts = SCENES.slice(1).map(s => Math.round((s.a - 0.15) * 1000));
 
 const inputs = ['-stream_loop', String(Math.ceil(T / 28) - 1), '-i', 'bed.mp3'];
