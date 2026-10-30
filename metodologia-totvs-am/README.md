@@ -1,51 +1,56 @@
-# Onboarding — Metodologia TOTVS + A&M (TMO)
+# Onboarding — Metodologia TOTVS + A&M (TMO) · v5
 
-Vídeo de onboarding **16:9 · 1920×1080 · 30fps · ~2:50**, em motion design estilo DTS
-(navy `#0B2545` + laranja `#F26B21`, Inter + JetBrains Mono), com narração da **Dani**
-(voz carioca, ElevenLabs) e os mascotes TOTVS e A&M.
+Vídeo de onboarding **16:9 · 1920×1080 · 30fps · ~4:48**, motion design estilo DTS
+(navy `#0B2545` + laranja `#F26B21`, Inter + JetBrains Mono), narração da **Dani**
+(voz carioca, ElevenLabs `eleven_v4`) e SFX sutis (cliques, chime, whoosh, bed).
 
-A linha de raciocínio segue a apresentação de referência *TMO — Status Semanal Executivo*
-(TSO Implantação do ERP): parceria → por que método → fases da implantação → frentes de
-refinamento (Fluig, Integrações, GAPs) → Status Report semanal → Gestão de Riscos → seu papel.
+Estrutura em **3 atos**: ATO 1 — A Metodologia A&M (por que método · PMO+GMO=TMO ·
+6 fases · status semanal · riscos) · ATO 2 — O Framework A&M × TOTVS (venn ·
+como entregamos · MIT · frentes Fluig/Integrações/GAPs) · ATO 3 — O seu papel.
+
+## O que a v5 tem
+
+- **Sincronia palavra a palavra**: todas as entradas de frames são ancoradas na fala
+  via `kw(cena, 'trecho falado')` (`timings.js` guarda o texto exato narrado e converte
+  posição do caractere → tempo). Cada card aparece quando a Dani fala dele.
+- **Efeitos do guia DTS**: Particle System (capas e encerramento), Shimmer/Holographic
+  Sweep (selo TMO, card Atuação Conjunta, tiles, selo VALIDADO), Flip Card (KPIs e
+  etapas do MIT), Card Stack (frentes do dia a dia), Chart Build (ritmo de entregas),
+  Data Highlight (Integrações no farol, quadrante crítico da matriz), Progress Motion
+  (barras com meta + anel), BPMN Flow Motion (token no fluxo Fluig).
+- **Logos lúdicos**: lockups TOTVS × ALVAREZ & MARSAL no cold open, no split e no
+  encerramento, sobre rede viva de partículas.
+- **Narração fonética**: TMO = "tê eme ó", PMO = "pê eme ó", GMO = "gê eme ó",
+  MIT narrado como "MITH" (na tela permanece "MIT").
+- **Trilha de cliques**: 43 cliques suaves nos momentos em que elementos pousam
+  (lista `CLICKS` em `timings.js`), ding nos cartões de ato — tudo abaixo da voz
+  (voz 1.0 · click 0.34 · ding 0.30 · whoosh 0.22 · bed 0.13, com loudnorm).
 
 ## Estrutura
 
 | Pasta | Conteúdo |
 |---|---|
-| `roteiro/` | Roteiro de narração e plano de cenas |
-| `video/index.html` | Animação completa (engine de timeline determinística via `window.seek(t)`) |
-| `video/assets/` | Mascotes recortados, fundo estúdio, fontes woff2 |
-| `video/audio/` | Narração S1–S7, bed ambiente, whoosh e mix final |
-| `video/render.js` | Render frame a frame (Playwright → ffmpeg) |
-| `video/preview.js` | Screenshots de QC em timestamps |
-| `video/mix.sh` | Mixagem de áudio alinhada à timeline |
+| `roteiro/` | Roteiro de narração (textos exatos por cena) |
+| `video/index.html` | Animação completa (timeline determinística via `window.seek(t)`) |
+| `video/timings.js` | Fonte única de tempo: cenas, textos narrados, `kw()`, `CLICKS` |
+| `video/assets/` | Fontes woff2 (Inter + JetBrains Mono) |
+| `video/audio/` | Narrações n01–n10/nA2/nA3, bed, whoosh, click, ding, mix.m4a |
+| `video/render.js` | Render frame a frame (Playwright → ffmpeg, JPEG q94) |
+| `video/preview.js` | Screenshots de QC: `node preview.js <pasta> <t1> <t2> …` |
+| `video/mix2.js` | Mixagem (narração + whoosh + cliques + dings + bed → mix.m4a) |
 | `output/` | MP4 final |
 
 ## Como regenerar
 
 ```bash
 cd video
-node render.js ../output/video_mudo.mp4 30   # ~15 min
-bash mix.sh                                   # gera audio/mix.m4a
-ffmpeg -y -i ../output/video_mudo.mp4 -i audio/mix.m4a -c:v copy -c:a copy \
-  ../output/onboarding-metodologia-totvs-am_1080p.mp4
+node mix2.js                                  # audio/mix.m4a a partir de timings.js
+node render.js /tmp/video_mudo.mp4 30         # ~15–25 min
+ffmpeg -y -i /tmp/video_mudo.mp4 -i audio/mix.m4a -c:v copy -c:a copy \
+  ../output/onboarding-metodologia-totvs-am_FINAL_1080p.mp4
 ```
 
-Para ajustar uma cena: edite os tweens em `index.html` (todas as cenas têm âncoras
-`a` = início da cena e `n` = início da narração, em segundos absolutos) e confira com
-`node preview.js <pasta> <t1> <t2> ...`.
-
-## Timeline
-
-| Cena | Janela | Narração | Conteúdo |
-|---|---|---|---|
-| S1 | 0.0–18.1 | 1.2s | Abertura · mascotes · parceria |
-| S2 | 18.1–41.5 | 19.0s | Por que método (caos → caminho único) |
-| S3 | 41.5–73.7 | 42.4s | Timeline das 7 etapas da implantação |
-| S4 | 73.7–95.6 | 74.6s | Fluig · Integrações · GAPs |
-| S5 | 95.6–122.2 | 96.5s | Status Report semanal executivo |
-| S6 | 122.2–145.5 | 123.1s | Matriz e gestão de riscos |
-| S7 | 145.5–169.7 | 146.4s | Seu papel · encerramento |
-
-Narração gerada no ElevenLabs (voz "Dani — voz brasileira envolvente", modelo v4);
-bed ambiente e whooshes via Sound Effects v2. Flow: `lbtPYJ0w9SylSlT08oT8`.
+Para ajustar uma cena: os tweens em `index.html` usam `KW('cena','trecho falado',lead)`
+para tudo que acompanha a fala; mudou o texto da narração, atualize `NARRTXT` e a
+duração em `DEF` (`timings.js`) e os tempos se realinham sozinhos. QC com
+`node preview.js`.
