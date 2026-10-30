@@ -311,9 +311,9 @@
       <div class="willchange" id="s5-hc" style="margin-top:20px"><span class="chip"><span class="cdot"></span>MIT · MODELO DE IMPLEMENTAÇÃO TOTVS</span></div>
     </div>
     <svg class="abs" width="1920" height="1080" style="left:0;top:0">
-      <path id="s5-f1" class="st" style="stroke-width:4" d="M496 580 H 586"/>
-      <path id="s5-f2" class="st" style="stroke-width:4" d="M932 580 H 1022"/>
-      <path id="s5-f3" class="st" style="stroke-width:4" d="M1368 580 H 1458"/>
+      <path id="s5-f1" class="st" style="stroke-width:4" d="M496 580 H 600"/>
+      <path id="s5-f2" class="st" style="stroke-width:4" d="M932 580 H 1036"/>
+      <path id="s5-f3" class="st" style="stroke-width:4" d="M1368 580 H 1472"/>
       <circle id="s5-tok" cx="496" cy="580" r="7" fill="#F26B21"/>
     </svg>
     <div class="mitc card willchange" id="s5-m1" style="left:166px;top:430px"><div class="inner">
@@ -725,7 +725,7 @@ const CHW=[['s1','s1'],['s2','s2'],['s3','s3'],['s4','s5'],['s6','s7'],['s8','s9
   draw('s5-f1',f(0.18),0.4,'out');draw('s5-f2',f(0.46),0.4,'out');draw('s5-f3',f(0.74),0.4,'out');
   lp(f(0.32),b-0.9,t=>{
     const seg=Math.floor(((t-n)*0.5)%3),cc=(((t-n)*0.5)%3)-seg;
-    const xs=[[496,586],[932,1022],[1368,1458]][seg];
+    const xs=[[496,600],[932,1036],[1368,1472]][seg];
     $('s5-tok').setAttribute('cx',lerp(xs[0],xs[1],cc));
     $('s5-tok').style.opacity=cc<0.06||cc>0.94?0:1;
   });
