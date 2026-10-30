@@ -94,7 +94,7 @@
   .vlab{position:absolute;text-align:center;color:#fff}
   .vlab .t{font-size:34px;font-weight:800;letter-spacing:.01em}
   .vlab .s{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.16em;margin-top:6px;opacity:.85}
-  .vitem{position:absolute;display:flex;align-items:center;gap:12px;color:#fff;font-size:19.5px;font-weight:550;width:300px;white-space:nowrap}
+  .vitem{position:absolute;display:flex;align-items:center;gap:12px;color:#fff;font-size:19px;font-weight:550;width:300px;white-space:nowrap}
   .vitem svg{flex:0 0 22px;width:22px;height:22px}
   .vcard{position:absolute;width:372px}
   .vcard .hd{font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:.2em;color:var(--acc);padding:24px 30px 4px}
@@ -444,7 +444,7 @@
             <div style="display:flex;gap:18px;margin-top:4px">
               <span class="farol willchange" id="s8-fv" style="border-color:#3C9A6E;color:#2C7A52"><span class="fd" style="background:#3C9A6E"></span>No prazo</span>
               <span class="farol willchange" id="s8-fa" style="border-color:#E8A13D;color:#A86F1E"><span class="fd" style="background:#E8A13D"></span>Atenção</span>
-              <span class="farol willchange" id="s8-fr" style="border-color:#D9521A;color:#B23F10"><span class="fd" style="background:#D9521A"></span>Crítico</span>
+              <span class="farol willchange" id="s8-fr" style="border-color:#C2362B;color:#9E2B21"><span class="fd" style="background:#C2362B"></span>Crítico</span>
             </div>
           </div>
         </div>
@@ -891,7 +891,7 @@ const MILES=[
     bc.style.opacity=(1-c)*0.85;
     bc.style.transform=`translate(${-28*c*1.5}px,${-28*c*1.5}px) scale(${1+c*1.5})`;
   });
-  fx(n+7.8,0.3,'out',p=>{$('rk2').style.background='#D9521A';});
+  fx(n+7.8,0.3,'out',p=>{$('rk2').style.background='#C2362B';});
   tw('s9-card',n+9.2,0.8,'back',{x:[520,0],o:[0,1]});
   checkmark('s9-k1',n+11.6);checkmark('s9-k2',n+13.1);checkmark('s9-k3',n+14.6);
   tw('s9-tag',n+17.3,0.6,'back',{y:[36,0],o:[0,1]});
