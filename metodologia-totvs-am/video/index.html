@@ -252,7 +252,7 @@
       <span class="rvl"><span class="rvl-in" id="i0-w2"><h1 class="big" style="font-size:56px;margin-top:16px;color:var(--ink2)">em parceria com a <b style="color:var(--acc)">A&amp;M</b></h1></span></span>
     </div>
     <div class="abs willchange" id="i0-sub" style="left:0;right:0;top:664px;text-align:center;z-index:6">
-      <span class="tagline" style="position:static">SEU PONTO DE PARTIDA NO PROJETO</span>
+      <span class="tagline" style="position:static;font-size:23px;color:var(--accd)">VAMOS ENTENDER ESSA PARCERIA?</span>
     </div>
     <div class="halfp willchange" id="i0-hl" style="left:0;background:linear-gradient(160deg,#0B2545,#13315C)">
       <div class="hs">TECNOLOGIA</div><div class="ht logo-t" style="font-size:96px">TOTVS</div>
@@ -277,6 +277,10 @@
       <div class="abs" style="left:0;right:0;top:272px;text-align:center;z-index:3">
         <span class="chip willchange" id="i0c-chip" style="background:rgba(13,33,66,.78);border-color:rgba(163,184,214,.45);color:#D7E1EF;box-shadow:none"><span class="cdot"></span>ONBOARDING · IMPLANTAÇÃO ERP</span>
       </div>
+      <div class="abs" style="left:0;right:0;top:386px;text-align:center;z-index:3">
+        <span class="rvl"><span class="rvl-in" id="i0w-t"><span style="font-size:104px;font-weight:800;letter-spacing:-.015em;color:#fff">Seja bem-vindo!</span></span></span>
+      </div>
+      <div class="abs willchange" id="i0w-s" style="left:0;right:0;top:546px;text-align:center;z-index:3;font-family:var(--mono);font-weight:600;font-size:21px;letter-spacing:.24em;color:#FF8A4C">ESTE É O INÍCIO DO SEU ONBOARDING</div>
       <div class="abs" style="left:0;right:0;top:362px;text-align:center;z-index:3">
         <span class="rvl"><span class="rvl-in" id="i0c-t1"><span class="logo-t" style="font-size:148px;color:#fff">TOTVS</span></span></span>
       </div>
@@ -786,41 +790,49 @@ particles('pc-c1',KW('c1','bem-vindo a bordo',0.1),SC.c1.b,36,4);
 
 /* ================= I0 COLD OPEN ================= */
 (()=>{const {a,n,b}=SC.i0;
-  hide('i0-chip','i0-sub','i0-hl','i0-hr','i0-x','i0-bar','i0-s','i0c-chip','i0c-x');
+  const K=(p,l)=>KW('i0',p,l);
+  hide('i0-chip','i0-sub','i0-hl','i0-hr','i0-x','i0-bar','i0-s','i0c-chip','i0c-x','i0w-s','i0-mt','i0-ma');
   pushIn('i0',a);
   blobs('i0-blob1','i0-blob2',a,b);
   tw('i0c-chip',a+0.25,0.55,'back',{y:[-34,0],o:[0,1]});
-  reveal('i0c-t1',a+0.5,0.9);
-  fx(a+1.05,0.55,'back',p=>{$('i0c-x').style.opacity=p;
+  /* boas-vindas: "Seja bem-vindo! — este é o início do seu onboarding" */
+  reveal('i0w-t',K('Seja muito bem-vindo',0.25),0.9);
+  tw('i0w-s',K('início do seu onboarding',0.3),0.6,'out',{y:[22,0],o:[0,1]});
+  /* vira para os lockups quando a Dani cita o ERP TOTVS */
+  const TK=K('ERP TOTVS',0.6);
+  fx(TK-0.15,0.5,'in2',p=>{$('i0w-t').style.transform=`translateY(${(-p*118).toFixed(1)}%)`;
+    $('i0w-s').style.opacity=1-p;$('i0w-s').style.transform=`translateY(${(-p*40).toFixed(1)}px)`;});
+  reveal('i0c-t1',TK+0.25,0.85);
+  fx(TK+0.8,0.55,'back',p=>{$('i0c-x').style.opacity=p;
     $('i0c-xg').style.transform=`scale(${(0.5+p*0.5).toFixed(3)}) rotate(${((1-p)*90).toFixed(1)}deg)`;
     $('i0c-r1').style.transform=`scaleX(${p.toFixed(3)})`;$('i0c-r2').style.transform=`scaleX(${p.toFixed(3)})`;});
-  reveal('i0c-t2',a+1.3,0.9);
-  fx(a+1.85,0.55,'out',p=>{$('i0-bar').style.opacity=1;$('i0-bar').style.transform=`scaleX(${p})`;});
-  tw('i0-s',a+2.15,0.6,'out',{y:[22,0],o:[0,1]});
-  tw('i0-card',a+4.2,0.8,'in2',{y:[0,-1130]});
-  reveal('i0-w1',a+4.7);reveal('i0-w2',a+4.95);
-  underline('i0-u',a+5.6);
-  tw('i0-chip',a+4.5,0.7,'back',{y:[-40,0],o:[0,1]});
-  tw('i0-sub',a+5.9,0.7,'out',{y:[24,0],o:[0,1]});
-  /* split exatamente em "lado a lado" — chrome some durante a tela dividida */
-  const sp=KW('i0','lado a lado',0.35);
-  window.I0SP=sp;
-  /* mascotes: só nesta cena — cada um quica de baixo na sua metade e flutua */
-  hide('i0-mt','i0-ma');
-  tw('i0-mt',sp+0.75,0.7,'back',{y:[440,0],o:[0,1]});
-  tw('i0-ma',sp+0.95,0.7,'back',{y:[440,0],o:[0,1]});
-  lp(sp+1.75,b-0.9,t=>{
-    $('i0-mt').style.transform=`translateY(${(Math.sin(t*1.7)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1)*1.1).toFixed(2)}deg)`;
-    $('i0-ma').style.transform=`translateY(${(Math.sin(t*1.7+1.4)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1+0.9)*-1.1).toFixed(2)}deg)`;});
-  /* wipe opaco: as metades cobrem o título ao entrar (sem fantasma) */
+  reveal('i0c-t2',K('Alvarez e Marsal',0.25),0.85);
+  /* o cartão navy sobe pouco antes do split; o título claro já nasce pronto atrás */
+  const sp=K('lado a lado',0.35);
+  const LIFT=sp-1.05;
+  tw('i0-card',LIFT,0.75,'in2',{y:[0,-1130]});
+  reveal('i0-w1',LIFT+0.3);reveal('i0-w2',LIFT+0.5);
+  underline('i0-u',LIFT+1.0);
+  window.I0SP=sp;window.I0LIFT=LIFT;
+  /* split + mascotes */
   tw('i0-hl',sp,0.85,'out5',{x:[-980,0],o:[1,1]});
   tw('i0-hr',sp,0.85,'out5',{x:[980,0],o:[1,1]});
   fx(sp+0.7,0.55,'back',p=>{$('i0-x').style.opacity=p;$('i0-x').style.transform=`translate(-50%,-50%) scale(${p}) rotate(${(1-p)*120}deg)`;});
   rippleAt('i0',960,540,sp+1.15,170);
-  const e=b-0.8;
-  tw('i0-hl',e,0.7,'in2',{x:[0,-980]});
-  tw('i0-hr',e,0.7,'in2',{x:[0,980]});
-  tw('i0-x',e-0.05,0.4,'in2',{o:[1,0]});
+  tw('i0-mt',sp+0.75,0.7,'back',{y:[440,0],o:[0,1]});
+  tw('i0-ma',sp+0.95,0.7,'back',{y:[440,0],o:[0,1]});
+  const ASK=K('Vamos entender',0.3);
+  window.I0ASK=ASK;
+  lp(sp+1.75,ASK,t=>{
+    $('i0-mt').style.transform=`translateY(${(Math.sin(t*1.7)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1)*1.1).toFixed(2)}deg)`;
+    $('i0-ma').style.transform=`translateY(${(Math.sin(t*1.7+1.4)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1+0.9)*-1.1).toFixed(2)}deg)`;});
+  /* convite final: as metades saem e fica "Vamos entender essa parceria?" */
+  tw('i0-hl',ASK,0.6,'in2',{x:[0,-980]});
+  tw('i0-hr',ASK,0.6,'in2',{x:[0,980]});
+  tw('i0-x',ASK-0.05,0.35,'in2',{o:[1,0]});
+  tw('i0-chip',ASK+0.15,0.6,'back',{y:[-40,0],o:[0,1]});
+  tw('i0-sub',ASK+0.35,0.6,'back',{y:[26,0],o:[0,1]});
+  const e=b-0.75;
   fx(e,0.7,'in2',p=>{['i0-w1','i0-w2'].forEach(i=>$(i).style.transform=`translateY(${-p*118}%)`);
     $('i0-chip').style.opacity=1-p;$('i0-sub').style.opacity=1-p;});
 })();
@@ -1359,7 +1371,7 @@ window.seek=function(t){
   t=clamp(t,0,window.TOTAL);
   let cur=SCENES[0];
   for(const s of SCENES){const on=t>=s.a-0.02&&t<s.b+0.02;$(s.id).style.display=on?'block':'none';if(t>=s.a&&t<s.b)cur=s;}
-  const dark=DARK[cur.id]||(cur.id==='i0'&&(t<SC.i0.a+4.6||t>=(window.I0SP||1e9)-0.05));
+  const dark=DARK[cur.id]||(cur.id==='i0'&&(t<(window.I0LIFT||SC.i0.a+4.6)+0.55||(t>=(window.I0SP||1e9)-0.05&&t<(window.I0ASK||1e9)+0.4)));
   $('kicker').style.display=(dark||!KICK[cur.id])?'none':'flex';
   $('footer').style.display=(dark||cur.id==='c1')?'none':'flex';
   $('chapters').style.display=dark?'none':'flex';

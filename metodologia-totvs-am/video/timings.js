@@ -3,7 +3,7 @@
    em tempo absoluto (proporcional por caractere) — os frames aparecem
    conforme a Dani fala. */
 const DEF = [
-  ['i0', 15.88, 'n01', 1.2, 1.2],
+  ['i0', 17.52, 'n01', 1.2, 1.2],  // boas-vindas + "Vamos entender essa parceria?"
   ['x1', 0,     null,  0,   2.4],
   ['a1', 21.63, 'n02', 0.9, 1.3],  // siglas em inglês: tí-ém-ôu
   ['a2', 29.65, 'nA2', 0.9, 1.4],  // siglas em inglês: pí-ém-ôu / djí-ém-ôu / tí-ém-ôu
@@ -18,7 +18,7 @@ const DEF = [
   ['c1', 19.72, 'n10', 0.9, 4.6],
 ];
 const NARRTXT = {
-  i0: "Olá! Seja muito bem-vindo ao projeto de implantação do ERP TOTVS. Este vídeo é o seu ponto de partida. Aqui, TOTVS e Alvarez e Marsal trabalham lado a lado: tecnologia de um lado, método e governança do outro.",
+  i0: "Olá! Seja muito bem-vindo! Este é o início do seu onboarding no projeto de implantação do ERP TOTVS. Aqui, TOTVS e Alvarez e Marsal trabalham lado a lado: tecnologia de um lado, método e governança do outro. Vamos entender essa parceria?",
   a1: "Implantar um ERP não é só trocar de sistema. É redesenhar processos, integrar áreas e mudar a rotina de muita gente. Sem método, cada frente corre para um lado. Com método, todo mundo enxerga o mesmo caminho. É isso que a Metodologia TOTVS garante, com a governança do tí-ém-ôu conduzida pela Alvarez e Marsal.",
   a2: "A Metodologia A&M nasce da união de duas disciplinas. De um lado, o pí-ém-ôu: planejamento integrado, governança, gestão de riscos e entregas sob controle. Do outro, o djí-ém-ôu: pessoas, comunicação, capacitação e adoção. Juntas, elas formam o tí-ém-ôu — o escritório de transformação que consolida dados, faz o diagnóstico, conduz a comunicação executiva e gerencia o projeto em todas as fases.",
   a3: "Essa metodologia percorre seis fases. Planejamento e Mobilização: governança, papéis e o plano integrado do projeto. Desenho e Preparação: escopo refinado, impactos mapeados e capacitação planejada. Desenvolvimento e Configuração: backlog priorizado, qualidade e integração entre as frentes. Testes e Validações: defeitos sob gestão e critérios de aceite claros. Cutover e Prontidão: plano de virada, treinamentos e a decisão de go, no-go. E Estabilização: operação assistida, adoção medida e lições aprendidas. E o tempo todo, em paralelo: governança executiva, riscos e comunicação dirigida.",
