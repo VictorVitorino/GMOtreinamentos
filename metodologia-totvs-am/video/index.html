@@ -221,6 +221,15 @@
     border-radius:20px;padding:24px 42px;font-weight:800;font-size:33px;color:var(--ink);
     box-shadow:0 14px 34px rgba(11,37,69,.1)}
   .bigchip .num{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--acc);letter-spacing:.1em}
+  .rcap{position:absolute;top:548px;width:360px;height:118px;background:#fff;border:1.5px solid var(--linel);border-radius:20px;
+    box-shadow:0 12px 30px rgba(11,37,69,.08);display:flex;align-items:center;gap:18px;padding:0 24px;z-index:7;overflow:hidden}
+  .rcap .ic{width:62px;height:62px;border-radius:16px;background:var(--bluexl);display:flex;align-items:center;justify-content:center;flex:0 0 62px}
+  .rcap .ic svg{width:36px;height:36px}
+  .rcap .k{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.2em;color:var(--acc)}
+  .rcap h5{font-size:22px;font-weight:800;color:var(--ink);margin-top:4px;white-space:nowrap}
+  .rcap .ok{position:absolute;right:16px;top:14px;width:28px;height:28px;border-radius:50%;background:#FDE8DC;display:flex;align-items:center;justify-content:center}
+  #c1-cta{position:absolute;left:0;right:0;top:700px;text-align:center;z-index:7}
+  #c1-cta .chip{font-size:18px;padding:14px 30px;border-color:var(--acc);color:var(--accd)}
   #confetti{position:absolute;inset:0;z-index:12;pointer-events:none}
   #confetti i{position:absolute;width:12px;height:12px;opacity:0}
   #c1-band{position:absolute;left:0;right:0;bottom:0;height:300px;z-index:11;
@@ -685,8 +694,30 @@
       <div class="tagline" style="position:static">MÉTODO · GOVERNANÇA · PESSOAS</div>
       <h1 class="big" style="font-size:108px;margin-top:28px">Bem-vindo <span class="u">a bordo<i id="c1-u"></i></span>.</h1>
     </div>
+    <div class="rcap willchange" id="c1-rc1" style="left:384px">
+      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M24 6 42 15 24 24 6 15Z"/><path class="st" d="M6 24l18 9 18-9"/><path class="sa" d="M6 33l18 9 18-9"/></svg></span>
+      <div><div class="k">MÉTODO</div><h5>6 fases + MIT</h5></div>
+      <span class="ok"><svg width="16" height="16" viewBox="0 0 18 18"><path id="c1-ok1" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>
+      <div class="swp holo"><i id="c1-rs1"></i></div>
+    </div>
+    <div class="rcap willchange" id="c1-rc2" style="left:780px">
+      <span class="ic"><svg viewBox="0 0 48 48"><path class="st" d="M24 5l15 6v11c0 10-6 17-15 21-9-4-15-11-15-21V11Z"/><path class="sa" d="M17 23l5 5 9-10"/></svg></span>
+      <div><div class="k">GOVERNANÇA</div><h5>TMO = PMO + GMO</h5></div>
+      <span class="ok"><svg width="16" height="16" viewBox="0 0 18 18"><path id="c1-ok2" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>
+      <div class="swp holo"><i id="c1-rs2"></i></div>
+    </div>
+    <div class="rcap willchange" id="c1-rc3" style="left:1176px">
+      <span class="ic"><svg viewBox="0 0 48 48"><circle class="st" cx="17" cy="16" r="7"/><path class="st" d="M4 42c0-8 6-13 13-13s13 5 13 13"/><circle class="sa" cx="35" cy="18" r="5.5"/><path class="sa" d="M32 27c6 0 12 4 12 12"/></svg></span>
+      <div><div class="k">PESSOAS</div><h5>Você no centro</h5></div>
+      <span class="ok"><svg width="16" height="16" viewBox="0 0 18 18"><path id="c1-ok3" class="sa" stroke-width="3" d="M3 9l4 4 8-8" stroke-dasharray="24" stroke-dashoffset="24"/></svg></span>
+      <div class="swp holo"><i id="c1-rs3"></i></div>
+    </div>
+    <div id="c1-cta" class="willchange">
+      <span class="chip" id="c1-ctaChip"><span class="cdot"></span>✓ ONBOARDING CONCLUÍDO&nbsp;&nbsp;·&nbsp;&nbsp;PRÓXIMO PASSO: SUA PRIMEIRA CERIMÔNIA</span>
+    </div>
     <div id="confetti"></div>
     <div id="c1-band" class="willchange">
+      <div class="swp holo"><i id="c1-bsw"></i></div>
       <canvas class="pcanvas" id="pc-c1" width="1920" height="300"></canvas>
       <div class="b1" style="display:flex;align-items:baseline;gap:28px;position:relative;z-index:3">
         <span class="logo-t" style="font-size:60px;color:#fff">TOTVS</span>
@@ -1349,6 +1380,21 @@ actCard('x1');actCard('x2');actCard('x3');
     const el=$('cf'+k);el.style.left=x+'px';el.style.top=y+'px';
     el.style.opacity=p<0.08?p*9:(1-p);el.style.transform=`rotate(${p*(k%2?420:-380)}deg)`;}});
   tw('c1-band',K('bem-vindo a bordo',0.3),0.8,'out5',{y:[320,0],o:[0,1]});
+  /* recap da jornada: preenche o final com Método · Governança · Pessoas + selo de conclusão */
+  hide('c1-rc1','c1-rc2','c1-rc3','c1-cta');
+  const RC=[sw+1.0,sw+1.35,sw+1.7];
+  ['c1-rc1','c1-rc2','c1-rc3'].forEach((id,k)=>{
+    fx(RC[k],0.65,'out5',p=>{$(id).style.opacity=Math.min(1,p*2.2);
+      $(id).style.transform=`perspective(900px) rotateX(${((1-p)*-60).toFixed(2)}deg) translateY(${((1-p)*40).toFixed(1)}px)`;});
+    checkmark('c1-ok'+(k+1),K('é assim que',0)+k*0.3,0.45,24);
+    sweep('c1-rs'+(k+1),K('é assim que',0)+k*0.3+0.3,0.8);
+    lp(RC[k]+0.7,b,t=>{$(id).style.transform=`perspective(900px) translateY(${(Math.sin(t*1.5+k*1.2)*3).toFixed(1)}px)`;});
+  });
+  const done=SC.c1.n+SC.c1.nd+0.15;
+  tw('c1-cta',done,0.6,'back',{y:[30,0],s:[.9,1],o:[0,1]});
+  lp(done+0.6,b,t=>{const g=0.5+Math.sin((t-done)*3.2)*0.5;
+    $('c1-ctaChip').style.boxShadow=`0 3px 12px rgba(11,37,69,.06), 0 0 0 ${(3+g*7).toFixed(1)}px rgba(242,107,33,${(0.10+g*0.14).toFixed(2)})`;});
+  sweep('c1-bsw',done+0.5,1.1);
 })();
 
 /* ================= chrome + seek ================= */

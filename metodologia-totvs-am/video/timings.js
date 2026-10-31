@@ -58,7 +58,7 @@ const CLICKS = [
   ['b1','dois mundos'],['b1','configuração da solução'],['b1','gestão de transformação'],['b1','atuação conjunta'],['b1','Um único time'],
   ['b2','uma palavra'],['b2','Os mítis são'],['b2','validado com os key users'],['b2','a construção'],
   ['b3','Fluig'],['b3','As Integrações'],['b3','de gaps'],
-  ['c1','das cerimônias'],['c1','com transparência'],['c1','escale cedo'],['c1','bem-vindo a bordo'],
+  ['c1','das cerimônias'],['c1','com transparência'],['c1','escale cedo'],['c1','é assim que'],['c1','bem-vindo a bordo'],
 ];
 if (typeof module !== 'undefined') module.exports = { SCENES, TOTAL, NARRTXT, kw, CLICKS, SCMAP };
 if (typeof window !== 'undefined') {

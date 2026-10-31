@@ -19,7 +19,8 @@ const cuts = SCENES.slice(1).map(s => Math.round((s.a - 0.15) * 1000));
 const clicks = existsSync(A + 'click.mp3')
   ? CLICKS.map(([id, ph]) => Math.round(kw(id, ph, 0.02) * 1000)).sort((a, b) => a - b) : [];
 const dings = existsSync(A + 'ding.mp3')
-  ? SCENES.filter(s => ['x1', 'x2', 'x3'].includes(s.id)).map(s => Math.round((s.a + 0.35) * 1000)) : [];
+  ? SCENES.filter(s => ['x1', 'x2', 'x3'].includes(s.id)).map(s => Math.round((s.a + 0.35) * 1000))
+      .concat(SCENES.filter(s => s.id === 'c1').map(s => Math.round((s.n + s.nd + 0.2) * 1000))) : [];
 
 const inputs = ['-stream_loop', String(Math.ceil(T / 28) - 1), '-i', 'bed.mp3'];
 narr.forEach(nn => inputs.push('-i', nn.file));
