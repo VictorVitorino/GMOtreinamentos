@@ -939,14 +939,14 @@ actCard('x1');actCard('x2');actCard('x3');
   pushIn('a2',a);
   reveal('a2-r1',a+0.3);underline('a2-u',a+1.0);
   /* skeleton shimmer (guia DTS): placeholders pulsando até a Dani citar cada disciplina */
-  const skA=K('o pí-ém-ôu',0.3),skB=K('Do outro',0.2);
+  const skA=K('o pí ém ôu',0.3),skB=K('Do outro',0.2);
   tw('a2-sk1',a+0.95,0.5,'out',{y:[20,0],o:[0,0.9]});
   tw('a2-sk2',a+1.1,0.5,'out',{y:[20,0],o:[0,0.9]});
   lp(a+1.2,skA,t=>{$('a2-sks1').style.transform=`translateX(${(-220+((t*0.5)%1)*560).toFixed(1)}%) rotate(14deg)`;});
   lp(a+1.2,skB,t=>{$('a2-sks2').style.transform=`translateX(${(-220+((t*0.5+0.45)%1)*560).toFixed(1)}%) rotate(14deg)`;});
   fx(skA,0.35,'out',p=>{$('a2-sk1').style.opacity=0.9*(1-p);});
   fx(skB,0.35,'out',p=>{$('a2-sk2').style.opacity=0.9*(1-p);});
-  tw('a2-pmo',K('o pí-ém-ôu',0.3),0.8,'out5',{x:[-760,0],o:[0,1]});
+  tw('a2-pmo',K('o pí ém ôu',0.3),0.8,'out5',{x:[-760,0],o:[0,1]});
   const Lc=[K('planejamento integrado'),K('governança, gestão')+0,K('gestão de riscos'),K('entregas sob controle')];
   ['a2-l1','a2-l2','a2-l3','a2-l4'].forEach((id,k)=>{
     const el=$(id);el.style.opacity=.3;
@@ -958,7 +958,7 @@ actCard('x1');actCard('x2');actCard('x3');
     const el=$(id);el.style.opacity=.3;
     fx(Rc[k]+k*0.12,0.4,'out',p=>{el.style.opacity=.3+p*.7;});
     checkmark('a2-rk'+(k+1),Rc[k]+k*0.12+0.2,0.4,26);});
-  const sq=K('formam o tí-ém-ôu',0.4);
+  const sq=K('formam o tí ém ôu',0.4);
   fx(sq,0.8,'inout',p=>{
     $('a2-pmo').style.transform=`translateX(${p*120}px) scale(${1-p*0.06})`;
     $('a2-gmo').style.transform=`translateX(${-p*120}px) scale(${1-p*0.06})`;});

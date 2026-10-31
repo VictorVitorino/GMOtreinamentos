@@ -5,8 +5,8 @@
 const DEF = [
   ['i0', 17.52, 'n01', 1.2, 1.2],  // boas-vindas + "Vamos entender essa parceria?"
   ['x1', 0,     null,  0,   2.4],
-  ['a1', 21.63, 'n02', 0.9, 1.3],  // siglas em inglês: tí-ém-ôu
-  ['a2', 29.65, 'nA2', 0.9, 1.4],  // siglas em inglês: pí-ém-ôu / djí-ém-ôu / tí-ém-ôu
+  ['a1', 21.55, 'n02', 0.9, 1.3],  // siglas em inglês: tí ém ôu
+  ['a2', 29.81, 'nA2', 0.9, 1.4],  // siglas em inglês: pí ém ôu / djí ém ôu / tí ém ôu
   ['a3', 43.89, 'nA3', 0.9, 1.4],
   ['a4', 24.84, 'n08', 0.9, 1.5],
   ['a5', 21.47, 'n09', 0.9, 1.4],
@@ -19,8 +19,8 @@ const DEF = [
 ];
 const NARRTXT = {
   i0: "Olá! Seja muito bem-vindo! Este é o início do seu onboarding no projeto de implantação do ERP TOTVS. Aqui, TOTVS e Alvarez e Marsal trabalham lado a lado: tecnologia de um lado, método e governança do outro. Vamos entender essa parceria?",
-  a1: "Implantar um ERP não é só trocar de sistema. É redesenhar processos, integrar áreas e mudar a rotina de muita gente. Sem método, cada frente corre para um lado. Com método, todo mundo enxerga o mesmo caminho. É isso que a Metodologia TOTVS garante, com a governança do tí-ém-ôu conduzida pela Alvarez e Marsal.",
-  a2: "A Metodologia A&M nasce da união de duas disciplinas. De um lado, o pí-ém-ôu: planejamento integrado, governança, gestão de riscos e entregas sob controle. Do outro, o djí-ém-ôu: pessoas, comunicação, capacitação e adoção. Juntas, elas formam o tí-ém-ôu — o escritório de transformação que consolida dados, faz o diagnóstico, conduz a comunicação executiva e gerencia o projeto em todas as fases.",
+  a1: "Implantar um ERP não é só trocar de sistema. É redesenhar processos, integrar áreas e mudar a rotina de muita gente. Sem método, cada frente corre para um lado. Com método, todo mundo enxerga o mesmo caminho. É isso que a Metodologia TOTVS garante, com a governança do tí ém ôu conduzida pela Alvarez e Marsal.",
+  a2: "A Metodologia A&M nasce da união de duas disciplinas. De um lado, o pí ém ôu: planejamento integrado, governança, gestão de riscos e entregas sob controle. Do outro, o djí ém ôu: pessoas, comunicação, capacitação e adoção. Juntas, elas formam o tí ém ôu — o escritório de transformação que consolida dados, faz o diagnóstico, conduz a comunicação executiva e gerencia o projeto em todas as fases.",
   a3: "Essa metodologia percorre seis fases. Planejamento e Mobilização: governança, papéis e o plano integrado do projeto. Desenho e Preparação: escopo refinado, impactos mapeados e capacitação planejada. Desenvolvimento e Configuração: backlog priorizado, qualidade e integração entre as frentes. Testes e Validações: defeitos sob gestão e critérios de aceite claros. Cutover e Prontidão: plano de virada, treinamentos e a decisão de go, no-go. E Estabilização: operação assistida, adoção medida e lições aprendidas. E o tempo todo, em paralelo: governança executiva, riscos e comunicação dirigida.",
   a4: "Para manter todo mundo na mesma página, temos um ritual sagrado: o Status Report semanal executivo. Toda semana, em uma página, mostramos o avanço do projeto, as entregas concluídas, os próximos passos e os pontos de atenção, com farol verde, amarelo ou vermelho. Transparência total: boa notícia e má notícia viajam na mesma velocidade.",
   a5: "E porque todo projeto tem riscos, nós não esperamos o problema bater à porta. Na matriz de riscos, cada item é avaliado por probabilidade e impacto. Todo risco tem dono, plano de mitigação e prazo. E o que é crítico sobe para o comitê. Gestão de riscos, aqui, é antecipação — não é apagar incêndio.",
@@ -49,7 +49,7 @@ function kw(id, phrase, lead = 0.12) {
 const CLICKS = [
   ['a1','redesenhar processos'],['a1','integrar áreas'],['a1','mudar a rotina'],
   ['a1','todo mundo enxerga'],['a1','Metodologia TOTVS garante'],
-  ['a2','o pí-ém-ôu'],['a2','Do outro'],['a2','formam o tí-ém-ôu'],
+  ['a2','o pí ém ôu'],['a2','Do outro'],['a2','formam o tí ém ôu'],
   ['a2','consolida dados'],['a2','o diagnóstico'],['a2','comunicação executiva'],['a2','gerencia o projeto'],
   ['a3','Planejamento e Mobilização'],['a3','Desenho e Preparação'],['a3','Desenvolvimento e Configuração'],
   ['a3','Testes e Validações'],['a3','Cutover e Prontidão'],['a3','E Estabilização'],
