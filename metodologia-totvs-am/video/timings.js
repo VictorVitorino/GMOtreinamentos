@@ -12,7 +12,7 @@ const DEF = [
   ['a5', 21.47, 'n09', 0.9, 1.4],
   ['x2', 0,     null,  0,   2.4],
   ['b1', 33.57, 'n04', 0.9, 1.5],
-  ['b2', 24.35, 'n05', 0.9, 1.4],  // regravado com "MITH"
+  ['b2', 22.05, 'n05', 0.9, 1.4],  // MIT falado como palavra: "míti"
   ['b3', 20.11, 'n06', 0.9, 1.4],
   ['x3', 0,     null,  0,   2.4],
   ['c1', 19.72, 'n10', 0.9, 4.6],
@@ -25,7 +25,7 @@ const NARRTXT = {
   a4: "Para manter todo mundo na mesma página, temos um ritual sagrado: o Status Report semanal executivo. Toda semana, em uma página, mostramos o avanço do projeto, as entregas concluídas, os próximos passos e os pontos de atenção, com farol verde, amarelo ou vermelho. Transparência total: boa notícia e má notícia viajam na mesma velocidade.",
   a5: "E porque todo projeto tem riscos, nós não esperamos o problema bater à porta. Na matriz de riscos, cada item é avaliado por probabilidade e impacto. Todo risco tem dono, plano de mitigação e prazo. E o que é crítico sobe para o comitê. Gestão de riscos, aqui, é antecipação — não é apagar incêndio.",
   b1: "Quando os dois mundos se encontram, nasce o framework da parceria. A TOTVS traz a gestão técnica e funcional: configuração da solução, desenvolvimento e customizações, testes, documentação e suporte. A A&M traz a gestão de transformação e valor. E no centro está a atuação conjunta: planejamento e priorização, refinamento de processos, testes integrados e aceites, preparação para o cutover, e estabilização. Um único time, com metodologias integradas e valor sustentável.",
-  b2: "E tem uma sigla que você vai ouvir todos os dias: MITH. Os MITHs são os documentos oficiais da metodologia TOTVS. Cada processo do negócio é mapeado, desenhado e documentado em um MITH — e só segue para a construção depois de validado com os key users. É assim que o refinamento vira compromisso, por escrito.",
+  b2: "E tem uma palavra que você vai ouvir todos os dias: míti. Os mítis são os documentos oficiais da metodologia TOTVS. Cada processo do negócio é mapeado, desenhado e documentado em um míti — e só segue para a construção depois de validado com os key users. É assim que o refinamento vira compromisso, por escrito.",
   b3: "No dia a dia, três frentes merecem atenção especial. O refinamento do Fluig, onde desenhamos fluxos e aprovações. As Integrações, que fazem os sistemas conversarem entre si. E o mapeamento de gaps e melhorias: o que o padrão não cobre vira análise, decisão e plano de ação. Nada fica no ar.",
   c1: "E o seu papel nessa história? Participe das cerimônias, reporte com transparência e escale cedo: problema pequeno hoje é melhor do que crise na virada. Método, governança e pessoas — é assim que a gente transforma. TOTVS e Alvarez e Marsal, juntas. Seja bem-vindo a bordo!",
 };
@@ -56,7 +56,7 @@ const CLICKS = [
   ['a4','ritual sagrado'],['a4','avanço do projeto'],['a4','entregas concluídas'],['a4','próximos passos'],['a4','farol verde'],
   ['a5','matriz de riscos'],['a5','probabilidade e impacto'],['a5','tem dono'],['a5','crítico sobe'],
   ['b1','dois mundos'],['b1','configuração da solução'],['b1','gestão de transformação'],['b1','atuação conjunta'],['b1','Um único time'],
-  ['b2','uma sigla'],['b2','Os MITHs são'],['b2','validado com os key users'],['b2','a construção'],
+  ['b2','uma palavra'],['b2','Os mítis são'],['b2','validado com os key users'],['b2','a construção'],
   ['b3','Fluig'],['b3','As Integrações'],['b3','de gaps'],
   ['c1','das cerimônias'],['c1','com transparência'],['c1','escale cedo'],['c1','bem-vindo a bordo'],
 ];
