@@ -101,6 +101,7 @@
 
   .halfp{position:absolute;top:0;bottom:0;width:50%;z-index:8;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px}
   .halfp .ht{font-size:64px;font-weight:800;color:#fff;letter-spacing:-.01em}
+  #i0-hl,#i0-hr{z-index:21} #i0-x{z-index:22!important} #i0-ask{z-index:23!important}
   .halfp .hs{font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:.22em;color:rgba(255,255,255,.75)}
 
   /* a1 tipografia cinética */
@@ -276,6 +277,9 @@
       <div class="abs willchange" id="i0-ma" style="left:0;right:0;bottom:-6px;text-align:center;transform-origin:50% 100%">
         <img src="assets/mascote-am.png" style="height:430px;display:inline-block;filter:drop-shadow(0 18px 32px rgba(0,0,0,.30))">
       </div>
+    </div>
+    <div class="abs willchange" id="i0-ask" style="left:0;right:0;top:132px;text-align:center;z-index:10">
+      <span style="display:inline-flex;align-items:center;gap:14px;background:#fff;border-radius:999px;padding:18px 40px;box-shadow:0 18px 44px rgba(0,0,0,.28);font-family:var(--mono);font-weight:700;font-size:24px;letter-spacing:.16em;color:var(--ink)"><span class="cdot" style="width:12px;height:12px;border-radius:50%;background:var(--acc);display:inline-block"></span>VAMOS ENTENDER ESSA PARCERIA?</span>
     </div>
     <div class="abs willchange" id="i0-x" style="left:50%;top:50%;z-index:9;transform:translate(-50%,-50%)">
       <div style="width:120px;height:120px;border-radius:50%;background:#fff;box-shadow:0 20px 50px rgba(11,37,69,.3);display:flex;align-items:center;justify-content:center;font-size:54px;font-weight:800;color:var(--acc)">×</div>
@@ -813,7 +817,7 @@ const SC={};SCENES.forEach(s=>SC[s.id]=s);
 const CHW=[[SC.i0.a,SC.a5.b],[SC.x2.a,SC.b3.b],[SC.x3.a,SC.c1.b]];
 SCENES.forEach(s=>{fx(s.a+0.1,0.8,'out',p=>{$('kdot').style.boxShadow=`0 0 0 ${p*9}px rgba(242,107,33,${(1-p)*0.45})`;});});
 /* partículas nas capas e no encerramento */
-particles('pc-i0',SC.i0.a,SC.i0.a+5.0,84,0);
+particles('pc-i0',SC.i0.a,SC.i0.b,84,0);
 particles('pc-x1',SC.x1.a,SC.x1.b,84,1);
 particles('pc-x2',SC.x2.a,SC.x2.b,84,2);
 particles('pc-x3',SC.x3.a,SC.x3.b,84,3);
@@ -822,50 +826,31 @@ particles('pc-c1',KW('c1','bem-vindo a bordo',0.1),SC.c1.b,36,4);
 /* ================= I0 COLD OPEN ================= */
 (()=>{const {a,n,b}=SC.i0;
   const K=(p,l)=>KW('i0',p,l);
-  hide('i0-chip','i0-sub','i0-hl','i0-hr','i0-x','i0-bar','i0-s','i0c-chip','i0c-x','i0w-s','i0-mt','i0-ma');
-  pushIn('i0',a);
-  blobs('i0-blob1','i0-blob2',a,b);
+  /* duas telas só: boas-vindas → tela dividida com mascotes (o cartão navy fica de fundo) */
+  hide('i0-chip','i0-sub','i0-title','i0-hl','i0-hr','i0-x','i0-bar','i0-s','i0c-chip','i0c-x','i0w-s','i0-mt','i0-ma','i0-ask');
   tw('i0c-chip',a+0.25,0.55,'back',{y:[-34,0],o:[0,1]});
-  /* boas-vindas: "Seja bem-vindo! — este é o início do seu onboarding" */
   reveal('i0w-t',K('Seja muito bem-vindo',0.25),0.9);
   tw('i0w-s',K('início do seu onboarding',0.3),0.6,'out',{y:[22,0],o:[0,1]});
-  /* vira para os lockups quando a Dani cita o ERP TOTVS */
-  const TK=K('ERP TOTVS',0.6);
-  fx(TK-0.15,0.5,'in2',p=>{$('i0w-t').style.transform=`translateY(${(-p*118).toFixed(1)}%)`;
-    $('i0w-s').style.opacity=1-p;$('i0w-s').style.transform=`translateY(${(-p*40).toFixed(1)}px)`;});
-  reveal('i0c-t1',TK+0.25,0.85);
-  fx(TK+0.8,0.55,'back',p=>{$('i0c-x').style.opacity=p;
-    $('i0c-xg').style.transform=`scale(${(0.5+p*0.5).toFixed(3)}) rotate(${((1-p)*90).toFixed(1)}deg)`;
-    $('i0c-r1').style.transform=`scaleX(${p.toFixed(3)})`;$('i0c-r2').style.transform=`scaleX(${p.toFixed(3)})`;});
-  reveal('i0c-t2',K('Alvarez e Marsal',0.25),0.85);
-  /* o cartão navy sobe pouco antes do split; o título claro já nasce pronto atrás */
-  const sp=K('lado a lado',0.35);
-  const LIFT=sp-1.05;
-  tw('i0-card',LIFT,0.75,'in2',{y:[0,-1130]});
-  reveal('i0-w1',LIFT+0.3);reveal('i0-w2',LIFT+0.5);
-  underline('i0-u',LIFT+1.0);
-  window.I0SP=sp;window.I0LIFT=LIFT;
-  /* split + mascotes */
+  const sp=K('Aqui, TOTVS',0.3);
+  fx(sp-0.4,0.4,'in2',p=>{$('i0w-t').style.transform=`translateY(${(-p*118).toFixed(1)}%)`;
+    $('i0w-s').style.opacity=1-p;$('i0c-chip').style.opacity=1-p;});
   tw('i0-hl',sp,0.85,'out5',{x:[-980,0],o:[1,1]});
   tw('i0-hr',sp,0.85,'out5',{x:[980,0],o:[1,1]});
   fx(sp+0.7,0.55,'back',p=>{$('i0-x').style.opacity=p;$('i0-x').style.transform=`translate(-50%,-50%) scale(${p}) rotate(${(1-p)*120}deg)`;});
   rippleAt('i0',960,540,sp+1.15,170);
   tw('i0-mt',sp+0.75,0.7,'back',{y:[440,0],o:[0,1]});
   tw('i0-ma',sp+0.95,0.7,'back',{y:[440,0],o:[0,1]});
-  const ASK=K('Vamos entender',0.3);
-  window.I0ASK=ASK;
-  lp(sp+1.75,ASK,t=>{
+  const e=b-0.8;
+  lp(sp+1.75,e,t=>{
     $('i0-mt').style.transform=`translateY(${(Math.sin(t*1.7)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1)*1.1).toFixed(2)}deg)`;
     $('i0-ma').style.transform=`translateY(${(Math.sin(t*1.7+1.4)*6).toFixed(1)}px) rotate(${(Math.sin(t*1.1+0.9)*-1.1).toFixed(2)}deg)`;});
-  /* convite final: as metades saem e fica "Vamos entender essa parceria?" */
-  tw('i0-hl',ASK,0.6,'in2',{x:[0,-980]});
-  tw('i0-hr',ASK,0.6,'in2',{x:[0,980]});
-  tw('i0-x',ASK-0.05,0.35,'in2',{o:[1,0]});
-  tw('i0-chip',ASK+0.15,0.6,'back',{y:[-40,0],o:[0,1]});
-  tw('i0-sub',ASK+0.35,0.6,'back',{y:[26,0],o:[0,1]});
-  const e=b-0.75;
-  fx(e,0.7,'in2',p=>{['i0-w1','i0-w2'].forEach(i=>$(i).style.transform=`translateY(${-p*118}%)`);
-    $('i0-chip').style.opacity=1-p;$('i0-sub').style.opacity=1-p;});
+  /* a pergunta aparece sobre a própria tela dividida — sem trocar de tela */
+  tw('i0-ask',K('Vamos entender',0.3),0.6,'back',{y:[-40,0],o:[0,1]});
+  /* saída: as metades abrem e revelam o navy de fundo, que emenda no cartão do Ato 1 */
+  tw('i0-hl',e,0.7,'in2',{x:[0,-980]});
+  tw('i0-hr',e,0.7,'in2',{x:[0,980]});
+  tw('i0-x',e-0.05,0.35,'in2',{o:[1,0]});
+  tw('i0-ask',e,0.4,'in2',{o:[1,0]});
 })();
 
 /* ================= CARTÕES DE ATO ================= */
@@ -1412,12 +1397,12 @@ const chBox=$('chapters');
 ['ATO 1','ATO 2','ATO 3'].forEach((t,i)=>{const d=document.createElement('div');d.className='ch';d.id='chb'+(i+1);
   d.innerHTML=`<span class="n">${t}</span><span class="bar"><i></i></span>`;chBox.appendChild(d);});
 anims.sort((x,y)=>x.t0-y.t0);
-const DARK={x1:1,x2:1,x3:1};
+const DARK={i0:1,x1:1,x2:1,x3:1};
 window.seek=function(t){
   t=clamp(t,0,window.TOTAL);
   let cur=SCENES[0];
   for(const s of SCENES){const on=t>=s.a-0.02&&t<s.b+0.02;$(s.id).style.display=on?'block':'none';if(t>=s.a&&t<s.b)cur=s;}
-  const dark=DARK[cur.id]||(cur.id==='i0'&&(t<(window.I0LIFT||SC.i0.a+4.6)+0.55||(t>=(window.I0SP||1e9)-0.05&&t<(window.I0ASK||1e9)+0.4)));
+  const dark=DARK[cur.id];
   $('kicker').style.display=(dark||!KICK[cur.id])?'none':'flex';
   $('footer').style.display=(dark||cur.id==='c1')?'none':'flex';
   $('chapters').style.display=dark?'none':'flex';
