@@ -129,23 +129,24 @@ def r(t, bold=False, cor=TXT, font=CORPO):
     return (t, font, bold, cor)
 
 
-NUMEROS = [('16', 'semanas de Operação Assistida, de 13/07 a 30/10'),
-           ('9', 'Comunidades estruturadas: 6 de Entrega e 3 Técnicas'),
-           ('100%', 'de aderência das Comunidades de Entrega a ritos e papéis'),
-           ('3', 'treinamentos publicados no ONS Educa+')]
+NUMEROS = [('9', 'Comunidades em funcionamento: 6 de Entrega e 3 Técnicas'),
+           ('100%', 'de aderência das Comunidades de Entrega a ritos, papéis e interfaces'),
+           ('5', 'frentes de adoção acompanhadas em cada Comunidade'),
+           ('3', 'treinamentos do novo modelo publicados no ONS Educa+')]
 JORNADA = [
-    ('JUL', 'Retomada', 'Início em 15/07, cronograma detalhado e realocação dos processos com FEL, FER e FEN.'),
-    ('AGO', 'Apropriação', 'Workshop de Gerências e Comunidades (04 e 05/08), webinars com as áreas clientes '
-                           '(26 e 27/08) e primeira capacitação no Modelo de Operação.'),
-    ('SET', 'Capacitação e governança', 'Trilha no ONS Educa+, workshops da FEG, Guia de Bolso Interativo e '
-                                        'Representantes de Negócio formalizados.'),
-    ('OUT', 'Modelo em operação', 'Azure DevOps em produção, backlog carregado e Comunidades de Entrega '
-                                  'apresentadas às áreas de negócio.'),
+    ('01', 'Estrutura definida', 'Escopo, processos e integrações das Gerências e Comunidades detalhados com gerentes e '
+                                 'líderes; processos herdados realocados.'),
+    ('02', 'Modelo apropriado', 'Modelo apresentado às áreas clientes, lideranças diagnosticadas e Representantes de '
+                                'Negócio formalizados nas Comunidades.'),
+    ('03', 'Capacidades desenvolvidas', 'Trilha de capacitação no ONS Educa+, Guia de Bolso Interativo e Rede de '
+                                        'Influenciadores sustentando a adoção.'),
+    ('04', 'Modelo em operação', 'Azure DevOps em produção, backlog das Comunidades carregado e Comunidades de Entrega '
+                                 'atuando com as áreas de negócio.'),
 ]
 AGORA = [
-    ('Roadmap de evolução', 'Monitoramento contínuo e melhoria do Modelo de Operação.'),
-    ('Comunidades Técnicas', 'Apresentação às áreas de negócio em 05/11.'),
-    ('Iniciativas piloto', 'Base de dados EMT e modelo sandbox.'),
+    ('Consolidação do modelo', 'Roadmap de monitoramento e evolução do modelo.'),
+    ('Comunidades Técnicas', 'Apresentação às áreas de negócio e acompanhamento da adoção.'),
+    ('Iniciativas piloto', 'Base de dados EMT e modelo sandbox conduzidos no novo modelo.'),
 ]
 MENSAGEM = [
     'O encerramento da operação assistida do Projeto Maestro representa um marco importante na jornada de '
@@ -190,23 +191,24 @@ def main():
 
     # 1. abertura
     y = 240
-    B.secao(y, 'MISSÃO CUMPRIDA!', porta)
-    B.text(56, y + 38, 460, [p([r('A Operação Assistida chegou ao fim. ', True, VERDE),
-                                r('Em quatro meses, o novo Modelo de Operação saiu do papel e passou a funcionar no dia a '
-                                  'dia das Gerências e Comunidades da FE.')], 9.5, 12)])
-    ty, th, gap = y + 76, 70, 8
+    B.secao(y, 'OPERAÇÃO ASSISTIDA CONCLUÍDA', porta)
+    hi = B.text(56, y + 38, 460, [p([r('O novo Modelo de Operação da FE está em funcionamento. ', True, VERDE),
+                                r('Gerências e Comunidades estruturadas, governança ativa e ferramentas oficiais em '
+                                  'produção: a etapa se encerra com o modelo pronto para ser consolidado na rotina.')],
+                               9.5, 12)])
+    ty, th, gap = y + 38 + hi + 10, 70, 8
     tw_ = (W - 36 - 3 * gap) / 4
     for i, (n, leg) in enumerate(NUMEROS):
         x = 18 + i * (tw_ + gap)
-        B.box(x, ty, tw_, th, fill=VERDE_ESC if i == 2 else BRANCO, line=None if i == 2 else BORDA,
+        B.box(x, ty, tw_, th, fill=VERDE_ESC if i == 1 else BRANCO, line=None if i == 1 else BORDA,
               prst=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.12)
-        dark = i == 2
+        dark = i == 1
         B.text(x + 6, ty + 7, tw_ - 12, [p([r(n, True, AMARELO if dark else VERDE, TIT)], 22, 24)], align='c')
         B.text(x + 6, ty + 33, tw_ - 12, [p([r(leg, False, BRANCO if dark else TXT)], 7.8, 9.4)], align='c')
 
     # 2. jornada
     y = ty + th + 18
-    B.secao(y, 'A JORNADA EM QUATRO MESES', alvo)
+    B.secao(y, 'O QUE CONSTRUÍMOS', alvo)
     jy = y + 46
     B.box(18, jy + 11, W - 36, 2, fill=AMARELO)
     cw = (W - 36 - 3 * gap) / 4
@@ -219,7 +221,7 @@ def main():
                                                      p([r(d, False, TXT)], 8.3, 10.3, 3)]))
     # 3. e agora
     y = jy + 34 + hj + 20
-    B.secao(y, 'E AGORA?', lampada)
+    B.secao(y, 'PRÓXIMOS PASSOS', lampada)
     ay = y + 44
     aw = (W - 36 - 2 * gap) / 3
     ah = 52
