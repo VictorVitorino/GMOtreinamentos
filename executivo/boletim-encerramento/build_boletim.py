@@ -22,28 +22,24 @@ OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(
 
 VERDE, VERDE_ESC, CINZA, AMARELO = '486018', '3D5714', '55585B', 'D4D300'
 
-MARCOS = [  # (número, data, título, legenda)
-    ('01', '15 JUL', 'Início da\nOperação Assistida', 'Retomada estruturada da implantação'),
-    ('02', '04 - 05 AGO', 'Workshop de Gerências\ne Comunidades', 'Escopo, processos e integrações'),
-    ('03', '26 - 27 AGO', 'Webinars com as\náreas clientes', 'Modelo de Operação e capacitação'),
-    ('04', 'SET - OUT', 'Comunidades\nem operação', 'Representantes e Azure DevOps'),
-    ('05', '30 OUT', 'Encerramento da\nOperação Assistida', 'Entregáveis e roadmap de evolução'),
+MARCOS = [  # (número, etapa, título, legenda): sem datas
+    ('01', 'ESTRUTURA', 'Gerências e\nComunidades', 'Escopo, processos e integrações'),
+    ('02', 'APROPRIAÇÃO', 'Modelo apresentado\nàs áreas clientes', 'Webinars e primeira capacitação'),
+    ('03', 'CAPACITAÇÃO', 'Trilha no\nONS Educa+', 'Treinamentos e Guia de Bolso Interativo'),
+    ('04', 'GOVERNANÇA', 'Representantes\nformalizados', 'Papéis e fóruns das Comunidades ativos'),
+    ('05', 'OPERAÇÃO', 'Modelo em\noperação', 'Azure DevOps e backlog em produção'),
 ]
 MARCO_IDS = [(80, 81, 82, 84), (86, 87, 88, 89), (91, 92, 93, 94), (96, 97, 98, 99), (101, 102, 103, 104)]
 
 ENTREGAS = [  # (id rótulo, id título, id texto, título, texto)
-    (115, 116, 117, 'Trilha de capacitação publicada',
-     'Modelo de Operação Matricial, Gestão de Projetos Ágeis e Arquitetura de Modelos no ONS Educa+, além de IA e '
-     'Azure DevOps.'),
-    (121, 122, 123, 'Comunidades em funcionamento',
-     'Comunidades de Entrega com 100% de aderência a ritos, papéis e interfaces com as áreas de negócio, e backlog no '
-     'Azure DevOps em produção.'),
+    (115, 116, 117, 'Capacitação e apropriação',
+     'Trilha do novo modelo no ONS Educa+, Guia de Bolso Interativo e capacitações em IA e Azure DevOps.'),
+    (121, 122, 123, '9 Comunidades em funcionamento',
+     'Comunidades de Entrega com 100% de aderência a ritos, papéis e interfaces; backlog no Azure DevOps em produção.'),
     (141, 142, 143, 'Canais e informação',
-     'Boletins semanais e mensais, conteúdo dos sites das Gerências da FE e comunicado formalizando os Representantes '
-     'de Negócio nas Comunidades.'),
-    (147, 148, 149, 'Engajamento e diagnóstico',
-     'Diagnóstico das lideranças, Guia de Bolso Interativo, Rede de Influenciadores ativada e mapa de adoção aos '
-     'comportamentos esperados.'),
+     'Boletins do projeto, sites das Gerências da FE e Representantes de Negócio formalizados junto às áreas.'),
+    (147, 148, 149, 'Engajamento e adoção',
+     'Diagnóstico das lideranças, Rede de Influenciadores ativada e mapa de adoção aos comportamentos esperados.'),
 ]
 
 MENSAGEM = [
@@ -156,19 +152,17 @@ def main():
 
     # cabeçalho e seção 1
     set_text(sh[67], ['Outubro/26'])
-    set_text(sh[48], ['A OPERAÇÃO ASSISTIDA CHEGA AO FIM!'])
-    set_text(sh[50], [[('De julho a outubro, a Operação Assistida levou o novo Modelo de Operação ', {}),
-                       ('da definição à prática', {'b': True, 'color': VERDE}),
-                       (': gerências e comunidades estruturadas, papéis e fóruns em funcionamento e ferramentas '
-                        'oficiais em produção.', {})]])
-    set_text(sh[52], ['Agora, o modelo segue para a rotina, com um roadmap de monitoramento e evolução para consolidar '
-                      'as novas práticas nas Gerências e Comunidades.'])
+    set_text(sh[48], ['OPERAÇÃO ASSISTIDA CONCLUÍDA!'])
+    set_text(sh[50], [[('O novo Modelo de Operação da FE está em funcionamento. ', {'b': True, 'color': VERDE}),
+                       ('Gerências e Comunidades estruturadas, governança ativa e ferramentas oficiais em produção.', {})]])
+    set_text(sh[52], ['A etapa se encerra com o modelo pronto para ser consolidado na rotina, com monitoramento e '
+                      'evolução contínuos.'])
     set_text(sh[56], ['OPERAÇÃO ASSISTIDA'])
-    set_text(sh[58], ['Etapa\nconcluída.'])
+    set_text(sh[58], ['Da prática\nà rotina.'])
     fill_from(sh[69], sh[62])  # os três estágios concluídos
 
     # seção 2: grandes marcos
-    set_text(sh[106], ['Os principais passos que percorremos na Operação Assistida, de julho a outubro.'])
+    set_text(sh[106], ['Os avanços que levaram o modelo da definição à rotina.'])
     for (n, d, t, leg), (i_n, i_d, i_t, i_l) in zip(MARCOS, MARCO_IDS):
         set_text(sh[i_n], [n])
         set_text(sh[i_d], [d])
