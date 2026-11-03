@@ -18,7 +18,7 @@ from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE, PP_ALIGN
 from pptx.oxml.ns import qn
 from pptx.util import Emu, Pt
 
-SRC = sys.argv[1]
+SRC = sys.argv[1] if len(sys.argv) > 1 else None
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(
     os.path.dirname(os.path.abspath(__file__)), 'dist', 'Sintese_Gerencial_Roadmap_Evolucao_Modelo.pptx')
 LAYOUT = 'AM_CONTEUDO'
@@ -186,9 +186,11 @@ HORIZONTES = [
 ]
 
 
-def slide_plano(prs, layout, ref):
-    s = S(prs, layout, ref, 1, 'Plano de entrega: oito ações em três horizontes',
-          'O que a FE recebe de cada ação, quem responde por ela e em quanto tempo',
+def slide_plano(prs, layout, ref, horizontes=None, col='ENTREGA ESPERADA',
+                title='Plano de entrega: oito ações em três horizontes',
+                sub='O que a FE recebe de cada ação, quem responde por ela e em quanto tempo'):
+    horizontes = horizontes or HORIZONTES
+    s = S(prs, layout, ref, 1, title, sub,
           'Síntese das 8 ações do roadmap de monitoramento e evolução do Modelo de Operação. Fechamento da Operação '
           'Assistida em até 1 mês; monitoramento nos 3 primeiros meses; evolução do modelo em 6 a 12 meses.')
     cH, cA, cD, cE = 74, 176, 104, 248
@@ -199,14 +201,14 @@ def slide_plano(prs, layout, ref):
     xG = xE + cE + g
     mw = (X1 - xG) / 12
     y0 = 128
-    for x, w, t in ((xA, 28 + cA, 'AÇÃO'), (xD, cD, 'RESPONSÁVEL'), (xE, cE, 'ENTREGA ESPERADA')):
+    for x, w, t in ((xA, 28 + cA, 'AÇÃO'), (xD, cD, 'RESPONSÁVEL'), (xE, cE, col)):
         s.text(x, y0, w, [P(t, 8, True, STEEL, spc=1)])
     for m in range(12):
         s.text(xG + m * mw, y0, mw, [P(f'M{m + 1}', 8, True, STEEL, align='c')])
     y = y0 + 18
     s.box(X0, y - 4, X1 - X0, 0.75, fill=NAVY)
     rows = []
-    for _, _, acoes in HORIZONTES:
+    for _, _, acoes in horizontes:
         for a in acoes:
             hh = max(H([P(a[1], 10, True, NAVY, lh=12)], cA), H([P(a[2], 9.5, False, TXT, lh=11.5)], cD),
                      H([P(a[3], 9.5, False, TXT, lh=11.5)], cE), 24)
@@ -219,7 +221,7 @@ def slide_plano(prs, layout, ref):
     if y + total > 506:
         WARN.append(f'plano: tabela passa ({y + total:.0f})')
     k = 0
-    for hz, cor, acoes in HORIZONTES:
+    for hz, cor, acoes in horizontes:
         hz_h = sum(rows[k:k + len(acoes)])
         s.box(X0, y, cH, hz_h - 3, fill=PALE)
         s.box(X0, y, 3, hz_h - 3, fill=cor)
@@ -254,6 +256,7 @@ def slide_plano(prs, layout, ref):
             s.box(xA, y + h - 1, X1 - xA, 0.5, fill=LINE)
             y += h
     s.check('plano')
+    return s
 
 
 # ------------------------------------------------------------------ 2. painel (slides 8, 9, 11-12, 26-27, 33 e 58)
@@ -413,4 +416,5 @@ def main():
     print('ok', OUT)
 
 
-main()
+if __name__ == '__main__':
+    main()
