@@ -1,310 +1,163 @@
 {
   "titulo": "IA Aplicada a Advogados",
-  "promessa": "Monte, do zero e no navegador, um escritório que funciona sozinho com o Claude.",
+  "chamada": "Construa, aula por aula, um escritório que trabalha sozinho com o Claude.",
+  "apoio": "Do primeiro acesso seguro ao escritório no automático. Tudo no navegador, sem programar, com a sua marca e dentro das regras da OAB.",
+  "curso": [
+    { "icone": "pessoa", "titulo": "Para quem é", "texto": "Advogados autônomos e de escritórios pequenos que nunca configuraram uma IA. Não precisa saber programar." },
+    { "icone": "predio", "titulo": "O que você constrói", "texto": "Um escritório no Claude e no Google: seguro, com a sua marca, com memória e com robôs que trabalham por você." },
+    { "icone": "alvo", "titulo": "Como é cada aula", "texto": "Vídeo curto, uma missão prática com material fictício e uma conquista no fim." },
+    { "icone": "nuvem", "titulo": "Tudo na web", "texto": "Nada para instalar. Claude, Google e GitHub direto no navegador." }
+  ],
+  "antes_depois": [
+    { "antes": "Prazos no caderno, na planilha e na cabeça", "depois": "Prazos no seu e-mail às 7h e na agenda, com alarme" },
+    { "antes": "“Doutor, e o meu processo?” toda semana", "depois": "Atualização pronta antes de o cliente perguntar" },
+    { "antes": "Proposta mandada por WhatsApp que esfria", "depois": "Proposta com a sua marca e follow-up automático" },
+    { "antes": "Medo de colar documento de cliente na IA", "depois": "Conta blindada e regras que nenhum robô quebra" }
+  ],
   "modulos": [
     {
-      "numero": 1,
-      "nome": "Montar o escritório no Claude",
+      "numero": 1, "andar": "Base", "nome": "Montar o escritório no Claude",
       "dor": "Abro o Claude e não sei por onde começar, nem se é seguro.",
-      "resultado": "Conta blindada, arquivo dos clientes no GitHub, um projeto por cliente, e Google, tribunais e plugin jurídico conectados.",
-      "precisa": "Conta gratuita e GitHub gratuito para começar; conectores, MCP e plugin pedem plano pago do Claude.",
-      "sessoes": [
-        {
-          "numero": "1.1", "nome": "Antes de usar: blindar a conta",
-          "faz": "Cria a conta, desliga o uso das conversas para treinamento, liga a verificação em duas etapas e define o que nunca entra no Claude.",
-          "conquista": "Conta blindada", "icone": "escudo",
-          "pratica": "Checklist de decolagem", "jogo": "Como o piloto antes de voar: oito itens conferidos, um a um, antes do primeiro uso.",
-          "minutos": 10, "dor": "Tenho medo de usar e expor o meu cliente.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita",
-          "cuidado": "Segredo de justiça, saúde e dado de criança nunca entram."
-        },
-        {
-          "numero": "1.2", "nome": "O mapa da tela",
-          "faz": "Aprende onde fica cada coisa: conversa, projetos, artefatos, conectores, memória, configurações e o seletor de modelo.",
-          "conquista": "Mapa do Claude", "icone": "mapa",
-          "pratica": "Caça ao tesouro", "jogo": "Seis itens escondidos na tela, três minutos para achar todos.",
-          "minutos": 6, "dor": "Abro o Claude e não sei para que serve cada botão.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita"
-        },
-        {
-          "numero": "1.3", "nome": "Qual modelo para qual trabalho",
-          "faz": "Conhece os modelos e monta o guia do escritório: o rápido para o volume, o mais capaz para o caso complexo.",
-          "conquista": "Guia de modelos", "icone": "lista",
-          "pratica": "Duelo de modelos", "jogo": "O mesmo caso complexo em dois modelos. Você é o juiz.",
-          "minutos": 10, "dor": "Não sei qual modelo escolher e gasto o limite do plano à toa.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita; os modelos maiores dependem do plano"
-        },
-        {
-          "numero": "1.4", "nome": "GitHub: o arquivo dos clientes",
-          "faz": "Cria um repositório privado por cliente, organiza as pastas (documentos, peças, contratos) e passa a ter o histórico de cada versão.",
-          "conquista": "Arquivo versionado", "icone": "versao",
-          "pratica": "Viagem no tempo", "jogo": "Você altera um contrato e volta à versão de ontem em dois cliques.",
-          "minutos": 12, "dor": "Não sei qual é a última versão, nem quem mudou o quê.",
-          "ferramentas": ["GitHub"], "precisa": "conta gratuita no GitHub",
-          "cuidado": "Repositório sempre privado, com verificação em duas etapas. Só entra o que o semáforo permite: o GitHub guarda os arquivos fora do Brasil."
-        },
-        {
-          "numero": "1.5", "nome": "Um projeto por cliente",
-          "faz": "Cria no Claude o projeto do cliente, puxa os arquivos do repositório e escreve as instruções do caso. Quando o repositório muda, um clique sincroniza.",
-          "conquista": "Pasta viva do cliente", "icone": "pasta",
-          "pratica": "Missão", "jogo": "Monte o projeto de um cliente fictício e faça o Claude achar o documento que falta.",
-          "minutos": 12, "dor": "A cada conversa eu explico o caso de novo.",
-          "ferramentas": ["Claude", "GitHub"], "precisa": "conta gratuita; a integração com o GitHub depende do plano",
-          "cuidado": "Documento vermelho do semáforo fica fora do projeto."
-        },
-        {
-          "numero": "1.6", "nome": "Google conectado",
-          "faz": "Conecta Gmail, Agenda e Drive ao Claude, com a permissão de perguntar sempre antes de agir.",
-          "conquista": "Google conectado", "icone": "agenda",
-          "pratica": "Semana no escuro", "jogo": "Uma semana fictícia lotada: o Claude acha os dois conflitos?",
-          "minutos": 10, "dor": "Começo a segunda-feira sem saber o que me espera.",
-          "ferramentas": ["Gmail, Agenda e Drive"], "precisa": "plano pago do Claude e conta Google",
-          "cuidado": "Conecte só o necessário. Rascunho e evento novo pedem a sua confirmação."
-        },
-        {
-          "numero": "1.7", "nome": "Reunião que vira ata",
-          "faz": "Liga a transcrição das reuniões do Google Meet, salva no Drive ou num aplicativo de notas conectado ao Claude, e transforma a reunião em ata com tarefas.",
-          "conquista": "Reunião registrada", "icone": "mensagem",
-          "pratica": "Contra o relógio", "jogo": "Da transcrição à ata em cinco minutos.",
-          "minutos": 8, "dor": "Saio da reunião com o cliente e a anotação fica pela metade.",
-          "ferramentas": ["Google Meet", "Gmail, Agenda e Drive"], "precisa": "plano pago do Claude; transcrição do Meet pede Google Workspace pago, ou um aplicativo de notas",
-          "cuidado": "Grave só com o consentimento do cliente. Não há conector oficial do Meet no Claude."
-        },
-        {
-          "numero": "1.8", "nome": "Tribunais na conversa: MCP jurídico",
-          "faz": "Adiciona, no navegador, um conector MCP de processos ou de jurisprudência brasileira e confere o resultado na fonte oficial.",
-          "conquista": "Tribunal conectado", "icone": "lupa",
-          "pratica": "Detetive", "jogo": "Cinco processos públicos: qual andou na semana?",
-          "minutos": 12, "dor": "Copio andamento do site do tribunal, um processo por vez.",
-          "ferramentas": ["MCP jurídico"], "precisa": "plano pago do Claude",
-          "cuidado": "Os conectores jurídicos brasileiros são de terceiros: veja quem mantém e a política de dados. Os que rodam no computador exigem o aplicativo de desktop e ficam fora do curso."
-        },
-        {
-          "numero": "1.9", "nome": "Plugin jurídico e skills",
-          "faz": "Instala o plugin jurídico, troca o playbook americano pelo critério do escritório e cria a primeira skill.",
-          "conquista": "Caixa de ferramentas jurídica", "icone": "molde",
-          "pratica": "Caça ao erro", "jogo": "Três cláusulas que o playbook americano marcou errado.",
-          "minutos": 12, "dor": "O plugin pronto revisa contrato pelo direito dos Estados Unidos.",
-          "ferramentas": ["Plugins e skills"], "precisa": "plano pago do Claude",
-          "cuidado": "O plugin sugere; a decisão é sua."
-        }
+      "resultado": "Conta blindada, um projeto por cliente ligado ao GitHub, e Google, tribunais e plugin jurídico conectados.",
+      "precisa": "conta gratuita para começar; conectores, MCP e plugin pedem plano pago do Claude",
+      "aulas": [
+        { "numero": "1.1", "nome": "Blindar antes de usar", "o_que_e": "A primeira configuração, antes de qualquer conversa.",
+          "apresenta": ["Conta e plano certos para o escritório", "Conversas fora do treinamento da IA", "Verificação em duas etapas e o semáforo do sigilo"],
+          "conquista": "Conta blindada", "icone": "escudo", "missao": "Checklist de decolagem", "ferramentas": ["Claude"], "minutos": 10 },
+        { "numero": "1.2", "nome": "O mapa da tela", "o_que_e": "Tour guiado para quem nunca abriu o Claude.",
+          "apresenta": ["Conversa, projetos e artefatos", "Conectores, memória e configurações", "Onde trocar de modelo"],
+          "conquista": "Mapa do Claude", "icone": "mapa", "missao": "Caça ao tesouro na tela", "ferramentas": ["Claude"], "minutos": 6 },
+        { "numero": "1.3", "nome": "Qual modelo para cada trabalho", "o_que_e": "Os modelos do Claude explicados para quem advoga.",
+          "apresenta": ["Haiku, Sonnet, Opus e Fable", "O mais capaz para processos complexos", "Como não gastar o limite à toa"],
+          "conquista": "Guia de modelos", "icone": "lista", "missao": "Duelo de modelos", "ferramentas": ["Claude"], "minutos": 10 },
+        { "numero": "1.4", "nome": "GitHub: o arquivo dos clientes", "o_que_e": "Um repositório privado por cliente, com histórico de versões.",
+          "apresenta": ["Criar a conta e o primeiro repositório", "Pastas de documentos, peças e contratos", "Ver e voltar uma versão antiga"],
+          "conquista": "Arquivo versionado", "icone": "versao", "missao": "Viagem no tempo", "ferramentas": ["GitHub"], "minutos": 12 },
+        { "numero": "1.5", "nome": "Um projeto por cliente", "o_que_e": "O cliente vira um projeto no Claude, ligado ao repositório.",
+          "apresenta": ["Projeto e instruções do caso", "Arquivos puxados do GitHub", "Sincronizar quando algo muda"],
+          "conquista": "Pasta viva do cliente", "icone": "pasta", "missao": "Ache o documento que falta", "ferramentas": ["Claude", "GitHub"], "minutos": 12 },
+        { "numero": "1.6", "nome": "Google conectado", "o_que_e": "Gmail, Agenda e Drive conversando com o Claude.",
+          "apresenta": ["Ligar os três conectores", "Permissão de perguntar antes de agir", "A semana inteira em uma tela"],
+          "conquista": "Google conectado", "icone": "agenda", "missao": "Semana no escuro", "ferramentas": ["Gmail", "Google Agenda", "Google Drive"], "minutos": 10 },
+        { "numero": "1.7", "nome": "Reunião que vira ata", "o_que_e": "A reunião do Google Meet transcrita e organizada.",
+          "apresenta": ["Ligar a transcrição da reunião", "Ata com decisões e tarefas", "E-mail de retorno em rascunho"],
+          "conquista": "Reunião registrada", "icone": "mensagem", "missao": "Ata em cinco minutos", "ferramentas": ["Google Meet", "Google Drive"], "minutos": 8 },
+        { "numero": "1.8", "nome": "Tribunais na conversa", "o_que_e": "Processos e jurisprudência dentro do Claude, por MCP.",
+          "apresenta": ["O que é um conector MCP", "Adicionar um conector jurídico na web", "Conferir sempre na fonte oficial"],
+          "conquista": "Tribunal conectado", "icone": "lupa", "missao": "Detetive de processos", "ferramentas": ["MCP jurídico"], "minutos": 12 },
+        { "numero": "1.9", "nome": "Plugin jurídico e skills", "o_que_e": "Comandos prontos com o critério do seu escritório.",
+          "apresenta": ["Instalar o plugin jurídico", "Trocar o playbook americano pelo seu", "Criar a primeira skill"],
+          "conquista": "Caixa de ferramentas jurídica", "icone": "molde", "missao": "Caça ao erro", "ferramentas": ["Plugins e skills"], "minutos": 12 }
       ]
     },
     {
-      "numero": 2,
-      "nome": "A cara e a memória do escritório",
+      "numero": 2, "andar": "Identidade", "nome": "A cara e a memória do escritório",
       "dor": "O Claude não sabe quem eu sou, e tudo o que ele entrega tem cara de genérico.",
-      "resultado": "Identidade, logotipo e design system no Claude, a memória sob controle e um projeto que é o cérebro do escritório.",
-      "precisa": "Conta gratuita para identidade, logotipo e memória; design system e apresentações pedem plano pago.",
-      "sessoes": [
-        {
-          "numero": "2.1", "nome": "A identidade em uma página",
-          "faz": "Escolhe as três palavras do escritório, a paleta, as letras e o tom de voz.",
-          "conquista": "Identidade definida", "icone": "cartao",
-          "pratica": "Jogo das cartas", "jogo": "Doze cartas de estilo na mesa. Você fica com três e descarta o resto.",
-          "minutos": 8, "dor": "Não sei explicar o que o meu escritório transmite.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita",
-          "cuidado": "Sobriedade é regra da OAB: sem autoelogio e sem promessa."
-        },
-        {
-          "numero": "2.2", "nome": "O logotipo",
-          "faz": "Recebe três caminhos de logotipo, escolhe um, refina em duas rodadas e guarda em SVG e PNG.",
-          "conquista": "Logotipo", "icone": "cartao",
-          "pratica": "Três caminhos", "jogo": "Lado a lado. Você escolhe e diz por quê.",
-          "minutos": 10, "dor": "Não tenho logo, ou fiz um no celular.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita",
-          "cuidado": "Sem o símbolo da OAB ou da República. Confira se o nome não colide com marca registrada."
-        },
-        {
-          "numero": "2.3", "nome": "O design system no Claude",
-          "faz": "Guarda cores, letras, espaçamentos, logotipo e exemplos num design system. Daí em diante, o que o Claude cria já nasce com a marca.",
-          "conquista": "Design system", "icone": "molde",
-          "pratica": "Teste da marca", "jogo": "Peça qualquer página: ela já sai com a cara do escritório?",
-          "minutos": 12, "dor": "Cada vez que peço uma apresentação, ela vem com uma cara diferente.",
-          "ferramentas": ["Design system"], "precisa": "plano pago do Claude; sem ele, a marca vira uma skill"
-        },
-        {
-          "numero": "2.4", "nome": "A marca nas apresentações e documentos",
-          "faz": "Cria o modelo de apresentação, o timbrado do Google Docs e a assinatura de e-mail com a marca.",
-          "conquista": "Kit visual", "icone": "slides",
-          "pratica": "Antes e depois", "jogo": "O mesmo parecer em Word cru e com a marca, lado a lado.",
-          "minutos": 10, "dor": "Tudo o que eu mando tem cara de Word cru.",
-          "ferramentas": ["Design system", "Formulários e Docs"], "precisa": "plano pago para apresentações no Claude; Docs e Gmail gratuitos",
-          "cuidado": "No timbre: nome e número de inscrição na OAB."
-        },
-        {
-          "numero": "2.5", "nome": "A memória do Claude",
-          "faz": "Liga a memória, vê o que o Claude guardou sobre você, corrige e apaga. Entende que cada projeto tem a própria memória.",
-          "conquista": "Memória sob controle", "icone": "cerebro",
-          "pratica": "O que o Claude sabe de mim?", "jogo": "Você abre a memória e corrige três coisas.",
-          "minutos": 8, "dor": "Não sei o que o Claude lembra de mim, nem onde isso fica.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita; buscar em conversas antigas pede plano pago",
-          "cuidado": "Dado de cliente não vai para a memória geral: fica no projeto do cliente."
-        },
-        {
-          "numero": "2.6", "nome": "O cérebro do escritório",
-          "faz": "Monta o projeto do escritório com instruções permanentes, tom de voz, identidade, política de uso de IA e o critério de revisão. Ele vira a memória oficial da casa.",
-          "conquista": "Cérebro do escritório", "icone": "cerebro",
-          "pratica": "Teste do estagiário novo", "jogo": "Um pedido seco, de uma linha: a resposta sai no padrão do escritório?",
-          "minutos": 12, "dor": "Toda conversa começa do zero.",
-          "ferramentas": ["Claude"], "precisa": "conta gratuita",
-          "cuidado": "Peça antiga só entra anonimizada."
-        },
-        {
-          "numero": "2.7", "nome": "A biblioteca de modelos",
-          "faz": "Guarda no projeto e no repositório os modelos da casa: peça, proposta de honorários, relatório ao cliente e atualização de andamento.",
-          "conquista": "Biblioteca de modelos", "icone": "pagina",
-          "pratica": "Contra o relógio", "jogo": "Proposta pronta em três minutos, a partir do modelo.",
-          "minutos": 10, "dor": "Refaço proposta e relatório do zero toda vez.",
-          "ferramentas": ["Claude", "GitHub", "Formulários e Docs"], "precisa": "conta gratuita"
-        },
-        {
-          "numero": "2.8", "nome": "IA às claras",
-          "faz": "Cria, com a marca, a página “Como usamos IA no seu caso” e o termo de consentimento do cliente.",
-          "conquista": "Transparência", "icone": "escudo",
-          "pratica": "Cliente desconfiado", "jogo": "Três perguntas difíceis. A página responde a todas?",
-          "minutos": 8, "dor": "Uso IA escondido. E se o cliente perguntar?",
-          "ferramentas": ["Claude", "Formulários e Docs"], "precisa": "conta gratuita",
-          "cuidado": "A Recomendação 001/2024 da OAB pede informação por escrito e a assinatura do cliente."
-        }
+      "resultado": "Logotipo e design system no Claude, apresentações com a sua marca e um projeto que é o cérebro do escritório.",
+      "precisa": "conta gratuita para identidade, logotipo e memória; design system e apresentações pedem plano pago",
+      "aulas": [
+        { "numero": "2.1", "nome": "A identidade em uma página", "o_que_e": "Como o escritório quer ser visto pelo cliente.",
+          "apresenta": ["As três palavras do escritório", "Paleta, letras e tom de voz", "Os limites da OAB para publicidade"],
+          "conquista": "Identidade definida", "icone": "cartao", "missao": "Jogo das cartas", "ferramentas": ["Claude"], "minutos": 8 },
+        { "numero": "2.2", "nome": "O logotipo", "o_que_e": "Do zero ao logotipo em arquivo vetorial.",
+          "apresenta": ["Três caminhos de logotipo", "Duas rodadas de ajuste", "Arquivos SVG e PNG prontos"],
+          "conquista": "Logotipo", "icone": "estrela", "missao": "Três caminhos", "ferramentas": ["Claude"], "minutos": 10 },
+        { "numero": "2.3", "nome": "O design system no Claude", "o_que_e": "A marca guardada para tudo nascer com ela.",
+          "apresenta": ["Cores, letras e espaçamentos", "Logotipo e páginas de exemplo", "Plano B: a marca como skill"],
+          "conquista": "Design system", "icone": "paleta", "missao": "Teste da marca", "ferramentas": ["Design system"], "minutos": 12 },
+        { "numero": "2.4", "nome": "A marca nas apresentações", "o_que_e": "Slides, timbrado e assinatura com a cara do escritório.",
+          "apresenta": ["Modelo de apresentação", "Timbrado no Google Docs", "Assinatura de e-mail"],
+          "conquista": "Kit visual", "icone": "slides", "missao": "Antes e depois", "ferramentas": ["Design system", "Google Docs", "Gmail"], "minutos": 10 },
+        { "numero": "2.5", "nome": "A memória do Claude", "o_que_e": "O que o Claude lembra de você e como controlar.",
+          "apresenta": ["Ver, editar e apagar a memória", "Memória geral e memória do projeto", "O que nunca deve ficar guardado"],
+          "conquista": "Memória sob controle", "icone": "cerebro", "missao": "O que o Claude sabe de mim?", "ferramentas": ["Claude"], "minutos": 8 },
+        { "numero": "2.6", "nome": "O cérebro do escritório", "o_que_e": "Um projeto que vira a memória oficial da casa.",
+          "apresenta": ["Instruções permanentes e tom de voz", "Política de IA e critério de revisão", "Peças antigas como referência"],
+          "conquista": "Cérebro do escritório", "icone": "cerebro", "missao": "Teste do estagiário novo", "ferramentas": ["Claude"], "minutos": 12 },
+        { "numero": "2.7", "nome": "A biblioteca de modelos", "o_que_e": "Os modelos da casa prontos para usar.",
+          "apresenta": ["Peça, proposta e relatório", "Guardados no projeto e no GitHub", "Um documento pronto em três minutos"],
+          "conquista": "Biblioteca de modelos", "icone": "pagina", "missao": "Contra o relógio", "ferramentas": ["Claude", "GitHub", "Google Docs"], "minutos": 10 },
+        { "numero": "2.8", "nome": "IA às claras", "o_que_e": "Transparência com o cliente sobre o uso de IA.",
+          "apresenta": ["Página “Como usamos IA no seu caso”", "Termo de consentimento do cliente", "O que a OAB recomenda"],
+          "conquista": "Transparência", "icone": "escudo", "missao": "Cliente desconfiado", "ferramentas": ["Claude", "Google Docs"], "minutos": 8 }
       ]
     },
     {
-      "numero": 3,
-      "nome": "O escritório no automático",
+      "numero": 3, "andar": "Automático", "nome": "O escritório no automático",
       "dor": "Passo o dia respondendo, lembrando e cobrando. O escritório só anda quando eu empurro.",
-      "resultado": "Respostas, propostas, prazos, follow-up, contratos e uma fila de revisões rodando sozinhos, num painel de controle.",
-      "precisa": "Conta Google gratuita e WhatsApp Business; triagem e leitura de contrato com IA pedem chave de API paga.",
-      "sessoes": [
-        {
-          "numero": "3.1", "nome": "A sala de máquinas",
-          "faz": "Monta o ambiente das automações: planilha-mãe, pastas no Drive, o primeiro Google Apps Script e a chave guardada fora da planilha, com limite de gasto.",
-          "conquista": "Sala de máquinas", "icone": "planilha",
-          "pratica": "Construção guiada", "jogo": "Você instala pelo menu e vê as abas e as pastas aparecerem.",
-          "minutos": 10, "dor": "Não sei nem onde um script fica.",
-          "ferramentas": ["Google Planilhas", "Google Apps Script", "Gmail, Agenda e Drive"], "precisa": "conta Google gratuita",
-          "cuidado": "Tudo testado numa conta de treino antes da conta real."
-        },
-        {
-          "numero": "3.2", "nome": "O freio de mão",
-          "faz": "Escreve as regras que nenhum robô quebra: máscara de CPF e CNPJ, termos que nunca saem, e-mail só em rascunho, revisão antes da agenda e registro de tudo. Cada script fica no GitHub, com histórico.",
-          "conquista": "Freio de mão", "icone": "escudo",
-          "pratica": "Conserte o script", "jogo": "Um robô sem freio quase envia um CPF. Você fecha a brecha.",
-          "minutos": 12, "dor": "E se o robô mandar um e-mail errado ou vazar um dado?",
-          "ferramentas": ["Google Apps Script", "GitHub"], "precisa": "conta Google gratuita",
-          "cuidado": "A máscara não cobre nomes nem endereços: troque por papéis antes."
-        },
-        {
-          "numero": "3.3", "nome": "Recepção 24 horas",
-          "faz": "Configura o WhatsApp Business e o Gmail para responder fora do horário: horário de atendimento, link do formulário e o aviso de que o escritório nunca pede Pix por mensagem.",
-          "conquista": "Recepção 24 horas", "icone": "mensagem",
-          "automacao": "fora do horário, todo contato recebe a resposta na hora",
-          "pratica": "Simulador de mensagens", "jogo": "Cinco mensagens fictícias: o que cada uma recebe sozinha?",
-          "minutos": 12, "dor": "O cliente manda mensagem às 23h e cobra resposta no domingo.",
-          "ferramentas": ["WhatsApp Business", "Gmail, Agenda e Drive"], "precisa": "WhatsApp Business (gratuito) e conta Google",
-          "cuidado": "A resposta diz que é automática e não dá orientação jurídica. Robô não oficial de WhatsApp pode bloquear o número."
-        },
-        {
-          "numero": "3.4", "nome": "Balcão de entrada",
-          "faz": "Formulário de primeiro contato com aviso de privacidade. Cada resposta vira cadastro, e um clique gera procuração, contrato de honorários e termo de consentimento na pasta do cliente.",
-          "conquista": "Balcão de entrada", "icone": "formulario",
-          "automacao": "cada formulário entra no cadastro, e um clique gera os documentos",
-          "pratica": "Contra o relógio", "jogo": "Do formulário preenchido aos três documentos em um minuto.",
-          "minutos": 14, "dor": "Cliente novo me custa uma tarde de papelada.",
-          "ferramentas": ["Formulários e Docs", "Google Apps Script", "Google Planilhas"], "precisa": "conta Google gratuita",
-          "cuidado": "Peça só o necessário. Nada de consulta automática a quem não é cliente."
-        },
-        {
-          "numero": "3.5", "nome": "Proposta que não esfria",
-          "faz": "Um clique gera a proposta com a marca. Se o cliente não responder em três dias, o follow-up fica pronto em rascunho.",
-          "conquista": "Proposta que não esfria", "icone": "pagina",
-          "automacao": "três dias sem resposta, o follow-up fica pronto",
-          "pratica": "Funil", "jogo": "Três propostas fictícias: qual pede follow-up hoje?",
-          "minutos": 12, "dor": "Mandei a proposta e esqueci de perguntar se o cliente decidiu.",
-          "ferramentas": ["Google Apps Script", "Formulários e Docs", "Gmail, Agenda e Drive"], "precisa": "conta Google gratuita",
-          "cuidado": "Proposta só para quem pediu. Quem envia é você."
-        },
-        {
-          "numero": "3.6", "nome": "Despertador de prazos",
-          "faz": "Dois robôs: um manda os prazos da semana para o seu e-mail às 7h; o outro leva os prazos conferidos para a agenda, com alarme.",
-          "conquista": "Despertador de prazos", "icone": "agenda",
-          "automacao": "às 7h, os prazos no seu e-mail; à noite, os conferidos na agenda",
-          "pratica": "O robô trabalhou de madrugada", "jogo": "Na aula seguinte, você abre o e-mail que chegou sozinho.",
-          "minutos": 12, "dor": "Prazo na planilha não apita.",
-          "ferramentas": ["Google Apps Script", "Google Planilhas", "Gmail, Agenda e Drive"], "precisa": "conta Google gratuita",
-          "cuidado": "A IA não conta prazo. Só vai para a agenda o prazo conferido."
-        },
-        {
-          "numero": "3.7", "nome": "Caixa domada",
-          "faz": "Liga a triagem: cada e-mail novo ganha etiqueta, resumo e rascunho de resposta, sem nada ser enviado.",
-          "conquista": "Caixa domada", "icone": "email",
-          "automacao": "a cada 30 minutos, os e-mails novos são triados",
-          "pratica": "Caça ao erro", "jogo": "Um e-mail traz uma instrução escondida para a IA. Ela não obedece.",
-          "minutos": 12, "dor": "A caixa de entrada me engole.",
-          "ferramentas": ["Google Apps Script", "API do Claude", "Gmail, Agenda e Drive"], "precisa": "chave de API paga (centavos por e-mail); sem chave, regras por remetente e assunto",
-          "cuidado": "E-mail com termo sensível não vai para a IA."
-        },
-        {
-          "numero": "3.8", "nome": "Cliente informado",
-          "faz": "Toda segunda, os casos sem notícia para o cliente há mais de 30 dias ganham um rascunho de atualização, feito a partir do último andamento.",
-          "conquista": "Cliente informado", "icone": "mensagem",
-          "automacao": "toda segunda, os rascunhos de atualização ficam prontos",
-          "pratica": "Segunda-feira", "jogo": "Quatro rascunhos esperando por você.",
-          "minutos": 10, "dor": "Só lembro do cliente quando ele me cobra.",
-          "ferramentas": ["Google Apps Script", "Google Planilhas", "Gmail, Agenda e Drive"], "precisa": "conta Google gratuita",
-          "cuidado": "Sem promessa de resultado. Você revisa e envia."
-        },
-        {
-          "numero": "3.9", "nome": "Vigia de contratos",
-          "faz": "Contrato que cai na pasta é lido pelo critério do escritório e vira matriz de riscos. Cada nova versão é comparada com a anterior, com alerta se algo piorou.",
-          "conquista": "Vigia de contratos", "icone": "contrato",
-          "automacao": "contrato novo vira matriz de riscos; versão nova é comparada e mudança ruim vira alerta",
-          "pratica": "Prova com gabarito", "jogo": "O que a IA deixou passar? E as duas mudanças que a outra parte não contou?",
-          "minutos": 15, "dor": "Revisar contrato me toma a tarde, e a outra parte muda cláusula sem avisar.",
-          "ferramentas": ["Google Apps Script", "API do Claude", "Google Planilhas"], "precisa": "chave de API paga para a leitura; a comparação de versões é gratuita",
-          "cuidado": "Trecho que não confere fica marcado. O risco é decidido e assinado por você."
-        },
-        {
-          "numero": "3.10", "nome": "Mesa de aprovação",
-          "faz": "Junta numa fila tudo o que os robôs prepararam e espera você: rascunhos, propostas, matrizes e prazos sem conferência. Às 8h, chega a lista do dia.",
-          "conquista": "Mesa de aprovação", "icone": "lista",
-          "automacao": "às 8h, a lista do que espera a sua revisão",
-          "pratica": "Caça ao erro", "jogo": "Uma matriz “revisada” sem nome de revisor. A fila percebe?",
-          "minutos": 10, "dor": "Não sei o que a IA fez e ainda está esperando por mim.",
-          "ferramentas": ["Google Apps Script", "Google Planilhas"], "precisa": "conta Google gratuita",
-          "cuidado": "Só vale como revisado o item com nome e data de quem revisou."
-        },
-        {
-          "numero": "3.11", "nome": "O escritório no automático",
-          "faz": "Monta o painel de controle com a marca: casos, clientes, propostas, contratos, a fila de revisões e o que cada robô fez hoje. Depois, um dia simulado: os robôs trabalham e você revisa tudo em quinze minutos.",
-          "conquista": "Escritório no automático", "icone": "painel",
-          "pratica": "Missão final", "jogo": "Um dia inteiro de escritório fictício, do primeiro contato ao contrato revisado.",
-          "minutos": 16, "dor": "Quero ver o escritório andar sem eu empurrar.",
-          "ferramentas": ["Google Apps Script", "Google Planilhas", "Design system"], "precisa": "conta Google gratuita",
-          "cuidado": "Painel com acesso só para você ou sua equipe."
-        }
+      "resultado": "Recepção, propostas, prazos, follow-up e contratos rodando sozinhos, com uma fila de aprovação e um painel de controle.",
+      "precisa": "conta Google gratuita e WhatsApp Business; triagem de e-mail e leitura de contrato pedem chave de API paga",
+      "aulas": [
+        { "numero": "3.1", "nome": "A sala de máquinas", "o_que_e": "O ambiente onde os robôs vão rodar.",
+          "apresenta": ["Planilha-mãe e pastas no Drive", "O que é o Google Apps Script", "Chave guardada e limite de gasto"],
+          "conquista": "Sala de máquinas", "icone": "planilha", "missao": "Construção guiada", "ferramentas": ["Google Planilhas", "Apps Script", "Google Drive"], "minutos": 10 },
+        { "numero": "3.2", "nome": "O freio de mão", "o_que_e": "As regras que nenhum robô quebra.",
+          "apresenta": ["Máscara de CPF e CNPJ", "E-mail só em rascunho", "Registro de tudo e scripts no GitHub"],
+          "conquista": "Freio de mão", "icone": "escudo", "missao": "Conserte o script", "ferramentas": ["Apps Script", "GitHub"], "minutos": 12 },
+        { "numero": "3.3", "nome": "Recepção 24 horas", "o_que_e": "Respostas automáticas no WhatsApp e no e-mail.",
+          "apresenta": ["Saudação e ausência no WhatsApp Business", "Resposta automática do Gmail", "Aviso contra o golpe do falso advogado"],
+          "conquista": "Recepção 24 horas", "icone": "mensagem", "missao": "Simulador de mensagens", "ferramentas": ["WhatsApp Business", "Gmail"], "minutos": 12 },
+        { "numero": "3.4", "nome": "Balcão de entrada", "o_que_e": "Do formulário ao cliente cadastrado, com documentos.",
+          "apresenta": ["Formulário com aviso de privacidade", "Cadastro automático na planilha", "Procuração e contrato com um clique"],
+          "conquista": "Balcão de entrada", "icone": "formulario", "missao": "Contra o relógio", "ferramentas": ["Google Formulários", "Google Docs", "Apps Script"], "minutos": 14 },
+        { "numero": "3.5", "nome": "Proposta que não esfria", "o_que_e": "Proposta gerada e follow-up automático.",
+          "apresenta": ["Proposta em PDF com a sua marca", "Funil de propostas", "Follow-up depois de três dias"],
+          "conquista": "Proposta que não esfria", "icone": "pagina", "missao": "Funil", "ferramentas": ["Apps Script", "Google Docs", "Gmail"], "minutos": 12 },
+        { "numero": "3.6", "nome": "Despertador de prazos", "o_que_e": "Prazos no e-mail às 7h e na agenda com alarme.",
+          "apresenta": ["O robô do e-mail das 7h", "Prazos conferidos na agenda", "Por que a IA não conta prazo"],
+          "conquista": "Despertador de prazos", "icone": "relogio", "missao": "O robô trabalhou de madrugada", "ferramentas": ["Apps Script", "Google Planilhas", "Gmail", "Google Agenda"], "minutos": 12 },
+        { "numero": "3.7", "nome": "Caixa domada", "o_que_e": "Triagem de e-mail com resumo e rascunho.",
+          "apresenta": ["Etiquetas e prioridades", "Resumo e rascunho de resposta", "Proteção contra instrução escondida"],
+          "conquista": "Caixa domada", "icone": "email", "missao": "Caça ao erro", "ferramentas": ["Apps Script", "Gmail", "API do Claude"], "minutos": 12 },
+        { "numero": "3.8", "nome": "Cliente informado", "o_que_e": "Follow-up de casos antes de o cliente cobrar.",
+          "apresenta": ["Casos sem notícia há 30 dias", "Rascunho a partir do último andamento", "A rotina de segunda-feira"],
+          "conquista": "Cliente informado", "icone": "mensagem", "missao": "Segunda-feira", "ferramentas": ["Apps Script", "Google Planilhas", "Gmail"], "minutos": 10 },
+        { "numero": "3.9", "nome": "Vigia de contratos", "o_que_e": "Leitura pelo seu critério e comparação de versões.",
+          "apresenta": ["Matriz de riscos com trecho conferido", "Comparação de versões", "Alerta quando algo piora"],
+          "conquista": "Vigia de contratos", "icone": "contrato", "missao": "Prova com gabarito", "ferramentas": ["Apps Script", "API do Claude", "Google Planilhas"], "minutos": 15 },
+        { "numero": "3.10", "nome": "Mesa de aprovação", "o_que_e": "A fila de tudo que espera a sua revisão.",
+          "apresenta": ["Rascunhos, propostas e matrizes na fila", "A lista do dia às 8h", "Revisado só com nome e data"],
+          "conquista": "Mesa de aprovação", "icone": "lista", "missao": "Caça ao erro", "ferramentas": ["Apps Script", "Google Planilhas"], "minutos": 10 },
+        { "numero": "3.11", "nome": "O escritório no automático", "o_que_e": "O painel de controle e um dia simulado.",
+          "apresenta": ["Painel com a marca do escritório", "O que cada robô fez hoje", "Um dia inteiro revisado em 15 minutos"],
+          "conquista": "Escritório no automático", "icone": "trofeu", "missao": "Missão final", "ferramentas": ["Apps Script", "Google Planilhas", "Design system"], "minutos": 16 }
       ]
     }
   ],
+  "projeto_final": {
+    "titulo": "No fim, você apresenta o seu escritório funcionando",
+    "texto": "O trabalho de conclusão é uma demonstração de cinco minutos, gravada na sua própria tela.",
+    "roteiro": [
+      { "icone": "escudo", "texto": "A conta blindada e o semáforo do sigilo" },
+      { "icone": "pasta", "texto": "O projeto de um cliente ligado ao GitHub" },
+      { "icone": "slides", "texto": "Uma apresentação com a marca do escritório" },
+      { "icone": "mensagem", "texto": "A recepção automática respondendo fora do horário" },
+      { "icone": "relogio", "texto": "O e-mail das 7h com os prazos da semana" },
+      { "icone": "painel", "texto": "A fila de aprovação e o painel de controle" }
+    ]
+  },
   "ferramentas": {
-    "Claude": { "faz": "Conversa, projetos, artefatos, memória e escolha do modelo, tudo no navegador.", "plano": "gratuito; recursos avançados no plano pago" },
-    "GitHub": { "faz": "Um repositório privado por cliente, com o histórico de cada versão. Os scripts do escritório também ficam lá.", "plano": "gratuito" },
-    "Gmail, Agenda e Drive": { "faz": "Conectados ao Claude, mostram a semana, os e-mails e os arquivos. Nas automações, recebem rascunhos, eventos e documentos.", "plano": "Google gratuito; conector no Claude pede plano pago" },
-    "Google Meet": { "faz": "A transcrição da reunião vira ata com tarefas.", "plano": "transcrição pede Google Workspace pago, ou um aplicativo de notas" },
-    "MCP jurídico": { "faz": "Processos e jurisprudência brasileira dentro da conversa, por conector remoto.", "plano": "plano pago do Claude; conectores de terceiros" },
-    "Plugins e skills": { "faz": "O plugin jurídico com o critério do escritório e skills próprias.", "plano": "plano pago do Claude" },
-    "Design system": { "faz": "Logotipo, paleta, letras e layout guardados no Claude: tudo nasce com a marca.", "plano": "plano pago do Claude; sem ele, uma skill de marca" },
-    "Google Planilhas": { "faz": "A planilha-mãe: casos, clientes, propostas, contratos e a fila de revisões.", "plano": "gratuito" },
-    "Google Apps Script": { "faz": "Os robôs do escritório. O Claude escreve, você cola, autoriza e testa.", "plano": "gratuito, com os limites de uso da conta" },
-    "Formulários e Docs": { "faz": "Primeiro contato, documentos timbrados e procuração, contrato e proposta gerados com um clique.", "plano": "gratuito" },
-    "WhatsApp Business": { "faz": "Saudação, ausência fora do horário, respostas rápidas e etiquetas.", "plano": "gratuito" },
-    "API do Claude": { "faz": "A IA dentro dos robôs: triagem de e-mail e leitura de contrato.", "plano": "paga, centavos por uso, com limite de gasto" }
+    "Claude": { "icone": "claude", "faz": "Conversa, projetos, memória e modelos", "plano": "Grátis + Pro", "tipo": "misto" },
+    "GitHub": { "icone": "versao", "faz": "Arquivo dos clientes com histórico de versões", "plano": "Grátis", "tipo": "gratis" },
+    "Gmail": { "icone": "email", "faz": "Conector, respostas automáticas e rascunhos", "plano": "Grátis", "tipo": "gratis" },
+    "Google Agenda": { "icone": "agenda", "faz": "Semana organizada e prazos com alarme", "plano": "Grátis", "tipo": "gratis" },
+    "Google Drive": { "icone": "pasta", "faz": "Pastas dos clientes e transcrições", "plano": "Grátis", "tipo": "gratis" },
+    "Google Meet": { "icone": "video", "faz": "Reunião transcrita que vira ata", "plano": "Workspace pago", "tipo": "pago" },
+    "Google Planilhas": { "icone": "planilha", "faz": "A planilha-mãe do escritório", "plano": "Grátis", "tipo": "gratis" },
+    "Google Formulários": { "icone": "formulario", "faz": "Primeiro contato com o cliente", "plano": "Grátis", "tipo": "gratis" },
+    "Google Docs": { "icone": "pagina", "faz": "Timbrado e documentos gerados", "plano": "Grátis", "tipo": "gratis" },
+    "Apps Script": { "icone": "codigo", "faz": "Os robôs do escritório", "plano": "Grátis", "tipo": "gratis" },
+    "MCP jurídico": { "icone": "plugue", "faz": "Tribunais e jurisprudência na conversa", "plano": "Pro", "tipo": "pago" },
+    "Plugins e skills": { "icone": "peca", "faz": "Plugin jurídico e skills próprias", "plano": "Pro", "tipo": "pago" },
+    "Design system": { "icone": "paleta", "faz": "A marca em tudo que o Claude cria", "plano": "Pro", "tipo": "pago" },
+    "WhatsApp Business": { "icone": "balao", "faz": "Saudação, ausência e respostas rápidas", "plano": "Grátis", "tipo": "gratis" },
+    "API do Claude": { "icone": "chave", "faz": "A IA dentro dos robôs", "plano": "Centavos por uso", "tipo": "pago" }
   },
   "modelos": [
-    { "modelo": "Haiku 5.5", "perfil": "O mais rápido", "usos": "Triagem de e-mail e classificação de intimações em volume, e os robôs que rodam o dia inteiro." },
-    { "modelo": "Sonnet 5.5", "perfil": "O do dia a dia", "usos": "E-mails, atas, resumos, planilhas, scripts e apresentações com a marca." },
-    { "modelo": "Opus 5.5", "perfil": "Leitura cuidadosa", "usos": "Contrato contra o playbook, minuta a partir do modelo da casa, parecer e comparação de versões." },
-    { "modelo": "Fable 5.2", "perfil": "O mais capaz", "usos": "Processos complexos: autos volumosos, várias teses em disputa, estratégia e revisão crítica da peça antes do protocolo." }
+    { "modelo": "Haiku 5.5", "perfil": "O mais rápido", "usos": "Robôs que rodam o dia inteiro: triagem de e-mail e intimações em volume." },
+    { "modelo": "Sonnet 5.5", "perfil": "O do dia a dia", "usos": "E-mails, atas, resumos, planilhas, scripts e apresentações." },
+    { "modelo": "Opus 5.5", "perfil": "Leitura cuidadosa", "usos": "Contratos pelo seu critério, minutas, pareceres e versões." },
+    { "modelo": "Fable 5.2", "perfil": "O mais capaz", "usos": "Processos complexos: autos volumosos, várias teses, estratégia e revisão crítica da peça." }
   ],
-  "rodape": "Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Telas, planos e nomes de modelos mudam: conferir antes de gravar. Casos e dados das aulas são fictícios."
+  "rodape": "Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios."
 }

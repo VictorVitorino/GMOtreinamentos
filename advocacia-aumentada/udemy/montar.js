@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Monta a agenda do curso a partir de agenda.json.
+/* Monta a página da agenda do curso a partir de agenda.json.
 
    Uso:  node montar.js [dados.json] [--artefato caminho.html]
 
@@ -7,7 +7,7 @@
      agenda-udemy.html   página completa, abre em qualquer navegador
      README.md           espelho em texto
    Com --artefato, grava também a versão sem <html>/<head>/<body>, usada para publicar a página.
-   Confere números de sessão, minutos e ferramentas, e para se algo não fechar. */
+   Confere números, minutos, ícones e ferramentas; para se algo não fechar. */
 
 const fs = require('fs');
 const path = require('path');
@@ -19,8 +19,8 @@ const entrada = path.resolve(args.find((a, i) => !a.startsWith('--') && (iArt < 
 const pasta = path.dirname(entrada);
 const A = JSON.parse(fs.readFileSync(entrada, 'utf8'));
 
-// ---------- ícones ----------
-const ICONES = {
+// ---------- ícones (traço, 24 x 24) ----------
+const I = {
   escudo: '<path d="M12 3l7 2.6v5.3c0 4.4-2.9 8.1-7 9.6-4.1-1.5-7-5.2-7-9.6V5.6L12 3z"/><path d="M9 11.8l2.1 2.1L15 10"/>',
   mapa: '<path d="M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/>',
   lista: '<path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/>',
@@ -28,9 +28,11 @@ const ICONES = {
   pasta: '<path d="M3.5 7a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/>',
   agenda: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h2.5M13.8 14h2.7M7.5 17.4h2.5"/>',
   mensagem: '<path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/>',
-  lupa: '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8.2 10.7l1.7 1.7 2.9-3.1"/>',
+  lupa: '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
   molde: '<path d="M8 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2M9 9h6M9 12h6M9 15h3.5"/>',
   cartao: '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/>',
+  estrela: '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+  paleta: '<path d="M12 3a9 9 0 0 0 0 18c1.4 0 2-1 2-2s-.8-1.5-.8-2.5S14 15 15 15h2a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1.1"/><circle cx="10.5" cy="7.5" r="1.1"/><circle cx="15" cy="8" r="1.1"/>',
   slides: '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/>',
   cerebro: '<path d="M12 5.5a3 3 0 0 0-5.5 1.3A3 3 0 0 0 5 12a3 3 0 0 0 2 5.3 3 3 0 0 0 5 1.2M12 5.5a3 3 0 0 1 5.5 1.3A3 3 0 0 1 19 12a3 3 0 0 1-2 5.3 3 3 0 0 1-5 1.2M12 5.5v13"/>',
   pagina: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/>',
@@ -39,9 +41,23 @@ const ICONES = {
   email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.6L12 13l8.4-6.4"/>',
   contrato: '<path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 11h7M9 14.3h7M9 18c.9-1.4 1.9-1.4 2.8 0s1.9 1.4 2.8 0"/>',
   painel: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/>',
-  sozinho: '<path d="M20 12a8 8 0 1 1-2.35-5.65"/><path d="M20 4.5v4h-4"/><path d="M12 8v4l2.6 2.4"/>',
+  relogio: '<circle cx="12" cy="13" r="7"/><path d="M12 9.5V13l2.5 1.5M5 4.5L3 6.5M19 4.5l2 2"/>',
+  trofeu: '<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M9.5 17h5"/>',
+  alvo: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".9"/>',
+  pessoa: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>',
+  predio: '<path d="M5 21V5l7-2 7 2v16M3 21h18M9 8h1.5M13.5 8H15M9 12h1.5M13.5 12H15M10.5 21v-4h3v4"/>',
+  nuvem: '<path d="M7 18.5a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.4 1.6A3.8 3.8 0 0 1 17.5 18.5z"/>',
+  claude: '<path d="M12 3.5v17M3.5 12h17M6 6l12 12M18 6L6 18"/>',
+  video: '<rect x="3" y="6.5" width="12.5" height="11" rx="2"/><path d="M15.5 10.5l5-3v9l-5-3"/>',
+  codigo: '<path d="M8.5 8L4.5 12l4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>',
+  plugue: '<path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0z"/><path d="M12 16v5"/>',
+  peca: '<path d="M10 4h4v2.4a1.6 1.6 0 1 0 3.2 0V4H20v6.2h-2.4a1.6 1.6 0 1 0 0 3.2H20V20h-6.2v-2.4a1.6 1.6 0 1 0-3.2 0V20H4v-6.6h2.4a1.6 1.6 0 1 0 0-3.2H4V4z"/>',
+  balao: '<path d="M4 20l1.4-4.2A8 8 0 1 1 8.2 18.6z"/>',
+  chave: '<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2.5 2.5M14 9l2 2"/>',
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
-  seta: '<path d="M9 6l6 6-6 6"/>',
+  seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  luz: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+  cadeado: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
 };
 
 // ---------- conferência ----------
@@ -49,290 +65,477 @@ const erros = [];
 if (A.modulos.length !== 3) erros.push('A agenda precisa de exatamente 3 módulos.');
 const vistos = new Set();
 A.modulos.forEach((m) => {
-  m.minutos = m.sessoes.reduce((t, s) => t + s.minutos, 0);
-  m.sessoes.forEach((s) => {
-    ['numero', 'nome', 'faz', 'conquista', 'minutos'].forEach((c) => { if (!s[c]) erros.push(`Sessão ${s.numero || '?'} sem "${c}".`); });
-    if (!String(s.numero).startsWith(m.numero + '.')) erros.push(`Sessão ${s.numero} fora do módulo ${m.numero}.`);
-    if (vistos.has(s.numero)) erros.push(`Sessão ${s.numero} repetida.`);
-    vistos.add(s.numero);
-    if (s.icone && !ICONES[s.icone]) erros.push(`Sessão ${s.numero}: ícone desconhecido "${s.icone}".`);
-    (s.ferramentas || []).forEach((f) => { if (!A.ferramentas[f]) erros.push(`Sessão ${s.numero}: ferramenta sem descrição "${f}".`); });
+  m.minutos = m.aulas.reduce((t, a) => t + a.minutos, 0);
+  m.aulas.forEach((a) => {
+    ['numero', 'nome', 'o_que_e', 'conquista', 'missao', 'minutos'].forEach((c) => { if (!a[c]) erros.push(`Aula ${a.numero || '?'} sem "${c}".`); });
+    if (!a.apresenta || a.apresenta.length < 2) erros.push(`Aula ${a.numero}: "apresenta" precisa de pelo menos 2 itens.`);
+    if (!String(a.numero).startsWith(m.numero + '.')) erros.push(`Aula ${a.numero} fora do módulo ${m.numero}.`);
+    if (vistos.has(a.numero)) erros.push(`Aula ${a.numero} repetida.`);
+    vistos.add(a.numero);
+    if (!I[a.icone]) erros.push(`Aula ${a.numero}: ícone desconhecido "${a.icone}".`);
+    (a.ferramentas || []).forEach((f) => { if (!A.ferramentas[f]) erros.push(`Aula ${a.numero}: ferramenta sem cadastro "${f}".`); });
   });
 });
-const todas = A.modulos.flatMap((m) => m.sessoes);
-const totalMin = todas.reduce((t, s) => t + s.minutos, 0);
+Object.entries(A.ferramentas).forEach(([n, f]) => { if (!I[f.icone]) erros.push(`Ferramenta ${n}: ícone desconhecido "${f.icone}".`); });
+const aulas = A.modulos.flatMap((m) => m.aulas);
+const totalMin = aulas.reduce((t, a) => t + a.minutos, 0);
 if (totalMin > 480) erros.push(`O curso passa de 8 horas (${totalMin} min).`);
 if (erros.length) { console.error('A agenda não fecha:\n- ' + erros.join('\n- ')); process.exit(1); }
 
 // ---------- utilidades ----------
 const esc = (t) => String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const fmt = (min) => { const h = Math.floor(min / 60), m = min % 60; return h ? `${h} h${m ? ' ' + String(m).padStart(2, '0') : ''}` : `${m} min`; };
-const id = (n) => 's-' + String(n).replace('.', '-');
+const idA = (n) => 'a-' + String(n).replace('.', '-');
 const ico = (nome, cls = 'ico') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-${nome}"/></svg>`;
-const robos = todas.filter((s) => s.automacao);
-const usos = (f) => todas.filter((s) => (s.ferramentas || []).includes(f)).map((s) => s.numero);
+const nomesF = Object.keys(A.ferramentas);
+const modulosDe = (f) => A.modulos.filter((m) => m.aulas.some((a) => a.ferramentas.includes(f))).map((m) => m.numero);
+const ROTULO_PLANO = { gratis: 'Grátis', pago: 'Pago', misto: 'Grátis e pago' };
 
 // ---------- estilo ----------
 const CSS = `
-/* Layout: menu lateral fixo (módulos, entregáveis, ferramentas, resumo) e uma vista por vez.
-   Cada módulo é uma trilha de sessões: título, o que você faz e a conquista. O detalhe abre ao clicar. */
+/* Layout: página única. Topo escuro com o prédio do escritório (uma janela por aula, acende quando a aula é feita).
+   Depois: o curso, a jornada em três andares, a agenda em colunas (aula | o que é e o que vamos apresentar | ferramentas | tempo),
+   as conquistas, o projeto final, as ferramentas e o resumo. */
 :root {
-  --fundo: #F5F6F8; --cartao: #FFFFFF; --linha: #E1E4EA; --tinta: #151B27; --tinta-2: #586174;
-  --lado: #15203A; --lado-tinta: #EEF1F7; --lado-2: #AEB8CC; --lado-ativo: #24345A;
-  --m1: #2D58CF; --m1-s: #EAF0FD; --m2: #9A2242; --m2-s: #FAEDF1; --m3: #0E7466; --m3-s: #E2F3F0;
-  --f-titulo: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --fundo: #F3F5F9; --cartao: #FFFFFF; --cartao-2: #F7F9FC; --linha: #E2E7EF; --tinta: #121A2B; --tinta-2: #5A6478;
+  --noite: #0F1B33; --noite-2: #182848; --noite-3: #233862; --noite-tinta: #F2F5FB; --noite-sub: #B3C0D9;
+  --vidro: #1D2D52; --vidro-borda: #34497A;
+  --m1: #2F5FE3; --m1-s: #EAF0FE; --m2: #B3264F; --m2-s: #FCEEF2; --m3: #0B8770; --m3-s: #E2F5F0;
+  --ouro: #D9961A; --ouro-s: #FDF3DF; --sobre-ouro: #2A1C02;
+  --f-titulo: "Bricolage Grotesque", "Source Sans 3", system-ui, sans-serif;
   --f-texto: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --fundo: #0E121B; --cartao: #161C29; --linha: #283044; --tinta: #ECEFF5; --tinta-2: #A6AFC0;
-    --lado: #0A0F1A; --lado-tinta: #EEF1F7; --lado-2: #97A2B8; --lado-ativo: #1C2A47;
-    --m1: #93ADF6; --m1-s: #1A2440; --m2: #F193AB; --m2-s: #3A1724; --m3: #6FD1C1; --m3-s: #10302B;
+    --fundo: #0B1120; --cartao: #131B2D; --cartao-2: #172138; --linha: #263149; --tinta: #EDF1F8; --tinta-2: #A7B1C5;
+    --noite: #0A1226; --noite-2: #121E3A; --noite-3: #1D2E55;
+    --m1: #8EA9F8; --m1-s: #1A2547; --m2: #F290AC; --m2-s: #3A1626; --m3: #5FCFB8; --m3-s: #0F2F29;
+    --ouro: #F2C15B; --ouro-s: #33270F; --sobre-ouro: #2A1C02;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --fundo: #0E121B; --cartao: #161C29; --linha: #283044; --tinta: #ECEFF5; --tinta-2: #A6AFC0;
-  --lado: #0A0F1A; --lado-tinta: #EEF1F7; --lado-2: #97A2B8; --lado-ativo: #1C2A47;
-  --m1: #93ADF6; --m1-s: #1A2440; --m2: #F193AB; --m2-s: #3A1724; --m3: #6FD1C1; --m3-s: #10302B;
+  --fundo: #0B1120; --cartao: #131B2D; --cartao-2: #172138; --linha: #263149; --tinta: #EDF1F8; --tinta-2: #A7B1C5;
+  --noite: #0A1226; --noite-2: #121E3A; --noite-3: #1D2E55;
+  --m1: #8EA9F8; --m1-s: #1A2547; --m2: #F290AC; --m2-s: #3A1626; --m3: #5FCFB8; --m3-s: #0F2F29;
+  --ouro: #F2C15B; --ouro-s: #33270F; --sobre-ouro: #2A1C02;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--noite); }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 [hidden] { display: none !important; }
 a { color: inherit; }
-button { font: inherit; }
-:focus-visible { outline: 2px solid var(--m1); outline-offset: 3px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--ouro); outline-offset: 3px; border-radius: 6px; }
 .ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-.app { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: 100vh; }
 .m1 { --cor: var(--m1); --cor-s: var(--m1-s); }
 .m2 { --cor: var(--m2); --cor-s: var(--m2-s); }
 .m3 { --cor: var(--m3); --cor-s: var(--m3-s); }
+.faixa { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.miolo { max-width: 1160px; margin: 0 auto; }
+.secao { padding-block: 72px 8px; }
+.olho { font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-2); }
+.secao h2 { font-family: var(--f-titulo); font-weight: 700; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.1; letter-spacing: -.015em; margin-top: 8px; text-wrap: balance; }
+.secao .intro { margin-top: 10px; color: var(--tinta-2); font-size: 1.08rem; max-width: 62ch; }
 
-/* menu lateral */
-.lado { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--lado); color: var(--lado-tinta); padding-block: 32px; padding-left: max(22px, env(safe-area-inset-left, 0px)); padding-right: 22px; display: flex; flex-direction: column; gap: 28px; }
-.marca h1 { font-family: var(--f-titulo); font-weight: 600; font-size: 1.45rem; line-height: 1.2; }
-.marca p { margin-top: 8px; font-size: .93rem; line-height: 1.5; color: var(--lado-2); }
-.marca .total { margin-top: 12px; font-size: .85rem; color: var(--lado-2); font-variant-numeric: tabular-nums; }
-.menu { display: flex; flex-direction: column; gap: 4px; }
-.menu .sep { height: 1px; background: rgba(255,255,255,.12); margin: 10px 4px; }
-.menu a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--lado-tinta); }
-.menu a:hover { background: var(--lado-ativo); }
-.menu a[aria-current="page"] { background: var(--lado-ativo); box-shadow: inset 3px 0 0 var(--lado-tinta); }
-.menu .bola { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none; font-weight: 700; font-size: .9rem; background: rgba(255,255,255,.1); }
-.menu .bola .ico { width: 17px; height: 17px; }
-.menu .txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
-.menu .txt b { font-weight: 600; font-size: .96rem; }
-.menu .txt small { font-size: .8rem; color: var(--lado-2); }
-.menu .prog { margin-left: auto; font-size: .78rem; color: var(--lado-2); font-variant-numeric: tabular-nums; }
+/* navegação */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--noite); border-bottom: 1px solid var(--noite-3); }
+.nav .miolo { display: flex; align-items: center; gap: 18px; min-height: 60px; }
+.nav .marca { font-family: var(--f-titulo); font-weight: 700; color: var(--noite-tinta); white-space: nowrap; text-decoration: none; font-size: 1.02rem; }
+.nav ul { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav a.item { display: block; white-space: nowrap; padding: 7px 12px; border-radius: 999px; color: var(--noite-sub); text-decoration: none; font-size: .92rem; font-weight: 600; }
+.nav a.item:hover { color: var(--noite-tinta); background: var(--noite-2); }
+.nav a.item[aria-current="true"] { color: var(--noite); background: var(--noite-tinta); }
 
-/* conteúdo */
-.conteudo { padding-block: 48px 80px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
-.vista { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
-.cab .etapa { font-size: .85rem; font-weight: 700; color: var(--cor, var(--tinta-2)); letter-spacing: .02em; }
-.cab h2 { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.15; margin-top: 6px; text-wrap: balance; }
-.cab .dor { margin-top: 12px; font-size: 1.12rem; color: var(--tinta-2); }
-.cab .dor q { quotes: "\\201C" "\\201D"; font-style: italic; }
-.fim { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--cor-s); border-radius: 10px; }
-.fim .ico { color: var(--cor); margin-top: 3px; }
-.fim p { font-size: .98rem; }
-.fim b { color: var(--cor); }
-.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .9rem; color: var(--tinta-2); }
-.meta b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+/* topo */
+.topo { background: var(--noite); color: var(--noite-tinta); background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.2px); background-size: 22px 22px; }
+.topo .miolo { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 64px 72px; }
+.selo-curso { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--noite-2); border: 1px solid var(--noite-3); color: var(--noite-sub); font-size: .86rem; font-weight: 600; }
+.selo-curso b { color: var(--ouro); }
+.topo h1 { font-family: var(--f-titulo); font-weight: 800; font-size: clamp(2.5rem, 5.4vw, 4rem); line-height: 1.02; letter-spacing: -.025em; margin-top: 18px; }
+.topo .chamada { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.25; margin-top: 16px; color: var(--noite-tinta); max-width: 26ch; }
+.topo .chamada em { font-style: normal; color: var(--ouro); }
+.topo .apoio { margin-top: 14px; color: var(--noite-sub); max-width: 52ch; }
+.numeros { display: flex; flex-wrap: wrap; gap: 14px 34px; margin-top: 28px; }
+.numeros div { display: flex; flex-direction: column; }
+.numeros b { font-family: var(--f-titulo); font-size: 2rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.numeros span { font-size: .88rem; color: var(--noite-sub); margin-top: 6px; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.botao { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; }
+.botao.ouro { background: var(--ouro); color: var(--sobre-ouro); }
+.botao.vazado { border: 1.5px solid var(--noite-3); color: var(--noite-tinta); background: transparent; }
+.botao.vazado:hover { background: var(--noite-2); }
 
-/* trilha de sessões */
-.trilha { display: flex; flex-direction: column; }
-.passo { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 0 16px; padding-bottom: 14px; }
-.passo::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--linha); }
-.passo:last-child::before { display: none; }
-.feito { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--cor); background: var(--cartao); color: var(--cor); display: grid; place-items: center; cursor: pointer; font-weight: 700; font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
-.feito .ico { display: none; width: 22px; height: 22px; }
+/* o prédio */
+.predio { width: 100%; max-width: 430px; margin: 0 auto; }
+.placa { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--ouro); color: var(--sobre-ouro); font-family: var(--f-titulo); font-weight: 800; font-size: .86rem; letter-spacing: .14em; text-transform: uppercase; padding: 10px; border-radius: 12px 12px 0 0; }
+.andar { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 12px; padding: 14px; background: var(--noite-2); border: 1px solid var(--noite-3); border-top: 0; }
+.andar .qual { display: flex; flex-direction: column; line-height: 1.15; text-decoration: none; }
+.andar .qual b { font-family: var(--f-titulo); font-size: 1.5rem; font-weight: 800; color: var(--cor); }
+.andar .qual span { font-size: .78rem; color: var(--noite-sub); font-weight: 600; }
+.janelas { display: flex; gap: 6px; }
+.janela { flex: 1; height: 38px; min-width: 0; border-radius: 5px; background: var(--vidro); border: 1px solid var(--vidro-borda); transition: background .35s, box-shadow .35s, border-color .35s; display: block; }
+.janela:hover { border-color: var(--noite-tinta); }
+.janela.acesa, .predio.pronto .janela { background: var(--cor); border-color: var(--cor); box-shadow: 0 0 14px var(--cor); }
+.terreo .janelas { align-items: flex-end; }
+.porta { flex: 1.3; height: 52px; border-radius: 6px 6px 0 0; background: var(--ouro); opacity: .9; }
+.calcada { height: 12px; background: var(--noite-3); border-radius: 0 0 10px 10px; }
+.progresso { margin-top: 16px; text-align: center; color: var(--noite-sub); font-size: .92rem; }
+.progresso b { color: var(--noite-tinta); font-variant-numeric: tabular-nums; }
+.predio .botao { margin: 12px auto 0; display: flex; width: fit-content; font-size: .9rem; padding: 9px 16px; }
+
+/* o curso */
+.cards4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.card { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card .ico-bola { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--ouro-s); color: var(--ouro); }
+.card .ico-bola .ico { width: 24px; height: 24px; }
+.card h3 { font-size: 1.08rem; font-weight: 700; }
+.card p { color: var(--tinta-2); font-size: .97rem; }
+.antes-depois { margin-top: 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; overflow: hidden; }
+.antes-depois .cab, .antes-depois li { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: center; gap: 12px; padding: 14px 22px; }
+.antes-depois .cab { background: var(--cartao-2); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.antes-depois li { border-top: 1px solid var(--linha); }
+.antes-depois .antes { color: var(--tinta-2); }
+.antes-depois .depois { font-weight: 700; }
+.antes-depois .seta { color: var(--ouro); justify-self: center; }
+
+/* jornada */
+.jornada { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; position: relative; }
+.etapa { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; min-width: 0; transition: transform .2s, border-color .2s; }
+.etapa:hover { transform: translateY(-2px); border-color: var(--cor); }
+.etapa .topo-e { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.etapa .n { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--cor); color: var(--cartao); font-family: var(--f-titulo); font-weight: 800; font-size: 1.3rem; }
+.etapa .andar-r { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cor); }
+.etapa h3 { font-family: var(--f-titulo); font-size: 1.3rem; font-weight: 700; line-height: 1.2; }
+.etapa p { color: var(--tinta-2); font-size: .96rem; }
+.etapa .meta-e { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--linha); display: flex; justify-content: space-between; font-size: .9rem; color: var(--tinta-2); }
+.etapa .meta-e b { color: var(--tinta); }
+
+/* módulos e agenda */
+.modulo { margin-top: 28px; }
+.mod-cab { background: var(--cor-s); border-radius: 20px; padding: 28px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: start; }
+.mod-cab .grande { width: 72px; height: 72px; border-radius: 18px; background: var(--cor); color: var(--cartao); display: grid; place-items: center; font-family: var(--f-titulo); font-weight: 800; font-size: 2.2rem; }
+.mod-cab .rot { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--cor); }
+.mod-cab h2 { margin-top: 4px; }
+.mod-cab .dor { margin-top: 10px; font-size: 1.08rem; color: var(--tinta-2); font-style: italic; }
+.mod-cab .fim { margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; font-size: 1rem; }
+.mod-cab .fim .ico { color: var(--cor); margin-top: 3px; }
+.mod-cab .meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: .92rem; color: var(--tinta-2); }
+.mod-cab .meta b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+.grade-cab, .aula { display: grid; grid-template-columns: 84px minmax(0, 1fr) 220px 64px; gap: 22px; }
+.grade-cab { padding: 22px 22px 10px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.grade-cab span:last-child { text-align: right; }
+.aulas { display: flex; flex-direction: column; gap: 12px; }
+.aula { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 20px 22px; align-items: start; scroll-margin-top: 84px; transition: border-color .2s; }
+.aula.feita { border-color: var(--cor); }
+.feito { width: 60px; height: 60px; border-radius: 16px; border: 2px solid var(--cor); background: var(--cartao); color: var(--cor); cursor: pointer; display: grid; place-items: center; font-family: var(--f-titulo); font-weight: 800; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.feito .ico { display: none; width: 28px; height: 28px; stroke-width: 2.4; }
 .feito[aria-pressed="true"] { background: var(--cor); color: var(--cartao); }
 .feito[aria-pressed="true"] .n { display: none; }
 .feito[aria-pressed="true"] .ico { display: block; }
-.passo details { background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; min-width: 0; }
-.passo summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
-.passo summary::-webkit-details-marker { display: none; }
-.passo .topo { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }
-.passo h3 { font-size: 1.08rem; font-weight: 700; line-height: 1.35; }
-.passo .min { font-size: .85rem; color: var(--tinta-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.passo .faz { color: var(--tinta-2); font-size: .98rem; }
-.selo { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; margin-top: 4px; padding: 4px 12px 4px 8px; border-radius: 999px; border: 1.5px solid var(--cor); color: var(--cor); font-weight: 700; font-size: .86rem; line-height: 1.3; }
-.selo .ico { width: 17px; height: 17px; }
-.passo.ok .selo { background: var(--cor); color: var(--cartao); }
-.abrir { display: inline-flex; align-items: center; gap: 4px; font-size: .84rem; color: var(--tinta-2); margin-top: 2px; }
-.abrir .ico { width: 15px; height: 15px; transition: transform .2s; }
-details[open] .abrir .ico { transform: rotate(90deg); }
-.detalhe { padding: 2px 18px 18px; display: grid; gap: 12px; border-top: 1px solid var(--linha); padding-top: 14px; margin: 0 0 0; }
-.detalhe div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; font-size: .95rem; }
-.detalhe dt { color: var(--tinta-2); font-size: .86rem; padding-top: 2px; }
-.detalhe .auto { color: var(--m3); font-weight: 600; }
+.aula h3 { font-family: var(--f-titulo); font-size: 1.22rem; font-weight: 700; line-height: 1.25; }
+.aula .oque { margin-top: 4px; color: var(--tinta-2); }
+.aula .rot { margin-top: 14px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.aula .apr { margin-top: 6px; display: grid; gap: 4px; }
+.aula .apr li { display: flex; gap: 8px; align-items: flex-start; }
+.aula .apr .ico { width: 18px; height: 18px; color: var(--cor); margin-top: 4px; stroke-width: 2.2; }
+.aula .fichas { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.ficha { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 9px; border-radius: 999px; font-size: .88rem; font-weight: 700; line-height: 1.3; }
+.ficha .ico { width: 17px; height: 17px; }
+.ficha.conq { background: var(--cor-s); color: var(--cor); }
+.aula.feita .ficha.conq { background: var(--cor); color: var(--cartao); }
+.ficha.miss { background: var(--ouro-s); color: var(--tinta); font-weight: 600; }
+.ficha.miss .ico { color: var(--ouro); }
+.ferr-col { display: flex; flex-direction: column; gap: 8px; }
+.ferr-col li { display: flex; align-items: center; gap: 9px; font-size: .94rem; font-weight: 600; }
+.ferr-col .ico-f { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--cartao-2); border: 1px solid var(--linha); flex: none; }
+.ferr-col .ico-f .ico { width: 17px; height: 17px; }
+.tempo { text-align: right; font-family: var(--f-titulo); font-weight: 700; font-size: 1.05rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tempo small { display: block; font-family: var(--f-texto); font-weight: 400; font-size: .78rem; color: var(--tinta-2); }
+.ferr-col .rot-m, .tempo-m { display: none; }
+.a-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.tempo-m { font-family: var(--f-titulo); font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dica { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding: 10px 14px; border-radius: 10px; background: var(--ouro-s); font-size: .93rem; }
+.dica .ico { color: var(--ouro); }
 
-/* entregáveis, ferramentas e resumo */
-.grupo h3 { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-.grupo h3 span { width: 12px; height: 12px; border-radius: 50%; background: var(--cor); }
-.entregas { margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-.entregas li { display: flex; gap: 10px; align-items: center; padding: 12px 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 10px; min-width: 0; }
-.entregas .ico { color: var(--cor); }
-.entregas b { font-size: .95rem; display: block; line-height: 1.3; }
-.entregas small { color: var(--tinta-2); font-size: .8rem; }
-.ferr { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
-.ferr li { padding: 16px 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.ferr h3 { font-size: 1.02rem; font-weight: 700; }
-.ferr p { font-size: .94rem; color: var(--tinta-2); }
-.ferr .plano { font-size: .84rem; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.chips a { font-size: .78rem; font-weight: 700; text-decoration: none; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--cor); color: var(--cor); font-variant-numeric: tabular-nums; }
-.tabela { overflow-x: auto; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; }
-.tabela table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: .95rem; }
-.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--linha); }
-.tabela th { font-size: .8rem; font-weight: 700; color: var(--tinta-2); }
-.tabela tr:last-child td { border-bottom: 0; }
+/* conquistas */
+.medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 28px; }
+.medalha { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; text-decoration: none; min-width: 0; }
+.medalha .disco { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; border: 2px dashed var(--linha); color: var(--tinta-2); background: var(--cartao-2); }
+.medalha .disco .ico { width: 26px; height: 26px; }
+.medalha b { font-size: .92rem; line-height: 1.25; }
+.medalha small { font-size: .78rem; color: var(--tinta-2); }
+.medalha.ganha .disco { border: 0; background: var(--cor); color: var(--cartao); box-shadow: 0 0 0 5px var(--cor-s); }
+.placar { margin-top: 14px; font-weight: 700; color: var(--tinta-2); }
+.placar b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+
+/* projeto final */
+.final { margin-top: 28px; background: var(--noite); color: var(--noite-tinta); border-radius: 24px; padding: 36px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 36px; align-items: center; }
+.final .trofeu { width: 64px; height: 64px; border-radius: 18px; background: var(--ouro); color: var(--sobre-ouro); display: grid; place-items: center; }
+.final .trofeu .ico { width: 34px; height: 34px; }
+.final h2 { font-family: var(--f-titulo); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.12; margin-top: 18px; }
+.final p { margin-top: 12px; color: var(--noite-sub); }
+.roteiro { display: grid; gap: 10px; counter-reset: passo; }
+.roteiro li { display: grid; grid-template-columns: 36px 36px minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 14px; background: var(--noite-2); border: 1px solid var(--noite-3); border-radius: 12px; }
+.roteiro li::before { counter-increment: passo; content: counter(passo); font-family: var(--f-titulo); font-weight: 800; color: var(--ouro); font-size: 1.15rem; text-align: center; }
+.roteiro .ico { color: var(--noite-sub); }
+
+/* ferramentas */
+.ferramentas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-top: 28px; }
+.ferramenta { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 16px; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 12px; align-items: start; min-width: 0; }
+.ferramenta .ico-f { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--cartao-2); border: 1px solid var(--linha); grid-row: span 3; }
+.ferramenta .ico-f .ico { width: 22px; height: 22px; }
+.ferramenta h3 { font-size: 1rem; font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.ferramenta p { font-size: .92rem; color: var(--tinta-2); }
+.plano { font-size: .74rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--linha); color: var(--tinta-2); white-space: nowrap; }
+.plano.gratis { color: var(--m3); border-color: var(--m3); }
+.plano.pago { color: var(--m2); border-color: var(--m2); }
+.plano.misto { color: var(--m1); border-color: var(--m1); }
+.mods { display: flex; gap: 6px; margin-top: 4px; }
+.mods a { white-space: nowrap; font-size: .74rem; font-weight: 700; text-decoration: none; padding: 1px 8px; border-radius: 999px; background: var(--cor-s); color: var(--cor); }
+.tabela { margin-top: 18px; overflow-x: auto; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; }
+.tabela table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: .96rem; }
+.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 13px 18px; border-bottom: 1px solid var(--linha); }
+.tabela th { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); background: var(--cartao-2); }
+.tabela tbody tr:last-child td { border-bottom: 0; }
+.tabela tfoot td { font-weight: 700; border-top: 1px solid var(--linha); border-bottom: 0; }
 .tabela .n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.tabela tfoot td { font-weight: 700; border-top: 1px solid var(--linha); }
-.robos { display: grid; gap: 8px; }
-.robos li { display: flex; gap: 10px; align-items: flex-start; font-size: .96rem; }
-.robos .ico { color: var(--m3); margin-top: 3px; }
-.rodape { font-size: .84rem; color: var(--tinta-2); }
+.tabela .bola-m { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--cor); color: var(--cartao); font-weight: 800; margin-right: 10px; vertical-align: middle; }
+.rodape { padding-block: 40px 64px; color: var(--tinta-2); font-size: .88rem; }
 
-@media (max-width: 880px) {
-  .app { grid-template-columns: minmax(0, 1fr); }
-  .lado { position: sticky; top: env(safe-area-inset-top, 0px); height: auto; z-index: 5; padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); gap: 10px; }
-  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--lado); }
-  .marca p, .marca .total { display: none; }
-  .marca h1 { font-size: 1.1rem; }
-  .menu { flex-direction: row; overflow-x: auto; gap: 6px; scrollbar-width: none; }
-  .menu .sep { display: none; }
-  .menu a { flex: none; padding: 7px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; }
-  .menu a[aria-current="page"] { box-shadow: none; background: var(--lado-tinta); color: var(--lado); }
-  .menu .bola, .menu .txt small, .menu .prog { display: none; }
-  .conteudo { padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .detalhe div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .ferr { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 1080px) {
+  .topo .miolo { grid-template-columns: minmax(0, 1fr); gap: 44px; padding-block: 48px 56px; }
+  .cards4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grade-cab { display: none; }
+  .aula { grid-template-columns: 64px minmax(0, 1fr); gap: 14px 18px; }
+  .aula .num-col { grid-row: 1 / span 2; }
+  .aula .ferr-col { grid-column: 2; }
+  .aula .tempo { display: none; }
+  .tempo-m { display: inline; }
+  .ferr-col { flex-direction: row; flex-wrap: wrap; gap: 8px 14px; }
+  .ferr-col .rot-m { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); width: 100%; }
+  .final { grid-template-columns: minmax(0, 1fr); padding: 28px; }
 }
-@media (prefers-reduced-motion: reduce) { .abrir .ico { transition: none; } }
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .nav .marca { display: none; }
+  .nav ul { margin-left: 0; }
+  .secao { padding-block: 52px 4px; }
+  .cards4, .jornada { grid-template-columns: minmax(0, 1fr); }
+  .antes-depois .cab { display: none; }
+  .antes-depois li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .antes-depois .seta { justify-self: start; transform: rotate(90deg); }
+  .mod-cab { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .mod-cab .grande { width: 56px; height: 56px; font-size: 1.7rem; border-radius: 14px; }
+  .aula { grid-template-columns: 50px minmax(0, 1fr); gap: 12px 14px; padding: 16px; }
+  .aula .num-col { grid-row: auto; }
+  .aula .ferr-col { grid-column: 1 / -1; }
+  .feito { width: 50px; height: 50px; border-radius: 14px; font-size: 1rem; }
+  .a-topo { flex-direction: column; gap: 2px; }
+  .tempo-m { font-size: .88rem; color: var(--tinta-2); }
+  .numeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .andar { grid-template-columns: 74px minmax(0, 1fr); padding: 12px 10px; gap: 8px; }
+  .janelas { gap: 4px; }
+  .janela { height: 32px; }
+  .final { padding: 22px; border-radius: 18px; }
+  .roteiro li { grid-template-columns: 28px 28px minmax(0, 1fr); padding: 10px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .janela, .etapa, .aula { transition: none; }
+}
 `;
 
-// ---------- página ----------
-const linhaDet = (rotulo, valor, cls = '') => valor ? `<div><dt>${rotulo}</dt><dd${cls ? ` class="${cls}"` : ''}>${valor}</dd></div>` : '';
+// ---------- partes da página ----------
+const andar = (m) => `
+        <div class="andar m${m.numero}${m.numero === 1 ? ' terreo' : ''}">
+          <a class="qual" href="#modulo-${m.numero}"><b>${m.numero}º</b><span>${esc(m.andar)}</span></a>
+          <div class="janelas">${m.aulas.map((a) => `<a class="janela" href="#${idA(a.numero)}" data-janela="${esc(a.numero)}" title="${esc(a.numero)} · ${esc(a.nome)}" aria-label="Aula ${esc(a.numero)}: ${esc(a.nome)}"></a>`).join('')}${m.numero === 1 ? '<span class="porta" aria-hidden="true"></span>' : ''}</div>
+        </div>`;
 
-function passo(s, m) {
-  const det = [
-    linhaDet('Por quê', s.dor ? `“${esc(s.dor)}”` : ''),
-    linhaDet('A prática', s.pratica ? `<b>${esc(s.pratica)}.</b> ${esc(s.jogo || '')}` : ''),
-    linhaDet('Roda sozinho', s.automacao ? esc(s.automacao) : '', 'auto'),
-    linhaDet('Ferramentas', (s.ferramentas || []).map(esc).join(' · ')),
-    linhaDet('Precisa de', esc(s.precisa)),
-    linhaDet('Cuidado', esc(s.cuidado)),
-  ].join('');
-  return `
-        <li class="passo" id="${id(s.numero)}">
-          <button type="button" class="feito" id="feito-${id(s.numero)}" data-sessao="${esc(s.numero)}" aria-pressed="false" aria-label="Marcar a sessão ${esc(s.numero)} como feita"><span class="n">${esc(s.numero.split('.')[1])}</span>${ico('check')}</button>
-          <details>
-            <summary>
-              <span class="topo"><h3>${esc(s.nome)}</h3><span class="min">${s.minutos} min</span></span>
-              <span class="faz">${esc(s.faz)}</span>
-              <span class="selo">${ico(s.icone || 'check')}${esc(s.conquista)}</span>
-              <span class="abrir">Ver detalhes ${ico('seta')}</span>
-            </summary>
-            <dl class="detalhe">${det}</dl>
-          </details>
-        </li>`;
-}
+const topo = `
+  <header class="topo faixa" id="curso-topo">
+    <div class="miolo">
+      <div>
+        <span class="selo-curso">${ico('video')}Curso gravado · <b>3 módulos</b></span>
+        <h1>${esc(A.titulo)}</h1>
+        <p class="chamada">${esc(A.chamada).replace('trabalha sozinho', '<em>trabalha sozinho</em>')}</p>
+        <p class="apoio">${esc(A.apoio)}</p>
+        <div class="numeros">
+          <div><b>${aulas.length}</b><span>aulas</span></div>
+          <div><b>${fmt(totalMin)}</b><span>de vídeo</span></div>
+          <div><b>${aulas.length}</b><span>conquistas</span></div>
+          <div><b>${nomesF.length}</b><span>ferramentas</span></div>
+        </div>
+        <div class="acoes">
+          <a class="botao ouro" href="#agenda">Ver a agenda ${ico('seta')}</a>
+          <a class="botao vazado" href="#projeto-final">O que você apresenta no fim</a>
+        </div>
+      </div>
+      <figure class="predio" id="predio" aria-label="O seu escritório: uma janela por aula">
+        <div class="placa">${ico('predio')}Seu escritório</div>${[...A.modulos].reverse().map(andar).join('')}
+        <div class="calcada"></div>
+        <p class="progresso"><b id="janelas-acesas">0</b> de ${aulas.length} janelas acesas. Marque as aulas feitas e acenda o seu escritório.</p>
+        <button type="button" class="botao vazado" id="ver-pronto" aria-pressed="false">${ico('luz')}<span>Ver o escritório pronto</span></button>
+      </figure>
+    </div>
+  </header>`;
 
-function vistaModulo(m) {
-  return `
-    <section class="vista m${m.numero}" id="modulo-${m.numero}" data-vista aria-labelledby="t-m${m.numero}">
-      <header class="cab">
-        <p class="etapa">Módulo ${m.numero} de 3</p>
-        <h2 id="t-m${m.numero}">${esc(m.nome)}</h2>
-        <p class="dor"><q>${esc(m.dor)}</q></p>
-      </header>
-      <div class="fim">${ico('check')}<p><b>No fim do módulo:</b> ${esc(m.resultado)}</p></div>
-      <p class="meta"><span><b>${m.sessoes.length}</b> sessões</span><span><b>${fmt(m.minutos)}</b> de vídeo</span><span>${esc(m.precisa)}</span></p>
-      <ol class="trilha">${m.sessoes.map((s) => passo(s, m)).join('')}
-      </ol>
-    </section>`;
-}
+const nav = `
+  <nav class="nav faixa" aria-label="Seções">
+    <div class="miolo">
+      <a class="marca" href="#curso-topo">${esc(A.titulo)}</a>
+      <ul>
+        <li><a class="item" href="#curso">O curso</a></li>
+        <li><a class="item" href="#agenda">Jornada</a></li>${A.modulos.map((m) => `
+        <li><a class="item" href="#modulo-${m.numero}">Módulo ${m.numero}</a></li>`).join('')}
+        <li><a class="item" href="#conquistas">Conquistas</a></li>
+        <li><a class="item" href="#projeto-final">Projeto final</a></li>
+        <li><a class="item" href="#ferramentas">Ferramentas</a></li>
+        <li><a class="item" href="#resumo">Resumo</a></li>
+      </ul>
+    </div>
+  </nav>`;
 
-const vistaEntregas = `
-    <section class="vista" id="entregaveis" data-vista aria-labelledby="t-ent" hidden>
-      <header class="cab">
-        <p class="etapa">O que você leva</p>
-        <h2 id="t-ent">Entregáveis</h2>
-        <p class="dor">Cada sessão termina com uma peça do escritório pronta. Marque as sessões feitas e veja as conquistas se acenderem.</p>
-      </header>${A.modulos.map((m) => `
-      <div class="grupo m${m.numero}">
-        <h3><span></span>Módulo ${m.numero} · ${esc(m.nome)}</h3>
-        <ul class="entregas">${m.sessoes.map((s) => `
-          <li>${ico(s.icone || 'check')}<span><b>${esc(s.conquista)}</b><small>Sessão ${esc(s.numero)}</small></span></li>`).join('')}
-        </ul>
-      </div>`).join('')}
-    </section>`;
-
-const nomesF = Object.keys(A.ferramentas);
-const corDe = (n) => 'm' + String(n).split('.')[0];
-const vistaFerr = `
-    <section class="vista" id="ferramentas" data-vista aria-labelledby="t-fer" hidden>
-      <header class="cab">
-        <p class="etapa">O que entra no seu escritório</p>
-        <h2 id="t-fer">Ferramentas incorporadas</h2>
-        <p class="dor">Tudo no navegador, nada instalado no computador.</p>
-      </header>
-      <ul class="ferr">${nomesF.map((f) => `
-        <li><h3>${esc(f)}</h3><p>${esc(A.ferramentas[f].faz)}</p><p class="plano"><b>Plano:</b> ${esc(A.ferramentas[f].plano)}</p><span class="chips">${usos(f).map((n) => `<a class="${corDe(n)}" href="#${id(n)}">${esc(n)}</a>`).join('')}</span></li>`).join('')}
-      </ul>${A.modelos ? `
-      <div class="grupo">
-        <h3>Qual modelo do Claude para qual trabalho</h3>
-        <div class="tabela" style="margin-top:12px"><table>
-          <thead><tr><th>Modelo</th><th>Perfil</th><th>Na advocacia</th></tr></thead>
-          <tbody>${A.modelos.map((l) => `<tr><td style="white-space:nowrap"><b>${esc(l.modelo)}</b></td><td>${esc(l.perfil)}</td><td>${esc(l.usos)}</td></tr>`).join('')}</tbody>
-        </table></div>
-        <p class="rodape" style="margin-top:10px">Comece pelo menor que resolve. Os maiores gastam mais do limite do plano, e a disponibilidade depende do plano.</p>
-      </div>` : ''}
-    </section>`;
-
-const vistaResumo = `
-    <section class="vista" id="resumo" data-vista aria-labelledby="t-res" hidden>
-      <header class="cab">
-        <p class="etapa">Relatório</p>
-        <h2 id="t-res">Resumo do curso</h2>
-      </header>
-      <div class="tabela"><table>
-        <thead><tr><th>Módulo</th><th>No fim, você tem</th><th class="n">Sessões</th><th class="n">Vídeo</th></tr></thead>
-        <tbody>${A.modulos.map((m) => `
-          <tr><td><b>${m.numero} · ${esc(m.nome)}</b></td><td>${esc(m.resultado)}</td><td class="n">${m.sessoes.length}</td><td class="n">${fmt(m.minutos)}</td></tr>`).join('')}
-        </tbody>
-        <tfoot><tr><td>Total</td><td>${todas.length} conquistas</td><td class="n">${todas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
-      </table></div>${robos.length ? `
-      <div class="grupo">
-        <h3>No fim do curso, isto roda sozinho</h3>
-        <ul class="robos" style="margin-top:12px">${robos.map((s) => `
-          <li>${ico('sozinho')}<span><b>${esc(s.conquista)}:</b> ${esc(s.automacao)}.</span></li>`).join('')}
-        </ul>
-      </div>` : ''}
-      <div class="grupo">
-        <h3>Do que o aluno precisa</h3>
-        <ul class="robos" style="margin-top:12px">${A.modulos.map((m) => `
-          <li>${ico('check')}<span><b>Módulo ${m.numero}:</b> ${esc(m.precisa)}</span></li>`).join('')}
+const curso = `
+  <section class="secao faixa" id="curso" aria-labelledby="t-curso">
+    <div class="miolo">
+      <p class="olho">O curso</p>
+      <h2 id="t-curso">Você sai com um escritório montado, não com uma lista de prompts</h2>
+      <p class="intro">Cada aula configura ou constrói uma peça do seu escritório. No fim, as peças trabalham juntas.</p>
+      <div class="cards4">${A.curso.map((c) => `
+        <article class="card"><span class="ico-bola">${ico(c.icone)}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.texto)}</p></article>`).join('')}
+      </div>
+      <div class="antes-depois">
+        <div class="cab"><span>Hoje</span><span></span><span>No fim do curso</span></div>
+        <ul>${A.antes_depois.map((x) => `
+          <li><span class="antes">${esc(x.antes)}</span><span class="seta">${ico('seta')}</span><span class="depois">${esc(x.depois)}</span></li>`).join('')}
         </ul>
       </div>
-      <p class="rodape">${esc(A.rodape || '')}</p>
-    </section>`;
+    </div>
+  </section>`;
 
-const menu = `
-      <nav class="menu" aria-label="Agenda">${A.modulos.map((m) => `
-        <a href="#modulo-${m.numero}" class="m${m.numero}" data-ir="modulo-${m.numero}"><span class="bola">${m.numero}</span><span class="txt"><b>Módulo ${m.numero}</b><small>${esc(m.nome)}</small></span><span class="prog" data-prog="${m.numero}">0/${m.sessoes.length}</span></a>`).join('')}
-        <span class="sep" aria-hidden="true"></span>
-        <a href="#entregaveis" data-ir="entregaveis"><span class="bola">${ico('check')}</span><span class="txt"><b>Entregáveis</b><small>${todas.length} conquistas</small></span></a>
-        <a href="#ferramentas" data-ir="ferramentas"><span class="bola">${ico('molde')}</span><span class="txt"><b>Ferramentas incorporadas</b><small>${nomesF.length} ferramentas</small></span></a>
-        <a href="#resumo" data-ir="resumo"><span class="bola">${ico('painel')}</span><span class="txt"><b>Resumo</b><small>o curso em uma tela</small></span></a>
-      </nav>`;
+const jornada = `
+  <section class="secao faixa" id="agenda" aria-labelledby="t-jornada">
+    <div class="miolo">
+      <p class="olho">A jornada</p>
+      <h2 id="t-jornada">Três andares, do alicerce ao automático</h2>
+      <p class="intro">Os módulos são independentes, mas a ordem foi pensada para quem abre o Claude pela primeira vez: primeiro a segurança, depois a identidade, por fim os robôs.</p>
+      <div class="jornada">${A.modulos.map((m) => `
+        <a class="etapa m${m.numero}" href="#modulo-${m.numero}">
+          <span class="topo-e"><span class="n">${m.numero}</span><span class="andar-r">${m.numero}º andar · ${esc(m.andar)}</span></span>
+          <h3>${esc(m.nome)}</h3>
+          <p>${esc(m.resultado)}</p>
+          <span class="meta-e"><span><b>${m.aulas.length}</b> aulas</span><span><b>${fmt(m.minutos)}</b></span></span>
+        </a>`).join('')}
+      </div>
+    </div>
+  </section>`;
 
-const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>${Object.keys(ICONES).map((k) => `<symbol id="i-${k}" viewBox="0 0 24 24">${ICONES[k]}</symbol>`).join('')}</defs></svg>`;
+const aula = (a, m) => `
+          <li class="aula" id="${idA(a.numero)}">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-${idA(a.numero)}" data-aula="${esc(a.numero)}" aria-pressed="false" aria-label="Marcar a aula ${esc(a.numero)} como feita"><span class="n">${esc(a.numero)}</span>${ico('check')}</button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>${esc(a.nome)}</h3><span class="tempo-m">${a.minutos} min</span></div>
+              <p class="oque">${esc(a.o_que_e)}</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr">${a.apresenta.map((x) => `<li>${ico('check')}<span>${esc(x)}</span></li>`).join('')}</ul>
+              <p class="fichas"><span class="ficha conq">${ico(a.icone)}${esc(a.conquista)}</span><span class="ficha miss">${ico('alvo')}Missão: ${esc(a.missao)}</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li>${a.ferramentas.map((f) => `<li><span class="ico-f">${ico(A.ferramentas[f].icone)}</span>${esc(f)}</li>`).join('')}</ul>
+            <p class="tempo">${a.minutos} min<small>de vídeo</small></p>
+          </li>`;
+
+const modulo = (m) => `
+  <section class="secao faixa modulo-sec m${m.numero}" id="modulo-${m.numero}" aria-labelledby="t-m${m.numero}">
+    <div class="miolo">
+      <header class="mod-cab">
+        <span class="grande">${m.numero}</span>
+        <div>
+          <p class="rot">Módulo ${m.numero} · ${m.numero}º andar · ${esc(m.andar)}</p>
+          <h2 id="t-m${m.numero}">${esc(m.nome)}</h2>
+          <p class="dor">“${esc(m.dor)}”</p>
+          <p class="fim">${ico('check')}<span><b>No fim do módulo:</b> ${esc(m.resultado)}</span></p>
+          <p class="meta"><span><b>${m.aulas.length}</b> aulas</span><span><b>${fmt(m.minutos)}</b> de vídeo</span><span>Precisa de: ${esc(m.precisa)}</span></p>
+        </div>
+      </header>
+      <p class="dica">${ico('check')}<span>Terminou uma aula? Toque no número dela: a janela do prédio acende e a conquista entra na sua coleção.</span></p>
+      <div class="grade-cab" aria-hidden="true"><span>Aula</span><span>O que é e o que vamos apresentar</span><span>Ferramentas</span><span>Tempo</span></div>
+      <ol class="aulas">${m.aulas.map((a) => aula(a, m)).join('')}
+      </ol>
+    </div>
+  </section>`;
+
+const conquistas = `
+  <section class="secao faixa" id="conquistas" aria-labelledby="t-conq">
+    <div class="miolo">
+      <p class="olho">Entregáveis</p>
+      <h2 id="t-conq">${aulas.length} conquistas, uma por aula</h2>
+      <p class="intro">Cada conquista é uma peça pronta do seu escritório. Marque as aulas feitas e veja a sua coleção crescer.</p>
+      <p class="placar"><b id="placar">0</b> de ${aulas.length} conquistas</p>
+      <div class="medalhas">${A.modulos.map((m) => m.aulas.map((a) => `
+        <a class="medalha m${m.numero}" href="#${idA(a.numero)}" data-medalha="${esc(a.numero)}"><span class="disco">${ico(a.icone)}</span><b>${esc(a.conquista)}</b><small>Aula ${esc(a.numero)}</small></a>`).join('')).join('')}
+      </div>
+    </div>
+  </section>`;
+
+const PF = A.projeto_final;
+const final = `
+  <section class="secao faixa" id="projeto-final" aria-labelledby="t-final">
+    <div class="miolo">
+      <div class="final">
+        <div>
+          <span class="trofeu">${ico('trofeu')}</span>
+          <h2 id="t-final">${esc(PF.titulo)}</h2>
+          <p>${esc(PF.texto)}</p>
+        </div>
+        <ol class="roteiro">${PF.roteiro.map((r) => `
+          <li>${ico(r.icone)}<span>${esc(r.texto)}</span></li>`).join('')}
+        </ol>
+      </div>
+    </div>
+  </section>`;
+
+const ferramentas = `
+  <section class="secao faixa" id="ferramentas" aria-labelledby="t-ferr">
+    <div class="miolo">
+      <p class="olho">Ferramentas incorporadas</p>
+      <h2 id="t-ferr">Tudo o que entra no seu escritório</h2>
+      <p class="intro">Tudo no navegador. A etiqueta ao lado do nome mostra se a ferramenta é grátis ou paga; M1, M2 e M3 levam ao módulo onde ela aparece.</p>
+      <div class="ferramentas">${nomesF.map((f) => { const F = A.ferramentas[f]; return `
+        <article class="ferramenta"><span class="ico-f">${ico(F.icone)}</span><h3>${esc(f)} <span class="plano ${F.tipo}">${esc(F.plano)}</span></h3><p>${esc(F.faz)}</p><span class="mods">${modulosDe(f).map((n) => `<a class="m${n}" href="#modulo-${n}" aria-label="Módulo ${n}">M${n}</a>`).join('')}</span></article>`; }).join('')}
+      </div>
+      <div class="tabela"><table>
+        <thead><tr><th>Modelo do Claude</th><th>Perfil</th><th>Quando usar na advocacia</th></tr></thead>
+        <tbody>${A.modelos.map((l) => `<tr><td style="white-space:nowrap"><b>${esc(l.modelo)}</b></td><td>${esc(l.perfil)}</td><td>${esc(l.usos)}</td></tr>`).join('')}</tbody>
+      </table></div>
+    </div>
+  </section>`;
+
+const resumo = `
+  <section class="secao faixa" id="resumo" aria-labelledby="t-res">
+    <div class="miolo">
+      <p class="olho">Relatório</p>
+      <h2 id="t-res">O curso em uma tabela</h2>
+      <div class="tabela"><table>
+        <thead><tr><th>Módulo</th><th>No fim, você tem</th><th class="n">Aulas</th><th class="n">Vídeo</th></tr></thead>
+        <tbody>${A.modulos.map((m) => `
+          <tr class="m${m.numero}"><td style="min-width:220px"><span class="bola-m">${m.numero}</span><b>${esc(m.nome)}</b></td><td>${esc(m.resultado)}</td><td class="n">${m.aulas.length}</td><td class="n">${fmt(m.minutos)}</td></tr>`).join('')}
+        </tbody>
+        <tfoot><tr><td>Total</td><td>${aulas.length} conquistas e o escritório no automático</td><td class="n">${aulas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
+      </table></div>
+    </div>
+  </section>
+  <footer class="faixa rodape"><div class="miolo">${esc(A.rodape)}</div></footer>`;
+
+const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>${Object.keys(I).map((k) => `<symbol id="i-${k}" viewBox="0 0 24 24">${I[k]}</symbol>`).join('')}</defs></svg>`;
 
 const script = `
 <script>
@@ -340,58 +543,61 @@ const script = `
   var CHAVE = 'agenda-ia-adv:feitas';
   var feitas = {};
   try { feitas = JSON.parse(localStorage.getItem(CHAVE) || '{}') || {}; } catch (e) { feitas = {}; }
-  var vistas = [].slice.call(document.querySelectorAll('[data-vista]'));
-  var links = [].slice.call(document.querySelectorAll('[data-ir]'));
-  function mostrar() {
-    var h = (location.hash || '').slice(1);
-    var alvo = document.getElementById(h);
-    var vista = alvo && alvo.hasAttribute('data-vista') ? alvo : (alvo ? alvo.closest('[data-vista]') : null);
-    if (!vista) vista = vistas[0];
-    vistas.forEach(function (v) { v.hidden = v !== vista; });
-    links.forEach(function (a) { if (a.getAttribute('data-ir') === vista.id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    if (alvo && alvo !== vista) { var d = alvo.querySelector('details'); if (d) d.open = true; alvo.scrollIntoView({ block: 'center' }); }
-    else window.scrollTo(0, 0);
-  }
-  function contar() {
-    [1, 2, 3].forEach(function (n) {
-      var bts = document.querySelectorAll('#modulo-' + n + ' .feito');
-      var ok = [].filter.call(bts, function (b) { return b.getAttribute('aria-pressed') === 'true'; }).length;
-      var el = document.querySelector('[data-prog="' + n + '"]');
-      if (el) el.textContent = ok + '/' + bts.length;
+  var botoes = [].slice.call(document.querySelectorAll('.feito'));
+  function atualizar() {
+    var n = 0;
+    botoes.forEach(function (b) {
+      var a = b.getAttribute('data-aula'), on = !!feitas[a];
+      if (on) n += 1;
+      b.setAttribute('aria-pressed', String(on));
+      b.closest('.aula').classList.toggle('feita', on);
+      var j = document.querySelector('[data-janela="' + a + '"]'); if (j) j.classList.toggle('acesa', on);
+      var m = document.querySelector('[data-medalha="' + a + '"]'); if (m) m.classList.toggle('ganha', on);
     });
+    document.getElementById('janelas-acesas').textContent = n;
+    document.getElementById('placar').textContent = n;
   }
-  [].forEach.call(document.querySelectorAll('.feito'), function (b) {
-    var s = b.getAttribute('data-sessao');
-    function pintar() { var on = !!feitas[s]; b.setAttribute('aria-pressed', String(on)); b.closest('.passo').classList.toggle('ok', on); }
-    pintar();
+  botoes.forEach(function (b) {
     b.addEventListener('click', function () {
-      feitas[s] = !feitas[s];
+      var a = b.getAttribute('data-aula');
+      feitas[a] = !feitas[a];
       try { localStorage.setItem(CHAVE, JSON.stringify(feitas)); } catch (e) {}
-      pintar(); contar();
+      atualizar();
     });
   });
-  window.addEventListener('hashchange', mostrar);
-  contar(); mostrar();
+  var pronto = document.getElementById('ver-pronto');
+  pronto.addEventListener('click', function () {
+    var on = pronto.getAttribute('aria-pressed') !== 'true';
+    pronto.setAttribute('aria-pressed', String(on));
+    document.getElementById('predio').classList.toggle('pronto', on);
+    pronto.querySelector('span').textContent = on ? 'Voltar ao meu progresso' : 'Ver o escritório pronto';
+  });
+  var itens = [].slice.call(document.querySelectorAll('.nav a.item'));
+  var alvos = itens.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function marcar() {
+    var y = window.scrollY + 120, atual = -1;
+    alvos.forEach(function (s, i) { if (s && s.offsetTop <= y) atual = i; });
+    itens.forEach(function (a, i) {
+      if (i === atual) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
+    if (atual >= 0 && itens[atual].scrollIntoView && window.innerWidth < 1080) {
+      var ul = itens[atual].closest('ul');
+      ul.scrollLeft = itens[atual].offsetLeft - 16;
+    }
+  }
+  window.addEventListener('scroll', marcar, { passive: true });
+  atualizar(); marcar();
 })();
 </script>`;
 
 const cabeca = `<title>Agenda IA Aplicada a Advogados</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>${CSS}</style>`;
 
-const corpo = `${sprite}
-<div class="app">
-  <aside class="lado">
-    <div class="marca">
-      <h1>${esc(A.titulo)}</h1>
-      <p>${esc(A.promessa)}</p>
-      <p class="total">3 módulos · ${todas.length} sessões · ${fmt(totalMin)} de vídeo</p>
-    </div>${menu}
-  </aside>
-  <main class="conteudo">${A.modulos.map(vistaModulo).join('')}${vistaEntregas}${vistaFerr}${vistaResumo}
-  </main>
-</div>${script}`;
+const corpo = `${sprite}${nav}${topo}
+<main>${curso}${jornada}${A.modulos.map(modulo).join('')}${conquistas}${final}${ferramentas}${resumo}
+</main>${script}`;
 
 const pagina = `<!doctype html>
 <html lang="pt-BR">
@@ -409,27 +615,21 @@ fs.writeFileSync(path.join(pasta, 'agenda-udemy.html'), pagina);
 if (saidaArtefato) fs.writeFileSync(saidaArtefato, cabeca + '\n' + corpo + '\n');
 
 // ---------- espelho em texto ----------
-const md = [`# ${A.titulo}`, '', A.promessa, '', `3 módulos · ${todas.length} sessões · ${fmt(totalMin)} de vídeo`, '',
-  'A página é [agenda-udemy.html](agenda-udemy.html). Este arquivo e a página saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', ''];
+const cel = (t) => String(t || '').replace(/\|/g, '\\|');
+const md = [`# ${A.titulo}`, '', `**${A.chamada}**`, '', A.apoio, '', `3 módulos · ${aulas.length} aulas · ${fmt(totalMin)} de vídeo · ${aulas.length} conquistas · ${nomesF.length} ferramentas`, '',
+  'A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', '',
+  '## O curso', '', ...A.curso.map((c) => `- **${c.titulo}.** ${c.texto}`), '', '| Hoje | No fim do curso |', '|---|---|', ...A.antes_depois.map((x) => `| ${cel(x.antes)} | ${cel(x.depois)} |`), ''];
 A.modulos.forEach((m) => {
-  md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', `**No fim do módulo:** ${m.resultado}`, '', `${m.sessoes.length} sessões · ${fmt(m.minutos)} · ${m.precisa}`, '');
-  m.sessoes.forEach((s) => md.push(`${s.numero}. **${s.nome}** (${s.minutos} min). ${s.faz} Conquista: *${s.conquista}*.`));
+  md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', `**No fim do módulo:** ${m.resultado}`, '', `${m.aulas.length} aulas · ${fmt(m.minutos)} · Precisa de: ${m.precisa}`, '');
+  md.push('| Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |', '|---|---|---|---|---|---:|');
+  m.aulas.forEach((a) => md.push(`| **${a.numero} ${cel(a.nome)}** | ${cel(a.o_que_e)} | ${a.apresenta.map(cel).join('<br>')} | ${cel(a.conquista)}<br>*Missão: ${cel(a.missao)}* | ${a.ferramentas.map(cel).join(', ')} | ${a.minutos} min |`));
   md.push('');
 });
-md.push('## Entregáveis', '');
-A.modulos.forEach((m) => md.push(`- **Módulo ${m.numero}:** ${m.sessoes.map((s) => s.conquista).join(' · ')}`));
-md.push('', '## Ferramentas incorporadas', '', '| Ferramenta | O que faz no curso | Plano | Sessões |', '|---|---|---|---|');
-nomesF.forEach((f) => md.push(`| ${f} | ${A.ferramentas[f].faz} | ${A.ferramentas[f].plano} | ${usos(f).join(', ')} |`));
-if (A.modelos) {
-  md.push('', '### Qual modelo para qual trabalho', '', '| Modelo | Perfil | Na advocacia |', '|---|---|---|');
-  A.modelos.forEach((l) => md.push(`| ${l.modelo} | ${l.perfil} | ${l.usos} |`));
-}
-md.push('', '## Resumo', '', '| Módulo | No fim, você tem | Sessões | Vídeo |', '|---|---|---:|---:|');
-A.modulos.forEach((m) => md.push(`| ${m.numero} · ${m.nome} | ${m.resultado} | ${m.sessoes.length} | ${fmt(m.minutos)} |`));
-md.push(`| **Total** | ${todas.length} conquistas | ${todas.length} | ${fmt(totalMin)} |`, '');
-if (robos.length) { md.push('**No fim do curso, isto roda sozinho:**', '', ...robos.map((s) => `- ${s.conquista}: ${s.automacao}.`), ''); }
-md.push(A.rodape || '', '');
+md.push(`## ${PF.titulo}`, '', PF.texto, '', ...PF.roteiro.map((r, i) => `${i + 1}. ${r.texto}`), '');
+md.push('## Ferramentas incorporadas', '', '| Ferramenta | Para que serve | Plano | Módulos |', '|---|---|---|---|', ...nomesF.map((f) => `| ${f} | ${A.ferramentas[f].faz} | ${A.ferramentas[f].plano} | ${modulosDe(f).join(', ')} |`), '');
+md.push('| Modelo do Claude | Perfil | Quando usar na advocacia |', '|---|---|---|', ...A.modelos.map((l) => `| ${l.modelo} | ${l.perfil} | ${l.usos} |`), '');
+md.push('## Resumo', '', '| Módulo | No fim, você tem | Aulas | Vídeo |', '|---|---|---:|---:|', ...A.modulos.map((m) => `| ${m.numero} · ${m.nome} | ${cel(m.resultado)} | ${m.aulas.length} | ${fmt(m.minutos)} |`), `| **Total** | ${aulas.length} conquistas e o escritório no automático | ${aulas.length} | ${fmt(totalMin)} |`, '', A.rodape, '');
 fs.writeFileSync(path.join(pasta, 'README.md'), md.join('\n'));
 
-console.log(`Agenda montada: ${todas.length} sessões, ${fmt(totalMin)} (${totalMin} min), ${robos.length} automações.`);
-A.modulos.forEach((m) => console.log(`  Módulo ${m.numero}: ${m.sessoes.length} sessões, ${m.minutos} min`));
+console.log(`Agenda montada: ${aulas.length} aulas, ${fmt(totalMin)} (${totalMin} min).`);
+A.modulos.forEach((m) => console.log(`  Módulo ${m.numero}: ${m.aulas.length} aulas, ${m.minutos} min`));

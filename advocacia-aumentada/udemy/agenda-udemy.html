@@ -5,694 +5,969 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Agenda IA Aplicada a Advogados</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
-/* Layout: menu lateral fixo (módulos, entregáveis, ferramentas, resumo) e uma vista por vez.
-   Cada módulo é uma trilha de sessões: título, o que você faz e a conquista. O detalhe abre ao clicar. */
+/* Layout: página única. Topo escuro com o prédio do escritório (uma janela por aula, acende quando a aula é feita).
+   Depois: o curso, a jornada em três andares, a agenda em colunas (aula | o que é e o que vamos apresentar | ferramentas | tempo),
+   as conquistas, o projeto final, as ferramentas e o resumo. */
 :root {
-  --fundo: #F5F6F8; --cartao: #FFFFFF; --linha: #E1E4EA; --tinta: #151B27; --tinta-2: #586174;
-  --lado: #15203A; --lado-tinta: #EEF1F7; --lado-2: #AEB8CC; --lado-ativo: #24345A;
-  --m1: #2D58CF; --m1-s: #EAF0FD; --m2: #9A2242; --m2-s: #FAEDF1; --m3: #0E7466; --m3-s: #E2F3F0;
-  --f-titulo: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --fundo: #F3F5F9; --cartao: #FFFFFF; --cartao-2: #F7F9FC; --linha: #E2E7EF; --tinta: #121A2B; --tinta-2: #5A6478;
+  --noite: #0F1B33; --noite-2: #182848; --noite-3: #233862; --noite-tinta: #F2F5FB; --noite-sub: #B3C0D9;
+  --vidro: #1D2D52; --vidro-borda: #34497A;
+  --m1: #2F5FE3; --m1-s: #EAF0FE; --m2: #B3264F; --m2-s: #FCEEF2; --m3: #0B8770; --m3-s: #E2F5F0;
+  --ouro: #D9961A; --ouro-s: #FDF3DF; --sobre-ouro: #2A1C02;
+  --f-titulo: "Bricolage Grotesque", "Source Sans 3", system-ui, sans-serif;
   --f-texto: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --fundo: #0E121B; --cartao: #161C29; --linha: #283044; --tinta: #ECEFF5; --tinta-2: #A6AFC0;
-    --lado: #0A0F1A; --lado-tinta: #EEF1F7; --lado-2: #97A2B8; --lado-ativo: #1C2A47;
-    --m1: #93ADF6; --m1-s: #1A2440; --m2: #F193AB; --m2-s: #3A1724; --m3: #6FD1C1; --m3-s: #10302B;
+    --fundo: #0B1120; --cartao: #131B2D; --cartao-2: #172138; --linha: #263149; --tinta: #EDF1F8; --tinta-2: #A7B1C5;
+    --noite: #0A1226; --noite-2: #121E3A; --noite-3: #1D2E55;
+    --m1: #8EA9F8; --m1-s: #1A2547; --m2: #F290AC; --m2-s: #3A1626; --m3: #5FCFB8; --m3-s: #0F2F29;
+    --ouro: #F2C15B; --ouro-s: #33270F; --sobre-ouro: #2A1C02;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --fundo: #0E121B; --cartao: #161C29; --linha: #283044; --tinta: #ECEFF5; --tinta-2: #A6AFC0;
-  --lado: #0A0F1A; --lado-tinta: #EEF1F7; --lado-2: #97A2B8; --lado-ativo: #1C2A47;
-  --m1: #93ADF6; --m1-s: #1A2440; --m2: #F193AB; --m2-s: #3A1724; --m3: #6FD1C1; --m3-s: #10302B;
+  --fundo: #0B1120; --cartao: #131B2D; --cartao-2: #172138; --linha: #263149; --tinta: #EDF1F8; --tinta-2: #A7B1C5;
+  --noite: #0A1226; --noite-2: #121E3A; --noite-3: #1D2E55;
+  --m1: #8EA9F8; --m1-s: #1A2547; --m2: #F290AC; --m2-s: #3A1626; --m3: #5FCFB8; --m3-s: #0F2F29;
+  --ouro: #F2C15B; --ouro-s: #33270F; --sobre-ouro: #2A1C02;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--noite); }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 [hidden] { display: none !important; }
 a { color: inherit; }
-button { font: inherit; }
-:focus-visible { outline: 2px solid var(--m1); outline-offset: 3px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--ouro); outline-offset: 3px; border-radius: 6px; }
 .ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-
-.app { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: 100vh; }
 .m1 { --cor: var(--m1); --cor-s: var(--m1-s); }
 .m2 { --cor: var(--m2); --cor-s: var(--m2-s); }
 .m3 { --cor: var(--m3); --cor-s: var(--m3-s); }
+.faixa { padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.miolo { max-width: 1160px; margin: 0 auto; }
+.secao { padding-block: 72px 8px; }
+.olho { font-size: .82rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-2); }
+.secao h2 { font-family: var(--f-titulo); font-weight: 700; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.1; letter-spacing: -.015em; margin-top: 8px; text-wrap: balance; }
+.secao .intro { margin-top: 10px; color: var(--tinta-2); font-size: 1.08rem; max-width: 62ch; }
 
-/* menu lateral */
-.lado { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--lado); color: var(--lado-tinta); padding-block: 32px; padding-left: max(22px, env(safe-area-inset-left, 0px)); padding-right: 22px; display: flex; flex-direction: column; gap: 28px; }
-.marca h1 { font-family: var(--f-titulo); font-weight: 600; font-size: 1.45rem; line-height: 1.2; }
-.marca p { margin-top: 8px; font-size: .93rem; line-height: 1.5; color: var(--lado-2); }
-.marca .total { margin-top: 12px; font-size: .85rem; color: var(--lado-2); font-variant-numeric: tabular-nums; }
-.menu { display: flex; flex-direction: column; gap: 4px; }
-.menu .sep { height: 1px; background: rgba(255,255,255,.12); margin: 10px 4px; }
-.menu a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--lado-tinta); }
-.menu a:hover { background: var(--lado-ativo); }
-.menu a[aria-current="page"] { background: var(--lado-ativo); box-shadow: inset 3px 0 0 var(--lado-tinta); }
-.menu .bola { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none; font-weight: 700; font-size: .9rem; background: rgba(255,255,255,.1); }
-.menu .bola .ico { width: 17px; height: 17px; }
-.menu .txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
-.menu .txt b { font-weight: 600; font-size: .96rem; }
-.menu .txt small { font-size: .8rem; color: var(--lado-2); }
-.menu .prog { margin-left: auto; font-size: .78rem; color: var(--lado-2); font-variant-numeric: tabular-nums; }
+/* navegação */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--noite); border-bottom: 1px solid var(--noite-3); }
+.nav .miolo { display: flex; align-items: center; gap: 18px; min-height: 60px; }
+.nav .marca { font-family: var(--f-titulo); font-weight: 700; color: var(--noite-tinta); white-space: nowrap; text-decoration: none; font-size: 1.02rem; }
+.nav ul { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav a.item { display: block; white-space: nowrap; padding: 7px 12px; border-radius: 999px; color: var(--noite-sub); text-decoration: none; font-size: .92rem; font-weight: 600; }
+.nav a.item:hover { color: var(--noite-tinta); background: var(--noite-2); }
+.nav a.item[aria-current="true"] { color: var(--noite); background: var(--noite-tinta); }
 
-/* conteúdo */
-.conteudo { padding-block: 48px 80px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
-.vista { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
-.cab .etapa { font-size: .85rem; font-weight: 700; color: var(--cor, var(--tinta-2)); letter-spacing: .02em; }
-.cab h2 { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.15; margin-top: 6px; text-wrap: balance; }
-.cab .dor { margin-top: 12px; font-size: 1.12rem; color: var(--tinta-2); }
-.cab .dor q { quotes: "\201C" "\201D"; font-style: italic; }
-.fim { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--cor-s); border-radius: 10px; }
-.fim .ico { color: var(--cor); margin-top: 3px; }
-.fim p { font-size: .98rem; }
-.fim b { color: var(--cor); }
-.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .9rem; color: var(--tinta-2); }
-.meta b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+/* topo */
+.topo { background: var(--noite); color: var(--noite-tinta); background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.2px); background-size: 22px 22px; }
+.topo .miolo { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; align-items: center; padding-block: 64px 72px; }
+.selo-curso { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--noite-2); border: 1px solid var(--noite-3); color: var(--noite-sub); font-size: .86rem; font-weight: 600; }
+.selo-curso b { color: var(--ouro); }
+.topo h1 { font-family: var(--f-titulo); font-weight: 800; font-size: clamp(2.5rem, 5.4vw, 4rem); line-height: 1.02; letter-spacing: -.025em; margin-top: 18px; }
+.topo .chamada { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.25; margin-top: 16px; color: var(--noite-tinta); max-width: 26ch; }
+.topo .chamada em { font-style: normal; color: var(--ouro); }
+.topo .apoio { margin-top: 14px; color: var(--noite-sub); max-width: 52ch; }
+.numeros { display: flex; flex-wrap: wrap; gap: 14px 34px; margin-top: 28px; }
+.numeros div { display: flex; flex-direction: column; }
+.numeros b { font-family: var(--f-titulo); font-size: 2rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.numeros span { font-size: .88rem; color: var(--noite-sub); margin-top: 6px; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.botao { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; }
+.botao.ouro { background: var(--ouro); color: var(--sobre-ouro); }
+.botao.vazado { border: 1.5px solid var(--noite-3); color: var(--noite-tinta); background: transparent; }
+.botao.vazado:hover { background: var(--noite-2); }
 
-/* trilha de sessões */
-.trilha { display: flex; flex-direction: column; }
-.passo { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 0 16px; padding-bottom: 14px; }
-.passo::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--linha); }
-.passo:last-child::before { display: none; }
-.feito { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--cor); background: var(--cartao); color: var(--cor); display: grid; place-items: center; cursor: pointer; font-weight: 700; font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
-.feito .ico { display: none; width: 22px; height: 22px; }
+/* o prédio */
+.predio { width: 100%; max-width: 430px; margin: 0 auto; }
+.placa { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--ouro); color: var(--sobre-ouro); font-family: var(--f-titulo); font-weight: 800; font-size: .86rem; letter-spacing: .14em; text-transform: uppercase; padding: 10px; border-radius: 12px 12px 0 0; }
+.andar { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 12px; padding: 14px; background: var(--noite-2); border: 1px solid var(--noite-3); border-top: 0; }
+.andar .qual { display: flex; flex-direction: column; line-height: 1.15; text-decoration: none; }
+.andar .qual b { font-family: var(--f-titulo); font-size: 1.5rem; font-weight: 800; color: var(--cor); }
+.andar .qual span { font-size: .78rem; color: var(--noite-sub); font-weight: 600; }
+.janelas { display: flex; gap: 6px; }
+.janela { flex: 1; height: 38px; min-width: 0; border-radius: 5px; background: var(--vidro); border: 1px solid var(--vidro-borda); transition: background .35s, box-shadow .35s, border-color .35s; display: block; }
+.janela:hover { border-color: var(--noite-tinta); }
+.janela.acesa, .predio.pronto .janela { background: var(--cor); border-color: var(--cor); box-shadow: 0 0 14px var(--cor); }
+.terreo .janelas { align-items: flex-end; }
+.porta { flex: 1.3; height: 52px; border-radius: 6px 6px 0 0; background: var(--ouro); opacity: .9; }
+.calcada { height: 12px; background: var(--noite-3); border-radius: 0 0 10px 10px; }
+.progresso { margin-top: 16px; text-align: center; color: var(--noite-sub); font-size: .92rem; }
+.progresso b { color: var(--noite-tinta); font-variant-numeric: tabular-nums; }
+.predio .botao { margin: 12px auto 0; display: flex; width: fit-content; font-size: .9rem; padding: 9px 16px; }
+
+/* o curso */
+.cards4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.card { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card .ico-bola { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--ouro-s); color: var(--ouro); }
+.card .ico-bola .ico { width: 24px; height: 24px; }
+.card h3 { font-size: 1.08rem; font-weight: 700; }
+.card p { color: var(--tinta-2); font-size: .97rem; }
+.antes-depois { margin-top: 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; overflow: hidden; }
+.antes-depois .cab, .antes-depois li { display: grid; grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr); align-items: center; gap: 12px; padding: 14px 22px; }
+.antes-depois .cab { background: var(--cartao-2); font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.antes-depois li { border-top: 1px solid var(--linha); }
+.antes-depois .antes { color: var(--tinta-2); }
+.antes-depois .depois { font-weight: 700; }
+.antes-depois .seta { color: var(--ouro); justify-self: center; }
+
+/* jornada */
+.jornada { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; position: relative; }
+.etapa { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; min-width: 0; transition: transform .2s, border-color .2s; }
+.etapa:hover { transform: translateY(-2px); border-color: var(--cor); }
+.etapa .topo-e { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.etapa .n { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--cor); color: var(--cartao); font-family: var(--f-titulo); font-weight: 800; font-size: 1.3rem; }
+.etapa .andar-r { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cor); }
+.etapa h3 { font-family: var(--f-titulo); font-size: 1.3rem; font-weight: 700; line-height: 1.2; }
+.etapa p { color: var(--tinta-2); font-size: .96rem; }
+.etapa .meta-e { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--linha); display: flex; justify-content: space-between; font-size: .9rem; color: var(--tinta-2); }
+.etapa .meta-e b { color: var(--tinta); }
+
+/* módulos e agenda */
+.modulo { margin-top: 28px; }
+.mod-cab { background: var(--cor-s); border-radius: 20px; padding: 28px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: start; }
+.mod-cab .grande { width: 72px; height: 72px; border-radius: 18px; background: var(--cor); color: var(--cartao); display: grid; place-items: center; font-family: var(--f-titulo); font-weight: 800; font-size: 2.2rem; }
+.mod-cab .rot { font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--cor); }
+.mod-cab h2 { margin-top: 4px; }
+.mod-cab .dor { margin-top: 10px; font-size: 1.08rem; color: var(--tinta-2); font-style: italic; }
+.mod-cab .fim { margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; font-size: 1rem; }
+.mod-cab .fim .ico { color: var(--cor); margin-top: 3px; }
+.mod-cab .meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: .92rem; color: var(--tinta-2); }
+.mod-cab .meta b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+.grade-cab, .aula { display: grid; grid-template-columns: 84px minmax(0, 1fr) 220px 64px; gap: 22px; }
+.grade-cab { padding: 22px 22px 10px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.grade-cab span:last-child { text-align: right; }
+.aulas { display: flex; flex-direction: column; gap: 12px; }
+.aula { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 20px 22px; align-items: start; scroll-margin-top: 84px; transition: border-color .2s; }
+.aula.feita { border-color: var(--cor); }
+.feito { width: 60px; height: 60px; border-radius: 16px; border: 2px solid var(--cor); background: var(--cartao); color: var(--cor); cursor: pointer; display: grid; place-items: center; font-family: var(--f-titulo); font-weight: 800; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.feito .ico { display: none; width: 28px; height: 28px; stroke-width: 2.4; }
 .feito[aria-pressed="true"] { background: var(--cor); color: var(--cartao); }
 .feito[aria-pressed="true"] .n { display: none; }
 .feito[aria-pressed="true"] .ico { display: block; }
-.passo details { background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; min-width: 0; }
-.passo summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
-.passo summary::-webkit-details-marker { display: none; }
-.passo .topo { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }
-.passo h3 { font-size: 1.08rem; font-weight: 700; line-height: 1.35; }
-.passo .min { font-size: .85rem; color: var(--tinta-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.passo .faz { color: var(--tinta-2); font-size: .98rem; }
-.selo { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; margin-top: 4px; padding: 4px 12px 4px 8px; border-radius: 999px; border: 1.5px solid var(--cor); color: var(--cor); font-weight: 700; font-size: .86rem; line-height: 1.3; }
-.selo .ico { width: 17px; height: 17px; }
-.passo.ok .selo { background: var(--cor); color: var(--cartao); }
-.abrir { display: inline-flex; align-items: center; gap: 4px; font-size: .84rem; color: var(--tinta-2); margin-top: 2px; }
-.abrir .ico { width: 15px; height: 15px; transition: transform .2s; }
-details[open] .abrir .ico { transform: rotate(90deg); }
-.detalhe { padding: 2px 18px 18px; display: grid; gap: 12px; border-top: 1px solid var(--linha); padding-top: 14px; margin: 0 0 0; }
-.detalhe div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; font-size: .95rem; }
-.detalhe dt { color: var(--tinta-2); font-size: .86rem; padding-top: 2px; }
-.detalhe .auto { color: var(--m3); font-weight: 600; }
+.aula h3 { font-family: var(--f-titulo); font-size: 1.22rem; font-weight: 700; line-height: 1.25; }
+.aula .oque { margin-top: 4px; color: var(--tinta-2); }
+.aula .rot { margin-top: 14px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); }
+.aula .apr { margin-top: 6px; display: grid; gap: 4px; }
+.aula .apr li { display: flex; gap: 8px; align-items: flex-start; }
+.aula .apr .ico { width: 18px; height: 18px; color: var(--cor); margin-top: 4px; stroke-width: 2.2; }
+.aula .fichas { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.ficha { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 9px; border-radius: 999px; font-size: .88rem; font-weight: 700; line-height: 1.3; }
+.ficha .ico { width: 17px; height: 17px; }
+.ficha.conq { background: var(--cor-s); color: var(--cor); }
+.aula.feita .ficha.conq { background: var(--cor); color: var(--cartao); }
+.ficha.miss { background: var(--ouro-s); color: var(--tinta); font-weight: 600; }
+.ficha.miss .ico { color: var(--ouro); }
+.ferr-col { display: flex; flex-direction: column; gap: 8px; }
+.ferr-col li { display: flex; align-items: center; gap: 9px; font-size: .94rem; font-weight: 600; }
+.ferr-col .ico-f { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--cartao-2); border: 1px solid var(--linha); flex: none; }
+.ferr-col .ico-f .ico { width: 17px; height: 17px; }
+.tempo { text-align: right; font-family: var(--f-titulo); font-weight: 700; font-size: 1.05rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tempo small { display: block; font-family: var(--f-texto); font-weight: 400; font-size: .78rem; color: var(--tinta-2); }
+.ferr-col .rot-m, .tempo-m { display: none; }
+.a-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.tempo-m { font-family: var(--f-titulo); font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dica { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding: 10px 14px; border-radius: 10px; background: var(--ouro-s); font-size: .93rem; }
+.dica .ico { color: var(--ouro); }
 
-/* entregáveis, ferramentas e resumo */
-.grupo h3 { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-.grupo h3 span { width: 12px; height: 12px; border-radius: 50%; background: var(--cor); }
-.entregas { margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-.entregas li { display: flex; gap: 10px; align-items: center; padding: 12px 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 10px; min-width: 0; }
-.entregas .ico { color: var(--cor); }
-.entregas b { font-size: .95rem; display: block; line-height: 1.3; }
-.entregas small { color: var(--tinta-2); font-size: .8rem; }
-.ferr { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
-.ferr li { padding: 16px 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.ferr h3 { font-size: 1.02rem; font-weight: 700; }
-.ferr p { font-size: .94rem; color: var(--tinta-2); }
-.ferr .plano { font-size: .84rem; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.chips a { font-size: .78rem; font-weight: 700; text-decoration: none; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--cor); color: var(--cor); font-variant-numeric: tabular-nums; }
-.tabela { overflow-x: auto; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; }
-.tabela table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: .95rem; }
-.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--linha); }
-.tabela th { font-size: .8rem; font-weight: 700; color: var(--tinta-2); }
-.tabela tr:last-child td { border-bottom: 0; }
+/* conquistas */
+.medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 28px; }
+.medalha { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; text-decoration: none; min-width: 0; }
+.medalha .disco { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; border: 2px dashed var(--linha); color: var(--tinta-2); background: var(--cartao-2); }
+.medalha .disco .ico { width: 26px; height: 26px; }
+.medalha b { font-size: .92rem; line-height: 1.25; }
+.medalha small { font-size: .78rem; color: var(--tinta-2); }
+.medalha.ganha .disco { border: 0; background: var(--cor); color: var(--cartao); box-shadow: 0 0 0 5px var(--cor-s); }
+.placar { margin-top: 14px; font-weight: 700; color: var(--tinta-2); }
+.placar b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+
+/* projeto final */
+.final { margin-top: 28px; background: var(--noite); color: var(--noite-tinta); border-radius: 24px; padding: 36px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 36px; align-items: center; }
+.final .trofeu { width: 64px; height: 64px; border-radius: 18px; background: var(--ouro); color: var(--sobre-ouro); display: grid; place-items: center; }
+.final .trofeu .ico { width: 34px; height: 34px; }
+.final h2 { font-family: var(--f-titulo); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.12; margin-top: 18px; }
+.final p { margin-top: 12px; color: var(--noite-sub); }
+.roteiro { display: grid; gap: 10px; counter-reset: passo; }
+.roteiro li { display: grid; grid-template-columns: 36px 36px minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 14px; background: var(--noite-2); border: 1px solid var(--noite-3); border-radius: 12px; }
+.roteiro li::before { counter-increment: passo; content: counter(passo); font-family: var(--f-titulo); font-weight: 800; color: var(--ouro); font-size: 1.15rem; text-align: center; }
+.roteiro .ico { color: var(--noite-sub); }
+
+/* ferramentas */
+.ferramentas { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin-top: 28px; }
+.ferramenta { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 16px; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 12px; align-items: start; min-width: 0; }
+.ferramenta .ico-f { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--cartao-2); border: 1px solid var(--linha); grid-row: span 3; }
+.ferramenta .ico-f .ico { width: 22px; height: 22px; }
+.ferramenta h3 { font-size: 1rem; font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.ferramenta p { font-size: .92rem; color: var(--tinta-2); }
+.plano { font-size: .74rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--linha); color: var(--tinta-2); white-space: nowrap; }
+.plano.gratis { color: var(--m3); border-color: var(--m3); }
+.plano.pago { color: var(--m2); border-color: var(--m2); }
+.plano.misto { color: var(--m1); border-color: var(--m1); }
+.mods { display: flex; gap: 6px; margin-top: 4px; }
+.mods a { white-space: nowrap; font-size: .74rem; font-weight: 700; text-decoration: none; padding: 1px 8px; border-radius: 999px; background: var(--cor-s); color: var(--cor); }
+.tabela { margin-top: 18px; overflow-x: auto; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; }
+.tabela table { width: 100%; min-width: 600px; border-collapse: collapse; font-size: .96rem; }
+.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 13px 18px; border-bottom: 1px solid var(--linha); }
+.tabela th { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); background: var(--cartao-2); }
+.tabela tbody tr:last-child td { border-bottom: 0; }
+.tabela tfoot td { font-weight: 700; border-top: 1px solid var(--linha); border-bottom: 0; }
 .tabela .n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.tabela tfoot td { font-weight: 700; border-top: 1px solid var(--linha); }
-.robos { display: grid; gap: 8px; }
-.robos li { display: flex; gap: 10px; align-items: flex-start; font-size: .96rem; }
-.robos .ico { color: var(--m3); margin-top: 3px; }
-.rodape { font-size: .84rem; color: var(--tinta-2); }
+.tabela .bola-m { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--cor); color: var(--cartao); font-weight: 800; margin-right: 10px; vertical-align: middle; }
+.rodape { padding-block: 40px 64px; color: var(--tinta-2); font-size: .88rem; }
 
-@media (max-width: 880px) {
-  .app { grid-template-columns: minmax(0, 1fr); }
-  .lado { position: sticky; top: env(safe-area-inset-top, 0px); height: auto; z-index: 5; padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); gap: 10px; }
-  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--lado); }
-  .marca p, .marca .total { display: none; }
-  .marca h1 { font-size: 1.1rem; }
-  .menu { flex-direction: row; overflow-x: auto; gap: 6px; scrollbar-width: none; }
-  .menu .sep { display: none; }
-  .menu a { flex: none; padding: 7px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; }
-  .menu a[aria-current="page"] { box-shadow: none; background: var(--lado-tinta); color: var(--lado); }
-  .menu .bola, .menu .txt small, .menu .prog { display: none; }
-  .conteudo { padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .detalhe div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
-  .ferr { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 1080px) {
+  .topo .miolo { grid-template-columns: minmax(0, 1fr); gap: 44px; padding-block: 48px 56px; }
+  .cards4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grade-cab { display: none; }
+  .aula { grid-template-columns: 64px minmax(0, 1fr); gap: 14px 18px; }
+  .aula .num-col { grid-row: 1 / span 2; }
+  .aula .ferr-col { grid-column: 2; }
+  .aula .tempo { display: none; }
+  .tempo-m { display: inline; }
+  .ferr-col { flex-direction: row; flex-wrap: wrap; gap: 8px 14px; }
+  .ferr-col .rot-m { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); width: 100%; }
+  .final { grid-template-columns: minmax(0, 1fr); padding: 28px; }
 }
-@media (prefers-reduced-motion: reduce) { .abrir .ico { transition: none; } }
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .nav .marca { display: none; }
+  .nav ul { margin-left: 0; }
+  .secao { padding-block: 52px 4px; }
+  .cards4, .jornada { grid-template-columns: minmax(0, 1fr); }
+  .antes-depois .cab { display: none; }
+  .antes-depois li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .antes-depois .seta { justify-self: start; transform: rotate(90deg); }
+  .mod-cab { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .mod-cab .grande { width: 56px; height: 56px; font-size: 1.7rem; border-radius: 14px; }
+  .aula { grid-template-columns: 50px minmax(0, 1fr); gap: 12px 14px; padding: 16px; }
+  .aula .num-col { grid-row: auto; }
+  .aula .ferr-col { grid-column: 1 / -1; }
+  .feito { width: 50px; height: 50px; border-radius: 14px; font-size: 1rem; }
+  .a-topo { flex-direction: column; gap: 2px; }
+  .tempo-m { font-size: .88rem; color: var(--tinta-2); }
+  .numeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .andar { grid-template-columns: 74px minmax(0, 1fr); padding: 12px 10px; gap: 8px; }
+  .janelas { gap: 4px; }
+  .janela { height: 32px; }
+  .final { padding: 22px; border-radius: 18px; }
+  .roteiro li { grid-template-columns: 28px 28px minmax(0, 1fr); padding: 10px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .janela, .etapa, .aula { transition: none; }
+}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7 2.6v5.3c0 4.4-2.9 8.1-7 9.6-4.1-1.5-7-5.2-7-9.6V5.6L12 3z"/><path d="M9 11.8l2.1 2.1L15 10"/></symbol><symbol id="i-mapa" viewBox="0 0 24 24"><path d="M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/></symbol><symbol id="i-lista" viewBox="0 0 24 24"><path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/></symbol><symbol id="i-versao" viewBox="0 0 24 24"><circle cx="6" cy="5.5" r="2"/><circle cx="6" cy="18.5" r="2"/><circle cx="18" cy="7.5" r="2"/><path d="M6 7.5v9M18 9.5c0 4.5-12 3-12 7"/></symbol><symbol id="i-pasta" viewBox="0 0 24 24"><path d="M3.5 7a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></symbol><symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h2.5M13.8 14h2.7M7.5 17.4h2.5"/></symbol><symbol id="i-mensagem" viewBox="0 0 24 24"><path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/></symbol><symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8.2 10.7l1.7 1.7 2.9-3.1"/></symbol><symbol id="i-molde" viewBox="0 0 24 24"><path d="M8 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2M9 9h6M9 12h6M9 15h3.5"/></symbol><symbol id="i-cartao" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/></symbol><symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/></symbol><symbol id="i-cerebro" viewBox="0 0 24 24"><path d="M12 5.5a3 3 0 0 0-5.5 1.3A3 3 0 0 0 5 12a3 3 0 0 0 2 5.3 3 3 0 0 0 5 1.2M12 5.5a3 3 0 0 1 5.5 1.3A3 3 0 0 1 19 12a3 3 0 0 1-2 5.3 3 3 0 0 1-5 1.2M12 5.5v13"/></symbol><symbol id="i-pagina" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/></symbol><symbol id="i-planilha" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.8h18M9 4v16M15 4v16"/></symbol><symbol id="i-formulario" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7.5" y="7" width="3" height="3" rx=".5"/><path d="M13 8.5h3.5M7.5 14h9M7.5 17.5h6"/></symbol><symbol id="i-email" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.6L12 13l8.4-6.4"/></symbol><symbol id="i-contrato" viewBox="0 0 24 24"><path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 11h7M9 14.3h7M9 18c.9-1.4 1.9-1.4 2.8 0s1.9 1.4 2.8 0"/></symbol><symbol id="i-painel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/></symbol><symbol id="i-sozinho" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.35-5.65"/><path d="M20 4.5v4h-4"/><path d="M12 8v4l2.6 2.4"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-seta" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol></defs></svg>
-<div class="app">
-  <aside class="lado">
-    <div class="marca">
-      <h1>IA Aplicada a Advogados</h1>
-      <p>Monte, do zero e no navegador, um escritório que funciona sozinho com o Claude.</p>
-      <p class="total">3 módulos · 28 sessões · 5 h 05 de vídeo</p>
-    </div>
-      <nav class="menu" aria-label="Agenda">
-        <a href="#modulo-1" class="m1" data-ir="modulo-1"><span class="bola">1</span><span class="txt"><b>Módulo 1</b><small>Montar o escritório no Claude</small></span><span class="prog" data-prog="1">0/9</span></a>
-        <a href="#modulo-2" class="m2" data-ir="modulo-2"><span class="bola">2</span><span class="txt"><b>Módulo 2</b><small>A cara e a memória do escritório</small></span><span class="prog" data-prog="2">0/8</span></a>
-        <a href="#modulo-3" class="m3" data-ir="modulo-3"><span class="bola">3</span><span class="txt"><b>Módulo 3</b><small>O escritório no automático</small></span><span class="prog" data-prog="3">0/11</span></a>
-        <span class="sep" aria-hidden="true"></span>
-        <a href="#entregaveis" data-ir="entregaveis"><span class="bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span class="txt"><b>Entregáveis</b><small>28 conquistas</small></span></a>
-        <a href="#ferramentas" data-ir="ferramentas"><span class="bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg></span><span class="txt"><b>Ferramentas incorporadas</b><small>12 ferramentas</small></span></a>
-        <a href="#resumo" data-ir="resumo"><span class="bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg></span><span class="txt"><b>Resumo</b><small>o curso em uma tela</small></span></a>
-      </nav>
-  </aside>
-  <main class="conteudo">
-    <section class="vista m1" id="modulo-1" data-vista aria-labelledby="t-m1">
-      <header class="cab">
-        <p class="etapa">Módulo 1 de 3</p>
-        <h2 id="t-m1">Montar o escritório no Claude</h2>
-        <p class="dor"><q>Abro o Claude e não sei por onde começar, nem se é seguro.</q></p>
-      </header>
-      <div class="fim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><p><b>No fim do módulo:</b> Conta blindada, arquivo dos clientes no GitHub, um projeto por cliente, e Google, tribunais e plugin jurídico conectados.</p></div>
-      <p class="meta"><span><b>9</b> sessões</span><span><b>1 h 32</b> de vídeo</span><span>Conta gratuita e GitHub gratuito para começar; conectores, MCP e plugin pedem plano pago do Claude.</span></p>
-      <ol class="trilha">
-        <li class="passo" id="s-1-1">
-          <button type="button" class="feito" id="feito-s-1-1" data-sessao="1.1" aria-pressed="false" aria-label="Marcar a sessão 1.1 como feita"><span class="n">1</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Antes de usar: blindar a conta</h3><span class="min">10 min</span></span>
-              <span class="faz">Cria a conta, desliga o uso das conversas para treinamento, liga a verificação em duas etapas e define o que nunca entra no Claude.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg>Conta blindada</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Tenho medo de usar e expor o meu cliente.”</dd></div><div><dt>A prática</dt><dd><b>Checklist de decolagem.</b> Como o piloto antes de voar: oito itens conferidos, um a um, antes do primeiro uso.</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div><div><dt>Cuidado</dt><dd>Segredo de justiça, saúde e dado de criança nunca entram.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-2">
-          <button type="button" class="feito" id="feito-s-1-2" data-sessao="1.2" aria-pressed="false" aria-label="Marcar a sessão 1.2 como feita"><span class="n">2</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>O mapa da tela</h3><span class="min">6 min</span></span>
-              <span class="faz">Aprende onde fica cada coisa: conversa, projetos, artefatos, conectores, memória, configurações e o seletor de modelo.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mapa"/></svg>Mapa do Claude</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Abro o Claude e não sei para que serve cada botão.”</dd></div><div><dt>A prática</dt><dd><b>Caça ao tesouro.</b> Seis itens escondidos na tela, três minutos para achar todos.</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-3">
-          <button type="button" class="feito" id="feito-s-1-3" data-sessao="1.3" aria-pressed="false" aria-label="Marcar a sessão 1.3 como feita"><span class="n">3</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Qual modelo para qual trabalho</h3><span class="min">10 min</span></span>
-              <span class="faz">Conhece os modelos e monta o guia do escritório: o rápido para o volume, o mais capaz para o caso complexo.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg>Guia de modelos</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não sei qual modelo escolher e gasto o limite do plano à toa.”</dd></div><div><dt>A prática</dt><dd><b>Duelo de modelos.</b> O mesmo caso complexo em dois modelos. Você é o juiz.</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita; os modelos maiores dependem do plano</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-4">
-          <button type="button" class="feito" id="feito-s-1-4" data-sessao="1.4" aria-pressed="false" aria-label="Marcar a sessão 1.4 como feita"><span class="n">4</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>GitHub: o arquivo dos clientes</h3><span class="min">12 min</span></span>
-              <span class="faz">Cria um repositório privado por cliente, organiza as pastas (documentos, peças, contratos) e passa a ter o histórico de cada versão.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg>Arquivo versionado</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não sei qual é a última versão, nem quem mudou o quê.”</dd></div><div><dt>A prática</dt><dd><b>Viagem no tempo.</b> Você altera um contrato e volta à versão de ontem em dois cliques.</dd></div><div><dt>Ferramentas</dt><dd>GitHub</dd></div><div><dt>Precisa de</dt><dd>conta gratuita no GitHub</dd></div><div><dt>Cuidado</dt><dd>Repositório sempre privado, com verificação em duas etapas. Só entra o que o semáforo permite: o GitHub guarda os arquivos fora do Brasil.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-5">
-          <button type="button" class="feito" id="feito-s-1-5" data-sessao="1.5" aria-pressed="false" aria-label="Marcar a sessão 1.5 como feita"><span class="n">5</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Um projeto por cliente</h3><span class="min">12 min</span></span>
-              <span class="faz">Cria no Claude o projeto do cliente, puxa os arquivos do repositório e escreve as instruções do caso. Quando o repositório muda, um clique sincroniza.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg>Pasta viva do cliente</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“A cada conversa eu explico o caso de novo.”</dd></div><div><dt>A prática</dt><dd><b>Missão.</b> Monte o projeto de um cliente fictício e faça o Claude achar o documento que falta.</dd></div><div><dt>Ferramentas</dt><dd>Claude · GitHub</dd></div><div><dt>Precisa de</dt><dd>conta gratuita; a integração com o GitHub depende do plano</dd></div><div><dt>Cuidado</dt><dd>Documento vermelho do semáforo fica fora do projeto.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-6">
-          <button type="button" class="feito" id="feito-s-1-6" data-sessao="1.6" aria-pressed="false" aria-label="Marcar a sessão 1.6 como feita"><span class="n">6</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Google conectado</h3><span class="min">10 min</span></span>
-              <span class="faz">Conecta Gmail, Agenda e Drive ao Claude, com a permissão de perguntar sempre antes de agir.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg>Google conectado</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Começo a segunda-feira sem saber o que me espera.”</dd></div><div><dt>A prática</dt><dd><b>Semana no escuro.</b> Uma semana fictícia lotada: o Claude acha os dois conflitos?</dd></div><div><dt>Ferramentas</dt><dd>Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>plano pago do Claude e conta Google</dd></div><div><dt>Cuidado</dt><dd>Conecte só o necessário. Rascunho e evento novo pedem a sua confirmação.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-7">
-          <button type="button" class="feito" id="feito-s-1-7" data-sessao="1.7" aria-pressed="false" aria-label="Marcar a sessão 1.7 como feita"><span class="n">7</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Reunião que vira ata</h3><span class="min">8 min</span></span>
-              <span class="faz">Liga a transcrição das reuniões do Google Meet, salva no Drive ou num aplicativo de notas conectado ao Claude, e transforma a reunião em ata com tarefas.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg>Reunião registrada</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Saio da reunião com o cliente e a anotação fica pela metade.”</dd></div><div><dt>A prática</dt><dd><b>Contra o relógio.</b> Da transcrição à ata em cinco minutos.</dd></div><div><dt>Ferramentas</dt><dd>Google Meet · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>plano pago do Claude; transcrição do Meet pede Google Workspace pago, ou um aplicativo de notas</dd></div><div><dt>Cuidado</dt><dd>Grave só com o consentimento do cliente. Não há conector oficial do Meet no Claude.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-8">
-          <button type="button" class="feito" id="feito-s-1-8" data-sessao="1.8" aria-pressed="false" aria-label="Marcar a sessão 1.8 como feita"><span class="n">8</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Tribunais na conversa: MCP jurídico</h3><span class="min">12 min</span></span>
-              <span class="faz">Adiciona, no navegador, um conector MCP de processos ou de jurisprudência brasileira e confere o resultado na fonte oficial.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg>Tribunal conectado</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Copio andamento do site do tribunal, um processo por vez.”</dd></div><div><dt>A prática</dt><dd><b>Detetive.</b> Cinco processos públicos: qual andou na semana?</dd></div><div><dt>Ferramentas</dt><dd>MCP jurídico</dd></div><div><dt>Precisa de</dt><dd>plano pago do Claude</dd></div><div><dt>Cuidado</dt><dd>Os conectores jurídicos brasileiros são de terceiros: veja quem mantém e a política de dados. Os que rodam no computador exigem o aplicativo de desktop e ficam fora do curso.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-1-9">
-          <button type="button" class="feito" id="feito-s-1-9" data-sessao="1.9" aria-pressed="false" aria-label="Marcar a sessão 1.9 como feita"><span class="n">9</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Plugin jurídico e skills</h3><span class="min">12 min</span></span>
-              <span class="faz">Instala o plugin jurídico, troca o playbook americano pelo critério do escritório e cria a primeira skill.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg>Caixa de ferramentas jurídica</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“O plugin pronto revisa contrato pelo direito dos Estados Unidos.”</dd></div><div><dt>A prática</dt><dd><b>Caça ao erro.</b> Três cláusulas que o playbook americano marcou errado.</dd></div><div><dt>Ferramentas</dt><dd>Plugins e skills</dd></div><div><dt>Precisa de</dt><dd>plano pago do Claude</dd></div><div><dt>Cuidado</dt><dd>O plugin sugere; a decisão é sua.</dd></div></dl>
-          </details>
-        </li>
-      </ol>
-    </section>
-    <section class="vista m2" id="modulo-2" data-vista aria-labelledby="t-m2">
-      <header class="cab">
-        <p class="etapa">Módulo 2 de 3</p>
-        <h2 id="t-m2">A cara e a memória do escritório</h2>
-        <p class="dor"><q>O Claude não sabe quem eu sou, e tudo o que ele entrega tem cara de genérico.</q></p>
-      </header>
-      <div class="fim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><p><b>No fim do módulo:</b> Identidade, logotipo e design system no Claude, a memória sob controle e um projeto que é o cérebro do escritório.</p></div>
-      <p class="meta"><span><b>8</b> sessões</span><span><b>1 h 18</b> de vídeo</span><span>Conta gratuita para identidade, logotipo e memória; design system e apresentações pedem plano pago.</span></p>
-      <ol class="trilha">
-        <li class="passo" id="s-2-1">
-          <button type="button" class="feito" id="feito-s-2-1" data-sessao="2.1" aria-pressed="false" aria-label="Marcar a sessão 2.1 como feita"><span class="n">1</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>A identidade em uma página</h3><span class="min">8 min</span></span>
-              <span class="faz">Escolhe as três palavras do escritório, a paleta, as letras e o tom de voz.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg>Identidade definida</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não sei explicar o que o meu escritório transmite.”</dd></div><div><dt>A prática</dt><dd><b>Jogo das cartas.</b> Doze cartas de estilo na mesa. Você fica com três e descarta o resto.</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div><div><dt>Cuidado</dt><dd>Sobriedade é regra da OAB: sem autoelogio e sem promessa.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-2">
-          <button type="button" class="feito" id="feito-s-2-2" data-sessao="2.2" aria-pressed="false" aria-label="Marcar a sessão 2.2 como feita"><span class="n">2</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>O logotipo</h3><span class="min">10 min</span></span>
-              <span class="faz">Recebe três caminhos de logotipo, escolhe um, refina em duas rodadas e guarda em SVG e PNG.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg>Logotipo</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não tenho logo, ou fiz um no celular.”</dd></div><div><dt>A prática</dt><dd><b>Três caminhos.</b> Lado a lado. Você escolhe e diz por quê.</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div><div><dt>Cuidado</dt><dd>Sem o símbolo da OAB ou da República. Confira se o nome não colide com marca registrada.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-3">
-          <button type="button" class="feito" id="feito-s-2-3" data-sessao="2.3" aria-pressed="false" aria-label="Marcar a sessão 2.3 como feita"><span class="n">3</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>O design system no Claude</h3><span class="min">12 min</span></span>
-              <span class="faz">Guarda cores, letras, espaçamentos, logotipo e exemplos num design system. Daí em diante, o que o Claude cria já nasce com a marca.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg>Design system</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Cada vez que peço uma apresentação, ela vem com uma cara diferente.”</dd></div><div><dt>A prática</dt><dd><b>Teste da marca.</b> Peça qualquer página: ela já sai com a cara do escritório?</dd></div><div><dt>Ferramentas</dt><dd>Design system</dd></div><div><dt>Precisa de</dt><dd>plano pago do Claude; sem ele, a marca vira uma skill</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-4">
-          <button type="button" class="feito" id="feito-s-2-4" data-sessao="2.4" aria-pressed="false" aria-label="Marcar a sessão 2.4 como feita"><span class="n">4</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>A marca nas apresentações e documentos</h3><span class="min">10 min</span></span>
-              <span class="faz">Cria o modelo de apresentação, o timbrado do Google Docs e a assinatura de e-mail com a marca.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg>Kit visual</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Tudo o que eu mando tem cara de Word cru.”</dd></div><div><dt>A prática</dt><dd><b>Antes e depois.</b> O mesmo parecer em Word cru e com a marca, lado a lado.</dd></div><div><dt>Ferramentas</dt><dd>Design system · Formulários e Docs</dd></div><div><dt>Precisa de</dt><dd>plano pago para apresentações no Claude; Docs e Gmail gratuitos</dd></div><div><dt>Cuidado</dt><dd>No timbre: nome e número de inscrição na OAB.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-5">
-          <button type="button" class="feito" id="feito-s-2-5" data-sessao="2.5" aria-pressed="false" aria-label="Marcar a sessão 2.5 como feita"><span class="n">5</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>A memória do Claude</h3><span class="min">8 min</span></span>
-              <span class="faz">Liga a memória, vê o que o Claude guardou sobre você, corrige e apaga. Entende que cada projeto tem a própria memória.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg>Memória sob controle</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não sei o que o Claude lembra de mim, nem onde isso fica.”</dd></div><div><dt>A prática</dt><dd><b>O que o Claude sabe de mim?.</b> Você abre a memória e corrige três coisas.</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita; buscar em conversas antigas pede plano pago</dd></div><div><dt>Cuidado</dt><dd>Dado de cliente não vai para a memória geral: fica no projeto do cliente.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-6">
-          <button type="button" class="feito" id="feito-s-2-6" data-sessao="2.6" aria-pressed="false" aria-label="Marcar a sessão 2.6 como feita"><span class="n">6</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>O cérebro do escritório</h3><span class="min">12 min</span></span>
-              <span class="faz">Monta o projeto do escritório com instruções permanentes, tom de voz, identidade, política de uso de IA e o critério de revisão. Ele vira a memória oficial da casa.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg>Cérebro do escritório</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Toda conversa começa do zero.”</dd></div><div><dt>A prática</dt><dd><b>Teste do estagiário novo.</b> Um pedido seco, de uma linha: a resposta sai no padrão do escritório?</dd></div><div><dt>Ferramentas</dt><dd>Claude</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div><div><dt>Cuidado</dt><dd>Peça antiga só entra anonimizada.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-7">
-          <button type="button" class="feito" id="feito-s-2-7" data-sessao="2.7" aria-pressed="false" aria-label="Marcar a sessão 2.7 como feita"><span class="n">7</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>A biblioteca de modelos</h3><span class="min">10 min</span></span>
-              <span class="faz">Guarda no projeto e no repositório os modelos da casa: peça, proposta de honorários, relatório ao cliente e atualização de andamento.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg>Biblioteca de modelos</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Refaço proposta e relatório do zero toda vez.”</dd></div><div><dt>A prática</dt><dd><b>Contra o relógio.</b> Proposta pronta em três minutos, a partir do modelo.</dd></div><div><dt>Ferramentas</dt><dd>Claude · GitHub · Formulários e Docs</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-2-8">
-          <button type="button" class="feito" id="feito-s-2-8" data-sessao="2.8" aria-pressed="false" aria-label="Marcar a sessão 2.8 como feita"><span class="n">8</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>IA às claras</h3><span class="min">8 min</span></span>
-              <span class="faz">Cria, com a marca, a página “Como usamos IA no seu caso” e o termo de consentimento do cliente.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg>Transparência</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Uso IA escondido. E se o cliente perguntar?”</dd></div><div><dt>A prática</dt><dd><b>Cliente desconfiado.</b> Três perguntas difíceis. A página responde a todas?</dd></div><div><dt>Ferramentas</dt><dd>Claude · Formulários e Docs</dd></div><div><dt>Precisa de</dt><dd>conta gratuita</dd></div><div><dt>Cuidado</dt><dd>A Recomendação 001/2024 da OAB pede informação por escrito e a assinatura do cliente.</dd></div></dl>
-          </details>
-        </li>
-      </ol>
-    </section>
-    <section class="vista m3" id="modulo-3" data-vista aria-labelledby="t-m3">
-      <header class="cab">
-        <p class="etapa">Módulo 3 de 3</p>
-        <h2 id="t-m3">O escritório no automático</h2>
-        <p class="dor"><q>Passo o dia respondendo, lembrando e cobrando. O escritório só anda quando eu empurro.</q></p>
-      </header>
-      <div class="fim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><p><b>No fim do módulo:</b> Respostas, propostas, prazos, follow-up, contratos e uma fila de revisões rodando sozinhos, num painel de controle.</p></div>
-      <p class="meta"><span><b>11</b> sessões</span><span><b>2 h 15</b> de vídeo</span><span>Conta Google gratuita e WhatsApp Business; triagem e leitura de contrato com IA pedem chave de API paga.</span></p>
-      <ol class="trilha">
-        <li class="passo" id="s-3-1">
-          <button type="button" class="feito" id="feito-s-3-1" data-sessao="3.1" aria-pressed="false" aria-label="Marcar a sessão 3.1 como feita"><span class="n">1</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>A sala de máquinas</h3><span class="min">10 min</span></span>
-              <span class="faz">Monta o ambiente das automações: planilha-mãe, pastas no Drive, o primeiro Google Apps Script e a chave guardada fora da planilha, com limite de gasto.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg>Sala de máquinas</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não sei nem onde um script fica.”</dd></div><div><dt>A prática</dt><dd><b>Construção guiada.</b> Você instala pelo menu e vê as abas e as pastas aparecerem.</dd></div><div><dt>Ferramentas</dt><dd>Google Planilhas · Google Apps Script · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>Tudo testado numa conta de treino antes da conta real.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-2">
-          <button type="button" class="feito" id="feito-s-3-2" data-sessao="3.2" aria-pressed="false" aria-label="Marcar a sessão 3.2 como feita"><span class="n">2</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>O freio de mão</h3><span class="min">12 min</span></span>
-              <span class="faz">Escreve as regras que nenhum robô quebra: máscara de CPF e CNPJ, termos que nunca saem, e-mail só em rascunho, revisão antes da agenda e registro de tudo. Cada script fica no GitHub, com histórico.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg>Freio de mão</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“E se o robô mandar um e-mail errado ou vazar um dado?”</dd></div><div><dt>A prática</dt><dd><b>Conserte o script.</b> Um robô sem freio quase envia um CPF. Você fecha a brecha.</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · GitHub</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>A máscara não cobre nomes nem endereços: troque por papéis antes.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-3">
-          <button type="button" class="feito" id="feito-s-3-3" data-sessao="3.3" aria-pressed="false" aria-label="Marcar a sessão 3.3 como feita"><span class="n">3</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Recepção 24 horas</h3><span class="min">12 min</span></span>
-              <span class="faz">Configura o WhatsApp Business e o Gmail para responder fora do horário: horário de atendimento, link do formulário e o aviso de que o escritório nunca pede Pix por mensagem.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg>Recepção 24 horas</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“O cliente manda mensagem às 23h e cobra resposta no domingo.”</dd></div><div><dt>A prática</dt><dd><b>Simulador de mensagens.</b> Cinco mensagens fictícias: o que cada uma recebe sozinha?</dd></div><div><dt>Roda sozinho</dt><dd class="auto">fora do horário, todo contato recebe a resposta na hora</dd></div><div><dt>Ferramentas</dt><dd>WhatsApp Business · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>WhatsApp Business (gratuito) e conta Google</dd></div><div><dt>Cuidado</dt><dd>A resposta diz que é automática e não dá orientação jurídica. Robô não oficial de WhatsApp pode bloquear o número.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-4">
-          <button type="button" class="feito" id="feito-s-3-4" data-sessao="3.4" aria-pressed="false" aria-label="Marcar a sessão 3.4 como feita"><span class="n">4</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Balcão de entrada</h3><span class="min">14 min</span></span>
-              <span class="faz">Formulário de primeiro contato com aviso de privacidade. Cada resposta vira cadastro, e um clique gera procuração, contrato de honorários e termo de consentimento na pasta do cliente.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg>Balcão de entrada</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Cliente novo me custa uma tarde de papelada.”</dd></div><div><dt>A prática</dt><dd><b>Contra o relógio.</b> Do formulário preenchido aos três documentos em um minuto.</dd></div><div><dt>Roda sozinho</dt><dd class="auto">cada formulário entra no cadastro, e um clique gera os documentos</dd></div><div><dt>Ferramentas</dt><dd>Formulários e Docs · Google Apps Script · Google Planilhas</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>Peça só o necessário. Nada de consulta automática a quem não é cliente.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-5">
-          <button type="button" class="feito" id="feito-s-3-5" data-sessao="3.5" aria-pressed="false" aria-label="Marcar a sessão 3.5 como feita"><span class="n">5</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Proposta que não esfria</h3><span class="min">12 min</span></span>
-              <span class="faz">Um clique gera a proposta com a marca. Se o cliente não responder em três dias, o follow-up fica pronto em rascunho.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg>Proposta que não esfria</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Mandei a proposta e esqueci de perguntar se o cliente decidiu.”</dd></div><div><dt>A prática</dt><dd><b>Funil.</b> Três propostas fictícias: qual pede follow-up hoje?</dd></div><div><dt>Roda sozinho</dt><dd class="auto">três dias sem resposta, o follow-up fica pronto</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · Formulários e Docs · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>Proposta só para quem pediu. Quem envia é você.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-6">
-          <button type="button" class="feito" id="feito-s-3-6" data-sessao="3.6" aria-pressed="false" aria-label="Marcar a sessão 3.6 como feita"><span class="n">6</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Despertador de prazos</h3><span class="min">12 min</span></span>
-              <span class="faz">Dois robôs: um manda os prazos da semana para o seu e-mail às 7h; o outro leva os prazos conferidos para a agenda, com alarme.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg>Despertador de prazos</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Prazo na planilha não apita.”</dd></div><div><dt>A prática</dt><dd><b>O robô trabalhou de madrugada.</b> Na aula seguinte, você abre o e-mail que chegou sozinho.</dd></div><div><dt>Roda sozinho</dt><dd class="auto">às 7h, os prazos no seu e-mail; à noite, os conferidos na agenda</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · Google Planilhas · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>A IA não conta prazo. Só vai para a agenda o prazo conferido.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-7">
-          <button type="button" class="feito" id="feito-s-3-7" data-sessao="3.7" aria-pressed="false" aria-label="Marcar a sessão 3.7 como feita"><span class="n">7</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Caixa domada</h3><span class="min">12 min</span></span>
-              <span class="faz">Liga a triagem: cada e-mail novo ganha etiqueta, resumo e rascunho de resposta, sem nada ser enviado.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg>Caixa domada</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“A caixa de entrada me engole.”</dd></div><div><dt>A prática</dt><dd><b>Caça ao erro.</b> Um e-mail traz uma instrução escondida para a IA. Ela não obedece.</dd></div><div><dt>Roda sozinho</dt><dd class="auto">a cada 30 minutos, os e-mails novos são triados</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · API do Claude · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>chave de API paga (centavos por e-mail); sem chave, regras por remetente e assunto</dd></div><div><dt>Cuidado</dt><dd>E-mail com termo sensível não vai para a IA.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-8">
-          <button type="button" class="feito" id="feito-s-3-8" data-sessao="3.8" aria-pressed="false" aria-label="Marcar a sessão 3.8 como feita"><span class="n">8</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Cliente informado</h3><span class="min">10 min</span></span>
-              <span class="faz">Toda segunda, os casos sem notícia para o cliente há mais de 30 dias ganham um rascunho de atualização, feito a partir do último andamento.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg>Cliente informado</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Só lembro do cliente quando ele me cobra.”</dd></div><div><dt>A prática</dt><dd><b>Segunda-feira.</b> Quatro rascunhos esperando por você.</dd></div><div><dt>Roda sozinho</dt><dd class="auto">toda segunda, os rascunhos de atualização ficam prontos</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · Google Planilhas · Gmail, Agenda e Drive</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>Sem promessa de resultado. Você revisa e envia.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-9">
-          <button type="button" class="feito" id="feito-s-3-9" data-sessao="3.9" aria-pressed="false" aria-label="Marcar a sessão 3.9 como feita"><span class="n">9</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Vigia de contratos</h3><span class="min">15 min</span></span>
-              <span class="faz">Contrato que cai na pasta é lido pelo critério do escritório e vira matriz de riscos. Cada nova versão é comparada com a anterior, com alerta se algo piorou.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg>Vigia de contratos</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Revisar contrato me toma a tarde, e a outra parte muda cláusula sem avisar.”</dd></div><div><dt>A prática</dt><dd><b>Prova com gabarito.</b> O que a IA deixou passar? E as duas mudanças que a outra parte não contou?</dd></div><div><dt>Roda sozinho</dt><dd class="auto">contrato novo vira matriz de riscos; versão nova é comparada e mudança ruim vira alerta</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · API do Claude · Google Planilhas</dd></div><div><dt>Precisa de</dt><dd>chave de API paga para a leitura; a comparação de versões é gratuita</dd></div><div><dt>Cuidado</dt><dd>Trecho que não confere fica marcado. O risco é decidido e assinado por você.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-10">
-          <button type="button" class="feito" id="feito-s-3-10" data-sessao="3.10" aria-pressed="false" aria-label="Marcar a sessão 3.10 como feita"><span class="n">10</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>Mesa de aprovação</h3><span class="min">10 min</span></span>
-              <span class="faz">Junta numa fila tudo o que os robôs prepararam e espera você: rascunhos, propostas, matrizes e prazos sem conferência. Às 8h, chega a lista do dia.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg>Mesa de aprovação</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Não sei o que a IA fez e ainda está esperando por mim.”</dd></div><div><dt>A prática</dt><dd><b>Caça ao erro.</b> Uma matriz “revisada” sem nome de revisor. A fila percebe?</dd></div><div><dt>Roda sozinho</dt><dd class="auto">às 8h, a lista do que espera a sua revisão</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · Google Planilhas</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>Só vale como revisado o item com nome e data de quem revisou.</dd></div></dl>
-          </details>
-        </li>
-        <li class="passo" id="s-3-11">
-          <button type="button" class="feito" id="feito-s-3-11" data-sessao="3.11" aria-pressed="false" aria-label="Marcar a sessão 3.11 como feita"><span class="n">11</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
-          <details>
-            <summary>
-              <span class="topo"><h3>O escritório no automático</h3><span class="min">16 min</span></span>
-              <span class="faz">Monta o painel de controle com a marca: casos, clientes, propostas, contratos, a fila de revisões e o que cada robô fez hoje. Depois, um dia simulado: os robôs trabalham e você revisa tudo em quinze minutos.</span>
-              <span class="selo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg>Escritório no automático</span>
-              <span class="abrir">Ver detalhes <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span>
-            </summary>
-            <dl class="detalhe"><div><dt>Por quê</dt><dd>“Quero ver o escritório andar sem eu empurrar.”</dd></div><div><dt>A prática</dt><dd><b>Missão final.</b> Um dia inteiro de escritório fictício, do primeiro contato ao contrato revisado.</dd></div><div><dt>Ferramentas</dt><dd>Google Apps Script · Google Planilhas · Design system</dd></div><div><dt>Precisa de</dt><dd>conta Google gratuita</dd></div><div><dt>Cuidado</dt><dd>Painel com acesso só para você ou sua equipe.</dd></div></dl>
-          </details>
-        </li>
-      </ol>
-    </section>
-    <section class="vista" id="entregaveis" data-vista aria-labelledby="t-ent" hidden>
-      <header class="cab">
-        <p class="etapa">O que você leva</p>
-        <h2 id="t-ent">Entregáveis</h2>
-        <p class="dor">Cada sessão termina com uma peça do escritório pronta. Marque as sessões feitas e veja as conquistas se acenderem.</p>
-      </header>
-      <div class="grupo m1">
-        <h3><span></span>Módulo 1 · Montar o escritório no Claude</h3>
-        <ul class="entregas">
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span><b>Conta blindada</b><small>Sessão 1.1</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mapa"/></svg><span><b>Mapa do Claude</b><small>Sessão 1.2</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span><b>Guia de modelos</b><small>Sessão 1.3</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg><span><b>Arquivo versionado</b><small>Sessão 1.4</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg><span><b>Pasta viva do cliente</b><small>Sessão 1.5</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg><span><b>Google conectado</b><small>Sessão 1.6</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span><b>Reunião registrada</b><small>Sessão 1.7</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg><span><b>Tribunal conectado</b><small>Sessão 1.8</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span><b>Caixa de ferramentas jurídica</b><small>Sessão 1.9</small></span></li>
-        </ul>
-      </div>
-      <div class="grupo m2">
-        <h3><span></span>Módulo 2 · A cara e a memória do escritório</h3>
-        <ul class="entregas">
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg><span><b>Identidade definida</b><small>Sessão 2.1</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg><span><b>Logotipo</b><small>Sessão 2.2</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span><b>Design system</b><small>Sessão 2.3</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg><span><b>Kit visual</b><small>Sessão 2.4</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg><span><b>Memória sob controle</b><small>Sessão 2.5</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg><span><b>Cérebro do escritório</b><small>Sessão 2.6</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span><b>Biblioteca de modelos</b><small>Sessão 2.7</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span><b>Transparência</b><small>Sessão 2.8</small></span></li>
-        </ul>
-      </div>
-      <div class="grupo m3">
-        <h3><span></span>Módulo 3 · O escritório no automático</h3>
-        <ul class="entregas">
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg><span><b>Sala de máquinas</b><small>Sessão 3.1</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span><b>Freio de mão</b><small>Sessão 3.2</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span><b>Recepção 24 horas</b><small>Sessão 3.3</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg><span><b>Balcão de entrada</b><small>Sessão 3.4</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span><b>Proposta que não esfria</b><small>Sessão 3.5</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg><span><b>Despertador de prazos</b><small>Sessão 3.6</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg><span><b>Caixa domada</b><small>Sessão 3.7</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span><b>Cliente informado</b><small>Sessão 3.8</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg><span><b>Vigia de contratos</b><small>Sessão 3.9</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span><b>Mesa de aprovação</b><small>Sessão 3.10</small></span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span><b>Escritório no automático</b><small>Sessão 3.11</small></span></li>
-        </ul>
-      </div>
-    </section>
-    <section class="vista" id="ferramentas" data-vista aria-labelledby="t-fer" hidden>
-      <header class="cab">
-        <p class="etapa">O que entra no seu escritório</p>
-        <h2 id="t-fer">Ferramentas incorporadas</h2>
-        <p class="dor">Tudo no navegador, nada instalado no computador.</p>
-      </header>
-      <ul class="ferr">
-        <li><h3>Claude</h3><p>Conversa, projetos, artefatos, memória e escolha do modelo, tudo no navegador.</p><p class="plano"><b>Plano:</b> gratuito; recursos avançados no plano pago</p><span class="chips"><a class="m1" href="#s-1-1">1.1</a><a class="m1" href="#s-1-2">1.2</a><a class="m1" href="#s-1-3">1.3</a><a class="m1" href="#s-1-5">1.5</a><a class="m2" href="#s-2-1">2.1</a><a class="m2" href="#s-2-2">2.2</a><a class="m2" href="#s-2-5">2.5</a><a class="m2" href="#s-2-6">2.6</a><a class="m2" href="#s-2-7">2.7</a><a class="m2" href="#s-2-8">2.8</a></span></li>
-        <li><h3>GitHub</h3><p>Um repositório privado por cliente, com o histórico de cada versão. Os scripts do escritório também ficam lá.</p><p class="plano"><b>Plano:</b> gratuito</p><span class="chips"><a class="m1" href="#s-1-4">1.4</a><a class="m1" href="#s-1-5">1.5</a><a class="m2" href="#s-2-7">2.7</a><a class="m3" href="#s-3-2">3.2</a></span></li>
-        <li><h3>Gmail, Agenda e Drive</h3><p>Conectados ao Claude, mostram a semana, os e-mails e os arquivos. Nas automações, recebem rascunhos, eventos e documentos.</p><p class="plano"><b>Plano:</b> Google gratuito; conector no Claude pede plano pago</p><span class="chips"><a class="m1" href="#s-1-6">1.6</a><a class="m1" href="#s-1-7">1.7</a><a class="m3" href="#s-3-1">3.1</a><a class="m3" href="#s-3-3">3.3</a><a class="m3" href="#s-3-5">3.5</a><a class="m3" href="#s-3-6">3.6</a><a class="m3" href="#s-3-7">3.7</a><a class="m3" href="#s-3-8">3.8</a></span></li>
-        <li><h3>Google Meet</h3><p>A transcrição da reunião vira ata com tarefas.</p><p class="plano"><b>Plano:</b> transcrição pede Google Workspace pago, ou um aplicativo de notas</p><span class="chips"><a class="m1" href="#s-1-7">1.7</a></span></li>
-        <li><h3>MCP jurídico</h3><p>Processos e jurisprudência brasileira dentro da conversa, por conector remoto.</p><p class="plano"><b>Plano:</b> plano pago do Claude; conectores de terceiros</p><span class="chips"><a class="m1" href="#s-1-8">1.8</a></span></li>
-        <li><h3>Plugins e skills</h3><p>O plugin jurídico com o critério do escritório e skills próprias.</p><p class="plano"><b>Plano:</b> plano pago do Claude</p><span class="chips"><a class="m1" href="#s-1-9">1.9</a></span></li>
-        <li><h3>Design system</h3><p>Logotipo, paleta, letras e layout guardados no Claude: tudo nasce com a marca.</p><p class="plano"><b>Plano:</b> plano pago do Claude; sem ele, uma skill de marca</p><span class="chips"><a class="m2" href="#s-2-3">2.3</a><a class="m2" href="#s-2-4">2.4</a><a class="m3" href="#s-3-11">3.11</a></span></li>
-        <li><h3>Google Planilhas</h3><p>A planilha-mãe: casos, clientes, propostas, contratos e a fila de revisões.</p><p class="plano"><b>Plano:</b> gratuito</p><span class="chips"><a class="m3" href="#s-3-1">3.1</a><a class="m3" href="#s-3-4">3.4</a><a class="m3" href="#s-3-6">3.6</a><a class="m3" href="#s-3-8">3.8</a><a class="m3" href="#s-3-9">3.9</a><a class="m3" href="#s-3-10">3.10</a><a class="m3" href="#s-3-11">3.11</a></span></li>
-        <li><h3>Google Apps Script</h3><p>Os robôs do escritório. O Claude escreve, você cola, autoriza e testa.</p><p class="plano"><b>Plano:</b> gratuito, com os limites de uso da conta</p><span class="chips"><a class="m3" href="#s-3-1">3.1</a><a class="m3" href="#s-3-2">3.2</a><a class="m3" href="#s-3-4">3.4</a><a class="m3" href="#s-3-5">3.5</a><a class="m3" href="#s-3-6">3.6</a><a class="m3" href="#s-3-7">3.7</a><a class="m3" href="#s-3-8">3.8</a><a class="m3" href="#s-3-9">3.9</a><a class="m3" href="#s-3-10">3.10</a><a class="m3" href="#s-3-11">3.11</a></span></li>
-        <li><h3>Formulários e Docs</h3><p>Primeiro contato, documentos timbrados e procuração, contrato e proposta gerados com um clique.</p><p class="plano"><b>Plano:</b> gratuito</p><span class="chips"><a class="m2" href="#s-2-4">2.4</a><a class="m2" href="#s-2-7">2.7</a><a class="m2" href="#s-2-8">2.8</a><a class="m3" href="#s-3-4">3.4</a><a class="m3" href="#s-3-5">3.5</a></span></li>
-        <li><h3>WhatsApp Business</h3><p>Saudação, ausência fora do horário, respostas rápidas e etiquetas.</p><p class="plano"><b>Plano:</b> gratuito</p><span class="chips"><a class="m3" href="#s-3-3">3.3</a></span></li>
-        <li><h3>API do Claude</h3><p>A IA dentro dos robôs: triagem de e-mail e leitura de contrato.</p><p class="plano"><b>Plano:</b> paga, centavos por uso, com limite de gasto</p><span class="chips"><a class="m3" href="#s-3-7">3.7</a><a class="m3" href="#s-3-9">3.9</a></span></li>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7 2.6v5.3c0 4.4-2.9 8.1-7 9.6-4.1-1.5-7-5.2-7-9.6V5.6L12 3z"/><path d="M9 11.8l2.1 2.1L15 10"/></symbol><symbol id="i-mapa" viewBox="0 0 24 24"><path d="M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/></symbol><symbol id="i-lista" viewBox="0 0 24 24"><path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/></symbol><symbol id="i-versao" viewBox="0 0 24 24"><circle cx="6" cy="5.5" r="2"/><circle cx="6" cy="18.5" r="2"/><circle cx="18" cy="7.5" r="2"/><path d="M6 7.5v9M18 9.5c0 4.5-12 3-12 7"/></symbol><symbol id="i-pasta" viewBox="0 0 24 24"><path d="M3.5 7a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></symbol><symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h2.5M13.8 14h2.7M7.5 17.4h2.5"/></symbol><symbol id="i-mensagem" viewBox="0 0 24 24"><path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/></symbol><symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></symbol><symbol id="i-molde" viewBox="0 0 24 24"><path d="M8 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2M9 9h6M9 12h6M9 15h3.5"/></symbol><symbol id="i-cartao" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/></symbol><symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol><symbol id="i-paleta" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c1.4 0 2-1 2-2s-.8-1.5-.8-2.5S14 15 15 15h2a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1.1"/><circle cx="10.5" cy="7.5" r="1.1"/><circle cx="15" cy="8" r="1.1"/></symbol><symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/></symbol><symbol id="i-cerebro" viewBox="0 0 24 24"><path d="M12 5.5a3 3 0 0 0-5.5 1.3A3 3 0 0 0 5 12a3 3 0 0 0 2 5.3 3 3 0 0 0 5 1.2M12 5.5a3 3 0 0 1 5.5 1.3A3 3 0 0 1 19 12a3 3 0 0 1-2 5.3 3 3 0 0 1-5 1.2M12 5.5v13"/></symbol><symbol id="i-pagina" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/></symbol><symbol id="i-planilha" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.8h18M9 4v16M15 4v16"/></symbol><symbol id="i-formulario" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7.5" y="7" width="3" height="3" rx=".5"/><path d="M13 8.5h3.5M7.5 14h9M7.5 17.5h6"/></symbol><symbol id="i-email" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.6L12 13l8.4-6.4"/></symbol><symbol id="i-contrato" viewBox="0 0 24 24"><path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 11h7M9 14.3h7M9 18c.9-1.4 1.9-1.4 2.8 0s1.9 1.4 2.8 0"/></symbol><symbol id="i-painel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/></symbol><symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 9.5V13l2.5 1.5M5 4.5L3 6.5M19 4.5l2 2"/></symbol><symbol id="i-trofeu" viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M9.5 17h5"/></symbol><symbol id="i-alvo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".9"/></symbol><symbol id="i-pessoa" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></symbol><symbol id="i-predio" viewBox="0 0 24 24"><path d="M5 21V5l7-2 7 2v16M3 21h18M9 8h1.5M13.5 8H15M9 12h1.5M13.5 12H15M10.5 21v-4h3v4"/></symbol><symbol id="i-nuvem" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.4 1.6A3.8 3.8 0 0 1 17.5 18.5z"/></symbol><symbol id="i-claude" viewBox="0 0 24 24"><path d="M12 3.5v17M3.5 12h17M6 6l12 12M18 6L6 18"/></symbol><symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6.5" width="12.5" height="11" rx="2"/><path d="M15.5 10.5l5-3v9l-5-3"/></symbol><symbol id="i-codigo" viewBox="0 0 24 24"><path d="M8.5 8L4.5 12l4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></symbol><symbol id="i-plugue" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M7 8h10v3a5 5 0 0 1-10 0z"/><path d="M12 16v5"/></symbol><symbol id="i-peca" viewBox="0 0 24 24"><path d="M10 4h4v2.4a1.6 1.6 0 1 0 3.2 0V4H20v6.2h-2.4a1.6 1.6 0 1 0 0 3.2H20V20h-6.2v-2.4a1.6 1.6 0 1 0-3.2 0V20H4v-6.6h2.4a1.6 1.6 0 1 0 0-3.2H4V4z"/></symbol><symbol id="i-balao" viewBox="0 0 24 24"><path d="M4 20l1.4-4.2A8 8 0 1 1 8.2 18.6z"/></symbol><symbol id="i-chave" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2.5 2.5M14 9l2 2"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="i-luz" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol><symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol></defs></svg>
+  <nav class="nav faixa" aria-label="Seções">
+    <div class="miolo">
+      <a class="marca" href="#curso-topo">IA Aplicada a Advogados</a>
+      <ul>
+        <li><a class="item" href="#curso">O curso</a></li>
+        <li><a class="item" href="#agenda">Jornada</a></li>
+        <li><a class="item" href="#modulo-1">Módulo 1</a></li>
+        <li><a class="item" href="#modulo-2">Módulo 2</a></li>
+        <li><a class="item" href="#modulo-3">Módulo 3</a></li>
+        <li><a class="item" href="#conquistas">Conquistas</a></li>
+        <li><a class="item" href="#projeto-final">Projeto final</a></li>
+        <li><a class="item" href="#ferramentas">Ferramentas</a></li>
+        <li><a class="item" href="#resumo">Resumo</a></li>
       </ul>
-      <div class="grupo">
-        <h3>Qual modelo do Claude para qual trabalho</h3>
-        <div class="tabela" style="margin-top:12px"><table>
-          <thead><tr><th>Modelo</th><th>Perfil</th><th>Na advocacia</th></tr></thead>
-          <tbody><tr><td style="white-space:nowrap"><b>Haiku 5.5</b></td><td>O mais rápido</td><td>Triagem de e-mail e classificação de intimações em volume, e os robôs que rodam o dia inteiro.</td></tr><tr><td style="white-space:nowrap"><b>Sonnet 5.5</b></td><td>O do dia a dia</td><td>E-mails, atas, resumos, planilhas, scripts e apresentações com a marca.</td></tr><tr><td style="white-space:nowrap"><b>Opus 5.5</b></td><td>Leitura cuidadosa</td><td>Contrato contra o playbook, minuta a partir do modelo da casa, parecer e comparação de versões.</td></tr><tr><td style="white-space:nowrap"><b>Fable 5.2</b></td><td>O mais capaz</td><td>Processos complexos: autos volumosos, várias teses em disputa, estratégia e revisão crítica da peça antes do protocolo.</td></tr></tbody>
-        </table></div>
-        <p class="rodape" style="margin-top:10px">Comece pelo menor que resolve. Os maiores gastam mais do limite do plano, e a disponibilidade depende do plano.</p>
+    </div>
+  </nav>
+  <header class="topo faixa" id="curso-topo">
+    <div class="miolo">
+      <div>
+        <span class="selo-curso"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-video"/></svg>Curso gravado · <b>3 módulos</b></span>
+        <h1>IA Aplicada a Advogados</h1>
+        <p class="chamada">Construa, aula por aula, um escritório que <em>trabalha sozinho</em> com o Claude.</p>
+        <p class="apoio">Do primeiro acesso seguro ao escritório no automático. Tudo no navegador, sem programar, com a sua marca e dentro das regras da OAB.</p>
+        <div class="numeros">
+          <div><b>28</b><span>aulas</span></div>
+          <div><b>5 h 05</b><span>de vídeo</span></div>
+          <div><b>28</b><span>conquistas</span></div>
+          <div><b>15</b><span>ferramentas</span></div>
+        </div>
+        <div class="acoes">
+          <a class="botao ouro" href="#agenda">Ver a agenda <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></a>
+          <a class="botao vazado" href="#projeto-final">O que você apresenta no fim</a>
+        </div>
       </div>
-    </section>
-    <section class="vista" id="resumo" data-vista aria-labelledby="t-res" hidden>
-      <header class="cab">
-        <p class="etapa">Relatório</p>
-        <h2 id="t-res">Resumo do curso</h2>
+      <figure class="predio" id="predio" aria-label="O seu escritório: uma janela por aula">
+        <div class="placa"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-predio"/></svg>Seu escritório</div>
+        <div class="andar m3">
+          <a class="qual" href="#modulo-3"><b>3º</b><span>Automático</span></a>
+          <div class="janelas"><a class="janela" href="#a-3-1" data-janela="3.1" title="3.1 · A sala de máquinas" aria-label="Aula 3.1: A sala de máquinas"></a><a class="janela" href="#a-3-2" data-janela="3.2" title="3.2 · O freio de mão" aria-label="Aula 3.2: O freio de mão"></a><a class="janela" href="#a-3-3" data-janela="3.3" title="3.3 · Recepção 24 horas" aria-label="Aula 3.3: Recepção 24 horas"></a><a class="janela" href="#a-3-4" data-janela="3.4" title="3.4 · Balcão de entrada" aria-label="Aula 3.4: Balcão de entrada"></a><a class="janela" href="#a-3-5" data-janela="3.5" title="3.5 · Proposta que não esfria" aria-label="Aula 3.5: Proposta que não esfria"></a><a class="janela" href="#a-3-6" data-janela="3.6" title="3.6 · Despertador de prazos" aria-label="Aula 3.6: Despertador de prazos"></a><a class="janela" href="#a-3-7" data-janela="3.7" title="3.7 · Caixa domada" aria-label="Aula 3.7: Caixa domada"></a><a class="janela" href="#a-3-8" data-janela="3.8" title="3.8 · Cliente informado" aria-label="Aula 3.8: Cliente informado"></a><a class="janela" href="#a-3-9" data-janela="3.9" title="3.9 · Vigia de contratos" aria-label="Aula 3.9: Vigia de contratos"></a><a class="janela" href="#a-3-10" data-janela="3.10" title="3.10 · Mesa de aprovação" aria-label="Aula 3.10: Mesa de aprovação"></a><a class="janela" href="#a-3-11" data-janela="3.11" title="3.11 · O escritório no automático" aria-label="Aula 3.11: O escritório no automático"></a></div>
+        </div>
+        <div class="andar m2">
+          <a class="qual" href="#modulo-2"><b>2º</b><span>Identidade</span></a>
+          <div class="janelas"><a class="janela" href="#a-2-1" data-janela="2.1" title="2.1 · A identidade em uma página" aria-label="Aula 2.1: A identidade em uma página"></a><a class="janela" href="#a-2-2" data-janela="2.2" title="2.2 · O logotipo" aria-label="Aula 2.2: O logotipo"></a><a class="janela" href="#a-2-3" data-janela="2.3" title="2.3 · O design system no Claude" aria-label="Aula 2.3: O design system no Claude"></a><a class="janela" href="#a-2-4" data-janela="2.4" title="2.4 · A marca nas apresentações" aria-label="Aula 2.4: A marca nas apresentações"></a><a class="janela" href="#a-2-5" data-janela="2.5" title="2.5 · A memória do Claude" aria-label="Aula 2.5: A memória do Claude"></a><a class="janela" href="#a-2-6" data-janela="2.6" title="2.6 · O cérebro do escritório" aria-label="Aula 2.6: O cérebro do escritório"></a><a class="janela" href="#a-2-7" data-janela="2.7" title="2.7 · A biblioteca de modelos" aria-label="Aula 2.7: A biblioteca de modelos"></a><a class="janela" href="#a-2-8" data-janela="2.8" title="2.8 · IA às claras" aria-label="Aula 2.8: IA às claras"></a></div>
+        </div>
+        <div class="andar m1 terreo">
+          <a class="qual" href="#modulo-1"><b>1º</b><span>Base</span></a>
+          <div class="janelas"><a class="janela" href="#a-1-1" data-janela="1.1" title="1.1 · Blindar antes de usar" aria-label="Aula 1.1: Blindar antes de usar"></a><a class="janela" href="#a-1-2" data-janela="1.2" title="1.2 · O mapa da tela" aria-label="Aula 1.2: O mapa da tela"></a><a class="janela" href="#a-1-3" data-janela="1.3" title="1.3 · Qual modelo para cada trabalho" aria-label="Aula 1.3: Qual modelo para cada trabalho"></a><a class="janela" href="#a-1-4" data-janela="1.4" title="1.4 · GitHub: o arquivo dos clientes" aria-label="Aula 1.4: GitHub: o arquivo dos clientes"></a><a class="janela" href="#a-1-5" data-janela="1.5" title="1.5 · Um projeto por cliente" aria-label="Aula 1.5: Um projeto por cliente"></a><a class="janela" href="#a-1-6" data-janela="1.6" title="1.6 · Google conectado" aria-label="Aula 1.6: Google conectado"></a><a class="janela" href="#a-1-7" data-janela="1.7" title="1.7 · Reunião que vira ata" aria-label="Aula 1.7: Reunião que vira ata"></a><a class="janela" href="#a-1-8" data-janela="1.8" title="1.8 · Tribunais na conversa" aria-label="Aula 1.8: Tribunais na conversa"></a><a class="janela" href="#a-1-9" data-janela="1.9" title="1.9 · Plugin jurídico e skills" aria-label="Aula 1.9: Plugin jurídico e skills"></a><span class="porta" aria-hidden="true"></span></div>
+        </div>
+        <div class="calcada"></div>
+        <p class="progresso"><b id="janelas-acesas">0</b> de 28 janelas acesas. Marque as aulas feitas e acenda o seu escritório.</p>
+        <button type="button" class="botao vazado" id="ver-pronto" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-luz"/></svg><span>Ver o escritório pronto</span></button>
+      </figure>
+    </div>
+  </header>
+<main>
+  <section class="secao faixa" id="curso" aria-labelledby="t-curso">
+    <div class="miolo">
+      <p class="olho">O curso</p>
+      <h2 id="t-curso">Você sai com um escritório montado, não com uma lista de prompts</h2>
+      <p class="intro">Cada aula configura ou constrói uma peça do seu escritório. No fim, as peças trabalham juntas.</p>
+      <div class="cards4">
+        <article class="card"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pessoa"/></svg></span><h3>Para quem é</h3><p>Advogados autônomos e de escritórios pequenos que nunca configuraram uma IA. Não precisa saber programar.</p></article>
+        <article class="card"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-predio"/></svg></span><h3>O que você constrói</h3><p>Um escritório no Claude e no Google: seguro, com a sua marca, com memória e com robôs que trabalham por você.</p></article>
+        <article class="card"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg></span><h3>Como é cada aula</h3><p>Vídeo curto, uma missão prática com material fictício e uma conquista no fim.</p></article>
+        <article class="card"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-nuvem"/></svg></span><h3>Tudo na web</h3><p>Nada para instalar. Claude, Google e GitHub direto no navegador.</p></article>
+      </div>
+      <div class="antes-depois">
+        <div class="cab"><span>Hoje</span><span></span><span>No fim do curso</span></div>
+        <ul>
+          <li><span class="antes">Prazos no caderno, na planilha e na cabeça</span><span class="seta"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span><span class="depois">Prazos no seu e-mail às 7h e na agenda, com alarme</span></li>
+          <li><span class="antes">“Doutor, e o meu processo?” toda semana</span><span class="seta"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span><span class="depois">Atualização pronta antes de o cliente perguntar</span></li>
+          <li><span class="antes">Proposta mandada por WhatsApp que esfria</span><span class="seta"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span><span class="depois">Proposta com a sua marca e follow-up automático</span></li>
+          <li><span class="antes">Medo de colar documento de cliente na IA</span><span class="seta"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></span><span class="depois">Conta blindada e regras que nenhum robô quebra</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="secao faixa" id="agenda" aria-labelledby="t-jornada">
+    <div class="miolo">
+      <p class="olho">A jornada</p>
+      <h2 id="t-jornada">Três andares, do alicerce ao automático</h2>
+      <p class="intro">Os módulos são independentes, mas a ordem foi pensada para quem abre o Claude pela primeira vez: primeiro a segurança, depois a identidade, por fim os robôs.</p>
+      <div class="jornada">
+        <a class="etapa m1" href="#modulo-1">
+          <span class="topo-e"><span class="n">1</span><span class="andar-r">1º andar · Base</span></span>
+          <h3>Montar o escritório no Claude</h3>
+          <p>Conta blindada, um projeto por cliente ligado ao GitHub, e Google, tribunais e plugin jurídico conectados.</p>
+          <span class="meta-e"><span><b>9</b> aulas</span><span><b>1 h 32</b></span></span>
+        </a>
+        <a class="etapa m2" href="#modulo-2">
+          <span class="topo-e"><span class="n">2</span><span class="andar-r">2º andar · Identidade</span></span>
+          <h3>A cara e a memória do escritório</h3>
+          <p>Logotipo e design system no Claude, apresentações com a sua marca e um projeto que é o cérebro do escritório.</p>
+          <span class="meta-e"><span><b>8</b> aulas</span><span><b>1 h 18</b></span></span>
+        </a>
+        <a class="etapa m3" href="#modulo-3">
+          <span class="topo-e"><span class="n">3</span><span class="andar-r">3º andar · Automático</span></span>
+          <h3>O escritório no automático</h3>
+          <p>Recepção, propostas, prazos, follow-up e contratos rodando sozinhos, com uma fila de aprovação e um painel de controle.</p>
+          <span class="meta-e"><span><b>11</b> aulas</span><span><b>2 h 15</b></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="secao faixa modulo-sec m1" id="modulo-1" aria-labelledby="t-m1">
+    <div class="miolo">
+      <header class="mod-cab">
+        <span class="grande">1</span>
+        <div>
+          <p class="rot">Módulo 1 · 1º andar · Base</p>
+          <h2 id="t-m1">Montar o escritório no Claude</h2>
+          <p class="dor">“Abro o Claude e não sei por onde começar, nem se é seguro.”</p>
+          <p class="fim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><b>No fim do módulo:</b> Conta blindada, um projeto por cliente ligado ao GitHub, e Google, tribunais e plugin jurídico conectados.</span></p>
+          <p class="meta"><span><b>9</b> aulas</span><span><b>1 h 32</b> de vídeo</span><span>Precisa de: conta gratuita para começar; conectores, MCP e plugin pedem plano pago do Claude</span></p>
+        </div>
       </header>
+      <p class="dica"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Terminou uma aula? Toque no número dela: a janela do prédio acende e a conquista entra na sua coleção.</span></p>
+      <div class="grade-cab" aria-hidden="true"><span>Aula</span><span>O que é e o que vamos apresentar</span><span>Ferramentas</span><span>Tempo</span></div>
+      <ol class="aulas">
+          <li class="aula" id="a-1-1">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-1" data-aula="1.1" aria-pressed="false" aria-label="Marcar a aula 1.1 como feita"><span class="n">1.1</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Blindar antes de usar</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">A primeira configuração, antes de qualquer conversa.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Conta e plano certos para o escritório</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Conversas fora do treinamento da IA</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Verificação em duas etapas e o semáforo do sigilo</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg>Conta blindada</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Checklist de decolagem</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-2">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-2" data-aula="1.2" aria-pressed="false" aria-label="Marcar a aula 1.2 como feita"><span class="n">1.2</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>O mapa da tela</h3><span class="tempo-m">6 min</span></div>
+              <p class="oque">Tour guiado para quem nunca abriu o Claude.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Conversa, projetos e artefatos</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Conectores, memória e configurações</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Onde trocar de modelo</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mapa"/></svg>Mapa do Claude</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Caça ao tesouro na tela</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">6 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-3">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-3" data-aula="1.3" aria-pressed="false" aria-label="Marcar a aula 1.3 como feita"><span class="n">1.3</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Qual modelo para cada trabalho</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">Os modelos do Claude explicados para quem advoga.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Haiku, Sonnet, Opus e Fable</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O mais capaz para processos complexos</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Como não gastar o limite à toa</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg>Guia de modelos</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Duelo de modelos</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-4">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-4" data-aula="1.4" aria-pressed="false" aria-label="Marcar a aula 1.4 como feita"><span class="n">1.4</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>GitHub: o arquivo dos clientes</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Um repositório privado por cliente, com histórico de versões.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Criar a conta e o primeiro repositório</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Pastas de documentos, peças e contratos</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Ver e voltar uma versão antiga</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg>Arquivo versionado</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Viagem no tempo</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg></span>GitHub</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-5">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-5" data-aula="1.5" aria-pressed="false" aria-label="Marcar a aula 1.5 como feita"><span class="n">1.5</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Um projeto por cliente</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">O cliente vira um projeto no Claude, ligado ao repositório.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Projeto e instruções do caso</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Arquivos puxados do GitHub</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Sincronizar quando algo muda</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg>Pasta viva do cliente</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Ache o documento que falta</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg></span>GitHub</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-6">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-6" data-aula="1.6" aria-pressed="false" aria-label="Marcar a aula 1.6 como feita"><span class="n">1.6</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Google conectado</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">Gmail, Agenda e Drive conversando com o Claude.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Ligar os três conectores</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Permissão de perguntar antes de agir</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>A semana inteira em uma tela</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg>Google conectado</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Semana no escuro</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg></span>Google Agenda</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg></span>Google Drive</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-7">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-7" data-aula="1.7" aria-pressed="false" aria-label="Marcar a aula 1.7 como feita"><span class="n">1.7</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Reunião que vira ata</h3><span class="tempo-m">8 min</span></div>
+              <p class="oque">A reunião do Google Meet transcrita e organizada.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Ligar a transcrição da reunião</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Ata com decisões e tarefas</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>E-mail de retorno em rascunho</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg>Reunião registrada</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Ata em cinco minutos</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-video"/></svg></span>Google Meet</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg></span>Google Drive</li></ul>
+            <p class="tempo">8 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-8">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-8" data-aula="1.8" aria-pressed="false" aria-label="Marcar a aula 1.8 como feita"><span class="n">1.8</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Tribunais na conversa</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Processos e jurisprudência dentro do Claude, por MCP.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O que é um conector MCP</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Adicionar um conector jurídico na web</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Conferir sempre na fonte oficial</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg>Tribunal conectado</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Detetive de processos</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-plugue"/></svg></span>MCP jurídico</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-1-9">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-1-9" data-aula="1.9" aria-pressed="false" aria-label="Marcar a aula 1.9 como feita"><span class="n">1.9</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Plugin jurídico e skills</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Comandos prontos com o critério do seu escritório.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Instalar o plugin jurídico</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Trocar o playbook americano pelo seu</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Criar a primeira skill</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg>Caixa de ferramentas jurídica</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Caça ao erro</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-peca"/></svg></span>Plugins e skills</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+      </ol>
+    </div>
+  </section>
+  <section class="secao faixa modulo-sec m2" id="modulo-2" aria-labelledby="t-m2">
+    <div class="miolo">
+      <header class="mod-cab">
+        <span class="grande">2</span>
+        <div>
+          <p class="rot">Módulo 2 · 2º andar · Identidade</p>
+          <h2 id="t-m2">A cara e a memória do escritório</h2>
+          <p class="dor">“O Claude não sabe quem eu sou, e tudo o que ele entrega tem cara de genérico.”</p>
+          <p class="fim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><b>No fim do módulo:</b> Logotipo e design system no Claude, apresentações com a sua marca e um projeto que é o cérebro do escritório.</span></p>
+          <p class="meta"><span><b>8</b> aulas</span><span><b>1 h 18</b> de vídeo</span><span>Precisa de: conta gratuita para identidade, logotipo e memória; design system e apresentações pedem plano pago</span></p>
+        </div>
+      </header>
+      <p class="dica"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Terminou uma aula? Toque no número dela: a janela do prédio acende e a conquista entra na sua coleção.</span></p>
+      <div class="grade-cab" aria-hidden="true"><span>Aula</span><span>O que é e o que vamos apresentar</span><span>Ferramentas</span><span>Tempo</span></div>
+      <ol class="aulas">
+          <li class="aula" id="a-2-1">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-1" data-aula="2.1" aria-pressed="false" aria-label="Marcar a aula 2.1 como feita"><span class="n">2.1</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>A identidade em uma página</h3><span class="tempo-m">8 min</span></div>
+              <p class="oque">Como o escritório quer ser visto pelo cliente.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>As três palavras do escritório</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Paleta, letras e tom de voz</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Os limites da OAB para publicidade</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg>Identidade definida</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Jogo das cartas</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">8 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-2">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-2" data-aula="2.2" aria-pressed="false" aria-label="Marcar a aula 2.2 como feita"><span class="n">2.2</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>O logotipo</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">Do zero ao logotipo em arquivo vetorial.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Três caminhos de logotipo</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Duas rodadas de ajuste</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Arquivos SVG e PNG prontos</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg>Logotipo</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Três caminhos</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-3">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-3" data-aula="2.3" aria-pressed="false" aria-label="Marcar a aula 2.3 como feita"><span class="n">2.3</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>O design system no Claude</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">A marca guardada para tudo nascer com ela.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Cores, letras e espaçamentos</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Logotipo e páginas de exemplo</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Plano B: a marca como skill</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg>Design system</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Teste da marca</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg></span>Design system</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-4">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-4" data-aula="2.4" aria-pressed="false" aria-label="Marcar a aula 2.4 como feita"><span class="n">2.4</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>A marca nas apresentações</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">Slides, timbrado e assinatura com a cara do escritório.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Modelo de apresentação</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Timbrado no Google Docs</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Assinatura de e-mail</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg>Kit visual</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Antes e depois</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg></span>Design system</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span>Google Docs</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-5">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-5" data-aula="2.5" aria-pressed="false" aria-label="Marcar a aula 2.5 como feita"><span class="n">2.5</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>A memória do Claude</h3><span class="tempo-m">8 min</span></div>
+              <p class="oque">O que o Claude lembra de você e como controlar.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Ver, editar e apagar a memória</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Memória geral e memória do projeto</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O que nunca deve ficar guardado</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg>Memória sob controle</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: O que o Claude sabe de mim?</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">8 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-6">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-6" data-aula="2.6" aria-pressed="false" aria-label="Marcar a aula 2.6 como feita"><span class="n">2.6</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>O cérebro do escritório</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Um projeto que vira a memória oficial da casa.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Instruções permanentes e tom de voz</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Política de IA e critério de revisão</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Peças antigas como referência</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg>Cérebro do escritório</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Teste do estagiário novo</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-7">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-7" data-aula="2.7" aria-pressed="false" aria-label="Marcar a aula 2.7 como feita"><span class="n">2.7</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>A biblioteca de modelos</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">Os modelos da casa prontos para usar.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Peça, proposta e relatório</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Guardados no projeto e no GitHub</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Um documento pronto em três minutos</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg>Biblioteca de modelos</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Contra o relógio</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg></span>GitHub</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span>Google Docs</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-2-8">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-2-8" data-aula="2.8" aria-pressed="false" aria-label="Marcar a aula 2.8 como feita"><span class="n">2.8</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>IA às claras</h3><span class="tempo-m">8 min</span></div>
+              <p class="oque">Transparência com o cliente sobre o uso de IA.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Página “Como usamos IA no seu caso”</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Termo de consentimento do cliente</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O que a OAB recomenda</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg>Transparência</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Cliente desconfiado</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span>Claude</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span>Google Docs</li></ul>
+            <p class="tempo">8 min<small>de vídeo</small></p>
+          </li>
+      </ol>
+    </div>
+  </section>
+  <section class="secao faixa modulo-sec m3" id="modulo-3" aria-labelledby="t-m3">
+    <div class="miolo">
+      <header class="mod-cab">
+        <span class="grande">3</span>
+        <div>
+          <p class="rot">Módulo 3 · 3º andar · Automático</p>
+          <h2 id="t-m3">O escritório no automático</h2>
+          <p class="dor">“Passo o dia respondendo, lembrando e cobrando. O escritório só anda quando eu empurro.”</p>
+          <p class="fim"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><b>No fim do módulo:</b> Recepção, propostas, prazos, follow-up e contratos rodando sozinhos, com uma fila de aprovação e um painel de controle.</span></p>
+          <p class="meta"><span><b>11</b> aulas</span><span><b>2 h 15</b> de vídeo</span><span>Precisa de: conta Google gratuita e WhatsApp Business; triagem de e-mail e leitura de contrato pedem chave de API paga</span></p>
+        </div>
+      </header>
+      <p class="dica"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Terminou uma aula? Toque no número dela: a janela do prédio acende e a conquista entra na sua coleção.</span></p>
+      <div class="grade-cab" aria-hidden="true"><span>Aula</span><span>O que é e o que vamos apresentar</span><span>Ferramentas</span><span>Tempo</span></div>
+      <ol class="aulas">
+          <li class="aula" id="a-3-1">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-1" data-aula="3.1" aria-pressed="false" aria-label="Marcar a aula 3.1 como feita"><span class="n">3.1</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>A sala de máquinas</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">O ambiente onde os robôs vão rodar.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Planilha-mãe e pastas no Drive</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O que é o Google Apps Script</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Chave guardada e limite de gasto</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg>Sala de máquinas</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Construção guiada</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span>Google Planilhas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg></span>Google Drive</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-2">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-2" data-aula="3.2" aria-pressed="false" aria-label="Marcar a aula 3.2 como feita"><span class="n">3.2</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>O freio de mão</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">As regras que nenhum robô quebra.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Máscara de CPF e CNPJ</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>E-mail só em rascunho</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Registro de tudo e scripts no GitHub</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg>Freio de mão</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Conserte o script</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg></span>GitHub</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-3">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-3" data-aula="3.3" aria-pressed="false" aria-label="Marcar a aula 3.3 como feita"><span class="n">3.3</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Recepção 24 horas</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Respostas automáticas no WhatsApp e no e-mail.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Saudação e ausência no WhatsApp Business</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Resposta automática do Gmail</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Aviso contra o golpe do falso advogado</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg>Recepção 24 horas</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Simulador de mensagens</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-balao"/></svg></span>WhatsApp Business</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-4">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-4" data-aula="3.4" aria-pressed="false" aria-label="Marcar a aula 3.4 como feita"><span class="n">3.4</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Balcão de entrada</h3><span class="tempo-m">14 min</span></div>
+              <p class="oque">Do formulário ao cliente cadastrado, com documentos.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Formulário com aviso de privacidade</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Cadastro automático na planilha</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Procuração e contrato com um clique</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg>Balcão de entrada</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Contra o relógio</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg></span>Google Formulários</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span>Google Docs</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li></ul>
+            <p class="tempo">14 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-5">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-5" data-aula="3.5" aria-pressed="false" aria-label="Marcar a aula 3.5 como feita"><span class="n">3.5</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Proposta que não esfria</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Proposta gerada e follow-up automático.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Proposta em PDF com a sua marca</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Funil de propostas</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Follow-up depois de três dias</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg>Proposta que não esfria</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Funil</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span>Google Docs</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-6">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-6" data-aula="3.6" aria-pressed="false" aria-label="Marcar a aula 3.6 como feita"><span class="n">3.6</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Despertador de prazos</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Prazos no e-mail às 7h e na agenda com alarme.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O robô do e-mail das 7h</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Prazos conferidos na agenda</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Por que a IA não conta prazo</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg>Despertador de prazos</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: O robô trabalhou de madrugada</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span>Google Planilhas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg></span>Google Agenda</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-7">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-7" data-aula="3.7" aria-pressed="false" aria-label="Marcar a aula 3.7 como feita"><span class="n">3.7</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Caixa domada</h3><span class="tempo-m">12 min</span></div>
+              <p class="oque">Triagem de e-mail com resumo e rascunho.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Etiquetas e prioridades</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Resumo e rascunho de resposta</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Proteção contra instrução escondida</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg>Caixa domada</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Caça ao erro</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-chave"/></svg></span>API do Claude</li></ul>
+            <p class="tempo">12 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-8">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-8" data-aula="3.8" aria-pressed="false" aria-label="Marcar a aula 3.8 como feita"><span class="n">3.8</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Cliente informado</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">Follow-up de casos antes de o cliente cobrar.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Casos sem notícia há 30 dias</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Rascunho a partir do último andamento</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>A rotina de segunda-feira</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg>Cliente informado</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Segunda-feira</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span>Google Planilhas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span>Gmail</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-9">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-9" data-aula="3.9" aria-pressed="false" aria-label="Marcar a aula 3.9 como feita"><span class="n">3.9</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Vigia de contratos</h3><span class="tempo-m">15 min</span></div>
+              <p class="oque">Leitura pelo seu critério e comparação de versões.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Matriz de riscos com trecho conferido</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Comparação de versões</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Alerta quando algo piora</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg>Vigia de contratos</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Prova com gabarito</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-chave"/></svg></span>API do Claude</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span>Google Planilhas</li></ul>
+            <p class="tempo">15 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-10">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-10" data-aula="3.10" aria-pressed="false" aria-label="Marcar a aula 3.10 como feita"><span class="n">3.10</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>Mesa de aprovação</h3><span class="tempo-m">10 min</span></div>
+              <p class="oque">A fila de tudo que espera a sua revisão.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Rascunhos, propostas e matrizes na fila</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>A lista do dia às 8h</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Revisado só com nome e data</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg>Mesa de aprovação</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Caça ao erro</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span>Google Planilhas</li></ul>
+            <p class="tempo">10 min<small>de vídeo</small></p>
+          </li>
+          <li class="aula" id="a-3-11">
+            <div class="num-col">
+              <button type="button" class="feito" id="feito-a-3-11" data-aula="3.11" aria-pressed="false" aria-label="Marcar a aula 3.11 como feita"><span class="n">3.11</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></button>
+            </div>
+            <div>
+              <div class="a-topo"><h3>O escritório no automático</h3><span class="tempo-m">16 min</span></div>
+              <p class="oque">O painel de controle e um dia simulado.</p>
+              <p class="rot">O que vamos apresentar</p>
+              <ul class="apr"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Painel com a marca do escritório</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>O que cada robô fez hoje</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span>Um dia inteiro revisado em 15 minutos</span></li></ul>
+              <p class="fichas"><span class="ficha conq"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-trofeu"/></svg>Escritório no automático</span><span class="ficha miss"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-alvo"/></svg>Missão: Missão final</span></p>
+            </div>
+            <ul class="ferr-col"><li class="rot-m">Ferramentas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span>Apps Script</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span>Google Planilhas</li><li><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg></span>Design system</li></ul>
+            <p class="tempo">16 min<small>de vídeo</small></p>
+          </li>
+      </ol>
+    </div>
+  </section>
+  <section class="secao faixa" id="conquistas" aria-labelledby="t-conq">
+    <div class="miolo">
+      <p class="olho">Entregáveis</p>
+      <h2 id="t-conq">28 conquistas, uma por aula</h2>
+      <p class="intro">Cada conquista é uma peça pronta do seu escritório. Marque as aulas feitas e veja a sua coleção crescer.</p>
+      <p class="placar"><b id="placar">0</b> de 28 conquistas</p>
+      <div class="medalhas">
+        <a class="medalha m1" href="#a-1-1" data-medalha="1.1"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg></span><b>Conta blindada</b><small>Aula 1.1</small></a>
+        <a class="medalha m1" href="#a-1-2" data-medalha="1.2"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mapa"/></svg></span><b>Mapa do Claude</b><small>Aula 1.2</small></a>
+        <a class="medalha m1" href="#a-1-3" data-medalha="1.3"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg></span><b>Guia de modelos</b><small>Aula 1.3</small></a>
+        <a class="medalha m1" href="#a-1-4" data-medalha="1.4"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg></span><b>Arquivo versionado</b><small>Aula 1.4</small></a>
+        <a class="medalha m1" href="#a-1-5" data-medalha="1.5"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg></span><b>Pasta viva do cliente</b><small>Aula 1.5</small></a>
+        <a class="medalha m1" href="#a-1-6" data-medalha="1.6"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg></span><b>Google conectado</b><small>Aula 1.6</small></a>
+        <a class="medalha m1" href="#a-1-7" data-medalha="1.7"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg></span><b>Reunião registrada</b><small>Aula 1.7</small></a>
+        <a class="medalha m1" href="#a-1-8" data-medalha="1.8"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg></span><b>Tribunal conectado</b><small>Aula 1.8</small></a>
+        <a class="medalha m1" href="#a-1-9" data-medalha="1.9"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg></span><b>Caixa de ferramentas jurídica</b><small>Aula 1.9</small></a>
+        <a class="medalha m2" href="#a-2-1" data-medalha="2.1"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg></span><b>Identidade definida</b><small>Aula 2.1</small></a>
+        <a class="medalha m2" href="#a-2-2" data-medalha="2.2"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg></span><b>Logotipo</b><small>Aula 2.2</small></a>
+        <a class="medalha m2" href="#a-2-3" data-medalha="2.3"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg></span><b>Design system</b><small>Aula 2.3</small></a>
+        <a class="medalha m2" href="#a-2-4" data-medalha="2.4"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg></span><b>Kit visual</b><small>Aula 2.4</small></a>
+        <a class="medalha m2" href="#a-2-5" data-medalha="2.5"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg></span><b>Memória sob controle</b><small>Aula 2.5</small></a>
+        <a class="medalha m2" href="#a-2-6" data-medalha="2.6"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cerebro"/></svg></span><b>Cérebro do escritório</b><small>Aula 2.6</small></a>
+        <a class="medalha m2" href="#a-2-7" data-medalha="2.7"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span><b>Biblioteca de modelos</b><small>Aula 2.7</small></a>
+        <a class="medalha m2" href="#a-2-8" data-medalha="2.8"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg></span><b>Transparência</b><small>Aula 2.8</small></a>
+        <a class="medalha m3" href="#a-3-1" data-medalha="3.1"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span><b>Sala de máquinas</b><small>Aula 3.1</small></a>
+        <a class="medalha m3" href="#a-3-2" data-medalha="3.2"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg></span><b>Freio de mão</b><small>Aula 3.2</small></a>
+        <a class="medalha m3" href="#a-3-3" data-medalha="3.3"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg></span><b>Recepção 24 horas</b><small>Aula 3.3</small></a>
+        <a class="medalha m3" href="#a-3-4" data-medalha="3.4"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg></span><b>Balcão de entrada</b><small>Aula 3.4</small></a>
+        <a class="medalha m3" href="#a-3-5" data-medalha="3.5"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span><b>Proposta que não esfria</b><small>Aula 3.5</small></a>
+        <a class="medalha m3" href="#a-3-6" data-medalha="3.6"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg></span><b>Despertador de prazos</b><small>Aula 3.6</small></a>
+        <a class="medalha m3" href="#a-3-7" data-medalha="3.7"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span><b>Caixa domada</b><small>Aula 3.7</small></a>
+        <a class="medalha m3" href="#a-3-8" data-medalha="3.8"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg></span><b>Cliente informado</b><small>Aula 3.8</small></a>
+        <a class="medalha m3" href="#a-3-9" data-medalha="3.9"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg></span><b>Vigia de contratos</b><small>Aula 3.9</small></a>
+        <a class="medalha m3" href="#a-3-10" data-medalha="3.10"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg></span><b>Mesa de aprovação</b><small>Aula 3.10</small></a>
+        <a class="medalha m3" href="#a-3-11" data-medalha="3.11"><span class="disco"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-trofeu"/></svg></span><b>Escritório no automático</b><small>Aula 3.11</small></a>
+      </div>
+    </div>
+  </section>
+  <section class="secao faixa" id="projeto-final" aria-labelledby="t-final">
+    <div class="miolo">
+      <div class="final">
+        <div>
+          <span class="trofeu"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-trofeu"/></svg></span>
+          <h2 id="t-final">No fim, você apresenta o seu escritório funcionando</h2>
+          <p>O trabalho de conclusão é uma demonstração de cinco minutos, gravada na sua própria tela.</p>
+        </div>
+        <ol class="roteiro">
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>A conta blindada e o semáforo do sigilo</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg><span>O projeto de um cliente ligado ao GitHub</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg><span>Uma apresentação com a marca do escritório</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>A recepção automática respondendo fora do horário</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg><span>O e-mail das 7h com os prazos da semana</span></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>A fila de aprovação e o painel de controle</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section class="secao faixa" id="ferramentas" aria-labelledby="t-ferr">
+    <div class="miolo">
+      <p class="olho">Ferramentas incorporadas</p>
+      <h2 id="t-ferr">Tudo o que entra no seu escritório</h2>
+      <p class="intro">Tudo no navegador. A etiqueta ao lado do nome mostra se a ferramenta é grátis ou paga; M1, M2 e M3 levam ao módulo onde ela aparece.</p>
+      <div class="ferramentas">
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-claude"/></svg></span><h3>Claude <span class="plano misto">Grátis + Pro</span></h3><p>Conversa, projetos, memória e modelos</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a><a class="m2" href="#modulo-2" aria-label="Módulo 2">M2</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-versao"/></svg></span><h3>GitHub <span class="plano gratis">Grátis</span></h3><p>Arquivo dos clientes com histórico de versões</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a><a class="m2" href="#modulo-2" aria-label="Módulo 2">M2</a><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg></span><h3>Gmail <span class="plano gratis">Grátis</span></h3><p>Conector, respostas automáticas e rascunhos</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a><a class="m2" href="#modulo-2" aria-label="Módulo 2">M2</a><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg></span><h3>Google Agenda <span class="plano gratis">Grátis</span></h3><p>Semana organizada e prazos com alarme</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pasta"/></svg></span><h3>Google Drive <span class="plano gratis">Grátis</span></h3><p>Pastas dos clientes e transcrições</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-video"/></svg></span><h3>Google Meet <span class="plano pago">Workspace pago</span></h3><p>Reunião transcrita que vira ata</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span><h3>Google Planilhas <span class="plano gratis">Grátis</span></h3><p>A planilha-mãe do escritório</p><span class="mods"><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg></span><h3>Google Formulários <span class="plano gratis">Grátis</span></h3><p>Primeiro contato com o cliente</p><span class="mods"><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg></span><h3>Google Docs <span class="plano gratis">Grátis</span></h3><p>Timbrado e documentos gerados</p><span class="mods"><a class="m2" href="#modulo-2" aria-label="Módulo 2">M2</a><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span><h3>Apps Script <span class="plano gratis">Grátis</span></h3><p>Os robôs do escritório</p><span class="mods"><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-plugue"/></svg></span><h3>MCP jurídico <span class="plano pago">Pro</span></h3><p>Tribunais e jurisprudência na conversa</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-peca"/></svg></span><h3>Plugins e skills <span class="plano pago">Pro</span></h3><p>Plugin jurídico e skills próprias</p><span class="mods"><a class="m1" href="#modulo-1" aria-label="Módulo 1">M1</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg></span><h3>Design system <span class="plano pago">Pro</span></h3><p>A marca em tudo que o Claude cria</p><span class="mods"><a class="m2" href="#modulo-2" aria-label="Módulo 2">M2</a><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-balao"/></svg></span><h3>WhatsApp Business <span class="plano gratis">Grátis</span></h3><p>Saudação, ausência e respostas rápidas</p><span class="mods"><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+        <article class="ferramenta"><span class="ico-f"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-chave"/></svg></span><h3>API do Claude <span class="plano pago">Centavos por uso</span></h3><p>A IA dentro dos robôs</p><span class="mods"><a class="m3" href="#modulo-3" aria-label="Módulo 3">M3</a></span></article>
+      </div>
       <div class="tabela"><table>
-        <thead><tr><th>Módulo</th><th>No fim, você tem</th><th class="n">Sessões</th><th class="n">Vídeo</th></tr></thead>
-        <tbody>
-          <tr><td><b>1 · Montar o escritório no Claude</b></td><td>Conta blindada, arquivo dos clientes no GitHub, um projeto por cliente, e Google, tribunais e plugin jurídico conectados.</td><td class="n">9</td><td class="n">1 h 32</td></tr>
-          <tr><td><b>2 · A cara e a memória do escritório</b></td><td>Identidade, logotipo e design system no Claude, a memória sob controle e um projeto que é o cérebro do escritório.</td><td class="n">8</td><td class="n">1 h 18</td></tr>
-          <tr><td><b>3 · O escritório no automático</b></td><td>Respostas, propostas, prazos, follow-up, contratos e uma fila de revisões rodando sozinhos, num painel de controle.</td><td class="n">11</td><td class="n">2 h 15</td></tr>
-        </tbody>
-        <tfoot><tr><td>Total</td><td>28 conquistas</td><td class="n">28</td><td class="n">5 h 05</td></tr></tfoot>
+        <thead><tr><th>Modelo do Claude</th><th>Perfil</th><th>Quando usar na advocacia</th></tr></thead>
+        <tbody><tr><td style="white-space:nowrap"><b>Haiku 5.5</b></td><td>O mais rápido</td><td>Robôs que rodam o dia inteiro: triagem de e-mail e intimações em volume.</td></tr><tr><td style="white-space:nowrap"><b>Sonnet 5.5</b></td><td>O do dia a dia</td><td>E-mails, atas, resumos, planilhas, scripts e apresentações.</td></tr><tr><td style="white-space:nowrap"><b>Opus 5.5</b></td><td>Leitura cuidadosa</td><td>Contratos pelo seu critério, minutas, pareceres e versões.</td></tr><tr><td style="white-space:nowrap"><b>Fable 5.2</b></td><td>O mais capaz</td><td>Processos complexos: autos volumosos, várias teses, estratégia e revisão crítica da peça.</td></tr></tbody>
       </table></div>
-      <div class="grupo">
-        <h3>No fim do curso, isto roda sozinho</h3>
-        <ul class="robos" style="margin-top:12px">
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Recepção 24 horas:</b> fora do horário, todo contato recebe a resposta na hora.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Balcão de entrada:</b> cada formulário entra no cadastro, e um clique gera os documentos.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Proposta que não esfria:</b> três dias sem resposta, o follow-up fica pronto.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Despertador de prazos:</b> às 7h, os prazos no seu e-mail; à noite, os conferidos na agenda.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Caixa domada:</b> a cada 30 minutos, os e-mails novos são triados.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Cliente informado:</b> toda segunda, os rascunhos de atualização ficam prontos.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Vigia de contratos:</b> contrato novo vira matriz de riscos; versão nova é comparada e mudança ruim vira alerta.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span><b>Mesa de aprovação:</b> às 8h, a lista do que espera a sua revisão.</span></li>
-        </ul>
-      </div>
-      <div class="grupo">
-        <h3>Do que o aluno precisa</h3>
-        <ul class="robos" style="margin-top:12px">
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><b>Módulo 1:</b> Conta gratuita e GitHub gratuito para começar; conectores, MCP e plugin pedem plano pago do Claude.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><b>Módulo 2:</b> Conta gratuita para identidade, logotipo e memória; design system e apresentações pedem plano pago.</span></li>
-          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><b>Módulo 3:</b> Conta Google gratuita e WhatsApp Business; triagem e leitura de contrato com IA pedem chave de API paga.</span></li>
-        </ul>
-      </div>
-      <p class="rodape">Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Telas, planos e nomes de modelos mudam: conferir antes de gravar. Casos e dados das aulas são fictícios.</p>
-    </section>
-  </main>
-</div>
+    </div>
+  </section>
+  <section class="secao faixa" id="resumo" aria-labelledby="t-res">
+    <div class="miolo">
+      <p class="olho">Relatório</p>
+      <h2 id="t-res">O curso em uma tabela</h2>
+      <div class="tabela"><table>
+        <thead><tr><th>Módulo</th><th>No fim, você tem</th><th class="n">Aulas</th><th class="n">Vídeo</th></tr></thead>
+        <tbody>
+          <tr class="m1"><td style="min-width:220px"><span class="bola-m">1</span><b>Montar o escritório no Claude</b></td><td>Conta blindada, um projeto por cliente ligado ao GitHub, e Google, tribunais e plugin jurídico conectados.</td><td class="n">9</td><td class="n">1 h 32</td></tr>
+          <tr class="m2"><td style="min-width:220px"><span class="bola-m">2</span><b>A cara e a memória do escritório</b></td><td>Logotipo e design system no Claude, apresentações com a sua marca e um projeto que é o cérebro do escritório.</td><td class="n">8</td><td class="n">1 h 18</td></tr>
+          <tr class="m3"><td style="min-width:220px"><span class="bola-m">3</span><b>O escritório no automático</b></td><td>Recepção, propostas, prazos, follow-up e contratos rodando sozinhos, com uma fila de aprovação e um painel de controle.</td><td class="n">11</td><td class="n">2 h 15</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total</td><td>28 conquistas e o escritório no automático</td><td class="n">28</td><td class="n">5 h 05</td></tr></tfoot>
+      </table></div>
+    </div>
+  </section>
+  <footer class="faixa rodape"><div class="miolo">Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios.</div></footer>
+</main>
 <script>
 (function () {
   var CHAVE = 'agenda-ia-adv:feitas';
   var feitas = {};
   try { feitas = JSON.parse(localStorage.getItem(CHAVE) || '{}') || {}; } catch (e) { feitas = {}; }
-  var vistas = [].slice.call(document.querySelectorAll('[data-vista]'));
-  var links = [].slice.call(document.querySelectorAll('[data-ir]'));
-  function mostrar() {
-    var h = (location.hash || '').slice(1);
-    var alvo = document.getElementById(h);
-    var vista = alvo && alvo.hasAttribute('data-vista') ? alvo : (alvo ? alvo.closest('[data-vista]') : null);
-    if (!vista) vista = vistas[0];
-    vistas.forEach(function (v) { v.hidden = v !== vista; });
-    links.forEach(function (a) { if (a.getAttribute('data-ir') === vista.id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    if (alvo && alvo !== vista) { var d = alvo.querySelector('details'); if (d) d.open = true; alvo.scrollIntoView({ block: 'center' }); }
-    else window.scrollTo(0, 0);
-  }
-  function contar() {
-    [1, 2, 3].forEach(function (n) {
-      var bts = document.querySelectorAll('#modulo-' + n + ' .feito');
-      var ok = [].filter.call(bts, function (b) { return b.getAttribute('aria-pressed') === 'true'; }).length;
-      var el = document.querySelector('[data-prog="' + n + '"]');
-      if (el) el.textContent = ok + '/' + bts.length;
+  var botoes = [].slice.call(document.querySelectorAll('.feito'));
+  function atualizar() {
+    var n = 0;
+    botoes.forEach(function (b) {
+      var a = b.getAttribute('data-aula'), on = !!feitas[a];
+      if (on) n += 1;
+      b.setAttribute('aria-pressed', String(on));
+      b.closest('.aula').classList.toggle('feita', on);
+      var j = document.querySelector('[data-janela="' + a + '"]'); if (j) j.classList.toggle('acesa', on);
+      var m = document.querySelector('[data-medalha="' + a + '"]'); if (m) m.classList.toggle('ganha', on);
     });
+    document.getElementById('janelas-acesas').textContent = n;
+    document.getElementById('placar').textContent = n;
   }
-  [].forEach.call(document.querySelectorAll('.feito'), function (b) {
-    var s = b.getAttribute('data-sessao');
-    function pintar() { var on = !!feitas[s]; b.setAttribute('aria-pressed', String(on)); b.closest('.passo').classList.toggle('ok', on); }
-    pintar();
+  botoes.forEach(function (b) {
     b.addEventListener('click', function () {
-      feitas[s] = !feitas[s];
+      var a = b.getAttribute('data-aula');
+      feitas[a] = !feitas[a];
       try { localStorage.setItem(CHAVE, JSON.stringify(feitas)); } catch (e) {}
-      pintar(); contar();
+      atualizar();
     });
   });
-  window.addEventListener('hashchange', mostrar);
-  contar(); mostrar();
+  var pronto = document.getElementById('ver-pronto');
+  pronto.addEventListener('click', function () {
+    var on = pronto.getAttribute('aria-pressed') !== 'true';
+    pronto.setAttribute('aria-pressed', String(on));
+    document.getElementById('predio').classList.toggle('pronto', on);
+    pronto.querySelector('span').textContent = on ? 'Voltar ao meu progresso' : 'Ver o escritório pronto';
+  });
+  var itens = [].slice.call(document.querySelectorAll('.nav a.item'));
+  var alvos = itens.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function marcar() {
+    var y = window.scrollY + 120, atual = -1;
+    alvos.forEach(function (s, i) { if (s && s.offsetTop <= y) atual = i; });
+    itens.forEach(function (a, i) {
+      if (i === atual) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
+    if (atual >= 0 && itens[atual].scrollIntoView && window.innerWidth < 1080) {
+      var ul = itens[atual].closest('ul');
+      ul.scrollLeft = itens[atual].offsetLeft - 16;
+    }
+  }
+  window.addEventListener('scroll', marcar, { passive: true });
+  atualizar(); marcar();
 })();
 </script>
 </body>
