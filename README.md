@@ -14,6 +14,9 @@ Esta é a versão **v2 — a turma invade a história**: participantes entram in
 4. [Catálogo de imagens e personagens](imagens/CATALOGO.md)
 5. [Diretrizes SRT](storytelling/DIRETRIZES_SRT.md)
 
+## Outro programa neste repositório
+**[Advocacia Aumentada](advocacia-aumentada/README.md)**: treinamento de Claude para advogados em três módulos independentes e oito horas, com agenda em HTML, guias do facilitador e kit de automações. Não tem relação com o vídeo de abertura descrito acima.
+
 ## Organização
 - `storytelling/`: narrativa aprovada, roteiro por cenas, orientações de legendagem.
 - `videos-referencia/`: vídeos para orientar composição, cortes, ritmo e estética.

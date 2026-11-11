@@ -1,0 +1,1145 @@
+<meta charset="utf-8">
+<title>Advocacia Aumentada</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+/* Layout: documento de trabalho em coluna larga. A régua das 8 horas é a assinatura visual;
+   as marcas de revisão (texto riscado e texto inserido) vêm do mundo dos contratos. */
+:root {
+  --paper: #F3F5F6;
+  --surface: #FFFFFF;
+  --ink: #16212B;
+  --ink-2: #4D5A66;
+  --line: #D3DAE0;
+  --accent: #0A6B63;
+  --accent-soft: #DCEEEB;
+  --strike: #B3261E;
+  --amber: #8A5A00;
+  --amber-soft: #FBEFD2;
+  --green: #1B7437;
+  --green-soft: #DCF0E1;
+  --red: #B3261E;
+  --red-soft: #F9DEDB;
+  --expo: #A9B8C4;
+  --font-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1418; --surface: #151C22; --ink: #E7ECF0; --ink-2: #A0ADB8; --line: #2B3640;
+    --accent: #56C8BC; --accent-soft: #12322F; --strike: #FF8A80;
+    --amber: #E6B450; --amber-soft: #382C0E; --green: #62C783; --green-soft: #13311F;
+    --red: #FF8A80; --red-soft: #3B1A17; --expo: #4E5E6B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1418; --surface: #151C22; --ink: #E7ECF0; --ink-2: #A0ADB8; --line: #2B3640;
+  --accent: #56C8BC; --accent-soft: #12322F; --strike: #FF8A80;
+  --amber: #E6B450; --amber-soft: #382C0E; --green: #62C783; --green-soft: #13311F;
+  --red: #FF8A80; --red-soft: #3B1A17; --expo: #4E5E6B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.pagina {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 72px;
+  display: flex; flex-direction: column; gap: 72px;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.3rem, 6vw, 4rem); line-height: 1.05; }
+h2 { font-size: clamp(1.55rem, 3.2vw, 2.1rem); line-height: 1.15; }
+h3 { font-size: 1.12rem; font-weight: 600; line-height: 1.3; }
+h4 { font-size: 1.02rem; font-weight: 600; line-height: 1.35; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+del { color: var(--strike); text-decoration-thickness: 2px; }
+ins { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.rotulo {
+  font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2);
+}
+.texto { max-width: 68ch; color: var(--ink-2); }
+.texto strong, .forte { color: var(--ink); font-weight: 600; }
+.secao { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.secao-cab { display: flex; flex-direction: column; gap: 10px; }
+
+/* Abertura */
+.abre { display: flex; flex-direction: column; gap: 28px; }
+.abre .lede { font-size: 1.16rem; max-width: 62ch; color: var(--ink-2); }
+.fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.fatos div { padding: 14px 16px 14px 0; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fatos dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.fatos dd { font-size: 1.02rem; font-weight: 600; }
+
+/* Régua */
+.regua-caixa { display: flex; flex-direction: column; gap: 8px; }
+.regua { display: flex; height: 34px; gap: 3px; }
+.regua-m { display: flex; gap: 0; min-width: 0; border-radius: 3px; overflow: hidden; }
+.seg { display: block; min-width: 0; height: 100%; }
+.seg.e { background: var(--expo); }
+.seg.p { background: var(--accent); }
+.seg.j { background: var(--amber); }
+.seg.i { background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 8px); }
+.seg + .seg.b { border-left: 1px solid var(--paper); }
+.regua-nomes { display: flex; gap: 3px; font-size: 0.9rem; }
+.regua-nomes span { min-width: 0; display: flex; flex-direction: column; }
+.regua-nomes b { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; }
+.regua-nomes small { color: var(--ink-2); font-size: 0.82rem; }
+.legenda { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.84rem; color: var(--ink-2); }
+.legenda span { display: inline-flex; align-items: center; gap: 7px; }
+.legenda i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+
+.resumo { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; }
+.resumo > div { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.resumo p { color: var(--ink-2); }
+
+.indice { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.94rem; padding-block: 12px; border-block: 1px solid var(--line); }
+.indice a { text-decoration: none; color: var(--ink); }
+.indice a:hover { color: var(--accent); text-decoration: underline; }
+
+/* Módulos */
+.modulo { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; display: flex; flex-direction: column; min-width: 0; }
+.modulo-cab { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr); gap: 20px 40px; padding: 28px 28px 22px; }
+.modulo-id { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.modulo-id h3 { font-family: var(--font-display); font-size: clamp(2rem, 4.2vw, 2.9rem); font-weight: 600; line-height: 1; letter-spacing: -0.01em; }
+.modulo-id p { color: var(--ink-2); }
+.ficha { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px 24px; align-content: start; min-width: 0; }
+.ficha div { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.ficha dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.ficha dd { font-size: 0.95rem; }
+.inicio { display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--ink-2); flex-wrap: wrap; }
+.inicio input { font: 500 0.95rem var(--font-mono); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px; }
+.modulo .regua { height: 12px; margin: 0 28px; }
+.blocos { display: flex; flex-direction: column; padding: 8px 28px 20px; }
+.bloco { display: grid; grid-template-columns: 148px minmax(0, 1fr); gap: 8px 28px; padding-block: 20px; border-top: 1px solid var(--line); }
+.bloco:first-child { border-top: 0; }
+.quando { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.hora { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.dur { font-size: 0.84rem; color: var(--ink-2); }
+.tipo { font-size: 0.74rem; font-family: var(--font-mono); letter-spacing: 0.04em; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--line); color: var(--ink-2); }
+.tipo.p { border-color: var(--accent); color: var(--accent); }
+.tipo.j { border-color: var(--amber); color: var(--amber); }
+.oque { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.oque > p { color: var(--ink-2); max-width: 74ch; }
+.oque .linha { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 4px 12px; font-size: 0.93rem; max-width: 86ch; }
+.oque .linha b { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); padding-top: 3px; }
+.oque .linha span { color: var(--ink); }
+.bloco.pausa { padding-block: 12px; }
+.bloco.pausa h4 { font-weight: 500; color: var(--ink-2); }
+.entre { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px 28px; }
+.entre li { display: flex; flex-direction: column; gap: 4px; padding-top: 12px; border-top: 2px solid var(--ink); min-width: 0; }
+.entre p { color: var(--ink-2); font-size: 0.95rem; }
+.aviso { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; max-width: 76ch; color: var(--ink-2); }
+
+/* Conexões */
+.cadeia { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.elo { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.elo ul { display: flex; flex-direction: column; gap: 6px; font-size: 0.94rem; color: var(--ink-2); }
+.elo li { padding-left: 14px; position: relative; }
+.elo li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 2px; background: var(--ink-2); }
+.passa { display: flex; flex-direction: column; justify-content: center; gap: 14px; max-width: 190px; font-size: 0.86rem; color: var(--ink-2); }
+.passa span { display: block; padding-top: 8px; border-top: 1.5px solid var(--accent); position: relative; }
+.passa span::after { content: ""; position: absolute; right: -1px; top: -5px; border: 4px solid transparent; border-left-color: var(--accent); border-right-width: 0; }
+.caso { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 20px 40px; align-items: start; }
+.minuta { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; font-family: var(--font-display); font-size: 0.98rem; line-height: 1.6; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.minuta .rotulo { font-family: var(--font-mono); }
+
+/* Conformidade */
+.semaforo { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.luz { border-radius: 6px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; border: 1px solid transparent; }
+.luz.verde { background: var(--green-soft); border-color: var(--green); }
+.luz.amarelo { background: var(--amber-soft); border-color: var(--amber); }
+.luz.vermelho { background: var(--red-soft); border-color: var(--red); }
+.luz .rotulo { color: var(--ink); }
+.luz p { font-size: 0.94rem; }
+.regras { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px 32px; counter-reset: regra; }
+.regras li { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.regras p { color: var(--ink-2); font-size: 0.95rem; }
+.rolagem { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 680px; font-size: 0.93rem; }
+th, td { text-align: left; vertical-align: top; padding: 11px 16px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+td:first-child { font-family: var(--font-mono); font-size: 0.84rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.duas { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px 40px; }
+.duas > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.lista { display: flex; flex-direction: column; gap: 8px; color: var(--ink-2); font-size: 0.96rem; }
+.lista li { padding-left: 18px; position: relative; max-width: 78ch; }
+.lista li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 8px; height: 2px; background: var(--ink-2); }
+.lista.sim li::before { background: var(--green); height: 2px; }
+.lista.nao li::before { background: var(--red); height: 2px; }
+.fontes { font-size: 0.88rem; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; }
+.fontes li { overflow-wrap: anywhere; }
+
+/* Diagrama */
+.figura { display: flex; flex-direction: column; gap: 12px; }
+.figura .rolagem { padding: 12px; }
+.figura svg { display: block; width: 100%; min-width: 920px; height: auto; }
+.figura figcaption { color: var(--ink-2); font-size: 0.93rem; max-width: 86ch; }
+.dg-caixa { fill: var(--surface); stroke: var(--ink-2); stroke-width: 1; }
+.dg-guarda { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; }
+.dg-ia { fill: var(--paper); stroke: var(--ink); stroke-width: 1.6; }
+.dg-fica { fill: none; stroke: var(--line); stroke-width: 1; }
+.dg-fronteira { fill: none; stroke: var(--ink-2); stroke-width: 1.2; stroke-dasharray: 7 5; }
+.dg-linha { fill: none; stroke: var(--ink-2); stroke-width: 1.5; }
+.dg-ponta { fill: var(--ink-2); stroke: none; }
+.dg-t { fill: var(--ink); font-family: var(--font-body); font-size: 12.5px; font-weight: 600; }
+.dg-s { fill: var(--ink-2); font-family: var(--font-body); font-size: 11.5px; }
+.dg-r { fill: var(--ink-2); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; }
+.notas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px 32px; }
+.notas > div { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.notas p { color: var(--ink-2); font-size: 0.95rem; }
+
+/* Kit e escolhas */
+.arquivos { display: flex; flex-direction: column; }
+.arquivos li { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 4px 28px; padding-block: 13px; border-top: 1px solid var(--line); }
+.arquivos code { font-family: var(--font-mono); font-size: 0.84rem; overflow-wrap: anywhere; color: var(--ink); }
+.arquivos p { color: var(--ink-2); font-size: 0.95rem; }
+.lacunas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; }
+.lacunas > div { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-top: 12px; border-top: 2px solid var(--ink); }
+.lacunas p { color: var(--ink-2); font-size: 0.95rem; }
+.lacunas .vira { color: var(--accent); font-weight: 600; font-size: 0.92rem; }
+.escolhida { color: var(--accent); font-weight: 600; }
+.metas td:first-child { font-family: var(--font-body); font-size: 0.93rem; white-space: normal; font-weight: 600; }
+.decisoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px 32px; counter-reset: d; }
+.decisoes li { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.decisoes p { color: var(--ink-2); font-size: 0.95rem; }
+.rodape { font-size: 0.86rem; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 86ch; }
+
+@media (max-width: 760px) {
+  .pagina { gap: 56px; padding-block: 28px 56px; }
+  .modulo-cab { grid-template-columns: minmax(0, 1fr); padding: 22px 18px 18px; }
+  .modulo .regua { margin: 0 18px; }
+  .blocos { padding: 4px 18px 14px; }
+  .bloco { grid-template-columns: minmax(0, 1fr); }
+  .quando { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+  .oque .linha { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .cadeia { grid-template-columns: minmax(0, 1fr); }
+  .passa { max-width: none; flex-direction: column; gap: 8px; padding-left: 14px; border-left: 1.5px solid var(--accent); }
+  .passa span { border-top: 0; padding-top: 0; }
+  .passa span::after { display: none; }
+  .caso { grid-template-columns: minmax(0, 1fr); }
+  .arquivos li { grid-template-columns: minmax(0, 1fr); }
+  .regua-nomes small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+
+/* Mercado, vozes e dores */
+.citacao { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--ink); }
+.modulo-cab { display: flex; flex-direction: column; gap: 22px; }
+.ficha { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px 32px; }
+.dores { display: flex; flex-direction: column; gap: 3px; font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 0.97rem; }
+.vozes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px 40px; padding: 18px 28px 22px; border-top: 1px solid var(--line); }
+.vozes div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.vozes .fala { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 1.02rem; line-height: 1.45; }
+.oque > p.dor { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--ink); border-left: 2px solid var(--strike); padding-left: 10px; }
+@media (max-width: 760px) { .vozes { padding: 16px 18px 18px; } }
+</style>
+
+<div class="pagina">
+
+  <header class="abre">
+    <p class="rotulo">Programa de formação · Claude no dia a dia da advocacia</p>
+    <h1>Advocacia <del>substituída</del> <ins>aumentada</ins></h1>
+    <p class="lede">Três módulos independentes, oito horas. Cada um resolve dores pequenas do dia a dia e termina com um painel ou um sistema construído por quem participa. O advogado aprova tudo o que a IA produz, dentro da LGPD e das recomendações da OAB.</p>
+
+    <dl class="fatos">
+      <div><dt>Carga total</dt><dd>8 horas</dd></div>
+      <div><dt>Módulos</dt><dd>2 h 30 + 2 h 45 + 2 h 45</dd></div>
+      <div><dt>Prática</dt><dd>5 h 05 min</dd></div>
+      <div><dt>Em cada módulo</dt><dd>Um painel ou sistema pronto</dd></div>
+      <div><dt>Base</dt><dd>Claude e Google Workspace</dd></div>
+    </dl>
+
+    <div class="regua-caixa">
+      <p class="rotulo">A régua das 8 horas</p>
+      <div class="regua" aria-hidden="true">
+        <div class="regua-m" style="flex: 150">
+          <i class="seg e" style="flex:10"></i>
+          <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:10"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:20"></i>
+          <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:15"></i>
+          <i class="seg e b" style="flex:5"></i><i class="seg j" style="flex:15"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+          <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:10"></i>
+        </div>
+        <div class="regua-m" style="flex: 165">
+          <i class="seg e" style="flex:5"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:20"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:25"></i>
+          <i class="seg i b" style="flex:10"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:25"></i>
+          <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:5"></i>
+        </div>
+        <div class="regua-m" style="flex: 165">
+          <i class="seg e" style="flex:5"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:15"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+          <i class="seg i b" style="flex:10"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:20"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+          <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:5"></i>
+        </div>
+      </div>
+      <div class="regua-nomes">
+        <span style="flex: 150"><b>1 · Painel</b><small>Básico · 2 h 30</small></span>
+        <span style="flex: 165"><b>2 · Central</b><small>Intermediário · 2 h 45</small></span>
+        <span style="flex: 165"><b>3 · Contratos</b><small>Avançado · 2 h 45</small></span>
+      </div>
+      <div class="legenda">
+        <span><i style="background: var(--accent)"></i>Prática</span>
+        <span><i style="background: var(--amber)"></i>Jogo em equipes</span>
+        <span><i style="background: var(--expo)"></i>Demonstração e conversa</span>
+        <span><i style="background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 8px); border: 1px solid var(--line)"></i>Intervalo</span>
+      </div>
+    </div>
+
+    <div class="resumo">
+      <div>
+        <h3>O problema</h3>
+        <p>O advogado perde o dia em dores pequenas: o cliente que pergunta do processo, a caixa de entrada, o prazo anotado em três lugares, a cláusula que mudou sem aviso. E desconfia da IA, com razão.</p>
+      </div>
+      <div>
+        <h3>A resposta</h3>
+        <p>Cada bloco parte de uma dessas dores e termina com algo que funciona. Cada módulo fecha sozinho: o básico é completo e não deixa pendência para o seguinte.</p>
+      </div>
+      <div>
+        <h3>O resultado</h3>
+        <p>Um painel de casos e prazos no básico, uma central de e-mail, agenda e citações no intermediário, um sistema de contratos com histórico no avançado.</p>
+      </div>
+    </div>
+
+    <nav class="indice" aria-label="Seções">
+      <a href="#mercado">O que o mercado pede</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#independentes">Cada módulo se basta</a>
+      <a href="#conformidade">Conformidade</a>
+      <a href="#contrato">Caminho do contrato</a>
+      <a href="#kit">Kit pronto</a>
+      <a href="#escolhas">Por que este desenho</a>
+      <a href="#decisoes">Decisões em aberto</a>
+    </nav>
+  </header>
+
+  <!-- ══════════ MERCADO ══════════ -->
+  <section class="secao" id="mercado">
+    <div class="secao-cab">
+      <p class="rotulo">O que o mercado pede</p>
+      <h2>Quatro sinais de novembro de 2026</h2>
+      <p class="texto">A agenda foi desenhada de duas cadeiras. Da cadeira do juiz, que passou a vida vendo o que dá errado em uma peça e em um contrato. E da cadeira do garoto, que abre o Claude e constrói em meia hora o que o escritório adia há anos. Os quatro sinais abaixo vêm de tribunais, da OAB e dos próprios fornecedores.</p>
+    </div>
+    <div class="lacunas">
+      <div>
+        <p class="rotulo">Tribunais</p>
+        <h3>Quem não confere paga multa</h3>
+        <p>Em março de 2026 a 6ª Turma do TST multou a empresa e o advogado, cada um em 1% do valor da causa, por precedentes inexistentes em um recurso, e oficiou a OAB. Do relator: <span class="citacao">«A responsabilidade pela verificação da veracidade das informações permanece integralmente com o advogado e a parte.»</span></p>
+        <p class="vira">Conferência em todos os módulos</p>
+      </div>
+      <div>
+        <p class="rotulo">OAB</p>
+        <h3>Cuidado agora tem papel</h3>
+        <p>A Recomendação 001/2024 pede política interna de uso de IA, treinamento da equipe e consentimento do cliente por escrito e assinado. Poucos escritórios pequenos têm os três documentos.</p>
+        <p class="vira">Os três saem prontos do módulo básico</p>
+      </div>
+      <div>
+        <p class="rotulo">Fornecedores</p>
+        <h3>O pedido já tem nome</h3>
+        <p>A galeria jurídica do Claude, de outubro de 2026, reúne o que as equipes jurídicas mais pediram: quadro de casos, checagem de citações, revisão por playbook, revisão tabular de contratos e porta única de entrada.</p>
+        <p class="vira">O programa constrói a versão própria de cada um</p>
+      </div>
+      <div>
+        <p class="rotulo">Advogados</p>
+        <h3>Quem advoga passou a construir</h3>
+        <p>Na página jurídica do Claude, um depoimento do escritório Quinn Emanuel diz: <span class="citacao">«Construí nossa plataforma de contencioso no Claude praticamente sem saber programar. Eu precisava dela para um julgamento real.»</span></p>
+        <p class="vira">Um painel ou sistema em cada módulo</p>
+      </div>
+    </div>
+
+    <div class="rolagem">
+      <table>
+        <thead><tr><th>O mercado pede</th><th>A dor pequena por trás</th><th>O que você constrói</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space: normal">Quadro de casos</td><td>«Meus prazos estão em três lugares diferentes»</td><td>Módulo 1 · Painel de casos e prazos, com responsável, próximo passo e próximo prazo</td></tr>
+          <tr><td style="white-space: normal">Porta única de entrada</td><td>«A caixa de entrada me engole»</td><td>Módulo 2 · Central com triagem de e-mail e rascunho de resposta</td></tr>
+          <tr><td style="white-space: normal">Checagem de citações</td><td>«Tenho medo de citar o que não existe»</td><td>Módulo 2 · Auditor de citações e tabela de precedentes conferidos</td></tr>
+          <tr><td style="white-space: normal">Revisão por playbook</td><td>«Cada advogado revisa de um jeito»</td><td>Módulo 3 · Matriz de risco pelo critério do escritório</td></tr>
+          <tr><td style="white-space: normal">Revisão tabular de contratos</td><td>«A outra parte mudou uma cláusula e eu não vi»</td><td>Módulo 3 · Tabela de contratos com histórico de versões e alerta</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="fontes">
+      <li>Fontes: <a href="https://www.tst.jus.br/-/empresa-e-advogado-sao-condenados-por-possivel-uso-de-ia-com-citacoes-falsas-de-jurisprudencia">notícia do TST de 10/03/2026</a> · <a href="https://diario.oab.org.br/pages/materia/842347">Recomendação 001/2024 da OAB</a> · <a href="https://claude.com/resources/articles/introducing-artifacts-for-legal-work">galeria de artefatos jurídicos do Claude, 28/10/2026</a> · <a href="https://claude.com/solutions/legal">página jurídica do Claude</a>. As citações em inglês foram traduzidas por nós.</li>
+    </ul>
+  </section>
+
+  <!-- ══════════ AGENDA ══════════ -->
+  <section class="secao" id="agenda">
+    <div class="secao-cab">
+      <p class="rotulo">Agenda</p>
+      <h2>A agenda, bloco a bloco</h2>
+      <p class="texto">Cada bloco começa por uma dor, na voz de quem a sente, e termina com algo funcionando. Ajuste o horário de início de cada encontro para ver a agenda no relógio.</p>
+    </div>
+    <p class="aviso"><span class="forte">Os três módulos são independentes.</span> Quem faz só o básico sai com tudo de que precisa para trabalhar. Quem entra direto no intermediário ou no avançado recebe na abertura uma página com o método e as regras de segurança.</p>
+
+    <!-- MÓDULO 1 -->
+    <article class="modulo" id="modulo-1">
+      <div class="modulo-cab">
+        <div class="modulo-id">
+          <p class="rotulo">Módulo 1 · Básico completo · 2 h 30</p>
+          <h3>O painel do advogado</h3>
+          <p>O básico inteiro em um encontro: conta segura, método para pedir, conferência do que a IA diz e um painel de casos e prazos construído por você.</p>
+          <label class="inicio" for="inicio-m1">Início <input type="time" id="inicio-m1" value="19:00"> <span>término às <span class="termina">21:30</span></span></label>
+        </div>
+        <dl class="ficha">
+          <div><dt>Entra quem</dt><dd>Nunca usou IA no trabalho, ou usa de vez em quando e sem método.</dd></div>
+          <div><dt>Dores que resolve</dt><dd><ul class="dores">
+            <li>«Tenho medo de expor meu cliente»</li>
+            <li>«O cliente pergunta do processo toda semana»</li>
+            <li>«Levo uma hora para achar dez linhas»</li>
+            <li>«E se ela inventar um precedente?»</li>
+            <li>«Meus prazos estão em três lugares»</li>
+          </ul></dd></div>
+          <div><dt>Você leva</dt><dd><span class="forte">Painel de casos e prazos</span>, mais o projeto «Meu escritório», dez prompts no método FATOS, a política de uso de IA e o termo de ciência do cliente.</dd></div>
+        </dl>
+      </div>
+      <div class="vozes">
+        <div><p class="rotulo">Da cadeira do juiz</p><p class="fala">«Nunca indeferi um pedido por ser curto. Ajuda quem julga: fatos em ordem, pedido claro e citação que confere.»</p></div>
+        <div><p class="rotulo">Da cadeira do garoto</p><p class="fala">«Meia hora de conversa com o Claude e os seus prazos viram um painel, sem programar nada.»</p></div>
+      </div>
+      <div class="regua" aria-hidden="true">
+        <i class="seg e" style="flex:10"></i>
+        <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:10"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:20"></i>
+        <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:15"></i>
+        <i class="seg e b" style="flex:5"></i><i class="seg j" style="flex:15"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+        <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:10"></i>
+      </div>
+      <ol class="blocos">
+        <li class="bloco" data-min="10">
+          <div class="quando"><time class="hora">19:00–19:10</time><span class="dur">10 min</span><span class="tipo">Demonstração</span></div>
+          <div class="oque">
+            <h4>O que o juiz vê e o que a IA faz</h4>
+            <p class="dor">«Tenho receio de usar e não sei por onde começar.»</p>
+            <p>Três coisas que quem julga encontra todos os dias: fato fora de ordem, pedido escondido e citação que não confere. Um caso real: em março de 2026 a 6ª Turma do TST multou empresa e advogado por precedentes inexistentes em um recurso, com possível uso de IA. Depois, a demonstração: o contrato do caso prático vira uma matriz de riscos em cerca de um minuto. A IA é um redator rápido e bem informado; não é banco de jurisprudência nem calculadora de prazo.</p>
+            <div class="linha"><b>Você faz</b><span>Anota uma tarefa da sua semana em que a IA ajudaria e uma em que ela não pode decidir.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Recomendação OAB 001/2024, item 3.4: entender como a tecnologia funciona e onde ela falha.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="15">
+          <div class="quando"><time class="hora">19:10–19:25</time><span class="dur">15 min · 10 de prática</span><span class="tipo p">Prática</span></div>
+          <div class="oque">
+            <h4>Conta segura e semáforo de dados</h4>
+            <p class="dor">«Tenho medo de expor meu cliente.»</p>
+            <p>Uso das conversas para treinamento desligado, verificação em duas etapas ligada e perfil de instruções escrito, com a regra de nunca inventar citação. O semáforo separa o que pode entrar, o que entra com proteção e o que não entra.</p>
+            <div class="linha"><b>Você faz</b><span>Configura a própria conta e classifica dez exemplos de dados no semáforo.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Itens 2.1, 2.2 e 2.5: sigilo, fornecedor que permite não treinar com os dados e LGPD antes de inserir informação de cliente.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="30">
+          <div class="quando"><time class="hora">19:25–19:55</time><span class="dur">30 min · 20 de prática</span><span class="tipo p">Prática em duplas</span></div>
+          <div class="oque">
+            <h4>Método FATOS em três dores do dia</h4>
+            <p class="dor">«O cliente pergunta do processo toda semana, e ainda preciso cobrar honorários atrasados.»</p>
+            <p>Função, Alvo, Texto-base, Orientações e Saída. O método é aplicado a três situações: explicar um andamento processual em linguagem que o cliente entende; escrever o e-mail delicado, como a cobrança de honorários; e resumir um documento longo, com o trecho de cada ponto e «não especificado» quando a informação falta.</p>
+            <div class="linha"><b>Você faz</b><span>Resolve as três situações com os dados do caso e guarda os prompts na sua biblioteca.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Em sala só entram os dados fictícios do caso. Nada segue ao cliente sem a sua leitura.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="20">
+          <div class="quando"><time class="hora">19:55–20:15</time><span class="dur">20 min · 15 de prática</span><span class="tipo p">Prática</span></div>
+          <div class="oque">
+            <h4>Projeto «Meu escritório»</h4>
+            <p class="dor">«Explico tudo de novo a cada conversa.»</p>
+            <p>Um projeto guarda as instruções permanentes e os documentos de referência. Com o contrato e o playbook do caso dentro dele, o assistente responde com base nos arquivos, aponta o trecho e monta a linha do tempo dos fatos, que é a primeira coisa que um juiz procura.</p>
+            <div class="linha"><b>Você faz</b><span>Cria o projeto, faz cinco perguntas exigindo o trecho literal e gera a linha do tempo do caso.</span></div>
+            <div class="linha"><b>Conformidade</b><span>No projeto só entra documento verde ou amarelo. Resposta sem trecho não vale.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="20">
+          <div class="quando"><time class="hora">20:15–20:35</time><span class="dur">20 min · 15 de prática</span><span class="tipo j">Jogo em equipes</span></div>
+          <div class="oque">
+            <h4>Tribunal da IA</h4>
+            <p class="dor">«E se ela inventar um precedente?»</p>
+            <p>A IA, com a busca desligada, apresenta precedentes sobre um tema. As equipes conferem cada um nas fontes oficiais e classificam: existe, existe mas diz outra coisa, ou foi inventado. Fica o protocolo das três chaves: existe? diz isso? vale hoje?</p>
+            <div class="linha"><b>Você faz</b><span>Confere os precedentes da sua equipe no STF, STJ, TST e no Banco Nacional de Precedentes e registra o link oficial de cada um.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Itens 3.2 e 3.7: atenção especial à jurisprudência e revisão integral do que vai a juízo.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="40">
+          <div class="quando"><time class="hora">20:35–21:15</time><span class="dur">40 min · 30 de prática</span><span class="tipo p">Construção</span></div>
+          <div class="oque">
+            <h4>O painel de casos e prazos</h4>
+            <p class="dor">«Meus prazos estão em três lugares diferentes.»</p>
+            <p>A planilha de processos fictícios vira um painel: prazos vencidos, de hoje e da semana, casos por responsável, próximo passo de cada um e aviso para número de processo com dígito inválido. Duas rodadas de ajuste ensinam a pedir mudanças. Por fim, o painel passa a aceitar dados colados na própria página, e por isso funciona com os processos reais sem enviá-los à IA.</p>
+            <div class="linha"><b>Você constrói</b><span>O painel, a partir da planilha de exemplo, e o adapta às colunas da sua planilha.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Constrói-se com dado fictício e usa-se com dado real, que não sai do navegador. O painel mostra as datas digitadas e não conta prazo.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="15">
+          <div class="quando"><time class="hora">21:15–21:30</time><span class="dur">15 min · 10 de prática</span><span class="tipo">Fechamento</span></div>
+          <div class="oque">
+            <h4>Política, termo e a lista «pronto para amanhã»</h4>
+            <p class="dor">«Preciso estar em dia com a OAB.»</p>
+            <p>Cada participante preenche a política de uso de IA do escritório e o termo de ciência do cliente, e confere o que já está funcionando: conta, perfil, projeto, dez prompts e painel. O módulo termina sem pendência.</p>
+            <div class="linha"><b>Você faz</b><span>Preenche os dois modelos e marca a lista.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Itens 3.6 e 4.2.1: política interna e documento escrito ao cliente.</span></div>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- MÓDULO 2 -->
+    <article class="modulo" id="modulo-2">
+      <div class="modulo-cab">
+        <div class="modulo-id">
+          <p class="rotulo">Módulo 2 · Intermediário · 2 h 45</p>
+          <h3>A central do escritório</h3>
+          <p>E-mail, agenda, marca e citações em um só lugar, com o advogado aprovando cada saída.</p>
+          <label class="inicio" for="inicio-m2">Início <input type="time" id="inicio-m2" value="19:00"> <span>término às <span class="termina">21:45</span></span></label>
+        </div>
+        <dl class="ficha">
+          <div><dt>Entra quem</dt><dd>Já usa o chat com método. Não precisa ter feito o módulo 1.</dd></div>
+          <div><dt>Dores que resolve</dt><dd><ul class="dores">
+            <li>«A caixa de entrada me engole»</li>
+            <li>«Começo a segunda-feira no escuro»</li>
+            <li>«Não tenho cartão nem cara de escritório»</li>
+            <li>«Tenho medo de citar o que não existe»</li>
+          </ul></dd></div>
+          <div><dt>Você leva</dt><dd><span class="forte">Central do escritório</span>: planilha com triagem de e-mails, briefing da semana, precedentes conferidos e painel. Mais a identidade da marca e o cartão virtual publicado.</dd></div>
+        </dl>
+      </div>
+      <div class="vozes">
+        <div><p class="rotulo">Da cadeira do juiz</p><p class="fala">«Prazo se perde na caixa de entrada, e precedente que não confere custa multa e ofício à OAB.»</p></div>
+        <div><p class="rotulo">Da cadeira do garoto</p><p class="fala">«O assistente lê o e-mail e a agenda e deixa o rascunho pronto. Enviar continua sendo com você.»</p></div>
+      </div>
+      <div class="regua" aria-hidden="true">
+        <i class="seg e" style="flex:5"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:20"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:25"></i>
+        <i class="seg i b" style="flex:10"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:25"></i>
+        <i class="seg e b" style="flex:5"></i><i class="seg p" style="flex:5"></i>
+      </div>
+      <ol class="blocos">
+        <li class="bloco" data-min="5">
+          <div class="quando"><time class="hora">19:00–19:05</time><span class="dur">5 min</span><span class="tipo">Abertura</span></div>
+          <div class="oque">
+            <h4>Ambiente pronto</h4>
+            <p>Conta de treino aberta, planilha-modelo copiada e chave de teste em mãos. Quem não fez o módulo 1 recebe o método FATOS e o semáforo de dados em uma página.</p>
+            <div class="linha"><b>Você faz</b><span>Confere os três itens.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Conta de treino, sem dado de cliente.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="30">
+          <div class="quando"><time class="hora">19:05–19:35</time><span class="dur">30 min · 20 de prática</span><span class="tipo p">Prática</span></div>
+          <div class="oque">
+            <h4>Minha semana em uma página</h4>
+            <p class="dor">«Começo a segunda-feira no escuro.»</p>
+            <p>Conectores do Gmail, da Agenda e do Drive; o que são plugins e skills; o que o assistente passa a enxergar depois de conectado. Os plugins jurídicos prontos servem de referência, mas o playbook padrão deles segue o direito dos Estados Unidos e precisa ser trocado pelo do escritório. O exercício é pedir um briefing da semana a partir da agenda e dos e-mails.</p>
+            <div class="linha"><b>Você faz</b><span>Conecta a conta de treino, deixa as permissões em «perguntar sempre» e gera o briefing.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Menor privilégio: conecta só o necessário e desconecta ao fim. Item 2.3: saber com quem o sistema compartilha dados.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="35">
+          <div class="quando"><time class="hora">19:35–20:10</time><span class="dur">35 min · 25 de prática</span><span class="tipo p">Construção</span></div>
+          <div class="oque">
+            <h4>A marca do escritório e o cartão virtual</h4>
+            <p class="dor">«Não tenho cartão nem cara de escritório.»</p>
+            <p>Identidade em uma página: posicionamento, voz, cores com contraste adequado, tipografia e componentes. Ela é guardada como skill ou instrução de projeto, e toda peça passa a sair com a mesma cara. Primeira aplicação: o cartão virtual, uma página com QR Code e botão de agendamento de consulta.</p>
+            <div class="linha"><b>Você constrói</b><span>A identidade do seu escritório e o cartão publicado.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Provimento 205/2021: nome e número de inscrição na OAB são obrigatórios; sem fotografia (Código de Ética, art. 44, § 2º); sem preço, promessa de resultado ou autoelogio.</span></div>
+          </div>
+        </li>
+        <li class="bloco pausa" data-min="10">
+          <div class="quando"><time class="hora">20:10–20:20</time><span class="dur">10 min</span></div>
+          <div class="oque"><h4>Intervalo</h4></div>
+        </li>
+        <li class="bloco" data-min="40">
+          <div class="quando"><time class="hora">20:20–21:00</time><span class="dur">40 min · 30 de prática</span><span class="tipo p">Construção guiada</span></div>
+          <div class="oque">
+            <h4>A central: e-mail com o advogado no comando</h4>
+            <p class="dor">«A caixa de entrada me engole.»</p>
+            <p>Instalação do kit na planilha. A triagem etiqueta, resume e deixa um rascunho de resposta; não envia nada. O teste usa seis e-mails de treino, entre eles um com dado sensível, que fica fora da IA, e um com instrução maliciosa embutida, que é tratado como texto a classificar.</p>
+            <div class="linha"><b>Você constrói</b><span>A central: instala o kit, envia os e-mails de treino para si e confere etiquetas, rascunhos e o registro.</span></div>
+            <div class="linha"><b>Conformidade</b><span>CPF, CNPJ, e-mail e telefone seguem mascarados. Item 4.3: a comunicação com o cliente não pode ser feita só por IA.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="35">
+          <div class="quando"><time class="hora">21:00–21:35</time><span class="dur">35 min · 25 de prática</span><span class="tipo p">Prática</span></div>
+          <div class="oque">
+            <h4>Citações conferidas</h4>
+            <p class="dor">«Tenho medo de citar o que não existe.»</p>
+            <p>Primeiro a pesquisa com fontes abertas, depois a conferência. O auditor de citações lista tudo o que uma peça cita; o validador confere o dígito do número único do processo; a tabela de precedentes só passa de «pendente» a «confirmado» com link oficial e nome de quem conferiu.</p>
+            <div class="linha"><b>Você faz</b><span>Audita a minuta do caso, encontra a citação inventada e a súmula que diz outra coisa, e confirma duas citações na fonte.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Itens 3.2 e 3.7. Dígito correto não prova que o processo existe nem o que ele decide.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="10">
+          <div class="quando"><time class="hora">21:35–21:45</time><span class="dur">10 min · 5 de prática</span><span class="tipo">Fechamento</span></div>
+          <div class="oque">
+            <h4>O painel da central e a lista «pronto para amanhã»</h4>
+            <p>O painel reúne e-mails triados por categoria, urgentes, rascunhos à espera e precedentes pendentes. Cada participante decide o que liga na conta real e o que ainda depende da política assinada e do termo dos clientes.</p>
+            <div class="linha"><b>Você faz</b><span>Lê o seu painel e marca a lista.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Automação só entra em caixa de e-mail real depois da política assinada e do termo de ciência dos clientes.</span></div>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- MÓDULO 3 -->
+    <article class="modulo" id="modulo-3">
+      <div class="modulo-cab">
+        <div class="modulo-id">
+          <p class="rotulo">Módulo 3 · Avançado · 2 h 45</p>
+          <h3>O sistema de contratos</h3>
+          <p>Contrato lido pelo critério do escritório, cada versão guardada e comparada, e o desenho do sistema próprio.</p>
+          <label class="inicio" for="inicio-m3">Início <input type="time" id="inicio-m3" value="09:00"> <span>término às <span class="termina">11:45</span></span></label>
+        </div>
+        <dl class="ficha">
+          <div><dt>Entra quem</dt><dd>Revisa contratos com frequência e já usa IA no dia a dia. Não precisa ter feito os módulos 1 e 2.</dd></div>
+          <div><dt>Dores que resolve</dt><dd><ul class="dores">
+            <li>«Não sei onde está a última versão»</li>
+            <li>«Cada advogado revisa de um jeito»</li>
+            <li>«A outra parte mudou uma cláusula e eu não vi»</li>
+            <li>«Esqueci o prazo de renovação»</li>
+            <li>«Quero um sistema com a cara do escritório»</li>
+          </ul></dd></div>
+          <div><dt>Você leva</dt><dd><span class="forte">Sistema de contratos</span>: repositório, planilha-CRM com painel, matriz de risco pelo playbook, histórico de versões com alerta e prazos na agenda. Mais a especificação e o protótipo do sistema próprio e o dossiê de conformidade.</dd></div>
+        </dl>
+      </div>
+      <div class="vozes">
+        <div><p class="rotulo">Da cadeira do juiz</p><p class="fala">«Boa parte do que chega ao fórum nasceu de uma cláusula que ninguém leu duas vezes.»</p></div>
+        <div><p class="rotulo">Da cadeira do garoto</p><p class="fala">«Cada versão fica guardada e comparada sozinha, e o alerta chega antes da assinatura.»</p></div>
+      </div>
+      <div class="regua" aria-hidden="true">
+        <i class="seg e" style="flex:5"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:15"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+        <i class="seg i b" style="flex:10"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:20"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:30"></i>
+        <i class="seg e b" style="flex:10"></i><i class="seg p" style="flex:5"></i>
+      </div>
+      <ol class="blocos">
+        <li class="bloco" data-min="5">
+          <div class="quando"><time class="hora">09:00–09:05</time><span class="dur">5 min</span><span class="tipo">Abertura</span></div>
+          <div class="oque">
+            <h4>O mapa do sistema</h4>
+            <p>O desenho completo do que será montado no encontro e a conferência do ambiente: conta de treino, planilha-modelo e chave de teste. Quem entra direto neste módulo recebe o semáforo de dados em uma página.</p>
+            <div class="linha"><b>Você faz</b><span>Confere o ambiente e marca no mapa o que o seu escritório já tem.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Revisão do semáforo antes de abrir qualquer contrato.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="25">
+          <div class="quando"><time class="hora">09:05–09:30</time><span class="dur">25 min · 15 de prática</span><span class="tipo p">Construção</span></div>
+          <div class="oque">
+            <h4>Repositório e planilha-CRM</h4>
+            <p class="dor">«Não sei onde está a última versão.»</p>
+            <p>Cinco pastas (entrada, em análise, versões, assinados e revisão manual), um código por contrato e uma planilha com clientes, contratos, riscos, histórico e o registro de tudo o que o sistema faz. O grupo define quem acessa cada parte e por quanto tempo os documentos ficam guardados.</p>
+            <div class="linha"><b>Você constrói</b><span>A estrutura, com os perfis de acesso do seu escritório.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Acesso mínimo, prazo de guarda e registro das operações de tratamento (LGPD, art. 37).</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="40">
+          <div class="quando"><time class="hora">09:30–10:10</time><span class="dur">40 min · 30 de prática</span><span class="tipo p">Construção guiada</span></div>
+          <div class="oque">
+            <h4>Leitura pelo playbook, com guardrails</h4>
+            <p class="dor">«Cada advogado revisa de um jeito, e o contrato fica parado na minha mesa.»</p>
+            <p>O playbook diz, tema a tema, o que é padrão, aceitável e inaceitável para o escritório; a IA aplica esse critério, sem opinião própria. O contrato do caso entra na pasta e sai como matriz de risco, com um trecho literal por achado, e o sistema sinaliza o trecho que não confere com o texto. Fecha o bloco a prova com gabarito: a matriz é comparada com a revisão humana em seis critérios.</p>
+            <div class="linha"><b>Você constrói</b><span>O playbook do escritório e a primeira matriz de risco; decide cada risco (aceitar, negociar ou recusar) e assina a revisão.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Item 3.1: julgamento profissional com supervisão humana. Dados mascarados na ida, conferência de trechos na volta.</span></div>
+          </div>
+        </li>
+        <li class="bloco pausa" data-min="10">
+          <div class="quando"><time class="hora">10:10–10:20</time><span class="dur">10 min</span></div>
+          <div class="oque"><h4>Intervalo</h4></div>
+        </li>
+        <li class="bloco" data-min="30">
+          <div class="quando"><time class="hora">10:20–10:50</time><span class="dur">30 min · 20 de prática</span><span class="tipo p">Prática</span></div>
+          <div class="oque">
+            <h4>Histórico de versões e prazos</h4>
+            <p class="dor">«A outra parte mudou uma cláusula e eu não vi. E esqueci o prazo de renovação.»</p>
+            <p>A outra parte devolve o contrato «com os ajustes pedidos». O sistema guarda a cópia integral, compara parágrafo a parágrafo, explica o efeito de cada mudança e alerta para duas que o e-mail não mencionou. As datas só vão para a agenda depois que alguém assina a revisão.</p>
+            <div class="linha"><b>Você faz</b><span>Recebe a versão 2, lê o alerta, registra a decisão e lança os prazos na agenda.</span></div>
+            <div class="linha"><b>Conformidade</b><span>A comparação é feita por código e a IA só explica. A IA não conta prazo.</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="40">
+          <div class="quando"><time class="hora">10:50–11:30</time><span class="dur">40 min · 30 de prática</span><span class="tipo p">Oficina</span></div>
+          <div class="oque">
+            <h4>O sistema próprio do escritório</h4>
+            <p class="dor">«Quero um sistema com a cara do escritório.»</p>
+            <p>Uma entrevista guiada com o assistente vira a especificação funcional: perfis, telas, regras e dados. A identidade do escritório, a sua ou a de referência do kit, veste um protótipo navegável. O grupo sai com o roteiro de evolução: planilha hoje, aplicativo sem código depois, sistema sob medida quando o volume justificar.</p>
+            <div class="linha"><b>Você constrói</b><span>A especificação e o protótipo com a sua marca.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Privacidade desde o desenho: perfis de acesso, registro de alterações e assinatura eletrônica aceita pelas partes (MP 2.200-2/2001, art. 10, § 2º).</span></div>
+          </div>
+        </li>
+        <li class="bloco" data-min="15">
+          <div class="quando"><time class="hora">11:30–11:45</time><span class="dur">15 min · 5 de prática</span><span class="tipo">Fechamento</span></div>
+          <div class="oque">
+            <h4>Dossiê de conformidade e plano de 90 dias</h4>
+            <p class="dor">«E se o cliente perguntar como usamos IA?»</p>
+            <p>Fornecedores e contratos, transferência internacional de dados, resposta a incidentes, termo do cliente e política interna reunidos em um dossiê. Metas para 30, 60 e 90 dias, com a forma de medir cada uma.</p>
+            <div class="linha"><b>Você faz</b><span>Preenche o dossiê e escolhe três metas.</span></div>
+            <div class="linha"><b>Conformidade</b><span>Resolução ANPD 15/2024: incidente com risco relevante é comunicado em três dias úteis. Item 4.3.3: o termo do cliente fica arquivado.</span></div>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <div class="secao-cab">
+      <h3>Antes e depois de cada encontro</h3>
+    </div>
+    <ul class="entre">
+      <li><p class="rotulo">Antes · 20 min</p><h4>Preparação</h4><p>Um diagnóstico de três minutos indica por qual módulo entrar. Conta criada, notebook e, para os módulos 2 e 3, uma conta Google de treino.</p></li>
+      <li><p class="rotulo">No encontro</p><h4>Versão pronta de cada etapa</h4><p>Quem travar em um bloco abre a versão pronta do kit e segue com a turma. Ninguém termina sem o painel ou o sistema.</p></li>
+      <li><p class="rotulo">Depois · 7 dias</p><h4>Lista «pronto para amanhã»</h4><p>Cada módulo termina com a lista do que já funciona e uma sugestão de uso por dia. É prática, e nenhum módulo depende dela.</p></li>
+      <li><p class="rotulo">Depois · 30 dias</p><h4>Tutor do escritório</h4><p>Um projeto que continua o treinamento com um desafio por semana, e a medição das metas no dia 30.</p></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ INDEPENDENTES ══════════ -->
+  <section class="secao" id="independentes">
+    <div class="secao-cab">
+      <p class="rotulo">Cada módulo se basta</p>
+      <h2>O que funciona no dia seguinte</h2>
+      <p class="texto">Nenhum módulo deixa trabalho para o próximo. Cada um pode ser contratado sozinho e termina com um painel ou um sistema em uso.</p>
+    </div>
+    <div class="lacunas">
+      <div>
+        <p class="rotulo">Só o módulo 1</p>
+        <h3>Painel de casos e prazos</h3>
+        <p>No dia seguinte você pede com método, confere o que a IA diz, explica um andamento ao cliente em cinco minutos e abre o painel com os seus prazos.</p>
+      </div>
+      <div>
+        <p class="rotulo">Só o módulo 2</p>
+        <h3>Central do escritório</h3>
+        <p>No dia seguinte a caixa de entrada chega triada, a segunda-feira começa com o briefing, as citações têm registro de conferência e o cartão virtual está no ar.</p>
+      </div>
+      <div>
+        <p class="rotulo">Só o módulo 3</p>
+        <h3>Sistema de contratos</h3>
+        <p>No dia seguinte o próximo contrato entra na pasta e sai com matriz de risco, e a próxima versão chega com o alerta do que mudou.</p>
+      </div>
+    </div>
+    <p class="aviso"><span class="forte">Quem faz os três reaproveita, sem obrigação.</span> O projeto do módulo 1 recebe o playbook, a planilha do módulo 2 é a mesma do módulo 3 e a identidade da marca veste o protótipo do sistema.</p>
+
+    <div class="caso">
+      <div class="secao-cab">
+        <h3>Um caso prático para os três</h3>
+        <p class="texto">A Padaria Pão Dourado, cliente fictícia do escritório, recebe da NuvemSul Tecnologia um contrato de software com problemas plantados em nove temas: reajuste unilateral, limite de responsabilidade de três mensalidades, cláusula de proteção de dados de uma linha. O caso aparece nos três módulos, e cada um o usa por inteiro, sem depender do que foi feito nos outros.</p>
+        <p class="texto">No módulo 3, a outra parte devolve a versão «com os ajustes pedidos». O e-mail lista cinco concessões. O histórico de versões encontra outras duas mudanças, mostradas ao lado, que o e-mail não menciona.</p>
+      </div>
+      <div class="minuta">
+        <p class="rotulo">Contrato do caso · versão 2 comparada à versão 1</p>
+        <p>6.1. A CONTRATADA manterá o Sistema em funcionamento com disponibilidade mensal mínima de <del>99,5% (noventa e nove vírgula cinco por cento)</del> <ins>98% (noventa e oito por cento)</ins>, excluídas as paradas programadas.</p>
+        <p><ins>7.3. Os limites desta cláusula aplicam-se inclusive a incidentes de segurança que envolvam dados pessoais tratados no Sistema.</ins></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONFORMIDADE ══════════ -->
+  <section class="secao" id="conformidade">
+    <div class="secao-cab">
+      <p class="rotulo">Conformidade</p>
+      <h2>O trilho de conformidade acompanha todos os blocos</h2>
+      <p class="texto">LGPD e ética profissional não ficam para uma aula no fim. Cada bloco da agenda tem o seu ponto de conformidade, e as regras abaixo valem do primeiro prompt ao último script.</p>
+    </div>
+
+    <div class="semaforo">
+      <div class="luz verde">
+        <p class="rotulo">Verde · pode entrar</p>
+        <h3>Conteúdo público ou sem dado de ninguém</h3>
+        <p>Legislação, doutrina, modelos em branco, dúvidas conceituais, texto já publicado. Vale em qualquer ferramenta.</p>
+      </div>
+      <div class="luz amarelo">
+        <p class="rotulo">Amarelo · entra com proteção</p>
+        <h3>Documentos e dados de clientes sob sigilo</h3>
+        <p>Só em conta com treinamento desligado ou plano corporativo, com ciência escrita do cliente e, sempre que possível, com os dados mascarados.</p>
+      </div>
+      <div class="luz vermelho">
+        <p class="rotulo">Vermelho · não entra</p>
+        <h3>Segredo de justiça e dados sensíveis</h3>
+        <p>Saúde, crianças e adolescentes, investigação criminal, operação societária sigilosa. Só com anonimização efetiva ou ambiente contratado e autorização expressa.</p>
+      </div>
+    </div>
+
+    <div class="secao-cab">
+      <h3>Cinco regras que o kit cumpre sozinho</h3>
+      <p class="texto">Estão escritas no código das automações e cobertas por 29 testes automatizados, que rodam em simulação dos serviços do Google.</p>
+    </div>
+    <ol class="regras">
+      <li><h4>Mascarar antes de enviar</h4><p>CPF, CNPJ, e-mail e telefone viram marcadores antes de sair e voltam ao valor real só dentro da conta do escritório. Nomes de pessoas não são mascarados.</p></li>
+      <li><h4>Termo vermelho não sai</h4><p>Conteúdo com termo sensível não é enviado à IA. O arquivo segue para revisão manual e o fato fica registrado.</p></li>
+      <li><h4>Sem trecho, sem achado</h4><p>Toda afirmação da IA sobre um documento traz o trecho literal, e o código confere se ele existe no texto. O que não confere fica sinalizado.</p></li>
+      <li><h4>A IA propõe, o advogado dispõe</h4><p>Nada é enviado a cliente. E-mail fica em rascunho, análise fica «aguardando revisão» e prazo só vai para a agenda com o nome de quem revisou.</p></li>
+      <li><h4>O código calcula, a IA redige</h4><p>Datas, conflitos de horário e comparação de versões são feitos por código. A IA explica o resultado e não faz a conta.</p></li>
+    </ol>
+
+    <div class="secao-cab">
+      <h3>Recomendação 001/2024 da OAB: onde o programa atende cada item</h3>
+    </div>
+    <div class="rolagem">
+      <table>
+        <thead><tr><th>Item</th><th>O que a recomendação pede</th><th>Onde o programa atende</th></tr></thead>
+        <tbody>
+          <tr><td>2.1 e 2.5</td><td>Zelar pelo sigilo e observar a LGPD antes de inserir dados confidenciais</td><td>Semáforo de dados (módulo 1) e máscara nas automações (módulos 2 e 3)</td></tr>
+          <tr><td>2.2</td><td>Escolher fornecedor que proteja as informações e permita não usar os dados para treinamento</td><td>Configuração segura (módulo 1)</td></tr>
+          <tr><td>2.4</td><td>Chatbot não pratica atividade privativa e informa que é uma máquina</td><td>Produtos para clientes (módulo 2)</td></tr>
+          <tr><td>3.1</td><td>Julgamento profissional sempre com supervisão humana</td><td>Status «aguardando revisão» e campo «revisado por» (módulo 3)</td></tr>
+          <tr><td>3.2 e 3.7</td><td>Atenção especial a doutrina e jurisprudência; revisão integral do que vai a juízo</td><td>Tribunal da IA (módulo 1) e precedentes verificados (módulo 2)</td></tr>
+          <tr><td>3.4, 3.5 e 3.8</td><td>Entender a tecnologia, seus limites e riscos; capacitação contínua da equipe</td><td>O próprio programa e o tutor de 30 dias</td></tr>
+          <tr><td>3.6</td><td>Política de uso, treinamento e monitoramento a cargo de sócios e gestores</td><td>Política de uma página (módulo 1) e registro de auditoria (módulo 3)</td></tr>
+          <tr><td>4.1 a 4.3.4</td><td>Comunicar o uso de IA ao cliente por escrito, colher o consentimento e arquivar o documento</td><td>Termo de ciência (módulo 1), arquivado no CRM (módulo 3)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="duas">
+      <div>
+        <h3>Produtos para clientes: o que cabe</h3>
+        <ul class="lista sim">
+          <li>Cartão virtual com nome, número da OAB, contatos e QR Code</li>
+          <li>Página de agendamento de consulta</li>
+          <li>Formulário de primeiro contato com aviso de privacidade, que entrega os dados ao advogado</li>
+          <li>Assistente no site que responde às primeiras dúvidas sobre a atuação do escritório e se identifica como máquina</li>
+          <li>«Contrato explicado»: resumo em linguagem simples, revisado e assinado pelo advogado</li>
+          <li>Relatório mensal do caso, gerado do CRM e revisado antes do envio</li>
+        </ul>
+      </div>
+      <div>
+        <h3>O que não cabe</h3>
+        <ul class="lista nao">
+          <li>Aplicativo que responde automaticamente consultas jurídicas a quem não é cliente</li>
+          <li>Atendimento só por IA, sem a opção de falar com uma pessoa</li>
+          <li>Preço, desconto, gratuidade ou promessa de resultado em material de divulgação</li>
+          <li>Fotografia no cartão de visita e distribuição indiscriminada do cartão</li>
+          <li>Caso concreto usado como oferta de serviço</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="secao-cab">
+      <h3>Pontos de atenção da LGPD para levar ao encarregado</h3>
+    </div>
+    <ul class="lista">
+      <li><span class="forte">Transferência internacional.</span> Os dados enviados a Claude ou ChatGPT são processados fora do Brasil. Os contratos de proteção de dados dos dois fornecedores trazem cláusulas europeias; não localizamos neles as cláusulas-padrão brasileiras da Resolução ANPD 19/2024. Enquanto isso não se resolve, a máscara e o semáforo reduzem o que sai.</li>
+      <li><span class="forte">Plano de consumidor treina com as conversas por padrão.</span> Nos planos individuais das duas ferramentas é preciso desligar essa opção. Nos planos corporativos e na API o padrão é não treinar.</li>
+      <li><span class="forte">Incidente.</span> Comunicação à ANPD e ao titular em três dias úteis (Resolução 15/2024). O sigilo profissional conta como critério de risco.</li>
+      <li><span class="forte">Escritório de pequeno porte.</span> A Resolução 2/2022 simplifica o registro de operações e dispensa o encarregado, mas não vale para tratamento de alto risco, e o uso de tecnologia emergente é um dos critérios de alto risco.</li>
+      <li><span class="forte">Regras em movimento.</span> Não há norma da ANPD específica sobre IA generativa, o projeto do marco legal da IA (PL 2338/2023) segue na Câmara e a OAB anunciou um provimento sobre o tema. O dossiê do módulo 3 tem campo de data para revisão.</li>
+    </ul>
+
+    <ul class="fontes">
+      <li>Fontes conferidas em 11/11/2026:</li>
+      <li><a href="https://diario.oab.org.br/pages/materia/842347">Recomendação 001/2024 do Conselho Federal da OAB</a> · <a href="https://www.oab.org.br/leisnormas/legislacao/provimentos/205-2021">Provimento 205/2021</a> · <a href="https://www.gov.br/anpd/pt-br/acesso-a-informacao/institucional/atos-normativos/regulamentacoes_anpd">Resoluções da ANPD</a> · <a href="https://atos.cnj.jus.br/atos/detalhar/6001">Resolução CNJ 615/2025</a> · <a href="https://www.tst.jus.br/-/empresa-e-advogado-sao-condenados-por-possivel-uso-de-ia-com-citacoes-falsas-de-jurisprudencia">Notícia do TST de 10/03/2026</a> · <a href="https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2487262">Tramitação do PL 2338/2023</a></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ CAMINHO DO CONTRATO ══════════ -->
+  <section class="secao" id="contrato">
+    <div class="secao-cab">
+      <p class="rotulo">Caminho do contrato</p>
+      <h2>O que sai do escritório e o que fica</h2>
+      <p class="texto">O módulo 3 monta este caminho. Os quadros destacados são os pontos de controle: o que eles barram não chega à IA, e o que a IA devolve não chega à agenda sem passar por eles.</p>
+    </div>
+    <figure class="figura">
+      <div class="rolagem">
+        <svg viewBox="0 0 1040 440" role="img" aria-label="Caminho de um contrato: dentro do ambiente do escritório o arquivo é lido, passa pelo controle de entrada, é copiado e mascarado. Só o texto mascarado vai à IA. Na volta, os trechos são conferidos, os dados reais retornam, a planilha recebe a análise, o advogado revisa e só então os prazos vão para a agenda.">
+          <defs>
+            <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="dg-ponta"/></marker>
+          </defs>
+          <rect x="16" y="38" width="752" height="386" rx="10" class="dg-fronteira"/>
+          <text x="20" y="24" class="dg-r">DENTRO DO ESCRITÓRIO · GOOGLE WORKSPACE</text>
+          <text x="808" y="24" class="dg-r">FORA · SERVIÇO DE IA</text>
+
+          <rect x="36" y="66" width="124" height="56" rx="5" class="dg-caixa"/>
+          <text x="98" y="90" text-anchor="middle" class="dg-t">Arquivo novo</text>
+          <text x="98" y="107" text-anchor="middle" class="dg-s">pasta 01_Entrada</text>
+          <rect x="180" y="66" width="124" height="56" rx="5" class="dg-caixa"/>
+          <text x="242" y="90" text-anchor="middle" class="dg-t">Texto extraído</text>
+          <text x="242" y="107" text-anchor="middle" class="dg-s">Docs, PDF ou Word</text>
+          <rect x="324" y="66" width="124" height="56" rx="5" class="dg-guarda"/>
+          <text x="386" y="90" text-anchor="middle" class="dg-t">Controle de entrada</text>
+          <text x="386" y="107" text-anchor="middle" class="dg-s">legível? sensível?</text>
+          <rect x="468" y="66" width="124" height="56" rx="5" class="dg-caixa"/>
+          <text x="530" y="90" text-anchor="middle" class="dg-t">Cópia integral</text>
+          <text x="530" y="107" text-anchor="middle" class="dg-s">+ impressão digital</text>
+          <rect x="612" y="66" width="124" height="56" rx="5" class="dg-guarda"/>
+          <text x="674" y="90" text-anchor="middle" class="dg-t">Máscara</text>
+          <text x="674" y="107" text-anchor="middle" class="dg-s">CPF, CNPJ e contatos</text>
+
+          <line x1="160" y1="94" x2="178" y2="94" class="dg-linha" marker-end="url(#seta)"/>
+          <line x1="304" y1="94" x2="322" y2="94" class="dg-linha" marker-end="url(#seta)"/>
+          <line x1="448" y1="94" x2="466" y2="94" class="dg-linha" marker-end="url(#seta)"/>
+          <line x1="592" y1="94" x2="610" y2="94" class="dg-linha" marker-end="url(#seta)"/>
+
+          <line x1="386" y1="122" x2="386" y2="176" class="dg-linha" marker-end="url(#seta)"/>
+          <text x="396" y="153" class="dg-s">se barrar</text>
+          <rect x="324" y="178" width="124" height="46" rx="5" class="dg-caixa"/>
+          <text x="386" y="198" text-anchor="middle" class="dg-t">Revisão manual</text>
+          <text x="386" y="214" text-anchor="middle" class="dg-s">nada vai à IA</text>
+
+          <rect x="484" y="178" width="252" height="92" rx="5" class="dg-fica"/>
+          <text x="500" y="200" class="dg-t">Nunca saem daqui</text>
+          <text x="500" y="219" class="dg-s">Cópias integrais de cada versão</text>
+          <text x="500" y="236" class="dg-s">Planilha-CRM e registro de auditoria</text>
+          <text x="500" y="253" class="dg-s">CPF, CNPJ, e-mails e telefones</text>
+
+          <rect x="808" y="150" width="212" height="124" rx="6" class="dg-ia"/>
+          <text x="914" y="196" text-anchor="middle" class="dg-t">Modelo de IA</text>
+          <text x="914" y="215" text-anchor="middle" class="dg-s">lê o texto mascarado</text>
+          <text x="914" y="232" text-anchor="middle" class="dg-s">e aplica o playbook do escritório</text>
+
+          <polyline points="736,94 914,94 914,148" class="dg-linha" marker-end="url(#seta)"/>
+          <text x="858" y="84" text-anchor="middle" class="dg-s">texto mascarado + playbook</text>
+          <polyline points="914,274 914,352 738,352" class="dg-linha" marker-end="url(#seta)"/>
+          <text x="858" y="372" text-anchor="middle" class="dg-s">achados com trecho literal</text>
+
+          <rect x="612" y="324" width="124" height="56" rx="5" class="dg-guarda"/>
+          <text x="674" y="348" text-anchor="middle" class="dg-t">Trecho confere?</text>
+          <text x="674" y="365" text-anchor="middle" class="dg-s">senão, fica sinalizado</text>
+          <rect x="468" y="324" width="124" height="56" rx="5" class="dg-caixa"/>
+          <text x="530" y="348" text-anchor="middle" class="dg-t">Dados reais</text>
+          <text x="530" y="365" text-anchor="middle" class="dg-s">substituem marcadores</text>
+          <rect x="324" y="324" width="124" height="56" rx="5" class="dg-caixa"/>
+          <text x="386" y="348" text-anchor="middle" class="dg-t">Planilha-CRM</text>
+          <text x="386" y="365" text-anchor="middle" class="dg-s">«aguardando revisão»</text>
+          <rect x="180" y="324" width="124" height="56" rx="5" class="dg-guarda"/>
+          <text x="242" y="348" text-anchor="middle" class="dg-t">Advogado decide</text>
+          <text x="242" y="365" text-anchor="middle" class="dg-s">e assina a revisão</text>
+          <rect x="36" y="324" width="124" height="56" rx="5" class="dg-caixa"/>
+          <text x="98" y="348" text-anchor="middle" class="dg-t">Prazos na agenda</text>
+          <text x="98" y="365" text-anchor="middle" class="dg-s">só depois da revisão</text>
+
+          <line x1="612" y1="352" x2="594" y2="352" class="dg-linha" marker-end="url(#seta)"/>
+          <line x1="468" y1="352" x2="450" y2="352" class="dg-linha" marker-end="url(#seta)"/>
+          <line x1="324" y1="352" x2="306" y2="352" class="dg-linha" marker-end="url(#seta)"/>
+          <line x1="180" y1="352" x2="162" y2="352" class="dg-linha" marker-end="url(#seta)"/>
+        </svg>
+      </div>
+      <figcaption>Só o texto mascarado cruza a fronteira do escritório. Nomes de pessoas e o conteúdo das cláusulas seguem no texto, e por isso o contrato precisa estar na faixa amarela do semáforo, com a ciência do cliente. A cada nova versão o mesmo caminho se repete, e a comparação entre versões é feita por código antes de a IA explicar as mudanças.</figcaption>
+    </figure>
+
+    <div class="notas">
+      <div>
+        <h4>Contrato longo vai para a fila</h4>
+        <p>O Apps Script espera cerca de um minuto por resposta, e o guia oficial de sumarização jurídica avisa que documentos longos podem levar esse tempo. Quando a resposta não chega, o kit envia o pedido para processamento em segundo plano, que custa a metade, e recolhe o resultado na rodada seguinte.</p>
+      </div>
+      <div>
+        <h4>Custo por contrato</h4>
+        <p>No exemplo do guia oficial, resumir mil contratos de 300 mil caracteres custa US$ 556 no modelo mais preciso, cerca de US$ 0,56 por contrato. Para contratos de 10 a 50 páginas, a nossa estimativa fica entre 15 e 40 centavos de dólar, a confirmar na conta do escritório.</p>
+      </div>
+      <div>
+        <h4>Prova com gabarito</h4>
+        <p>Antes de confiar no sistema, o escritório roda três a cinco contratos que já revisou à mão e compara os resultados nos seis critérios do guia: correção factual, precisão jurídica, concisão, consistência, legibilidade e imparcialidade.</p>
+      </div>
+    </div>
+  </section>
+
+    <!-- ══════════ KIT ══════════ -->
+  <section class="secao" id="kit">
+    <div class="secao-cab">
+      <p class="rotulo">Kit pronto</p>
+      <h2>O que já está no repositório</h2>
+      <p class="texto">Tudo fica na pasta <code>advocacia-aumentada</code>. Os scripts foram testados em simulação: falta rodá-los uma vez em uma conta Google real, com a chave da API, antes da primeira turma.</p>
+    </div>
+    <ul class="arquivos">
+      <li><code>agenda.html · AGENDA.md</code><p>Esta agenda e o seu espelho em texto.</p></li>
+      <li><code>modulos/</code><p>Guia do facilitador de cada módulo: roteiro, exercícios, pontos de checagem e plano B de cada bloco.</p></li>
+      <li><code>kit/painel-de-prazos/</code><p>Módulo 1. Painel de casos e prazos de referência, a planilha de processos fictícios e o prompt que gera o painel.</p></li>
+      <li><code>kit/prompts/</code><p>Método FATOS e biblioteca de prompts por dor: andamento ao cliente, cobrança de honorários, resumo, linha do tempo, marca, cartão, especificação.</p></li>
+      <li><code>kit/apps-script/</code><p>Módulos 2 e 3. Sete scripts para a planilha: triagem de e-mail, briefing, auditor de citações, leitura de contratos, histórico de versões e painel. Acompanham os testes automatizados.</p></li>
+      <li><code>kit/conformidade/</code><p>Semáforo, política de uso de IA de uma página, termo de ciência do cliente, matriz da Recomendação 001/2024 e dossiê LGPD.</p></li>
+      <li><code>kit/caso-pratico/</code><p>O contrato fictício em duas versões, o playbook do escritório-exemplo, os e-mails de treino e a minuta com citações para auditar.</p></li>
+      <li><code>kit/sistema-contratos/</code><p>Módulo 3. Especificação funcional e identidade visual de referência para o sistema próprio.</p></li>
+    </ul>
+  </section>
+
+  <!-- ══════════ ESCOLHAS ══════════ -->
+  <section class="secao" id="escolhas">
+    <div class="secao-cab">
+      <p class="rotulo">Por que este desenho</p>
+      <h2>Três decisões de desenho</h2>
+    </div>
+    <div class="lacunas">
+      <div>
+        <p class="rotulo">Decisão 1</p>
+        <h3>Partir da dor, e não da ferramenta</h3>
+        <p>Ninguém acorda querendo aprender prompts. O advogado quer responder ao cliente, achar o prazo e não ser surpreendido por uma cláusula. Cada bloco leva o nome de uma dessas dores.</p>
+      </div>
+      <div>
+        <p class="rotulo">Decisão 2</p>
+        <h3>Um sistema pequeno em cada módulo</h3>
+        <p>Conhecimento sem objeto se perde em uma semana. Painel, central e sistema de contratos ficam abertos na tela no dia seguinte e puxam o hábito.</p>
+      </div>
+      <div>
+        <p class="rotulo">Decisão 3</p>
+        <h3>Conformidade dentro de cada bloco</h3>
+        <p>LGPD e ética não ficam para uma aula no fim. Quem configura a conta, classifica o dado e confere a citação em todo exercício faz o mesmo no escritório.</p>
+      </div>
+    </div>
+
+    <div class="duas">
+      <div>
+        <h3>O que a pesquisa mostra</h3>
+        <p class="texto">Em um estudo controlado com 137 estudantes de Direito das universidades de Minnesota e Michigan, o acesso a ferramentas de IA reduziu o tempo de trabalho entre 20% e 28% em cinco de seis tarefas jurídicas. Na sexta, redigir um contrato-padrão a partir de modelo, não houve ganho. Em 768 tarefas apareceram 18 citações inexistentes.</p>
+        <p class="texto">Por isso o programa aplica a IA em leitura, análise e comparação, e trata a conferência como parte do trabalho. Os participantes do estudo eram estudantes e as ferramentas eram de 2024; os números servem de referência, e a medição vale mais.</p>
+        <ul class="fontes"><li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5162111">Schwarcz e outros, «AI-Powered Lawyering»</a></li></ul>
+      </div>
+      <div>
+        <h3>Metas para medir, sem promessa</h3>
+        <div class="rolagem">
+          <table class="metas" style="min-width: 0">
+            <thead><tr><th>Meta</th><th>Como medir</th></tr></thead>
+            <tbody>
+              <tr><td>8 em cada 10 participantes com o painel ou sistema em uso</td><td>Pesquisa no dia 30</td></tr>
+              <tr><td>Tempo da primeira leitura de contrato e de e-mails 20% a 30% menor</td><td>Tempo anotado no encontro contra o dia 30</td></tr>
+              <tr><td>Toda citação em peça com registro de conferência</td><td>Tabela de precedentes</td></tr>
+              <tr><td>Nenhum envio automático e nenhum dado vermelho em ferramenta de IA</td><td>Registro de auditoria da planilha</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="secao-cab">
+      <h3>Alternativas consideradas</h3>
+      <p class="texto">O desenho escolhido combina três das alternativas de ruptura e deixa uma quarta para depois do treinamento.</p>
+    </div>
+    <div class="duas">
+      <div>
+        <p class="rotulo">Cinco caminhos convencionais</p>
+        <ul class="lista">
+          <li>Curso por ferramenta: uma aula de Claude, uma de ChatGPT, uma de automação</li>
+          <li>Oficina de prompts jurídicos com biblioteca pronta</li>
+          <li>Trilha gravada com exercícios</li>
+          <li>Workshop por área do direito</li>
+          <li>Palestra de sensibilização com manual em PDF</li>
+        </ul>
+      </div>
+      <div>
+        <p class="rotulo">Cinco caminhos de ruptura</p>
+        <ul class="lista">
+          <li><span class="escolhida">Sprint de produto:</span> cada participante termina com um painel ou sistema funcionando</li>
+          <li><span class="escolhida">Agenda por dores:</span> o índice do curso é a lista de incômodos do dia a dia</li>
+          <li><span class="escolhida">Tribunal da IA:</span> aprender caçando os erros da máquina</li>
+          <li>Tutor residente: um projeto que continua o treinamento por 30 dias (fica para o pós)</li>
+          <li>Clínica de automação: cada um traz um processo real e sai com ele automatizado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lacunas">
+      <div>
+        <p class="rotulo">Inovação incremental</p>
+        <h3>Fazer melhor o que já se faz</h3>
+        <p>Pedir com método, responder ao cliente em linguagem simples, enxergar os prazos em um painel. É o módulo 1.</p>
+      </div>
+      <div>
+        <p class="rotulo">Inovação transformacional</p>
+        <h3>Mudar o processo</h3>
+        <p>Caixa de entrada triada, citações com registro de conferência, contratos lidos pelo critério do escritório e versões comparadas. São os módulos 2 e 3.</p>
+      </div>
+      <div>
+        <p class="rotulo">Inovação de ruptura</p>
+        <h3>Criar o que não existia</h3>
+        <p>Serviços recorrentes para o cliente: acompanhamento de contratos por assinatura, radar de renovações, «contrato explicado». É o plano de 90 dias do módulo 3.</p>
+      </div>
+    </div>
+
+    <div class="duas">
+      <div>
+        <h3>O que diferencia o programa</h3>
+        <ul class="lista">
+          <li>A agenda nasce das dores do dia a dia e do que o mercado jurídico já pede pelo nome</li>
+          <li>Um painel ou sistema funcionando ao fim de cada módulo</li>
+          <li>Módulos independentes: o básico é completo</li>
+          <li>Conformidade dentro de cada bloco, com a recomendação da OAB mapeada item a item</li>
+          <li>Guardrails que rodam em código e têm teste automatizado</li>
+          <li>Duplas que juntam fluência digital e experiência jurídica, o que aproveita a faixa de 19 a 55 anos</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Riscos e premissas</h3>
+        <ul class="lista">
+          <li>O painel do módulo 1 nasce de uma conversa, e o resultado varia de pessoa para pessoa. Por isso o kit traz o painel de referência pronto.</li>
+          <li>Os módulos 2 e 3 cabem no tempo porque o kit chega pronto em uma planilha-modelo. Sem ela, não cabem.</li>
+          <li>Os scripts passaram em simulação. Ainda não rodaram em conta Google real nem com a API real.</li>
+          <li>Nomes de menus e planos mudam rápido. O guia do facilitador traz a data de conferência de cada tela.</li>
+          <li>Conectores com escrita, plugins e publicação de páginas por link dependem de plano pago. Conta Google gratuita limita as automações a 90 minutos de execução por dia.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ DECISÕES ══════════ -->
+  <section class="secao" id="decisoes">
+    <div class="secao-cab">
+      <p class="rotulo">Decisões em aberto</p>
+      <h2>Seis decisões que são suas</h2>
+    </div>
+    <ol class="decisoes">
+      <li><h4>Como vender</h4><p>Os três módulos juntos, ou cada um avulso. O desenho permite os dois.</p></li>
+      <li><h4>Duração do básico</h4><p>2 h 30 comportam o básico completo com o painel. Em 2 h, o painel vira demonstração e deixa de ser construído por todos.</p></li>
+      <li><h4>Ferramenta em sala</h4><p>A agenda usa o Claude. O método vale no ChatGPT, mas painel, cartão e conectores mudam de nome e de lugar.</p></li>
+      <li><h4>Plano da turma</h4><p>Conta gratuita cobre quase todo o módulo 1. Publicar por link, conectores com escrita e plugins pedem plano pago.</p></li>
+      <li><h4>Nome e marca do programa</h4><p>«Advocacia Aumentada» é a proposta de trabalho.</p></li>
+      <li><h4>Onde o material fica</h4><p>O repositório atual é público. Se o programa for produto comercial, convém movê-lo para um repositório privado.</p></li>
+    </ol>
+    <div class="rodape">
+      <p>Material de treinamento, sem valor de parecer jurídico. Regras, planos e nomes de telas conferidos em 11 de novembro de 2026.</p>
+      <p>Empresas, pessoas e documentos do caso prático são fictícios. As falas «da cadeira do juiz» e «da cadeira do garoto» são as duas vozes que orientaram o desenho da agenda, e não citações de pessoas reais.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  function hora(minutos) {
+    var h = Math.floor(minutos / 60) % 24;
+    var m = minutos % 60;
+    return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+  }
+  var modulos = document.querySelectorAll('.modulo');
+  for (var i = 0; i < modulos.length; i++) {
+    (function (modulo) {
+      var campo = modulo.querySelector('input[type="time"]');
+      if (!campo) return;
+      function atualizar() {
+        var partes = String(campo.value || '').split(':');
+        if (partes.length < 2) return;
+        var t = Number(partes[0]) * 60 + Number(partes[1]);
+        if (isNaN(t)) return;
+        var blocos = modulo.querySelectorAll('.bloco');
+        for (var j = 0; j < blocos.length; j++) {
+          var duracao = Number(blocos[j].getAttribute('data-min'));
+          blocos[j].querySelector('.hora').textContent = hora(t) + '–' + hora(t + duracao);
+          t += duracao;
+        }
+        var fim = modulo.querySelector('.termina');
+        if (fim) fim.textContent = hora(t);
+      }
+      campo.addEventListener('input', atualizar);
+      campo.addEventListener('change', atualizar);
+      atualizar();
+    })(modulos[i]);
+  }
+})();
+</script>

@@ -1,0 +1,438 @@
+<meta charset="utf-8">
+<title>Painel de Prazos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+/* Layout: quadro de trabalho. Resumo em cinco contadores, lista de casos por urgência à esquerda,
+   semanas e responsáveis à direita, dados do usuário no fim. Cor só para estado do prazo. */
+:root {
+  --paper: #F3F5F6; --surface: #FFFFFF; --ink: #16212B; --ink-2: #4D5A66; --line: #D3DAE0;
+  --accent: #0A6B63; --accent-soft: #DCEEEB;
+  --red: #B3261E; --red-soft: #F9DEDB; --amber: #8A5A00; --amber-soft: #FBEFD2;
+  --blue: #1E5AA8; --blue-soft: #DDE9F8; --mute-soft: #E7ECEF;
+  --font-display: "IBM Plex Serif", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1418; --surface: #151C22; --ink: #E7ECF0; --ink-2: #A0ADB8; --line: #2B3640;
+    --accent: #56C8BC; --accent-soft: #12322F;
+    --red: #FF8A80; --red-soft: #3B1A17; --amber: #E6B450; --amber-soft: #382C0E;
+    --blue: #8AB4F8; --blue-soft: #16283F; --mute-soft: #1E272F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1418; --surface: #151C22; --ink: #E7ECF0; --ink-2: #A0ADB8; --line: #2B3640;
+  --accent: #56C8BC; --accent-soft: #12322F;
+  --red: #FF8A80; --red-soft: #3B1A17; --amber: #E6B450; --amber-soft: #382C0E;
+  --blue: #8AB4F8; --blue-soft: #16283F; --mute-soft: #1E272F;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.quadro { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px; display: flex; flex-direction: column; gap: 24px; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.1; }
+h2 { font-size: 1rem; font-weight: 600; }
+.rotulo { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+.topo > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.exemplo { align-self: flex-start; font-size: 0.82rem; padding: 4px 10px; border-radius: 4px; background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber); }
+
+.contadores { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.contador { background: var(--surface); border: 1px solid var(--line); border-top-width: 3px; border-radius: 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.contador b { font-size: 1.9rem; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.contador span { font-size: 0.84rem; color: var(--ink-2); }
+.contador.vencido { border-top-color: var(--red); } .contador.vencido b { color: var(--red); }
+.contador.hoje { border-top-color: var(--amber); } .contador.hoje b { color: var(--amber); }
+.contador.semana { border-top-color: var(--blue); } .contador.semana b { color: var(--blue); }
+.contador.mes, .contador.abertos { border-top-color: var(--ink-2); }
+
+.corpo { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.painel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.lado { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.filtros { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; font-size: 0.88rem; color: var(--ink-2); }
+.filtros label { display: inline-flex; align-items: center; gap: 6px; }
+select, input[type="search"], textarea, button { font: inherit; color: var(--ink); }
+select, input[type="search"] { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px; max-width: 100%; }
+button { background: var(--surface); border: 1px solid var(--ink-2); border-radius: 4px; padding: 7px 14px; cursor: pointer; font-weight: 500; }
+button.principal { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rolagem { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.9rem; }
+th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+tr:last-child td { border-bottom: 0; }
+td.data { font-family: var(--font-mono); font-size: 0.84rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td small { display: block; color: var(--ink-2); font-size: 0.8rem; }
+.proc { font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-2); display: block; overflow-wrap: anywhere; }
+.proc.ruim { color: var(--red); }
+.selo { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.selo.vencido { background: var(--red-soft); color: var(--red); }
+.selo.hoje { background: var(--amber-soft); color: var(--amber); }
+.selo.semana { background: var(--blue-soft); color: var(--blue); }
+.selo.depois, .selo.sem, .selo.cumprido { background: var(--mute-soft); color: var(--ink-2); }
+tr.cumprido td { color: var(--ink-2); }
+.vazio { color: var(--ink-2); font-size: 0.9rem; padding: 8px 0; }
+
+.semanas { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; align-items: end; height: 150px; }
+.coluna { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 4px; height: 100%; min-width: 0; }
+.coluna i { display: block; width: 100%; background: var(--accent); border-radius: 2px 2px 0 0; min-height: 2px; }
+.coluna i.zero { background: var(--line); }
+.coluna b { font-size: 0.8rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.coluna span { font-family: var(--font-mono); font-size: 0.66rem; color: var(--ink-2); white-space: nowrap; }
+.pessoas { display: flex; flex-direction: column; gap: 10px; }
+.pessoa { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; font-size: 0.9rem; }
+.pessoa .barra { grid-column: 1 / -1; height: 8px; background: var(--mute-soft); border-radius: 2px; overflow: hidden; display: flex; }
+.pessoa .barra i { display: block; height: 100%; background: var(--ink-2); }
+.pessoa .barra i.urgente { background: var(--blue); }
+.pessoa small { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.alertas { display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; }
+.alertas li { padding-left: 12px; border-left: 2px solid var(--red); overflow-wrap: anywhere; }
+.legenda { font-size: 0.8rem; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.legenda i { display: inline-block; width: 10px; height: 8px; border-radius: 2px; margin-right: 5px; }
+
+.dados { display: flex; flex-direction: column; gap: 10px; }
+textarea { width: 100%; min-height: 150px; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 10px; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.45; white-space: pre; overflow: auto; }
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.erro { color: var(--red); font-size: 0.9rem; }
+.nota { color: var(--ink-2); font-size: 0.86rem; max-width: 86ch; }
+.rodape { color: var(--ink-2); font-size: 0.84rem; border-top: 1px solid var(--line); padding-top: 14px; max-width: 90ch; }
+
+@media (max-width: 860px) {
+  .corpo { grid-template-columns: minmax(0, 1fr); }
+  .contadores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contador.abertos { grid-column: 1 / -1; }
+}
+</style>
+
+<div class="quadro">
+  <header class="topo">
+    <div>
+      <p class="rotulo" id="hoje-texto">Hoje</p>
+      <h1>Painel de casos e prazos</h1>
+    </div>
+    <p class="exemplo" id="aviso-exemplo">Dados de exemplo, fictícios. Cole os seus no fim da página.</p>
+  </header>
+
+  <section class="contadores" aria-label="Resumo dos prazos">
+    <div class="contador vencido"><b id="n-vencidos">0</b><span>vencidos</span></div>
+    <div class="contador hoje"><b id="n-hoje">0</b><span>vencem hoje</span></div>
+    <div class="contador semana"><b id="n-semana">0</b><span>nos próximos 7 dias</span></div>
+    <div class="contador mes"><b id="n-mes">0</b><span>de 8 a 30 dias</span></div>
+    <div class="contador abertos"><b id="n-abertos">0</b><span>casos em aberto</span></div>
+  </section>
+
+  <div class="corpo">
+    <section class="painel">
+      <h2>Casos por urgência</h2>
+      <div class="filtros">
+        <label for="filtro-responsavel">Responsável <select id="filtro-responsavel"><option value="">Todos</option></select></label>
+        <label for="filtro-texto">Buscar <input type="search" id="filtro-texto" placeholder="cliente, assunto ou processo"></label>
+        <label for="filtro-cumpridos"><input type="checkbox" id="filtro-cumpridos"> mostrar cumpridos</label>
+      </div>
+      <div class="rolagem">
+        <table>
+          <thead><tr><th>Prazo</th><th>Situação</th><th>Cliente e assunto</th><th>Próximo passo</th><th>Responsável</th></tr></thead>
+          <tbody id="linhas"></tbody>
+        </table>
+      </div>
+      <p class="vazio" id="sem-linhas" hidden>Nenhum caso com esses filtros.</p>
+    </section>
+
+    <div class="lado">
+      <section class="painel">
+        <h2>Prazos por semana</h2>
+        <div class="semanas" id="semanas" role="img" aria-label="Quantidade de prazos em aberto em cada uma das próximas oito semanas"></div>
+        <p class="nota">Semanas de segunda a domingo, a partir da atual. Prazos vencidos não entram.</p>
+      </section>
+      <section class="painel">
+        <h2>Casos em aberto por responsável</h2>
+        <div class="pessoas" id="pessoas"></div>
+        <p class="legenda"><span><i style="background: var(--blue)"></i>vencido, hoje ou em até 7 dias</span><span><i style="background: var(--ink-2)"></i>demais</span></p>
+      </section>
+      <section class="painel" id="caixa-alertas" hidden>
+        <h2>Para conferir na planilha</h2>
+        <ul class="alertas" id="alertas"></ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="painel dados">
+    <h2>Seus dados</h2>
+    <p class="nota">Selecione as linhas da sua planilha, com o cabeçalho, copie e cole abaixo. O painel reconhece as colunas <strong>Processo</strong>, <strong>Cliente</strong>, <strong>Assunto</strong>, <strong>Responsável</strong>, <strong>Próximo passo</strong>, <strong>Prazo</strong> (dd/mm/aaaa) e <strong>Situação</strong> (Aberto ou Cumprido). Só Cliente e Prazo são obrigatórias. O que você cola fica guardado neste navegador e não é enviado a lugar nenhum.</p>
+    <label class="rotulo" for="entrada">Linhas da planilha</label>
+    <textarea id="entrada" spellcheck="false"></textarea>
+    <div class="acoes">
+      <button class="principal" id="botao-atualizar" type="button">Atualizar painel</button>
+      <button id="botao-exemplo" type="button">Carregar exemplo</button>
+      <button id="botao-limpar" type="button">Apagar dados deste navegador</button>
+      <span class="erro" id="erro" role="alert"></span>
+    </div>
+  </section>
+
+  <p class="rodape">O painel mostra as datas que estão na planilha. Ele não conta prazo e não substitui a conferência das publicações e do sistema do tribunal. O aviso de número de processo confere só o dígito verificador: dígito certo não prova que o processo existe.</p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var DIA = 86400000;
+  var CHAVE = 'painel-de-prazos:dados';
+  var DIAS_SEMANA = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+  function el(id) { return document.getElementById(id); }
+  function dois(n) { return (n < 10 ? '0' : '') + n; }
+  function hoje() { var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function maisDias(data, n) { return new Date(data.getFullYear(), data.getMonth(), data.getDate() + n); }
+  function dataCurta(d) { return dois(d.getDate()) + '/' + dois(d.getMonth() + 1); }
+  function dataLonga(d) { return dataCurta(d) + '/' + d.getFullYear(); }
+  function semAcento(s) { return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim(); }
+
+  /* ── Regras, sem IA: datas e dígito do processo são calculados aqui ── */
+
+  function lerData(texto) {
+    var s = String(texto || '').trim();
+    var m = s.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2}|\d{4})$/);
+    var ano, mes, dia;
+    if (m) { dia = Number(m[1]); mes = Number(m[2]); ano = Number(m[3]); if (ano < 100) ano += 2000; }
+    else if ((m = s.match(/^(\d{4})-(\d{2})-(\d{2})$/))) { ano = Number(m[1]); mes = Number(m[2]); dia = Number(m[3]); }
+    else return null;
+    var d = new Date(ano, mes - 1, dia);
+    return d.getMonth() === mes - 1 && d.getDate() === dia ? d : null;
+  }
+  function resto97(digitos) { var r = 0; for (var i = 0; i < digitos.length; i++) r = (r * 10 + Number(digitos.charAt(i))) % 97; return r; }
+  /* Número único do processo: NNNNNNN-DD.AAAA.J.TR.OOOO, com DD pelo módulo 97. */
+  function conferirProcesso(texto) {
+    var d = String(texto || '').replace(/\D/g, '');
+    if (!d) return 'vazio';
+    if (d.length !== 20) return 'fora do padrão';
+    var esperado = 98 - resto97(d.slice(0, 7) + d.slice(9) + '00');
+    return dois(esperado) === d.slice(7, 9) ? 'ok' : 'dígito inválido';
+  }
+  function montarProcesso(sequencial, resto) {
+    var dd = dois(98 - resto97(sequencial + resto + '00'));
+    return sequencial + '-' + dd + '.' + resto.slice(0, 4) + '.' + resto.slice(4, 5) + '.' + resto.slice(5, 7) + '.' + resto.slice(7);
+  }
+
+  var COLUNAS = [
+    ['processo', ['processo', 'numero']], ['cliente', ['cliente']], ['assunto', ['assunto', 'caso', 'acao']],
+    ['responsavel', ['responsavel', 'advogad']], ['passo', ['passo', 'providencia', 'tarefa']],
+    ['prazo', ['prazo', 'vencimento', 'data']], ['situacao', ['situacao', 'status']]
+  ];
+
+  /* Texto colado da planilha → lista de casos. Devolve { casos, erro }. */
+  function lerPlanilha(texto) {
+    var linhas = String(texto || '').split(/\r?\n/).filter(function (l) { return l.trim(); });
+    if (linhas.length < 2) return { casos: [], erro: 'Cole o cabeçalho e pelo menos uma linha.' };
+    var sep = linhas[0].indexOf('\t') >= 0 ? '\t' : (linhas[0].indexOf(';') >= 0 ? ';' : ',');
+    var cab = linhas[0].split(sep).map(semAcento);
+    var onde = {};
+    COLUNAS.forEach(function (c) {
+      for (var i = 0; i < cab.length; i++) {
+        if (onde[c[0]] === undefined && c[1].some(function (nome) { return cab[i].indexOf(nome) >= 0; })) {
+          var usada = Object.keys(onde).some(function (k) { return onde[k] === i; });
+          if (!usada) onde[c[0]] = i;
+        }
+      }
+    });
+    if (onde.cliente === undefined || onde.prazo === undefined) {
+      return { casos: [], erro: 'Não encontrei as colunas Cliente e Prazo no cabeçalho.' };
+    }
+    var casos = linhas.slice(1).map(function (linha, n) {
+      var c = linha.split(sep);
+      var pega = function (k) { return onde[k] === undefined ? '' : String(c[onde[k]] || '').trim(); };
+      var prazoTexto = pega('prazo');
+      return { linha: n + 2, processo: pega('processo'), cliente: pega('cliente'), assunto: pega('assunto'), responsavel: pega('responsavel') || 'Sem responsável',
+        passo: pega('passo'), prazoTexto: prazoTexto, prazo: lerData(prazoTexto), cumprido: semAcento(pega('situacao')).indexOf('cumprid') === 0 || semAcento(pega('situacao')).indexOf('conclu') === 0 };
+    }).filter(function (c) { return c.cliente; });
+    return { casos: casos, erro: casos.length ? '' : 'Nenhuma linha com cliente preenchido.' };
+  }
+
+  function situacao(caso, base) {
+    if (caso.cumprido) return { classe: 'cumprido', texto: 'Cumprido', ordem: 9e9 };
+    if (!caso.prazo) return { classe: 'sem', texto: 'Sem prazo', ordem: 8e9 };
+    var dias = Math.round((caso.prazo - base) / DIA);
+    if (dias < 0) return { classe: 'vencido', texto: 'Vencido há ' + (-dias) + (dias === -1 ? ' dia' : ' dias'), ordem: dias, dias: dias };
+    if (dias === 0) return { classe: 'hoje', texto: 'Vence hoje', ordem: 0, dias: 0 };
+    if (dias <= 7) return { classe: 'semana', texto: 'Em ' + dias + (dias === 1 ? ' dia' : ' dias'), ordem: dias, dias: dias };
+    return { classe: 'depois', texto: 'Em ' + dias + ' dias', ordem: dias, dias: dias };
+  }
+
+  function resumir(casos, base) {
+    var r = { vencidos: 0, hoje: 0, semana: 0, mes: 0, abertos: 0, semanas: [], pessoas: {}, alertas: [] };
+    var segunda = maisDias(base, -((base.getDay() + 6) % 7));
+    for (var s = 0; s < 8; s++) r.semanas.push({ inicio: maisDias(segunda, 7 * s), total: 0 });
+    casos.forEach(function (c) {
+      var p = conferirProcesso(c.processo);
+      if (p === 'dígito inválido' || p === 'fora do padrão') r.alertas.push('Linha ' + c.linha + ': número de processo ' + p + ' (' + c.processo + ')');
+      if (c.prazoTexto && !c.prazo) r.alertas.push('Linha ' + c.linha + ': data não reconhecida (' + c.prazoTexto + ')');
+      if (c.cumprido) return;
+      r.abertos++;
+      var st = situacao(c, base);
+      if (st.classe === 'vencido') r.vencidos++;
+      else if (st.classe === 'hoje') r.hoje++;
+      else if (st.classe === 'semana') r.semana++;
+      else if (st.classe === 'depois' && st.dias <= 30) r.mes++;
+      var pessoa = r.pessoas[c.responsavel] || (r.pessoas[c.responsavel] = { total: 0, urgentes: 0 });
+      pessoa.total++;
+      if (st.classe === 'vencido' || st.classe === 'hoje' || st.classe === 'semana') pessoa.urgentes++;
+      if (c.prazo && c.prazo >= base) {
+        var indice = Math.floor(Math.round((c.prazo - segunda) / DIA) / 7);
+        if (indice >= 0 && indice < 8) r.semanas[indice].total++;
+      }
+    });
+    return r;
+  }
+
+  function exemplo(base) {
+    var d = function (n) { return dataLonga(maisDias(base, n)); };
+    var p = function (n) { return montarProcesso(String(5000000 + n), '20998260100'); };
+    var linhas = [
+      ['Processo', 'Cliente', 'Assunto', 'Responsável', 'Próximo passo', 'Prazo', 'Situação'],
+      ['', 'Padaria Pão Dourado Ltda.', 'Contrato de software com a NuvemSul', 'Dra. Marina', 'Enviar parecer sobre a versão 2', d(1), 'Aberto'],
+      ['', 'Padaria Pão Dourado Ltda.', 'Notificação extrajudicial', 'Dr. Caio', 'Enviar a notificação', d(-2), 'Aberto'],
+      ['', 'Lavanderia Bolha Azul ME', 'Contrato de franquia', 'Dra. Marina', 'Reunião de alinhamento', d(0), 'Aberto'],
+      [p(1), 'Oficina Dois Irmãos Ltda.', 'Cobrança de duplicatas', 'Dr. Caio', 'Réplica', d(3), 'Aberto'],
+      ['', 'Clínica Sorriso Claro', 'Contrato de locação', 'Dra. Lívia', 'Minuta de aditivo', d(5), 'Aberto'],
+      [p(2).replace(/-\d\d/, '-00'), 'Oficina Dois Irmãos Ltda.', 'Ação de indenização', 'Dr. Caio', 'Juntar documentos', d(6), 'Aberto'],
+      [p(3), 'Transportes Vento Sul', 'Ação trabalhista', 'Dr. Caio', 'Contestação', d(9), 'Aberto'],
+      [p(4), 'Mercado Bom Preço', 'Recuperação de crédito', 'Dra. Lívia', 'Memória de cálculo', d(12), 'Aberto'],
+      ['', 'Escola Pequeno Sábio', 'Contrato de prestação de serviços', 'Dra. Marina', 'Revisar cláusula de reajuste', d(16), 'Aberto'],
+      [p(5), 'Restaurante Fogo Brando', 'Ação de despejo', 'Dr. Caio', 'Audiência de conciliação', d(21), 'Aberto'],
+      ['', 'Academia Corpo em Dia', 'Registro de marca', 'Dra. Lívia', 'Responder exigência', d(27), 'Aberto'],
+      ['', 'Pousada Mar Aberto', 'Contrato de parceria', 'Dra. Marina', 'Aguardar retorno do cliente', d(34), 'Aberto'],
+      [p(6), 'Gráfica Ponto Final', 'Execução de título', 'Dr. Caio', 'Indicar bens à penhora', d(45), 'Aberto'],
+      ['', 'Floricultura Jardim Secreto', 'Consultoria em proteção de dados', 'Dra. Lívia', 'Entregar relatório', '', 'Aberto'],
+      ['', 'Padaria Pão Dourado Ltda.', 'Registro de marca', 'Dra. Lívia', 'Protocolo concluído', d(-10), 'Cumprido']
+    ];
+    return linhas.map(function (l) { return l.join('\t'); }).join('\n');
+  }
+
+  /* ── Tela ── */
+
+  var estado = { casos: [], deExemplo: true };
+  function no(tag, classe, texto) { var n = document.createElement(tag); if (classe) n.className = classe; if (texto !== undefined) n.textContent = texto; return n; }
+
+  function desenhar() {
+    var base = hoje();
+    var r = resumir(estado.casos, base);
+    el('hoje-texto').textContent = 'Hoje · ' + DIAS_SEMANA[base.getDay()] + ', ' + dataLonga(base);
+    el('aviso-exemplo').hidden = !estado.deExemplo;
+    el('n-vencidos').textContent = r.vencidos; el('n-hoje').textContent = r.hoje; el('n-semana').textContent = r.semana;
+    el('n-mes').textContent = r.mes; el('n-abertos').textContent = r.abertos;
+
+    var seletor = el('filtro-responsavel');
+    var escolhido = seletor.value;
+    var nomes = Object.keys(r.pessoas).sort();
+    seletor.textContent = '';
+    seletor.appendChild(new Option('Todos', ''));
+    nomes.forEach(function (n) { seletor.appendChild(new Option(n, n)); });
+    seletor.value = nomes.indexOf(escolhido) >= 0 ? escolhido : '';
+
+    var busca = semAcento(el('filtro-texto').value);
+    var comCumpridos = el('filtro-cumpridos').checked;
+    var corpo = el('linhas');
+    corpo.textContent = '';
+    var visiveis = estado.casos.map(function (c) { return { c: c, s: situacao(c, base) }; })
+      .filter(function (x) {
+        if (x.c.cumprido && !comCumpridos) return false;
+        if (seletor.value && x.c.responsavel !== seletor.value) return false;
+        return !busca || semAcento(x.c.cliente + ' ' + x.c.assunto + ' ' + x.c.processo).indexOf(busca) >= 0;
+      })
+      .sort(function (a, b) { return a.s.ordem - b.s.ordem; });
+    visiveis.forEach(function (x) {
+      var tr = no('tr', x.c.cumprido ? 'cumprido' : '');
+      tr.appendChild(no('td', 'data', x.c.prazo ? dataLonga(x.c.prazo) : (x.c.prazoTexto || '—')));
+      var tdS = no('td'); tdS.appendChild(no('span', 'selo ' + x.s.classe, x.s.texto)); tr.appendChild(tdS);
+      var tdC = no('td'); tdC.appendChild(document.createTextNode(x.c.cliente)); tdC.appendChild(no('small', '', x.c.assunto));
+      if (x.c.processo) {
+        var conf = conferirProcesso(x.c.processo);
+        tdC.appendChild(no('span', 'proc' + (conf === 'ok' ? '' : ' ruim'), x.c.processo + (conf === 'ok' ? '' : ' · ' + conf)));
+      }
+      tr.appendChild(tdC);
+      tr.appendChild(no('td', '', x.c.passo || '—'));
+      tr.appendChild(no('td', '', x.c.responsavel));
+      corpo.appendChild(tr);
+    });
+    el('sem-linhas').hidden = visiveis.length > 0;
+
+    var maximo = Math.max.apply(null, r.semanas.map(function (s) { return s.total; }).concat(1));
+    var semanas = el('semanas');
+    semanas.textContent = '';
+    r.semanas.forEach(function (s) {
+      var coluna = no('div', 'coluna');
+      coluna.appendChild(no('b', '', String(s.total)));
+      var barra = no('i', s.total ? '' : 'zero');
+      barra.style.height = Math.round((s.total / maximo) * 100) + '%';
+      coluna.appendChild(barra);
+      coluna.appendChild(no('span', '', dataCurta(s.inicio)));
+      semanas.appendChild(coluna);
+    });
+
+    var pessoas = el('pessoas');
+    pessoas.textContent = '';
+    var maior = Math.max.apply(null, nomes.map(function (n) { return r.pessoas[n].total; }).concat(1));
+    nomes.forEach(function (n) {
+      var linha = no('div', 'pessoa');
+      linha.appendChild(no('span', '', n));
+      linha.appendChild(no('small', '', r.pessoas[n].total + ' em aberto · ' + r.pessoas[n].urgentes + ' urgentes'));
+      var barra = no('div', 'barra');
+      var urg = no('i', 'urgente'); urg.style.width = (r.pessoas[n].urgentes / maior * 100) + '%';
+      var resto = no('i'); resto.style.width = ((r.pessoas[n].total - r.pessoas[n].urgentes) / maior * 100) + '%';
+      barra.appendChild(urg); barra.appendChild(resto); linha.appendChild(barra);
+      pessoas.appendChild(linha);
+    });
+    if (!nomes.length) pessoas.appendChild(no('p', 'vazio', 'Nenhum caso em aberto.'));
+
+    var lista = el('alertas');
+    lista.textContent = '';
+    r.alertas.forEach(function (a) { lista.appendChild(no('li', '', a)); });
+    el('caixa-alertas').hidden = r.alertas.length === 0;
+  }
+
+  function carregar(texto, deExemplo) {
+    var lido = lerPlanilha(texto);
+    el('erro').textContent = lido.erro;
+    if (lido.erro) return false;
+    estado.casos = lido.casos;
+    estado.deExemplo = deExemplo;
+    desenhar();
+    return true;
+  }
+  function guardar(texto) { try { localStorage.setItem(CHAVE, texto); } catch (semArmazenamento) { /* segue sem guardar */ } }
+  function recuperar() { try { return localStorage.getItem(CHAVE) || ''; } catch (semArmazenamento) { return ''; } }
+
+  el('botao-atualizar').addEventListener('click', function () {
+    var texto = el('entrada').value;
+    if (carregar(texto, false)) guardar(texto);
+  });
+  el('botao-exemplo').addEventListener('click', function () {
+    el('entrada').value = exemplo(hoje());
+    carregar(el('entrada').value, true);
+  });
+  el('botao-limpar').addEventListener('click', function () {
+    try { localStorage.removeItem(CHAVE); } catch (semArmazenamento) { /* nada a apagar */ }
+    el('entrada').value = exemplo(hoje());
+    carregar(el('entrada').value, true);
+  });
+  ['filtro-responsavel', 'filtro-texto', 'filtro-cumpridos'].forEach(function (id) {
+    el(id).addEventListener('input', desenhar);
+    el(id).addEventListener('change', desenhar);
+  });
+
+  var salvo = recuperar();
+  if (salvo && lerPlanilha(salvo).casos.length) {
+    el('entrada').value = salvo;
+    carregar(salvo, false);
+  } else {
+    el('entrada').value = exemplo(hoje());
+    carregar(el('entrada').value, true);
+  }
+
+  /* Para teste: expõe as regras puras, sem a tela. */
+  window.__painel = { lerData: lerData, conferirProcesso: conferirProcesso, montarProcesso: montarProcesso, lerPlanilha: lerPlanilha, resumir: resumir, situacao: situacao, exemplo: exemplo };
+})();
+</script>

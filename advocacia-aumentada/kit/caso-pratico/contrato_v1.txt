@@ -1,0 +1,59 @@
+CONTRATO DE LICENÇA DE USO DE SOFTWARE E PRESTAÇÃO DE SERVIÇOS DE SUPORTE
+
+DOCUMENTO FICTÍCIO PARA TREINAMENTO. Empresas, pessoas, endereços, e-mails e telefones são inventados. Os números de CNPJ e CPF têm dígitos verificadores propositalmente inválidos.
+
+CONTRATADA: NuvemSul Tecnologia Ltda., inscrita no CNPJ sob o nº 12.345.678/0001-00, com sede na Rua das Acácias, 100, Florianópolis/SC, neste ato representada por seu sócio administrador, Sr. Otávio Brandão Luz, CPF nº 123.456.789-00, e-mail contratos@nuvemsul.example, telefone (48) 3555-0100.
+
+CONTRATANTE: Padaria Pão Dourado Ltda., inscrita no CNPJ sob o nº 98.765.432/0001-00, com sede na Avenida das Palmeiras, 250, Campinas/SP, neste ato representada por sua sócia administradora, Sra. Helena Duarte Prado, CPF nº 987.654.321-00, e-mail financeiro@paodourado.example, telefone (19) 99999-0000.
+
+As partes celebram o presente contrato, que se regerá pelas cláusulas seguintes.
+
+CLÁUSULA 1 – OBJETO
+1.1. A CONTRATADA concede à CONTRATANTE licença de uso, não exclusiva e intransferível, do sistema de gestão de pedidos e programa de fidelidade "Fornada" (o "Sistema"), disponibilizado pela internet, e presta os serviços de suporte técnico descritos neste contrato.
+1.2. O Sistema armazenará dados cadastrais e de consumo dos clientes da CONTRATANTE que participam do programa de fidelidade.
+
+CLÁUSULA 2 – IMPLANTAÇÃO
+2.1. A implantação será concluída em até 30 (trinta) dias contados da assinatura, mediante o pagamento de taxa única de R$ 6.000,00 (seis mil reais).
+
+CLÁUSULA 3 – VIGÊNCIA E RENOVAÇÃO
+3.1. O contrato vigorará por 12 (doze) meses contados da data de assinatura.
+3.2. Ao final do prazo, o contrato será renovado automaticamente por períodos iguais e sucessivos, salvo se uma das partes comunicar à outra, por escrito, a intenção de não renovar com antecedência mínima de 90 (noventa) dias.
+
+CLÁUSULA 4 – PREÇO E REAJUSTE
+4.1. Pela licença e pelo suporte, a CONTRATANTE pagará mensalidade de R$ 4.800,00 (quatro mil e oitocentos reais), com vencimento no dia 5 (cinco) de cada mês.
+4.2. A mensalidade será reajustada a cada 12 (doze) meses pela variação positiva do IGP-M/FGV ou do IPCA/IBGE, o que for maior.
+4.3. A CONTRATADA poderá, a qualquer tempo, promover reajuste extraordinário da mensalidade para recompor seus custos, mediante simples aviso à CONTRATANTE com 15 (quinze) dias de antecedência.
+
+CLÁUSULA 5 – ATRASO NO PAGAMENTO
+5.1. O atraso no pagamento sujeitará a CONTRATANTE a multa de 10% (dez por cento) sobre o valor devido, juros de mora de 2% (dois por cento) ao mês e correção monetária.
+5.2. Persistindo o atraso por mais de 10 (dez) dias, a CONTRATADA poderá suspender o acesso ao Sistema independentemente de aviso.
+
+CLÁUSULA 6 – NÍVEL DE SERVIÇO
+6.1. A CONTRATADA manterá o Sistema em funcionamento com disponibilidade mensal mínima de 99,5% (noventa e nove vírgula cinco por cento), excluídas as paradas programadas.
+6.2. O descumprimento do nível de disponibilidade não gera direito a desconto, crédito ou indenização.
+
+CLÁUSULA 7 – LIMITAÇÃO DE RESPONSABILIDADE
+7.1. A responsabilidade total da CONTRATADA por quaisquer danos decorrentes deste contrato fica limitada ao valor efetivamente pago pela CONTRATANTE nos 3 (três) meses anteriores ao evento.
+7.2. A CONTRATADA não responde por lucros cessantes, danos indiretos ou perda de dados.
+
+CLÁUSULA 8 – PROTEÇÃO DE DADOS
+8.1. As partes comprometem-se a cumprir a legislação de proteção de dados aplicável.
+
+CLÁUSULA 9 – RESCISÃO
+9.1. A CONTRATADA poderá rescindir o contrato a qualquer tempo, sem ônus, mediante aviso prévio de 30 (trinta) dias.
+9.2. A rescisão antecipada pela CONTRATANTE, por qualquer motivo, a sujeitará ao pagamento de multa equivalente a 50% (cinquenta por cento) das mensalidades restantes até o fim do prazo de vigência.
+
+CLÁUSULA 10 – DADOS E PROPRIEDADE INTELECTUAL
+10.1. O Sistema e seus aprimoramentos pertencem exclusivamente à CONTRATADA.
+10.2. Os dados inseridos no Sistema pertencem à CONTRATANTE. Encerrado o contrato, a exportação dos dados dependerá do pagamento de taxa a ser definida pela CONTRATADA.
+
+CLÁUSULA 11 – CONFIDENCIALIDADE
+11.1. As partes manterão sigilo sobre as informações confidenciais recebidas uma da outra durante a vigência do contrato e por 2 (dois) anos após o seu término.
+
+CLÁUSULA 12 – FORO
+12.1. Fica eleito o foro da Comarca de Florianópolis/SC para dirimir quaisquer controvérsias, com renúncia a qualquer outro, por mais privilegiado que seja.
+
+Florianópolis, 3 de novembro de 2026.
+
+NuvemSul Tecnologia Ltda.
+Padaria Pão Dourado Ltda.
