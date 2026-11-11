@@ -4,7 +4,7 @@
 
 Primeiro você monta o local de trabalho, sem nenhum dado de cliente. Depois trabalha com casos no ambiente pronto. Por fim, automatiza as rotinas e acompanha tudo num painel próprio. Tudo no navegador, sem programar e dentro das regras da OAB.
 
-3 módulos · 24 aulas · 4 h 54 de vídeo · 24 conquistas · 17 ferramentas
+3 módulos · 26 aulas · 5 h 18 de vídeo · 26 conquistas · 17 ferramentas
 
 A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).
 
@@ -73,34 +73,36 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 **No fim do módulo:** O painel do escritório no ar, quatro fluxos que o alimentam (entrada da demanda, documentos, follow-up e cobrança, aprovação) e o ganho medido antes e depois.
 
-9 aulas · 1 h 56 · Precisa de: conta Google gratuita e WhatsApp Business; nenhuma chave de API paga na trilha principal
+11 aulas · 2 h 20 · Precisa de: conta Google gratuita e WhatsApp Business; nenhuma chave de API paga na trilha principal
 
 ### O painel do escritório
 
-Uma página só sua, em HTML, ligada à planilha-mãe pelo Apps Script. Você desenha com o Claude e o seu design system, publica com acesso só seu e abre no celular. Os números são calculados no seu Google, sem passar pela IA.
+Uma página só sua, em HTML, ligada à planilha-mãe pelo Apps Script. Em três aulas você desenha com o Claude e o seu design system, liga à planilha e publica com acesso só seu. Os números são calculados no seu Google, sem passar pela IA.
 
 | Bloco | O que mostra | Liga na aula |
 |---|---|---|
-| Casos | Ativos por fase e por responsável, os novos e os parados | 3.2 |
-| Prazos | O que vence em 7 dias e quem conferiu cada um | 3.3 |
-| Propostas | Em aberto, taxa de aceite e follow-ups pendentes | 3.6 |
-| Honorários | Recebido no mês, a receber em 30 dias e vencidos | 3.6 |
-| Esperando você | Documentos, rascunhos e prazos para aprovar | 3.7 |
-| Ganho | Antes e depois: tempo, correções e retornos na data | 3.9 |
+| Casos | Ativos por fase e por responsável, os novos e os parados | 3.3 |
+| Prazos | O que vence em 7 dias e quem conferiu cada um | 3.5 |
+| Propostas | Em aberto, taxa de aceite e follow-ups pendentes | 3.8 |
+| Honorários | Recebido no mês, a receber em 30 dias e vencidos | 3.8 |
+| Esperando você | Documentos, rascunhos e prazos para aprovar | 3.9 |
+| Ganho | Antes e depois: tempo, correções e retornos na data | 3.11 |
 
 No jurídico de empresa, Propostas vira demandas das áreas e Honorários vira valores envolvidos.
 
 | Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |
 |---|---|---|---|---|---:|
 | **3.1 A planilha-mãe** | A base do escritório, numa planilha que você entende. | 1. As abas Casos, Clientes, Propostas, Honorários, Fila e Registro, e o que vai em cada coluna<br>2. Listas suspensas para fase e situação: ninguém escreve “em andamento” de cinco jeitos<br>3. O que é o Google Apps Script e onde ele fica<br>4. Conta de treino antes da conta real | Planilha-mãe<br>*Missão: Construção guiada: instale pelo menu e veja as abas aparecerem* | Google Planilhas, Apps Script | 10 min |
-| **3.2 O painel do escritório** | Uma página só sua, ligada à planilha-mãe, com os números do escritório. | 1. O desenho no Claude, com o seu design system e dados fictícios: você aprova o visual antes de ligar à planilha<br>2. Os dois arquivos que o Claude escreve e você só cola: um lê a planilha, o outro desenha o painel<br>3. Publicar como app da Web, executando como você e com acesso só seu<br>4. O painel no celular e o modo apresentação, que troca os dados reais por fictícios para gravar ou mostrar | Painel no ar<br>*Missão: Abra o painel no celular e ache o caso parado há mais tempo* | Claude, Design system, Apps Script, Google Planilhas | 16 min |
-| **3.3 Controles de revisão e acompanhamento** | O que cada rotina pode fazer, e o que sempre passa por você. | 1. CPF, CNPJ, e-mail e telefone mascarados antes de qualquer envio à IA<br>2. A lista de termos que nunca saem, como laudo e segredo de justiça<br>3. E-mail sempre em rascunho; prazo só vale com “Conferido por”, e o painel avisa quando falta<br>4. Registro de tudo e cada script versionado no GitHub | Controles ativos<br>*Missão: Conserte o script: uma rotina sem controle quase envia um CPF* | Apps Script, GitHub | 12 min |
-| **3.4 Fluxo 1 · Entrada da demanda** | Toda nova demanda, de cliente ou de outra área da empresa, chega organizada. | 1. WhatsApp Business: saudação, mensagem de ausência e respostas rápidas<br>2. Resposta automática do Gmail fora do horário, com o link do formulário<br>3. Formulário de primeiro contato com aviso de privacidade<br>4. Cada resposta vira um caso na planilha, com responsável e prazo, e aparece no painel | Entrada organizada<br>*Missão: Simulador de mensagens: cinco contatos fictícios, o que cada um recebe?* | WhatsApp Business, Gmail, Google Formulários, Google Planilhas | 14 min |
-| **3.5 Fluxo 2 · Documentos** | Procuração, contratos e documentos padrão com um clique. | 1. Modelos timbrados de procuração, contrato e proposta, com os campos marcados<br>2. O script que lê o cadastro e preenche os campos<br>3. A pasta do cliente criada no Drive, com os três documentos<br>4. Os documentos entram na fila do painel para você conferir antes da assinatura | Documentos em um clique<br>*Missão: Contra o relógio: três documentos em um minuto* | Apps Script, Google Docs, Google Drive | 14 min |
-| **3.6 Fluxo 3 · Follow-up e cobrança** | Ninguém fica sem resposta e nenhuma parcela vence esquecida. | 1. Proposta sem resposta há três dias: rascunho de follow-up<br>2. Caso sem notícia ao cliente há trinta dias: rascunho de atualização a partir do último andamento<br>3. Parcela vencida: rascunho de lembrete de cobrança, no tom do escritório<br>4. O gatilho de segunda às 8h: tudo vai para a fila do painel, nada é enviado sozinho | Follow-up em dia<br>*Missão: Segunda-feira: cinco rascunhos esperando por você* | Apps Script, Gmail, Google Planilhas | 14 min |
-| **3.7 Fluxo 4 · Aprovação pelo painel** | Tudo o que espera você, numa tela do painel e às 7h no e-mail. | 1. A fila no painel: abrir, aprovar ou devolver, com o seu nome e a data gravados na planilha<br>2. O e-mail das 7h com a fila do dia e os prazos da semana<br>3. Prazos conferidos vão para a agenda, com alarme<br>4. O Registro: quem decidiu o quê, e quando | Aprovação pelo painel<br>*Missão: Caça ao erro: um item “aprovado” sem nome de quem aprovou* | Apps Script, Google Planilhas, Gmail, Google Agenda | 14 min |
-| **3.8 O dia simulado** | Os quatro fluxos e o painel rodando juntos em um dia fictício. | 1. Uma demanda chega às 22h pelo WhatsApp<br>2. De manhã: o caso já está no painel, com documentos prontos e follow-ups na fila<br>3. Você revisa a fila pelo celular em quinze minutos<br>4. Os ajustes depois do primeiro dia: o que liberar e o que apertar | Rotinas em funcionamento<br>*Missão: Missão final* | Apps Script, Google Planilhas | 12 min |
-| **3.9 Medir o ganho** | Antes e depois, com os seus números. | 1. Repetir a tarefa da aula 2.1 com as rotinas e cronometrar<br>2. Contar as correções que a revisão pediu<br>3. Calcular os retornos feitos na data combinada<br>4. Levar os três números para o painel e decidir o que manter, ajustar ou desligar | Ganho medido<br>*Missão: Compare com a aula 2.1* | Google Planilhas | 10 min |
+| **3.2 Desenhar o painel** | O HTML do painel, desenhado com o Claude e o seu design system, ainda com dados fictícios. | 1. Escolher os indicadores: casos por fase, prazos da semana, propostas em aberto, honorários recebidos e a receber<br>2. O pedido ao Claude: o design system, a lista de indicadores e uma planilha de exemplo com dados fictícios<br>3. O HTML que o Claude entrega: cabeçalho com a marca, cartões de números, gráficos e a lista para aprovar<br>4. Ajustar o visual por conversa até aprovar, no computador e no celular | Painel desenhado<br>*Missão: Peça uma segunda versão só com os três números que você olha toda manhã* | Claude, Design system | 14 min |
+| **3.3 Ligar o painel à planilha** | O painel lê a planilha-mãe pelo Apps Script e mostra casos, propostas e valores reais. | 1. Os dois arquivos do Apps Script: um lê as abas Casos, Propostas, Honorários e Fila; o outro entrega a página<br>2. Os indicadores calculados pelo código: casos por fase, casos parados há mais de 15 dias, taxa de aceite das propostas e valor em aberto<br>3. Honorários: recebido no mês, a receber em 30 dias e parcelas vencidas<br>4. Conferir cada número com a planilha antes de confiar nele | Painel ligado à planilha<br>*Missão: Mude a fase de um caso na planilha e veja o painel acompanhar* | Apps Script, Google Planilhas, Claude | 16 min |
+| **3.4 Publicar só para você** | O painel no ar, com acesso só seu, abrindo no celular. | 1. Publicar como app da Web, executando como você e com acesso só seu<br>2. Autorizar o Google e conferir o que o painel pode ler<br>3. Abrir no celular e colocar o atalho na tela inicial<br>4. Modo apresentação: dados fictícios no lugar dos reais, para gravar a tela ou mostrar sem expor clientes | Painel no ar<br>*Missão: Abra o painel no celular e ache o caso parado há mais tempo* | Apps Script, Google Planilhas | 10 min |
+| **3.5 Controles de revisão e acompanhamento** | O que cada rotina pode fazer, e o que sempre passa por você. | 1. CPF, CNPJ, e-mail e telefone mascarados antes de qualquer envio à IA<br>2. A lista de termos que nunca saem, como laudo e segredo de justiça<br>3. E-mail sempre em rascunho; prazo só vale com “Conferido por”, e o painel avisa quando falta<br>4. Registro de tudo e cada script versionado no GitHub | Controles ativos<br>*Missão: Conserte o script: uma rotina sem controle quase envia um CPF* | Apps Script, GitHub | 12 min |
+| **3.6 Fluxo 1 · Entrada da demanda** | Toda nova demanda, de cliente ou de outra área da empresa, chega organizada. | 1. WhatsApp Business: saudação, mensagem de ausência e respostas rápidas<br>2. Resposta automática do Gmail fora do horário, com o link do formulário<br>3. Formulário de primeiro contato com aviso de privacidade<br>4. Cada resposta vira um caso na planilha, com responsável e prazo, e aparece no painel | Entrada organizada<br>*Missão: Simulador de mensagens: cinco contatos fictícios, o que cada um recebe?* | WhatsApp Business, Gmail, Google Formulários, Google Planilhas | 14 min |
+| **3.7 Fluxo 2 · Documentos** | Procuração, contratos e documentos padrão com um clique. | 1. Modelos timbrados de procuração, contrato e proposta, com os campos marcados<br>2. O script que lê o cadastro e preenche os campos<br>3. A pasta do cliente criada no Drive, com os três documentos<br>4. Os documentos entram na fila do painel para você conferir antes da assinatura | Documentos em um clique<br>*Missão: Contra o relógio: três documentos em um minuto* | Apps Script, Google Docs, Google Drive | 14 min |
+| **3.8 Fluxo 3 · Follow-up e cobrança** | Ninguém fica sem resposta e nenhuma parcela vence esquecida. | 1. Proposta sem resposta há três dias: rascunho de follow-up<br>2. Caso sem notícia ao cliente há trinta dias: rascunho de atualização a partir do último andamento<br>3. Parcela vencida: rascunho de lembrete de cobrança, no tom do escritório<br>4. O gatilho de segunda às 8h: tudo vai para a fila do painel, nada é enviado sozinho | Follow-up em dia<br>*Missão: Segunda-feira: cinco rascunhos esperando por você* | Apps Script, Gmail, Google Planilhas | 14 min |
+| **3.9 Fluxo 4 · Aprovação pelo painel** | Tudo o que espera você, numa tela do painel e às 7h no e-mail. | 1. A fila no painel: abrir, aprovar ou devolver, com o seu nome e a data gravados na planilha<br>2. O e-mail das 7h com a fila do dia e os prazos da semana<br>3. Prazos conferidos vão para a agenda, com alarme<br>4. O Registro: quem decidiu o quê, e quando | Aprovação pelo painel<br>*Missão: Caça ao erro: um item “aprovado” sem nome de quem aprovou* | Apps Script, Google Planilhas, Gmail, Google Agenda | 14 min |
+| **3.10 O dia simulado** | Os quatro fluxos e o painel rodando juntos em um dia fictício. | 1. Uma demanda chega às 22h pelo WhatsApp<br>2. De manhã: o caso já está no painel, com documentos prontos e follow-ups na fila<br>3. Você revisa a fila pelo celular em quinze minutos<br>4. Os ajustes depois do primeiro dia: o que liberar e o que apertar | Rotinas em funcionamento<br>*Missão: Missão final* | Apps Script, Google Planilhas | 12 min |
+| **3.11 Medir o ganho** | Antes e depois, com os seus números. | 1. Repetir a tarefa da aula 2.1 com as rotinas e cronometrar<br>2. Contar as correções que a revisão pediu<br>3. Calcular os retornos feitos na data combinada<br>4. Levar os três números para o painel e decidir o que manter, ajustar ou desligar | Ganho medido<br>*Missão: Compare com a aula 2.1* | Google Planilhas | 10 min |
 
 ## Aprofundamentos opcionais
 
@@ -122,9 +124,9 @@ O trabalho de conclusão é uma demonstração de cinco minutos, gravada na sua 
 
 ## O ganho, medido por você
 
-Na aula 2.1 você cronometra a primeira tarefa com um caso. Na aula 3.9 repete a medição com as rotinas e o painel e compara três números.
+Na aula 2.1 você cronometra a primeira tarefa com um caso. Na aula 3.11 repete a medição com as rotinas e o painel e compara três números.
 
-| Indicador | Como medir | Antes · aula 2.1 | Depois · aula 3.9 |
+| Indicador | Como medir | Antes · aula 2.1 | Depois · aula 3.11 |
 |---|---|---|---|
 | Tempo total por entrega | Do início ao envio, incluindo a sua revisão. | | |
 | Correções necessárias | Quantas correções relevantes a revisão pediu. | | |
@@ -167,7 +169,7 @@ O curso não promete número. Você registra o que aconteceu, inclusive quando o
 |---|---|---:|---:|
 | 1 · Montar o local de trabalho | Conta segura, uma pasta por caso no GitHub com a memória do caso, design system, o Claude ajustado ao seu perfil e as ferramentas conectadas com as permissões certas. | 8 | 1 h 40 |
 | 2 · Trabalhar com padrão | O primeiro caso em ficha e retorno, roteiro de atendimento, retornos com padrão, kit visual com a marca, biblioteca de casos e revisão da produção. | 7 | 1 h 18 |
-| 3 · Rotinas automatizadas, decisões com você | O painel do escritório no ar, quatro fluxos que o alimentam (entrada da demanda, documentos, follow-up e cobrança, aprovação) e o ganho medido antes e depois. | 9 | 1 h 56 |
-| **Total** | 24 conquistas, as rotinas e o painel do escritório | 24 | 4 h 54 |
+| 3 · Rotinas automatizadas, decisões com você | O painel do escritório no ar, quatro fluxos que o alimentam (entrada da demanda, documentos, follow-up e cobrança, aprovação) e o ganho medido antes e depois. | 11 | 2 h 20 |
+| **Total** | 26 conquistas, as rotinas e o painel do escritório | 26 | 5 h 18 |
 
 Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google, e o aprofundamento de n8n mostra o caminho para Outlook, Teams e outros sistemas.
