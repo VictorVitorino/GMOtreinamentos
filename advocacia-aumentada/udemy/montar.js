@@ -57,6 +57,7 @@ const I = {
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   livros: '<path d="M5 4h4v16H5zM10 4h4v16h-4zM15.4 4.6l3.8 1-3.4 14.8-3.9-.9z"/>',
   grafico: '<path d="M4 20h16M7 16v-4M12 16V7M17 16v-7"/>',
+  terminal: '<rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3 2.5-3 2.5M12.5 15h4.5"/>',
   fluxo: '<circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M7.2 12h4.3M11.5 12c2 0 2.5-6 5.3-6M11.5 12c2 0 2.5 6 5.3 6"/>',
   seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   luz: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
@@ -71,7 +72,7 @@ A.modulos.forEach((m) => {
   m.minutos = m.aulas.reduce((t, a) => t + a.minutos, 0);
   m.aulas.forEach((a) => {
     ['numero', 'nome', 'o_que_e', 'conquista', 'missao', 'minutos'].forEach((c) => { if (!a[c]) erros.push(`Aula ${a.numero || '?'} sem "${c}".`); });
-    if (!a.apresenta || a.apresenta.length < 2) erros.push(`Aula ${a.numero}: "apresenta" precisa de pelo menos 2 itens.`);
+    if (!a.roteiro || a.roteiro.length < 3) erros.push(`Aula ${a.numero}: "roteiro" precisa de pelo menos 3 passos.`);
     if (!String(a.numero).startsWith(m.numero + '.')) erros.push(`Aula ${a.numero} fora do módulo ${m.numero}.`);
     if (vistos.has(a.numero)) erros.push(`Aula ${a.numero} repetida.`);
     vistos.add(a.numero);
@@ -264,6 +265,13 @@ button { font: inherit; color: inherit; }
 .tempo { text-align: right; font-family: var(--f-titulo); font-weight: 700; font-size: 1.05rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .tempo small { display: block; font-family: var(--f-texto); font-weight: 400; font-size: .78rem; color: var(--tinta-2); }
 .ferr-col .rot-m, .tempo-m { display: none; }
+.roteiro-aula { margin-top: 8px; display: grid; gap: 7px; }
+.roteiro-aula li { display: flex; gap: 10px; align-items: flex-start; }
+.passo-n { flex: none; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%; display: grid; place-items: center; background: var(--cor-s); color: var(--cor); font-weight: 700; font-size: .78rem; font-variant-numeric: tabular-nums; }
+.atencao { margin-top: 12px; display: flex; gap: 8px; align-items: flex-start; font-size: .9rem; color: var(--tinta-2); background: var(--cartao-2); border: 1px solid var(--linha); border-radius: 10px; padding: 9px 12px; }
+.atencao .ico { color: var(--ouro); width: 18px; height: 18px; margin-top: 2px; }
+.regra { margin-top: 12px; display: inline-flex; gap: 8px; align-items: center; padding: 8px 14px; border-radius: 12px; background: var(--cartao); color: var(--cor); font-weight: 700; font-size: .93rem; line-height: 1.35; }
+.regra .ico { width: 18px; height: 18px; }
 .a-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .tempo-m { font-family: var(--f-titulo); font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .dica { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding: 10px 14px; border-radius: 10px; background: var(--ouro-s); font-size: .93rem; }
@@ -453,8 +461,8 @@ const jornada = `
   <section class="secao faixa" id="agenda" aria-labelledby="t-jornada">
     <div class="miolo">
       <p class="olho">A jornada</p>
-      <h2 id="t-jornada">Três andares, da base às rotinas</h2>
-      <p class="intro">Os módulos são independentes, mas a ordem foi pensada para quem abre o Claude pela primeira vez: primeiro a base segura e um caso resolvido, depois o padrão de atendimento e de produção, por fim as rotinas automatizadas.</p>
+      <h2 id="t-jornada">Montar, trabalhar, automatizar</h2>
+      <p class="intro">A ordem tem uma lógica: primeiro você monta o local de trabalho, sem nenhum dado de cliente; depois trabalha com casos no ambiente pronto; por fim automatiza as rotinas, com a aprovação sempre sua.</p>
       <div class="jornada">${A.modulos.map((m) => `
         <a class="etapa m${m.numero}" href="#modulo-${m.numero}">
           <span class="topo-e"><span class="n">${m.numero}</span><span class="andar-r">${m.numero}º andar · ${esc(m.andar)}</span></span>
@@ -475,7 +483,7 @@ const aula = (a, m) => `
               <div class="a-topo"><h3>${esc(a.nome)}</h3><span class="tempo-m">${a.minutos} min</span></div>
               <p class="oque">${esc(a.o_que_e)}</p>
               <p class="rot">O que vamos apresentar</p>
-              <ul class="apr">${a.apresenta.map((x) => `<li>${ico('check')}<span>${esc(x)}</span></li>`).join('')}</ul>
+              <ol class="roteiro-aula">${a.roteiro.map((x, i) => `<li><span class="passo-n">${i + 1}</span><span>${esc(x)}</span></li>`).join('')}</ol>${a.atencao ? `<p class="atencao">${ico('escudo')}<span>${esc(a.atencao)}</span></p>` : ''}
               <p class="fichas"><span class="ficha conq">${ico(a.icone)}${esc(a.conquista)}</span><span class="ficha miss">${ico('alvo')}Missão: ${esc(a.missao)}</span></p>
             </div>
             <ul class="ferr-col"><li class="rot-m">Ferramentas</li>${a.ferramentas.map((f) => `<li><span class="ico-f">${ico(A.ferramentas[f].icone)}</span>${esc(f)}</li>`).join('')}</ul>
@@ -498,7 +506,7 @@ const modulo = (m) => `
         <div>
           <p class="rot">Módulo ${m.numero} · ${m.numero}º andar · ${esc(m.andar)}</p>
           <h2 id="t-m${m.numero}">${esc(m.nome)}</h2>
-          <p class="dor">“${esc(m.dor)}”</p>
+          <p class="dor">“${esc(m.dor)}”</p>${m.regra ? `<p class="regra">${ico('alvo')}<span>${esc(m.regra)}</span></p>` : ''}
           <p class="fim">${ico('check')}<span><b>No fim do módulo:</b> ${esc(m.resultado)}</span></p>
           <p class="meta"><span><b>${m.aulas.length}</b> aulas</span><span><b>${fmt(m.minutos)}</b> de vídeo</span><span>Precisa de: ${esc(m.precisa)}</span></p>
         </div>
@@ -548,7 +556,7 @@ const medicao = !MED ? '' : `
       <h2 id="t-ganho">${esc(MED.titulo)}</h2>
       <p class="intro">${esc(MED.texto)}</p>
       <div class="medidas">${MED.indicadores.map((x, i) => `
-        <article class="medida"><span class="ico-bola">${ico(x.icone)}</span><h3>${esc(x.nome)}</h3><p>${esc(x.como)}</p><div class="regua"><span><small>Antes · aula 1.2</small><b>a preencher</b></span><span><small>Depois · aula 3.8</small><b>a preencher</b></span></div></article>`).join('')}
+        <article class="medida"><span class="ico-bola">${ico(x.icone)}</span><h3>${esc(x.nome)}</h3><p>${esc(x.como)}</p><div class="regua"><span><small>${esc(MED.antes || 'Antes')}</small><b>a preencher</b></span><span><small>${esc(MED.depois || 'Depois')}</small><b>a preencher</b></span></div></article>`).join('')}
       </div>
       <p class="nota">${esc(MED.nota)}</p>
     </div>
@@ -671,14 +679,14 @@ const md = [`# ${A.titulo}`, '', `**${A.chamada}**`, '', A.apoio, '', `3 módulo
   'A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', '',
   '## O curso', '', ...A.curso.map((c) => `- **${c.titulo}.** ${c.texto}`), '', '| Hoje | No fim do curso |', '|---|---|', ...A.antes_depois.map((x) => `| ${cel(x.antes)} | ${cel(x.depois)} |`), ''];
 A.modulos.forEach((m) => {
-  md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', `**No fim do módulo:** ${m.resultado}`, '', `${m.aulas.length} aulas · ${fmt(m.minutos)} · Precisa de: ${m.precisa}`, '');
+  md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', ...(m.regra ? [`**${m.regra}**`, ''] : []), `**No fim do módulo:** ${m.resultado}`, '', `${m.aulas.length} aulas · ${fmt(m.minutos)} · Precisa de: ${m.precisa}`, '');
   md.push('| Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |', '|---|---|---|---|---|---:|');
-  m.aulas.forEach((a) => md.push(`| **${a.numero} ${cel(a.nome)}** | ${cel(a.o_que_e)} | ${a.apresenta.map(cel).join('<br>')} | ${cel(a.conquista)}<br>*Missão: ${cel(a.missao)}* | ${a.ferramentas.map(cel).join(', ')} | ${a.minutos} min |`));
+  m.aulas.forEach((a) => md.push(`| **${a.numero} ${cel(a.nome)}** | ${cel(a.o_que_e)} | ${a.roteiro.map((x, i) => `${i + 1}. ${cel(x)}`).join('<br>')} | ${cel(a.conquista)}<br>*Missão: ${cel(a.missao)}* | ${a.ferramentas.map(cel).join(', ')} | ${a.minutos} min |`));
   md.push('');
 });
 if ((A.aprofundamentos || []).length) md.push('## Aprofundamentos opcionais', '', ...A.aprofundamentos.map((x) => `- **${x.nome}.** ${x.texto} Ferramentas: ${x.ferramentas.join(', ')}. Precisa de: ${x.precisa}.`), '');
 md.push(`## ${PF.titulo}`, '', PF.texto, '', ...PF.roteiro.map((r, i) => `${i + 1}. ${r.texto}`), '');
-if (MED) md.push(`## ${MED.titulo}`, '', MED.texto, '', '| Indicador | Como medir | Antes (aula 1.2) | Depois (aula 3.8) |', '|---|---|---|---|', ...MED.indicadores.map((x) => `| ${x.nome} | ${x.como} | | |`), '', MED.nota, '');
+if (MED) md.push(`## ${MED.titulo}`, '', MED.texto, '', `| Indicador | Como medir | ${MED.antes || 'Antes'} | ${MED.depois || 'Depois'} |`, '|---|---|---|---|', ...MED.indicadores.map((x) => `| ${x.nome} | ${x.como} | | |`), '', MED.nota, '');
 md.push('## Ferramentas incorporadas', '', '| Ferramenta | Para que serve | Plano | Módulos |', '|---|---|---|---|', ...nomesF.map((f) => `| ${f} | ${A.ferramentas[f].faz} | ${A.ferramentas[f].plano} | ${modulosDe(f).join(', ')} |`), '');
 md.push('| Modelo do Claude | Perfil | Quando usar na advocacia |', '|---|---|---|', ...A.modelos.map((l) => `| ${l.modelo} | ${l.perfil} | ${l.usos} |`), '');
 md.push('## Resumo', '', '| Módulo | No fim, você tem | Aulas | Vídeo |', '|---|---|---:|---:|', ...A.modulos.map((m) => `| ${m.numero} · ${m.nome} | ${cel(m.resultado)} | ${m.aulas.length} | ${fmt(m.minutos)} |`), `| **Total** | ${aulas.length} conquistas e as rotinas do escritório | ${aulas.length} | ${fmt(totalMin)} |`, '', A.rodape, '');

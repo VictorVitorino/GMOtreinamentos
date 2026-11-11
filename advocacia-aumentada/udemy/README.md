@@ -2,68 +2,73 @@
 
 **Construa, aula por aula, um escritório ou departamento jurídico com rotinas automatizadas e decisões sob seu controle.**
 
-Do primeiro acesso seguro às rotinas automatizadas, com o primeiro caso resolvido já no módulo 1. Tudo no navegador, sem programar, com a identidade do seu escritório ou da sua empresa e dentro das regras da OAB.
+Primeiro você monta o local de trabalho, sem nenhum dado de cliente. Depois trabalha com casos no ambiente pronto. Por fim, automatiza as rotinas. Tudo no navegador, sem programar e dentro das regras da OAB.
 
-3 módulos · 24 aulas · 4 h 30 de vídeo · 24 conquistas · 16 ferramentas
+3 módulos · 23 aulas · 4 h 38 de vídeo · 23 conquistas · 17 ferramentas
 
 A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).
 
 ## O curso
 
 - **Para quem é.** Qualquer advogado: em escritório de qualquer porte, autônomo ou no jurídico de uma empresa. Basta ainda não ter configurado uma IA no trabalho. Não precisa saber programar.
-- **O que você constrói.** Um escritório ou jurídico no Claude e no Google, com a sua identidade, padrão de atendimento e rotinas que passam pela sua aprovação.
-- **Como é cada aula.** Vídeo curto, uma missão prática com material fictício e uma conquista no fim.
+- **O que você constrói.** Um escritório ou jurídico no Claude, no GitHub e no Google, com a sua identidade, padrão de atendimento e rotinas que passam pela sua aprovação.
+- **Como é cada aula.** Um roteiro passo a passo, uma missão prática com material fictício e uma conquista no fim.
 - **Tudo na web.** Nada para instalar. Os exemplos usam o Google; em empresas com Microsoft 365, as aulas de Claude valem igual.
 
 | Hoje | No fim do curso |
 |---|---|
-| Prazos no caderno, na planilha e na cabeça | Prazos da semana no seu e-mail às 7h, conferidos por você |
-| “Doutor, e o meu processo?” toda semana | Retornos com padrão e data combinada com o cliente |
-| Proposta mandada por WhatsApp que esfria | Proposta com a sua marca e follow-up lembrado pela rotina |
+| Arquivos do caso espalhados entre e-mail, WhatsApp e computador | Uma pasta por caso, com histórico de versões e a memória do caso |
+| Explicar tudo de novo ao Claude a cada conversa | O Claude já conhece o seu perfil, o seu estilo e cada caso |
+| Tudo o que sai do escritório com cara de Word cru | Apresentações e documentos com o seu design system |
 | Pedidos das áreas da empresa chegando por e-mail, WhatsApp e corredor | Uma entrada única, com responsável, prazo e registro |
 | Medo de colar documento de cliente na IA | Ambiente configurado com critérios de segurança e controles de revisão |
 
-## Módulo 1 · A base: Claude configurado e o primeiro caso
+## Módulo 1 · Montar o local de trabalho
 
-> "Abro o Claude e não sei por onde começar, nem se é seguro."
+> "Abro o Claude e não sei por onde começar, onde guardar cada coisa nem se é seguro."
 
-**No fim do módulo:** Ambiente configurado com critérios de segurança, o primeiro caso em ficha e retorno ao cliente, Google conectado e ferramentas jurídicas instaladas.
+**Nenhuma aula deste módulo usa dado de cliente. Primeiro você monta e configura tudo.**
 
-8 aulas · 1 h 22 · Precisa de: conta gratuita até a aula 1.3; conectores, MCP e plugin pedem plano pago do Claude
+**No fim do módulo:** Conta segura, uma pasta por caso no GitHub com a memória do caso, design system, o Claude ajustado ao seu perfil e as ferramentas conectadas com as permissões certas.
+
+8 aulas · 1 h 40 · Precisa de: conta no Claude e no GitHub; conectores, plugin, MCP e a integração com o GitHub podem pedir o plano pago do Claude
 
 | Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |
 |---|---|---|---|---|---:|
-| **1.1 Configurar com segurança antes de usar** | A primeira configuração, antes de qualquer conversa. | Conta e plano: pessoal, de equipe ou da empresa<br>Conversas fora do treinamento e verificação em duas etapas<br>O semáforo do sigilo: o que entra e o que fica fora | Ambiente configurado<br>*Missão: Checklist de decolagem* | Claude | 12 min |
-| **1.2 O primeiro caso: ficha e retorno ao cliente** | Uma pilha de documentos vira ficha do caso e mensagem ao cliente. | Projeto do caso com os documentos<br>Ficha com fatos, fonte, linha do tempo e lacunas<br>Retorno ao cliente em linguagem simples | Ficha do caso e retorno<br>*Missão: Cronômetro ligado: a primeira medição* | Claude | 14 min |
-| **1.3 Qual modelo para cada trabalho** | Os modelos do Claude explicados para quem advoga. | Haiku, Sonnet, Opus e Fable<br>O mais capaz para processos complexos<br>Como não gastar o limite à toa | Guia de modelos<br>*Missão: Duelo de modelos* | Claude | 8 min |
-| **1.4 Google conectado** | Gmail, Agenda e Drive conversando com o Claude. | Ligar os três conectores<br>Permissão de perguntar antes de agir<br>A semana inteira em uma tela | Google conectado<br>*Missão: Semana no escuro* | Gmail, Google Agenda, Google Drive | 10 min |
-| **1.5 Uma pasta e um projeto por caso** | O padrão para todos os casos: pasta no Drive e projeto no Claude. | Pasta padrão do caso no Drive<br>Projeto do caso lendo a pasta<br>O que entra no projeto e o que fica fora | Casos organizados<br>*Missão: Arrume três casos bagunçados* | Google Drive, Claude | 10 min |
-| **1.6 Reunião que vira ata** | A reunião do Google Meet transcrita e organizada. | Ligar a transcrição da reunião<br>Ata com decisões e tarefas<br>E-mail de retorno em rascunho | Reunião registrada<br>*Missão: Ata em cinco minutos* | Google Meet, Google Drive | 8 min |
-| **1.7 Tribunais na conversa** | Processos e jurisprudência dentro do Claude, por MCP. | O que é um conector MCP<br>Adicionar um conector jurídico na web<br>Conferir sempre na fonte oficial | Tribunal conectado<br>*Missão: Detetive de processos* | MCP jurídico | 10 min |
-| **1.8 Plugin jurídico com o seu critério** | Comandos prontos ajustados ao direito brasileiro. | Instalar o plugin jurídico<br>Trocar o playbook americano pelo seu<br>Quando usar e quando não usar | Plugin ajustado<br>*Missão: Caça ao erro* | Plugins e skills | 10 min |
+| **1.1 Conta segura antes de tudo** | A primeira configuração do Claude, antes de qualquer conversa. | 1. Criar a conta e escolher o plano: o que muda do gratuito para o pago e para os planos de equipe e de empresa<br>2. Nas configurações, desligar o uso das suas conversas para treinar os modelos e ligar a verificação em duas etapas<br>3. Tour da tela: conversa, projetos, artefatos, conectores, memória e seletor de modelo<br>4. O semáforo do sigilo: verde, amarelo e vermelho, com oito exemplos do dia a dia | Conta configurada<br>*Missão: Checklist de decolagem* | Claude | 12 min |
+| **1.2 GitHub sem mistério** | O arquivo do escritório, com o histórico de cada versão. | 1. Criar a conta no GitHub com e-mail profissional e verificação em duas etapas<br>2. Os quatro conceitos que bastam: repositório, pasta, arquivo e versão<br>3. Repositório privado: quem vê, quem edita e como convidar um colega<br>4. Editar um arquivo pelo navegador e abrir a versão anterior no histórico | GitHub configurado<br>*Missão: Viagem no tempo: altere um texto e volte à versão de ontem* | GitHub | 12 min |
+| **1.3 Uma pasta por caso** | A estrutura padrão que todo caso do escritório segue. | 1. O repositório-modelo do curso: pastas de memória, documentos, peças, contratos e atas<br>2. Nomes padrão para cliente, caso e arquivo, para achar tudo em segundos<br>3. Criar o repositório de um cliente fictício a partir do modelo, com um clique<br>4. O que entra no repositório e o que nunca entra: segredo de justiça, saúde e dados de criança | Repositório-modelo do caso<br>*Missão: Arrume a bagunça: quinze arquivos soltos de um caso fictício nas pastas certas* | GitHub | 10 min |
+| **1.4 A memória do caso, que se atualiza** | O que o Claude precisa lembrar de cada caso, sempre em dia. | 1. O arquivo de memória do caso: cliente, objetivo, fatos, decisões, pendências e prazos conferidos<br>2. Ligar o repositório a um projeto do Claude e sincronizar com um clique<br>3. Ligar a memória do projeto e ver o que o Claude passou a lembrar<br>4. A instrução que fecha cada sessão: o Claude propõe a atualização da memória, você aprova e grava a nova versão | Memória do caso automatizada<br>*Missão: Três sessões, uma memória: o Claude lembra o que foi decidido na primeira?* | GitHub, Claude | 14 min |
+| **1.5 Design system: o seu ou um novo** | A identidade visual guardada para tudo nascer com a sua marca. | 1. Se você já tem marca: extrair cores, letras e logotipo do seu material<br>2. Se não tem: o prompt de criação, com as perguntas que geram paleta, tipografia, layout, logotipo e tom de voz<br>3. Os limites da OAB para a identidade: sobriedade, sem promessa, com nome e número de inscrição<br>4. Guardar o design system no Claude e no repositório do escritório | Design system e o prompt que o gera<br>*Missão: Teste da marca: peça uma página qualquer e veja se ela nasce com a sua cara* | Claude, Design system, GitHub | 14 min |
+| **1.6 O Claude que conhece você** | O seu perfil e o seu jeito de trabalhar, ensinados uma vez. | 1. Preferências do perfil: tom, formato, tamanho das respostas e português do Brasil<br>2. Estilo de escrita: o Claude aprende com dois textos seus<br>3. Instruções do escritório: área de atuação, critério de revisão e o que nunca fazer<br>4. O modelo certo para cada tarefa: Haiku, Sonnet, Opus e Fable | Perfil, estilo e guia de modelos<br>*Missão: Teste do estagiário novo: um pedido de uma linha sai no seu padrão?* | Claude | 12 min |
+| **1.7 Google conectado, com as permissões certas** | Gmail, Agenda, Drive e Meet ligados ao Claude, sob o seu controle. | 1. Ligar Gmail, Agenda e Drive ao Claude<br>2. Permissões: perguntar sempre antes de criar rascunho ou evento<br>3. A transcrição do Google Meet salva no Drive, pronta para virar ata<br>4. Como revisar e revogar acessos a qualquer momento | Google conectado<br>*Missão: Semana no escuro: o Claude acha os dois conflitos da agenda fictícia?* | Gmail, Google Agenda, Google Drive, Google Meet | 12 min |
+| **1.8 Plugins, skills e MCP jurídico** | As ferramentas jurídicas instaladas e com acesso limitado. | 1. Instalar o plugin jurídico e trocar o playbook americano pelo critério brasileiro do escritório<br>2. Criar a primeira skill: a atualização de andamento ao cliente<br>3. Adicionar um conector MCP de processos ou de jurisprudência e conferir o resultado na fonte oficial<br>4. O que cada permissão libera e como revisar os acessos de terceiros | Caixa de ferramentas jurídica<br>*Missão: Caça ao erro: três cláusulas que o playbook americano marcou errado* | Plugins e skills, MCP jurídico | 14 min |
 
-## Módulo 2 · Atendimento e produção com padrão
+## Módulo 2 · Trabalhar com padrão
 
 > "Cada atendimento, peça e retorno sai de um jeito, e eu reviso tudo no susto."
 
-**No fim do módulo:** Marca e modelos visuais, roteiro de atendimento, retornos com padrão, instruções reutilizáveis, biblioteca de casos e revisão da produção.
+**Agora sim, com casos: tudo acontece no ambiente que você montou no módulo 1.**
 
-8 aulas · 1 h 28 · Precisa de: conta gratuita para quase tudo; design system e skills pedem plano pago do Claude
+**No fim do módulo:** O primeiro caso em ficha e retorno, roteiro de atendimento, retornos com padrão, kit visual com a marca, biblioteca de casos e revisão da produção.
+
+7 aulas · 1 h 18 · Precisa de: o ambiente do módulo 1; skills e apresentações no Claude pedem plano pago
 
 | Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |
 |---|---|---|---|---|---:|
-| **2.1 A marca do escritório** | A identidade do escritório, ou a da empresa, guardada no Claude. | Três palavras, paleta, letras e tom de voz<br>Logotipo em SVG e PNG<br>O design system guardado no Claude | Marca definida<br>*Missão: Jogo das cartas* | Claude, Design system | 14 min |
-| **2.2 Modelos visuais** | Apresentação, timbrado e proposta com a sua marca. | Modelo de apresentação<br>Timbrado e assinatura de e-mail<br>Proposta de honorários ou parecer de uma página | Kit visual<br>*Missão: Antes e depois* | Design system, Google Docs, Gmail | 12 min |
-| **2.3 O primeiro atendimento** | Do primeiro contato à primeira reunião, com cliente ou área interna. | Roteiro de perguntas por tipo de caso<br>Lista de documentos para pedir<br>Registro do atendimento com próximos passos | Roteiro de atendimento<br>*Missão: Cliente simulado* | Claude, Google Docs | 10 min |
-| **2.4 Retornos com padrão** | Atualização, relatório e prazo de resposta combinado com quem pediu. | Atualização de andamento em três linhas<br>Relatório mensal de uma página<br>Prazo de retorno combinado com o cliente ou a área | Retornos com padrão<br>*Missão: Contra o relógio* | Claude, Google Docs | 10 min |
-| **2.5 Instruções reutilizáveis** | O que você explica uma vez, o Claude segue sempre. | Projeto do escritório com instruções permanentes<br>Skills para as tarefas que se repetem<br>Memória: o que guardar e o que nunca guardar | Instruções do escritório<br>*Missão: Teste do estagiário novo* | Claude, Plugins e skills | 12 min |
-| **2.6 Biblioteca de casos** | Casos, teses e peças de referência organizados para reuso. | Casos anteriores anonimizados<br>Teses e peças por tipo de ação<br>Achar a referência certa em segundos | Biblioteca de casos<br>*Missão: Ache o precedente da casa* | Claude, Google Drive | 10 min |
-| **2.7 Revisão da produção** | O que sai do escritório passa pelos seus critérios. | Três chaves para conferir citações<br>Checklist antes do envio e do protocolo<br>Registro de quem revisou e quando | Revisão com critério<br>*Missão: Caça ao erro* | Claude, Google Planilhas | 12 min |
-| **2.8 IA às claras com o cliente** | Transparência e consentimento sobre o uso de IA. | Página “Como usamos IA no seu caso”<br>Termo de consentimento do cliente<br>O que a OAB recomenda | Transparência<br>*Missão: Cliente desconfiado* | Claude, Google Docs | 8 min |
+| **2.1 O primeiro caso: ficha e retorno ao cliente** | Uma pilha de documentos vira ficha do caso e mensagem ao cliente. | 1. Criar o repositório do caso fictício e subir os oito documentos<br>2. Ficha do caso: cada fato com o documento e o trecho de origem, a linha do tempo e as lacunas<br>3. Retorno ao cliente em três linhas: o que aconteceu, o que significa e o próximo passo<br>4. Cronometrar a tarefa do início ao envio: é a sua primeira medição | Ficha do caso e retorno<br>*Missão: Cronômetro ligado* | Claude, GitHub | 14 min |
+| **2.2 O primeiro atendimento** | Do primeiro contato à ata, com cliente ou área interna. | 1. Roteiro de perguntas por tipo de caso: família, trabalhista, previdenciário e consumidor<br>2. Lista de documentos para pedir já na primeira conversa<br>3. Do atendimento à ata: decisões, pendências e prazos na pasta de atas<br>4. A memória do caso atualizada com o que foi combinado | Roteiro de atendimento e ata<br>*Missão: Cliente simulado: o Claude faz o cliente que fala demais* | Claude, GitHub | 12 min |
+| **2.3 Retornos com padrão** | Atualização, relatório e prazo de resposta combinado com quem pediu. | 1. Atualização de andamento em três linhas, sem juridiquês<br>2. Relatório mensal de uma página, com a sua marca<br>3. Prazo de retorno combinado com o cliente ou a área e registrado na memória do caso<br>4. O modelo guardado como skill, para usar em todos os casos | Modelos de retorno e relatório<br>*Missão: Contra o relógio: três retornos em dez minutos* | Claude, Plugins e skills, Google Docs | 10 min |
+| **2.4 Apresentações e documentos com a marca** | O design system aplicado ao que sai do escritório. | 1. Um parecer de doze páginas em cinco slides: decisão, cenário, riscos, caminhos e próximo passo<br>2. Timbrado no Google Docs e assinatura de e-mail a partir do design system<br>3. Proposta de honorários ou parecer de uma página<br>4. Exportar em PowerPoint e PDF | Kit visual<br>*Missão: Antes e depois: Word cru contra a sua marca* | Design system, Google Docs, Gmail | 12 min |
+| **2.5 Biblioteca de casos** | Casos, teses e peças de referência organizados para reuso. | 1. Um repositório-biblioteca com casos encerrados e anonimizados<br>2. Peças e teses organizadas por tipo de ação e por resultado<br>3. Anonimizar em três passos antes de guardar<br>4. Pedir ao Claude a referência da casa para um caso novo | Biblioteca de casos<br>*Missão: Ache o precedente da casa em trinta segundos* | GitHub, Claude | 10 min |
+| **2.6 Revisão da produção** | O que sai do escritório passa pelos seus critérios. | 1. As três chaves de cada citação: existe, diz isso e vale hoje<br>2. Checklist antes do envio e do protocolo: fatos, pedidos, valores, datas e citações<br>3. Registro de quem revisou, quando e o que mudou<br>4. Onde conferir: os sites oficiais do STF, do STJ, do TST e dos tribunais | Revisão com critério<br>*Missão: Caça ao erro: uma citação inventada e outra que diz o contrário* | Claude, Google Planilhas | 12 min |
+| **2.7 IA às claras com o cliente** | Transparência e consentimento sobre o uso de IA. | 1. A página “Como usamos IA no seu caso”, com a sua marca<br>2. O termo de consentimento do cliente, como pede a Recomendação 001/2024 da OAB<br>3. Onde arquivar o termo assinado: na pasta do caso<br>4. Como responder ao cliente que pergunta se foi a IA que fez | Transparência<br>*Missão: Cliente desconfiado: três perguntas difíceis* | Claude, Google Docs | 8 min |
 
 ## Módulo 3 · Rotinas automatizadas, decisões com você
 
 > "Passo o dia respondendo, lembrando e cobrando. O escritório só anda quando eu empurro."
+
+**As rotinas preparam; quem aprova é você.**
 
 **No fim do módulo:** Quatro fluxos completos (entrada da demanda, documentos, follow-up e painel de aprovação) e o ganho medido antes e depois.
 
@@ -71,17 +76,18 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 | Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |
 |---|---|---|---|---|---:|
-| **3.1 O ambiente das rotinas** | Planilha-mãe, pastas e o primeiro script. | Planilha-mãe e pastas no Drive<br>O que é o Google Apps Script<br>Conta de treino antes da conta real | Ambiente das rotinas<br>*Missão: Construção guiada* | Google Planilhas, Apps Script, Google Drive | 10 min |
-| **3.2 Controles de revisão e acompanhamento** | O que cada rotina pode fazer, e o que sempre passa por você. | Dados sensíveis mascarados antes da IA<br>E-mail em rascunho e revisão obrigatória<br>Registro de tudo e scripts versionados no GitHub | Controles ativos<br>*Missão: Conserte o script* | Apps Script, GitHub | 12 min |
-| **3.3 Fluxo 1 · Entrada da demanda** | Toda nova demanda, de cliente ou de outra área da empresa, chega organizada. | Resposta fora do horário no WhatsApp Business e no Gmail<br>Formulário de primeiro contato com aviso de privacidade<br>Cadastro automático na planilha | Entrada organizada<br>*Missão: Simulador de mensagens* | WhatsApp Business, Gmail, Google Formulários, Google Planilhas | 14 min |
-| **3.4 Fluxo 2 · Documentos** | Procuração, contratos e documentos padrão com um clique. | Modelos timbrados como base<br>Dados puxados do cadastro<br>Pasta do cliente montada pela rotina | Documentos em um clique<br>*Missão: Contra o relógio* | Apps Script, Google Docs, Google Drive | 14 min |
-| **3.5 Fluxo 3 · Follow-up** | Ninguém fica sem resposta por esquecimento. | Proposta sem resposta há três dias<br>Caso sem notícia ao cliente há 30 dias<br>Rascunhos prontos para você revisar | Follow-up em dia<br>*Missão: Segunda-feira* | Apps Script, Gmail, Google Planilhas | 14 min |
-| **3.6 Fluxo 4 · Painel de aprovação** | Tudo o que espera você, em uma tela e às 7h no e-mail. | Fila de rascunhos, documentos e propostas<br>Prazos da semana conferidos, com alarme na agenda<br>Aprovado só com nome e data | Painel de aprovação<br>*Missão: Caça ao erro* | Apps Script, Google Planilhas, Gmail, Google Agenda, Design system | 14 min |
-| **3.7 O dia simulado** | Os quatro fluxos rodando juntos em um dia fictício. | Da demanda que chega à aprovação<br>O que cada rotina fez e registrou<br>Os seus ajustes depois do primeiro dia | Rotinas em funcionamento<br>*Missão: Missão final* | Apps Script, Google Planilhas | 12 min |
-| **3.8 Medir o ganho** | Antes e depois, com os seus números. | Tempo total por entrega, com a revisão<br>Correções necessárias na revisão<br>Retornos feitos na data combinada | Ganho medido<br>*Missão: Compare com a medição da aula 1.2* | Google Planilhas | 10 min |
+| **3.1 O ambiente das rotinas** | Planilha-mãe, pastas e o primeiro script. | 1. A planilha-mãe com as abas Casos, Clientes, Propostas, Fila e Registro<br>2. As pastas de entrada e de saída no Drive<br>3. O que é o Google Apps Script e onde ele fica<br>4. Conta de treino antes da conta real | Ambiente das rotinas<br>*Missão: Construção guiada: instale pelo menu e veja as abas aparecerem* | Google Planilhas, Apps Script, Google Drive | 10 min |
+| **3.2 Controles de revisão e acompanhamento** | O que cada rotina pode fazer, e o que sempre passa por você. | 1. CPF, CNPJ, e-mail e telefone mascarados antes de qualquer envio à IA<br>2. A lista de termos que nunca saem, como laudo e segredo de justiça<br>3. E-mail sempre em rascunho e aprovação com nome e data<br>4. Registro de tudo e cada script versionado no GitHub | Controles ativos<br>*Missão: Conserte o script: uma rotina sem controle quase envia um CPF* | Apps Script, GitHub | 12 min |
+| **3.3 Fluxo 1 · Entrada da demanda** | Toda nova demanda, de cliente ou de outra área da empresa, chega organizada. | 1. WhatsApp Business: saudação, mensagem de ausência e respostas rápidas<br>2. Resposta automática do Gmail fora do horário, com o link do formulário<br>3. Formulário de primeiro contato com aviso de privacidade<br>4. Cada resposta vira uma linha no cadastro, com responsável e prazo | Entrada organizada<br>*Missão: Simulador de mensagens: cinco contatos fictícios, o que cada um recebe?* | WhatsApp Business, Gmail, Google Formulários, Google Planilhas | 14 min |
+| **3.4 Fluxo 2 · Documentos** | Procuração, contratos e documentos padrão com um clique. | 1. Modelos timbrados de procuração, contrato e proposta, com os campos marcados<br>2. O script que lê o cadastro e preenche os campos<br>3. A pasta do cliente criada no Drive, com os três documentos<br>4. Conferência antes de enviar para assinatura | Documentos em um clique<br>*Missão: Contra o relógio: três documentos em um minuto* | Apps Script, Google Docs, Google Drive | 14 min |
+| **3.5 Fluxo 3 · Follow-up** | Ninguém fica sem resposta por esquecimento. | 1. Proposta sem resposta há três dias: rascunho de follow-up<br>2. Caso sem notícia ao cliente há trinta dias: rascunho de atualização a partir do último andamento<br>3. O gatilho de toda segunda-feira às 8h<br>4. Rascunhos na fila de aprovação, nunca enviados sozinhos | Follow-up em dia<br>*Missão: Segunda-feira: quatro rascunhos esperando por você* | Apps Script, Gmail, Google Planilhas | 14 min |
+| **3.6 Fluxo 4 · Painel de aprovação** | Tudo o que espera você, em uma tela e às 7h no e-mail. | 1. A fila: rascunhos, documentos, propostas e prazos esperando revisão<br>2. O e-mail das 7h com a fila do dia e os prazos da semana<br>3. Prazos conferidos vão para a agenda, com alarme<br>4. O painel com a sua marca: o que espera você e o que cada rotina fez | Painel de aprovação<br>*Missão: Caça ao erro: um item “aprovado” sem nome de quem aprovou* | Apps Script, Google Planilhas, Gmail, Google Agenda, Design system | 14 min |
+| **3.7 O dia simulado** | Os quatro fluxos rodando juntos em um dia fictício. | 1. Uma demanda chega às 22h pelo WhatsApp<br>2. De manhã: cadastro feito, documentos prontos e follow-ups em rascunho<br>3. Você revisa a fila em quinze minutos<br>4. Os ajustes depois do primeiro dia: o que liberar e o que apertar | Rotinas em funcionamento<br>*Missão: Missão final* | Apps Script, Google Planilhas | 12 min |
+| **3.8 Medir o ganho** | Antes e depois, com os seus números. | 1. Repetir a tarefa da aula 2.1 com as rotinas e cronometrar<br>2. Contar as correções que a revisão pediu<br>3. Calcular os retornos feitos na data combinada<br>4. Decidir o que manter, o que ajustar e o que desligar | Ganho medido<br>*Missão: Compare com a aula 2.1* | Google Planilhas | 10 min |
 
 ## Aprofundamentos opcionais
 
+- **Claude Code na web.** O Claude trabalhando direto no repositório do caso: edita arquivos, atualiza a memória e grava cada versão no GitHub sozinho. Ferramentas: Claude Code, GitHub. Precisa de: plano pago do Claude.
 - **Contratos pelo critério do escritório.** Leitura do contrato pelo playbook, matriz de riscos com trecho conferido e comparação de versões com alerta. Ferramentas: Apps Script, API do Claude, Google Planilhas. Precisa de: chave de API paga, centavos por contrato.
 - **Triagem de e-mail com IA.** Etiqueta, resumo e rascunho de resposta para cada e-mail novo, sem nada ser enviado. Ferramentas: Apps Script, API do Claude, Gmail. Precisa de: chave de API paga, centavos por e-mail.
 - **n8n: rotinas fora do Google.** Os mesmos fluxos num editor visual, ligando Outlook, Teams e outros sistemas, o WhatsApp pela API oficial da Meta e o Claude acionando os fluxos por um conector MCP. Ferramentas: n8n, WhatsApp Business, Claude. Precisa de: n8n Cloud (pago, com teste grátis) ou servidor próprio com apoio de TI; WhatsApp pela API pede verificação na Meta e tem custo por mensagem.
@@ -90,18 +96,18 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 O trabalho de conclusão é uma demonstração de cinco minutos, gravada na sua própria tela.
 
-1. O ambiente configurado e o semáforo do sigilo
-2. Um caso no projeto: ficha e retorno ao cliente
-3. Uma apresentação com a marca do escritório
+1. A conta configurada e o semáforo do sigilo
+2. O repositório de um caso com a memória em dia
+3. O design system e uma apresentação com a marca
 4. A entrada da demanda e os documentos gerados
 5. O follow-up e o painel de aprovação
 6. O antes e depois: tempo, correções e retornos na data
 
 ## O ganho, medido por você
 
-Na aula 1.2 você cronometra uma tarefa real do seu dia. Na aula 3.8 repete a medição com as rotinas e compara três números.
+Na aula 2.1 você cronometra a primeira tarefa com um caso. Na aula 3.8 repete a medição com as rotinas e compara três números.
 
-| Indicador | Como medir | Antes (aula 1.2) | Depois (aula 3.8) |
+| Indicador | Como medir | Antes · aula 2.1 | Depois · aula 3.8 |
 |---|---|---|---|
 | Tempo total por entrega | Do início ao envio, incluindo a sua revisão. | | |
 | Correções necessárias | Quantas correções relevantes a revisão pediu. | | |
@@ -113,20 +119,21 @@ O curso não promete número. Você registra o que aconteceu, inclusive quando o
 
 | Ferramenta | Para que serve | Plano | Módulos |
 |---|---|---|---|
-| Claude | Conversa, projetos, memória e modelos | Grátis + Pro | 1, 2 |
+| Claude | Conversa, projetos, memória, perfil e modelos | Grátis + Pro | 1, 2 |
+| GitHub | Uma pasta por caso, a memória do caso e o histórico de versões | Grátis | 1, 2, 3 |
+| Design system | A marca em tudo que o Claude cria | Pro | 1, 2, 3 |
+| Plugins e skills | Plugin jurídico e instruções reutilizáveis | Pro | 1, 2 |
+| MCP jurídico | Tribunais e jurisprudência na conversa | Pro | 1 |
 | Gmail | Conector, respostas fora do horário e rascunhos | Grátis | 1, 2, 3 |
 | Google Agenda | Semana organizada e prazos com alarme | Grátis | 1, 3 |
-| Google Drive | Pasta de cada caso e biblioteca de casos | Grátis | 1, 2, 3 |
+| Google Drive | Transcrições, entradas e documentos gerados | Grátis | 1, 3 |
 | Google Meet | Reunião transcrita que vira ata | Workspace pago | 1 |
 | Google Planilhas | A planilha-mãe e a medição do ganho | Grátis | 2, 3 |
 | Google Formulários | Primeiro contato com o cliente | Grátis | 3 |
 | Google Docs | Timbrado, retornos e documentos gerados | Grátis | 2, 3 |
 | Apps Script | As rotinas automatizadas do escritório | Grátis | 3 |
-| GitHub | Scripts do escritório com histórico de versões | Grátis | 3 |
-| MCP jurídico | Tribunais e jurisprudência na conversa | Pro | 1 |
-| Plugins e skills | Plugin jurídico e instruções reutilizáveis | Pro | 1, 2 |
-| Design system | A marca em tudo que o Claude cria | Pro | 2, 3 |
 | WhatsApp Business | Resposta fora do horário e respostas rápidas | Grátis | 3 |
+| Claude Code | O Claude editando o repositório e gravando cada versão | Pro |  |
 | API do Claude | A IA dentro das rotinas, nos aprofundamentos | Centavos por uso |  |
 | n8n | Rotinas em editor visual, inclusive fora do Google | Pago ou servidor próprio |  |
 
@@ -141,9 +148,9 @@ O curso não promete número. Você registra o que aconteceu, inclusive quando o
 
 | Módulo | No fim, você tem | Aulas | Vídeo |
 |---|---|---:|---:|
-| 1 · A base: Claude configurado e o primeiro caso | Ambiente configurado com critérios de segurança, o primeiro caso em ficha e retorno ao cliente, Google conectado e ferramentas jurídicas instaladas. | 8 | 1 h 22 |
-| 2 · Atendimento e produção com padrão | Marca e modelos visuais, roteiro de atendimento, retornos com padrão, instruções reutilizáveis, biblioteca de casos e revisão da produção. | 8 | 1 h 28 |
+| 1 · Montar o local de trabalho | Conta segura, uma pasta por caso no GitHub com a memória do caso, design system, o Claude ajustado ao seu perfil e as ferramentas conectadas com as permissões certas. | 8 | 1 h 40 |
+| 2 · Trabalhar com padrão | O primeiro caso em ficha e retorno, roteiro de atendimento, retornos com padrão, kit visual com a marca, biblioteca de casos e revisão da produção. | 7 | 1 h 18 |
 | 3 · Rotinas automatizadas, decisões com você | Quatro fluxos completos (entrada da demanda, documentos, follow-up e painel de aprovação) e o ganho medido antes e depois. | 8 | 1 h 40 |
-| **Total** | 24 conquistas e as rotinas do escritório | 24 | 4 h 30 |
+| **Total** | 23 conquistas e as rotinas do escritório | 23 | 4 h 38 |
 
 Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google, e o aprofundamento de n8n mostra o caminho para Outlook, Teams e outros sistemas.
