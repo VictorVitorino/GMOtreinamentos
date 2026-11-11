@@ -93,6 +93,13 @@ A.modulos.forEach((m) => {
 (A.projeto_final ? A.projeto_final.roteiro : []).forEach((x) => { if (!I[x.icone]) erros.push(`Roteiro: ícone desconhecido "${x.icone}".`); });
 Object.entries(A.ferramentas).forEach(([n, f]) => { if (!I[f.icone]) erros.push(`Ferramenta ${n}: ícone desconhecido "${f.icone}".`); });
 const aulas = A.modulos.flatMap((m) => m.aulas);
+if (A.sistema) {
+  (A.sistema.pecas || []).forEach((x) => {
+    if (!I[x.icone]) erros.push(`Sistema, peça ${x.nome}: ícone desconhecido "${x.icone}".`);
+    if (!vistos.has(x.aula)) erros.push(`Sistema, peça ${x.nome}: aula ${x.aula} não existe.`);
+  });
+  if ((A.sistema.pecas || []).length !== 3) erros.push('Sistema: são três peças.');
+}
 const totalMin = aulas.reduce((t, a) => t + a.minutos, 0);
 if (totalMin > 480) erros.push(`O curso passa de 8 horas (${totalMin} min).`);
 if (erros.length) { console.error('A agenda não fecha:\n- ' + erros.join('\n- ')); process.exit(1); }
@@ -315,6 +322,26 @@ button { font: inherit; color: inherit; }
 .bloco.acesa .b-aula .ico, .tela.pronto .bloco .b-aula .ico { display: block; }
 .v-nota { margin-top: 10px; font-size: .86rem; color: var(--noite-sub); padding: 0 4px; }
 
+/* o sistema: três peças e os indicadores */
+.pecas { display: grid; grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr) 96px minmax(0, 1fr); align-items: stretch; margin-top: 28px; }
+.peca { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; text-decoration: none; transition: border-color .2s; }
+.peca:hover { border-color: var(--ouro); }
+.peca .ico-bola { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--ouro-s); color: var(--ouro); }
+.peca .ico-bola .ico { width: 25px; height: 25px; }
+.peca h3 { font-family: var(--f-titulo); font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
+.peca p { color: var(--tinta-2); font-size: .96rem; }
+.peca .na-aula { margin-top: auto; padding-top: 6px; font-size: .82rem; font-weight: 700; color: var(--tinta); }
+.elo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--ouro); text-align: center; font-size: .78rem; font-weight: 700; line-height: 1.2; padding: 0 4px; }
+.elo .ico { width: 26px; height: 26px; }
+.elo span { color: var(--tinta-2); }
+.sistema-tela { margin-top: 18px; }
+.sistema-tela .tela-barra .so-voce { color: var(--noite-sub); }
+.kpis-m { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.kpi-m { background: var(--noite-2); border: 1px solid var(--noite-3); border-radius: 12px; padding: 14px; min-width: 0; }
+.kpi-m small { display: block; color: var(--noite-sub); font-size: .86rem; }
+.kpi-m b { display: block; margin: 6px 0 6px; font-family: var(--f-titulo); font-size: 1.9rem; font-weight: 800; line-height: 1.05; color: var(--noite-tinta); white-space: nowrap; }
+.kpi-m span { display: block; color: var(--noite-sub); font-size: .88rem; line-height: 1.35; }
+
 /* conquistas */
 .medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 28px; }
 .medalha { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; text-decoration: none; min-width: 0; }
@@ -395,6 +422,10 @@ button { font: inherit; color: inherit; }
   .ferr-col .rot-m { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); width: 100%; }
   .final { grid-template-columns: minmax(0, 1fr); padding: 28px; }
   .vitrine { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .pecas { grid-template-columns: minmax(0, 1fr); }
+  .elo { flex-direction: row; padding: 10px 0; }
+  .elo .ico { transform: rotate(90deg); }
+  .kpis-m { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -422,6 +453,10 @@ button { font: inherit; color: inherit; }
   .vitrine { padding: 18px; border-radius: 16px; }
   .blocos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bloco { padding: 10px; }
+  .sistema-tela .tela-barra { flex-wrap: wrap; row-gap: 2px; }
+  .sistema-tela .tela-barra .so-voce { margin-left: 0; flex-basis: 100%; white-space: normal; }
+  .kpi-m { padding: 12px; }
+  .kpi-m b { font-size: 1.5rem; }
   .tela-barra .pontos { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -465,13 +500,15 @@ const topo = `
     </div>
   </header>`;
 
+const SIS = A.sistema;
 const nav = `
   <nav class="nav faixa" aria-label="Seções">
     <div class="miolo">
       <a class="marca" href="#curso-topo">${esc(A.titulo)}</a>
       <ul>
         <li><a class="item" href="#curso">O curso</a></li>
-        <li><a class="item" href="#agenda">Jornada</a></li>${A.modulos.map((m) => `
+        <li><a class="item" href="#agenda">Jornada</a></li>${SIS ? `
+        <li><a class="item" href="#sistema">Sistema</a></li>` : ''}${A.modulos.map((m) => `
         <li><a class="item" href="#modulo-${m.numero}">Módulo ${m.numero}</a></li>`).join('')}
         <li><a class="item" href="#conquistas">Conquistas</a></li>
         <li><a class="item" href="#projeto-final">Projeto final</a></li>
@@ -514,6 +551,26 @@ const jornada = `
           <span class="meta-e"><span><b>${m.aulas.length}</b> aulas</span><span><b>${fmt(m.minutos)}</b></span></span>
         </a>`).join('')}
       </div>
+    </div>
+  </section>`;
+
+const sistema = !SIS ? '' : `
+  <section class="secao faixa" id="sistema" aria-labelledby="t-sistema">
+    <div class="miolo">
+      <p class="olho">O sistema que você constrói</p>
+      <h2 id="t-sistema">${esc(SIS.titulo)}</h2>
+      <p class="intro">${esc(SIS.texto)}</p>
+      <div class="pecas">${SIS.pecas.map((x, i) => `
+        <a class="peca" href="#${idA(x.aula)}"><span class="ico-bola">${ico(x.icone)}</span><h3>${esc(x.nome)}</h3><p>${esc(x.papel)}</p><span class="na-aula">Aula ${esc(x.aula)}</span></a>${i < SIS.pecas.length - 1 ? `
+        <div class="elo" aria-hidden="true">${ico('seta')}<span>${esc((SIS.ligacoes || [])[i] || '')}</span></div>` : ''}`).join('')}
+      </div>
+      <div class="tela sistema-tela">
+        <div class="tela-barra"><span class="pontos" aria-hidden="true"><i></i><i></i><i></i></span><span>${esc(SIS.indicadores_titulo)}</span><span class="so-voce">${esc(SIS.indicadores_nota)}</span></div>
+        <div class="kpis-m">${SIS.indicadores.map((k) => `
+          <div class="kpi-m"><small>${esc(k.nome)}</small><b>${esc(k.exemplo)}</b><span>${esc(k.pergunta)}</span></div>`).join('')}
+        </div>
+      </div>${SIS.nota ? `
+      <p class="nota">${esc(SIS.nota)}</p>` : ''}
     </div>
   </section>`;
 
@@ -727,7 +784,7 @@ const cabeca = `<title>Agenda IA Aplicada a Advogados</title>
 <style>${CSS}</style>`;
 
 const corpo = `${sprite}${nav}${topo}
-<main>${curso}${jornada}${A.modulos.map(modulo).join('')}${conquistas}${final}${medicao}${ferramentas}${resumo}
+<main>${curso}${jornada}${sistema}${A.modulos.map(modulo).join('')}${conquistas}${final}${medicao}${ferramentas}${resumo}
 </main>${script}`;
 
 const pagina = `<!doctype html>
@@ -750,6 +807,7 @@ const cel = (t) => String(t || '').replace(/\|/g, '\\|');
 const md = [`# ${A.titulo}`, '', `**${A.chamada}**`, '', A.apoio, '', `3 módulos · ${aulas.length} aulas · ${fmt(totalMin)} de vídeo · ${aulas.length} conquistas · ${nomesF.length} ferramentas`, '',
   'A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', '',
   '## O curso', '', ...A.curso.map((c) => `- **${c.titulo}.** ${c.texto}`), '', '| Hoje | No fim do curso |', '|---|---|', ...A.antes_depois.map((x) => `| ${cel(x.antes)} | ${cel(x.depois)} |`), ''];
+if (SIS) md.push(`## ${SIS.titulo}`, '', SIS.texto, '', '| Peça | O que faz | Aula |', '|---|---|---|', ...SIS.pecas.map((x) => `| ${cel(x.nome)} | ${cel(x.papel)} | ${x.aula} |`), '', `**${SIS.indicadores_titulo}** (${SIS.indicadores_nota.toLowerCase()})`, '', '| Indicador | Exemplo | Pergunta que responde |', '|---|---|---|', ...SIS.indicadores.map((k) => `| ${cel(k.nome)} | ${cel(k.exemplo)} | ${cel(k.pergunta)} |`), '', ...(SIS.nota ? [SIS.nota, ''] : []));
 A.modulos.forEach((m) => {
   md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', ...(m.regra ? [`**${m.regra}**`, ''] : []), `**No fim do módulo:** ${m.resultado}`, '', `${m.aulas.length} aulas · ${fmt(m.minutos)} · Precisa de: ${m.precisa}`, '');
   if (m.painel) md.push(`### ${m.painel.titulo}`, '', m.painel.texto, '', '| Bloco | O que mostra | Liga na aula |', '|---|---|---|', ...m.painel.blocos.map((b) => `| ${cel(b.nome)} | ${cel(b.mostra)} | ${b.aula} |`), '', ...(m.painel.nota ? [m.painel.nota, ''] : []));

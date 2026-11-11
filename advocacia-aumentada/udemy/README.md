@@ -24,6 +24,29 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 | Medo de colar documento de cliente na IA | Ambiente configurado com critérios de segurança e controles de revisão |
 | Os números do escritório espalhados em planilhas, e-mails e na memória | Um painel próprio no celular: casos, prazos, propostas, honorários e o que espera você |
 
+## Um sistema próprio, e não só um chat com IA
+
+A planilha guarda tudo, as rotinas do Apps Script fazem o trabalho repetitivo e um painel em HTML, com a sua marca, mostra os números e recebe as suas aprovações. Você constrói as três peças no módulo 3, com o Claude escrevendo o código e você decidindo.
+
+| Peça | O que faz | Aula |
+|---|---|---|
+| Planilha-mãe | Guarda casos, clientes, propostas, honorários, fila e registro. | 3.1 |
+| Rotinas no Apps Script | Recebem as demandas, geram documentos, preparam follow-ups e calculam os indicadores. | 3.3 |
+| Painel em HTML | A página com a sua marca, no computador e no celular, onde você acompanha e aprova. | 3.2 |
+
+**O que o painel mostra** (números de exemplo, com dados fictícios.)
+
+| Indicador | Exemplo | Pergunta que responde |
+|---|---|---|
+| Casos ativos | 46 | Quantos casos tenho e em que fase estão? |
+| Prazos em 7 dias | 7 | O que vence esta semana e quem conferiu? |
+| Esperando você | 7 | O que as rotinas deixaram para eu aprovar? |
+| Propostas em aberto | R$ 58 mil | Quanto estou propondo e quanto aceitam? |
+| A receber em 30 dias | R$ 41 mil | Quanto entra no próximo mês? |
+| Vencido | R$ 8,2 mil | Quem está com parcela em atraso? |
+
+No jurídico de empresa, Propostas vira demandas das áreas e Honorários vira valores envolvidos.
+
 ## Módulo 1 · Montar o local de trabalho
 
 > "Abro o Claude e não sei por onde começar, onde guardar cada coisa nem se é seguro."

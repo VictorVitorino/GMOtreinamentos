@@ -214,6 +214,26 @@ button { font: inherit; color: inherit; }
 .bloco.acesa .b-aula .ico, .tela.pronto .bloco .b-aula .ico { display: block; }
 .v-nota { margin-top: 10px; font-size: .86rem; color: var(--noite-sub); padding: 0 4px; }
 
+/* o sistema: três peças e os indicadores */
+.pecas { display: grid; grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr) 96px minmax(0, 1fr); align-items: stretch; margin-top: 28px; }
+.peca { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; text-decoration: none; transition: border-color .2s; }
+.peca:hover { border-color: var(--ouro); }
+.peca .ico-bola { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--ouro-s); color: var(--ouro); }
+.peca .ico-bola .ico { width: 25px; height: 25px; }
+.peca h3 { font-family: var(--f-titulo); font-size: 1.15rem; font-weight: 700; line-height: 1.2; }
+.peca p { color: var(--tinta-2); font-size: .96rem; }
+.peca .na-aula { margin-top: auto; padding-top: 6px; font-size: .82rem; font-weight: 700; color: var(--tinta); }
+.elo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--ouro); text-align: center; font-size: .78rem; font-weight: 700; line-height: 1.2; padding: 0 4px; }
+.elo .ico { width: 26px; height: 26px; }
+.elo span { color: var(--tinta-2); }
+.sistema-tela { margin-top: 18px; }
+.sistema-tela .tela-barra .so-voce { color: var(--noite-sub); }
+.kpis-m { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.kpi-m { background: var(--noite-2); border: 1px solid var(--noite-3); border-radius: 12px; padding: 14px; min-width: 0; }
+.kpi-m small { display: block; color: var(--noite-sub); font-size: .86rem; }
+.kpi-m b { display: block; margin: 6px 0 6px; font-family: var(--f-titulo); font-size: 1.9rem; font-weight: 800; line-height: 1.05; color: var(--noite-tinta); white-space: nowrap; }
+.kpi-m span { display: block; color: var(--noite-sub); font-size: .88rem; line-height: 1.35; }
+
 /* conquistas */
 .medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 28px; }
 .medalha { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; text-decoration: none; min-width: 0; }
@@ -294,6 +314,10 @@ button { font: inherit; color: inherit; }
   .ferr-col .rot-m { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); width: 100%; }
   .final { grid-template-columns: minmax(0, 1fr); padding: 28px; }
   .vitrine { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .pecas { grid-template-columns: minmax(0, 1fr); }
+  .elo { flex-direction: row; padding: 10px 0; }
+  .elo .ico { transform: rotate(90deg); }
+  .kpis-m { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -321,6 +345,10 @@ button { font: inherit; color: inherit; }
   .vitrine { padding: 18px; border-radius: 16px; }
   .blocos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bloco { padding: 10px; }
+  .sistema-tela .tela-barra { flex-wrap: wrap; row-gap: 2px; }
+  .sistema-tela .tela-barra .so-voce { margin-left: 0; flex-basis: 100%; white-space: normal; }
+  .kpi-m { padding: 12px; }
+  .kpi-m b { font-size: 1.5rem; }
   .tela-barra .pontos { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -337,6 +365,7 @@ button { font: inherit; color: inherit; }
       <ul>
         <li><a class="item" href="#curso">O curso</a></li>
         <li><a class="item" href="#agenda">Jornada</a></li>
+        <li><a class="item" href="#sistema">Sistema</a></li>
         <li><a class="item" href="#modulo-1">Módulo 1</a></li>
         <li><a class="item" href="#modulo-2">Módulo 2</a></li>
         <li><a class="item" href="#modulo-3">Módulo 3</a></li>
@@ -436,6 +465,32 @@ button { font: inherit; color: inherit; }
           <span class="meta-e"><span><b>11</b> aulas</span><span><b>2 h 20</b></span></span>
         </a>
       </div>
+    </div>
+  </section>
+  <section class="secao faixa" id="sistema" aria-labelledby="t-sistema">
+    <div class="miolo">
+      <p class="olho">O sistema que você constrói</p>
+      <h2 id="t-sistema">Um sistema próprio, e não só um chat com IA</h2>
+      <p class="intro">A planilha guarda tudo, as rotinas do Apps Script fazem o trabalho repetitivo e um painel em HTML, com a sua marca, mostra os números e recebe as suas aprovações. Você constrói as três peças no módulo 3, com o Claude escrevendo o código e você decidindo.</p>
+      <div class="pecas">
+        <a class="peca" href="#a-3-1"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg></span><h3>Planilha-mãe</h3><p>Guarda casos, clientes, propostas, honorários, fila e registro.</p><span class="na-aula">Aula 3.1</span></a>
+        <div class="elo" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg><span>lê e grava</span></div>
+        <a class="peca" href="#a-3-3"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-codigo"/></svg></span><h3>Rotinas no Apps Script</h3><p>Recebem as demandas, geram documentos, preparam follow-ups e calculam os indicadores.</p><span class="na-aula">Aula 3.3</span></a>
+        <div class="elo" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg><span>entrega os números</span></div>
+        <a class="peca" href="#a-3-2"><span class="ico-bola"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg></span><h3>Painel em HTML</h3><p>A página com a sua marca, no computador e no celular, onde você acompanha e aprova.</p><span class="na-aula">Aula 3.2</span></a>
+      </div>
+      <div class="tela sistema-tela">
+        <div class="tela-barra"><span class="pontos" aria-hidden="true"><i></i><i></i><i></i></span><span>O que o painel mostra</span><span class="so-voce">Números de exemplo, com dados fictícios.</span></div>
+        <div class="kpis-m">
+          <div class="kpi-m"><small>Casos ativos</small><b>46</b><span>Quantos casos tenho e em que fase estão?</span></div>
+          <div class="kpi-m"><small>Prazos em 7 dias</small><b>7</b><span>O que vence esta semana e quem conferiu?</span></div>
+          <div class="kpi-m"><small>Esperando você</small><b>7</b><span>O que as rotinas deixaram para eu aprovar?</span></div>
+          <div class="kpi-m"><small>Propostas em aberto</small><b>R$ 58 mil</b><span>Quanto estou propondo e quanto aceitam?</span></div>
+          <div class="kpi-m"><small>A receber em 30 dias</small><b>R$ 41 mil</b><span>Quanto entra no próximo mês?</span></div>
+          <div class="kpi-m"><small>Vencido</small><b>R$ 8,2 mil</b><span>Quem está com parcela em atraso?</span></div>
+        </div>
+      </div>
+      <p class="nota">No jurídico de empresa, Propostas vira demandas das áreas e Honorários vira valores envolvidos.</p>
     </div>
   </section>
   <section class="secao faixa modulo-sec m1" id="modulo-1" aria-labelledby="t-m1">

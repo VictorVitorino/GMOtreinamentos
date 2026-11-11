@@ -17,6 +17,27 @@
     { "antes": "Medo de colar documento de cliente na IA", "depois": "Ambiente configurado com critérios de segurança e controles de revisão" },
     { "antes": "Os números do escritório espalhados em planilhas, e-mails e na memória", "depois": "Um painel próprio no celular: casos, prazos, propostas, honorários e o que espera você" }
   ],
+  "sistema": {
+    "titulo": "Um sistema próprio, e não só um chat com IA",
+    "texto": "A planilha guarda tudo, as rotinas do Apps Script fazem o trabalho repetitivo e um painel em HTML, com a sua marca, mostra os números e recebe as suas aprovações. Você constrói as três peças no módulo 3, com o Claude escrevendo o código e você decidindo.",
+    "pecas": [
+      { "icone": "planilha", "nome": "Planilha-mãe", "papel": "Guarda casos, clientes, propostas, honorários, fila e registro.", "aula": "3.1" },
+      { "icone": "codigo", "nome": "Rotinas no Apps Script", "papel": "Recebem as demandas, geram documentos, preparam follow-ups e calculam os indicadores.", "aula": "3.3" },
+      { "icone": "painel", "nome": "Painel em HTML", "papel": "A página com a sua marca, no computador e no celular, onde você acompanha e aprova.", "aula": "3.2" }
+    ],
+    "ligacoes": ["lê e grava", "entrega os números"],
+    "indicadores_titulo": "O que o painel mostra",
+    "indicadores_nota": "Números de exemplo, com dados fictícios.",
+    "indicadores": [
+      { "nome": "Casos ativos", "exemplo": "46", "pergunta": "Quantos casos tenho e em que fase estão?" },
+      { "nome": "Prazos em 7 dias", "exemplo": "7", "pergunta": "O que vence esta semana e quem conferiu?" },
+      { "nome": "Esperando você", "exemplo": "7", "pergunta": "O que as rotinas deixaram para eu aprovar?" },
+      { "nome": "Propostas em aberto", "exemplo": "R$ 58 mil", "pergunta": "Quanto estou propondo e quanto aceitam?" },
+      { "nome": "A receber em 30 dias", "exemplo": "R$ 41 mil", "pergunta": "Quanto entra no próximo mês?" },
+      { "nome": "Vencido", "exemplo": "R$ 8,2 mil", "pergunta": "Quem está com parcela em atraso?" }
+    ],
+    "nota": "No jurídico de empresa, Propostas vira demandas das áreas e Honorários vira valores envolvidos."
+  },
   "modulos": [
     {
       "numero": 1, "andar": "Montagem", "nome": "Montar o local de trabalho",
