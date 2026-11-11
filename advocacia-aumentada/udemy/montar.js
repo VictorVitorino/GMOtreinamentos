@@ -7,7 +7,7 @@
      agenda-udemy.html   página completa, abre em qualquer navegador
      README.md           espelho em texto
    Com --artefato, grava também a versão sem <html>/<head>/<body>, usada para publicar a página.
-   O script confere somas, números de sessão, ferramentas e cobertura, e interrompe se algo não fechar. */
+   Confere números de sessão, minutos e ferramentas, e para se algo não fechar. */
 
 const fs = require('fs');
 const path = require('path');
@@ -16,476 +16,382 @@ const args = process.argv.slice(2);
 const iArt = args.indexOf('--artefato');
 const saidaArtefato = iArt >= 0 ? args[iArt + 1] : null;
 const entrada = path.resolve(args.find((a, i) => !a.startsWith('--') && (iArt < 0 || i !== iArt + 1)) || path.join(__dirname, 'agenda.json'));
-const pastaSaida = path.dirname(entrada);
+const pasta = path.dirname(entrada);
 const A = JSON.parse(fs.readFileSync(entrada, 'utf8'));
 
-// ---------- vocabulário ----------
-const GANHOS = { apresentacao: 'Apresentação', organizacao: 'Organização', clientela: 'Clientela' };
-const FERRAMENTAS = {
-  'IA (conversa)': { filtro: 'ia', rotulo: 'IA' }, 'IA (API)': { filtro: 'ia', rotulo: 'IA' },
-  Conectores: { filtro: 'conectores', rotulo: 'Conectores' }, Meet: { filtro: 'meet', rotulo: 'Meet' },
-  'Plugins e skills': { filtro: 'plugins', rotulo: 'Plugins e skills' }, MCP: { filtro: 'mcp', rotulo: 'MCP' },
-  'Design system': { filtro: 'design', rotulo: 'Design system' }, Slides: { filtro: 'slides', rotulo: 'Slides' },
-  Planilhas: { filtro: 'planilhas', rotulo: 'Planilhas' }, 'Formulários': { filtro: 'formularios', rotulo: 'Formulários' },
-  Docs: { filtro: 'docs', rotulo: 'Docs' }, Gmail: { filtro: 'gmail', rotulo: 'Gmail' }, Agenda: { filtro: 'agenda', rotulo: 'Agenda' },
-  Drive: { filtro: 'drive', rotulo: 'Drive' }, 'Apps Script': { filtro: 'apps-script', rotulo: 'Apps Script' }, Painel: { filtro: 'painel', rotulo: 'Painel' }, WhatsApp: { filtro: 'whatsapp', rotulo: 'WhatsApp' },
-};
-const FRENTES = {
-  configuracao: ['Configuração do Claude e escolha do modelo', 'escudo'], conectores_meet: ['Conectores do Google e Google Meet', 'email'],
-  plugins_mcp: ['Plugins, skills e MCP jurídico', 'lupa'], design_marca: ['Design system e marca do advogado', 'cartao'],
-  apresentacoes: ['Apresentações e documentos com a marca', 'slides'], ambiente_guardrails: ['Ambiente e guardrails dos scripts', 'escudo'],
-  apps_script: ['Google Apps Script', 'script'], email_agenda: ['Automação de e-mail e de agenda', 'agenda'],
-  contrato_riscos: ['Análise de contrato e de riscos', 'contrato'], casos_clientes: ['Gestão de casos e plataforma de clientes', 'formulario'],
-  plataforma_contratos: ['Plataforma de contratos', 'painel'], planilhas_paineis: ['Planilhas e painéis', 'planilha'],
-  escritorio_automatico: ['Escritório automatizado: respostas, follow-up e revisões', 'sozinho'],
-};
-const SIMBOLOS = {
-  pagina: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/>',
-  painel: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/>',
-  planilha: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.8h18M9 4v16M15 4v16"/>',
-  script: '<path d="M8.5 8L4.5 12l4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/>',
-  email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.6L12 13l8.4-6.4"/>',
-  agenda: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h2.5M13.8 14h2.7M7.5 17.4h2.5"/>',
-  formulario: '<rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7.5" y="7" width="3" height="3" rx=".5"/><path d="M13 8.5h3.5M7.5 14h9M7.5 17.5h6"/>',
-  contrato: '<path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 11h7M9 14.3h7M9 18c.9-1.4 1.9-1.4 2.8 0s1.9 1.4 2.8 0"/>',
-  lista: '<path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/>',
-  tempo: '<path d="M3 12h18M6 12V7.5M12 12v4.5M18 12V7.5"/><circle cx="6" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18" cy="12" r="1.7"/>',
-  mensagem: '<path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/>',
-  cartao: '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/>',
-  calculo: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7.5h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/>',
-  slides: '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/>',
+// ---------- ícones ----------
+const ICONES = {
   escudo: '<path d="M12 3l7 2.6v5.3c0 4.4-2.9 8.1-7 9.6-4.1-1.5-7-5.2-7-9.6V5.6L12 3z"/><path d="M9 11.8l2.1 2.1L15 10"/>',
-  funil: '<path d="M4 5h16l-6 7v6l-4 2v-8L4 5z"/>',
+  mapa: '<path d="M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/>',
+  lista: '<path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/>',
+  versao: '<circle cx="6" cy="5.5" r="2"/><circle cx="6" cy="18.5" r="2"/><circle cx="18" cy="7.5" r="2"/><path d="M6 7.5v9M18 9.5c0 4.5-12 3-12 7"/>',
+  pasta: '<path d="M3.5 7a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/>',
+  agenda: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h2.5M13.8 14h2.7M7.5 17.4h2.5"/>',
+  mensagem: '<path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/>',
   lupa: '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8.2 10.7l1.7 1.7 2.9-3.1"/>',
   molde: '<path d="M8 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2M9 9h6M9 12h6M9 15h3.5"/>',
+  cartao: '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/>',
+  slides: '<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/>',
+  cerebro: '<path d="M12 5.5a3 3 0 0 0-5.5 1.3A3 3 0 0 0 5 12a3 3 0 0 0 2 5.3 3 3 0 0 0 5 1.2M12 5.5a3 3 0 0 1 5.5 1.3A3 3 0 0 1 19 12a3 3 0 0 1-2 5.3 3 3 0 0 1-5 1.2M12 5.5v13"/>',
+  pagina: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/>',
+  planilha: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.8h18M9 4v16M15 4v16"/>',
+  formulario: '<rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7.5" y="7" width="3" height="3" rx=".5"/><path d="M13 8.5h3.5M7.5 14h9M7.5 17.5h6"/>',
+  email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.6L12 13l8.4-6.4"/>',
+  contrato: '<path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 11h7M9 14.3h7M9 18c.9-1.4 1.9-1.4 2.8 0s1.9 1.4 2.8 0"/>',
+  painel: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/>',
   sozinho: '<path d="M20 12a8 8 0 1 1-2.35-5.65"/><path d="M20 4.5v4h-4"/><path d="M12 8v4l2.6 2.4"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  seta: '<path d="M9 6l6 6-6 6"/>',
 };
 
 // ---------- conferência ----------
 const erros = [];
 if (A.modulos.length !== 3) erros.push('A agenda precisa de exatamente 3 módulos.');
-const numeros = new Set();
+const vistos = new Set();
 A.modulos.forEach((m) => {
   m.minutos = m.sessoes.reduce((t, s) => t + s.minutos, 0);
   m.sessoes.forEach((s) => {
-    ['numero', 'nome', 'dor', 'o_que_constroi', 'entregavel', 'ganho'].forEach((c) => { if (!s[c]) erros.push(`Sessão ${s.numero || '?'} sem "${c}".`); });
-    if (!Number.isInteger(s.minutos) || s.minutos < 3 || s.minutos > 20) erros.push(`Sessão ${s.numero}: minutos fora do intervalo (${s.minutos}).`);
-    if (numeros.has(s.numero)) erros.push(`Sessão ${s.numero} repetida.`);
-    numeros.add(s.numero);
-    if (!String(s.numero).startsWith(m.numero + '.')) erros.push(`Sessão ${s.numero} está no módulo ${m.numero}.`);
-    (s.ganhos || []).forEach((g) => { if (!GANHOS[g]) erros.push(`Sessão ${s.numero}: ganho desconhecido "${g}".`); });
-    (s.ferramentas || []).forEach((f) => { if (!FERRAMENTAS[f]) erros.push(`Sessão ${s.numero}: ferramenta desconhecida "${f}".`); });
-    if (s.peca && !SIMBOLOS[s.peca]) erros.push(`Sessão ${s.numero}: peça desconhecida "${s.peca}".`);
+    ['numero', 'nome', 'faz', 'conquista', 'minutos'].forEach((c) => { if (!s[c]) erros.push(`Sessão ${s.numero || '?'} sem "${c}".`); });
+    if (!String(s.numero).startsWith(m.numero + '.')) erros.push(`Sessão ${s.numero} fora do módulo ${m.numero}.`);
+    if (vistos.has(s.numero)) erros.push(`Sessão ${s.numero} repetida.`);
+    vistos.add(s.numero);
+    if (s.icone && !ICONES[s.icone]) erros.push(`Sessão ${s.numero}: ícone desconhecido "${s.icone}".`);
+    (s.ferramentas || []).forEach((f) => { if (!A.ferramentas[f]) erros.push(`Sessão ${s.numero}: ferramenta sem descrição "${f}".`); });
   });
 });
-(A.mapa_dores || []).forEach((d) => d.sessoes.forEach((n) => { if (!numeros.has(n)) erros.push(`Mapa de dores cita a sessão ${n}, que não existe.`); }));
-(A.cobertura || []).forEach((c) => {
-  if (!FRENTES[c.frente] && !GANHOS[c.frente]) erros.push(`Cobertura: frente desconhecida "${c.frente}".`);
-  c.sessoes.forEach((n) => { if (!numeros.has(n)) erros.push(`Cobertura de ${c.frente} cita a sessão ${n}, que não existe.`); });
-});
-if ((A.cobertura || []).length) {
-  Object.keys(FRENTES).forEach((f) => {
-    const c = A.cobertura.find((x) => x.frente === f);
-    if (!c || !c.sessoes.length) erros.push(`Nenhuma sessão cobre "${FRENTES[f][0]}".`);
-  });
-}
-const totalMin = A.modulos.reduce((t, m) => t + m.minutos, 0);
 const todas = A.modulos.flatMap((m) => m.sessoes);
-const totalSessoes = todas.length;
-const totalAuto = todas.filter((s) => (s.automacao || '').trim()).length;
+const totalMin = todas.reduce((t, s) => t + s.minutos, 0);
 if (totalMin > 480) erros.push(`O curso passa de 8 horas (${totalMin} min).`);
 if (erros.length) { console.error('A agenda não fecha:\n- ' + erros.join('\n- ')); process.exit(1); }
 
 // ---------- utilidades ----------
 const esc = (t) => String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const fmt = (min) => { const h = Math.floor(min / 60), m = min % 60; return h ? `${h} h${m ? ' ' + String(m).padStart(2, '0') + ' min' : ''}` : `${m} min`; };
-const idSessao = (n) => 's-' + String(n).replace('.', '-');
-const ico = (nome, classe = 'ico') => `<svg class="${classe}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-${nome}"/></svg>`;
-const etiquetas = (s) => [...new Set([...(s.ganhos || []), ...(s.ferramentas || []).map((f) => FERRAMENTAS[f].filtro)])];
-const conta = (chave) => todas.filter((s) => etiquetas(s).includes(chave)).length;
-const ferramentasDaSessao = (s) => [...new Set((s.ferramentas || []).map((f) => (f === 'IA (API)' ? 'IA pela API' : FERRAMENTAS[f].rotulo)))];
-const chipSessao = (n) => `<a class="c${String(n).split('.')[0]}" href="#${idSessao(n)}">${esc(n)}</a>`;
+const fmt = (min) => { const h = Math.floor(min / 60), m = min % 60; return h ? `${h} h${m ? ' ' + String(m).padStart(2, '0') : ''}` : `${m} min`; };
+const id = (n) => 's-' + String(n).replace('.', '-');
+const ico = (nome, cls = 'ico') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-${nome}"/></svg>`;
+const robos = todas.filter((s) => s.automacao);
+const usos = (f) => todas.filter((s) => (s.ferramentas || []).includes(f)).map((s) => s.numero);
 
 // ---------- estilo ----------
 const CSS = `
-/* Layout: uma coluna. No topo, a caixa de ferramentas mostra onde cada frente é ensinada.
-   Cada módulo é um bloco de cor com a dor maior, sobre uma folha de sessões em três tempos:
-   a dor, o que você constrói (e o que passa a rodar sozinho), o que você ganha. */
+/* Layout: menu lateral fixo (módulos, entregáveis, ferramentas, resumo) e uma vista por vez.
+   Cada módulo é uma trilha de sessões: título, o que você faz e a conquista. O detalhe abre ao clicar. */
 :root {
-  --mesa: #F3EFEE; --folha: #FFFFFF; --folha-2: #F8F5F4; --linha: #DED7D5; --linha-forte: #8E8684;
-  --tinta: #161B2C; --tinta-2: #535A6C;
-  --azul: #27468C; --azul-suave: #EAF0FB; --rubi: #9D1A30; --rubi-suave: #F9EBED; --latao: #7D5A14; --latao-suave: #F6EEDC;
-  --verde: #1D6A49; --verde-suave: #E5F3EC;
-  --sobre-cor: #FFFFFF;
-  --f-titulo: "Libre Caslon Display", "Libre Caslon Text", Georgia, serif;
-  --f-serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --f-texto: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fundo: #F5F6F8; --cartao: #FFFFFF; --linha: #E1E4EA; --tinta: #151B27; --tinta-2: #586174;
+  --lado: #15203A; --lado-tinta: #EEF1F7; --lado-2: #AEB8CC; --lado-ativo: #24345A;
+  --m1: #2D58CF; --m1-s: #EAF0FD; --m2: #9A2242; --m2-s: #FAEDF1; --m3: #0E7466; --m3-s: #E2F3F0;
+  --f-titulo: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-texto: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --mesa: #0F131D; --folha: #171C29; --folha-2: #1E2433; --linha: #2C3345; --linha-forte: #6C7590;
-    --tinta: #F0EAE5; --tinta-2: #A8AEBE;
-    --azul: #9DB6F2; --azul-suave: #1A2440; --rubi: #F2798C; --rubi-suave: #37151E; --latao: #D9B466; --latao-suave: #2E2410;
-    --verde: #6FCB9F; --verde-suave: #12301F;
-    --sobre-cor: #10141E; color-scheme: dark;
+    --fundo: #0E121B; --cartao: #161C29; --linha: #283044; --tinta: #ECEFF5; --tinta-2: #A6AFC0;
+    --lado: #0A0F1A; --lado-tinta: #EEF1F7; --lado-2: #97A2B8; --lado-ativo: #1C2A47;
+    --m1: #93ADF6; --m1-s: #1A2440; --m2: #F193AB; --m2-s: #3A1724; --m3: #6FD1C1; --m3-s: #10302B;
+    color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --mesa: #0F131D; --folha: #171C29; --folha-2: #1E2433; --linha: #2C3345; --linha-forte: #6C7590;
-  --tinta: #F0EAE5; --tinta-2: #A8AEBE;
-  --azul: #9DB6F2; --azul-suave: #1A2440; --rubi: #F2798C; --rubi-suave: #37151E; --latao: #D9B466; --latao-suave: #2E2410;
-  --verde: #6FCB9F; --verde-suave: #12301F;
-  --sobre-cor: #10141E; color-scheme: dark;
+  --fundo: #0E121B; --cartao: #161C29; --linha: #283044; --tinta: #ECEFF5; --tinta-2: #A6AFC0;
+  --lado: #0A0F1A; --lado-tinta: #EEF1F7; --lado-2: #97A2B8; --lado-ativo: #1C2A47;
+  --m1: #93ADF6; --m1-s: #1A2440; --m2: #F193AB; --m2-s: #3A1724; --m3: #6FD1C1; --m3-s: #10302B;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--mesa); color: var(--tinta); font-family: var(--f-texto); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, p, dl, dd, ul, ol, blockquote { margin: 0; }
+body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
-img { max-width: 100%; }
 [hidden] { display: none !important; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--rubi); outline-offset: 3px; }
-.pagina { max-width: 1120px; margin: 0 auto; padding-block: 44px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 40px; }
-.rotulo { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); line-height: 1.3; }
-.ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--m1); outline-offset: 3px; }
+.ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
-.abre { display: flex; flex-direction: column; gap: 18px; }
-.abre h1 { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(2.2rem, 5.6vw, 3.6rem); line-height: 1.04; letter-spacing: -.012em; text-wrap: balance; }
-.abre .sub { font-family: var(--f-serif); font-style: italic; font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--tinta-2); margin-top: -8px; }
-.promessa { font-family: var(--f-serif); font-size: clamp(1.06rem, 2vw, 1.26rem); line-height: 1.5; max-width: 64ch; }
-.fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); border-block: 1px solid var(--linha); }
-.fatos div { padding: 12px 16px 12px 0; display: flex; flex-direction: column; gap: 2px; }
-.fatos dd { font-family: var(--f-serif); font-size: 1.5rem; font-weight: 700; line-height: 1.25; font-variant-numeric: tabular-nums; }
-.compasso { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; color: var(--tinta-2); font-size: .97rem; }
-.compasso b { color: var(--tinta); font-weight: 700; }
-.compasso i { font-style: normal; color: var(--linha-forte); }
-.jogo { color: var(--tinta-2); font-size: .97rem; max-width: 72ch; margin-top: -8px; }
+.app { display: grid; grid-template-columns: 290px minmax(0, 1fr); min-height: 100vh; }
+.m1 { --cor: var(--m1); --cor-s: var(--m1-s); }
+.m2 { --cor: var(--m2); --cor-s: var(--m2-s); }
+.m3 { --cor: var(--m3); --cor-s: var(--m3-s); }
 
-.bloco h2 { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(1.5rem, 3vw, 1.9rem); line-height: 1.15; text-wrap: balance; }
-.bloco > p { margin-top: 8px; color: var(--tinta-2); max-width: 72ch; }
+/* menu lateral */
+.lado { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--lado); color: var(--lado-tinta); padding-block: 32px; padding-left: max(22px, env(safe-area-inset-left, 0px)); padding-right: 22px; display: flex; flex-direction: column; gap: 28px; }
+.marca h1 { font-family: var(--f-titulo); font-weight: 600; font-size: 1.45rem; line-height: 1.2; }
+.marca p { margin-top: 8px; font-size: .93rem; line-height: 1.5; color: var(--lado-2); }
+.marca .total { margin-top: 12px; font-size: .85rem; color: var(--lado-2); font-variant-numeric: tabular-nums; }
+.menu { display: flex; flex-direction: column; gap: 4px; }
+.menu .sep { height: 1px; background: rgba(255,255,255,.12); margin: 10px 4px; }
+.menu a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--lado-tinta); }
+.menu a:hover { background: var(--lado-ativo); }
+.menu a[aria-current="page"] { background: var(--lado-ativo); box-shadow: inset 3px 0 0 var(--lado-tinta); }
+.menu .bola { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none; font-weight: 700; font-size: .9rem; background: rgba(255,255,255,.1); }
+.menu .bola .ico { width: 17px; height: 17px; }
+.menu .txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
+.menu .txt b { font-weight: 600; font-size: .96rem; }
+.menu .txt small { font-size: .8rem; color: var(--lado-2); }
+.menu .prog { margin-left: auto; font-size: .78rem; color: var(--lado-2); font-variant-numeric: tabular-nums; }
 
-.caixa { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; margin-top: 16px; border-top: 1px solid var(--linha); }
-.caixa li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--linha); min-width: 0; }
-.caixa .frente { display: flex; align-items: center; gap: 10px; font-weight: 600; min-width: 0; }
-.caixa .frente .ico { color: var(--tinta-2); }
-.chips { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
-.chips a { font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; text-decoration: none; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; }
-.chips .c1 { color: var(--azul); } .chips .c2 { color: var(--rubi); } .chips .c3 { color: var(--latao); }
-.legenda { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: .86rem; color: var(--tinta-2); }
-.legenda span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; background: var(--cor); }
+/* conteúdo */
+.conteudo { padding-block: 48px 80px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.vista { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.cab .etapa { font-size: .85rem; font-weight: 700; color: var(--cor, var(--tinta-2)); letter-spacing: .02em; }
+.cab h2 { font-family: var(--f-titulo); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.15; margin-top: 6px; text-wrap: balance; }
+.cab .dor { margin-top: 12px; font-size: 1.12rem; color: var(--tinta-2); }
+.cab .dor q { quotes: "\\201C" "\\201D"; font-style: italic; }
+.fim { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--cor-s); border-radius: 10px; }
+.fim .ico { color: var(--cor); margin-top: 3px; }
+.fim p { font-size: .98rem; }
+.fim b { color: var(--cor); }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .9rem; color: var(--tinta-2); }
+.meta b { color: var(--tinta); font-variant-numeric: tabular-nums; }
 
-.filtro { display: flex; flex-direction: column; gap: 10px; }
-.filtro .linha-f { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.filtro .rotulo { min-width: 132px; }
-.filtro button { font: inherit; font-size: .9rem; font-weight: 600; line-height: 1.2; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--linha-forte); background: transparent; color: var(--tinta); cursor: pointer; }
-.filtro button span { font-weight: 400; margin-left: 6px; font-variant-numeric: tabular-nums; color: var(--tinta-2); }
-.filtro button[aria-pressed="true"] { background: var(--tinta); color: var(--mesa); border-color: var(--tinta); }
-.filtro button[aria-pressed="true"] span { color: inherit; }
-.filtro output { font-size: .88rem; color: var(--tinta-2); }
+/* trilha de sessões */
+.trilha { display: flex; flex-direction: column; }
+.passo { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 0 16px; padding-bottom: 14px; }
+.passo::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; width: 2px; background: var(--linha); }
+.passo:last-child::before { display: none; }
+.feito { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--cor); background: var(--cartao); color: var(--cor); display: grid; place-items: center; cursor: pointer; font-weight: 700; font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
+.feito .ico { display: none; width: 22px; height: 22px; }
+.feito[aria-pressed="true"] { background: var(--cor); color: var(--cartao); }
+.feito[aria-pressed="true"] .n { display: none; }
+.feito[aria-pressed="true"] .ico { display: block; }
+.passo details { background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; min-width: 0; }
+.passo summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+.passo summary::-webkit-details-marker { display: none; }
+.passo .topo { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; }
+.passo h3 { font-size: 1.08rem; font-weight: 700; line-height: 1.35; }
+.passo .min { font-size: .85rem; color: var(--tinta-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.passo .faz { color: var(--tinta-2); font-size: .98rem; }
+.selo { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; margin-top: 4px; padding: 4px 12px 4px 8px; border-radius: 999px; border: 1.5px solid var(--cor); color: var(--cor); font-weight: 700; font-size: .86rem; line-height: 1.3; }
+.selo .ico { width: 17px; height: 17px; }
+.passo.ok .selo { background: var(--cor); color: var(--cartao); }
+.abrir { display: inline-flex; align-items: center; gap: 4px; font-size: .84rem; color: var(--tinta-2); margin-top: 2px; }
+.abrir .ico { width: 15px; height: 15px; transition: transform .2s; }
+details[open] .abrir .ico { transform: rotate(90deg); }
+.detalhe { padding: 2px 18px 18px; display: grid; gap: 12px; border-top: 1px solid var(--linha); padding-top: 14px; margin: 0 0 0; }
+.detalhe div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; font-size: .95rem; }
+.detalhe dt { color: var(--tinta-2); font-size: .86rem; padding-top: 2px; }
+.detalhe .auto { color: var(--m3); font-weight: 600; }
 
-.modulo { display: flex; flex-direction: column; border: 1px solid var(--linha); border-radius: 6px; overflow: hidden; background: var(--folha); }
-.m1 { --cor: var(--azul); --cor-suave: var(--azul-suave); }
-.m2 { --cor: var(--rubi); --cor-suave: var(--rubi-suave); }
-.m3 { --cor: var(--latao); --cor-suave: var(--latao-suave); }
-.modulo-cab { background: var(--cor); color: var(--sobre-cor); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 30px; padding: 28px; }
-.modulo-cab .rotulo { color: inherit; opacity: .85; }
-.modulo-cab h2 { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(1.7rem, 3.2vw, 2.3rem); line-height: 1.08; margin-top: 8px; text-wrap: balance; }
-.modulo-cab .para { margin-top: 10px; font-size: .93rem; }
-.fala { font-family: var(--f-serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.42rem); line-height: 1.38; margin-top: 8px; text-wrap: pretty; }
-.leva .sistema { display: flex; gap: 10px; align-items: flex-start; font-weight: 700; font-size: 1.08rem; line-height: 1.3; margin-top: 8px; }
-.leva .sistema .ico { margin-top: 2px; }
-.leva .ganho { margin-top: 8px; font-size: .93rem; }
-.leva .conta { margin-top: 12px; padding-top: 10px; border-top: 1px solid currentColor; font-size: .86rem; font-variant-numeric: tabular-nums; }
-
-.trilho-cab, .sessao { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) minmax(0, 1.5fr) minmax(0, 1.05fr); column-gap: 30px; }
-.trilho-cab { padding: 11px 28px; background: var(--folha-2); border-bottom: 1px solid var(--linha); }
-.sessao { padding: 20px 28px; border-top: 1px solid var(--linha); scroll-margin-top: 16px; transition: opacity .2s; }
-.trilho-cab + .sessao { border-top: 0; }
-.sessao.fora { opacity: .25; }
-.sessao:target { background: var(--cor-suave); }
-.s-num { font-family: var(--f-serif); font-weight: 700; font-size: .98rem; color: var(--cor); font-variant-numeric: tabular-nums; }
-.s-id h3 { font-size: 1.03rem; font-weight: 700; line-height: 1.3; margin-top: 2px; text-wrap: balance; }
-.s-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; font-size: .84rem; color: var(--tinta-2); }
-.s-min { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--tinta); }
-.s-ferr { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
-.s-ferr span { font-size: .74rem; font-weight: 600; color: var(--tinta-2); background: var(--folha-2); border: 1px solid var(--linha); border-radius: 3px; padding: 1px 6px; }
-.s-req { margin-top: 8px; font-size: .82rem; color: var(--tinta-2); }
-.s-dor { font-family: var(--f-serif); font-style: italic; font-size: 1.04rem; line-height: 1.45; text-wrap: pretty; }
-.s-faz, .s-ganho { position: relative; min-width: 0; }
-.s-faz::before, .s-ganho::before { content: "\\2192"; position: absolute; left: -22px; top: 0; color: var(--linha-forte); }
-.s-faz p, .s-ganho p { font-size: .95rem; }
-.s-auto { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; padding: 8px 10px; border-radius: 4px; background: var(--verde-suave); color: var(--verde); font-size: .9rem !important; font-weight: 600; line-height: 1.4; }
-.s-auto .ico { width: 18px; height: 18px; margin-top: 1px; }
-.peca { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; padding: 5px 11px 5px 8px; border-radius: 4px; background: var(--cor-suave); color: var(--cor); font-weight: 700; font-size: .9rem !important; line-height: 1.25; }
-.peca .ico { width: 18px; height: 18px; }
-.s-pratica { margin-top: 10px; font-size: .86rem !important; color: var(--tinta-2); }
-.s-pratica b { color: var(--tinta); font-weight: 700; }
-.s-cuidado { margin-top: 6px; font-size: .86rem !important; color: var(--tinta-2); }
-.s-ganho .s-frase { font-weight: 600; }
-.s-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.s-tags span { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); border: 1px solid var(--linha); border-radius: 3px; padding: 2px 6px; }
-.rot-m { display: none; }
-
-.mapa-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); column-gap: 30px; margin-top: 16px; border-top: 1px solid var(--linha); }
-.mapa-lista li { display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--linha); }
-.mapa-lista q { font-family: var(--f-serif); font-style: italic; quotes: "\\201C" "\\201D"; }
-.mapa-lista .chips { justify-content: flex-start; }
-.notas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px 32px; border-top: 1px solid var(--linha); padding-top: 24px; }
-.notas h3 { font-size: .95rem; font-weight: 700; }
-.notas ul { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
-.notas li { font-size: .92rem; color: var(--tinta-2); padding-left: 14px; position: relative; }
-.notas li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--linha-forte); }
-.robos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin-top: 16px; border-top: 1px solid var(--linha); }
-.robos li { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--linha); font-size: .95rem; min-width: 0; }
-.robos .ico { color: var(--verde); margin-top: 2px; }
-.robos a { font-weight: 700; text-decoration: none; }
-@media (max-width: 900px) { .robos { grid-template-columns: minmax(0, 1fr); } }
+/* entregáveis, ferramentas e resumo */
+.grupo h3 { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.grupo h3 span { width: 12px; height: 12px; border-radius: 50%; background: var(--cor); }
+.entregas { margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.entregas li { display: flex; gap: 10px; align-items: center; padding: 12px 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 10px; min-width: 0; }
+.entregas .ico { color: var(--cor); }
+.entregas b { font-size: .95rem; display: block; line-height: 1.3; }
+.entregas small { color: var(--tinta-2); font-size: .8rem; }
+.ferr { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+.ferr li { padding: 16px 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ferr h3 { font-size: 1.02rem; font-weight: 700; }
+.ferr p { font-size: .94rem; color: var(--tinta-2); }
+.ferr .plano { font-size: .84rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chips a { font-size: .78rem; font-weight: 700; text-decoration: none; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--cor); color: var(--cor); font-variant-numeric: tabular-nums; }
+.tabela { overflow-x: auto; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; }
+.tabela table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: .95rem; }
+.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--linha); }
+.tabela th { font-size: .8rem; font-weight: 700; color: var(--tinta-2); }
+.tabela tr:last-child td { border-bottom: 0; }
+.tabela .n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tabela tfoot td { font-weight: 700; border-top: 1px solid var(--linha); }
+.robos { display: grid; gap: 8px; }
+.robos li { display: flex; gap: 10px; align-items: flex-start; font-size: .96rem; }
+.robos .ico { color: var(--m3); margin-top: 3px; }
 .rodape { font-size: .84rem; color: var(--tinta-2); }
-.relatorio { border-top: 2px solid var(--tinta); padding-top: 28px; }
-.tabela { overflow-x: auto; margin-top: 16px; background: var(--folha); border: 1px solid var(--linha); border-radius: 6px; }
-.tabela table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: .93rem; }
-.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--linha); }
-.tabela th { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); background: var(--folha-2); }
-.tabela .n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.tabela tfoot td { font-weight: 700; border-bottom: 0; }
-.tabela .mudo { color: var(--tinta-2); font-size: .85rem; }
-.rel-fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 24px; margin-top: 18px; border-top: 1px solid var(--linha); }
-.rel-fatos div { padding: 12px 0; border-bottom: 1px solid var(--linha); display: flex; flex-direction: column; gap: 3px; }
-.rel-fatos dd { font-weight: 600; }
-.rel-leva { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px 32px; margin-top: 20px; }
-.rel-leva h3 { font-size: .95rem; font-weight: 700; }
-.rel-leva p { margin-top: 6px; font-size: .92rem; color: var(--tinta-2); }
 
-@media (max-width: 900px) {
-  .pagina { padding-block: 28px 56px; gap: 32px; }
-  .caixa { grid-template-columns: minmax(0, 1fr); }
-  .modulo-cab { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 22px 18px; }
-  .trilho-cab { display: none; }
-  .sessao { grid-template-columns: minmax(0, 1fr); row-gap: 14px; padding: 20px 18px; }
-  .rot-m { display: block; margin-bottom: 4px; }
-  .s-faz::before, .s-ganho::before { display: none; }
-  .filtro .rotulo { min-width: 0; width: 100%; }
+@media (max-width: 880px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .lado { position: sticky; top: env(safe-area-inset-top, 0px); height: auto; z-index: 5; padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); gap: 10px; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--lado); }
+  .marca p, .marca .total { display: none; }
+  .marca h1 { font-size: 1.1rem; }
+  .menu { flex-direction: row; overflow-x: auto; gap: 6px; scrollbar-width: none; }
+  .menu .sep { display: none; }
+  .menu a { flex: none; padding: 7px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; }
+  .menu a[aria-current="page"] { box-shadow: none; background: var(--lado-tinta); color: var(--lado); }
+  .menu .bola, .menu .txt small, .menu .prog { display: none; }
+  .conteudo { padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .detalhe div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .ferr { grid-template-columns: minmax(0, 1fr); }
 }
-@media (prefers-reduced-motion: reduce) { .sessao { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .abrir .ico { transition: none; } }
 `;
 
 // ---------- página ----------
-function sessao(s) {
-  const tags = (s.ganhos || []).map((g) => `<span>${GANHOS[g]}</span>`).join('');
-  const ferr = ferramentasDaSessao(s).map((f) => `<span>${esc(f)}</span>`).join('');
+const linhaDet = (rotulo, valor, cls = '') => valor ? `<div><dt>${rotulo}</dt><dd${cls ? ` class="${cls}"` : ''}>${valor}</dd></div>` : '';
+
+function passo(s, m) {
+  const det = [
+    linhaDet('Por quê', s.dor ? `“${esc(s.dor)}”` : ''),
+    linhaDet('A prática', s.pratica ? `<b>${esc(s.pratica)}.</b> ${esc(s.jogo || '')}` : ''),
+    linhaDet('Roda sozinho', s.automacao ? esc(s.automacao) : '', 'auto'),
+    linhaDet('Ferramentas', (s.ferramentas || []).map(esc).join(' · ')),
+    linhaDet('Precisa de', esc(s.precisa)),
+    linhaDet('Cuidado', esc(s.cuidado)),
+  ].join('');
   return `
-      <article class="sessao" id="${idSessao(s.numero)}" role="listitem" data-tags="${etiquetas(s).join(' ')}">
-        <div class="s-id">
-          <span class="s-num">${esc(s.numero)}</span>
-          <h3>${esc(s.nome)}</h3>
-          <p class="s-meta"><span class="s-min">${s.minutos} min</span></p>${ferr ? `
-          <p class="s-ferr">${ferr}</p>` : ''}${s.requisito ? `
-          <p class="s-req">Precisa de: ${esc(s.requisito)}</p>` : ''}
-        </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“${esc(s.dor)}”</p></div>
-        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>${esc(s.o_que_constroi)}</p>${(s.automacao || '').trim() ? `
-          <p class="s-auto">${ico('sozinho')}<span>Passa a rodar sozinho: ${esc(s.automacao)}</span></p>` : ''}
-          <p class="peca">${ico(s.peca || 'pagina')}<span>${esc(s.entregavel)}</span></p>${s.pratica ? `
-          <p class="s-pratica"><b>${esc(s.pratica)}.</b> ${esc(s.dinamica || '')}</p>` : (s.dinamica ? `
-          <p class="s-pratica">${esc(s.dinamica)}</p>` : '')}${s.cuidado ? `
-          <p class="s-cuidado">Cuidado: ${esc(s.cuidado)}</p>` : ''}
-        </div>
-        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">${esc(s.ganho)}</p>${tags ? `
-          <p class="s-tags">${tags}</p>` : ''}
-        </div>
-      </article>`;
+        <li class="passo" id="${id(s.numero)}">
+          <button type="button" class="feito" id="feito-${id(s.numero)}" data-sessao="${esc(s.numero)}" aria-pressed="false" aria-label="Marcar a sessão ${esc(s.numero)} como feita"><span class="n">${esc(s.numero.split('.')[1])}</span>${ico('check')}</button>
+          <details>
+            <summary>
+              <span class="topo"><h3>${esc(s.nome)}</h3><span class="min">${s.minutos} min</span></span>
+              <span class="faz">${esc(s.faz)}</span>
+              <span class="selo">${ico(s.icone || 'check')}${esc(s.conquista)}</span>
+              <span class="abrir">Ver detalhes ${ico('seta')}</span>
+            </summary>
+            <dl class="detalhe">${det}</dl>
+          </details>
+        </li>`;
 }
 
-function modulo(m) {
-  const autos = m.sessoes.filter((s) => (s.automacao || '').trim()).length;
+function vistaModulo(m) {
   return `
-  <section class="modulo m${m.numero}" id="modulo-${m.numero}" aria-labelledby="m${m.numero}-t">
-    <header class="modulo-cab">
-      <div>
-        <p class="rotulo">Módulo ${m.numero} · ${esc(m.nivel)}${m.eixo ? ' · ' + esc(m.eixo) : ''}</p>
-        <h2 id="m${m.numero}-t">${esc(m.nome)}</h2>
-        <p class="para">${esc(m.para_quem)}</p>
-      </div>
-      <blockquote>
-        <p class="rotulo">A dor do módulo</p>
-        <p class="fala">“${esc(m.dor_do_modulo)}”</p>
-      </blockquote>
-      <div class="leva">
-        <p class="rotulo">Você constrói e leva</p>
-        <p class="sistema">${ico(m.peca_sistema || 'painel')}<span>${esc(m.sistema)}</span></p>
-        <p class="ganho">${esc(m.ganho_do_modulo)}</p>
-        <p class="conta">${m.sessoes.length} sessões · ${fmt(m.minutos)}${autos ? ` · ${autos} ${autos === 1 ? 'automação' : 'automações'}` : ''} · ${esc(m.requisitos)}</p>
-      </div>
-    </header>
-    <div role="list">
-      <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>${m.sessoes.map(sessao).join('')}
-    </div>
-  </section>`;
+    <section class="vista m${m.numero}" id="modulo-${m.numero}" data-vista aria-labelledby="t-m${m.numero}">
+      <header class="cab">
+        <p class="etapa">Módulo ${m.numero} de 3</p>
+        <h2 id="t-m${m.numero}">${esc(m.nome)}</h2>
+        <p class="dor"><q>${esc(m.dor)}</q></p>
+      </header>
+      <div class="fim">${ico('check')}<p><b>No fim do módulo:</b> ${esc(m.resultado)}</p></div>
+      <p class="meta"><span><b>${m.sessoes.length}</b> sessões</span><span><b>${fmt(m.minutos)}</b> de vídeo</span><span>${esc(m.precisa)}</span></p>
+      <ol class="trilha">${m.sessoes.map((s) => passo(s, m)).join('')}
+      </ol>
+    </section>`;
 }
 
-const robos = todas.filter((s) => (s.automacao || '').trim());
-const rodaSozinho = !robos.length ? '' : `
-  <section class="bloco" aria-labelledby="robo-t">
-    <h2 id="robo-t">No fim do curso, isto roda sozinho</h2>
-    <p>${robos.length} automações preparam o trabalho. Nada sai do escritório sem a sua revisão.</p>
-    <ul class="robos">${robos.map((s) => `
-      <li>${ico('sozinho')}<span><a href="#${idSessao(s.numero)}">${esc(s.numero)} ${esc(s.nome)}</a>: ${esc(s.automacao)}</span></li>`).join('')}
-    </ul>
-  </section>`;
+const vistaEntregas = `
+    <section class="vista" id="entregaveis" data-vista aria-labelledby="t-ent" hidden>
+      <header class="cab">
+        <p class="etapa">O que você leva</p>
+        <h2 id="t-ent">Entregáveis</h2>
+        <p class="dor">Cada sessão termina com uma peça do escritório pronta. Marque as sessões feitas e veja as conquistas se acenderem.</p>
+      </header>${A.modulos.map((m) => `
+      <div class="grupo m${m.numero}">
+        <h3><span></span>Módulo ${m.numero} · ${esc(m.nome)}</h3>
+        <ul class="entregas">${m.sessoes.map((s) => `
+          <li>${ico(s.icone || 'check')}<span><b>${esc(s.conquista)}</b><small>Sessão ${esc(s.numero)}</small></span></li>`).join('')}
+        </ul>
+      </div>`).join('')}
+    </section>`;
 
-const caixa = !(A.cobertura || []).length ? '' : `
-  <section class="bloco" aria-labelledby="caixa-t">
-    <h2 id="caixa-t">${esc(A.caixa_titulo || 'A caixa de ferramentas do escritório')}</h2>
-    <p>${esc(A.caixa_texto || 'Onde cada frente é ensinada. Toque no número para ir à sessão.')}</p>
-    <ul class="caixa">${Object.keys(FRENTES).map((f) => {
-      const c = A.cobertura.find((x) => x.frente === f);
-      return `
-      <li><span class="frente">${ico(FRENTES[f][1])}<span>${FRENTES[f][0]}</span></span><span class="chips">${c.sessoes.map(chipSessao).join('')}</span></li>`;
-    }).join('')}
-    </ul>
-    <p class="legenda">${A.modulos.map((m) => `<span class="m${m.numero}">Módulo ${m.numero} · ${esc(m.nome)}</span>`).join('')}</p>
-  </section>`;
+const nomesF = Object.keys(A.ferramentas);
+const corDe = (n) => 'm' + String(n).split('.')[0];
+const vistaFerr = `
+    <section class="vista" id="ferramentas" data-vista aria-labelledby="t-fer" hidden>
+      <header class="cab">
+        <p class="etapa">O que entra no seu escritório</p>
+        <h2 id="t-fer">Ferramentas incorporadas</h2>
+        <p class="dor">Tudo no navegador, nada instalado no computador.</p>
+      </header>
+      <ul class="ferr">${nomesF.map((f) => `
+        <li><h3>${esc(f)}</h3><p>${esc(A.ferramentas[f].faz)}</p><p class="plano"><b>Plano:</b> ${esc(A.ferramentas[f].plano)}</p><span class="chips">${usos(f).map((n) => `<a class="${corDe(n)}" href="#${id(n)}">${esc(n)}</a>`).join('')}</span></li>`).join('')}
+      </ul>${A.modelos ? `
+      <div class="grupo">
+        <h3>Qual modelo do Claude para qual trabalho</h3>
+        <div class="tabela" style="margin-top:12px"><table>
+          <thead><tr><th>Modelo</th><th>Perfil</th><th>Na advocacia</th></tr></thead>
+          <tbody>${A.modelos.map((l) => `<tr><td style="white-space:nowrap"><b>${esc(l.modelo)}</b></td><td>${esc(l.perfil)}</td><td>${esc(l.usos)}</td></tr>`).join('')}</tbody>
+        </table></div>
+        <p class="rodape" style="margin-top:10px">Comece pelo menor que resolve. Os maiores gastam mais do limite do plano, e a disponibilidade depende do plano.</p>
+      </div>` : ''}
+    </section>`;
 
-const botoesGanho = Object.keys(GANHOS).map((g) => `<button type="button" id="ver-${g}" data-filtro="${g}" aria-pressed="false">${GANHOS[g]}<span>${conta(g)}</span></button>`).join('\n      ');
-const filtrosFerr = [...new Set(Object.values(FERRAMENTAS).map((f) => f.filtro))].filter((k) => conta(k) > 0);
-const rotuloFiltro = (k) => Object.values(FERRAMENTAS).find((f) => f.filtro === k).rotulo;
-const botoesFerr = filtrosFerr.map((k) => `<button type="button" id="ver-${k}" data-filtro="${k}" aria-pressed="false">${rotuloFiltro(k)}<span>${conta(k)}</span></button>`).join('\n      ');
-const temFiltro = todas.some((s) => etiquetas(s).length);
-const filtro = !temFiltro ? '' : `
-  <div class="filtro" role="group" aria-label="Destacar sessões">
-    <div class="linha-f">
-      <span class="rotulo">Ver por ganho</span>
-      <button type="button" id="ver-tudo" data-filtro="tudo" aria-pressed="true">Tudo<span>${totalSessoes}</span></button>
-      ${botoesGanho}
-    </div>${botoesFerr ? `
-    <div class="linha-f">
-      <span class="rotulo">Ver por ferramenta</span>
-      ${botoesFerr}
-    </div>` : ''}
-    <output id="filtro-status" aria-live="polite"></output>
-  </div>`;
+const vistaResumo = `
+    <section class="vista" id="resumo" data-vista aria-labelledby="t-res" hidden>
+      <header class="cab">
+        <p class="etapa">Relatório</p>
+        <h2 id="t-res">Resumo do curso</h2>
+      </header>
+      <div class="tabela"><table>
+        <thead><tr><th>Módulo</th><th>No fim, você tem</th><th class="n">Sessões</th><th class="n">Vídeo</th></tr></thead>
+        <tbody>${A.modulos.map((m) => `
+          <tr><td><b>${m.numero} · ${esc(m.nome)}</b></td><td>${esc(m.resultado)}</td><td class="n">${m.sessoes.length}</td><td class="n">${fmt(m.minutos)}</td></tr>`).join('')}
+        </tbody>
+        <tfoot><tr><td>Total</td><td>${todas.length} conquistas</td><td class="n">${todas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
+      </table></div>${robos.length ? `
+      <div class="grupo">
+        <h3>No fim do curso, isto roda sozinho</h3>
+        <ul class="robos" style="margin-top:12px">${robos.map((s) => `
+          <li>${ico('sozinho')}<span><b>${esc(s.conquista)}:</b> ${esc(s.automacao)}.</span></li>`).join('')}
+        </ul>
+      </div>` : ''}
+      <div class="grupo">
+        <h3>Do que o aluno precisa</h3>
+        <ul class="robos" style="margin-top:12px">${A.modulos.map((m) => `
+          <li>${ico('check')}<span><b>Módulo ${m.numero}:</b> ${esc(m.precisa)}</span></li>`).join('')}
+        </ul>
+      </div>
+      <p class="rodape">${esc(A.rodape || '')}</p>
+    </section>`;
 
-const mapa = !(A.mapa_dores || []).length ? '' : `
-  <section class="bloco" aria-labelledby="mapa-t">
-    <h2 id="mapa-t">${esc(A.mapa_titulo || 'A mesma dor volta em mais de uma sessão')}</h2>
-    <p>${esc(A.mapa_texto || 'A relação não é de um para um: uma dor grande pede mais de uma peça, e uma peça boa alivia mais de uma dor.')}</p>
-    <ul class="mapa-lista">${A.mapa_dores.map((d) => `
-      <li><q>${esc(d.dor)}</q><span class="chips">${d.sessoes.map(chipSessao).join('')}</span></li>`).join('')}
-    </ul>
-  </section>`;
+const menu = `
+      <nav class="menu" aria-label="Agenda">${A.modulos.map((m) => `
+        <a href="#modulo-${m.numero}" class="m${m.numero}" data-ir="modulo-${m.numero}"><span class="bola">${m.numero}</span><span class="txt"><b>Módulo ${m.numero}</b><small>${esc(m.nome)}</small></span><span class="prog" data-prog="${m.numero}">0/${m.sessoes.length}</span></a>`).join('')}
+        <span class="sep" aria-hidden="true"></span>
+        <a href="#entregaveis" data-ir="entregaveis"><span class="bola">${ico('check')}</span><span class="txt"><b>Entregáveis</b><small>${todas.length} conquistas</small></span></a>
+        <a href="#ferramentas" data-ir="ferramentas"><span class="bola">${ico('molde')}</span><span class="txt"><b>Ferramentas incorporadas</b><small>${nomesF.length} ferramentas</small></span></a>
+        <a href="#resumo" data-ir="resumo"><span class="bola">${ico('painel')}</span><span class="txt"><b>Resumo</b><small>o curso em uma tela</small></span></a>
+      </nav>`;
 
-// ---------- relatório simples ----------
-const comFerr = (f) => todas.filter((s) => (s.ferramentas || []).includes(f));
-const sessoesApi = comFerr('IA (API)').map((s) => s.numero);
-const nIA = todas.filter((s) => (s.ferramentas || []).some((f) => f.startsWith('IA'))).length;
-const frentesCobertas = Object.keys(FRENTES).filter((f) => ((A.cobertura || []).find((x) => x.frente === f) || { sessoes: [] }).sessoes.length).length;
-const primeiro = A.modulos[0].sessoes[0];
-const REL = {
-  modulos: A.modulos.map((m) => ({ m, autos: m.sessoes.filter((s) => (s.automacao || '').trim()).length })),
-  fatos: [
-    ['Frentes pedidas cobertas', `${frentesCobertas} de ${Object.keys(FRENTES).length}`],
-    ['Primeiro resultado', `no minuto ${primeiro.minutos}`],
-    ['Sessões com Apps Script', String(comFerr('Apps Script').length)],
-    ['Sessões com IA', String(nIA)],
-    ['Pedem plano pago do Claude', String(todas.filter((x) => /plano pago/.test(x.requisito || '') && !/^conta gratuita;/.test(x.requisito || '')).length)],
-    ['Pedem chave de API', sessoesApi.length ? `${sessoesApi.join(' e ')}, com caminho sem chave` : 'nenhuma'],
-  ],
-};
-const relatorio = `
-  <section class="bloco relatorio" aria-labelledby="rel-t">
-    <h2 id="rel-t">Relatório da agenda</h2>
-    <p>O curso em uma tela: o que cada módulo entrega, quanto dura e do que o aluno precisa.</p>
-    <div class="tabela"><table>
-      <thead><tr><th>Módulo</th><th>O aluno leva</th><th class="n">Sessões</th><th class="n">Vídeo</th><th class="n">Automações</th><th>Precisa de</th></tr></thead>
-      <tbody>${REL.modulos.map(({ m, autos }) => `
-        <tr><td><b>${m.numero} · ${esc(m.nome)}</b><br><span class="mudo">${esc(m.nivel)}</span></td><td>${esc(m.sistema)}</td><td class="n">${m.sessoes.length}</td><td class="n">${fmt(m.minutos)}</td><td class="n">${autos}</td><td>${esc(m.requisitos)}</td></tr>`).join('')}
-      </tbody>
-      <tfoot><tr><td>Total</td><td>3 sistemas</td><td class="n">${totalSessoes}</td><td class="n">${fmt(totalMin)}</td><td class="n">${totalAuto}</td><td></td></tr></tfoot>
-    </table></div>
-    <dl class="rel-fatos">${REL.fatos.map(([k, v]) => `<div><dt class="rotulo">${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
-    <div class="rel-leva">${A.modulos.map((m) => `
-      <div><h3>No módulo ${m.numero}, o aluno sai com</h3><p>${m.sessoes.map((s) => esc(s.entregavel)).join(' · ')}</p></div>`).join('')}
-    </div>
-  </section>`;
+const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>${Object.keys(ICONES).map((k) => `<symbol id="i-${k}" viewBox="0 0 24 24">${ICONES[k]}</symbol>`).join('')}</defs></svg>`;
 
-const MO = A.modelos;
-const modelos = !MO ? '' : `
-  <section class="bloco" aria-labelledby="mod-t">
-    <h2 id="mod-t">${esc(MO.titulo)}</h2>
-    <p>${esc(MO.texto)}</p>
-    <div class="tabela"><table>
-      <thead><tr><th>Modelo</th><th>Perfil</th><th>Na advocacia</th></tr></thead>
-      <tbody>${MO.linhas.map((l) => `
-        <tr><td style="white-space:nowrap"><b>${esc(l.modelo)}</b></td><td>${esc(l.perfil)}</td><td>${esc(l.usos)}</td></tr>`).join('')}
-      </tbody>
-    </table></div>
-  </section>`;
-
-const N = A.notas || {};
-const NOTAS = [['precisa', 'O que o aluno precisa'], ['cuidados', 'Regras que valem para tudo'], ['extras', 'Para ir além, fora da minutagem'], ['producao', 'O que falta para gravar']];
-const notas = !Object.keys(N).length ? '' : `
-  <section class="notas" aria-label="Notas da agenda">${NOTAS.filter(([k]) => (N[k] || []).length).map(([k, t]) => `
-    <div><h3>${t}</h3><ul>${N[k].map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}
-  </section>`;
-
-const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>${Object.keys(SIMBOLOS).map((k) => `<symbol id="i-${k}" viewBox="0 0 24 24">${SIMBOLOS[k]}</symbol>`).join('')}</defs></svg>`;
-
-const script = !temFiltro ? '' : `
+const script = `
 <script>
 (function () {
-  var botoes = [].slice.call(document.querySelectorAll('.filtro button'));
-  var sessoes = [].slice.call(document.querySelectorAll('.sessao'));
-  var status = document.getElementById('filtro-status');
-  function aplicar(f, nome) {
-    var n = 0;
-    sessoes.forEach(function (s) {
-      var dentro = f === 'tudo' || (' ' + s.getAttribute('data-tags') + ' ').indexOf(' ' + f + ' ') >= 0;
-      s.classList.toggle('fora', !dentro);
-      if (dentro) n += 1;
-    });
-    botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filtro') === f)); });
-    status.textContent = f === 'tudo' ? '' : n + ' de ' + sessoes.length + ' sessões com ' + nome;
+  var CHAVE = 'agenda-ia-adv:feitas';
+  var feitas = {};
+  try { feitas = JSON.parse(localStorage.getItem(CHAVE) || '{}') || {}; } catch (e) { feitas = {}; }
+  var vistas = [].slice.call(document.querySelectorAll('[data-vista]'));
+  var links = [].slice.call(document.querySelectorAll('[data-ir]'));
+  function mostrar() {
+    var h = (location.hash || '').slice(1);
+    var alvo = document.getElementById(h);
+    var vista = alvo && alvo.hasAttribute('data-vista') ? alvo : (alvo ? alvo.closest('[data-vista]') : null);
+    if (!vista) vista = vistas[0];
+    vistas.forEach(function (v) { v.hidden = v !== vista; });
+    links.forEach(function (a) { if (a.getAttribute('data-ir') === vista.id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    if (alvo && alvo !== vista) { var d = alvo.querySelector('details'); if (d) d.open = true; alvo.scrollIntoView({ block: 'center' }); }
+    else window.scrollTo(0, 0);
   }
-  botoes.forEach(function (b) {
-    b.addEventListener('click', function () { aplicar(b.getAttribute('data-filtro'), b.firstChild.textContent.trim()); });
+  function contar() {
+    [1, 2, 3].forEach(function (n) {
+      var bts = document.querySelectorAll('#modulo-' + n + ' .feito');
+      var ok = [].filter.call(bts, function (b) { return b.getAttribute('aria-pressed') === 'true'; }).length;
+      var el = document.querySelector('[data-prog="' + n + '"]');
+      if (el) el.textContent = ok + '/' + bts.length;
+    });
+  }
+  [].forEach.call(document.querySelectorAll('.feito'), function (b) {
+    var s = b.getAttribute('data-sessao');
+    function pintar() { var on = !!feitas[s]; b.setAttribute('aria-pressed', String(on)); b.closest('.passo').classList.toggle('ok', on); }
+    pintar();
+    b.addEventListener('click', function () {
+      feitas[s] = !feitas[s];
+      try { localStorage.setItem(CHAVE, JSON.stringify(feitas)); } catch (e) {}
+      pintar(); contar();
+    });
   });
+  window.addEventListener('hashchange', mostrar);
+  contar(); mostrar();
 })();
 </script>`;
 
-const cabeca = `<title>${esc(A.titulo_da_pagina || 'Agenda IA Aplicada a Advogados')}</title>
+const cabeca = `<title>Agenda IA Aplicada a Advogados</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
 <style>${CSS}</style>`;
 
 const corpo = `${sprite}
-<main class="pagina">
-  <header class="abre">
-    <p class="rotulo">${esc(A.rotulo || 'Curso gravado · Agenda')}</p>
-    <h1>${esc(A.titulo)}</h1>${A.subtitulo ? `
-    <p class="sub">${esc(A.subtitulo)}</p>` : ''}
-    <p class="promessa">${esc(A.promessa)}</p>
-    <dl class="fatos">
-      <div><dt class="rotulo">Módulos</dt><dd>3</dd></div>
-      <div><dt class="rotulo">Sessões</dt><dd>${totalSessoes}</dd></div>
-      <div><dt class="rotulo">Vídeo</dt><dd>${fmt(totalMin)}</dd></div>
-      <div><dt class="rotulo">Automações</dt><dd>${totalAuto}</dd></div>
-      <div><dt class="rotulo">Sistemas</dt><dd>3</dd></div>
-    </dl>
-    <p class="compasso"><span>Toda sessão anda em três tempos:</span> <b>a dor</b> <i>→</i> <b>o que você constrói</b> <i>→</i> <b>o que você ganha</b></p>${A.pratica_texto ? `
-    <p class="jogo">${esc(A.pratica_texto)}</p>` : ''}
-  </header>
-${rodaSozinho}
-${caixa}
-${filtro}
-${A.modulos.map(modulo).join('\n')}
-${modelos}
-${mapa}
-${notas}
-${relatorio}
-  <p class="rodape">${esc(A.rodape || '')}</p>
-</main>${script}`;
+<div class="app">
+  <aside class="lado">
+    <div class="marca">
+      <h1>${esc(A.titulo)}</h1>
+      <p>${esc(A.promessa)}</p>
+      <p class="total">3 módulos · ${todas.length} sessões · ${fmt(totalMin)} de vídeo</p>
+    </div>${menu}
+  </aside>
+  <main class="conteudo">${A.modulos.map(vistaModulo).join('')}${vistaEntregas}${vistaFerr}${vistaResumo}
+  </main>
+</div>${script}`;
 
 const pagina = `<!doctype html>
 <html lang="pt-BR">
@@ -499,57 +405,31 @@ ${corpo}
 </body>
 </html>
 `;
-fs.writeFileSync(path.join(pastaSaida, 'agenda-udemy.html'), pagina);
+fs.writeFileSync(path.join(pasta, 'agenda-udemy.html'), pagina);
 if (saidaArtefato) fs.writeFileSync(saidaArtefato, cabeca + '\n' + corpo + '\n');
 
 // ---------- espelho em texto ----------
-const cel = (t) => String(t || '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
-const md = [];
-md.push(`# ${A.titulo}`, '');
-if (A.subtitulo) md.push(`*${A.subtitulo}*`, '');
-md.push(`**${A.rotulo || 'Curso gravado · Agenda'}** · 3 módulos · ${totalSessoes} sessões · ${fmt(totalMin)} de vídeo · ${totalAuto} automações · um sistema por módulo`, '', A.promessa, '');
-md.push('A página da agenda é [agenda-udemy.html](agenda-udemy.html). Este arquivo é o espelho em texto; os dois saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', '');
-md.push('Toda sessão anda em três tempos: **a dor** → **o que você constrói** → **o que você ganha**.', '');
-if (robos.length) {
-  md.push('## No fim do curso, isto roda sozinho', '', ...robos.map((s) => `- **${s.numero} ${s.nome}:** ${s.automacao}`), '');
-}
-if ((A.cobertura || []).length) {
-  md.push(`## ${A.caixa_titulo || 'A caixa de ferramentas do escritório'}`, '', '| Frente | Sessões |', '|---|---|');
-  Object.keys(FRENTES).forEach((f) => { const c = A.cobertura.find((x) => x.frente === f); md.push(`| ${FRENTES[f][0]} | ${c.sessoes.join(', ')} |`); });
-  md.push('');
-}
+const md = [`# ${A.titulo}`, '', A.promessa, '', `3 módulos · ${todas.length} sessões · ${fmt(totalMin)} de vídeo`, '',
+  'A página é [agenda-udemy.html](agenda-udemy.html). Este arquivo e a página saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', ''];
 A.modulos.forEach((m) => {
-  md.push(`## Módulo ${m.numero} · ${m.nivel}${m.eixo ? ' · ' + m.eixo : ''} · ${m.nome}`, '');
-  md.push(`- **A dor do módulo:** "${m.dor_do_modulo}"`, `- **Você constrói e leva:** ${m.sistema}`, `- **O que muda:** ${m.ganho_do_modulo}`, `- **Para quem:** ${m.para_quem}`, `- **Precisa de:** ${m.requisitos}`, `- **Tamanho:** ${m.sessoes.length} sessões, ${fmt(m.minutos)}`, '');
-  md.push('| Sessão | A dor | O que você constrói e leva | O que você ganha | Ferramentas | Min |', '|---|---|---|---|---|---:|');
-  m.sessoes.forEach((s) => {
-    const faz = [cel(s.o_que_constroi), (s.automacao || '').trim() ? `Passa a rodar sozinho: ${cel(s.automacao)}` : '', `**Leva:** ${cel(s.entregavel)}`, s.pratica ? `*${cel(s.pratica)}.*` : '', s.cuidado ? `Cuidado: ${cel(s.cuidado)}` : ''].filter(Boolean).join('<br>');
-    md.push(`| **${s.numero} ${cel(s.nome)}** | "${cel(s.dor)}" | ${faz} | ${cel(s.ganho)} | ${cel(ferramentasDaSessao(s).join(', '))}${s.requisito ? `<br>Precisa de: ${cel(s.requisito)}` : ''} | ${s.minutos} |`);
-  });
+  md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', `**No fim do módulo:** ${m.resultado}`, '', `${m.sessoes.length} sessões · ${fmt(m.minutos)} · ${m.precisa}`, '');
+  m.sessoes.forEach((s) => md.push(`${s.numero}. **${s.nome}** (${s.minutos} min). ${s.faz} Conquista: *${s.conquista}*.`));
   md.push('');
 });
-if (MO) {
-  md.push(`## ${MO.titulo}`, '', MO.texto, '', '| Modelo | Perfil | Na advocacia |', '|---|---|---|');
-  MO.linhas.forEach((l) => md.push(`| **${l.modelo}** | ${cel(l.perfil)} | ${cel(l.usos)} |`));
-  md.push('');
+md.push('## Entregáveis', '');
+A.modulos.forEach((m) => md.push(`- **Módulo ${m.numero}:** ${m.sessoes.map((s) => s.conquista).join(' · ')}`));
+md.push('', '## Ferramentas incorporadas', '', '| Ferramenta | O que faz no curso | Plano | Sessões |', '|---|---|---|---|');
+nomesF.forEach((f) => md.push(`| ${f} | ${A.ferramentas[f].faz} | ${A.ferramentas[f].plano} | ${usos(f).join(', ')} |`));
+if (A.modelos) {
+  md.push('', '### Qual modelo para qual trabalho', '', '| Modelo | Perfil | Na advocacia |', '|---|---|---|');
+  A.modelos.forEach((l) => md.push(`| ${l.modelo} | ${l.perfil} | ${l.usos} |`));
 }
-if ((A.mapa_dores || []).length) {
-  md.push(`## ${A.mapa_titulo || 'A mesma dor volta em mais de uma sessão'}`, '', '| Dor | Sessões |', '|---|---|');
-  A.mapa_dores.forEach((d) => md.push(`| "${cel(d.dor)}" | ${d.sessoes.join(', ')} |`));
-  md.push('');
-}
-NOTAS.forEach(([k, t]) => { if ((N[k] || []).length) md.push(`## ${t}`, '', ...N[k].map((x) => `- ${x}`), ''); });
-md.push('## Relatório da agenda', '', '| Módulo | O aluno leva | Sessões | Vídeo | Automações | Precisa de |', '|---|---|---:|---:|---:|---|');
-REL.modulos.forEach(({ m, autos }) => md.push(`| ${m.numero} · ${cel(m.nome)} (${m.nivel}) | ${cel(m.sistema)} | ${m.sessoes.length} | ${fmt(m.minutos)} | ${autos} | ${cel(m.requisitos)} |`));
-md.push(`| **Total** | 3 sistemas | ${totalSessoes} | ${fmt(totalMin)} | ${totalAuto} | |`, '');
-REL.fatos.forEach(([k, v]) => md.push(`- **${k}:** ${v}`));
-md.push('');
-A.modulos.forEach((m) => md.push(`- **No módulo ${m.numero}, o aluno sai com:** ${m.sessoes.map((s) => s.entregavel).join(' · ')}`));
-md.push('');
-if (A.rodape) md.push(A.rodape, '');
-fs.writeFileSync(path.join(pastaSaida, 'README.md'), md.join('\n'));
+md.push('', '## Resumo', '', '| Módulo | No fim, você tem | Sessões | Vídeo |', '|---|---|---:|---:|');
+A.modulos.forEach((m) => md.push(`| ${m.numero} · ${m.nome} | ${m.resultado} | ${m.sessoes.length} | ${fmt(m.minutos)} |`));
+md.push(`| **Total** | ${todas.length} conquistas | ${todas.length} | ${fmt(totalMin)} |`, '');
+if (robos.length) { md.push('**No fim do curso, isto roda sozinho:**', '', ...robos.map((s) => `- ${s.conquista}: ${s.automacao}.`), ''); }
+md.push(A.rodape || '', '');
+fs.writeFileSync(path.join(pasta, 'README.md'), md.join('\n'));
 
-console.log(`Agenda montada: ${totalSessoes} sessões, ${fmt(totalMin)} (${totalMin} min), ${totalAuto} automações.`);
+console.log(`Agenda montada: ${todas.length} sessões, ${fmt(totalMin)} (${totalMin} min), ${robos.length} automações.`);
 A.modulos.forEach((m) => console.log(`  Módulo ${m.numero}: ${m.sessoes.length} sessões, ${m.minutos} min`));
-Object.keys(GANHOS).forEach((g) => console.log(`  ${GANHOS[g]}: ${conta(g)} sessões`));
-filtrosFerr.forEach((k) => console.log(`  ${rotuloFiltro(k)}: ${conta(k)} sessões`));
