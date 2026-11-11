@@ -23,16 +23,20 @@ const A = JSON.parse(fs.readFileSync(entrada, 'utf8'));
 const GANHOS = { apresentacao: 'Apresentação', organizacao: 'Organização', clientela: 'Clientela' };
 const FERRAMENTAS = {
   'IA (conversa)': { filtro: 'ia', rotulo: 'IA' }, 'IA (API)': { filtro: 'ia', rotulo: 'IA' },
+  Conectores: { filtro: 'conectores', rotulo: 'Conectores' }, Meet: { filtro: 'meet', rotulo: 'Meet' },
+  'Plugins e skills': { filtro: 'plugins', rotulo: 'Plugins e skills' }, MCP: { filtro: 'mcp', rotulo: 'MCP' },
+  'Design system': { filtro: 'design', rotulo: 'Design system' }, Slides: { filtro: 'slides', rotulo: 'Slides' },
   Planilhas: { filtro: 'planilhas', rotulo: 'Planilhas' }, 'Formulários': { filtro: 'formularios', rotulo: 'Formulários' },
   Docs: { filtro: 'docs', rotulo: 'Docs' }, Gmail: { filtro: 'gmail', rotulo: 'Gmail' }, Agenda: { filtro: 'agenda', rotulo: 'Agenda' },
   Drive: { filtro: 'drive', rotulo: 'Drive' }, 'Apps Script': { filtro: 'apps-script', rotulo: 'Apps Script' }, Painel: { filtro: 'painel', rotulo: 'Painel' },
 };
 const FRENTES = {
-  planilhas: ['Planilhas', 'planilha'], paineis: ['Painéis', 'painel'], apps_script: ['Google Apps Script', 'script'],
-  automacao_email: ['Automação de e-mail', 'email'], automacao_agenda: ['Automação de agenda', 'agenda'],
-  automacao_analise_contrato: ['Análise de contrato automatizada', 'contrato'], analise_riscos: ['Análise de riscos', 'escudo'],
-  gestao_casos: ['Gestão de casos', 'lista'], plataforma_contratos: ['Plataforma de contratos', 'contrato'],
-  plataforma_clientes: ['Plataforma de clientes', 'formulario'],
+  configuracao: ['Configuração do Claude e escolha do modelo', 'escudo'], conectores_meet: ['Conectores do Google e Google Meet', 'email'],
+  plugins_mcp: ['Plugins, skills e MCP jurídico', 'lupa'], design_marca: ['Design system e marca do advogado', 'cartao'],
+  apresentacoes: ['Apresentações e documentos com a marca', 'slides'], ambiente_guardrails: ['Ambiente e guardrails dos scripts', 'escudo'],
+  apps_script: ['Google Apps Script', 'script'], email_agenda: ['Automação de e-mail e de agenda', 'agenda'],
+  contrato_riscos: ['Análise de contrato e de riscos', 'contrato'], casos_clientes: ['Gestão de casos e plataforma de clientes', 'formulario'],
+  plataforma_contratos: ['Plataforma de contratos', 'painel'], planilhas_paineis: ['Planilhas e painéis', 'planilha'],
 };
 const SIMBOLOS = {
   pagina: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/>',
@@ -369,6 +373,7 @@ const REL = {
     ['Primeiro resultado', `no minuto ${primeiro.minutos}`],
     ['Sessões com Apps Script', String(comFerr('Apps Script').length)],
     ['Sessões com IA', String(nIA)],
+    ['Pedem plano pago do Claude', String(todas.filter((x) => /plano pago/.test(x.requisito || '') && !/^conta gratuita;/.test(x.requisito || '')).length)],
     ['Pedem chave de API', sessoesApi.length ? `${sessoesApi.join(' e ')}, com caminho sem chave` : 'nenhuma'],
   ],
 };
@@ -387,6 +392,19 @@ const relatorio = `
     <div class="rel-leva">${A.modulos.map((m) => `
       <div><h3>No módulo ${m.numero}, o aluno sai com</h3><p>${m.sessoes.map((s) => esc(s.entregavel)).join(' · ')}</p></div>`).join('')}
     </div>
+  </section>`;
+
+const MO = A.modelos;
+const modelos = !MO ? '' : `
+  <section class="bloco" aria-labelledby="mod-t">
+    <h2 id="mod-t">${esc(MO.titulo)}</h2>
+    <p>${esc(MO.texto)}</p>
+    <div class="tabela"><table>
+      <thead><tr><th>Modelo</th><th>Perfil</th><th>Na advocacia</th></tr></thead>
+      <tbody>${MO.linhas.map((l) => `
+        <tr><td style="white-space:nowrap"><b>${esc(l.modelo)}</b></td><td>${esc(l.perfil)}</td><td>${esc(l.usos)}</td></tr>`).join('')}
+      </tbody>
+    </table></div>
   </section>`;
 
 const N = A.notas || {};
@@ -445,6 +463,7 @@ const corpo = `${sprite}
 ${caixa}
 ${filtro}
 ${A.modulos.map(modulo).join('\n')}
+${modelos}
 ${mapa}
 ${notas}
 ${relatorio}
@@ -489,6 +508,11 @@ A.modulos.forEach((m) => {
   });
   md.push('');
 });
+if (MO) {
+  md.push(`## ${MO.titulo}`, '', MO.texto, '', '| Modelo | Perfil | Na advocacia |', '|---|---|---|');
+  MO.linhas.forEach((l) => md.push(`| **${l.modelo}** | ${cel(l.perfil)} | ${cel(l.usos)} |`));
+  md.push('');
+}
 if ((A.mapa_dores || []).length) {
   md.push(`## ${A.mapa_titulo || 'A mesma dor volta em mais de uma sessão'}`, '', '| Dor | Sessões |', '|---|---|');
   A.mapa_dores.forEach((d) => md.push(`| "${cel(d.dor)}" | ${d.sessoes.join(', ')} |`));
