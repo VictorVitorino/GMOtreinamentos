@@ -55,6 +55,8 @@ const I = {
   balao: '<path d="M4 20l1.4-4.2A8 8 0 1 1 8.2 18.6z"/>',
   chave: '<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2.5 2.5M14 9l2 2"/>',
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  livros: '<path d="M5 4h4v16H5zM10 4h4v16h-4zM15.4 4.6l3.8 1-3.4 14.8-3.9-.9z"/>',
+  grafico: '<path d="M4 20h16M7 16v-4M12 16V7M17 16v-7"/>',
   seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   luz: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
   cadeado: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
@@ -76,6 +78,9 @@ A.modulos.forEach((m) => {
     (a.ferramentas || []).forEach((f) => { if (!A.ferramentas[f]) erros.push(`Aula ${a.numero}: ferramenta sem cadastro "${f}".`); });
   });
 });
+(A.aprofundamentos || []).forEach((x) => x.ferramentas.forEach((f) => { if (!A.ferramentas[f]) erros.push(`Aprofundamento ${x.nome}: ferramenta sem cadastro "${f}".`); }));
+(A.medicao ? A.medicao.indicadores : []).forEach((x) => { if (!I[x.icone]) erros.push(`Indicador ${x.nome}: ícone desconhecido.`); });
+(A.projeto_final ? A.projeto_final.roteiro : []).forEach((x) => { if (!I[x.icone]) erros.push(`Roteiro: ícone desconhecido "${x.icone}".`); });
 Object.entries(A.ferramentas).forEach(([n, f]) => { if (!I[f.icone]) erros.push(`Ferramenta ${n}: ícone desconhecido "${f.icone}".`); });
 const aulas = A.modulos.flatMap((m) => m.aulas);
 const totalMin = aulas.reduce((t, a) => t + a.minutos, 0);
@@ -306,11 +311,33 @@ button { font: inherit; color: inherit; }
 .tabela tfoot td { font-weight: 700; border-top: 1px solid var(--linha); border-bottom: 0; }
 .tabela .n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .tabela .bola-m { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--cor); color: var(--cartao); font-weight: 800; margin-right: 10px; vertical-align: middle; }
+.aprof { margin-top: 26px; padding: 22px; border: 1.5px dashed var(--linha); border-radius: 16px; }
+.aprof-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+.aprof-item { background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.aprof-item h3 { font-size: 1.02rem; font-weight: 700; }
+.aprof-item p { font-size: .94rem; color: var(--tinta-2); }
+.aprof-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.aprof-meta span { display: inline-flex; align-items: center; gap: 6px; font-size: .86rem; font-weight: 600; color: var(--tinta); }
+.aprof-meta .ico { width: 16px; height: 16px; }
+.aprof-precisa { font-size: .84rem !important; }
+.mods a.apr { background: var(--cartao-2); color: var(--tinta-2); border: 1px dashed var(--linha); }
+.medidas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.medida { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.medida .ico-bola { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--m3-s); color: var(--m3); }
+.medida .ico-bola .ico { width: 24px; height: 24px; }
+.medida h3 { font-size: 1.08rem; font-weight: 700; }
+.medida p { color: var(--tinta-2); font-size: .97rem; }
+.regua { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--linha); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.regua span { display: flex; flex-direction: column; gap: 2px; }
+.regua small { font-size: .78rem; color: var(--tinta-2); }
+.regua b { font-size: .95rem; font-weight: 600; color: var(--tinta-2); border-bottom: 1.5px dashed var(--linha); padding-bottom: 2px; }
+.nota { margin-top: 16px; font-size: .95rem; color: var(--tinta-2); }
 .rodape { padding-block: 40px 64px; color: var(--tinta-2); font-size: .88rem; }
 
 @media (max-width: 1080px) {
   .topo .miolo { grid-template-columns: minmax(0, 1fr); gap: 44px; padding-block: 48px 56px; }
   .cards4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .medidas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grade-cab { display: none; }
   .aula { grid-template-columns: 64px minmax(0, 1fr); gap: 14px 18px; }
   .aula .num-col { grid-row: 1 / span 2; }
@@ -326,7 +353,7 @@ button { font: inherit; color: inherit; }
   .nav .marca { display: none; }
   .nav ul { margin-left: 0; }
   .secao { padding-block: 52px 4px; }
-  .cards4, .jornada { grid-template-columns: minmax(0, 1fr); }
+  .cards4, .jornada, .medidas { grid-template-columns: minmax(0, 1fr); }
   .antes-depois .cab { display: none; }
   .antes-depois li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .antes-depois .seta { justify-self: start; transform: rotate(90deg); }
@@ -364,7 +391,7 @@ const topo = `
       <div>
         <span class="selo-curso">${ico('video')}Curso gravado · <b>3 módulos</b></span>
         <h1>${esc(A.titulo)}</h1>
-        <p class="chamada">${esc(A.chamada).replace('trabalha sozinho', '<em>trabalha sozinho</em>')}</p>
+        <p class="chamada">${A.destaque ? esc(A.chamada).replace(esc(A.destaque), '<em>' + esc(A.destaque) + '</em>') : esc(A.chamada)}</p>
         <p class="apoio">${esc(A.apoio)}</p>
         <div class="numeros">
           <div><b>${aulas.length}</b><span>aulas</span></div>
@@ -381,7 +408,7 @@ const topo = `
         <div class="placa">${ico('predio')}Seu escritório</div>${[...A.modulos].reverse().map(andar).join('')}
         <div class="calcada"></div>
         <p class="progresso"><b id="janelas-acesas">0</b> de ${aulas.length} janelas acesas. Marque as aulas feitas e acenda o seu escritório.</p>
-        <button type="button" class="botao vazado" id="ver-pronto" aria-pressed="false">${ico('luz')}<span>Ver o escritório pronto</span></button>
+        <button type="button" class="botao vazado" id="ver-pronto" aria-pressed="false">${ico('luz')}<span>Ver o prédio completo</span></button>
       </figure>
     </div>
   </header>`;
@@ -396,6 +423,7 @@ const nav = `
         <li><a class="item" href="#modulo-${m.numero}">Módulo ${m.numero}</a></li>`).join('')}
         <li><a class="item" href="#conquistas">Conquistas</a></li>
         <li><a class="item" href="#projeto-final">Projeto final</a></li>
+        <li><a class="item" href="#ganho">Ganho</a></li>
         <li><a class="item" href="#ferramentas">Ferramentas</a></li>
         <li><a class="item" href="#resumo">Resumo</a></li>
       </ul>
@@ -424,8 +452,8 @@ const jornada = `
   <section class="secao faixa" id="agenda" aria-labelledby="t-jornada">
     <div class="miolo">
       <p class="olho">A jornada</p>
-      <h2 id="t-jornada">Três andares, do alicerce ao automático</h2>
-      <p class="intro">Os módulos são independentes, mas a ordem foi pensada para quem abre o Claude pela primeira vez: primeiro a segurança, depois a identidade, por fim os robôs.</p>
+      <h2 id="t-jornada">Três andares, da base às rotinas</h2>
+      <p class="intro">Os módulos são independentes, mas a ordem foi pensada para quem abre o Claude pela primeira vez: primeiro a base segura e um caso resolvido, depois o padrão de atendimento e de produção, por fim as rotinas automatizadas.</p>
       <div class="jornada">${A.modulos.map((m) => `
         <a class="etapa m${m.numero}" href="#modulo-${m.numero}">
           <span class="topo-e"><span class="n">${m.numero}</span><span class="andar-r">${m.numero}º andar · ${esc(m.andar)}</span></span>
@@ -453,6 +481,14 @@ const aula = (a, m) => `
             <p class="tempo">${a.minutos} min<small>de vídeo</small></p>
           </li>`;
 
+const aprof = `
+      <div class="aprof" id="aprofundamentos">
+        <p class="olho">Aprofundamentos opcionais, fora da carga principal</p>
+        <div class="aprof-lista">${(A.aprofundamentos || []).map((x) => `
+          <article class="aprof-item"><h3>${esc(x.nome)}</h3><p>${esc(x.texto)}</p><p class="aprof-meta">${x.ferramentas.map((f) => `<span>${ico(A.ferramentas[f].icone)}${esc(f)}</span>`).join('')}</p><p class="aprof-precisa">Precisa de: ${esc(x.precisa)}</p></article>`).join('')}
+        </div>
+      </div>`;
+
 const modulo = (m) => `
   <section class="secao faixa modulo-sec m${m.numero}" id="modulo-${m.numero}" aria-labelledby="t-m${m.numero}">
     <div class="miolo">
@@ -469,7 +505,7 @@ const modulo = (m) => `
       <p class="dica">${ico('check')}<span>Terminou uma aula? Toque no número dela: a janela do prédio acende e a conquista entra na sua coleção.</span></p>
       <div class="grade-cab" aria-hidden="true"><span>Aula</span><span>O que é e o que vamos apresentar</span><span>Ferramentas</span><span>Tempo</span></div>
       <ol class="aulas">${m.aulas.map((a) => aula(a, m)).join('')}
-      </ol>
+      </ol>${m.numero === 3 && (A.aprofundamentos || []).length ? aprof : ''}
     </div>
   </section>`;
 
@@ -503,6 +539,20 @@ const final = `
     </div>
   </section>`;
 
+const MED = A.medicao;
+const medicao = !MED ? '' : `
+  <section class="secao faixa" id="ganho" aria-labelledby="t-ganho">
+    <div class="miolo">
+      <p class="olho">Ganho de valor</p>
+      <h2 id="t-ganho">${esc(MED.titulo)}</h2>
+      <p class="intro">${esc(MED.texto)}</p>
+      <div class="medidas">${MED.indicadores.map((x, i) => `
+        <article class="medida"><span class="ico-bola">${ico(x.icone)}</span><h3>${esc(x.nome)}</h3><p>${esc(x.como)}</p><div class="regua"><span><small>Antes · aula 1.2</small><b>a preencher</b></span><span><small>Depois · aula 3.8</small><b>a preencher</b></span></div></article>`).join('')}
+      </div>
+      <p class="nota">${esc(MED.nota)}</p>
+    </div>
+  </section>`;
+
 const ferramentas = `
   <section class="secao faixa" id="ferramentas" aria-labelledby="t-ferr">
     <div class="miolo">
@@ -510,7 +560,7 @@ const ferramentas = `
       <h2 id="t-ferr">Tudo o que entra no seu escritório</h2>
       <p class="intro">Tudo no navegador. A etiqueta ao lado do nome mostra se a ferramenta é grátis ou paga; M1, M2 e M3 levam ao módulo onde ela aparece.</p>
       <div class="ferramentas">${nomesF.map((f) => { const F = A.ferramentas[f]; return `
-        <article class="ferramenta"><span class="ico-f">${ico(F.icone)}</span><h3>${esc(f)} <span class="plano ${F.tipo}">${esc(F.plano)}</span></h3><p>${esc(F.faz)}</p><span class="mods">${modulosDe(f).map((n) => `<a class="m${n}" href="#modulo-${n}" aria-label="Módulo ${n}">M${n}</a>`).join('')}</span></article>`; }).join('')}
+        <article class="ferramenta"><span class="ico-f">${ico(F.icone)}</span><h3>${esc(f)} <span class="plano ${F.tipo}">${esc(F.plano)}</span></h3><p>${esc(F.faz)}</p><span class="mods">${modulosDe(f).length ? modulosDe(f).map((n) => `<a class="m${n}" href="#modulo-${n}" aria-label="Módulo ${n}">M${n}</a>`).join('') : '<a class="apr" href="#aprofundamentos">Aprofundamento</a>'}</span></article>`; }).join('')}
       </div>
       <div class="tabela"><table>
         <thead><tr><th>Modelo do Claude</th><th>Perfil</th><th>Quando usar na advocacia</th></tr></thead>
@@ -529,7 +579,7 @@ const resumo = `
         <tbody>${A.modulos.map((m) => `
           <tr class="m${m.numero}"><td style="min-width:220px"><span class="bola-m">${m.numero}</span><b>${esc(m.nome)}</b></td><td>${esc(m.resultado)}</td><td class="n">${m.aulas.length}</td><td class="n">${fmt(m.minutos)}</td></tr>`).join('')}
         </tbody>
-        <tfoot><tr><td>Total</td><td>${aulas.length} conquistas e o escritório no automático</td><td class="n">${aulas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
+        <tfoot><tr><td>Total</td><td>${aulas.length} conquistas e as rotinas do escritório</td><td class="n">${aulas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
       </table></div>
     </div>
   </section>
@@ -570,7 +620,7 @@ const script = `
     var on = pronto.getAttribute('aria-pressed') !== 'true';
     pronto.setAttribute('aria-pressed', String(on));
     document.getElementById('predio').classList.toggle('pronto', on);
-    pronto.querySelector('span').textContent = on ? 'Voltar ao meu progresso' : 'Ver o escritório pronto';
+    pronto.querySelector('span').textContent = on ? 'Voltar ao meu progresso' : 'Ver o prédio completo';
   });
   var itens = [].slice.call(document.querySelectorAll('.nav a.item'));
   var alvos = itens.map(function (a) { return document.querySelector(a.getAttribute('href')); });
@@ -596,7 +646,7 @@ const cabeca = `<title>Agenda IA Aplicada a Advogados</title>
 <style>${CSS}</style>`;
 
 const corpo = `${sprite}${nav}${topo}
-<main>${curso}${jornada}${A.modulos.map(modulo).join('')}${conquistas}${final}${ferramentas}${resumo}
+<main>${curso}${jornada}${A.modulos.map(modulo).join('')}${conquistas}${final}${medicao}${ferramentas}${resumo}
 </main>${script}`;
 
 const pagina = `<!doctype html>
@@ -625,10 +675,12 @@ A.modulos.forEach((m) => {
   m.aulas.forEach((a) => md.push(`| **${a.numero} ${cel(a.nome)}** | ${cel(a.o_que_e)} | ${a.apresenta.map(cel).join('<br>')} | ${cel(a.conquista)}<br>*Missão: ${cel(a.missao)}* | ${a.ferramentas.map(cel).join(', ')} | ${a.minutos} min |`));
   md.push('');
 });
+if ((A.aprofundamentos || []).length) md.push('## Aprofundamentos opcionais', '', ...A.aprofundamentos.map((x) => `- **${x.nome}.** ${x.texto} Ferramentas: ${x.ferramentas.join(', ')}. Precisa de: ${x.precisa}.`), '');
 md.push(`## ${PF.titulo}`, '', PF.texto, '', ...PF.roteiro.map((r, i) => `${i + 1}. ${r.texto}`), '');
+if (MED) md.push(`## ${MED.titulo}`, '', MED.texto, '', '| Indicador | Como medir | Antes (aula 1.2) | Depois (aula 3.8) |', '|---|---|---|---|', ...MED.indicadores.map((x) => `| ${x.nome} | ${x.como} | | |`), '', MED.nota, '');
 md.push('## Ferramentas incorporadas', '', '| Ferramenta | Para que serve | Plano | Módulos |', '|---|---|---|---|', ...nomesF.map((f) => `| ${f} | ${A.ferramentas[f].faz} | ${A.ferramentas[f].plano} | ${modulosDe(f).join(', ')} |`), '');
 md.push('| Modelo do Claude | Perfil | Quando usar na advocacia |', '|---|---|---|', ...A.modelos.map((l) => `| ${l.modelo} | ${l.perfil} | ${l.usos} |`), '');
-md.push('## Resumo', '', '| Módulo | No fim, você tem | Aulas | Vídeo |', '|---|---|---:|---:|', ...A.modulos.map((m) => `| ${m.numero} · ${m.nome} | ${cel(m.resultado)} | ${m.aulas.length} | ${fmt(m.minutos)} |`), `| **Total** | ${aulas.length} conquistas e o escritório no automático | ${aulas.length} | ${fmt(totalMin)} |`, '', A.rodape, '');
+md.push('## Resumo', '', '| Módulo | No fim, você tem | Aulas | Vídeo |', '|---|---|---:|---:|', ...A.modulos.map((m) => `| ${m.numero} · ${m.nome} | ${cel(m.resultado)} | ${m.aulas.length} | ${fmt(m.minutos)} |`), `| **Total** | ${aulas.length} conquistas e as rotinas do escritório | ${aulas.length} | ${fmt(totalMin)} |`, '', A.rodape, '');
 fs.writeFileSync(path.join(pasta, 'README.md'), md.join('\n'));
 
 console.log(`Agenda montada: ${aulas.length} aulas, ${fmt(totalMin)} (${totalMin} min).`);
