@@ -231,6 +231,20 @@ a { color: inherit; }
 .notas li { font-size: .92rem; color: var(--tinta-2); padding-left: 14px; position: relative; }
 .notas li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--linha-forte); }
 .rodape { font-size: .84rem; color: var(--tinta-2); }
+.relatorio { border-top: 2px solid var(--tinta); padding-top: 28px; }
+.tabela { overflow-x: auto; margin-top: 16px; background: var(--folha); border: 1px solid var(--linha); border-radius: 6px; }
+.tabela table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: .93rem; }
+.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--linha); }
+.tabela th { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); background: var(--folha-2); }
+.tabela .n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tabela tfoot td { font-weight: 700; border-bottom: 0; }
+.tabela .mudo { color: var(--tinta-2); font-size: .85rem; }
+.rel-fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 24px; margin-top: 18px; border-top: 1px solid var(--linha); }
+.rel-fatos div { padding: 12px 0; border-bottom: 1px solid var(--linha); display: flex; flex-direction: column; gap: 3px; }
+.rel-fatos dd { font-weight: 600; }
+.rel-leva { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px 32px; margin-top: 20px; }
+.rel-leva h3 { font-size: .95rem; font-weight: 700; }
+.rel-leva p { margin-top: 6px; font-size: .92rem; color: var(--tinta-2); }
 
 @media (max-width: 900px) {
   .pagina { padding-block: 28px 56px; gap: 32px; }
@@ -342,6 +356,39 @@ const mapa = !(A.mapa_dores || []).length ? '' : `
     </ul>
   </section>`;
 
+// ---------- relatório simples ----------
+const comFerr = (f) => todas.filter((s) => (s.ferramentas || []).includes(f));
+const sessoesApi = comFerr('IA (API)').map((s) => s.numero);
+const nIA = todas.filter((s) => (s.ferramentas || []).some((f) => f.startsWith('IA'))).length;
+const frentesCobertas = Object.keys(FRENTES).filter((f) => ((A.cobertura || []).find((x) => x.frente === f) || { sessoes: [] }).sessoes.length).length;
+const primeiro = A.modulos[0].sessoes[0];
+const REL = {
+  modulos: A.modulos.map((m) => ({ m, autos: m.sessoes.filter((s) => (s.automacao || '').trim()).length })),
+  fatos: [
+    ['Frentes pedidas cobertas', `${frentesCobertas} de ${Object.keys(FRENTES).length}`],
+    ['Primeiro resultado', `no minuto ${primeiro.minutos}`],
+    ['Sessões com Apps Script', String(comFerr('Apps Script').length)],
+    ['Sessões com IA', String(nIA)],
+    ['Pedem chave de API', sessoesApi.length ? `${sessoesApi.join(' e ')}, com caminho sem chave` : 'nenhuma'],
+  ],
+};
+const relatorio = `
+  <section class="bloco relatorio" aria-labelledby="rel-t">
+    <h2 id="rel-t">Relatório da agenda</h2>
+    <p>O curso em uma tela: o que cada módulo entrega, quanto dura e do que o aluno precisa.</p>
+    <div class="tabela"><table>
+      <thead><tr><th>Módulo</th><th>O aluno leva</th><th class="n">Sessões</th><th class="n">Vídeo</th><th class="n">Automações</th><th>Precisa de</th></tr></thead>
+      <tbody>${REL.modulos.map(({ m, autos }) => `
+        <tr><td><b>${m.numero} · ${esc(m.nome)}</b><br><span class="mudo">${esc(m.nivel)}</span></td><td>${esc(m.sistema)}</td><td class="n">${m.sessoes.length}</td><td class="n">${fmt(m.minutos)}</td><td class="n">${autos}</td><td>${esc(m.requisitos)}</td></tr>`).join('')}
+      </tbody>
+      <tfoot><tr><td>Total</td><td>3 sistemas</td><td class="n">${totalSessoes}</td><td class="n">${fmt(totalMin)}</td><td class="n">${totalAuto}</td><td></td></tr></tfoot>
+    </table></div>
+    <dl class="rel-fatos">${REL.fatos.map(([k, v]) => `<div><dt class="rotulo">${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+    <div class="rel-leva">${A.modulos.map((m) => `
+      <div><h3>No módulo ${m.numero}, o aluno sai com</h3><p>${m.sessoes.map((s) => esc(s.entregavel)).join(' · ')}</p></div>`).join('')}
+    </div>
+  </section>`;
+
 const N = A.notas || {};
 const NOTAS = [['precisa', 'O que o aluno precisa'], ['cuidados', 'Regras que valem para tudo'], ['extras', 'Para ir além, fora da minutagem'], ['producao', 'O que falta para gravar']];
 const notas = !Object.keys(N).length ? '' : `
@@ -400,6 +447,7 @@ ${filtro}
 ${A.modulos.map(modulo).join('\n')}
 ${mapa}
 ${notas}
+${relatorio}
   <p class="rodape">${esc(A.rodape || '')}</p>
 </main>${script}`;
 
@@ -447,6 +495,13 @@ if ((A.mapa_dores || []).length) {
   md.push('');
 }
 NOTAS.forEach(([k, t]) => { if ((N[k] || []).length) md.push(`## ${t}`, '', ...N[k].map((x) => `- ${x}`), ''); });
+md.push('## Relatório da agenda', '', '| Módulo | O aluno leva | Sessões | Vídeo | Automações | Precisa de |', '|---|---|---:|---:|---:|---|');
+REL.modulos.forEach(({ m, autos }) => md.push(`| ${m.numero} · ${cel(m.nome)} (${m.nivel}) | ${cel(m.sistema)} | ${m.sessoes.length} | ${fmt(m.minutos)} | ${autos} | ${cel(m.requisitos)} |`));
+md.push(`| **Total** | 3 sistemas | ${totalSessoes} | ${fmt(totalMin)} | ${totalAuto} | |`, '');
+REL.fatos.forEach(([k, v]) => md.push(`- **${k}:** ${v}`));
+md.push('');
+A.modulos.forEach((m) => md.push(`- **No módulo ${m.numero}, o aluno sai com:** ${m.sessoes.map((s) => s.entregavel).join(' · ')}`));
+md.push('');
 if (A.rodape) md.push(A.rodape, '');
 fs.writeFileSync(path.join(pastaSaida, 'README.md'), md.join('\n'));
 

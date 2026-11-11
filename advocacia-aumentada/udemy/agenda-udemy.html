@@ -135,6 +135,20 @@ a { color: inherit; }
 .notas li { font-size: .92rem; color: var(--tinta-2); padding-left: 14px; position: relative; }
 .notas li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--linha-forte); }
 .rodape { font-size: .84rem; color: var(--tinta-2); }
+.relatorio { border-top: 2px solid var(--tinta); padding-top: 28px; }
+.tabela { overflow-x: auto; margin-top: 16px; background: var(--folha); border: 1px solid var(--linha); border-radius: 6px; }
+.tabela table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: .93rem; }
+.tabela th, .tabela td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--linha); }
+.tabela th { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); background: var(--folha-2); }
+.tabela .n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tabela tfoot td { font-weight: 700; border-bottom: 0; }
+.tabela .mudo { color: var(--tinta-2); font-size: .85rem; }
+.rel-fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 24px; margin-top: 18px; border-top: 1px solid var(--linha); }
+.rel-fatos div { padding: 12px 0; border-bottom: 1px solid var(--linha); display: flex; flex-direction: column; gap: 3px; }
+.rel-fatos dd { font-weight: 600; }
+.rel-leva { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px 32px; margin-top: 20px; }
+.rel-leva h3 { font-size: .95rem; font-weight: 700; }
+.rel-leva p { margin-top: 6px; font-size: .92rem; color: var(--tinta-2); }
 
 @media (max-width: 900px) {
   .pagina { padding-block: 28px 56px; gap: 32px; }
@@ -153,28 +167,58 @@ a { color: inherit; }
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-pagina" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/></symbol><symbol id="i-painel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/></symbol><symbol id="i-planilha" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.8h18M9 4v16M15 4v16"/></symbol><symbol id="i-script" viewBox="0 0 24 24"><path d="M8.5 8L4.5 12l4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></symbol><symbol id="i-email" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.6L12 13l8.4-6.4"/></symbol><symbol id="i-agenda" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h2.5M13.8 14h2.7M7.5 17.4h2.5"/></symbol><symbol id="i-formulario" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="7.5" y="7" width="3" height="3" rx=".5"/><path d="M13 8.5h3.5M7.5 14h9M7.5 17.5h6"/></symbol><symbol id="i-contrato" viewBox="0 0 24 24"><path d="M6 3h8.5L19 7.5V21H6z"/><path d="M14.5 3v4.5H19M9 11h7M9 14.3h7M9 18c.9-1.4 1.9-1.4 2.8 0s1.9 1.4 2.8 0"/></symbol><symbol id="i-lista" viewBox="0 0 24 24"><path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/></symbol><symbol id="i-tempo" viewBox="0 0 24 24"><path d="M3 12h18M6 12V7.5M12 12v4.5M18 12V7.5"/><circle cx="6" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18" cy="12" r="1.7"/></symbol><symbol id="i-mensagem" viewBox="0 0 24 24"><path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/></symbol><symbol id="i-cartao" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/></symbol><symbol id="i-calculo" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7.5h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></symbol><symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/></symbol><symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7 2.6v5.3c0 4.4-2.9 8.1-7 9.6-4.1-1.5-7-5.2-7-9.6V5.6L12 3z"/><path d="M9 11.8l2.1 2.1L15 10"/></symbol><symbol id="i-funil" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8L4 5z"/></symbol><symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8.2 10.7l1.7 1.7 2.9-3.1"/></symbol><symbol id="i-molde" viewBox="0 0 24 24"><path d="M8 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2M9 9h6M9 12h6M9 15h3.5"/></symbol><symbol id="i-sozinho" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.35-5.65"/><path d="M20 4.5v4h-4"/><path d="M12 8v4l2.6 2.4"/></symbol></defs></svg>
 <main class="pagina">
   <header class="abre">
-    <p class="rotulo">Curso gravado · Agenda por dores</p>
+    <p class="rotulo">Curso gravado · Agenda</p>
     <h1>IA Aplicada a Advogados</h1>
-    <p class="promessa">Em cada sessão, uma dor a menos e uma peça pronta para usar no dia seguinte. Três módulos independentes: a sua mesa, o que o cliente vê e a clientela do escritório.</p>
+    <p class="sub">Planilhas, painéis, Google Apps Script e IA no dia a dia do escritório</p>
+    <p class="promessa">Em cada sessão, uma dor a menos e uma ferramenta pronta para usar no dia seguinte. Três módulos independentes, três plataformas: casos e prazos, clientes e contratos.</p>
     <dl class="fatos">
       <div><dt class="rotulo">Módulos</dt><dd>3</dd></div>
-      <div><dt class="rotulo">Sessões</dt><dd>24</dd></div>
-      <div><dt class="rotulo">Vídeo</dt><dd>4 h 23 min</dd></div>
-      <div><dt class="rotulo">Automações</dt><dd>0</dd></div>
+      <div><dt class="rotulo">Sessões</dt><dd>27</dd></div>
+      <div><dt class="rotulo">Vídeo</dt><dd>4 h 55 min</dd></div>
+      <div><dt class="rotulo">Automações</dt><dd>12</dd></div>
       <div><dt class="rotulo">Sistemas</dt><dd>3</dd></div>
     </dl>
     <p class="compasso"><span>Toda sessão anda em três tempos:</span> <b>a dor</b> <i>→</i> <b>o que você constrói</b> <i>→</i> <b>o que você ganha</b></p>
-    <p class="jogo">A prática é sempre um jogo curto, com material fictício: antes e depois, caça ao erro, cliente simulado, advogado do diabo, contra o relógio ou missão.</p>
+    <p class="jogo">A prática é sempre curta e com material fictício: antes e depois, caça ao erro, cliente simulado, contra o relógio, conserte o script e o robô que trabalhou enquanto você dormia.</p>
   </header>
 
+  <section class="bloco" aria-labelledby="caixa-t">
+    <h2 id="caixa-t">A caixa de ferramentas do escritório</h2>
+    <p>Onde cada frente é ensinada. Toque no número para ir à sessão.</p>
+    <ul class="caixa">
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg><span>Planilhas</span></span><span class="chips"><a class="c1" href="#s-1-3">1.3</a><a class="c1" href="#s-1-4">1.4</a><a class="c2" href="#s-2-5">2.5</a><a class="c3" href="#s-3-1">3.1</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painéis</span></span><span class="chips"><a class="c1" href="#s-1-9">1.9</a><a class="c2" href="#s-2-8">2.8</a><a class="c3" href="#s-3-8">3.8</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-script"/></svg><span>Google Apps Script</span></span><span class="chips"><a class="c1" href="#s-1-5">1.5</a><a class="c1" href="#s-1-6">1.6</a><a class="c2" href="#s-2-3">2.3</a><a class="c2" href="#s-2-4">2.4</a><a class="c2" href="#s-2-6">2.6</a><a class="c2" href="#s-2-7">2.7</a><a class="c2" href="#s-2-9">2.9</a><a class="c3" href="#s-3-1">3.1</a><a class="c3" href="#s-3-3">3.3</a><a class="c3" href="#s-3-5">3.5</a><a class="c3" href="#s-3-6">3.6</a><a class="c3" href="#s-3-9">3.9</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg><span>Automação de e-mail</span></span><span class="chips"><a class="c1" href="#s-1-5">1.5</a><a class="c2" href="#s-2-3">2.3</a><a class="c2" href="#s-2-7">2.7</a><a class="c2" href="#s-2-9">2.9</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg><span>Automação de agenda</span></span><span class="chips"><a class="c1" href="#s-1-6">1.6</a><a class="c3" href="#s-3-6">3.6</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg><span>Análise de contrato automatizada</span></span><span class="chips"><a class="c3" href="#s-3-3">3.3</a><a class="c3" href="#s-3-5">3.5</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>Análise de riscos</span></span><span class="chips"><a class="c3" href="#s-3-2">3.2</a><a class="c3" href="#s-3-3">3.3</a><a class="c3" href="#s-3-4">3.4</a><a class="c3" href="#s-3-7">3.7</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Gestão de casos</span></span><span class="chips"><a class="c1" href="#s-1-3">1.3</a><a class="c1" href="#s-1-4">1.4</a><a class="c1" href="#s-1-7">1.7</a><a class="c1" href="#s-1-9">1.9</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg><span>Plataforma de contratos</span></span><span class="chips"><a class="c3" href="#s-3-1">3.1</a><a class="c3" href="#s-3-8">3.8</a><a class="c3" href="#s-3-9">3.9</a></span></li>
+      <li><span class="frente"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg><span>Plataforma de clientes</span></span><span class="chips"><a class="c2" href="#s-2-2">2.2</a><a class="c2" href="#s-2-4">2.4</a><a class="c2" href="#s-2-6">2.6</a><a class="c2" href="#s-2-8">2.8</a></span></li>
+    </ul>
+    <p class="legenda"><span class="m1">Módulo 1 · Casa em ordem</span><span class="m2">Módulo 2 · Plataforma de clientes</span><span class="m3">Módulo 3 · Plataforma de contratos</span></p>
+  </section>
 
   <div class="filtro" role="group" aria-label="Destacar sessões">
     <div class="linha-f">
       <span class="rotulo">Ver por ganho</span>
-      <button type="button" id="ver-tudo" data-filtro="tudo" aria-pressed="true">Tudo<span>24</span></button>
-      <button type="button" id="ver-apresentacao" data-filtro="apresentacao" aria-pressed="false">Apresentação<span>12</span></button>
-      <button type="button" id="ver-organizacao" data-filtro="organizacao" aria-pressed="false">Organização<span>11</span></button>
-      <button type="button" id="ver-clientela" data-filtro="clientela" aria-pressed="false">Clientela<span>11</span></button>
+      <button type="button" id="ver-tudo" data-filtro="tudo" aria-pressed="true">Tudo<span>27</span></button>
+      <button type="button" id="ver-apresentacao" data-filtro="apresentacao" aria-pressed="false">Apresentação<span>9</span></button>
+      <button type="button" id="ver-organizacao" data-filtro="organizacao" aria-pressed="false">Organização<span>17</span></button>
+      <button type="button" id="ver-clientela" data-filtro="clientela" aria-pressed="false">Clientela<span>9</span></button>
+    </div>
+    <div class="linha-f">
+      <span class="rotulo">Ver por ferramenta</span>
+      <button type="button" id="ver-ia" data-filtro="ia" aria-pressed="false">IA<span>17</span></button>
+      <button type="button" id="ver-planilhas" data-filtro="planilhas" aria-pressed="false">Planilhas<span>17</span></button>
+      <button type="button" id="ver-formularios" data-filtro="formularios" aria-pressed="false">Formulários<span>2</span></button>
+      <button type="button" id="ver-docs" data-filtro="docs" aria-pressed="false">Docs<span>5</span></button>
+      <button type="button" id="ver-gmail" data-filtro="gmail" aria-pressed="false">Gmail<span>5</span></button>
+      <button type="button" id="ver-agenda" data-filtro="agenda" aria-pressed="false">Agenda<span>2</span></button>
+      <button type="button" id="ver-drive" data-filtro="drive" aria-pressed="false">Drive<span>4</span></button>
+      <button type="button" id="ver-apps-script" data-filtro="apps-script" aria-pressed="false">Apps Script<span>12</span></button>
+      <button type="button" id="ver-painel" data-filtro="painel" aria-pressed="false">Painel<span>4</span></button>
     </div>
     <output id="filtro-status" aria-live="polite"></output>
   </div>
@@ -184,7 +228,7 @@ a { color: inherit; }
       <div>
         <p class="rotulo">Módulo 1 · Básico · Organização</p>
         <h2 id="m1-t">Casa em ordem</h2>
-        <p class="para">Para quem nunca usou IA no trabalho ou usa de vez em quando, sem método.</p>
+        <p class="para">Para quem usa IA sem método, ou ainda não começou, e controla tudo em caderno e planilha.</p>
       </div>
       <blockquote>
         <p class="rotulo">A dor do módulo</p>
@@ -192,23 +236,45 @@ a { color: inherit; }
       </blockquote>
       <div class="leva">
         <p class="rotulo">Você constrói e leva</p>
-        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel de casos e prazos</span></p>
-        <p class="ganho">Você sabe pedir, sabe conferir, protege o sigilo e vê todos os casos e prazos em uma tela.</p>
-        <p class="conta">8 sessões · 1 h 20 min · conta gratuita</p>
+        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Gestão de casos e prazos: planilha, painel e o robô das 7h</span></p>
+        <p class="ganho">Você sabe pedir à IA, sabe conferir o que ela diz, protege o sigilo e acorda com os prazos da semana no e-mail e na agenda.</p>
+        <p class="conta">9 sessões · 1 h 34 min · 2 automações · conta gratuita de IA e conta Google gratuita</p>
       </div>
     </header>
     <div role="list">
       <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>
-      <article class="sessao" id="s-1-1" role="listitem" data-tags="organizacao">
+      <article class="sessao" id="s-1-1" role="listitem" data-tags="apresentacao clientela ia">
         <div class="s-id">
           <span class="s-num">1.1</span>
+          <h3>O andamento que o cliente entende</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+          <p class="s-ferr"><span>IA</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente pergunta “e o meu processo?” toda semana.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Cola um andamento fictício e pede à IA, em cinco partes (Função, Alvo, Texto-base, Orientações, Saída), três linhas: o que aconteceu, o que significa e qual é o próximo passo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Modelo de atualização ao cliente</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> A IA faz o cliente leigo e diz o que não entendeu.</p>
+          <p class="s-cuidado">Cuidado: Sem promessa de resultado. Você lê antes de enviar.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Primeiro resultado em oito minutos, e menos mensagens repetidas.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-2" role="listitem" data-tags="organizacao ia">
+        <div class="s-id">
+          <span class="s-num">1.2</span>
           <h3>Sigilo em três cores</h3>
           <p class="s-meta"><span class="s-min">8 min</span></p>
+          <p class="s-ferr"><span>IA</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA</p>
         </div>
         <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Tenho medo de colar documento de cliente na IA.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Ajusta a conta em poucos minutos (conversas fora do treinamento, verificação em duas etapas) e classifica oito situações do escritório em verde, amarelo e vermelho.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>Cartão do semáforo e modelo de termo de ciência do cliente</span></p>
+          <p>Ajusta a conta (conversas fora do treinamento, verificação em duas etapas), classifica oito situações em verde, amarelo e vermelho e escreve a política de uso de IA de uma página.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>Cartão do semáforo e política de uso de IA</span></p>
           <p class="s-pratica"><b>Jogo do semáforo.</b> Você decide a cor antes de ver o gabarito.</p>
           <p class="s-cuidado">Cuidado: Segredo de justiça, saúde e dado de criança são vermelhos: não entram.</p>
         </div>
@@ -217,50 +283,119 @@ a { color: inherit; }
           <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-1-2" role="listitem" data-tags="organizacao">
+      <article class="sessao" id="s-1-3" role="listitem" data-tags="organizacao planilhas ia">
         <div class="s-id">
-          <span class="s-num">1.2</span>
-          <h3>O pedido que funciona</h3>
-          <p class="s-meta"><span class="s-min">9 min</span></p>
+          <span class="s-num">1.3</span>
+          <h3>A planilha-mãe do escritório</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Planilhas</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Peço e vem resposta genérica, com cara de robô.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Meus prazos estão em três lugares: no caderno, na planilha e na cabeça.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Escreve o perfil do escritório, que fica salvo, e monta um pedido em cinco partes: Função, Alvo, Texto-base, Orientações e Saída.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span>Perfil do escritório e molde de pedido</span></p>
-          <p class="s-pratica"><b>Antes e depois.</b> O mesmo pedido, vago e com método, lado a lado.</p>
+          <p>Junta as listas espalhadas numa planilha Google com colunas fixas, listas suspensas, fórmula de dias restantes e cor automática para o que vence. A IA desenha as colunas e escreve as fórmulas.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg><span>Planilha de casos e prazos</span></p>
+          <p class="s-pratica"><b>Missão.</b> Três listas bagunçadas viram uma planilha em dez minutos.</p>
+          <p class="s-cuidado">Cuidado: A data do prazo é você quem lança. A IA não conta prazo.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Resposta útil na primeira tentativa, no tom do escritório.</p>
+          <p class="s-frase">Um lugar só para todos os casos, que avisa pela cor.</p>
           <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-1-3" role="listitem" data-tags="organizacao">
+      <article class="sessao" id="s-1-4" role="listitem" data-tags="organizacao ia planilhas">
         <div class="s-id">
-          <span class="s-num">1.3</span>
-          <h3>Ficha do caso em uma página</h3>
-          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <span class="s-num">1.4</span>
+          <h3>Intimações do dia em cinco minutos</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>IA</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA e conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente mandou oito arquivos e três áudios. Por onde começo?”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Toda manhã leio dezenas de intimações e tenho medo de deixar uma passar.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Sobe os documentos de um caso fictício, com a transcrição dos áudios, e pede os fatos com o trecho de origem, a linha do tempo, as lacunas e os documentos que faltam.</p>
+          <p>Cola as intimações do dia e recebe uma linha por intimação: processo, o que o ato pede, data de disponibilização e “prazo: conferir”. A fórmula VALIDAR_CNJ confere o número do processo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Quadro de intimações na planilha</span></p>
+          <p class="s-pratica"><b>Contra o relógio.</b> Vinte intimações fictícias organizadas antes do café esfriar.</p>
+          <p class="s-cuidado">Cuidado: A IA lê e organiza. O prazo é contado e conferido por você.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Nenhuma intimação fica sem dono, e a leitura da manhã encurta.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-5" role="listitem" data-tags="organizacao apps-script planilhas gmail ia">
+        <div class="s-id">
+          <span class="s-num">1.5</span>
+          <h3>Seu primeiro script: o e-mail das 7h</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Planilhas</span><span>Gmail</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Só lembro do prazo quando abro a planilha, e tem dia que eu não abro.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>A IA escreve um Google Apps Script que lê a planilha e manda para o seu e-mail os prazos vencidos, de hoje e da semana. Você cola, autoriza, testa e liga o horário.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: todo dia às 7h, os prazos da semana chegam ao seu e-mail</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-script"/></svg><span>Robô dos prazos</span></p>
+          <p class="s-pratica"><b>O robô trabalhou enquanto você dormia.</b> Na aula seguinte, você abre o e-mail que chegou de madrugada.</p>
+          <p class="s-cuidado">Cuidado: O e-mail vai só para você. Nenhum dado sai da sua conta Google.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">A planilha passa a te procurar, e não o contrário.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-6" role="listitem" data-tags="organizacao apps-script agenda planilhas">
+        <div class="s-id">
+          <span class="s-num">1.6</span>
+          <h3>Prazos na agenda, com alarme</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Agenda</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Prazo na planilha não apita.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Um segundo script cria na Agenda Google um evento para cada prazo marcado como conferido, com alarme sete dias e um dia antes.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: toda noite, os prazos conferidos viram eventos com alarme na sua agenda</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg><span>Agenda de prazos com alarme</span></p>
+          <p class="s-pratica"><b>Conserte o script.</b> Uma linha errada cria o evento no dia errado. Você acha e corrige.</p>
+          <p class="s-cuidado">Cuidado: Só vai para a agenda o prazo com “Conferido por” preenchido.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">O celular avisa antes do prazo, sem você lembrar de olhar.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-7" role="listitem" data-tags="organizacao ia">
+        <div class="s-id">
+          <span class="s-num">1.7</span>
+          <h3>Ficha do caso a partir do WhatsApp</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>IA</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O caso inteiro do cliente está no WhatsApp: áudio, print e foto de documento.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Exporta uma conversa fictícia, sobe os documentos e pede os fatos com o trecho de origem, a linha do tempo, as lacunas e os documentos que faltam.</p>
           <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Ficha do caso</span></p>
-          <p class="s-pratica"><b>Missão.</b> Um caso bagunçado vira uma página em dez minutos.</p>
-          <p class="s-cuidado">Cuidado: Todo fato vem com o trecho de onde saiu. Sem trecho, não entra na ficha.</p>
+          <p class="s-pratica"><b>Missão.</b> Um caso de família bagunçado vira uma página.</p>
+          <p class="s-cuidado">Cuidado: Conversa real de cliente é dado amarelo: troque nomes por papéis antes de colar.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
           <p class="s-frase">Você confere em vez de garimpar, e nenhum fato fica solto.</p>
           <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-1-4" role="listitem" data-tags="apresentacao">
+      <article class="sessao" id="s-1-8" role="listitem" data-tags="apresentacao ia planilhas">
         <div class="s-id">
-          <span class="s-num">1.4</span>
+          <span class="s-num">1.8</span>
           <h3>As três chaves</h3>
           <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>IA</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“E se ela inventar um precedente e eu assinar embaixo?”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“E se a IA inventar um precedente e eu assinar embaixo?”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Confere três citações nas fontes oficiais com três perguntas: existe? diz isso? vale hoje?</p>
+          <p>Pede à IA o plano de pesquisa da tese, confere três citações nas fontes oficiais (existe? diz isso? vale hoje?) e registra cada conferência na planilha.</p>
           <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg><span>Registro de conferência de citações</span></p>
           <p class="s-pratica"><b>Caça ao erro.</b> Das três citações, uma é inventada e outra diz o contrário.</p>
           <p class="s-cuidado">Cuidado: Tribunais já multaram advogados por precedente inexistente em peça.</p>
@@ -270,74 +405,23 @@ a { color: inherit; }
           <p class="s-tags"><span>Apresentação</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-1-5" role="listitem" data-tags="apresentacao">
+      <article class="sessao" id="s-1-9" role="listitem" data-tags="organizacao painel planilhas ia">
         <div class="s-id">
-          <span class="s-num">1.5</span>
-          <h3>O cliente entende</h3>
-          <p class="s-meta"><span class="s-min">8 min</span></p>
+          <span class="s-num">1.9</span>
+          <h3>O painel de casos</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Painel</span><span>Planilhas</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA e conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente pergunta “e o meu processo?” toda semana.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Tenho dezenas de processos e não sei dizer quais estão parados.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Transforma um andamento em três linhas: o que aconteceu, o que significa e qual é o próximo passo.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Modelo de atualização ao cliente</span></p>
-          <p class="s-pratica"><b>Cliente simulado.</b> A IA faz o cliente leigo e diz o que não entendeu.</p>
-          <p class="s-cuidado">Cuidado: Sem promessa de resultado. Você lê antes de enviar.</p>
-        </div>
-        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Menos mensagens repetidas e um cliente que confia.</p>
-          <p class="s-tags"><span>Apresentação</span></p>
-        </div>
-      </article>
-      <article class="sessao" id="s-1-6" role="listitem" data-tags="organizacao">
-        <div class="s-id">
-          <span class="s-num">1.6</span>
-          <h3>Da reunião às tarefas</h3>
-          <p class="s-meta"><span class="s-min">8 min</span></p>
-        </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Saio do atendimento com a cabeça cheia e a anotação pela metade.”</p></div>
-        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Cola as anotações de uma reunião fictícia e recebe o resumo, as decisões, as dúvidas em aberto e as tarefas, cada uma com responsável e data.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Registro de atendimento com próximas ações</span></p>
-          <p class="s-pratica"><b>Contra o relógio.</b> Do rascunho ao registro em cinco minutos.</p>
-          <p class="s-cuidado">Cuidado: Anotação de cliente real é dado amarelo: troque nomes por papéis.</p>
-        </div>
-        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Todo atendimento termina com um próximo passo escrito.</p>
-          <p class="s-tags"><span>Organização</span></p>
-        </div>
-      </article>
-      <article class="sessao" id="s-1-7" role="listitem" data-tags="organizacao">
-        <div class="s-id">
-          <span class="s-num">1.7</span>
-          <h3>Painel de casos e prazos</h3>
-          <p class="s-meta"><span class="s-min">15 min</span></p>
-        </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Meus prazos estão em três lugares: agenda, planilha e cabeça.”</p></div>
-        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Transforma uma planilha de processos em painel com vencidos, hoje, semana e casos por responsável.</p>
+          <p>Transforma a planilha-mãe num painel: vencidos, hoje, semana, casos parados há mais de 30 dias e casos por responsável.</p>
           <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel de casos e prazos</span></p>
-          <p class="s-pratica"><b>Construção guiada.</b> Duas rodadas de ajuste até ficar do seu jeito.</p>
-          <p class="s-cuidado">Cuidado: O painel mostra as datas que você lançou. A IA não conta prazo.</p>
+          <p class="s-pratica"><b>Construção guiada.</b> Duas rodadas de ajuste até o painel ficar do seu jeito.</p>
+          <p class="s-cuidado">Cuidado: Os dados reais ficam na sua planilha e no seu navegador. Não vão para a IA.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
           <p class="s-frase">Uma tela responde o que vence e o que está parado.</p>
-          <p class="s-tags"><span>Organização</span></p>
-        </div>
-      </article>
-      <article class="sessao" id="s-1-8" role="listitem" data-tags="organizacao">
-        <div class="s-id">
-          <span class="s-num">1.8</span>
-          <h3>O painel com os seus dados</h3>
-          <p class="s-meta"><span class="s-min">10 min</span></p>
-        </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Ficou bonito, mas os dados dos meus clientes não podem ir para a IA.”</p></div>
-        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Cola a planilha real dentro do painel, no próprio navegador, e monta o plano da semana.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel em uso e ritual de segunda-feira</span></p>
-          <p class="s-pratica"><b>Missão.</b> A semana inteira em uma tela, em dez minutos.</p>
-        </div>
-        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Ferramenta sua, com o dado dentro do seu computador.</p>
           <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
@@ -347,164 +431,207 @@ a { color: inherit; }
   <section class="modulo m2" id="modulo-2" aria-labelledby="m2-t">
     <header class="modulo-cab">
       <div>
-        <p class="rotulo">Módulo 2 · Intermediário · Apresentação</p>
-        <h2 id="m2-t">O que o cliente vê</h2>
-        <p class="para">Para quem já conversa com a IA e quer que o trabalho pareça tão bom quanto é.</p>
+        <p class="rotulo">Módulo 2 · Intermediário · Clientela</p>
+        <h2 id="m2-t">Plataforma de clientes</h2>
+        <p class="para">Para quem quer atender, propor e cobrar com cara de escritório grande.</p>
       </div>
       <blockquote>
         <p class="rotulo">A dor do módulo</p>
-        <p class="fala">“Faço um bom trabalho, mas o cliente não enxerga. E quem não enxerga valor discute preço.”</p>
+        <p class="fala">“Faço um bom trabalho, mas o cliente não enxerga, e cada cliente novo me custa uma tarde de papelada.”</p>
       </blockquote>
       <div class="leva">
         <p class="rotulo">Você constrói e leva</p>
-        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Central do cliente, com o relatório de cada caso</span></p>
-        <p class="ganho">Proposta, diagnóstico, linha do tempo e relatório com a cara do escritório, e nenhum cliente sem retorno.</p>
-        <p class="conta">8 sessões · 1 h 31 min · conta gratuita; página por link pede plano pago</p>
+        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg><span>Plataforma de clientes: formulário, cadastro, documentos gerados e painel</span></p>
+        <p class="ganho">Do primeiro contato à cobrança, cada etapa tem um modelo, um botão ou um rascunho pronto, e o cliente percebe método.</p>
+        <p class="conta">9 sessões · 1 h 40 min · 6 automações · conta Google gratuita; triagem com IA pede chave de API paga</p>
       </div>
     </header>
     <div role="list">
       <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>
-      <article class="sessao" id="s-2-1" role="listitem" data-tags="apresentacao">
+      <article class="sessao" id="s-2-1" role="listitem" data-tags="apresentacao ia docs">
         <div class="s-id">
           <span class="s-num">2.1</span>
           <h3>A cara do escritório</h3>
-          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>IA</span><span>Docs</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA e conta Google gratuita</p>
         </div>
         <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cada documento meu sai com uma cara diferente.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Define cores, letras e tom de voz em uma página, guarda como instrução e cria o cartão virtual do escritório.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg><span>Identidade em uma página e cartão virtual</span></p>
+          <p>Define cores, letras e tom de voz em uma página e cria o modelo timbrado no Google Docs e a assinatura de e-mail.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span>Identidade em uma página e modelo timbrado</span></p>
           <p class="s-pratica"><b>Antes e depois.</b> O mesmo documento, sem e com a identidade.</p>
-          <p class="s-cuidado">Cuidado: Sobriedade é regra da OAB. Cartão com nome e número de inscrição, sem fotografia, sem preço e sem promessa.</p>
+          <p class="s-cuidado">Cuidado: Sobriedade é regra da OAB: nome e número de inscrição, sem promessa e sem autoelogio.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
           <p class="s-frase">O escritório parece do tamanho que é, em tudo o que envia.</p>
           <p class="s-tags"><span>Apresentação</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-2-2" role="listitem" data-tags="apresentacao clientela">
+      <article class="sessao" id="s-2-2" role="listitem" data-tags="clientela organizacao formularios planilhas">
         <div class="s-id">
           <span class="s-num">2.2</span>
+          <h3>Formulário de primeiro contato</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>Formulários</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente chega pelo WhatsApp, conta tudo em áudio, e eu perco metade.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Cria o formulário de primeiro contato com aviso de privacidade. Cada resposta vira uma linha na planilha de clientes.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: cada formulário preenchido entra sozinho no cadastro de clientes</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-formulario"/></svg><span>Formulário e cadastro de clientes</span></p>
+          <p class="s-pratica"><b>Missão.</b> Três contatos fictícios preenchem o formulário e aparecem na planilha.</p>
+          <p class="s-cuidado">Cuidado: Aviso de privacidade no formulário. Peça só o necessário. Nada de consulta automática a quem não é cliente.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Todo contato chega organizado, com o que você precisa saber.</p>
+          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-3" role="listitem" data-tags="clientela apps-script gmail formularios">
+        <div class="s-id">
+          <span class="s-num">2.3</span>
+          <h3>Boas-vindas e canais oficiais</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Gmail</span><span>Formulários</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Usaram meu nome no WhatsApp para pedir Pix ao meu cliente.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Escreve o texto fixo de boas-vindas: como o escritório trabalha, canais e horários, e o que o escritório nunca pede por mensagem. Um script deixa a resposta pronta a cada formulário novo.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: a cada formulário novo, o e-mail de boas-vindas fica pronto em rascunho</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Kit de boas-vindas com aviso contra golpe</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> Três regras duras reescritas em tom acolhedor.</p>
+          <p class="s-cuidado">Cuidado: O texto é seu e quem envia é você. A IA não fala sozinha com o cliente.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Limites combinados no primeiro dia e um cliente protegido do golpe do falso advogado.</p>
+          <p class="s-tags"><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-4" role="listitem" data-tags="apresentacao clientela docs apps-script planilhas ia">
+        <div class="s-id">
+          <span class="s-num">2.4</span>
           <h3>Proposta de uma página</h3>
           <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Docs</span><span>Apps Script</span><span>Planilhas</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
         <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Mandei o valor por WhatsApp e o cliente sumiu.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Monta a proposta de honorários: o problema do cliente, o escopo, as etapas, o que não está incluído, o investimento e o próximo passo.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Modelo de proposta de honorários</span></p>
+          <p>Monta no Docs o modelo de proposta: o problema do cliente, escopo, etapas, o que não está incluído, investimento e próximo passo. Um script preenche com os dados do cliente e salva em PDF.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: um clique na planilha gera a proposta do cliente em PDF</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Gerador de propostas</span></p>
           <p class="s-pratica"><b>Antes e depois.</b> A mensagem de WhatsApp e a proposta, lado a lado.</p>
-          <p class="s-cuidado">Cuidado: Proposta vai para quem pediu. Sem promessa de resultado.</p>
+          <p class="s-cuidado">Cuidado: Proposta só para quem pediu. Sem promessa de resultado.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
           <p class="s-frase">Você apresenta valor antes de preço, e a conversa muda de nível.</p>
           <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-2-3" role="listitem" data-tags="apresentacao clientela">
-        <div class="s-id">
-          <span class="s-num">2.3</span>
-          <h3>Diagnóstico em uma página</h3>
-          <p class="s-meta"><span class="s-min">12 min</span></p>
-        </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Na primeira reunião eu explico tudo e o cliente sai sem entender nada.”</p></div>
-        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Resume o caso para o cliente: onde ele está, os caminhos possíveis, os riscos em verde, amarelo e vermelho, e o que acontece agora.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Diagnóstico do caso</span></p>
-          <p class="s-pratica"><b>Cliente simulado.</b> A IA faz o cliente leigo e pergunta o que não entendeu.</p>
-          <p class="s-cuidado">Cuidado: Estimativa não é promessa. A avaliação de risco é sua, não da IA.</p>
-        </div>
-        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">O cliente decide com clareza e percebe método.</p>
-          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
-        </div>
-      </article>
-      <article class="sessao" id="s-2-4" role="listitem" data-tags="apresentacao organizacao">
-        <div class="s-id">
-          <span class="s-num">2.4</span>
-          <h3>Linha do tempo de um minuto</h3>
-          <p class="s-meta"><span class="s-min">10 min</span></p>
-        </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Os fatos estão em quarenta páginas e ninguém lê.”</p></div>
-        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Transforma os documentos do caso em uma linha do tempo de uma tela, com o documento que prova cada fato.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tempo"/></svg><span>Linha do tempo do caso</span></p>
-          <p class="s-pratica"><b>Antes e depois.</b> Quarenta páginas e uma tela, o mesmo caso.</p>
-          <p class="s-cuidado">Cuidado: Cada marco aponta o documento de origem.</p>
-        </div>
-        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Cliente e juiz entendem a história antes de ler a peça.</p>
-          <p class="s-tags"><span>Apresentação</span><span>Organização</span></p>
-        </div>
-      </article>
-      <article class="sessao" id="s-2-5" role="listitem" data-tags="apresentacao">
+      <article class="sessao" id="s-2-5" role="listitem" data-tags="clientela planilhas ia">
         <div class="s-id">
           <span class="s-num">2.5</span>
-          <h3>A peça que o juiz lê</h3>
+          <h3>Quanto cobrar, e como sustentar</h3>
           <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Planilhas</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA e conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Escrevo dez páginas e o essencial fica escondido.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cobro no chute e, no primeiro “tá caro”, dou desconto.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Dá à IA o papel de quem julga: ela diz o que entendeu da sua peça, aponta o pedido escondido e ataca o ponto fraco. Você reescreve a abertura.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg><span>Quadro-resumo da peça e lista de pontos fracos</span></p>
-          <p class="s-pratica"><b>Advogado do diabo.</b> A IA faz o juiz sem tempo e a parte contrária.</p>
-          <p class="s-cuidado">Cuidado: A IA critica a forma e a lógica. Fundamento e citação, você confere.</p>
+          <p>Monta a calculadora de honorários na planilha (custo do escritório, horas previstas, complexidade) ao lado do mínimo da tabela da sua seccional, e ensaia a conversa com a IA no papel do cliente que pechincha.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-calculo"/></svg><span>Calculadora de honorários</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> A IA pechincha três vezes. Você treina até responder sem ceder.</p>
+          <p class="s-cuidado">Cuidado: A tabela da seccional é a referência mínima. Quem decide o preço é você.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Fatos em ordem, pedido claro e tese testada antes do protocolo.</p>
-          <p class="s-tags"><span>Apresentação</span></p>
+          <p class="s-frase">Preço com critério, e firmeza para explicá-lo.</p>
+          <p class="s-tags"><span>Clientela</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-2-6" role="listitem" data-tags="apresentacao">
+      <article class="sessao" id="s-2-6" role="listitem" data-tags="organizacao clientela apps-script docs drive planilhas">
         <div class="s-id">
           <span class="s-num">2.6</span>
-          <h3>Cinco slides para quem decide</h3>
-          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <h3>Kit de abertura em um clique</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Docs</span><span>Drive</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Tenho reunião com o cliente amanhã e só um parecer de doze páginas.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cliente novo, e lá vou eu preencher procuração, contrato e declaração à mão.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Transforma o parecer em cinco slides: a decisão que se pede, o cenário, os riscos, os caminhos e o próximo passo.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg><span>Apresentação de cinco slides</span></p>
-          <p class="s-pratica"><b>Contra o relógio.</b> Do parecer aos slides em dez minutos.</p>
+          <p>Um script lê a linha do cliente e gera, a partir dos seus modelos, procuração, contrato de honorários e termo de consentimento sobre o uso de IA, numa pasta do cliente no Drive.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: um clique gera os três documentos na pasta do cliente</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg><span>Kit de abertura de cliente</span></p>
+          <p class="s-pratica"><b>Contra o relógio.</b> Três documentos prontos em um minuto.</p>
+          <p class="s-cuidado">Cuidado: O termo de consentimento atende à Recomendação 001/2024 da OAB. Confira cada documento antes de assinar.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Você fala a língua de quem decide, e a reunião rende.</p>
-          <p class="s-tags"><span>Apresentação</span></p>
+          <p class="s-frase">A tarde de papelada vira um minuto de conferência.</p>
+          <p class="s-tags"><span>Organização</span><span>Clientela</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-2-7" role="listitem" data-tags="apresentacao clientela">
+      <article class="sessao" id="s-2-7" role="listitem" data-tags="organizacao apps-script gmail ia">
         <div class="s-id">
           <span class="s-num">2.7</span>
-          <h3>IA às claras</h3>
-          <p class="s-meta"><span class="s-min">8 min</span></p>
+          <h3>Triagem de e-mail com você no comando</h3>
+          <p class="s-meta"><span class="s-min">14 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Gmail</span><span>IA pela API</span></p>
+          <p class="s-req">Precisa de: chave de API paga (centavos por e-mail); sem chave, triagem por regras de remetente e assunto</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Uso IA escondido. E se o cliente perguntar?”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“A caixa de entrada me engole.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Escreve a página “Como usamos IA no seu caso” e preenche o termo de ciência: para que serve, o que nunca entra, quem revisa.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>Página de transparência e termo de ciência</span></p>
-          <p class="s-pratica"><b>Cliente simulado.</b> Três perguntas difíceis de um cliente desconfiado.</p>
-          <p class="s-cuidado">Cuidado: A OAB recomenda informar o cliente por escrito e colher a assinatura dele.</p>
+          <p>Instala a triagem do kit: o script etiqueta, resume e deixa rascunho de resposta, sem enviar nada. Você ajusta uma regra do pedido e acrescenta um termo sensível.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: a cada 30 minutos, e-mails novos ganham etiqueta, resumo e rascunho</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-email"/></svg><span>Triagem de e-mail</span></p>
+          <p class="s-pratica"><b>Caça ao erro.</b> Um e-mail traz uma instrução escondida para a IA. Ela não obedece.</p>
+          <p class="s-cuidado">Cuidado: CPF, CNPJ, e-mail e telefone são mascarados antes de ir à IA. E-mail com termo sensível não vai.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Você fala primeiro, com segurança, e o cuidado vira diferencial.</p>
-          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
+          <p class="s-frase">Você abre a caixa já sabendo o que é urgente, com a resposta começada.</p>
+          <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-2-8" role="listitem" data-tags="organizacao apresentacao">
+      <article class="sessao" id="s-2-8" role="listitem" data-tags="apresentacao clientela painel planilhas docs ia">
         <div class="s-id">
           <span class="s-num">2.8</span>
-          <h3>Central do cliente</h3>
-          <p class="s-meta"><span class="s-min">15 min</span></p>
+          <h3>Painel de clientes e relatório do mês</h3>
+          <p class="s-meta"><span class="s-min">14 min</span></p>
+          <p class="s-ferr"><span>Painel</span><span>Planilhas</span><span>Docs</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA e conta Google gratuita</p>
         </div>
         <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Não sei a quem devo retorno, e relatório é a última coisa que eu faço.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Monta o painel de clientes com pendências, último contato e próxima atualização. De cada linha sai o relatório do caso em uma página: feito, pendente, próximo passo.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Central do cliente e modelo de relatório</span></p>
+          <p>Monta o painel de clientes (último contato, pendência, próxima atualização, honorários a receber) e, de cada linha, o relatório do mês em uma página: feito, pendente e próximo passo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel de clientes e modelo de relatório</span></p>
           <p class="s-pratica"><b>Missão.</b> Cinco clientes fictícios: quem espera há mais tempo?</p>
-          <p class="s-cuidado">Cuidado: Dados reais ficam no seu navegador. Você revisa o relatório antes de enviar.</p>
+          <p class="s-cuidado">Cuidado: Você revisa o relatório antes de enviar.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
           <p class="s-frase">Ninguém fica sem resposta, e o relatório do mês sai em minutos.</p>
-          <p class="s-tags"><span>Organização</span><span>Apresentação</span></p>
+          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-9" role="listitem" data-tags="clientela apps-script gmail planilhas">
+        <div class="s-id">
+          <span class="s-num">2.9</span>
+          <h3>Cobrar sem constrangimento</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Gmail</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cobrar honorário atrasado me constrange, então eu deixo passar.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Escreve a régua de cobrança em três mensagens, da lembrança ao aviso formal. Um script lê as parcelas da planilha e deixa as mensagens dos atrasados prontas.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: toda segunda, as cobranças das parcelas atrasadas ficam prontas em rascunho</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Régua de cobrança</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> Uma cobrança ríspida reescrita em três tons.</p>
+          <p class="s-cuidado">Cuidado: Fica em rascunho e quem envia é você. Cobrança respeitosa, sem expor o cliente.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você cobra no prazo e preserva a relação.</p>
+          <p class="s-tags"><span>Clientela</span></p>
         </div>
       </article>
     </div>
@@ -513,165 +640,203 @@ a { color: inherit; }
   <section class="modulo m3" id="modulo-3" aria-labelledby="m3-t">
     <header class="modulo-cab">
       <div>
-        <p class="rotulo">Módulo 3 · Avançado · Clientela</p>
-        <h2 id="m3-t">Clientela que vale a pena</h2>
-        <p class="para">Para quem quer escolher melhor os casos, cobrar com critério e receber em dia.</p>
+        <p class="rotulo">Módulo 3 · Avançado · Contratos e riscos</p>
+        <h2 id="m3-t">Plataforma de contratos</h2>
+        <p class="para">Para quem revisa contratos e quer critério, histórico e um sistema próprio.</p>
       </div>
       <blockquote>
         <p class="rotulo">A dor do módulo</p>
-        <p class="fala">“Atendo quem aparece, cobro no chute e recebo quando dá.”</p>
+        <p class="fala">“Revisar contrato me toma a tarde, cada um revisa de um jeito, e a versão do outro lado sempre esconde alguma coisa.”</p>
       </blockquote>
       <div class="leva">
         <p class="rotulo">Você constrói e leva</p>
-        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-funil"/></svg><span>Painel do escritório: contatos, propostas e honorários a receber</span></p>
-        <p class="ganho">Critério para aceitar, preço que você sabe explicar, cliente bem recebido e uma tela com o que entra e o que falta receber.</p>
-        <p class="conta">8 sessões · 1 h 32 min · conta gratuita e uma planilha</p>
+        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg><span>Plataforma de contratos: repositório, matriz de riscos, histórico de versões e painel</span></p>
+        <p class="ganho">Todo contrato lido pelo seu critério, cada versão comparada, prazos na agenda e uma plataforma com a cara do escritório.</p>
+        <p class="conta">9 sessões · 1 h 41 min · 4 automações · conta Google gratuita; leitura automática pede chave de API paga</p>
       </div>
     </header>
     <div role="list">
       <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>
-      <article class="sessao" id="s-3-1" role="listitem" data-tags="clientela">
+      <article class="sessao" id="s-3-1" role="listitem" data-tags="organizacao drive planilhas apps-script">
         <div class="s-id">
           <span class="s-num">3.1</span>
-          <h3>Triagem do primeiro contato</h3>
+          <h3>Repositório que se organiza sozinho</h3>
           <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>Drive</span><span>Planilhas</span><span>Apps Script</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Aceito todo caso que aparece e me arrependo no terceiro mês.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Não sei onde está a última versão do contrato.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Cria a ficha do primeiro contato: as perguntas que faltam, os sinais de alerta e os critérios de encaixe do escritório.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Ficha de triagem</span></p>
-          <p class="s-pratica"><b>Missão.</b> Três contatos fictícios chegam pelo WhatsApp: qual você atende?</p>
-          <p class="s-cuidado">Cuidado: A ficha organiza a sua decisão. A IA não aceita nem recusa cliente, e não dá consulta a quem não é cliente.</p>
+          <p>Instala o kit: pastas no Drive, pasta de entrada, código por contrato e planilha de contratos.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: contrato que cai na pasta de entrada é cadastrado e copiado</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-planilha"/></svg><span>Repositório de contratos</span></p>
+          <p class="s-pratica"><b>Construção guiada.</b> Você solta um contrato na pasta e vê a linha aparecer na planilha.</p>
+          <p class="s-cuidado">Cuidado: Defina quem acessa e por quanto tempo se guarda cada versão.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Você diz não cedo, e sobra tempo para o cliente certo.</p>
-          <p class="s-tags"><span>Clientela</span></p>
+          <p class="s-frase">Cada contrato tem um código, um lugar e uma história.</p>
+          <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-2" role="listitem" data-tags="clientela">
+      <article class="sessao" id="s-3-2" role="listitem" data-tags="organizacao ia planilhas">
         <div class="s-id">
           <span class="s-num">3.2</span>
-          <h3>Quanto cobrar, e como sustentar</h3>
-          <p class="s-meta"><span class="s-min">14 min</span></p>
+          <h3>O critério do escritório em uma página</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>IA</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cobro no chute e, no primeiro “tá caro”, dou desconto.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cada advogado revisa de um jeito.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Monta a calculadora de honorários (horas previstas, complexidade, risco e custos) e ensaia a conversa com um cliente que pechincha.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-calculo"/></svg><span>Calculadora de honorários e roteiro de respostas</span></p>
-          <p class="s-pratica"><b>Cliente simulado.</b> A IA pechincha três vezes. Você treina até responder sem ceder.</p>
-          <p class="s-cuidado">Cuidado: A tabela de honorários da sua seccional é a referência mínima. A calculadora soma; quem decide é você.</p>
+          <p>A IA entrevista você por dez minutos e escreve o playbook: o que é padrão, o que se negocia e o que se recusa, por tipo de contrato (locação, prestação de serviços).</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span>Playbook do escritório</span></p>
+          <p class="s-pratica"><b>Entrevista.</b> A IA pergunta, você responde, o critério sai escrito.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Preço com critério, e firmeza para explicá-lo.</p>
-          <p class="s-tags"><span>Clientela</span></p>
+          <p class="s-frase">Todo contrato passa a ser lido pelo mesmo critério, que é o seu.</p>
+          <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-3" role="listitem" data-tags="clientela organizacao">
+      <article class="sessao" id="s-3-3" role="listitem" data-tags="organizacao apps-script ia planilhas drive">
         <div class="s-id">
           <span class="s-num">3.3</span>
-          <h3>Contrato de honorários sem ponta solta</h3>
-          <p class="s-meta"><span class="s-min">10 min</span></p>
+          <h3>Leitura automática e matriz de riscos</h3>
+          <p class="s-meta"><span class="s-min">15 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>IA pela API</span><span>Planilhas</span><span>Drive</span></p>
+          <p class="s-req">Precisa de: chave de API paga (centavos por contrato); sem chave, a análise feita na conversa e colada na planilha</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O combinado era uma coisa. No meio do caso, o cliente lembra de outra.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Leio o contrato no olho e fico com a sensação de que deixei passar uma cláusula.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Passa o seu contrato de honorários por uma lista de conferência: escopo, o que não inclui, despesas, reajuste, êxito e rescisão.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Lista de conferência do contrato de honorários</span></p>
-          <p class="s-pratica"><b>Caça ao erro.</b> Um contrato fictício com cinco pontas soltas.</p>
-          <p class="s-cuidado">Cuidado: A IA aponta lacunas. A redação final é sua.</p>
+          <p>O script manda o contrato à IA, compara com o playbook e preenche a matriz: cláusula, risco e trecho literal conferido. Vigência e prazo de aviso são calculados pelo código.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: a cada 10 minutos, contrato novo vira matriz de riscos</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-contrato"/></svg><span>Matriz de riscos do contrato</span></p>
+          <p class="s-pratica"><b>Construção guiada.</b> Um contrato de locação fictício vira matriz enquanto você assiste.</p>
+          <p class="s-cuidado">Cuidado: A IA compara com o seu critério. Trecho que não confere fica marcado. A decisão é sua.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Menos discussão no meio do caso, e cobrança com base escrita.</p>
-          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+          <p class="s-frase">A primeira leitura chega pronta, e você gasta o tempo no que importa.</p>
+          <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-4" role="listitem" data-tags="clientela organizacao">
+      <article class="sessao" id="s-3-4" role="listitem" data-tags="apresentacao planilhas">
         <div class="s-id">
           <span class="s-num">3.4</span>
-          <h3>Boas-vindas e documentos certos</h3>
+          <h3>Prova com gabarito</h3>
           <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente manda documento errado três vezes e me chama a qualquer hora.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Como eu sei se posso confiar nessa análise?”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Monta o kit de boas-vindas: como o escritório trabalha, canais e horários, a lista de documentos do caso e a mensagem de pedido.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Kit de boas-vindas do cliente</span></p>
-          <p class="s-pratica"><b>Antes e depois.</b> Três regras duras reescritas em tom acolhedor.</p>
-          <p class="s-cuidado">Cuidado: Peça só os documentos necessários.</p>
+          <p>Compara a matriz com a revisão humana do gabarito, decide cada risco (aceitar, negociar, recusar) e assina a revisão.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg><span>Matriz revisada e assinada</span></p>
+          <p class="s-pratica"><b>Prova com gabarito.</b> O que a IA deixou passar? O que ela classificou diferente?</p>
+          <p class="s-cuidado">Cuidado: O status “Revisado” só vale com o nome de quem revisou.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Limites combinados no primeiro dia e menos idas e vindas.</p>
-          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+          <p class="s-frase">Você sabe onde a IA acerta e onde precisa de você.</p>
+          <p class="s-tags"><span>Apresentação</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-5" role="listitem" data-tags="clientela apresentacao">
+      <article class="sessao" id="s-3-5" role="listitem" data-tags="organizacao apps-script drive gmail">
         <div class="s-id">
           <span class="s-num">3.5</span>
-          <h3>Serviço com começo, meio e fim</h3>
-          <p class="s-meta"><span class="s-min">15 min</span></p>
+          <h3>O que mudou na versão do outro lado</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Drive</span><span>Gmail</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita; resumo das mudanças pela IA é opcional, com chave</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Faço tudo sob medida, não sobra tempo, e o cliente não sabe o que contratou.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“A outra parte devolveu “com pequenos ajustes” e eu não vi o que mudou.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Transforma um trabalho que você repete em serviço de escopo fechado: para quem é, etapas, entregável, prazo e preço. O exemplo da aula é a revisão de contrato com matriz de risco.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span>Ficha de serviço e modelo de entregável</span></p>
-          <p class="s-pratica"><b>Prova com gabarito.</b> A matriz de risco da IA contra a revisão humana.</p>
-          <p class="s-cuidado">Cuidado: A IA compara o contrato com o seu critério; a conclusão é sua. Preço não vai para material público.</p>
+          <p>Sobe a versão 2. O código compara com a anterior, registra cada mudança no histórico e avisa por e-mail se alguma piorou para o seu cliente.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: a cada hora, versão nova é comparada e mudança desfavorável vira alerta no seu e-mail</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tempo"/></svg><span>Histórico de versões com alerta</span></p>
+          <p class="s-pratica"><b>Caça ao erro.</b> Ache as duas mudanças que o e-mail da outra parte não contou.</p>
+          <p class="s-cuidado">Cuidado: A comparação é feita pelo código. A IA só explica.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Previsibilidade para você e clareza para o cliente.</p>
-          <p class="s-tags"><span>Clientela</span><span>Apresentação</span></p>
+          <p class="s-frase">Nenhuma cláusula muda sem você saber.</p>
+          <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-6" role="listitem" data-tags="clientela">
+      <article class="sessao" id="s-3-6" role="listitem" data-tags="organizacao apps-script agenda">
         <div class="s-id">
           <span class="s-num">3.6</span>
-          <h3>Cobrar sem constrangimento</h3>
+          <h3>Prazos do contrato na agenda</h3>
           <p class="s-meta"><span class="s-min">8 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Agenda</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cobrar honorário atrasado me constrange, então eu deixo passar.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Esqueci o prazo de aviso da não renovação.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Escreve a régua de cobrança: três mensagens, da lembrança ao aviso formal, com datas e tom.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Régua de cobrança</span></p>
-          <p class="s-pratica"><b>Antes e depois.</b> Uma cobrança ríspida reescrita em três tons.</p>
-          <p class="s-cuidado">Cuidado: Nada é enviado automaticamente. Cobrança respeitosa, sem expor o cliente.</p>
+          <p>Lança na agenda o fim da vigência e o último dia de aviso dos contratos revisados, com alarme.</p>
+          <p class="s-auto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sozinho"/></svg><span>Passa a rodar sozinho: pelo menu, os prazos dos contratos revisados viram eventos com alarme</span></p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-agenda"/></svg><span>Prazos contratuais na agenda</span></p>
+          <p class="s-pratica"><b>Missão.</b> Dois eventos certos na agenda, e um que não entra porque falta revisão.</p>
+          <p class="s-cuidado">Cuidado: Data lida pela IA só vai para a agenda depois da revisão.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Você cobra no prazo e preserva a relação.</p>
-          <p class="s-tags"><span>Clientela</span></p>
+          <p class="s-frase">A renovação automática deixa de ser surpresa.</p>
+          <p class="s-tags"><span>Organização</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-7" role="listitem" data-tags="clientela apresentacao">
+      <article class="sessao" id="s-3-7" role="listitem" data-tags="apresentacao clientela ia docs">
         <div class="s-id">
           <span class="s-num">3.7</span>
-          <h3>Autoridade sem propaganda</h3>
+          <h3>Relatório de riscos para o cliente</h3>
           <p class="s-meta"><span class="s-min">10 min</span></p>
+          <p class="s-ferr"><span>IA</span><span>Docs</span></p>
+          <p class="s-req">Precisa de: conta gratuita de IA e conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Sei que preciso aparecer, mas não tenho tempo nem quero parecer vendedor.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Mando a revisão em dez páginas e o cliente pergunta: posso assinar ou não?”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Transforma uma decisão recente em boletim informativo para clientes e contatos, com a identidade do escritório.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Boletim informativo</span></p>
-          <p class="s-pratica"><b>Caça ao erro.</b> Um texto com três frases que o Provimento 205 não aceita.</p>
-          <p class="s-cuidado">Cuidado: Conteúdo informativo, sem captação, sem promessa e sem caso concreto como oferta.</p>
+          <p>Transforma a matriz revisada em uma página para o cliente: a decisão que ele precisa tomar, os riscos em verde, amarelo e vermelho e o que negociar.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Relatório de riscos do contrato</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> A IA faz o empresário com pressa. O relatório tem de responder às perguntas dele.</p>
+          <p class="s-cuidado">Cuidado: Linguagem simples, sem promessa. Você assina.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">O escritório é lembrado por quem importa, do jeito que a OAB permite.</p>
-          <p class="s-tags"><span>Clientela</span><span>Apresentação</span></p>
+          <p class="s-frase">O cliente decide em minutos e enxerga o valor da revisão.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
         </div>
       </article>
-      <article class="sessao" id="s-3-8" role="listitem" data-tags="clientela organizacao">
+      <article class="sessao" id="s-3-8" role="listitem" data-tags="organizacao apresentacao painel planilhas">
         <div class="s-id">
           <span class="s-num">3.8</span>
-          <h3>Painel do escritório</h3>
-          <p class="s-meta"><span class="s-min">15 min</span></p>
+          <h3>Painel de contratos e riscos</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+          <p class="s-ferr"><span>Painel</span><span>Planilhas</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
         </div>
-        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Não sei quantas propostas estão paradas nem quanto tenho a receber.”</p></div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Não sei quantos contratos vencem no trimestre nem quais têm risco alto sem decisão.”</p></div>
         <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
-          <p>Monta o painel com o caminho de cada contato: triagem, proposta, contrato e honorários a receber.</p>
-          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-funil"/></svg><span>Painel do escritório</span></p>
-          <p class="s-pratica"><b>Construção guiada.</b> Dados fictícios de um mês de escritório.</p>
-          <p class="s-cuidado">Cuidado: Dados reais ficam no seu navegador.</p>
+          <p>Monta o painel: contratos por situação, riscos altos sem decisão, próximos avisos de renovação e versões com alerta.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel de contratos</span></p>
+          <p class="s-pratica"><b>Construção guiada.</b> Dados fictícios de um trimestre de escritório.</p>
         </div>
         <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
-          <p class="s-frase">Você decide a semana olhando uma tela, e nenhuma proposta esfria.</p>
-          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+          <p class="s-frase">Você e o cliente veem a carteira de contratos em uma tela.</p>
+          <p class="s-tags"><span>Organização</span><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-9" role="listitem" data-tags="apresentacao organizacao apps-script painel ia">
+        <div class="s-id">
+          <span class="s-num">3.9</span>
+          <h3>A plataforma com a cara do escritório</h3>
+          <p class="s-meta"><span class="s-min">14 min</span></p>
+          <p class="s-ferr"><span>Apps Script</span><span>Painel</span><span>IA</span></p>
+          <p class="s-req">Precisa de: conta Google gratuita</p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Quero um sistema meu, sem pagar mensalidade de software.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>A IA escreve um aplicativo web do Apps Script sobre a planilha de contratos: busca, ficha do contrato, matriz e histórico, com a identidade do escritório e acesso só pela sua conta.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Plataforma de contratos própria</span></p>
+          <p class="s-pratica"><b>Construção guiada.</b> No fim, você pede uma melhoria à IA e vê a tela mudar.</p>
+          <p class="s-cuidado">Cuidado: Publique com acesso só para você ou sua equipe. O dado do cliente não sai da sua conta Google.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Um sistema do escritório, de graça, que você mesmo ajusta.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Organização</span></p>
         </div>
       </article>
     </div>
@@ -679,28 +844,50 @@ a { color: inherit; }
 
   <section class="bloco" aria-labelledby="mapa-t">
     <h2 id="mapa-t">A mesma dor volta em mais de uma sessão</h2>
-    <p>A relação não é de um para um. Uma dor grande pede mais de uma peça, e uma peça boa alivia mais de uma dor.</p>
+    <p>A relação não é de um para um. Uma dor grande pede mais de uma ferramenta, e uma ferramenta boa alivia mais de uma dor.</p>
     <ul class="mapa-lista">
-      <li><q>O cliente não enxerga o meu trabalho.</q><span class="chips"><a class="c2" href="#s-2-2">2.2</a><a class="c2" href="#s-2-3">2.3</a><a class="c2" href="#s-2-4">2.4</a><a class="c2" href="#s-2-6">2.6</a><a class="c2" href="#s-2-8">2.8</a></span></li>
-      <li><q>O cliente pergunta do processo toda semana.</q><span class="chips"><a class="c1" href="#s-1-5">1.5</a><a class="c2" href="#s-2-8">2.8</a></span></li>
-      <li><q>Não sei o que está parado.</q><span class="chips"><a class="c1" href="#s-1-7">1.7</a><a class="c2" href="#s-2-8">2.8</a><a class="c3" href="#s-3-8">3.8</a></span></li>
-      <li><q>Os fatos estão espalhados.</q><span class="chips"><a class="c1" href="#s-1-3">1.3</a><a class="c1" href="#s-1-6">1.6</a><a class="c2" href="#s-2-4">2.4</a></span></li>
-      <li><q>Tenho medo de a IA inventar e eu assinar embaixo.</q><span class="chips"><a class="c1" href="#s-1-4">1.4</a><a class="c2" href="#s-2-5">2.5</a><a class="c3" href="#s-3-5">3.5</a></span></li>
-      <li><q>Tenho medo de expor meu cliente.</q><span class="chips"><a class="c1" href="#s-1-1">1.1</a><a class="c1" href="#s-1-8">1.8</a><a class="c2" href="#s-2-7">2.7</a></span></li>
-      <li><q>Uso IA escondido.</q><span class="chips"><a class="c1" href="#s-1-1">1.1</a><a class="c2" href="#s-2-7">2.7</a></span></li>
-      <li><q>Refaço tudo do zero, toda vez.</q><span class="chips"><a class="c1" href="#s-1-2">1.2</a><a class="c2" href="#s-2-1">2.1</a><a class="c3" href="#s-3-5">3.5</a></span></li>
-      <li><q>Mandei o valor por WhatsApp e o cliente sumiu.</q><span class="chips"><a class="c2" href="#s-2-2">2.2</a><a class="c3" href="#s-3-2">3.2</a></span></li>
-      <li><q>Cobro no chute e recebo quando dá.</q><span class="chips"><a class="c3" href="#s-3-2">3.2</a><a class="c3" href="#s-3-3">3.3</a><a class="c3" href="#s-3-6">3.6</a><a class="c3" href="#s-3-8">3.8</a></span></li>
-      <li><q>Atendo quem aparece.</q><span class="chips"><a class="c3" href="#s-3-1">3.1</a><a class="c3" href="#s-3-7">3.7</a></span></li>
-      <li><q>O cliente me chama a qualquer hora, por qualquer canal.</q><span class="chips"><a class="c1" href="#s-1-5">1.5</a><a class="c3" href="#s-3-4">3.4</a></span></li>
+      <li><q>Meus prazos estão em três lugares.</q><span class="chips"><a class="c1" href="#s-1-3">1.3</a><a class="c1" href="#s-1-5">1.5</a><a class="c1" href="#s-1-6">1.6</a><a class="c1" href="#s-1-9">1.9</a></span></li>
+      <li><q>Tenho medo de deixar uma intimação passar.</q><span class="chips"><a class="c1" href="#s-1-4">1.4</a><a class="c1" href="#s-1-5">1.5</a></span></li>
+      <li><q>O cliente pergunta do processo toda semana.</q><span class="chips"><a class="c1" href="#s-1-1">1.1</a><a class="c2" href="#s-2-8">2.8</a></span></li>
+      <li><q>O caso está espalhado no WhatsApp.</q><span class="chips"><a class="c1" href="#s-1-7">1.7</a><a class="c2" href="#s-2-2">2.2</a></span></li>
+      <li><q>Tenho medo de a IA inventar e eu assinar embaixo.</q><span class="chips"><a class="c1" href="#s-1-8">1.8</a><a class="c3" href="#s-3-3">3.3</a><a class="c3" href="#s-3-4">3.4</a></span></li>
+      <li><q>Tenho medo de expor meu cliente.</q><span class="chips"><a class="c1" href="#s-1-2">1.2</a><a class="c2" href="#s-2-7">2.7</a><a class="c3" href="#s-3-9">3.9</a></span></li>
+      <li><q>O cliente não enxerga o meu trabalho.</q><span class="chips"><a class="c2" href="#s-2-1">2.1</a><a class="c2" href="#s-2-4">2.4</a><a class="c2" href="#s-2-8">2.8</a><a class="c3" href="#s-3-7">3.7</a></span></li>
+      <li><q>Mandei o valor por WhatsApp e o cliente sumiu.</q><span class="chips"><a class="c2" href="#s-2-4">2.4</a><a class="c2" href="#s-2-5">2.5</a></span></li>
+      <li><q>Cobro no chute e recebo quando dá.</q><span class="chips"><a class="c2" href="#s-2-5">2.5</a><a class="c2" href="#s-2-8">2.8</a><a class="c2" href="#s-2-9">2.9</a></span></li>
+      <li><q>Cliente novo me custa uma tarde de papelada.</q><span class="chips"><a class="c2" href="#s-2-2">2.2</a><a class="c2" href="#s-2-6">2.6</a></span></li>
+      <li><q>Usaram meu nome para pedir Pix ao meu cliente.</q><span class="chips"><a class="c2" href="#s-2-3">2.3</a></span></li>
+      <li><q>A caixa de entrada me engole.</q><span class="chips"><a class="c2" href="#s-2-7">2.7</a></span></li>
+      <li><q>Cada um revisa contrato de um jeito.</q><span class="chips"><a class="c3" href="#s-3-2">3.2</a><a class="c3" href="#s-3-3">3.3</a></span></li>
+      <li><q>A versão do outro lado esconde mudanças.</q><span class="chips"><a class="c3" href="#s-3-5">3.5</a></span></li>
     </ul>
   </section>
 
   <section class="notas" aria-label="Notas da agenda">
-    <div><h3>O que o aluno precisa</h3><ul><li>Computador com navegador e conta gratuita em um assistente de IA. As aulas usam o Claude; o que é conversa funciona também no ChatGPT e no Gemini.</li><li>Um editor de planilhas, para os três painéis.</li><li>Plano pago só para publicar página por link e para os laboratórios de automação.</li><li>Quem entra direto no módulo 2 ou no 3 recebe uma página com o método de pedido e o semáforo do sigilo.</li></ul></div>
-    <div><h3>Regras que valem para tudo</h3><ul><li>Em aula, só dados fictícios. Com dado de cliente: conversas fora do treinamento, termo de ciência assinado e nomes trocados por papéis.</li><li>A IA propõe e você decide. Nada é enviado sozinho, e a IA não conta prazo.</li><li>Tudo o que vai ao cliente ou ao juiz passa pela sua leitura. Citação só entra depois das três chaves.</li><li>Material público do escritório segue o Provimento 205/2021 da OAB: informativo e sóbrio, sem preço e sem promessa.</li></ul></div>
-    <div><h3>Para ir além, fora da minutagem</h3><ul><li>Triagem de e-mail com rascunho de resposta, no Google Workspace.</li><li>Histórico de versões de contrato, com alerta de mudança desfavorável.</li><li>Auditor de citações de uma peça, com validador do número do processo.</li></ul></div>
-    <div><h3>O que falta para gravar</h3><ul><li>Os tempos são estimativas: falta uma gravação-piloto para confirmar.</li><li>Na gravação, cada sessão pode virar dois ou três vídeos curtos.</li><li>Já existem no kit: painel de casos e prazos, biblioteca de pedidos, caso de contrato com playbook e gabarito, modelos de política e de termo.</li><li>A produzir: os modelos e casos fictícios das sessões novas e os painéis dos módulos 2 e 3.</li></ul></div>
+    <div><h3>O que o aluno precisa</h3><ul><li>Conta gratuita em um assistente de IA. As aulas usam o Claude; o que é conversa funciona também no ChatGPT e no Gemini.</li><li>Conta Google gratuita: Planilhas, Formulários, Docs, Agenda, Gmail, Drive e Apps Script, dentro dos limites de uso da conta gratuita.</li><li>Chave de API paga só nas sessões 2.7 e 3.3, com custo de centavos por uso e limite de gasto. As duas têm caminho sem chave.</li><li>Não precisa saber programar: a IA escreve o script, você cola, autoriza, testa e muda uma regra. O kit traz cada script pronto.</li><li>Quem entra direto no módulo 2 ou no 3 recebe a planilha-base e a página do método de pedido e do semáforo.</li></ul></div>
+    <div><h3>Regras que valem para tudo</h3><ul><li>Em aula, só casos e dados fictícios.</li><li>Nada sai sozinho para terceiros: e-mail fica em rascunho e quem envia é você.</li><li>A IA não conta prazo. Prazo só vai para a agenda depois de conferido, com o nome de quem conferiu.</li><li>O código calcula e a IA redige. Tudo o que as automações fazem fica registrado na planilha.</li><li>Material público do escritório segue o Provimento 205/2021 da OAB: informativo e sóbrio, sem preço e sem promessa.</li></ul></div>
+    <div><h3>Para ir além, fora da minutagem</h3><ul><li>Resumo da semana a partir da agenda, com conflitos e horários livres (script do kit).</li><li>Auditor de citações de um Google Docs, com validação do número do processo (script do kit).</li><li>Relatório de encerramento do caso.</li></ul></div>
+    <div><h3>O que falta para gravar</h3><ul><li>Os tempos são estimativas: falta uma gravação-piloto.</li><li>Na gravação, cada sessão vira dois ou três vídeos de 3 a 6 minutos.</li><li>Os scripts do kit passaram só em simulação: rodar em conta Google real, com a API real, antes de gravar.</li><li>A produzir: planilha-mãe com intimações, robô das 7h, agenda de prazos de casos, plataforma de clientes (formulário, boas-vindas, propostas, kit de abertura, cobrança), painéis dos módulos 2 e 3, aplicativo web de contratos e casos fictícios de cível, família, trabalhista e previdenciário.</li></ul></div>
+  </section>
+
+  <section class="bloco relatorio" aria-labelledby="rel-t">
+    <h2 id="rel-t">Relatório da agenda</h2>
+    <p>O curso em uma tela: o que cada módulo entrega, quanto dura e do que o aluno precisa.</p>
+    <div class="tabela"><table>
+      <thead><tr><th>Módulo</th><th>O aluno leva</th><th class="n">Sessões</th><th class="n">Vídeo</th><th class="n">Automações</th><th>Precisa de</th></tr></thead>
+      <tbody>
+        <tr><td><b>1 · Casa em ordem</b><br><span class="mudo">Básico</span></td><td>Gestão de casos e prazos: planilha, painel e o robô das 7h</td><td class="n">9</td><td class="n">1 h 34 min</td><td class="n">2</td><td>conta gratuita de IA e conta Google gratuita</td></tr>
+        <tr><td><b>2 · Plataforma de clientes</b><br><span class="mudo">Intermediário</span></td><td>Plataforma de clientes: formulário, cadastro, documentos gerados e painel</td><td class="n">9</td><td class="n">1 h 40 min</td><td class="n">6</td><td>conta Google gratuita; triagem com IA pede chave de API paga</td></tr>
+        <tr><td><b>3 · Plataforma de contratos</b><br><span class="mudo">Avançado</span></td><td>Plataforma de contratos: repositório, matriz de riscos, histórico de versões e painel</td><td class="n">9</td><td class="n">1 h 41 min</td><td class="n">4</td><td>conta Google gratuita; leitura automática pede chave de API paga</td></tr>
+      </tbody>
+      <tfoot><tr><td>Total</td><td>3 sistemas</td><td class="n">27</td><td class="n">4 h 55 min</td><td class="n">12</td><td></td></tr></tfoot>
+    </table></div>
+    <dl class="rel-fatos"><div><dt class="rotulo">Frentes pedidas cobertas</dt><dd>10 de 10</dd></div><div><dt class="rotulo">Primeiro resultado</dt><dd>no minuto 8</dd></div><div><dt class="rotulo">Sessões com Apps Script</dt><dd>12</dd></div><div><dt class="rotulo">Sessões com IA</dt><dd>17</dd></div><div><dt class="rotulo">Pedem chave de API</dt><dd>2.7 e 3.3, com caminho sem chave</dd></div></dl>
+    <div class="rel-leva">
+      <div><h3>No módulo 1, o aluno sai com</h3><p>Modelo de atualização ao cliente · Cartão do semáforo e política de uso de IA · Planilha de casos e prazos · Quadro de intimações na planilha · Robô dos prazos · Agenda de prazos com alarme · Ficha do caso · Registro de conferência de citações · Painel de casos e prazos</p></div>
+      <div><h3>No módulo 2, o aluno sai com</h3><p>Identidade em uma página e modelo timbrado · Formulário e cadastro de clientes · Kit de boas-vindas com aviso contra golpe · Gerador de propostas · Calculadora de honorários · Kit de abertura de cliente · Triagem de e-mail · Painel de clientes e modelo de relatório · Régua de cobrança</p></div>
+      <div><h3>No módulo 3, o aluno sai com</h3><p>Repositório de contratos · Playbook do escritório · Matriz de riscos do contrato · Matriz revisada e assinada · Histórico de versões com alerta · Prazos contratuais na agenda · Relatório de riscos do contrato · Painel de contratos · Plataforma de contratos própria</p></div>
+    </div>
   </section>
   <p class="rodape">Agenda de planejamento, versão de 11/11/2026. Material de treinamento, sem valor de parecer jurídico. Casos, clientes e documentos das aulas são fictícios.</p>
 </main>
