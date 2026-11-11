@@ -40,7 +40,7 @@ Horários de exemplo: módulos 1 e 2 começando às 19h, módulo 3 às 9h. Cada 
 | 19:05–19:35 | 30 | 20 | Minha semana em uma página | "Começo a segunda-feira no escuro." | Conectores de Gmail, Agenda e Drive; plugins e skills; briefing da semana pedido ao assistente | Menor privilégio; item 2.3 |
 | 19:35–20:10 | 35 | 25 | A marca do escritório e o cartão virtual | "Não tenho cartão nem cara de escritório." | Identidade em uma página, guardada como skill ou instrução; cartão virtual com QR Code e agendamento | Provimento 205/2021; sem fotografia (CED, art. 44, § 2º) |
 | 20:10–20:20 | 10 | — | Intervalo | | | |
-| 20:20–21:00 | 40 | 30 | **A central: e-mail com o advogado no comando** | "A caixa de entrada me engole." | Instalação do kit; triagem que etiqueta, resume e rascunha, sem enviar; seis e-mails de treino | Máscara de dados; item 4.3 |
+| 20:20–21:00 | 40 | 30 | **A central: e-mail com o advogado no comando** | "A caixa de entrada me engole." | Instalação do kit; triagem que etiqueta, resume e rascunha, sem enviar; seis e-mails de treino; ajuste de um termo sensível e de uma regra do prompt | Máscara de dados; item 4.3 |
 | 21:00–21:35 | 35 | 25 | Citações conferidas | "Tenho medo de citar o que não existe." | Auditor de citações, validador do número do processo, tabela de precedentes com link e nome de quem conferiu | Itens 3.2 e 3.7 |
 | 21:35–21:45 | 10 | 5 | O painel da central e a lista "pronto para amanhã" | — | Painel com e-mails por categoria, urgentes, rascunhos e precedentes pendentes; o que liga na conta real | Só depois da política e do termo dos clientes |
 
@@ -58,6 +58,16 @@ Horários de exemplo: módulos 1 e 2 começando às 19h, módulo 3 às 9h. Cada 
 | 10:20–10:50 | 30 | 20 | Histórico de versões e prazos | "A outra parte mudou uma cláusula e eu não vi. E esqueci o prazo de renovação." | Versão 2 comparada por código; alerta para as duas mudanças que o e-mail não mencionou; prazos na agenda só depois da revisão | A IA não conta prazo |
 | 10:50–11:30 | 40 | 30 | O sistema próprio do escritório (oficina) | "Quero um sistema com a cara do escritório." | Entrevista vira especificação; identidade veste o protótipo; roteiro de evolução | Privacidade desde o desenho; MP 2.200-2/2001, art. 10, § 2º |
 | 11:30–11:45 | 15 | 5 | Dossiê de conformidade e plano de 90 dias | "E se o cliente perguntar como usamos IA?" | Dossiê preenchido; três metas com forma de medir | Res. ANPD 15/2024; item 4.3.3 |
+
+## Mão na IA: configurar, parametrizar, usar e editar
+
+Em todos os módulos o participante mexe na IA com as próprias mãos, nas quatro frentes. Parametrizar, aqui, é ajustar o comportamento da IA por instruções, projetos, skills, conectores, playbook e arquivo de configuração. O programa não treina modelos.
+
+| Módulo | Configurar | Parametrizar | Usar | Editar |
+|---|---|---|---|---|
+| 1 · Painel | Privacidade da conta e verificação em duas etapas; projeto criado e arquivos carregados | Perfil de instruções; instruções do projeto; nomes de coluna que o painel reconhece | Três dores resolvidas com o método FATOS; perguntas ao projeto; Tribunal da IA | Pedidos de melhoria sobre a resposta; duas rodadas de ajuste do painel |
+| 2 · Central | Conectores de Gmail, Agenda e Drive; instalação da central; chave da API | Permissões dos conectores; identidade guardada como skill; termos sensíveis, horários e limites da triagem | Briefing da semana; triagem de e-mails; auditor de citações | Uma regra do prompt de triagem alterada e testada; rascunhos revistos antes do envio; cartão ajustado |
+| 3 · Contratos | Repositório, planilha e automações ligadas | Playbook do escritório; parte representada; modelo, esforço de análise e modo de fila | Leitura de contratos; comparação de versões; prazos na agenda | Decisão e observação em cada risco da matriz; especificação e protótipo refinados em rodadas |
 
 ## Antes e depois de cada encontro
 

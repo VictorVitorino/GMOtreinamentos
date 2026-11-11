@@ -79,9 +79,16 @@ Conta de treino aberta, planilha-modelo copiada, chave de teste em mãos. Quem n
    - o e-mail do laudo médico só com `IA-Sigilo`, e a linha "E-mail não enviado à IA" na aba Log;
    - o e-mail com instrução embutida classificado como qualquer outro, sem nada encaminhado.
 5. Abrir a aba **Painel**: e-mails triados, por categoria, urgentes e com rascunho.
+6. **Parametrizar.** Em Extensões › Apps Script, abrir o `00_Config.gs` e acrescentar à lista `TERMOS_VERMELHOS` um termo do próprio escritório, entre aspas e seguido de vírgula, como `'sigilo bancário',`. Salvar.
+7. **Editar o prompt.** No `03_Email.gs`, logo depois da linha que começa com `'6. Urgência alta`, colar a linha abaixo, salvar, reenviar o e-mail 1 e rodar a triagem de novo. Comparar os dois rascunhos.
 
-**Checagem.** Nenhum e-mail foi enviado; a aba Emails tem cinco linhas (o sexto ficou fora da IA).
-**Plano B.** API lenta ou fora do ar: abrir a planilha já processada pelo facilitador e fazer a conferência nela.
+```text
+  '7. O rascunho tem no máximo quatro linhas.',
+```
+
+**Checagem.** Nenhum e-mail foi enviado; a aba Emails tem cinco linhas depois da primeira rodada (o sexto ficou fora da IA); o segundo rascunho saiu mais curto que o primeiro.
+**Plano B.** API lenta ou fora do ar: abrir a planilha já processada pelo facilitador e fazer a conferência nela. Sem tempo para os passos 6 e 7: o facilitador faz os dois na tela, e cada dupla repete depois.
+**Mensagem.** O prompt é a parametrização da automação: quem muda a regra muda o comportamento, e a mudança fica escrita onde todos podem ler.
 **Conformidade.** Automação só entra em caixa de e-mail real depois da política assinada e do termo de ciência dos clientes.
 
 ### 5. Citações conferidas · 35 min · 25 de prática

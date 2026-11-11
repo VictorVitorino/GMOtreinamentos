@@ -38,7 +38,8 @@ Projete o diagrama "O que sai do escritório e o que fica", da agenda em HTML. C
 
 1. Dez minutos: as cinco pastas e as abas da planilha (`kit/apps-script/README.md`, seção Planilha). Uma regra: o contrato só existe para o escritório depois de passar pela pasta de entrada.
 2. Prática: **1 · Instalar**, **2 · Guardar chave da API**. Abrir a pasta "Contratos · Advocacia Aumentada" no Drive.
-3. Em duplas, definir para o próprio escritório:
+3. Em Extensões › Apps Script, abrir o `00_Config.gs` e localizar os quatro parâmetros que mais pesam: `PARTE_REPRESENTADA_PADRAO`, `MODO_CONTRATOS`, `ESFORCO_CONTRATO` e `TERMOS_VERMELHOS`. Quem costuma estar do lado de quem presta o serviço troca a parte representada.
+4. Em duplas, definir para o próprio escritório:
 
 | Decisão | Exemplo |
 |---|---|

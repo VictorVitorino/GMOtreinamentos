@@ -14,6 +14,8 @@ Treinamento de Claude para advogados de 19 a 55 anos que ainda não usam IA no t
 
 Nenhum módulo depende de outro. O básico é completo: quem faz só ele sai com tudo de que precisa para trabalhar.
 
+Em todos os módulos o participante mexe na IA com as próprias mãos, em quatro frentes: **configurar** (conta, projeto, conectores, chave), **parametrizar** (instruções, skills, playbook, arquivo de configuração), **usar** e **editar** (respostas, painel, prompts das automações). O quadro por módulo está na agenda.
+
 ## Como a agenda foi desenhada
 
 De duas cadeiras. A do juiz, que sabe o que pesa em uma peça e em um contrato: fatos em ordem, pedido claro, citação que confere, cláusula lida duas vezes. E a do garoto, que abre o Claude e constrói em meia hora o que o escritório adia há anos.
