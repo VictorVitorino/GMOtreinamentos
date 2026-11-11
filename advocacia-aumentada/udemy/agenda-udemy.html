@@ -2,148 +2,699 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA Aplicada a Advogados · Agenda do curso</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agenda IA Aplicada a Advogados</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
-/* Layout: uma página, três tabelas. Módulo, sessão, o que é, o que iremos ensinar e tempo. */
+/* Layout: uma coluna. Cada módulo é um bloco de cor com a dor maior, sobre uma folha de sessões.
+   Cada sessão anda em três tempos, da esquerda para a direita: a dor, o que você constrói, o que você ganha. */
 :root {
-  --paper: #F3F5F6; --surface: #FFFFFF; --ink: #16212B; --ink-2: #4D5A66; --line: #D3DAE0; --accent: #0A6B63;
-  --font-display: "IBM Plex Serif", Georgia, serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --mesa: #F3EFEE; --folha: #FFFFFF; --folha-2: #F8F5F4; --linha: #DED7D5; --linha-forte: #8E8684;
+  --tinta: #161B2C; --tinta-2: #535A6C;
+  --azul: #27468C; --azul-suave: #EAF0FB; --rubi: #9D1A30; --rubi-suave: #F9EBED; --latao: #7D5A14; --latao-suave: #F6EEDC;
+  --sobre-cor: #FFFFFF;
+  --f-titulo: "Libre Caslon Display", "Libre Caslon Text", Georgia, serif;
+  --f-serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --f-texto: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --paper: #0E1418; --surface: #151C22; --ink: #E7ECF0; --ink-2: #A0ADB8; --line: #2B3640; --accent: #56C8BC; color-scheme: dark; }
+  :root:not([data-theme="light"]) {
+    --mesa: #0F131D; --folha: #171C29; --folha-2: #1E2433; --linha: #2C3345; --linha-forte: #6C7590;
+    --tinta: #F0EAE5; --tinta-2: #A8AEBE;
+    --azul: #9DB6F2; --azul-suave: #1A2440; --rubi: #F2798C; --rubi-suave: #37151E; --latao: #D9B466; --latao-suave: #2E2410;
+    --sobre-cor: #10141E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --mesa: #0F131D; --folha: #171C29; --folha-2: #1E2433; --linha: #2C3345; --linha-forte: #6C7590;
+  --tinta: #F0EAE5; --tinta-2: #A8AEBE;
+  --azul: #9DB6F2; --azul-suave: #1A2440; --rubi: #F2798C; --rubi-suave: #37151E; --latao: #D9B466; --latao-suave: #2E2410;
+  --sobre-cor: #10141E; color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-.pagina { max-width: 1040px; margin: 0 auto; padding: 36px 16px 56px; display: flex; flex-direction: column; gap: 40px; }
-h1, h2, p, dl, dd { margin: 0; }
-h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.01em; }
-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 3vw, 1.7rem); line-height: 1.2; }
-.rotulo { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
-.abre { display: flex; flex-direction: column; gap: 14px; }
-.abre .sub { font-size: 1.1rem; color: var(--ink-2); max-width: 62ch; }
-.fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-block: 1px solid var(--line); }
+body { margin: 0; background: var(--mesa); color: var(--tinta); font-family: var(--f-texto); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, dl, dd, ul, ol, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--rubi); outline-offset: 3px; }
+.pagina { max-width: 1120px; margin: 0 auto; padding-block: 44px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 40px; }
+.rotulo { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); line-height: 1.3; }
+.ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+.abre { display: flex; flex-direction: column; gap: 18px; }
+.abre h1 { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(2.2rem, 5.6vw, 3.6rem); line-height: 1.04; letter-spacing: -.012em; text-wrap: balance; }
+.promessa { font-family: var(--f-serif); font-size: clamp(1.06rem, 2vw, 1.26rem); line-height: 1.5; max-width: 62ch; }
+.fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); border-block: 1px solid var(--linha); }
 .fatos div { padding: 12px 16px 12px 0; display: flex; flex-direction: column; gap: 2px; }
-.fatos dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
-.fatos dd { font-size: 1.02rem; font-weight: 600; }
-.modulo { display: flex; flex-direction: column; gap: 12px; }
-.modulo-cab { display: flex; flex-direction: column; gap: 4px; }
-.modulo-cab p { color: var(--ink-2); }
-.rolagem { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
-table { border-collapse: collapse; width: 100%; min-width: 700px; font-size: 0.94rem; }
-th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); }
-th { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
-td:first-child { font-weight: 600; width: 27%; }
-td:nth-child(2) { color: var(--ink-2); width: 21%; }
-td:last-child, th:last-child { text-align: right; white-space: nowrap; width: 9%; }
-td:last-child { font-family: var(--font-mono); font-size: 0.86rem; font-variant-numeric: tabular-nums; }
-tfoot td { border-bottom: 0; font-weight: 600; color: var(--ink); }
-.num { font-family: var(--font-mono); font-weight: 500; color: var(--accent); margin-right: 6px; }
-.notas { color: var(--ink-2); font-size: 0.92rem; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--line); padding-top: 18px; max-width: 80ch; }
-.notas strong { color: var(--ink); font-weight: 600; }
+.fatos dd { font-family: var(--f-serif); font-size: 1.5rem; font-weight: 700; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.compasso { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; color: var(--tinta-2); font-size: .97rem; }
+.compasso b { color: var(--tinta); font-weight: 700; }
+.compasso i { font-style: normal; color: var(--linha-forte); }
+.jogo { color: var(--tinta-2); font-size: .97rem; max-width: 72ch; margin-top: -8px; }
+
+.filtro { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filtro .rotulo { margin-right: 4px; }
+.filtro button { font: inherit; font-size: .9rem; font-weight: 600; line-height: 1.2; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--linha-forte); background: transparent; color: var(--tinta); cursor: pointer; }
+.filtro button span { font-weight: 400; margin-left: 6px; font-variant-numeric: tabular-nums; color: var(--tinta-2); }
+.filtro button[aria-pressed="true"] { background: var(--tinta); color: var(--mesa); border-color: var(--tinta); }
+.filtro button[aria-pressed="true"] span { color: inherit; }
+.filtro output { font-size: .88rem; color: var(--tinta-2); }
+
+.modulo { display: flex; flex-direction: column; border: 1px solid var(--linha); border-radius: 6px; overflow: hidden; background: var(--folha); }
+.m1 { --cor: var(--azul); --cor-suave: var(--azul-suave); }
+.m2 { --cor: var(--rubi); --cor-suave: var(--rubi-suave); }
+.m3 { --cor: var(--latao); --cor-suave: var(--latao-suave); }
+.modulo-cab { background: var(--cor); color: var(--sobre-cor); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 30px; padding: 28px; }
+.modulo-cab .rotulo { color: inherit; opacity: .85; }
+.modulo-cab h2 { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(1.7rem, 3.2vw, 2.3rem); line-height: 1.08; margin-top: 8px; text-wrap: balance; }
+.modulo-cab .para { margin-top: 10px; font-size: .93rem; }
+.fala { font-family: var(--f-serif); font-style: italic; font-size: clamp(1.15rem, 2.1vw, 1.42rem); line-height: 1.38; margin-top: 8px; text-wrap: pretty; }
+.leva .sistema { display: flex; gap: 10px; align-items: flex-start; font-weight: 700; font-size: 1.08rem; line-height: 1.3; margin-top: 8px; }
+.leva .sistema .ico { margin-top: 2px; }
+.leva .ganho { margin-top: 8px; font-size: .93rem; }
+.leva .conta { margin-top: 12px; padding-top: 10px; border-top: 1px solid currentColor; font-size: .86rem; font-variant-numeric: tabular-nums; }
+
+.trilho-cab, .sessao { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) minmax(0, 1.45fr) minmax(0, 1.1fr); column-gap: 30px; }
+.trilho-cab { padding: 11px 28px; background: var(--folha-2); border-bottom: 1px solid var(--linha); }
+.sessao { padding: 20px 28px; border-top: 1px solid var(--linha); scroll-margin-top: 16px; transition: opacity .2s; }
+.trilho-cab + .sessao { border-top: 0; }
+.sessao.fora { opacity: .28; }
+.sessao:target { background: var(--cor-suave); }
+.s-num { font-family: var(--f-serif); font-weight: 700; font-size: .98rem; color: var(--cor); font-variant-numeric: tabular-nums; }
+.s-id h3 { font-size: 1.03rem; font-weight: 700; line-height: 1.3; margin-top: 2px; text-wrap: balance; }
+.s-meta { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; font-size: .84rem; color: var(--tinta-2); }
+.s-min { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--tinta); }
+.s-dor { font-family: var(--f-serif); font-style: italic; font-size: 1.04rem; line-height: 1.45; text-wrap: pretty; }
+.s-faz, .s-ganho { position: relative; min-width: 0; }
+.s-faz::before, .s-ganho::before { content: "\2192"; position: absolute; left: -22px; top: 0; color: var(--linha-forte); }
+.s-faz p, .s-ganho p { font-size: .95rem; }
+.peca { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; padding: 5px 11px 5px 8px; border-radius: 4px; background: var(--cor-suave); color: var(--cor); font-weight: 700; font-size: .9rem; line-height: 1.25; }
+.peca .ico { width: 18px; height: 18px; }
+.s-faz .s-pratica { margin-top: 10px; font-size: .86rem; color: var(--tinta-2); }
+.s-faz .s-pratica b { color: var(--tinta); font-weight: 700; }
+.s-faz .s-cuidado { margin-top: 6px; font-size: .86rem; color: var(--tinta-2); }
+.s-ganho .s-frase { font-weight: 600; }
+.s-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.s-tags span { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); border: 1px solid var(--linha); border-radius: 3px; padding: 2px 6px; }
+.rot-m { display: none; }
+
+.bloco h2 { font-family: var(--f-titulo); font-weight: 400; font-size: clamp(1.5rem, 3vw, 1.9rem); line-height: 1.15; text-wrap: balance; }
+.bloco > p { margin-top: 8px; color: var(--tinta-2); max-width: 70ch; }
+.mapa-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); column-gap: 30px; margin-top: 16px; border-top: 1px solid var(--linha); }
+.mapa-lista li { display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--linha); }
+.mapa-lista q { font-family: var(--f-serif); font-style: italic; quotes: "\201C" "\201D"; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips a { font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; text-decoration: none; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; }
+.chips .c1 { color: var(--azul); } .chips .c2 { color: var(--rubi); } .chips .c3 { color: var(--latao); }
+.notas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px 32px; border-top: 1px solid var(--linha); padding-top: 24px; }
+.notas h3 { font-size: .95rem; font-weight: 700; }
+.notas ul { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.notas li { font-size: .92rem; color: var(--tinta-2); padding-left: 14px; position: relative; }
+.notas li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--linha-forte); }
+.rodape { font-size: .84rem; color: var(--tinta-2); }
+
+@media (max-width: 900px) {
+  .pagina { padding-block: 28px 56px; gap: 32px; }
+  .modulo-cab { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 22px 18px; }
+  .trilho-cab { display: none; }
+  .sessao { grid-template-columns: minmax(0, 1fr); row-gap: 14px; padding: 20px 18px; }
+  .trilho-cab + .sessao { border-top: 0; }
+  .rot-m { display: block; margin-bottom: 4px; }
+  .s-faz::before, .s-ganho::before { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .sessao { transition: none; } }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-pagina" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/></symbol><symbol id="i-painel" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5"/></symbol><symbol id="i-lista" viewBox="0 0 24 24"><path d="M4 6.5l1.6 1.6L8.4 5.3M4 12.5l1.6 1.6 2.8-2.8M4 18.5l1.6 1.6 2.8-2.8M12 7h8M12 13h8M12 19h8"/></symbol><symbol id="i-tempo" viewBox="0 0 24 24"><path d="M3 12h18M6 12V7.5M12 12v4.5M18 12V7.5"/><circle cx="6" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="18" cy="12" r="1.7"/></symbol><symbol id="i-mensagem" viewBox="0 0 24 24"><path d="M5 4.5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3.5V16.5H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M7.5 9h9M7.5 12.5h5.5"/></symbol><symbol id="i-cartao" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="11" r="1.8"/><path d="M12.5 10.5H18M12.5 14h4M6 15h4"/></symbol><symbol id="i-calculo" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7.5h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></symbol><symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7M7 12.5l3-3 2.5 2 4.5-4.5"/></symbol><symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7 2.6v5.3c0 4.4-2.9 8.1-7 9.6-4.1-1.5-7-5.2-7-9.6V5.6L12 3z"/><path d="M9 11.8l2.1 2.1L15 10"/></symbol><symbol id="i-funil" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8L4 5z"/></symbol><symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8.2 10.7l1.7 1.7 2.9-3.1"/></symbol><symbol id="i-molde" viewBox="0 0 24 24"><path d="M8 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2M16 4h2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-2M9 9h6M9 12h6M9 15h3.5"/></symbol></defs></svg>
 <main class="pagina">
-
   <header class="abre">
-    <p class="rotulo">Curso gravado · Agenda</p>
+    <p class="rotulo">Curso gravado · Agenda por dores</p>
     <h1>IA Aplicada a Advogados</h1>
-    <p class="sub">Do primeiro pedido ao sistema de contratos do escritório, com o Claude e o Google Workspace, dentro das regras da OAB e da LGPD.</p>
+    <p class="promessa">Em cada sessão, uma dor a menos e uma peça pronta para usar no dia seguinte. Três módulos independentes: a sua mesa, o que o cliente vê e a clientela do escritório.</p>
     <dl class="fatos">
-      <div><dt>Módulos</dt><dd>3</dd></div>
-      <div><dt>Sessões</dt><dd>29</dd></div>
-      <div><dt>Vídeo</dt><dd>7 h 15 min</dd></div>
-      <div><dt>Em cada módulo</dt><dd>Um sistema construído</dd></div>
+      <div><dt class="rotulo">Módulos</dt><dd>3</dd></div>
+      <div><dt class="rotulo">Sessões</dt><dd>24</dd></div>
+      <div><dt class="rotulo">Vídeo</dt><dd>4 h 23 min</dd></div>
+      <div><dt class="rotulo">Peças prontas</dt><dd>24</dd></div>
+      <div><dt class="rotulo">Sistemas</dt><dd>3</dd></div>
     </dl>
+    <p class="compasso"><span>Toda sessão anda em três tempos:</span> <b>a dor</b> <i>→</i> <b>o que você constrói</b> <i>→</i> <b>o que você ganha</b></p>
+    <p class="jogo">A prática é sempre um jogo curto, com material fictício: antes e depois, caça ao erro, cliente simulado, advogado do diabo, contra o relógio ou missão.</p>
   </header>
-
-  <section class="modulo">
-    <div class="modulo-cab">
-      <p class="rotulo">Módulo 1 · Básico · 9 sessões · 2 h 20 min</p>
-      <h2>Primeiros passos e o painel de prazos</h2>
-      <p>Para quem nunca usou IA no trabalho. Ao final: painel de casos e prazos.</p>
-    </div>
-    <div class="rolagem">
-      <table>
-        <thead><tr><th>Sessão</th><th>O que é</th><th>O que iremos ensinar</th><th>Tempo</th></tr></thead>
-        <tbody>
-          <tr><td><span class="num">1.1</span>Boas-vindas: o que a IA faz e o que não faz</td><td>Abertura do curso</td><td>Como o curso funciona, em que a IA ajuda o advogado e por que ela inventa citações e não conta prazo</td><td>12 min</td></tr>
-          <tr><td><span class="num">1.2</span>Conta segura e sigilo</td><td>Configuração da ferramenta</td><td>Criar a conta, desligar o uso das conversas para treinamento, ligar a verificação em duas etapas e classificar os dados em verde, amarelo e vermelho</td><td>15 min</td></tr>
-          <tr><td><span class="num">1.3</span>Como pedir: perfil e método FATOS</td><td>Método para escrever pedidos</td><td>Escrever o perfil de instruções e montar um pedido com Função, Alvo, Texto-base, Orientações e Saída</td><td>18 min</td></tr>
-          <tr><td><span class="num">1.4</span>Três usos para o dia seguinte</td><td>Aplicações práticas na conversa</td><td>Explicar um andamento ao cliente, redigir um e-mail de cobrança de honorários e resumir um documento longo com o trecho de cada ponto</td><td>20 min</td></tr>
-          <tr><td><span class="num">1.5</span>Projeto «Meu escritório»</td><td>Base de conhecimento do escritório</td><td>Criar um projeto com instruções e arquivos, perguntar exigindo o trecho e gerar a linha do tempo de um caso</td><td>15 min</td></tr>
-          <tr><td><span class="num">1.6</span>Conferir o que a IA diz</td><td>Verificação de citações</td><td>Aplicar as três chaves (existe? diz isso? vale hoje?) nas fontes oficiais do STF, do STJ e do TST</td><td>15 min</td></tr>
-          <tr><td><span class="num">1.7</span>Painel de casos e prazos: construção</td><td>Projeto do módulo, parte 1</td><td>Transformar uma planilha de processos em um painel com vencidos, prazos da semana e casos por responsável</td><td>20 min</td></tr>
-          <tr><td><span class="num">1.8</span>Painel de casos e prazos: ajustes e dados reais</td><td>Projeto do módulo, parte 2</td><td>Pedir ajustes ao painel e usá-lo com a planilha real sem enviar os dados à IA</td><td>12 min</td></tr>
-          <tr><td><span class="num">1.9</span>Política de uso de IA e termo do cliente</td><td>Documentos de conformidade</td><td>Preencher a política de uma página e o termo de ciência do cliente recomendados pela OAB</td><td>13 min</td></tr>
-        </tbody>
-        <tfoot><tr><td colspan="3">Total do módulo 1</td><td>2 h 20 min</td></tr></tfoot>
-      </table>
-    </div>
-  </section>
-
-  <section class="modulo">
-    <div class="modulo-cab">
-      <p class="rotulo">Módulo 2 · Intermediário · 10 sessões · 2 h 27 min</p>
-      <h2>A central do escritório</h2>
-      <p>Para quem já usa a IA na conversa. Ao final: central de e-mail, agenda e citações, com painel, e cartão virtual.</p>
-    </div>
-    <div class="rolagem">
-      <table>
-        <thead><tr><th>Sessão</th><th>O que é</th><th>O que iremos ensinar</th><th>Tempo</th></tr></thead>
-        <tbody>
-          <tr><td><span class="num">2.1</span>Conectores: e-mail, agenda e arquivos</td><td>Integração da IA com o Google</td><td>Ligar Gmail, Agenda e Drive ao assistente com o mínimo de permissão</td><td>15 min</td></tr>
-          <tr><td><span class="num">2.2</span>Skills e plugins</td><td>Recursos de personalização</td><td>O que são, quando usar e por que o plugin jurídico pronto precisa do critério do escritório</td><td>12 min</td></tr>
-          <tr><td><span class="num">2.3</span>Minha semana em uma página</td><td>Briefing semanal</td><td>Pedir o resumo da semana a partir da agenda e dos e-mails</td><td>12 min</td></tr>
-          <tr><td><span class="num">2.4</span>Identidade da marca em uma página</td><td>Identidade visual do escritório</td><td>Definir voz, cores e tipografia e guardar tudo como instrução reutilizável</td><td>18 min</td></tr>
-          <tr><td><span class="num">2.5</span>Cartão virtual nas regras da OAB</td><td>Produto para o cliente</td><td>Criar o cartão com QR Code e agendamento e conferi-lo com o Provimento 205/2021</td><td>15 min</td></tr>
-          <tr><td><span class="num">2.6</span>Instalando a central</td><td>Configuração da planilha de automações</td><td>Copiar a planilha-modelo, instalar e guardar a chave da API</td><td>15 min</td></tr>
-          <tr><td><span class="num">2.7</span>Triagem de e-mail com rascunho</td><td>Automação da caixa de entrada</td><td>Classificar, resumir e rascunhar respostas sem enviar nada, e manter dados sensíveis fora da IA</td><td>20 min</td></tr>
-          <tr><td><span class="num">2.8</span>Ajustando a triagem</td><td>Parametrização e edição</td><td>Acrescentar termos sensíveis e alterar uma regra do prompt da automação</td><td>12 min</td></tr>
-          <tr><td><span class="num">2.9</span>Citações conferidas</td><td>Auditoria de citações</td><td>Listar as citações de uma peça, validar o número do processo e registrar a conferência</td><td>20 min</td></tr>
-          <tr><td><span class="num">2.10</span>O painel da central</td><td>Projeto do módulo</td><td>Ler o painel de e-mails e precedentes e decidir o que ligar na conta real</td><td>8 min</td></tr>
-        </tbody>
-        <tfoot><tr><td colspan="3">Total do módulo 2</td><td>2 h 27 min</td></tr></tfoot>
-      </table>
-    </div>
-  </section>
-
-  <section class="modulo">
-    <div class="modulo-cab">
-      <p class="rotulo">Módulo 3 · Avançado · 10 sessões · 2 h 28 min</p>
-      <h2>O sistema de contratos</h2>
-      <p>Para quem revisa contratos com frequência. Ao final: sistema de contratos com matriz de risco, histórico de versões e painel.</p>
-    </div>
-    <div class="rolagem">
-      <table>
-        <thead><tr><th>Sessão</th><th>O que é</th><th>O que iremos ensinar</th><th>Tempo</th></tr></thead>
-        <tbody>
-          <tr><td><span class="num">3.1</span>Mapa do sistema</td><td>Visão geral</td><td>O caminho de um contrato e o que sai e o que fica no escritório</td><td>10 min</td></tr>
-          <tr><td><span class="num">3.2</span>Repositório e planilha de contratos</td><td>Estrutura de pastas e cadastro</td><td>Criar pastas, códigos e abas e definir quem acessa e por quanto tempo se guarda</td><td>15 min</td></tr>
-          <tr><td><span class="num">3.3</span>Playbook do escritório</td><td>Critério de revisão</td><td>Escrever o que é padrão, aceitável e inaceitável em cada tema do contrato</td><td>15 min</td></tr>
-          <tr><td><span class="num">3.4</span>Leitura automatizada e matriz de risco</td><td>Automação da primeira leitura</td><td>Processar um contrato e ler a matriz de risco, com o trecho de cada achado</td><td>20 min</td></tr>
-          <tr><td><span class="num">3.5</span>Prova com gabarito</td><td>Teste de qualidade</td><td>Comparar a análise da IA com a revisão humana em seis critérios e decidir cada risco</td><td>12 min</td></tr>
-          <tr><td><span class="num">3.6</span>Histórico de versões e alerta</td><td>Controle de alterações</td><td>Registrar uma nova versão, ver o que mudou e receber o alerta de mudança desfavorável</td><td>18 min</td></tr>
-          <tr><td><span class="num">3.7</span>Prazos do contrato na agenda</td><td>Controle de vencimentos</td><td>Lançar o fim da vigência e o aviso de não renovação depois da revisão do advogado</td><td>10 min</td></tr>
-          <tr><td><span class="num">3.8</span>Especificação do sistema próprio</td><td>Desenho do produto</td><td>Transformar uma entrevista com a IA em especificação funcional</td><td>18 min</td></tr>
-          <tr><td><span class="num">3.9</span>Protótipo com a marca do escritório</td><td>Projeto do módulo</td><td>Gerar um protótipo navegável com painel, ficha do contrato e histórico</td><td>15 min</td></tr>
-          <tr><td><span class="num">3.10</span>Dossiê LGPD e plano de 90 dias</td><td>Conformidade e próximos passos</td><td>Preencher o dossiê de uso de IA e definir três metas</td><td>15 min</td></tr>
-        </tbody>
-        <tfoot><tr><td colspan="3">Total do módulo 3</td><td>2 h 28 min</td></tr></tfoot>
-      </table>
-    </div>
-  </section>
-
-  <div class="notas">
-    <p><strong>Tempo.</strong> Os minutos são de vídeo. A prática do aluno acontece fora da aula, com os materiais de apoio.</p>
-    <p><strong>O que o aluno precisa.</strong> Módulo 1: uma conta no Claude. Módulos 2 e 3: também uma conta Google e uma chave de API, com custo de centavos por uso.</p>
-    <p><strong>Materiais de apoio.</strong> Planilha de exemplo, biblioteca de prompts, planilha-modelo com as automações, contrato fictício em duas versões e modelos de política, termo e dossiê.</p>
+  <div class="filtro" role="group" aria-label="Ver as sessões por ganho">
+    <span class="rotulo">Ver por ganho</span>
+    <button type="button" id="ver-tudo" data-ganho="tudo" aria-pressed="true">Tudo<span>24</span></button>
+    <button type="button" id="ver-apresentacao" data-ganho="apresentacao" aria-pressed="false">Apresentação<span>12</span></button>
+    <button type="button" id="ver-organizacao" data-ganho="organizacao" aria-pressed="false">Organização<span>11</span></button>
+    <button type="button" id="ver-clientela" data-ganho="clientela" aria-pressed="false">Clientela<span>11</span></button>
+    <output id="filtro-status" aria-live="polite"></output>
   </div>
 
+  <section class="modulo m1" id="modulo-1" aria-labelledby="m1-t">
+    <header class="modulo-cab">
+      <div>
+        <p class="rotulo">Módulo 1 · Básico · Organização</p>
+        <h2 id="m1-t">Casa em ordem</h2>
+        <p class="para">Para quem nunca usou IA no trabalho ou usa de vez em quando, sem método.</p>
+      </div>
+      <blockquote>
+        <p class="rotulo">A dor do módulo</p>
+        <p class="fala">“Trabalho o dia inteiro apagando incêndio e, no fim, não sei o que ficou para trás.”</p>
+      </blockquote>
+      <div class="leva">
+        <p class="rotulo">Você constrói e leva</p>
+        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel de casos e prazos</span></p>
+        <p class="ganho">Você sabe pedir, sabe conferir, protege o sigilo e vê todos os casos e prazos em uma tela.</p>
+        <p class="conta">8 sessões · 1 h 20 min · conta gratuita</p>
+      </div>
+    </header>
+    <div role="list">
+      <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>
+      <article class="sessao" id="s-1-1" role="listitem" data-ganhos="organizacao">
+        <div class="s-id">
+          <span class="s-num">1.1</span>
+          <h3>Sigilo em três cores</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Tenho medo de colar documento de cliente na IA.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Ajusta a conta em poucos minutos (conversas fora do treinamento, verificação em duas etapas) e classifica oito situações do escritório em verde, amarelo e vermelho.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>Cartão do semáforo e modelo de termo de ciência do cliente</span></p>
+          <p class="s-pratica"><b>Jogo do semáforo.</b> Você decide a cor antes de ver o gabarito.</p>
+          <p class="s-cuidado">Cuidado: Segredo de justiça, saúde e dado de criança são vermelhos: não entram.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Usa a IA sem medo e sabe o que nunca entra na conversa.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-2" role="listitem" data-ganhos="organizacao">
+        <div class="s-id">
+          <span class="s-num">1.2</span>
+          <h3>O pedido que funciona</h3>
+          <p class="s-meta"><span class="s-min">9 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Peço e vem resposta genérica, com cara de robô.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Escreve o perfil do escritório, que fica salvo, e monta um pedido em cinco partes: Função, Alvo, Texto-base, Orientações e Saída.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span>Perfil do escritório e molde de pedido</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> O mesmo pedido, vago e com método, lado a lado.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Resposta útil na primeira tentativa, no tom do escritório.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-3" role="listitem" data-ganhos="organizacao">
+        <div class="s-id">
+          <span class="s-num">1.3</span>
+          <h3>Ficha do caso em uma página</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente mandou oito arquivos e três áudios. Por onde começo?”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Sobe os documentos de um caso fictício, com a transcrição dos áudios, e pede os fatos com o trecho de origem, a linha do tempo, as lacunas e os documentos que faltam.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Ficha do caso</span></p>
+          <p class="s-pratica"><b>Missão.</b> Um caso bagunçado vira uma página em dez minutos.</p>
+          <p class="s-cuidado">Cuidado: Todo fato vem com o trecho de onde saiu. Sem trecho, não entra na ficha.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você confere em vez de garimpar, e nenhum fato fica solto.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-4" role="listitem" data-ganhos="apresentacao">
+        <div class="s-id">
+          <span class="s-num">1.4</span>
+          <h3>As três chaves</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“E se ela inventar um precedente e eu assinar embaixo?”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Confere três citações nas fontes oficiais com três perguntas: existe? diz isso? vale hoje?</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg><span>Registro de conferência de citações</span></p>
+          <p class="s-pratica"><b>Caça ao erro.</b> Das três citações, uma é inventada e outra diz o contrário.</p>
+          <p class="s-cuidado">Cuidado: Tribunais já multaram advogados por precedente inexistente em peça.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Nada sai do escritório com citação que você não abriu.</p>
+          <p class="s-tags"><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-5" role="listitem" data-ganhos="apresentacao">
+        <div class="s-id">
+          <span class="s-num">1.5</span>
+          <h3>O cliente entende</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente pergunta “e o meu processo?” toda semana.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Transforma um andamento em três linhas: o que aconteceu, o que significa e qual é o próximo passo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Modelo de atualização ao cliente</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> A IA faz o cliente leigo e diz o que não entendeu.</p>
+          <p class="s-cuidado">Cuidado: Sem promessa de resultado. Você lê antes de enviar.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Menos mensagens repetidas e um cliente que confia.</p>
+          <p class="s-tags"><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-6" role="listitem" data-ganhos="organizacao">
+        <div class="s-id">
+          <span class="s-num">1.6</span>
+          <h3>Da reunião às tarefas</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Saio do atendimento com a cabeça cheia e a anotação pela metade.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Cola as anotações de uma reunião fictícia e recebe o resumo, as decisões, as dúvidas em aberto e as tarefas, cada uma com responsável e data.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Registro de atendimento com próximas ações</span></p>
+          <p class="s-pratica"><b>Contra o relógio.</b> Do rascunho ao registro em cinco minutos.</p>
+          <p class="s-cuidado">Cuidado: Anotação de cliente real é dado amarelo: troque nomes por papéis.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Todo atendimento termina com um próximo passo escrito.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-7" role="listitem" data-ganhos="organizacao">
+        <div class="s-id">
+          <span class="s-num">1.7</span>
+          <h3>Painel de casos e prazos</h3>
+          <p class="s-meta"><span class="s-min">15 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Meus prazos estão em três lugares: agenda, planilha e cabeça.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Transforma uma planilha de processos em painel com vencidos, hoje, semana e casos por responsável.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel de casos e prazos</span></p>
+          <p class="s-pratica"><b>Construção guiada.</b> Duas rodadas de ajuste até ficar do seu jeito.</p>
+          <p class="s-cuidado">Cuidado: O painel mostra as datas que você lançou. A IA não conta prazo.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Uma tela responde o que vence e o que está parado.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-1-8" role="listitem" data-ganhos="organizacao">
+        <div class="s-id">
+          <span class="s-num">1.8</span>
+          <h3>O painel com os seus dados</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Ficou bonito, mas os dados dos meus clientes não podem ir para a IA.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Cola a planilha real dentro do painel, no próprio navegador, e monta o plano da semana.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Painel em uso e ritual de segunda-feira</span></p>
+          <p class="s-pratica"><b>Missão.</b> A semana inteira em uma tela, em dez minutos.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Ferramenta sua, com o dado dentro do seu computador.</p>
+          <p class="s-tags"><span>Organização</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="modulo m2" id="modulo-2" aria-labelledby="m2-t">
+    <header class="modulo-cab">
+      <div>
+        <p class="rotulo">Módulo 2 · Intermediário · Apresentação</p>
+        <h2 id="m2-t">O que o cliente vê</h2>
+        <p class="para">Para quem já conversa com a IA e quer que o trabalho pareça tão bom quanto é.</p>
+      </div>
+      <blockquote>
+        <p class="rotulo">A dor do módulo</p>
+        <p class="fala">“Faço um bom trabalho, mas o cliente não enxerga. E quem não enxerga valor discute preço.”</p>
+      </blockquote>
+      <div class="leva">
+        <p class="rotulo">Você constrói e leva</p>
+        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Central do cliente, com o relatório de cada caso</span></p>
+        <p class="ganho">Proposta, diagnóstico, linha do tempo e relatório com a cara do escritório, e nenhum cliente sem retorno.</p>
+        <p class="conta">8 sessões · 1 h 31 min · conta gratuita; página por link pede plano pago</p>
+      </div>
+    </header>
+    <div role="list">
+      <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>
+      <article class="sessao" id="s-2-1" role="listitem" data-ganhos="apresentacao">
+        <div class="s-id">
+          <span class="s-num">2.1</span>
+          <h3>A cara do escritório</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cada documento meu sai com uma cara diferente.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Define cores, letras e tom de voz em uma página, guarda como instrução e cria o cartão virtual do escritório.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-cartao"/></svg><span>Identidade em uma página e cartão virtual</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> O mesmo documento, sem e com a identidade.</p>
+          <p class="s-cuidado">Cuidado: Sobriedade é regra da OAB. Cartão com nome e número de inscrição, sem fotografia, sem preço e sem promessa.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">O escritório parece do tamanho que é, em tudo o que envia.</p>
+          <p class="s-tags"><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-2" role="listitem" data-ganhos="apresentacao clientela">
+        <div class="s-id">
+          <span class="s-num">2.2</span>
+          <h3>Proposta de uma página</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Mandei o valor por WhatsApp e o cliente sumiu.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Monta a proposta de honorários: o problema do cliente, o escopo, as etapas, o que não está incluído, o investimento e o próximo passo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Modelo de proposta de honorários</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> A mensagem de WhatsApp e a proposta, lado a lado.</p>
+          <p class="s-cuidado">Cuidado: Proposta vai para quem pediu. Sem promessa de resultado.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você apresenta valor antes de preço, e a conversa muda de nível.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-3" role="listitem" data-ganhos="apresentacao clientela">
+        <div class="s-id">
+          <span class="s-num">2.3</span>
+          <h3>Diagnóstico em uma página</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Na primeira reunião eu explico tudo e o cliente sai sem entender nada.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Resume o caso para o cliente: onde ele está, os caminhos possíveis, os riscos em verde, amarelo e vermelho, e o que acontece agora.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Diagnóstico do caso</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> A IA faz o cliente leigo e pergunta o que não entendeu.</p>
+          <p class="s-cuidado">Cuidado: Estimativa não é promessa. A avaliação de risco é sua, não da IA.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">O cliente decide com clareza e percebe método.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-4" role="listitem" data-ganhos="apresentacao organizacao">
+        <div class="s-id">
+          <span class="s-num">2.4</span>
+          <h3>Linha do tempo de um minuto</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Os fatos estão em quarenta páginas e ninguém lê.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Transforma os documentos do caso em uma linha do tempo de uma tela, com o documento que prova cada fato.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-tempo"/></svg><span>Linha do tempo do caso</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> Quarenta páginas e uma tela, o mesmo caso.</p>
+          <p class="s-cuidado">Cuidado: Cada marco aponta o documento de origem.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Cliente e juiz entendem a história antes de ler a peça.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-5" role="listitem" data-ganhos="apresentacao">
+        <div class="s-id">
+          <span class="s-num">2.5</span>
+          <h3>A peça que o juiz lê</h3>
+          <p class="s-meta"><span class="s-min">12 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Escrevo dez páginas e o essencial fica escondido.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Dá à IA o papel de quem julga: ela diz o que entendeu da sua peça, aponta o pedido escondido e ataca o ponto fraco. Você reescreve a abertura.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lupa"/></svg><span>Quadro-resumo da peça e lista de pontos fracos</span></p>
+          <p class="s-pratica"><b>Advogado do diabo.</b> A IA faz o juiz sem tempo e a parte contrária.</p>
+          <p class="s-cuidado">Cuidado: A IA critica a forma e a lógica. Fundamento e citação, você confere.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Fatos em ordem, pedido claro e tese testada antes do protocolo.</p>
+          <p class="s-tags"><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-6" role="listitem" data-ganhos="apresentacao">
+        <div class="s-id">
+          <span class="s-num">2.6</span>
+          <h3>Cinco slides para quem decide</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Tenho reunião com o cliente amanhã e só um parecer de doze páginas.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Transforma o parecer em cinco slides: a decisão que se pede, o cenário, os riscos, os caminhos e o próximo passo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-slides"/></svg><span>Apresentação de cinco slides</span></p>
+          <p class="s-pratica"><b>Contra o relógio.</b> Do parecer aos slides em dez minutos.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você fala a língua de quem decide, e a reunião rende.</p>
+          <p class="s-tags"><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-7" role="listitem" data-ganhos="apresentacao clientela">
+        <div class="s-id">
+          <span class="s-num">2.7</span>
+          <h3>IA às claras</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Uso IA escondido. E se o cliente perguntar?”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Escreve a página “Como usamos IA no seu caso” e preenche o termo de ciência: para que serve, o que nunca entra, quem revisa.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-escudo"/></svg><span>Página de transparência e termo de ciência</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> Três perguntas difíceis de um cliente desconfiado.</p>
+          <p class="s-cuidado">Cuidado: A OAB recomenda informar o cliente por escrito e colher a assinatura dele.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você fala primeiro, com segurança, e o cuidado vira diferencial.</p>
+          <p class="s-tags"><span>Apresentação</span><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-2-8" role="listitem" data-ganhos="organizacao apresentacao">
+        <div class="s-id">
+          <span class="s-num">2.8</span>
+          <h3>Central do cliente</h3>
+          <p class="s-meta"><span class="s-min">15 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Não sei a quem devo retorno, e relatório é a última coisa que eu faço.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Monta o painel de clientes com pendências, último contato e próxima atualização. De cada linha sai o relatório do caso em uma página: feito, pendente, próximo passo.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-painel"/></svg><span>Central do cliente e modelo de relatório</span></p>
+          <p class="s-pratica"><b>Missão.</b> Cinco clientes fictícios: quem espera há mais tempo?</p>
+          <p class="s-cuidado">Cuidado: Dados reais ficam no seu navegador. Você revisa o relatório antes de enviar.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Ninguém fica sem resposta, e o relatório do mês sai em minutos.</p>
+          <p class="s-tags"><span>Organização</span><span>Apresentação</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="modulo m3" id="modulo-3" aria-labelledby="m3-t">
+    <header class="modulo-cab">
+      <div>
+        <p class="rotulo">Módulo 3 · Avançado · Clientela</p>
+        <h2 id="m3-t">Clientela que vale a pena</h2>
+        <p class="para">Para quem quer escolher melhor os casos, cobrar com critério e receber em dia.</p>
+      </div>
+      <blockquote>
+        <p class="rotulo">A dor do módulo</p>
+        <p class="fala">“Atendo quem aparece, cobro no chute e recebo quando dá.”</p>
+      </blockquote>
+      <div class="leva">
+        <p class="rotulo">Você constrói e leva</p>
+        <p class="sistema"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-funil"/></svg><span>Painel do escritório: contatos, propostas e honorários a receber</span></p>
+        <p class="ganho">Critério para aceitar, preço que você sabe explicar, cliente bem recebido e uma tela com o que entra e o que falta receber.</p>
+        <p class="conta">8 sessões · 1 h 32 min · conta gratuita e uma planilha</p>
+      </div>
+    </header>
+    <div role="list">
+      <div class="trilho-cab" aria-hidden="true"><span class="rotulo">Sessão</span><span class="rotulo">A dor</span><span class="rotulo">O que você constrói</span><span class="rotulo">O que você ganha</span></div>
+      <article class="sessao" id="s-3-1" role="listitem" data-ganhos="clientela">
+        <div class="s-id">
+          <span class="s-num">3.1</span>
+          <h3>Triagem do primeiro contato</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Aceito todo caso que aparece e me arrependo no terceiro mês.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Cria a ficha do primeiro contato: as perguntas que faltam, os sinais de alerta e os critérios de encaixe do escritório.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Ficha de triagem</span></p>
+          <p class="s-pratica"><b>Missão.</b> Três contatos fictícios chegam pelo WhatsApp: qual você atende?</p>
+          <p class="s-cuidado">Cuidado: A ficha organiza a sua decisão. A IA não aceita nem recusa cliente, e não dá consulta a quem não é cliente.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você diz não cedo, e sobra tempo para o cliente certo.</p>
+          <p class="s-tags"><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-2" role="listitem" data-ganhos="clientela">
+        <div class="s-id">
+          <span class="s-num">3.2</span>
+          <h3>Quanto cobrar, e como sustentar</h3>
+          <p class="s-meta"><span class="s-min">14 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cobro no chute e, no primeiro “tá caro”, dou desconto.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Monta a calculadora de honorários (horas previstas, complexidade, risco e custos) e ensaia a conversa com um cliente que pechincha.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-calculo"/></svg><span>Calculadora de honorários e roteiro de respostas</span></p>
+          <p class="s-pratica"><b>Cliente simulado.</b> A IA pechincha três vezes. Você treina até responder sem ceder.</p>
+          <p class="s-cuidado">Cuidado: A tabela de honorários da sua seccional é a referência mínima. A calculadora soma; quem decide é você.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Preço com critério, e firmeza para explicá-lo.</p>
+          <p class="s-tags"><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-3" role="listitem" data-ganhos="clientela organizacao">
+        <div class="s-id">
+          <span class="s-num">3.3</span>
+          <h3>Contrato de honorários sem ponta solta</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O combinado era uma coisa. No meio do caso, o cliente lembra de outra.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Passa o seu contrato de honorários por uma lista de conferência: escopo, o que não inclui, despesas, reajuste, êxito e rescisão.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-lista"/></svg><span>Lista de conferência do contrato de honorários</span></p>
+          <p class="s-pratica"><b>Caça ao erro.</b> Um contrato fictício com cinco pontas soltas.</p>
+          <p class="s-cuidado">Cuidado: A IA aponta lacunas. A redação final é sua.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Menos discussão no meio do caso, e cobrança com base escrita.</p>
+          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-4" role="listitem" data-ganhos="clientela organizacao">
+        <div class="s-id">
+          <span class="s-num">3.4</span>
+          <h3>Boas-vindas e documentos certos</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“O cliente manda documento errado três vezes e me chama a qualquer hora.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Monta o kit de boas-vindas: como o escritório trabalha, canais e horários, a lista de documentos do caso e a mensagem de pedido.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Kit de boas-vindas do cliente</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> Três regras duras reescritas em tom acolhedor.</p>
+          <p class="s-cuidado">Cuidado: Peça só os documentos necessários.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Limites combinados no primeiro dia e menos idas e vindas.</p>
+          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-5" role="listitem" data-ganhos="clientela apresentacao">
+        <div class="s-id">
+          <span class="s-num">3.5</span>
+          <h3>Serviço com começo, meio e fim</h3>
+          <p class="s-meta"><span class="s-min">15 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Faço tudo sob medida, não sobra tempo, e o cliente não sabe o que contratou.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Transforma um trabalho que você repete em serviço de escopo fechado: para quem é, etapas, entregável, prazo e preço. O exemplo da aula é a revisão de contrato com matriz de risco.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-molde"/></svg><span>Ficha de serviço e modelo de entregável</span></p>
+          <p class="s-pratica"><b>Prova com gabarito.</b> A matriz de risco da IA contra a revisão humana.</p>
+          <p class="s-cuidado">Cuidado: A IA compara o contrato com o seu critério; a conclusão é sua. Preço não vai para material público.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Previsibilidade para você e clareza para o cliente.</p>
+          <p class="s-tags"><span>Clientela</span><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-6" role="listitem" data-ganhos="clientela">
+        <div class="s-id">
+          <span class="s-num">3.6</span>
+          <h3>Cobrar sem constrangimento</h3>
+          <p class="s-meta"><span class="s-min">8 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Cobrar honorário atrasado me constrange, então eu deixo passar.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Escreve a régua de cobrança: três mensagens, da lembrança ao aviso formal, com datas e tom.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mensagem"/></svg><span>Régua de cobrança</span></p>
+          <p class="s-pratica"><b>Antes e depois.</b> Uma cobrança ríspida reescrita em três tons.</p>
+          <p class="s-cuidado">Cuidado: Nada é enviado automaticamente. Cobrança respeitosa, sem expor o cliente.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você cobra no prazo e preserva a relação.</p>
+          <p class="s-tags"><span>Clientela</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-7" role="listitem" data-ganhos="clientela apresentacao">
+        <div class="s-id">
+          <span class="s-num">3.7</span>
+          <h3>Autoridade sem propaganda</h3>
+          <p class="s-meta"><span class="s-min">10 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Sei que preciso aparecer, mas não tenho tempo nem quero parecer vendedor.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Transforma uma decisão recente em boletim informativo para clientes e contatos, com a identidade do escritório.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-pagina"/></svg><span>Boletim informativo</span></p>
+          <p class="s-pratica"><b>Caça ao erro.</b> Um texto com três frases que o Provimento 205 não aceita.</p>
+          <p class="s-cuidado">Cuidado: Conteúdo informativo, sem captação, sem promessa e sem caso concreto como oferta.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">O escritório é lembrado por quem importa, do jeito que a OAB permite.</p>
+          <p class="s-tags"><span>Clientela</span><span>Apresentação</span></p>
+        </div>
+      </article>
+      <article class="sessao" id="s-3-8" role="listitem" data-ganhos="clientela organizacao">
+        <div class="s-id">
+          <span class="s-num">3.8</span>
+          <h3>Painel do escritório</h3>
+          <p class="s-meta"><span class="s-min">15 min</span></p>
+        </div>
+        <div class="s-d"><span class="rotulo rot-m">A dor</span><p class="s-dor">“Não sei quantas propostas estão paradas nem quanto tenho a receber.”</p></div>
+        <div class="s-faz"><span class="rotulo rot-m">O que você constrói</span>
+          <p>Monta o painel com o caminho de cada contato: triagem, proposta, contrato e honorários a receber.</p>
+          <p class="peca"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-funil"/></svg><span>Painel do escritório</span></p>
+          <p class="s-pratica"><b>Construção guiada.</b> Dados fictícios de um mês de escritório.</p>
+          <p class="s-cuidado">Cuidado: Dados reais ficam no seu navegador.</p>
+        </div>
+        <div class="s-ganho"><span class="rotulo rot-m">O que você ganha</span>
+          <p class="s-frase">Você decide a semana olhando uma tela, e nenhuma proposta esfria.</p>
+          <p class="s-tags"><span>Clientela</span><span>Organização</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="bloco" aria-labelledby="mapa-t">
+    <h2 id="mapa-t">A mesma dor volta em mais de uma sessão</h2>
+    <p>A relação não é de um para um. Uma dor grande pede mais de uma peça, e uma peça boa alivia mais de uma dor.</p>
+    <ul class="mapa-lista">
+      <li><q>O cliente não enxerga o meu trabalho.</q><span class="chips"><a class="c2" href="#s-2-2">2.2</a><a class="c2" href="#s-2-3">2.3</a><a class="c2" href="#s-2-4">2.4</a><a class="c2" href="#s-2-6">2.6</a><a class="c2" href="#s-2-8">2.8</a></span></li>
+      <li><q>O cliente pergunta do processo toda semana.</q><span class="chips"><a class="c1" href="#s-1-5">1.5</a><a class="c2" href="#s-2-8">2.8</a></span></li>
+      <li><q>Não sei o que está parado.</q><span class="chips"><a class="c1" href="#s-1-7">1.7</a><a class="c2" href="#s-2-8">2.8</a><a class="c3" href="#s-3-8">3.8</a></span></li>
+      <li><q>Os fatos estão espalhados.</q><span class="chips"><a class="c1" href="#s-1-3">1.3</a><a class="c1" href="#s-1-6">1.6</a><a class="c2" href="#s-2-4">2.4</a></span></li>
+      <li><q>Tenho medo de a IA inventar e eu assinar embaixo.</q><span class="chips"><a class="c1" href="#s-1-4">1.4</a><a class="c2" href="#s-2-5">2.5</a><a class="c3" href="#s-3-5">3.5</a></span></li>
+      <li><q>Tenho medo de expor meu cliente.</q><span class="chips"><a class="c1" href="#s-1-1">1.1</a><a class="c1" href="#s-1-8">1.8</a><a class="c2" href="#s-2-7">2.7</a></span></li>
+      <li><q>Uso IA escondido.</q><span class="chips"><a class="c1" href="#s-1-1">1.1</a><a class="c2" href="#s-2-7">2.7</a></span></li>
+      <li><q>Refaço tudo do zero, toda vez.</q><span class="chips"><a class="c1" href="#s-1-2">1.2</a><a class="c2" href="#s-2-1">2.1</a><a class="c3" href="#s-3-5">3.5</a></span></li>
+      <li><q>Mandei o valor por WhatsApp e o cliente sumiu.</q><span class="chips"><a class="c2" href="#s-2-2">2.2</a><a class="c3" href="#s-3-2">3.2</a></span></li>
+      <li><q>Cobro no chute e recebo quando dá.</q><span class="chips"><a class="c3" href="#s-3-2">3.2</a><a class="c3" href="#s-3-3">3.3</a><a class="c3" href="#s-3-6">3.6</a><a class="c3" href="#s-3-8">3.8</a></span></li>
+      <li><q>Atendo quem aparece.</q><span class="chips"><a class="c3" href="#s-3-1">3.1</a><a class="c3" href="#s-3-7">3.7</a></span></li>
+      <li><q>O cliente me chama a qualquer hora, por qualquer canal.</q><span class="chips"><a class="c1" href="#s-1-5">1.5</a><a class="c3" href="#s-3-4">3.4</a></span></li>
+    </ul>
+  </section>
+
+  <section class="notas" aria-label="Notas da agenda">
+    <div><h3>O que o aluno precisa</h3><ul><li>Computador com navegador e conta gratuita em um assistente de IA. As aulas usam o Claude; o que é conversa funciona também no ChatGPT e no Gemini.</li><li>Um editor de planilhas, para os três painéis.</li><li>Plano pago só para publicar página por link e para os laboratórios de automação.</li><li>Quem entra direto no módulo 2 ou no 3 recebe uma página com o método de pedido e o semáforo do sigilo.</li></ul></div>
+    <div><h3>Cuidados que valem para tudo</h3><ul><li>Em aula, só dados fictícios. Com dado de cliente: conversas fora do treinamento, termo de ciência assinado e nomes trocados por papéis.</li><li>A IA propõe e você decide. Nada é enviado sozinho, e a IA não conta prazo.</li><li>Tudo o que vai ao cliente ou ao juiz passa pela sua leitura. Citação só entra depois das três chaves.</li><li>Material público do escritório segue o Provimento 205/2021 da OAB: informativo e sóbrio, sem preço e sem promessa.</li></ul></div>
+    <div><h3>Para quem quiser automatizar, fora da minutagem</h3><ul><li>Triagem de e-mail com rascunho de resposta, no Google Workspace.</li><li>Histórico de versões de contrato, com alerta de mudança desfavorável.</li><li>Auditor de citações de uma peça, com validador do número do processo.</li></ul></div>
+    <div><h3>O que falta para gravar</h3><ul><li>Os tempos são estimativas: falta uma gravação-piloto para confirmar.</li><li>Na gravação, cada sessão pode virar dois ou três vídeos curtos.</li><li>Já existem no kit: painel de casos e prazos, biblioteca de pedidos, caso de contrato com playbook e gabarito, modelos de política e de termo.</li><li>A produzir: os modelos e casos fictícios das sessões novas e os painéis dos módulos 2 e 3.</li></ul></div>
+  </section>
+  <p class="rodape">Agenda de planejamento, versão de 11/11/2026. Material de treinamento, sem valor de parecer jurídico. Casos, clientes e documentos das aulas são fictícios.</p>
 </main>
+<script>
+(function () {
+  var botoes = [].slice.call(document.querySelectorAll('.filtro button'));
+  var sessoes = [].slice.call(document.querySelectorAll('.sessao'));
+  var status = document.getElementById('filtro-status');
+  function aplicar(g) {
+    var n = 0;
+    sessoes.forEach(function (s) {
+      var dentro = g === 'tudo' || (' ' + s.getAttribute('data-ganhos') + ' ').indexOf(' ' + g + ' ') >= 0;
+      s.classList.toggle('fora', !dentro);
+      if (dentro) n += 1;
+    });
+    botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-ganho') === g)); });
+    status.textContent = g === 'tudo' ? '' : n + ' de ' + sessoes.length + ' sessões em destaque';
+  }
+  botoes.forEach(function (b) { b.addEventListener('click', function () { aplicar(b.getAttribute('data-ganho')); }); });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,569 @@
+{
+  "titulo_da_pagina": "Agenda IA Aplicada a Advogados",
+  "rotulo": "Curso gravado · Agenda por dores",
+  "titulo": "IA Aplicada a Advogados",
+  "promessa": "Em cada sessão, uma dor a menos e uma peça pronta para usar no dia seguinte. Três módulos independentes: a sua mesa, o que o cliente vê e a clientela do escritório.",
+  "pratica_texto": "A prática é sempre um jogo curto, com material fictício: antes e depois, caça ao erro, cliente simulado, advogado do diabo, contra o relógio ou missão.",
+  "modulos": [
+    {
+      "numero": 1,
+      "nivel": "Básico",
+      "eixo": "Organização",
+      "nome": "Casa em ordem",
+      "para_quem": "Para quem nunca usou IA no trabalho ou usa de vez em quando, sem método.",
+      "dor_do_modulo": "Trabalho o dia inteiro apagando incêndio e, no fim, não sei o que ficou para trás.",
+      "sistema": "Painel de casos e prazos",
+      "peca_sistema": "painel",
+      "ganho_do_modulo": "Você sabe pedir, sabe conferir, protege o sigilo e vê todos os casos e prazos em uma tela.",
+      "requisitos": "conta gratuita",
+      "sessoes": [
+        {
+          "numero": "1.1",
+          "nome": "Sigilo em três cores",
+          "dor": "Tenho medo de colar documento de cliente na IA.",
+          "o_que_constroi": "Ajusta a conta em poucos minutos (conversas fora do treinamento, verificação em duas etapas) e classifica oito situações do escritório em verde, amarelo e vermelho.",
+          "entregavel": "Cartão do semáforo e modelo de termo de ciência do cliente",
+          "peca": "escudo",
+          "ganho": "Usa a IA sem medo e sabe o que nunca entra na conversa.",
+          "pratica": "Jogo do semáforo",
+          "dinamica": "Você decide a cor antes de ver o gabarito.",
+          "minutos": 8,
+          "ganhos": [
+            "organizacao"
+          ],
+          "cuidado": "Segredo de justiça, saúde e dado de criança são vermelhos: não entram."
+        },
+        {
+          "numero": "1.2",
+          "nome": "O pedido que funciona",
+          "dor": "Peço e vem resposta genérica, com cara de robô.",
+          "o_que_constroi": "Escreve o perfil do escritório, que fica salvo, e monta um pedido em cinco partes: Função, Alvo, Texto-base, Orientações e Saída.",
+          "entregavel": "Perfil do escritório e molde de pedido",
+          "peca": "molde",
+          "ganho": "Resposta útil na primeira tentativa, no tom do escritório.",
+          "pratica": "Antes e depois",
+          "dinamica": "O mesmo pedido, vago e com método, lado a lado.",
+          "minutos": 9,
+          "ganhos": [
+            "organizacao"
+          ],
+          "cuidado": ""
+        },
+        {
+          "numero": "1.3",
+          "nome": "Ficha do caso em uma página",
+          "dor": "O cliente mandou oito arquivos e três áudios. Por onde começo?",
+          "o_que_constroi": "Sobe os documentos de um caso fictício, com a transcrição dos áudios, e pede os fatos com o trecho de origem, a linha do tempo, as lacunas e os documentos que faltam.",
+          "entregavel": "Ficha do caso",
+          "peca": "pagina",
+          "ganho": "Você confere em vez de garimpar, e nenhum fato fica solto.",
+          "pratica": "Missão",
+          "dinamica": "Um caso bagunçado vira uma página em dez minutos.",
+          "minutos": 12,
+          "ganhos": [
+            "organizacao"
+          ],
+          "cuidado": "Todo fato vem com o trecho de onde saiu. Sem trecho, não entra na ficha."
+        },
+        {
+          "numero": "1.4",
+          "nome": "As três chaves",
+          "dor": "E se ela inventar um precedente e eu assinar embaixo?",
+          "o_que_constroi": "Confere três citações nas fontes oficiais com três perguntas: existe? diz isso? vale hoje?",
+          "entregavel": "Registro de conferência de citações",
+          "peca": "lupa",
+          "ganho": "Nada sai do escritório com citação que você não abriu.",
+          "pratica": "Caça ao erro",
+          "dinamica": "Das três citações, uma é inventada e outra diz o contrário.",
+          "minutos": 10,
+          "ganhos": [
+            "apresentacao"
+          ],
+          "cuidado": "Tribunais já multaram advogados por precedente inexistente em peça."
+        },
+        {
+          "numero": "1.5",
+          "nome": "O cliente entende",
+          "dor": "O cliente pergunta “e o meu processo?” toda semana.",
+          "o_que_constroi": "Transforma um andamento em três linhas: o que aconteceu, o que significa e qual é o próximo passo.",
+          "entregavel": "Modelo de atualização ao cliente",
+          "peca": "mensagem",
+          "ganho": "Menos mensagens repetidas e um cliente que confia.",
+          "pratica": "Cliente simulado",
+          "dinamica": "A IA faz o cliente leigo e diz o que não entendeu.",
+          "minutos": 8,
+          "ganhos": [
+            "apresentacao"
+          ],
+          "cuidado": "Sem promessa de resultado. Você lê antes de enviar."
+        },
+        {
+          "numero": "1.6",
+          "nome": "Da reunião às tarefas",
+          "dor": "Saio do atendimento com a cabeça cheia e a anotação pela metade.",
+          "o_que_constroi": "Cola as anotações de uma reunião fictícia e recebe o resumo, as decisões, as dúvidas em aberto e as tarefas, cada uma com responsável e data.",
+          "entregavel": "Registro de atendimento com próximas ações",
+          "peca": "lista",
+          "ganho": "Todo atendimento termina com um próximo passo escrito.",
+          "pratica": "Contra o relógio",
+          "dinamica": "Do rascunho ao registro em cinco minutos.",
+          "minutos": 8,
+          "ganhos": [
+            "organizacao"
+          ],
+          "cuidado": "Anotação de cliente real é dado amarelo: troque nomes por papéis."
+        },
+        {
+          "numero": "1.7",
+          "nome": "Painel de casos e prazos",
+          "dor": "Meus prazos estão em três lugares: agenda, planilha e cabeça.",
+          "o_que_constroi": "Transforma uma planilha de processos em painel com vencidos, hoje, semana e casos por responsável.",
+          "entregavel": "Painel de casos e prazos",
+          "peca": "painel",
+          "ganho": "Uma tela responde o que vence e o que está parado.",
+          "pratica": "Construção guiada",
+          "dinamica": "Duas rodadas de ajuste até ficar do seu jeito.",
+          "minutos": 15,
+          "ganhos": [
+            "organizacao"
+          ],
+          "cuidado": "O painel mostra as datas que você lançou. A IA não conta prazo."
+        },
+        {
+          "numero": "1.8",
+          "nome": "O painel com os seus dados",
+          "dor": "Ficou bonito, mas os dados dos meus clientes não podem ir para a IA.",
+          "o_que_constroi": "Cola a planilha real dentro do painel, no próprio navegador, e monta o plano da semana.",
+          "entregavel": "Painel em uso e ritual de segunda-feira",
+          "peca": "painel",
+          "ganho": "Ferramenta sua, com o dado dentro do seu computador.",
+          "pratica": "Missão",
+          "dinamica": "A semana inteira em uma tela, em dez minutos.",
+          "minutos": 10,
+          "ganhos": [
+            "organizacao"
+          ],
+          "cuidado": ""
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "nivel": "Intermediário",
+      "eixo": "Apresentação",
+      "nome": "O que o cliente vê",
+      "para_quem": "Para quem já conversa com a IA e quer que o trabalho pareça tão bom quanto é.",
+      "dor_do_modulo": "Faço um bom trabalho, mas o cliente não enxerga. E quem não enxerga valor discute preço.",
+      "sistema": "Central do cliente, com o relatório de cada caso",
+      "peca_sistema": "painel",
+      "ganho_do_modulo": "Proposta, diagnóstico, linha do tempo e relatório com a cara do escritório, e nenhum cliente sem retorno.",
+      "requisitos": "conta gratuita; página por link pede plano pago",
+      "sessoes": [
+        {
+          "numero": "2.1",
+          "nome": "A cara do escritório",
+          "dor": "Cada documento meu sai com uma cara diferente.",
+          "o_que_constroi": "Define cores, letras e tom de voz em uma página, guarda como instrução e cria o cartão virtual do escritório.",
+          "entregavel": "Identidade em uma página e cartão virtual",
+          "peca": "cartao",
+          "ganho": "O escritório parece do tamanho que é, em tudo o que envia.",
+          "pratica": "Antes e depois",
+          "dinamica": "O mesmo documento, sem e com a identidade.",
+          "minutos": 12,
+          "ganhos": [
+            "apresentacao"
+          ],
+          "cuidado": "Sobriedade é regra da OAB. Cartão com nome e número de inscrição, sem fotografia, sem preço e sem promessa."
+        },
+        {
+          "numero": "2.2",
+          "nome": "Proposta de uma página",
+          "dor": "Mandei o valor por WhatsApp e o cliente sumiu.",
+          "o_que_constroi": "Monta a proposta de honorários: o problema do cliente, o escopo, as etapas, o que não está incluído, o investimento e o próximo passo.",
+          "entregavel": "Modelo de proposta de honorários",
+          "peca": "pagina",
+          "ganho": "Você apresenta valor antes de preço, e a conversa muda de nível.",
+          "pratica": "Antes e depois",
+          "dinamica": "A mensagem de WhatsApp e a proposta, lado a lado.",
+          "minutos": 12,
+          "ganhos": [
+            "apresentacao",
+            "clientela"
+          ],
+          "cuidado": "Proposta vai para quem pediu. Sem promessa de resultado."
+        },
+        {
+          "numero": "2.3",
+          "nome": "Diagnóstico em uma página",
+          "dor": "Na primeira reunião eu explico tudo e o cliente sai sem entender nada.",
+          "o_que_constroi": "Resume o caso para o cliente: onde ele está, os caminhos possíveis, os riscos em verde, amarelo e vermelho, e o que acontece agora.",
+          "entregavel": "Diagnóstico do caso",
+          "peca": "pagina",
+          "ganho": "O cliente decide com clareza e percebe método.",
+          "pratica": "Cliente simulado",
+          "dinamica": "A IA faz o cliente leigo e pergunta o que não entendeu.",
+          "minutos": 12,
+          "ganhos": [
+            "apresentacao",
+            "clientela"
+          ],
+          "cuidado": "Estimativa não é promessa. A avaliação de risco é sua, não da IA."
+        },
+        {
+          "numero": "2.4",
+          "nome": "Linha do tempo de um minuto",
+          "dor": "Os fatos estão em quarenta páginas e ninguém lê.",
+          "o_que_constroi": "Transforma os documentos do caso em uma linha do tempo de uma tela, com o documento que prova cada fato.",
+          "entregavel": "Linha do tempo do caso",
+          "peca": "tempo",
+          "ganho": "Cliente e juiz entendem a história antes de ler a peça.",
+          "pratica": "Antes e depois",
+          "dinamica": "Quarenta páginas e uma tela, o mesmo caso.",
+          "minutos": 10,
+          "ganhos": [
+            "apresentacao",
+            "organizacao"
+          ],
+          "cuidado": "Cada marco aponta o documento de origem."
+        },
+        {
+          "numero": "2.5",
+          "nome": "A peça que o juiz lê",
+          "dor": "Escrevo dez páginas e o essencial fica escondido.",
+          "o_que_constroi": "Dá à IA o papel de quem julga: ela diz o que entendeu da sua peça, aponta o pedido escondido e ataca o ponto fraco. Você reescreve a abertura.",
+          "entregavel": "Quadro-resumo da peça e lista de pontos fracos",
+          "peca": "lupa",
+          "ganho": "Fatos em ordem, pedido claro e tese testada antes do protocolo.",
+          "pratica": "Advogado do diabo",
+          "dinamica": "A IA faz o juiz sem tempo e a parte contrária.",
+          "minutos": 12,
+          "ganhos": [
+            "apresentacao"
+          ],
+          "cuidado": "A IA critica a forma e a lógica. Fundamento e citação, você confere."
+        },
+        {
+          "numero": "2.6",
+          "nome": "Cinco slides para quem decide",
+          "dor": "Tenho reunião com o cliente amanhã e só um parecer de doze páginas.",
+          "o_que_constroi": "Transforma o parecer em cinco slides: a decisão que se pede, o cenário, os riscos, os caminhos e o próximo passo.",
+          "entregavel": "Apresentação de cinco slides",
+          "peca": "slides",
+          "ganho": "Você fala a língua de quem decide, e a reunião rende.",
+          "pratica": "Contra o relógio",
+          "dinamica": "Do parecer aos slides em dez minutos.",
+          "minutos": 10,
+          "ganhos": [
+            "apresentacao"
+          ],
+          "cuidado": ""
+        },
+        {
+          "numero": "2.7",
+          "nome": "IA às claras",
+          "dor": "Uso IA escondido. E se o cliente perguntar?",
+          "o_que_constroi": "Escreve a página “Como usamos IA no seu caso” e preenche o termo de ciência: para que serve, o que nunca entra, quem revisa.",
+          "entregavel": "Página de transparência e termo de ciência",
+          "peca": "escudo",
+          "ganho": "Você fala primeiro, com segurança, e o cuidado vira diferencial.",
+          "pratica": "Cliente simulado",
+          "dinamica": "Três perguntas difíceis de um cliente desconfiado.",
+          "minutos": 8,
+          "ganhos": [
+            "apresentacao",
+            "clientela"
+          ],
+          "cuidado": "A OAB recomenda informar o cliente por escrito e colher a assinatura dele."
+        },
+        {
+          "numero": "2.8",
+          "nome": "Central do cliente",
+          "dor": "Não sei a quem devo retorno, e relatório é a última coisa que eu faço.",
+          "o_que_constroi": "Monta o painel de clientes com pendências, último contato e próxima atualização. De cada linha sai o relatório do caso em uma página: feito, pendente, próximo passo.",
+          "entregavel": "Central do cliente e modelo de relatório",
+          "peca": "painel",
+          "ganho": "Ninguém fica sem resposta, e o relatório do mês sai em minutos.",
+          "pratica": "Missão",
+          "dinamica": "Cinco clientes fictícios: quem espera há mais tempo?",
+          "minutos": 15,
+          "ganhos": [
+            "organizacao",
+            "apresentacao"
+          ],
+          "cuidado": "Dados reais ficam no seu navegador. Você revisa o relatório antes de enviar."
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "nivel": "Avançado",
+      "eixo": "Clientela",
+      "nome": "Clientela que vale a pena",
+      "para_quem": "Para quem quer escolher melhor os casos, cobrar com critério e receber em dia.",
+      "dor_do_modulo": "Atendo quem aparece, cobro no chute e recebo quando dá.",
+      "sistema": "Painel do escritório: contatos, propostas e honorários a receber",
+      "peca_sistema": "funil",
+      "ganho_do_modulo": "Critério para aceitar, preço que você sabe explicar, cliente bem recebido e uma tela com o que entra e o que falta receber.",
+      "requisitos": "conta gratuita e uma planilha",
+      "sessoes": [
+        {
+          "numero": "3.1",
+          "nome": "Triagem do primeiro contato",
+          "dor": "Aceito todo caso que aparece e me arrependo no terceiro mês.",
+          "o_que_constroi": "Cria a ficha do primeiro contato: as perguntas que faltam, os sinais de alerta e os critérios de encaixe do escritório.",
+          "entregavel": "Ficha de triagem",
+          "peca": "lista",
+          "ganho": "Você diz não cedo, e sobra tempo para o cliente certo.",
+          "pratica": "Missão",
+          "dinamica": "Três contatos fictícios chegam pelo WhatsApp: qual você atende?",
+          "minutos": 10,
+          "ganhos": [
+            "clientela"
+          ],
+          "cuidado": "A ficha organiza a sua decisão. A IA não aceita nem recusa cliente, e não dá consulta a quem não é cliente."
+        },
+        {
+          "numero": "3.2",
+          "nome": "Quanto cobrar, e como sustentar",
+          "dor": "Cobro no chute e, no primeiro “tá caro”, dou desconto.",
+          "o_que_constroi": "Monta a calculadora de honorários (horas previstas, complexidade, risco e custos) e ensaia a conversa com um cliente que pechincha.",
+          "entregavel": "Calculadora de honorários e roteiro de respostas",
+          "peca": "calculo",
+          "ganho": "Preço com critério, e firmeza para explicá-lo.",
+          "pratica": "Cliente simulado",
+          "dinamica": "A IA pechincha três vezes. Você treina até responder sem ceder.",
+          "minutos": 14,
+          "ganhos": [
+            "clientela"
+          ],
+          "cuidado": "A tabela de honorários da sua seccional é a referência mínima. A calculadora soma; quem decide é você."
+        },
+        {
+          "numero": "3.3",
+          "nome": "Contrato de honorários sem ponta solta",
+          "dor": "O combinado era uma coisa. No meio do caso, o cliente lembra de outra.",
+          "o_que_constroi": "Passa o seu contrato de honorários por uma lista de conferência: escopo, o que não inclui, despesas, reajuste, êxito e rescisão.",
+          "entregavel": "Lista de conferência do contrato de honorários",
+          "peca": "lista",
+          "ganho": "Menos discussão no meio do caso, e cobrança com base escrita.",
+          "pratica": "Caça ao erro",
+          "dinamica": "Um contrato fictício com cinco pontas soltas.",
+          "minutos": 10,
+          "ganhos": [
+            "clientela",
+            "organizacao"
+          ],
+          "cuidado": "A IA aponta lacunas. A redação final é sua."
+        },
+        {
+          "numero": "3.4",
+          "nome": "Boas-vindas e documentos certos",
+          "dor": "O cliente manda documento errado três vezes e me chama a qualquer hora.",
+          "o_que_constroi": "Monta o kit de boas-vindas: como o escritório trabalha, canais e horários, a lista de documentos do caso e a mensagem de pedido.",
+          "entregavel": "Kit de boas-vindas do cliente",
+          "peca": "pagina",
+          "ganho": "Limites combinados no primeiro dia e menos idas e vindas.",
+          "pratica": "Antes e depois",
+          "dinamica": "Três regras duras reescritas em tom acolhedor.",
+          "minutos": 10,
+          "ganhos": [
+            "clientela",
+            "organizacao"
+          ],
+          "cuidado": "Peça só os documentos necessários."
+        },
+        {
+          "numero": "3.5",
+          "nome": "Serviço com começo, meio e fim",
+          "dor": "Faço tudo sob medida, não sobra tempo, e o cliente não sabe o que contratou.",
+          "o_que_constroi": "Transforma um trabalho que você repete em serviço de escopo fechado: para quem é, etapas, entregável, prazo e preço. O exemplo da aula é a revisão de contrato com matriz de risco.",
+          "entregavel": "Ficha de serviço e modelo de entregável",
+          "peca": "molde",
+          "ganho": "Previsibilidade para você e clareza para o cliente.",
+          "pratica": "Prova com gabarito",
+          "dinamica": "A matriz de risco da IA contra a revisão humana.",
+          "minutos": 15,
+          "ganhos": [
+            "clientela",
+            "apresentacao"
+          ],
+          "cuidado": "A IA compara o contrato com o seu critério; a conclusão é sua. Preço não vai para material público."
+        },
+        {
+          "numero": "3.6",
+          "nome": "Cobrar sem constrangimento",
+          "dor": "Cobrar honorário atrasado me constrange, então eu deixo passar.",
+          "o_que_constroi": "Escreve a régua de cobrança: três mensagens, da lembrança ao aviso formal, com datas e tom.",
+          "entregavel": "Régua de cobrança",
+          "peca": "mensagem",
+          "ganho": "Você cobra no prazo e preserva a relação.",
+          "pratica": "Antes e depois",
+          "dinamica": "Uma cobrança ríspida reescrita em três tons.",
+          "minutos": 8,
+          "ganhos": [
+            "clientela"
+          ],
+          "cuidado": "Nada é enviado automaticamente. Cobrança respeitosa, sem expor o cliente."
+        },
+        {
+          "numero": "3.7",
+          "nome": "Autoridade sem propaganda",
+          "dor": "Sei que preciso aparecer, mas não tenho tempo nem quero parecer vendedor.",
+          "o_que_constroi": "Transforma uma decisão recente em boletim informativo para clientes e contatos, com a identidade do escritório.",
+          "entregavel": "Boletim informativo",
+          "peca": "pagina",
+          "ganho": "O escritório é lembrado por quem importa, do jeito que a OAB permite.",
+          "pratica": "Caça ao erro",
+          "dinamica": "Um texto com três frases que o Provimento 205 não aceita.",
+          "minutos": 10,
+          "ganhos": [
+            "clientela",
+            "apresentacao"
+          ],
+          "cuidado": "Conteúdo informativo, sem captação, sem promessa e sem caso concreto como oferta."
+        },
+        {
+          "numero": "3.8",
+          "nome": "Painel do escritório",
+          "dor": "Não sei quantas propostas estão paradas nem quanto tenho a receber.",
+          "o_que_constroi": "Monta o painel com o caminho de cada contato: triagem, proposta, contrato e honorários a receber.",
+          "entregavel": "Painel do escritório",
+          "peca": "funil",
+          "ganho": "Você decide a semana olhando uma tela, e nenhuma proposta esfria.",
+          "pratica": "Construção guiada",
+          "dinamica": "Dados fictícios de um mês de escritório.",
+          "minutos": 15,
+          "ganhos": [
+            "clientela",
+            "organizacao"
+          ],
+          "cuidado": "Dados reais ficam no seu navegador."
+        }
+      ]
+    }
+  ],
+  "mapa_titulo": "A mesma dor volta em mais de uma sessão",
+  "mapa_texto": "A relação não é de um para um. Uma dor grande pede mais de uma peça, e uma peça boa alivia mais de uma dor.",
+  "mapa_dores": [
+    {
+      "dor": "O cliente não enxerga o meu trabalho.",
+      "sessoes": [
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.6",
+        "2.8"
+      ]
+    },
+    {
+      "dor": "O cliente pergunta do processo toda semana.",
+      "sessoes": [
+        "1.5",
+        "2.8"
+      ]
+    },
+    {
+      "dor": "Não sei o que está parado.",
+      "sessoes": [
+        "1.7",
+        "2.8",
+        "3.8"
+      ]
+    },
+    {
+      "dor": "Os fatos estão espalhados.",
+      "sessoes": [
+        "1.3",
+        "1.6",
+        "2.4"
+      ]
+    },
+    {
+      "dor": "Tenho medo de a IA inventar e eu assinar embaixo.",
+      "sessoes": [
+        "1.4",
+        "2.5",
+        "3.5"
+      ]
+    },
+    {
+      "dor": "Tenho medo de expor meu cliente.",
+      "sessoes": [
+        "1.1",
+        "1.8",
+        "2.7"
+      ]
+    },
+    {
+      "dor": "Uso IA escondido.",
+      "sessoes": [
+        "1.1",
+        "2.7"
+      ]
+    },
+    {
+      "dor": "Refaço tudo do zero, toda vez.",
+      "sessoes": [
+        "1.2",
+        "2.1",
+        "3.5"
+      ]
+    },
+    {
+      "dor": "Mandei o valor por WhatsApp e o cliente sumiu.",
+      "sessoes": [
+        "2.2",
+        "3.2"
+      ]
+    },
+    {
+      "dor": "Cobro no chute e recebo quando dá.",
+      "sessoes": [
+        "3.2",
+        "3.3",
+        "3.6",
+        "3.8"
+      ]
+    },
+    {
+      "dor": "Atendo quem aparece.",
+      "sessoes": [
+        "3.1",
+        "3.7"
+      ]
+    },
+    {
+      "dor": "O cliente me chama a qualquer hora, por qualquer canal.",
+      "sessoes": [
+        "1.5",
+        "3.4"
+      ]
+    }
+  ],
+  "notas": {
+    "precisa": [
+      "Computador com navegador e conta gratuita em um assistente de IA. As aulas usam o Claude; o que é conversa funciona também no ChatGPT e no Gemini.",
+      "Um editor de planilhas, para os três painéis.",
+      "Plano pago só para publicar página por link e para os laboratórios de automação.",
+      "Quem entra direto no módulo 2 ou no 3 recebe uma página com o método de pedido e o semáforo do sigilo."
+    ],
+    "cuidados": [
+      "Em aula, só dados fictícios. Com dado de cliente: conversas fora do treinamento, termo de ciência assinado e nomes trocados por papéis.",
+      "A IA propõe e você decide. Nada é enviado sozinho, e a IA não conta prazo.",
+      "Tudo o que vai ao cliente ou ao juiz passa pela sua leitura. Citação só entra depois das três chaves.",
+      "Material público do escritório segue o Provimento 205/2021 da OAB: informativo e sóbrio, sem preço e sem promessa."
+    ],
+    "extras": [
+      "Triagem de e-mail com rascunho de resposta, no Google Workspace.",
+      "Histórico de versões de contrato, com alerta de mudança desfavorável.",
+      "Auditor de citações de uma peça, com validador do número do processo."
+    ],
+    "producao": [
+      "Os tempos são estimativas: falta uma gravação-piloto para confirmar.",
+      "Na gravação, cada sessão pode virar dois ou três vídeos curtos.",
+      "Já existem no kit: painel de casos e prazos, biblioteca de pedidos, caso de contrato com playbook e gabarito, modelos de política e de termo.",
+      "A produzir: os modelos e casos fictícios das sessões novas e os painéis dos módulos 2 e 3."
+    ]
+  },
+  "rodape": "Agenda de planejamento, versão de 11/11/2026. Material de treinamento, sem valor de parecer jurídico. Casos, clientes e documentos das aulas são fictícios."
+}
