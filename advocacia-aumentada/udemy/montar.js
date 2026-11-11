@@ -57,6 +57,7 @@ const I = {
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   livros: '<path d="M5 4h4v16H5zM10 4h4v16h-4zM15.4 4.6l3.8 1-3.4 14.8-3.9-.9z"/>',
   grafico: '<path d="M4 20h16M7 16v-4M12 16V7M17 16v-7"/>',
+  fluxo: '<circle cx="5" cy="12" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M7.2 12h4.3M11.5 12c2 0 2.5-6 5.3-6M11.5 12c2 0 2.5 6 5.3 6"/>',
   seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   luz: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
   cadeado: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',

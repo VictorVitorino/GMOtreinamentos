@@ -4,7 +4,7 @@
 
 Do primeiro acesso seguro às rotinas automatizadas, com o primeiro caso resolvido já no módulo 1. Tudo no navegador, sem programar, com a identidade do seu escritório ou da sua empresa e dentro das regras da OAB.
 
-3 módulos · 24 aulas · 4 h 30 de vídeo · 24 conquistas · 15 ferramentas
+3 módulos · 24 aulas · 4 h 30 de vídeo · 24 conquistas · 16 ferramentas
 
 A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).
 
@@ -84,6 +84,7 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 - **Contratos pelo critério do escritório.** Leitura do contrato pelo playbook, matriz de riscos com trecho conferido e comparação de versões com alerta. Ferramentas: Apps Script, API do Claude, Google Planilhas. Precisa de: chave de API paga, centavos por contrato.
 - **Triagem de e-mail com IA.** Etiqueta, resumo e rascunho de resposta para cada e-mail novo, sem nada ser enviado. Ferramentas: Apps Script, API do Claude, Gmail. Precisa de: chave de API paga, centavos por e-mail.
+- **n8n: rotinas fora do Google.** Os mesmos fluxos num editor visual, ligando Outlook, Teams e outros sistemas, o WhatsApp pela API oficial da Meta e o Claude acionando os fluxos por um conector MCP. Ferramentas: n8n, WhatsApp Business, Claude. Precisa de: n8n Cloud (pago, com teste grátis) ou servidor próprio com apoio de TI; WhatsApp pela API pede verificação na Meta e tem custo por mensagem.
 
 ## No fim, você apresenta o seu escritório funcionando
 
@@ -127,6 +128,7 @@ O curso não promete número. Você registra o que aconteceu, inclusive quando o
 | Design system | A marca em tudo que o Claude cria | Pro | 2, 3 |
 | WhatsApp Business | Resposta fora do horário e respostas rápidas | Grátis | 3 |
 | API do Claude | A IA dentro das rotinas, nos aprofundamentos | Centavos por uso |  |
+| n8n | Rotinas em editor visual, inclusive fora do Google | Pago ou servidor próprio |  |
 
 | Modelo do Claude | Perfil | Quando usar na advocacia |
 |---|---|---|
@@ -144,4 +146,4 @@ O curso não promete número. Você registra o que aconteceu, inclusive quando o
 | 3 · Rotinas automatizadas, decisões com você | Quatro fluxos completos (entrada da demanda, documentos, follow-up e painel de aprovação) e o ganho medido antes e depois. | 8 | 1 h 40 |
 | **Total** | 24 conquistas e as rotinas do escritório | 24 | 4 h 30 |
 
-Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google e têm equivalente no Power Automate, que o curso não cobre.
+Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google, e o aprofundamento de n8n mostra o caminho para Outlook, Teams e outros sistemas.

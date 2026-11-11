@@ -535,6 +535,16 @@
         "Gmail"
       ],
       "precisa": "chave de API paga, centavos por e-mail"
+    },
+    {
+      "nome": "n8n: rotinas fora do Google",
+      "texto": "Os mesmos fluxos num editor visual, ligando Outlook, Teams e outros sistemas, o WhatsApp pela API oficial da Meta e o Claude acionando os fluxos por um conector MCP.",
+      "ferramentas": [
+        "n8n",
+        "WhatsApp Business",
+        "Claude"
+      ],
+      "precisa": "n8n Cloud (pago, com teste grátis) ou servidor próprio com apoio de TI; WhatsApp pela API pede verificação na Meta e tem custo por mensagem"
     }
   ],
   "medicao": {
@@ -679,6 +689,12 @@
       "faz": "A IA dentro das rotinas, nos aprofundamentos",
       "plano": "Centavos por uso",
       "tipo": "pago"
+    },
+    "n8n": {
+      "icone": "fluxo",
+      "faz": "Rotinas em editor visual, inclusive fora do Google",
+      "plano": "Pago ou servidor próprio",
+      "tipo": "pago"
     }
   },
   "modelos": [
@@ -703,5 +719,5 @@
       "usos": "Processos complexos: autos volumosos, várias teses, estratégia e revisão crítica da peça."
     }
   ],
-  "rodape": "Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google e têm equivalente no Power Automate, que o curso não cobre."
+  "rodape": "Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google, e o aprofundamento de n8n mostra o caminho para Outlook, Teams e outros sistemas."
 }
