@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA Aplicada a Advogados · Agenda do curso</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+/* Layout: uma página, três tabelas. Módulo, sessão, o que é, o que iremos ensinar e tempo. */
+:root {
+  --paper: #F3F5F6; --surface: #FFFFFF; --ink: #16212B; --ink-2: #4D5A66; --line: #D3DAE0; --accent: #0A6B63;
+  --font-display: "IBM Plex Serif", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #0E1418; --surface: #151C22; --ink: #E7ECF0; --ink-2: #A0ADB8; --line: #2B3640; --accent: #56C8BC; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.pagina { max-width: 1040px; margin: 0 auto; padding: 36px 16px 56px; display: flex; flex-direction: column; gap: 40px; }
+h1, h2, p, dl, dd { margin: 0; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; letter-spacing: -0.01em; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 3vw, 1.7rem); line-height: 1.2; }
+.rotulo { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+.abre { display: flex; flex-direction: column; gap: 14px; }
+.abre .sub { font-size: 1.1rem; color: var(--ink-2); max-width: 62ch; }
+.fatos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-block: 1px solid var(--line); }
+.fatos div { padding: 12px 16px 12px 0; display: flex; flex-direction: column; gap: 2px; }
+.fatos dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.fatos dd { font-size: 1.02rem; font-weight: 600; }
+.modulo { display: flex; flex-direction: column; gap: 12px; }
+.modulo-cab { display: flex; flex-direction: column; gap: 4px; }
+.modulo-cab p { color: var(--ink-2); }
+.rolagem { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; min-width: 700px; font-size: 0.94rem; }
+th, td { text-align: left; vertical-align: top; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+td:first-child { font-weight: 600; width: 27%; }
+td:nth-child(2) { color: var(--ink-2); width: 21%; }
+td:last-child, th:last-child { text-align: right; white-space: nowrap; width: 9%; }
+td:last-child { font-family: var(--font-mono); font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+tfoot td { border-bottom: 0; font-weight: 600; color: var(--ink); }
+.num { font-family: var(--font-mono); font-weight: 500; color: var(--accent); margin-right: 6px; }
+.notas { color: var(--ink-2); font-size: 0.92rem; display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--line); padding-top: 18px; max-width: 80ch; }
+.notas strong { color: var(--ink); font-weight: 600; }
+</style>
+</head>
+<body>
+<main class="pagina">
+
+  <header class="abre">
+    <p class="rotulo">Curso gravado · Agenda</p>
+    <h1>IA Aplicada a Advogados</h1>
+    <p class="sub">Do primeiro pedido ao sistema de contratos do escritório, com o Claude e o Google Workspace, dentro das regras da OAB e da LGPD.</p>
+    <dl class="fatos">
+      <div><dt>Módulos</dt><dd>3</dd></div>
+      <div><dt>Sessões</dt><dd>29</dd></div>
+      <div><dt>Vídeo</dt><dd>7 h 15 min</dd></div>
+      <div><dt>Em cada módulo</dt><dd>Um sistema construído</dd></div>
+    </dl>
+  </header>
+
+  <section class="modulo">
+    <div class="modulo-cab">
+      <p class="rotulo">Módulo 1 · Básico · 9 sessões · 2 h 20 min</p>
+      <h2>Primeiros passos e o painel de prazos</h2>
+      <p>Para quem nunca usou IA no trabalho. Ao final: painel de casos e prazos.</p>
+    </div>
+    <div class="rolagem">
+      <table>
+        <thead><tr><th>Sessão</th><th>O que é</th><th>O que iremos ensinar</th><th>Tempo</th></tr></thead>
+        <tbody>
+          <tr><td><span class="num">1.1</span>Boas-vindas: o que a IA faz e o que não faz</td><td>Abertura do curso</td><td>Como o curso funciona, em que a IA ajuda o advogado e por que ela inventa citações e não conta prazo</td><td>12 min</td></tr>
+          <tr><td><span class="num">1.2</span>Conta segura e sigilo</td><td>Configuração da ferramenta</td><td>Criar a conta, desligar o uso das conversas para treinamento, ligar a verificação em duas etapas e classificar os dados em verde, amarelo e vermelho</td><td>15 min</td></tr>
+          <tr><td><span class="num">1.3</span>Como pedir: perfil e método FATOS</td><td>Método para escrever pedidos</td><td>Escrever o perfil de instruções e montar um pedido com Função, Alvo, Texto-base, Orientações e Saída</td><td>18 min</td></tr>
+          <tr><td><span class="num">1.4</span>Três usos para o dia seguinte</td><td>Aplicações práticas na conversa</td><td>Explicar um andamento ao cliente, redigir um e-mail de cobrança de honorários e resumir um documento longo com o trecho de cada ponto</td><td>20 min</td></tr>
+          <tr><td><span class="num">1.5</span>Projeto «Meu escritório»</td><td>Base de conhecimento do escritório</td><td>Criar um projeto com instruções e arquivos, perguntar exigindo o trecho e gerar a linha do tempo de um caso</td><td>15 min</td></tr>
+          <tr><td><span class="num">1.6</span>Conferir o que a IA diz</td><td>Verificação de citações</td><td>Aplicar as três chaves (existe? diz isso? vale hoje?) nas fontes oficiais do STF, do STJ e do TST</td><td>15 min</td></tr>
+          <tr><td><span class="num">1.7</span>Painel de casos e prazos: construção</td><td>Projeto do módulo, parte 1</td><td>Transformar uma planilha de processos em um painel com vencidos, prazos da semana e casos por responsável</td><td>20 min</td></tr>
+          <tr><td><span class="num">1.8</span>Painel de casos e prazos: ajustes e dados reais</td><td>Projeto do módulo, parte 2</td><td>Pedir ajustes ao painel e usá-lo com a planilha real sem enviar os dados à IA</td><td>12 min</td></tr>
+          <tr><td><span class="num">1.9</span>Política de uso de IA e termo do cliente</td><td>Documentos de conformidade</td><td>Preencher a política de uma página e o termo de ciência do cliente recomendados pela OAB</td><td>13 min</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">Total do módulo 1</td><td>2 h 20 min</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="modulo">
+    <div class="modulo-cab">
+      <p class="rotulo">Módulo 2 · Intermediário · 10 sessões · 2 h 27 min</p>
+      <h2>A central do escritório</h2>
+      <p>Para quem já usa a IA na conversa. Ao final: central de e-mail, agenda e citações, com painel, e cartão virtual.</p>
+    </div>
+    <div class="rolagem">
+      <table>
+        <thead><tr><th>Sessão</th><th>O que é</th><th>O que iremos ensinar</th><th>Tempo</th></tr></thead>
+        <tbody>
+          <tr><td><span class="num">2.1</span>Conectores: e-mail, agenda e arquivos</td><td>Integração da IA com o Google</td><td>Ligar Gmail, Agenda e Drive ao assistente com o mínimo de permissão</td><td>15 min</td></tr>
+          <tr><td><span class="num">2.2</span>Skills e plugins</td><td>Recursos de personalização</td><td>O que são, quando usar e por que o plugin jurídico pronto precisa do critério do escritório</td><td>12 min</td></tr>
+          <tr><td><span class="num">2.3</span>Minha semana em uma página</td><td>Briefing semanal</td><td>Pedir o resumo da semana a partir da agenda e dos e-mails</td><td>12 min</td></tr>
+          <tr><td><span class="num">2.4</span>Identidade da marca em uma página</td><td>Identidade visual do escritório</td><td>Definir voz, cores e tipografia e guardar tudo como instrução reutilizável</td><td>18 min</td></tr>
+          <tr><td><span class="num">2.5</span>Cartão virtual nas regras da OAB</td><td>Produto para o cliente</td><td>Criar o cartão com QR Code e agendamento e conferi-lo com o Provimento 205/2021</td><td>15 min</td></tr>
+          <tr><td><span class="num">2.6</span>Instalando a central</td><td>Configuração da planilha de automações</td><td>Copiar a planilha-modelo, instalar e guardar a chave da API</td><td>15 min</td></tr>
+          <tr><td><span class="num">2.7</span>Triagem de e-mail com rascunho</td><td>Automação da caixa de entrada</td><td>Classificar, resumir e rascunhar respostas sem enviar nada, e manter dados sensíveis fora da IA</td><td>20 min</td></tr>
+          <tr><td><span class="num">2.8</span>Ajustando a triagem</td><td>Parametrização e edição</td><td>Acrescentar termos sensíveis e alterar uma regra do prompt da automação</td><td>12 min</td></tr>
+          <tr><td><span class="num">2.9</span>Citações conferidas</td><td>Auditoria de citações</td><td>Listar as citações de uma peça, validar o número do processo e registrar a conferência</td><td>20 min</td></tr>
+          <tr><td><span class="num">2.10</span>O painel da central</td><td>Projeto do módulo</td><td>Ler o painel de e-mails e precedentes e decidir o que ligar na conta real</td><td>8 min</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">Total do módulo 2</td><td>2 h 27 min</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="modulo">
+    <div class="modulo-cab">
+      <p class="rotulo">Módulo 3 · Avançado · 10 sessões · 2 h 28 min</p>
+      <h2>O sistema de contratos</h2>
+      <p>Para quem revisa contratos com frequência. Ao final: sistema de contratos com matriz de risco, histórico de versões e painel.</p>
+    </div>
+    <div class="rolagem">
+      <table>
+        <thead><tr><th>Sessão</th><th>O que é</th><th>O que iremos ensinar</th><th>Tempo</th></tr></thead>
+        <tbody>
+          <tr><td><span class="num">3.1</span>Mapa do sistema</td><td>Visão geral</td><td>O caminho de um contrato e o que sai e o que fica no escritório</td><td>10 min</td></tr>
+          <tr><td><span class="num">3.2</span>Repositório e planilha de contratos</td><td>Estrutura de pastas e cadastro</td><td>Criar pastas, códigos e abas e definir quem acessa e por quanto tempo se guarda</td><td>15 min</td></tr>
+          <tr><td><span class="num">3.3</span>Playbook do escritório</td><td>Critério de revisão</td><td>Escrever o que é padrão, aceitável e inaceitável em cada tema do contrato</td><td>15 min</td></tr>
+          <tr><td><span class="num">3.4</span>Leitura automatizada e matriz de risco</td><td>Automação da primeira leitura</td><td>Processar um contrato e ler a matriz de risco, com o trecho de cada achado</td><td>20 min</td></tr>
+          <tr><td><span class="num">3.5</span>Prova com gabarito</td><td>Teste de qualidade</td><td>Comparar a análise da IA com a revisão humana em seis critérios e decidir cada risco</td><td>12 min</td></tr>
+          <tr><td><span class="num">3.6</span>Histórico de versões e alerta</td><td>Controle de alterações</td><td>Registrar uma nova versão, ver o que mudou e receber o alerta de mudança desfavorável</td><td>18 min</td></tr>
+          <tr><td><span class="num">3.7</span>Prazos do contrato na agenda</td><td>Controle de vencimentos</td><td>Lançar o fim da vigência e o aviso de não renovação depois da revisão do advogado</td><td>10 min</td></tr>
+          <tr><td><span class="num">3.8</span>Especificação do sistema próprio</td><td>Desenho do produto</td><td>Transformar uma entrevista com a IA em especificação funcional</td><td>18 min</td></tr>
+          <tr><td><span class="num">3.9</span>Protótipo com a marca do escritório</td><td>Projeto do módulo</td><td>Gerar um protótipo navegável com painel, ficha do contrato e histórico</td><td>15 min</td></tr>
+          <tr><td><span class="num">3.10</span>Dossiê LGPD e plano de 90 dias</td><td>Conformidade e próximos passos</td><td>Preencher o dossiê de uso de IA e definir três metas</td><td>15 min</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">Total do módulo 3</td><td>2 h 28 min</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <div class="notas">
+    <p><strong>Tempo.</strong> Os minutos são de vídeo. A prática do aluno acontece fora da aula, com os materiais de apoio.</p>
+    <p><strong>O que o aluno precisa.</strong> Módulo 1: uma conta no Claude. Módulos 2 e 3: também uma conta Google e uma chave de API, com custo de centavos por uso.</p>
+    <p><strong>Materiais de apoio.</strong> Planilha de exemplo, biblioteca de prompts, planilha-modelo com as automações, contrato fictício em duas versões e modelos de política, termo e dossiê.</p>
+  </div>
+
+</main>
+</body>
+</html>

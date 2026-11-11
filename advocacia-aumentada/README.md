@@ -4,6 +4,8 @@ Treinamento de Claude para advogados de 19 a 55 anos que ainda não usam IA no t
 
 **Comece pela agenda:** [agenda.html](agenda.html), publicada em <https://claude.ai/artifact/2TujraoY7qiW4p155BaXsJ> (privada; compartilhe pelo menu da página). O espelho em texto é o [AGENDA.md](AGENDA.md).
 
+**Duas versões da agenda.** A oficina ao vivo, de 8 horas, está em [agenda.html](agenda.html). O curso gravado para a Udemy, "IA Aplicada a Advogados", com 29 sessões e 7 h 15 min de vídeo, está em [udemy/agenda-udemy.html](udemy/agenda-udemy.html).
+
 ## Os três módulos
 
 | Módulo | Nível | Duração | Dores | Sistema que o participante leva |
