@@ -62,6 +62,7 @@ const I = {
   seta: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   luz: '<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
   cadeado: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
+  moeda: '<circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.4c-.5-.9-1.5-1.4-2.6-1.4-1.4 0-2.6.8-2.6 2s1.2 1.7 2.6 2 2.6.8 2.6 2-1.2 2-2.6 2c-1.1 0-2.1-.5-2.6-1.4M12 6.6V8M12 16v1.4"/>',
 };
 
 // ---------- conferência ----------
@@ -79,6 +80,13 @@ A.modulos.forEach((m) => {
     if (!I[a.icone]) erros.push(`Aula ${a.numero}: ícone desconhecido "${a.icone}".`);
     (a.ferramentas || []).forEach((f) => { if (!A.ferramentas[f]) erros.push(`Aula ${a.numero}: ferramenta sem cadastro "${f}".`); });
   });
+  if (m.painel) {
+    if (!m.painel.titulo || !m.painel.texto || !(m.painel.blocos || []).length) erros.push(`Módulo ${m.numero}: painel sem título, texto ou blocos.`);
+    (m.painel.blocos || []).forEach((b) => {
+      if (!I[b.icone]) erros.push(`Painel, bloco ${b.nome}: ícone desconhecido "${b.icone}".`);
+      if (!m.aulas.some((a) => a.numero === b.aula)) erros.push(`Painel, bloco ${b.nome}: aula ${b.aula} não existe no módulo ${m.numero}.`);
+    });
+  }
 });
 (A.aprofundamentos || []).forEach((x) => x.ferramentas.forEach((f) => { if (!A.ferramentas[f]) erros.push(`Aprofundamento ${x.nome}: ferramenta sem cadastro "${f}".`); }));
 (A.medicao ? A.medicao.indicadores : []).forEach((x) => { if (!I[x.icone]) erros.push(`Indicador ${x.nome}: ícone desconhecido.`); });
@@ -277,6 +285,36 @@ button { font: inherit; color: inherit; }
 .dica { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding: 10px 14px; border-radius: 10px; background: var(--ouro-s); font-size: .93rem; }
 .dica .ico { color: var(--ouro); }
 
+/* o painel do escritório: modelo dentro do módulo */
+.vitrine { margin-top: 22px; display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: 28px; align-items: center; background: var(--cartao); border: 1px solid var(--linha); border-radius: 20px; padding: 26px; scroll-margin-top: 84px; }
+.vitrine .olho { color: var(--cor); }
+.vitrine h3 { font-family: var(--f-titulo); font-size: 1.55rem; font-weight: 800; line-height: 1.15; margin-top: 6px; }
+.vitrine .v-txt > p:not(.olho) { margin-top: 10px; color: var(--tinta-2); }
+.vitrine .v-placar { font-weight: 700; }
+.vitrine .v-placar b { color: var(--tinta); font-variant-numeric: tabular-nums; }
+.v-botao { margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 10px; border: 1.5px solid var(--linha); background: var(--cartao); color: var(--tinta); font-weight: 700; font-size: .92rem; cursor: pointer; }
+.v-botao:hover { border-color: var(--cor); }
+.v-botao .ico { color: var(--cor); }
+.tela { background: var(--noite); border: 1px solid var(--noite-3); border-radius: 16px; padding: 12px; }
+.tela-barra { display: flex; align-items: center; gap: 10px; padding: 2px 4px 12px; color: var(--noite-sub); font-size: .84rem; font-weight: 600; }
+.tela-barra .pontos { display: flex; gap: 5px; }
+.tela-barra .pontos i { width: 9px; height: 9px; border-radius: 50%; background: var(--noite-3); display: block; }
+.tela-barra .so-voce { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.tela-barra .so-voce .ico { width: 15px; height: 15px; }
+.blocos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.bloco { background: var(--noite-2); border: 1px dashed var(--noite-3); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; color: var(--noite-sub); transition: border-color .35s, box-shadow .35s; }
+.bloco .b-ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--vidro); color: var(--noite-sub); transition: background .35s, color .35s; }
+.bloco .b-ico .ico { width: 19px; height: 19px; }
+.bloco b { color: var(--noite-tinta); font-size: 1rem; line-height: 1.2; }
+.bloco small { font-size: .84rem; line-height: 1.35; }
+.bloco .b-aula { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 5px; font-size: .76rem; font-weight: 700; text-decoration: none; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--noite-3); color: var(--noite-sub); white-space: nowrap; }
+.bloco .b-aula .ico { width: 13px; height: 13px; display: none; }
+.bloco.acesa, .tela.pronto .bloco { border: 1px solid var(--cor); box-shadow: 0 0 16px color-mix(in srgb, var(--cor) 55%, transparent); }
+.bloco.acesa .b-ico, .tela.pronto .bloco .b-ico { background: var(--cor); color: var(--cartao); }
+.bloco.acesa .b-aula, .tela.pronto .bloco .b-aula { background: var(--cor); border-color: var(--cor); color: var(--cartao); }
+.bloco.acesa .b-aula .ico, .tela.pronto .bloco .b-aula .ico { display: block; }
+.v-nota { margin-top: 10px; font-size: .86rem; color: var(--noite-sub); padding: 0 4px; }
+
 /* conquistas */
 .medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 28px; }
 .medalha { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; text-decoration: none; min-width: 0; }
@@ -356,6 +394,7 @@ button { font: inherit; color: inherit; }
   .ferr-col { flex-direction: row; flex-wrap: wrap; gap: 8px 14px; }
   .ferr-col .rot-m { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2); width: 100%; }
   .final { grid-template-columns: minmax(0, 1fr); padding: 28px; }
+  .vitrine { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -380,10 +419,14 @@ button { font: inherit; color: inherit; }
   .janela { height: 32px; }
   .final { padding: 22px; border-radius: 18px; }
   .roteiro li { grid-template-columns: 28px 28px minmax(0, 1fr); padding: 10px 12px; }
+  .vitrine { padding: 18px; border-radius: 16px; }
+  .blocos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bloco { padding: 10px; }
+  .tela-barra .pontos { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .janela, .etapa, .aula { transition: none; }
+  .janela, .etapa, .aula, .bloco, .bloco .b-ico { transition: none; }
 }
 `;
 
@@ -498,6 +541,24 @@ const aprof = `
         </div>
       </div>`;
 
+const vitrine = (m) => !m.painel ? '' : `
+      <div class="vitrine" id="painel-m${m.numero}">
+        <div class="v-txt">
+          <p class="olho">O que este módulo constrói</p>
+          <h3>${esc(m.painel.titulo)}</h3>
+          <p>${esc(m.painel.texto)}</p>
+          <p class="v-placar"><b id="blocos-acesos">0</b> de ${m.painel.blocos.length} blocos ligados. Cada bloco liga quando você marca a aula que o alimenta.</p>
+          <button type="button" class="v-botao" id="ver-painel" aria-pressed="false">${ico('luz')}<span>Ver o painel ligado</span></button>
+        </div>
+        <div class="tela" id="tela-painel">
+          <div class="tela-barra"><span class="pontos" aria-hidden="true"><i></i><i></i><i></i></span><span>${esc(m.painel.titulo)}</span><span class="so-voce">${ico('cadeado')}só você acessa</span></div>
+          <ul class="blocos">${m.painel.blocos.map((b) => `
+            <li class="bloco" data-bloco="${esc(b.aula)}"><span class="b-ico">${ico(b.icone)}</span><b>${esc(b.nome)}</b><small>${esc(b.mostra)}</small><a class="b-aula" href="#${idA(b.aula)}">${ico('check')}aula ${esc(b.aula)}</a></li>`).join('')}
+          </ul>${m.painel.nota ? `
+          <p class="v-nota">${esc(m.painel.nota)}</p>` : ''}
+        </div>
+      </div>`;
+
 const modulo = (m) => `
   <section class="secao faixa modulo-sec m${m.numero}" id="modulo-${m.numero}" aria-labelledby="t-m${m.numero}">
     <div class="miolo">
@@ -510,7 +571,7 @@ const modulo = (m) => `
           <p class="fim">${ico('check')}<span><b>No fim do módulo:</b> ${esc(m.resultado)}</span></p>
           <p class="meta"><span><b>${m.aulas.length}</b> aulas</span><span><b>${fmt(m.minutos)}</b> de vídeo</span><span>Precisa de: ${esc(m.precisa)}</span></p>
         </div>
-      </header>
+      </header>${vitrine(m)}
       <p class="dica">${ico('check')}<span>Terminou uma aula? Toque no número dela: a janela do prédio acende e a conquista entra na sua coleção.</span></p>
       <div class="grade-cab" aria-hidden="true"><span>Aula</span><span>O que é e o que vamos apresentar</span><span>Ferramentas</span><span>Tempo</span></div>
       <ol class="aulas">${m.aulas.map((a) => aula(a, m)).join('')}
@@ -588,7 +649,7 @@ const resumo = `
         <tbody>${A.modulos.map((m) => `
           <tr class="m${m.numero}"><td style="min-width:220px"><span class="bola-m">${m.numero}</span><b>${esc(m.nome)}</b></td><td>${esc(m.resultado)}</td><td class="n">${m.aulas.length}</td><td class="n">${fmt(m.minutos)}</td></tr>`).join('')}
         </tbody>
-        <tfoot><tr><td>Total</td><td>${aulas.length} conquistas e as rotinas do escritório</td><td class="n">${aulas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
+        <tfoot><tr><td>Total</td><td>${aulas.length} conquistas, as rotinas e o painel do escritório</td><td class="n">${aulas.length}</td><td class="n">${fmt(totalMin)}</td></tr></tfoot>
       </table></div>
     </div>
   </section>
@@ -603,6 +664,7 @@ const script = `
   var feitas = {};
   try { feitas = JSON.parse(localStorage.getItem(CHAVE) || '{}') || {}; } catch (e) { feitas = {}; }
   var botoes = [].slice.call(document.querySelectorAll('.feito'));
+  var blocos = [].slice.call(document.querySelectorAll('[data-bloco]'));
   function atualizar() {
     var n = 0;
     botoes.forEach(function (b) {
@@ -615,6 +677,9 @@ const script = `
     });
     document.getElementById('janelas-acesas').textContent = n;
     document.getElementById('placar').textContent = n;
+    var nb = 0;
+    blocos.forEach(function (bl) { var on = !!feitas[bl.getAttribute('data-bloco')]; if (on) nb += 1; bl.classList.toggle('acesa', on); });
+    var pb = document.getElementById('blocos-acesos'); if (pb) pb.textContent = nb;
   }
   botoes.forEach(function (b) {
     b.addEventListener('click', function () {
@@ -630,6 +695,13 @@ const script = `
     pronto.setAttribute('aria-pressed', String(on));
     document.getElementById('predio').classList.toggle('pronto', on);
     pronto.querySelector('span').textContent = on ? 'Voltar ao meu progresso' : 'Ver o prédio completo';
+  });
+  var verPainel = document.getElementById('ver-painel');
+  if (verPainel) verPainel.addEventListener('click', function () {
+    var on = verPainel.getAttribute('aria-pressed') !== 'true';
+    verPainel.setAttribute('aria-pressed', String(on));
+    document.getElementById('tela-painel').classList.toggle('pronto', on);
+    verPainel.querySelector('span').textContent = on ? 'Voltar ao meu progresso' : 'Ver o painel ligado';
   });
   var itens = [].slice.call(document.querySelectorAll('.nav a.item'));
   var alvos = itens.map(function (a) { return document.querySelector(a.getAttribute('href')); });
@@ -680,6 +752,7 @@ const md = [`# ${A.titulo}`, '', `**${A.chamada}**`, '', A.apoio, '', `3 módulo
   '## O curso', '', ...A.curso.map((c) => `- **${c.titulo}.** ${c.texto}`), '', '| Hoje | No fim do curso |', '|---|---|', ...A.antes_depois.map((x) => `| ${cel(x.antes)} | ${cel(x.depois)} |`), ''];
 A.modulos.forEach((m) => {
   md.push(`## Módulo ${m.numero} · ${m.nome}`, '', `> "${m.dor}"`, '', ...(m.regra ? [`**${m.regra}**`, ''] : []), `**No fim do módulo:** ${m.resultado}`, '', `${m.aulas.length} aulas · ${fmt(m.minutos)} · Precisa de: ${m.precisa}`, '');
+  if (m.painel) md.push(`### ${m.painel.titulo}`, '', m.painel.texto, '', '| Bloco | O que mostra | Liga na aula |', '|---|---|---|', ...m.painel.blocos.map((b) => `| ${cel(b.nome)} | ${cel(b.mostra)} | ${b.aula} |`), '', ...(m.painel.nota ? [m.painel.nota, ''] : []));
   md.push('| Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |', '|---|---|---|---|---|---:|');
   m.aulas.forEach((a) => md.push(`| **${a.numero} ${cel(a.nome)}** | ${cel(a.o_que_e)} | ${a.roteiro.map((x, i) => `${i + 1}. ${cel(x)}`).join('<br>')} | ${cel(a.conquista)}<br>*Missão: ${cel(a.missao)}* | ${a.ferramentas.map(cel).join(', ')} | ${a.minutos} min |`));
   md.push('');
@@ -689,7 +762,7 @@ md.push(`## ${PF.titulo}`, '', PF.texto, '', ...PF.roteiro.map((r, i) => `${i + 
 if (MED) md.push(`## ${MED.titulo}`, '', MED.texto, '', `| Indicador | Como medir | ${MED.antes || 'Antes'} | ${MED.depois || 'Depois'} |`, '|---|---|---|---|', ...MED.indicadores.map((x) => `| ${x.nome} | ${x.como} | | |`), '', MED.nota, '');
 md.push('## Ferramentas incorporadas', '', '| Ferramenta | Para que serve | Plano | Módulos |', '|---|---|---|---|', ...nomesF.map((f) => `| ${f} | ${A.ferramentas[f].faz} | ${A.ferramentas[f].plano} | ${modulosDe(f).join(', ')} |`), '');
 md.push('| Modelo do Claude | Perfil | Quando usar na advocacia |', '|---|---|---|', ...A.modelos.map((l) => `| ${l.modelo} | ${l.perfil} | ${l.usos} |`), '');
-md.push('## Resumo', '', '| Módulo | No fim, você tem | Aulas | Vídeo |', '|---|---|---:|---:|', ...A.modulos.map((m) => `| ${m.numero} · ${m.nome} | ${cel(m.resultado)} | ${m.aulas.length} | ${fmt(m.minutos)} |`), `| **Total** | ${aulas.length} conquistas e as rotinas do escritório | ${aulas.length} | ${fmt(totalMin)} |`, '', A.rodape, '');
+md.push('## Resumo', '', '| Módulo | No fim, você tem | Aulas | Vídeo |', '|---|---|---:|---:|', ...A.modulos.map((m) => `| ${m.numero} · ${m.nome} | ${cel(m.resultado)} | ${m.aulas.length} | ${fmt(m.minutos)} |`), `| **Total** | ${aulas.length} conquistas, as rotinas e o painel do escritório | ${aulas.length} | ${fmt(totalMin)} |`, '', A.rodape, '');
 fs.writeFileSync(path.join(pasta, 'README.md'), md.join('\n'));
 
 console.log(`Agenda montada: ${aulas.length} aulas, ${fmt(totalMin)} (${totalMin} min).`);
