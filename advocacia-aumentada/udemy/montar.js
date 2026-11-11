@@ -28,7 +28,7 @@ const FERRAMENTAS = {
   'Design system': { filtro: 'design', rotulo: 'Design system' }, Slides: { filtro: 'slides', rotulo: 'Slides' },
   Planilhas: { filtro: 'planilhas', rotulo: 'Planilhas' }, 'Formulários': { filtro: 'formularios', rotulo: 'Formulários' },
   Docs: { filtro: 'docs', rotulo: 'Docs' }, Gmail: { filtro: 'gmail', rotulo: 'Gmail' }, Agenda: { filtro: 'agenda', rotulo: 'Agenda' },
-  Drive: { filtro: 'drive', rotulo: 'Drive' }, 'Apps Script': { filtro: 'apps-script', rotulo: 'Apps Script' }, Painel: { filtro: 'painel', rotulo: 'Painel' },
+  Drive: { filtro: 'drive', rotulo: 'Drive' }, 'Apps Script': { filtro: 'apps-script', rotulo: 'Apps Script' }, Painel: { filtro: 'painel', rotulo: 'Painel' }, WhatsApp: { filtro: 'whatsapp', rotulo: 'WhatsApp' },
 };
 const FRENTES = {
   configuracao: ['Configuração do Claude e escolha do modelo', 'escudo'], conectores_meet: ['Conectores do Google e Google Meet', 'email'],
@@ -37,6 +37,7 @@ const FRENTES = {
   apps_script: ['Google Apps Script', 'script'], email_agenda: ['Automação de e-mail e de agenda', 'agenda'],
   contrato_riscos: ['Análise de contrato e de riscos', 'contrato'], casos_clientes: ['Gestão de casos e plataforma de clientes', 'formulario'],
   plataforma_contratos: ['Plataforma de contratos', 'painel'], planilhas_paineis: ['Planilhas e painéis', 'planilha'],
+  escritorio_automatico: ['Escritório automatizado: respostas, follow-up e revisões', 'sozinho'],
 };
 const SIMBOLOS = {
   pagina: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/>',
@@ -234,6 +235,11 @@ a { color: inherit; }
 .notas ul { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
 .notas li { font-size: .92rem; color: var(--tinta-2); padding-left: 14px; position: relative; }
 .notas li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--linha-forte); }
+.robos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; margin-top: 16px; border-top: 1px solid var(--linha); }
+.robos li { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--linha); font-size: .95rem; min-width: 0; }
+.robos .ico { color: var(--verde); margin-top: 2px; }
+.robos a { font-weight: 700; text-decoration: none; }
+@media (max-width: 900px) { .robos { grid-template-columns: minmax(0, 1fr); } }
 .rodape { font-size: .84rem; color: var(--tinta-2); }
 .relatorio { border-top: 2px solid var(--tinta); padding-top: 28px; }
 .tabela { overflow-x: auto; margin-top: 16px; background: var(--folha); border: 1px solid var(--linha); border-radius: 6px; }
@@ -318,6 +324,16 @@ function modulo(m) {
     </div>
   </section>`;
 }
+
+const robos = todas.filter((s) => (s.automacao || '').trim());
+const rodaSozinho = !robos.length ? '' : `
+  <section class="bloco" aria-labelledby="robo-t">
+    <h2 id="robo-t">No fim do curso, isto roda sozinho</h2>
+    <p>${robos.length} automações preparam o trabalho. Nada sai do escritório sem a sua revisão.</p>
+    <ul class="robos">${robos.map((s) => `
+      <li>${ico('sozinho')}<span><a href="#${idSessao(s.numero)}">${esc(s.numero)} ${esc(s.nome)}</a>: ${esc(s.automacao)}</span></li>`).join('')}
+    </ul>
+  </section>`;
 
 const caixa = !(A.cobertura || []).length ? '' : `
   <section class="bloco" aria-labelledby="caixa-t">
@@ -460,6 +476,7 @@ const corpo = `${sprite}
     <p class="compasso"><span>Toda sessão anda em três tempos:</span> <b>a dor</b> <i>→</i> <b>o que você constrói</b> <i>→</i> <b>o que você ganha</b></p>${A.pratica_texto ? `
     <p class="jogo">${esc(A.pratica_texto)}</p>` : ''}
   </header>
+${rodaSozinho}
 ${caixa}
 ${filtro}
 ${A.modulos.map(modulo).join('\n')}
@@ -493,6 +510,9 @@ if (A.subtitulo) md.push(`*${A.subtitulo}*`, '');
 md.push(`**${A.rotulo || 'Curso gravado · Agenda'}** · 3 módulos · ${totalSessoes} sessões · ${fmt(totalMin)} de vídeo · ${totalAuto} automações · um sistema por módulo`, '', A.promessa, '');
 md.push('A página da agenda é [agenda-udemy.html](agenda-udemy.html). Este arquivo é o espelho em texto; os dois saem de [agenda.json](agenda.json) pelo script [montar.js](montar.js) (`node montar.js`).', '');
 md.push('Toda sessão anda em três tempos: **a dor** → **o que você constrói** → **o que você ganha**.', '');
+if (robos.length) {
+  md.push('## No fim do curso, isto roda sozinho', '', ...robos.map((s) => `- **${s.numero} ${s.nome}:** ${s.automacao}`), '');
+}
 if ((A.cobertura || []).length) {
   md.push(`## ${A.caixa_titulo || 'A caixa de ferramentas do escritório'}`, '', '| Frente | Sessões |', '|---|---|');
   Object.keys(FRENTES).forEach((f) => { const c = A.cobertura.find((x) => x.frente === f); md.push(`| ${FRENTES[f][0]} | ${c.sessoes.join(', ')} |`); });
