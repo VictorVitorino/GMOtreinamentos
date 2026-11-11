@@ -435,7 +435,7 @@ const curso = `
     <div class="miolo">
       <p class="olho">O curso</p>
       <h2 id="t-curso">Você sai com um escritório montado, não com uma lista de prompts</h2>
-      <p class="intro">Cada aula configura ou constrói uma peça do seu escritório. No fim, as peças trabalham juntas.</p>
+      <p class="intro">Cada aula configura ou constrói uma peça do seu escritório, ou do jurídico da sua empresa. No fim, as peças trabalham juntas.</p>
       <div class="cards4">${A.curso.map((c) => `
         <article class="card"><span class="ico-bola">${ico(c.icone)}</span><h3>${esc(c.titulo)}</h3><p>${esc(c.texto)}</p></article>`).join('')}
       </div>

@@ -1,8 +1,8 @@
 # IA Aplicada a Advogados
 
-**Construa, aula por aula, um escritório com rotinas automatizadas e decisões sob seu controle.**
+**Construa, aula por aula, um escritório ou departamento jurídico com rotinas automatizadas e decisões sob seu controle.**
 
-Do primeiro acesso seguro às rotinas automatizadas, com o primeiro caso resolvido já no módulo 1. Tudo no navegador, sem programar, com a sua marca e dentro das regras da OAB.
+Do primeiro acesso seguro às rotinas automatizadas, com o primeiro caso resolvido já no módulo 1. Tudo no navegador, sem programar, com a identidade do seu escritório ou da sua empresa e dentro das regras da OAB.
 
 3 módulos · 24 aulas · 4 h 30 de vídeo · 24 conquistas · 15 ferramentas
 
@@ -10,16 +10,17 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 ## O curso
 
-- **Para quem é.** Advogados autônomos e de escritórios pequenos que nunca configuraram uma IA. Não precisa saber programar.
-- **O que você constrói.** Um escritório no Claude e no Google, com a sua marca, padrão de atendimento e rotinas que passam pela sua aprovação.
+- **Para quem é.** Qualquer advogado: em escritório de qualquer porte, autônomo ou no jurídico de uma empresa. Basta ainda não ter configurado uma IA no trabalho. Não precisa saber programar.
+- **O que você constrói.** Um escritório ou jurídico no Claude e no Google, com a sua identidade, padrão de atendimento e rotinas que passam pela sua aprovação.
 - **Como é cada aula.** Vídeo curto, uma missão prática com material fictício e uma conquista no fim.
-- **Tudo na web.** Nada para instalar. Claude e Google direto no navegador.
+- **Tudo na web.** Nada para instalar. Os exemplos usam o Google; em empresas com Microsoft 365, as aulas de Claude valem igual.
 
 | Hoje | No fim do curso |
 |---|---|
 | Prazos no caderno, na planilha e na cabeça | Prazos da semana no seu e-mail às 7h, conferidos por você |
 | “Doutor, e o meu processo?” toda semana | Retornos com padrão e data combinada com o cliente |
 | Proposta mandada por WhatsApp que esfria | Proposta com a sua marca e follow-up lembrado pela rotina |
+| Pedidos das áreas da empresa chegando por e-mail, WhatsApp e corredor | Uma entrada única, com responsável, prazo e registro |
 | Medo de colar documento de cliente na IA | Ambiente configurado com critérios de segurança e controles de revisão |
 
 ## Módulo 1 · A base: Claude configurado e o primeiro caso
@@ -32,7 +33,7 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 | Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |
 |---|---|---|---|---|---:|
-| **1.1 Configurar com segurança antes de usar** | A primeira configuração, antes de qualquer conversa. | Conta, plano e um tour rápido da tela<br>Conversas fora do treinamento e verificação em duas etapas<br>O semáforo do sigilo: o que entra e o que fica fora | Ambiente configurado<br>*Missão: Checklist de decolagem* | Claude | 12 min |
+| **1.1 Configurar com segurança antes de usar** | A primeira configuração, antes de qualquer conversa. | Conta e plano: pessoal, de equipe ou da empresa<br>Conversas fora do treinamento e verificação em duas etapas<br>O semáforo do sigilo: o que entra e o que fica fora | Ambiente configurado<br>*Missão: Checklist de decolagem* | Claude | 12 min |
 | **1.2 O primeiro caso: ficha e retorno ao cliente** | Uma pilha de documentos vira ficha do caso e mensagem ao cliente. | Projeto do caso com os documentos<br>Ficha com fatos, fonte, linha do tempo e lacunas<br>Retorno ao cliente em linguagem simples | Ficha do caso e retorno<br>*Missão: Cronômetro ligado: a primeira medição* | Claude | 14 min |
 | **1.3 Qual modelo para cada trabalho** | Os modelos do Claude explicados para quem advoga. | Haiku, Sonnet, Opus e Fable<br>O mais capaz para processos complexos<br>Como não gastar o limite à toa | Guia de modelos<br>*Missão: Duelo de modelos* | Claude | 8 min |
 | **1.4 Google conectado** | Gmail, Agenda e Drive conversando com o Claude. | Ligar os três conectores<br>Permissão de perguntar antes de agir<br>A semana inteira em uma tela | Google conectado<br>*Missão: Semana no escuro* | Gmail, Google Agenda, Google Drive | 10 min |
@@ -51,10 +52,10 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 
 | Aula | O que é | O que vamos apresentar | Conquista e missão | Ferramentas | Tempo |
 |---|---|---|---|---|---:|
-| **2.1 A marca do escritório** | Identidade, logotipo e design system em uma aula. | Três palavras, paleta, letras e tom de voz<br>Logotipo em SVG e PNG<br>O design system guardado no Claude | Marca definida<br>*Missão: Jogo das cartas* | Claude, Design system | 14 min |
-| **2.2 Modelos visuais** | Apresentação, timbrado e proposta com a sua marca. | Modelo de apresentação<br>Timbrado e assinatura de e-mail<br>Proposta de honorários de uma página | Kit visual<br>*Missão: Antes e depois* | Design system, Google Docs, Gmail | 12 min |
-| **2.3 O primeiro atendimento** | Do primeiro contato à primeira reunião, com roteiro. | Roteiro de perguntas por tipo de caso<br>Lista de documentos para pedir<br>Registro do atendimento com próximos passos | Roteiro de atendimento<br>*Missão: Cliente simulado* | Claude, Google Docs | 10 min |
-| **2.4 Retornos com padrão** | Atualização, relatório e prazo de resposta combinado. | Atualização de andamento em três linhas<br>Relatório mensal de uma página<br>Prazo de retorno combinado com o cliente | Retornos com padrão<br>*Missão: Contra o relógio* | Claude, Google Docs | 10 min |
+| **2.1 A marca do escritório** | A identidade do escritório, ou a da empresa, guardada no Claude. | Três palavras, paleta, letras e tom de voz<br>Logotipo em SVG e PNG<br>O design system guardado no Claude | Marca definida<br>*Missão: Jogo das cartas* | Claude, Design system | 14 min |
+| **2.2 Modelos visuais** | Apresentação, timbrado e proposta com a sua marca. | Modelo de apresentação<br>Timbrado e assinatura de e-mail<br>Proposta de honorários ou parecer de uma página | Kit visual<br>*Missão: Antes e depois* | Design system, Google Docs, Gmail | 12 min |
+| **2.3 O primeiro atendimento** | Do primeiro contato à primeira reunião, com cliente ou área interna. | Roteiro de perguntas por tipo de caso<br>Lista de documentos para pedir<br>Registro do atendimento com próximos passos | Roteiro de atendimento<br>*Missão: Cliente simulado* | Claude, Google Docs | 10 min |
+| **2.4 Retornos com padrão** | Atualização, relatório e prazo de resposta combinado com quem pediu. | Atualização de andamento em três linhas<br>Relatório mensal de uma página<br>Prazo de retorno combinado com o cliente ou a área | Retornos com padrão<br>*Missão: Contra o relógio* | Claude, Google Docs | 10 min |
 | **2.5 Instruções reutilizáveis** | O que você explica uma vez, o Claude segue sempre. | Projeto do escritório com instruções permanentes<br>Skills para as tarefas que se repetem<br>Memória: o que guardar e o que nunca guardar | Instruções do escritório<br>*Missão: Teste do estagiário novo* | Claude, Plugins e skills | 12 min |
 | **2.6 Biblioteca de casos** | Casos, teses e peças de referência organizados para reuso. | Casos anteriores anonimizados<br>Teses e peças por tipo de ação<br>Achar a referência certa em segundos | Biblioteca de casos<br>*Missão: Ache o precedente da casa* | Claude, Google Drive | 10 min |
 | **2.7 Revisão da produção** | O que sai do escritório passa pelos seus critérios. | Três chaves para conferir citações<br>Checklist antes do envio e do protocolo<br>Registro de quem revisou e quando | Revisão com critério<br>*Missão: Caça ao erro* | Claude, Google Planilhas | 12 min |
@@ -72,8 +73,8 @@ A página é [agenda-udemy.html](agenda-udemy.html). Ela e este arquivo saem de 
 |---|---|---|---|---|---:|
 | **3.1 O ambiente das rotinas** | Planilha-mãe, pastas e o primeiro script. | Planilha-mãe e pastas no Drive<br>O que é o Google Apps Script<br>Conta de treino antes da conta real | Ambiente das rotinas<br>*Missão: Construção guiada* | Google Planilhas, Apps Script, Google Drive | 10 min |
 | **3.2 Controles de revisão e acompanhamento** | O que cada rotina pode fazer, e o que sempre passa por você. | Dados sensíveis mascarados antes da IA<br>E-mail em rascunho e revisão obrigatória<br>Registro de tudo e scripts versionados no GitHub | Controles ativos<br>*Missão: Conserte o script* | Apps Script, GitHub | 12 min |
-| **3.3 Fluxo 1 · Entrada da demanda** | Toda nova demanda chega organizada, a qualquer hora. | Resposta fora do horário no WhatsApp Business e no Gmail<br>Formulário de primeiro contato com aviso de privacidade<br>Cadastro automático na planilha | Entrada organizada<br>*Missão: Simulador de mensagens* | WhatsApp Business, Gmail, Google Formulários, Google Planilhas | 14 min |
-| **3.4 Fluxo 2 · Documentos** | Procuração, contrato de honorários e proposta com um clique. | Modelos timbrados como base<br>Dados puxados do cadastro<br>Pasta do cliente montada pela rotina | Documentos em um clique<br>*Missão: Contra o relógio* | Apps Script, Google Docs, Google Drive | 14 min |
+| **3.3 Fluxo 1 · Entrada da demanda** | Toda nova demanda, de cliente ou de outra área da empresa, chega organizada. | Resposta fora do horário no WhatsApp Business e no Gmail<br>Formulário de primeiro contato com aviso de privacidade<br>Cadastro automático na planilha | Entrada organizada<br>*Missão: Simulador de mensagens* | WhatsApp Business, Gmail, Google Formulários, Google Planilhas | 14 min |
+| **3.4 Fluxo 2 · Documentos** | Procuração, contratos e documentos padrão com um clique. | Modelos timbrados como base<br>Dados puxados do cadastro<br>Pasta do cliente montada pela rotina | Documentos em um clique<br>*Missão: Contra o relógio* | Apps Script, Google Docs, Google Drive | 14 min |
 | **3.5 Fluxo 3 · Follow-up** | Ninguém fica sem resposta por esquecimento. | Proposta sem resposta há três dias<br>Caso sem notícia ao cliente há 30 dias<br>Rascunhos prontos para você revisar | Follow-up em dia<br>*Missão: Segunda-feira* | Apps Script, Gmail, Google Planilhas | 14 min |
 | **3.6 Fluxo 4 · Painel de aprovação** | Tudo o que espera você, em uma tela e às 7h no e-mail. | Fila de rascunhos, documentos e propostas<br>Prazos da semana conferidos, com alarme na agenda<br>Aprovado só com nome e data | Painel de aprovação<br>*Missão: Caça ao erro* | Apps Script, Google Planilhas, Gmail, Google Agenda, Design system | 14 min |
 | **3.7 O dia simulado** | Os quatro fluxos rodando juntos em um dia fictício. | Da demanda que chega à aprovação<br>O que cada rotina fez e registrou<br>Os seus ajustes depois do primeiro dia | Rotinas em funcionamento<br>*Missão: Missão final* | Apps Script, Google Planilhas | 12 min |
@@ -143,4 +144,4 @@ O curso não promete número. Você registra o que aconteceu, inclusive quando o
 | 3 · Rotinas automatizadas, decisões com você | Quatro fluxos completos (entrada da demanda, documentos, follow-up e painel de aprovação) e o ganho medido antes e depois. | 8 | 1 h 40 |
 | **Total** | 24 conquistas e as rotinas do escritório | 24 | 4 h 30 |
 
-Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado.
+Agenda de planejamento, versão de 11/11/2026. Os tempos são estimativas. Planos, telas e nomes de modelos mudam: conferir antes de gravar. Conectores jurídicos MCP são de terceiros. Em aula, só casos e dados fictícios. Nenhuma rotina dispensa a revisão do advogado. Em empresas com Microsoft 365, as aulas de Claude valem igual; as rotinas do módulo 3 usam o Google e têm equivalente no Power Automate, que o curso não cobre.
